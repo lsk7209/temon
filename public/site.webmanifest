@@ -1,0 +1,28 @@
+{
+  "name": "테몬 MBTI - 다양한 성격 테스트",
+  "short_name": "테몬 MBTI",
+  "description": "라면, 커피, 반려동물 등 다양한 주제로 알아보는 재미있는 MBTI 성격 테스트",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#3b82f6",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "scope": "/"
+}

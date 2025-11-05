@@ -1,0 +1,38 @@
+# Cloudflare Workers 설정 파일
+# https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "temon-admin"
+main = "functions/index.ts"
+compatibility_date = "2025-11-01"
+
+# D1 데이터베이스 설정
+[[d1_databases]]
+binding = "DB"
+database_name = "temon-analytics"
+database_id = "" # 배포 후 생성: wrangler d1 create temon-analytics
+
+# KV 네임스페이스 (세션/UTM 캐싱)
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "" # 배포 후 생성: wrangler kv:namespace create "SESSIONS"
+
+# 환경 변수
+[vars]
+ADMIN_TOKEN = "" # 배포 시 설정 필요
+NODE_ENV = "production"
+
+# Cron Triggers
+[triggers]
+crons = ["*/5 * * * *", "0 * * * *", "0 0 * * *"]
+# 5분: KPI 캐시
+# 1시간: 섹션 이탈률/브라우저 전환률 리프레시
+# 1일: 키워드 Top, 리텐션 코호트, 성능-전환 상관 리포트
+
+# 빌드 설정
+[build]
+command = "npm run build"
+cwd = "."
+
+# Cloudflare Pages 설정
+pages_build_output_dir = ".next"
+

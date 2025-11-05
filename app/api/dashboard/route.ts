@@ -1,0 +1,130 @@
+/**
+ * 관리자 대시보드 API
+ * GET /api/dashboard - 대시보드 통계 데이터 조회
+ */
+
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+export const runtime = 'edge'
+
+import { NextRequest, NextResponse } from 'next/server'
+import { initDatabase } from '@/lib/db/client'
+import type { D1Database } from '@/lib/db/client'
+
+function getD1Database(): D1Database | undefined {
+  if (typeof globalThis !== 'undefined' && 'process' in globalThis) {
+    return undefined
+  }
+  // @ts-expect-error - Cloudflare Workers 환경에서만 사용 가능
+  return globalThis.env?.DB
+}
+
+function getCorsHeaders() {
+  return {
+    'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_APP_URL || '*',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  }
+}
+
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: getCorsHeaders() })
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    const db = getD1Database()
+    
+    if (!db) {
+      // 개발 환경: 모의 데이터 반환
+      return NextResponse.json(
+        {
+          totalVisits: 0,
+          totalTestsStarted: 0,
+          totalTestsCompleted: 0,
+          lastVisit: Date.now(),
+          testStats: {},
+          message: 'Database not available in development',
+        },
+        { headers: getCorsHeaders() }
+      )
+    }
+
+    const database = initDatabase(db)
+
+    // 전체 통계 조회
+    const today = new Date().toISOString().split('T')[0]
+    
+    // 총 방문 수 (페이지 방문 테이블)
+    const visitsResult = await db.prepare(
+      'SELECT COUNT(*) as count FROM page_visits'
+    ).first<{ count: number }>()
+
+    // 총 테스트 시작 수
+    const startsResult = await db.prepare(
+      'SELECT COUNT(*) as count FROM test_starts'
+    ).first<{ count: number }>()
+
+    // 총 테스트 완료 수
+    const resultsResult = await db.prepare(
+      'SELECT COUNT(*) as count FROM test_results'
+    ).first<{ count: number }>()
+
+    // 마지막 방문 시간
+    const lastVisitResult = await db.prepare(
+      'SELECT MAX(created_at) as last_visit FROM page_visits'
+    ).first<{ last_visit: number }>()
+
+    // 테스트별 통계
+    const testStatsResult = await db.prepare(`
+      SELECT 
+        test_id,
+        COUNT(*) as started
+      FROM test_starts
+      GROUP BY test_id
+    `).all<{ test_id: string; started: number }>()
+
+    const completedStatsResult = await db.prepare(`
+      SELECT 
+        test_id,
+        COUNT(*) as completed
+      FROM test_results
+      GROUP BY test_id
+    `).all<{ test_id: string; completed: number }>()
+
+    // 통계 조합
+    const testStats: Record<string, { started: number; completed: number }> = {}
+    
+    testStatsResult.results?.forEach((row) => {
+      testStats[row.test_id] = {
+        started: row.started,
+        completed: 0,
+      }
+    })
+
+    completedStatsResult.results?.forEach((row) => {
+      if (!testStats[row.test_id]) {
+        testStats[row.test_id] = { started: 0, completed: 0 }
+      }
+      testStats[row.test_id].completed = row.completed
+    })
+
+    return NextResponse.json(
+      {
+        totalVisits: visitsResult?.count || 0,
+        totalTestsStarted: startsResult?.count || 0,
+        totalTestsCompleted: resultsResult?.count || 0,
+        lastVisit: lastVisitResult?.last_visit || Date.now(),
+        testStats,
+      },
+      { headers: getCorsHeaders() }
+    )
+  } catch (error) {
+    console.error('Dashboard API error:', error)
+    return NextResponse.json(
+      { error: 'Failed to fetch dashboard stats' },
+      { status: 500, headers: getCorsHeaders() }
+    )
+  }
+}
+

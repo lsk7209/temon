@@ -1,0 +1,110 @@
+{
+  "testId": "coffee-mbti",
+  "questions": [
+    {
+      "id": 1,
+      "text": "카페 도착 후 주문 순서?",
+      "choices": [
+        { "id": "a", "text": "메뉴판 미리 정해둠", "tags": ["J"] },
+        { "id": "b", "text": "줄 서서 즉흥 선택", "tags": ["P"] }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "첫 모닝커피?",
+      "choices": [
+        { "id": "a", "text": "따뜻한 아메리카노", "tags": ["S"] },
+        { "id": "b", "text": "오늘 신메뉴 콜드폼!", "tags": ["N"] }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "\"시럽 넣어 드릴까요?\"",
+      "choices": [
+        { "id": "a", "text": "단맛 NO, 본연 맛", "tags": ["T"] },
+        { "id": "b", "text": "당 충전이 행복♥", "tags": ["F"] }
+      ]
+    },
+    {
+      "id": 4,
+      "text": "바쁜 아침 대기줄 발견했을 때",
+      "choices": [
+        { "id": "a", "text": "다른 지점 즉시 이동", "tags": ["E"] },
+        { "id": "b", "text": "앱 주문으로 해결", "tags": ["I"] }
+      ]
+    },
+    {
+      "id": 5,
+      "text": "커피 온도 선택",
+      "choices": [
+        { "id": "a", "text": "뜨거워야 제맛", "tags": ["J"] },
+        { "id": "b", "text": "얼음 가득", "tags": ["P"] }
+      ]
+    },
+    {
+      "id": 6,
+      "text": "원두 고를 때",
+      "choices": [
+        { "id": "a", "text": "로스팅·산미표 참고", "tags": ["S"] },
+        { "id": "b", "text": "바리스타 추천 수용", "tags": ["N"] }
+      ]
+    },
+    {
+      "id": 7,
+      "text": "테이크아웃 컵 VS 머그컵",
+      "choices": [
+        { "id": "a", "text": "일회용 컵 실용적", "tags": ["T"] },
+        { "id": "b", "text": "머그컵 분위기 중요", "tags": ["F"] }
+      ]
+    },
+    {
+      "id": 8,
+      "text": "첫 모금 후 맛이 기대와 다르면?",
+      "choices": [
+        { "id": "a", "text": "바로 리메이크 요청", "tags": ["E"] },
+        { "id": "b", "text": "그냥 마시며 적응", "tags": ["I"] }
+      ]
+    },
+    {
+      "id": 9,
+      "text": "회의 중 커피가 식었다!",
+      "choices": [
+        { "id": "a", "text": "새로 뽑아옴", "tags": ["J"] },
+        { "id": "b", "text": "얼음 넣어 아이스로", "tags": ["P"] }
+      ]
+    },
+    {
+      "id": 10,
+      "text": "디카페인 옵션",
+      "choices": [
+        { "id": "a", "text": "카페인은 필수", "tags": ["S"] },
+        { "id": "b", "text": "밤엔 디카페인", "tags": ["N"] }
+      ]
+    },
+    {
+      "id": 11,
+      "text": "친구가 주문 못 정할 때",
+      "choices": [
+        { "id": "a", "text": "추천 메뉴 콕 집어줌", "tags": ["E"] },
+        { "id": "b", "text": "기다리며 앱 구경", "tags": ["I"] }
+      ]
+    },
+    {
+      "id": 12,
+      "text": "커피 마시는 시간대",
+      "choices": [
+        { "id": "a", "text": "아침 필수", "tags": ["J"] },
+        { "id": "b", "text": "언제든 OK", "tags": ["P"] }
+      ]
+    }
+  ],
+  "calculateResult": "mbti",
+  "resultPath": "/tests/coffee-mbti/test/result",
+  "colorTheme": {
+    "bg": "from-amber-50 to-orange-50",
+    "border": "border-amber-200",
+    "button": "bg-amber-500 text-white border-amber-500",
+    "text": "text-amber-600"
+  }
+}
+
