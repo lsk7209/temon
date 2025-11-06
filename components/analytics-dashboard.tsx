@@ -58,7 +58,7 @@ export default function AnalyticsDashboard() {
       // 실제 API에서 데이터 로딩
       const response = await fetch('/api/dashboard')
       if (response.ok) {
-        const data = await response.json()
+        const data = await response.json() as DashboardStats
         setStats(data)
       } else {
         // API 실패 시 fallback 데이터
