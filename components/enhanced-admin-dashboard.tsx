@@ -65,6 +65,12 @@ interface KeywordStats {
   percentage: number
 }
 
+interface OsStats {
+  os: string
+  count: number
+  percentage: number
+}
+
 interface ScriptConfig {
   id: string
   name: string
@@ -83,7 +89,7 @@ export default function EnhancedAdminDashboard() {
   const [deviceStats, setDeviceStats] = useState<DeviceStats[]>([])
   const [browserStats, setBrowserStats] = useState<BrowserStats[]>([])
   const [keywordStats, setKeywordStats] = useState<KeywordStats[]>([])
-  const [osStats, setOsStats] = useState<{ os: string; count: number; percentage: number }[]>([])
+  const [osStats, setOsStats] = useState<OsStats[]>([])
   
   // Head 스크립트 관리
   const [scripts, setScripts] = useState<ScriptConfig[]>([])
@@ -136,7 +142,7 @@ export default function EnhancedAdminDashboard() {
           devices?: DeviceStats[]
           browsers?: BrowserStats[]
           keywords?: KeywordStats[]
-          os?: DeviceStats[]
+          os?: OsStats[]
         }
         setDeviceStats(data.devices || [])
         setBrowserStats(data.browsers || [])
