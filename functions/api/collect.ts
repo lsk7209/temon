@@ -248,8 +248,6 @@ app.post('/', async (c) => {
 })
 
 // Cloudflare Pages Functions는 onRequest export를 선호합니다
-import type { PagesFunction } from '@cloudflare/workers-types'
-
 export const onRequest: PagesFunction<Env> = async (context) => {
   return app.fetch(context.request, context.env, context)
 }
