@@ -136,7 +136,7 @@ app.post('/', async (c) => {
     const { type, sessionId, anonymousId, ...eventData } = body
 
     // Bot 필터링
-    const userAgent = c.req.header('user-agent')
+    const userAgent = c.req.header('user-agent') || null
     if (isBot(userAgent)) {
       return c.json({ success: true, message: 'Bot filtered' }, 200)
     }
