@@ -11,7 +11,8 @@ const nextConfig = {
     unoptimized: true, // Cloudflare Pages 호환성
   },
   // Cloudflare Pages 호환성
-  // output: 'export' 제거 - Cloudflare Pages는 Next.js를 공식 지원
+  // Next.js 14를 Cloudflare Pages에 배포하려면 정적 사이트 생성 필요
+  output: 'export', // 정적 사이트 생성 (SSG)
   // API 라우트는 Cloudflare Pages Functions로 처리
   
   // 빌드 최적화: webpack 캐시 제외 (Cloudflare Pages 25MB 제한)

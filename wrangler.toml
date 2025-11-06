@@ -6,8 +6,8 @@
 name = "temon"
 
 # Pages 빌드 출력 디렉토리
-# Cloudflare Pages는 Next.js를 공식 지원하므로 .next 디렉토리 사용
-pages_build_output_dir = ".next"
+# output: 'export' 사용 시 빌드 출력은 'out' 디렉토리
+pages_build_output_dir = "out"
 
 # D1 데이터베이스 설정
 # 주의: README에서는 temon-mbti-db를 사용하지만, analytics용으로 temon-analytics를 사용
