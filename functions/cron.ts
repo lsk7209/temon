@@ -1,6 +1,8 @@
 /**
  * Cron 작업 핸들러
  * 5분/1시간/1일 주기 집계 작업
+ * 
+ * 파일 기반 라우팅: functions/cron.ts → /cron
  */
 
 import { Hono } from 'hono'
@@ -43,5 +45,6 @@ app.get('/', async (c) => {
   }
 })
 
+// Cloudflare Pages Functions는 default export를 사용
 export default app
 

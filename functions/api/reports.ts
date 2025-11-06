@@ -1,6 +1,8 @@
 /**
  * 집계 API
  * 대시보드 데이터 제공
+ * 
+ * 파일 기반 라우팅: functions/api/reports.ts → /api/reports
  */
 
 import { Hono } from 'hono'
@@ -103,5 +105,6 @@ app.get('/', async (c) => {
   }
 })
 
+// Cloudflare Pages Functions는 default export를 사용
 export default app
 

@@ -1,6 +1,8 @@
 /**
  * 인제스트 API
  * 이벤트 수집 엔드포인트
+ * 
+ * 파일 기반 라우팅: functions/api/collect.ts → /api/collect
  */
 
 import { Hono } from 'hono'
@@ -153,7 +155,6 @@ app.post('/', async (c) => {
         const { path, referrer, ...utm } = eventData
         const referrerData = parseReferrer(referrer)
         const utmParams = extractUTM(referrer || '')
-
         const pageView: schema.NewPageView = {
           sessionId: finalSessionId,
           occurredAt: Date.now(),
@@ -166,11 +167,9 @@ app.post('/', async (c) => {
           utmTerm: utm.utm_term || utmParams.utm_term || null,
           utmContent: utm.utm_content || utmParams.utm_content || null,
         }
-
         await db.insert(schema.pageView).values(pageView)
         break
       }
-
       case 'quiz_start_click':
       case 'attempt_started': {
         const { quiz_id } = eventData
@@ -180,11 +179,9 @@ app.post('/', async (c) => {
           quizId: quiz_id || null,
           startedAt: Date.now(),
         }
-
         await db.insert(schema.attempt).values(attempt)
         break
       }
-
       case 'attempt_completed': {
         const { attempt_id } = eventData
         if (attempt_id) {
@@ -195,7 +192,6 @@ app.post('/', async (c) => {
         }
         break
       }
-
       case 'attempt_abandoned': {
         const { attempt_id, reason } = eventData
         if (attempt_id) {
@@ -206,7 +202,6 @@ app.post('/', async (c) => {
         }
         break
       }
-
       case 'section_entered': {
         const { attempt_id, section_index } = eventData
         if (attempt_id) {
@@ -219,7 +214,6 @@ app.post('/', async (c) => {
         }
         break
       }
-
       case 'perf_web_vitals': {
         const { lcp, fid, cls, ttfb } = eventData
         const vitals: schema.NewWebVitals = {
@@ -233,7 +227,6 @@ app.post('/', async (c) => {
         await db.insert(schema.webVitals).values(vitals)
         break
       }
-
       case 'error_http': {
         const { path, status, latency_ms } = eventData
         const error: schema.NewHttpError = {
@@ -246,7 +239,6 @@ app.post('/', async (c) => {
         break
       }
     }
-
     return c.json({ success: true }, 200)
   } catch (error) {
     console.error('Collect error:', error)
@@ -254,5 +246,5 @@ app.post('/', async (c) => {
   }
 })
 
+// Cloudflare Pages Functions는 default export를 사용
 export default app
-
