@@ -7,6 +7,14 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { trackTestStart } from "@/lib/analytics"
+import { ALL_TESTS } from "@/lib/tests-config"
+
+// output: 'export'를 위한 정적 파라미터 생성
+export function generateStaticParams() {
+  return ALL_TESTS.map((test) => ({
+    slug: test.id,
+  }))
+}
 
 // 테스트 데이터 (실제로는 API에서 가져올 수 있음)
 const testData: Record<string, any> = {
