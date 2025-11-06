@@ -22,7 +22,7 @@ export default function TestsPageClient() {
     setSearchTerm(term)
     setCurrentPage(1)
     if (term.length > 0) {
-      trackSearch(term, window.location.pathname)
+      trackSearch(term)
     }
   }
 
