@@ -2,6 +2,9 @@
 # 주의: Cloudflare Pages는 Workers 설정과 일부 호환되지 않습니다
 # Dashboard에서 빌드 설정을 추가하는 것이 가장 중요합니다
 
+# 프로젝트 이름 (Pages에서 필수)
+name = "temon"
+
 # Pages 빌드 출력 디렉토리
 pages_build_output_dir = ".next"
 
