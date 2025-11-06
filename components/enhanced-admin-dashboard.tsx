@@ -105,7 +105,7 @@ export default function EnhancedAdminDashboard() {
     try {
       const response = await fetch('/api/dashboard')
       if (response.ok) {
-        const data = await response.json()
+        const data = await response.json() as DashboardStats
         setStats(data)
         
         // 상세 통계 로드
