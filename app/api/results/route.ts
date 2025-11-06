@@ -15,16 +15,28 @@ import { initDatabase } from '@/lib/db/client'
 import type { D1Database } from '@/lib/db/client'
 
 /**
- * Cloudflare Workers 환경에서 D1 데이터베이스 가져오기
+ * Cloudflare Workers/Pages Functions 환경에서 D1 데이터베이스 가져오기
+ * 
+ * 주의: Next.js API Routes는 Cloudflare Pages에서 자동으로 Functions로 변환됩니다.
+ * 하지만 context 객체에 직접 접근하기 어려우므로, 이 방식은 제한적입니다.
+ * 
+ * 대안:
+ * 1. functions/ 디렉토리에 별도 API를 만들어 사용
+ * 2. Cloudflare Pages Functions의 onRequest 핸들러 사용
+ * 3. 환경 변수로 데이터베이스 연결 정보 전달
  */
 function getD1Database(): D1Database | undefined {
+  // Cloudflare Pages Functions 환경 확인
   if (typeof globalThis !== 'undefined' && 'process' in globalThis) {
-    // Node.js 환경
+    // Node.js 개발 환경 (로컬 개발 시)
     return undefined
   }
-  // Cloudflare Workers 환경
-  // @ts-expect-error - Cloudflare Workers 환경에서만 사용 가능
-  return globalThis.env?.DB
+  
+  // Cloudflare Workers/Pages Functions 환경
+  // @ts-expect-error - Cloudflare 환경에서만 사용 가능한 전역 객체
+  // 실제로는 context.env.DB를 통해 접근해야 하지만,
+  // Next.js Route Handler에서는 직접 접근이 어려움
+  return (globalThis as any).env?.DB || (globalThis as any).__env?.DB
 }
 
 /**

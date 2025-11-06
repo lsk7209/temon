@@ -11,12 +11,21 @@ import { NextRequest, NextResponse } from 'next/server'
 import { initDatabase } from '@/lib/db/client'
 import type { D1Database } from '@/lib/db/client'
 
+/**
+ * Cloudflare Workers/Pages Functions 환경에서 D1 데이터베이스 가져오기
+ * 
+ * 주의: 프로덕션 환경에서는 functions/ 디렉토리의 Functions API 사용을 권장합니다.
+ */
 function getD1Database(): D1Database | undefined {
+  // Cloudflare Pages Functions 환경 확인
   if (typeof globalThis !== 'undefined' && 'process' in globalThis) {
+    // Node.js 개발 환경
     return undefined
   }
-  // @ts-expect-error - Cloudflare Workers 환경에서만 사용 가능
-  return globalThis.env?.DB
+  
+  // Cloudflare Workers/Pages Functions 환경
+  // @ts-expect-error - Cloudflare 환경 전역 객체
+  return (globalThis as any).env?.DB || (globalThis as any).__env?.DB
 }
 
 function getCorsHeaders() {

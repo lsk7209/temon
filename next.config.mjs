@@ -11,7 +11,7 @@ const nextConfig = {
     unoptimized: true, // Cloudflare Pages 호환성
   },
   // Cloudflare Pages 호환성
-  output: 'standalone',
+  // output: 'standalone' 제거 - Cloudflare Pages는 정적 파일과 Functions 사용
 }
 
 export default nextConfig

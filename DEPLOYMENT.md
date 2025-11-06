@@ -102,20 +102,34 @@ wrangler pages deploy .next
 
 ## ⚙️ Cron 작업 설정
 
-### 1. Cron Worker 배포
+### 1. Cron Worker 배포 (방법 1: 설정 파일 사용)
+```bash
+wrangler deploy --config wrangler-cron.toml
+```
+
+### 2. Cron Worker 배포 (방법 2: 직접 배포)
 ```bash
 wrangler deploy workers/cron-stats.ts --name cron-stats
 ```
 
-### 2. Cron Trigger 설정 확인
-`wrangler.toml`의 `[[triggers.crons]]` 섹션 확인:
-```toml
-[[triggers.crons]]
-cron = "0 2 * * *" # 매일 오전 2시 (UTC)
+**주의**: 직접 배포 시 크론 트리거를 수동으로 설정해야 합니다:
+```bash
+wrangler deploy workers/cron-stats.ts --name cron-stats --triggers-cron="0 2 * * *"
 ```
 
-### 3. 로컬 테스트
+### 3. Cron Trigger 설정 확인
+`wrangler-cron.toml`의 `[triggers]` 섹션 확인:
+```toml
+[triggers]
+crons = ["0 2 * * *"]  # 매일 오전 2시 (UTC)
+```
+
+### 4. 로컬 테스트
 ```bash
+# 설정 파일 사용
+wrangler dev --config wrangler-cron.toml
+
+# 또는 직접 실행
 wrangler dev workers/cron-stats.ts
 ```
 

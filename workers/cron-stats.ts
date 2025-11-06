@@ -7,9 +7,16 @@ import type { D1Database, Env } from '../lib/db/client'
 
 /**
  * Cron 이벤트 핸들러
+ * 
+ * 배포 방법:
+ * wrangler deploy --config wrangler-cron.toml
+ * 
+ * 또는 직접 배포:
+ * wrangler deploy workers/cron-stats.ts --name cron-stats
  */
 export default {
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
+    console.log(`[Cron] Scheduled event triggered at ${new Date(event.scheduledTime).toISOString()}`)
     ctx.waitUntil(aggregateDailyStats(env.DB))
   },
 }
@@ -41,17 +48,19 @@ async function aggregateDailyStats(db: D1Database): Promise<void> {
   for (const testId of testIds) {
     try {
       // 어제 시작된 테스트 수
+      // SQLite에서 타임스탬프를 날짜로 변환: datetime(timestamp/1000, 'unixepoch')
       const startedResult = await db
-        .prepare('SELECT COUNT(*) as count FROM test_starts WHERE test_id = ? AND DATE(started_at, "unixepoch") = ?')
+        .prepare('SELECT COUNT(*) as count FROM test_starts WHERE test_id = ? AND date(datetime(started_at/1000, \'unixepoch\')) = ?')
         .bind(testId, dateStr)
         .first<{ count: number }>()
 
       const startedCount = startedResult?.count || 0
 
       // 어제 완료된 테스트 수 및 결과 분포
+      // SQLite에서 타임스탬프를 날짜로 변환
       const completedResult = await db
         .prepare(
-          'SELECT result_type, COUNT(*) as count FROM test_results WHERE test_id = ? AND DATE(created_at, "unixepoch") = ? GROUP BY result_type'
+          'SELECT result_type, COUNT(*) as count FROM test_results WHERE test_id = ? AND date(datetime(created_at/1000, \'unixepoch\')) = ? GROUP BY result_type'
         )
         .bind(testId, dateStr)
         .all<{ result_type: string; count: number }>()
