@@ -33,7 +33,6 @@ function getD1Database(): D1Database | undefined {
   }
   
   // Cloudflare Workers/Pages Functions 환경
-  // @ts-expect-error - Cloudflare 환경에서만 사용 가능한 전역 객체
   // 실제로는 context.env.DB를 통해 접근해야 하지만,
   // Next.js Route Handler에서는 직접 접근이 어려움
   return (globalThis as any).env?.DB || (globalThis as any).__env?.DB

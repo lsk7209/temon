@@ -27,7 +27,6 @@ function getD1Database(): D1Database | undefined {
   }
   
   // Cloudflare Workers/Pages Functions 환경
-  // @ts-expect-error - Cloudflare 환경 전역 객체
   return (globalThis as any).env?.DB || (globalThis as any).__env?.DB
 }
 
