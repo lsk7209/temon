@@ -107,11 +107,7 @@ app.get('/', async (c) => {
 })
 
 // Cloudflare Pages Functions는 fetch handler를 기대합니다
-export const onRequest: PagesFunction = async (context) => {
-  return app.fetch(context.request, context.env, context)
-}
-
-// 또는 default export
+// Hono 앱을 fetch handler로 래핑
 export default {
   fetch: (request: Request, env: any, ctx: ExecutionContext) => {
     return app.fetch(request, env, ctx)
