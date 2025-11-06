@@ -134,8 +134,8 @@ export default function EnhancedAdminDashboard() {
       if (response.ok) {
         const data = await response.json() as {
           devices?: DeviceStats[]
-          browsers?: DeviceStats[]
-          keywords?: { keyword: string; count: number }[]
+          browsers?: BrowserStats[]
+          keywords?: KeywordStats[]
           os?: DeviceStats[]
         }
         setDeviceStats(data.devices || [])
