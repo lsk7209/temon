@@ -132,7 +132,12 @@ export default function EnhancedAdminDashboard() {
       // 실제 API 호출 (추후 구현)
       const response = await fetch('/api/admin/stats/detailed')
       if (response.ok) {
-        const data = await response.json()
+        const data = await response.json() as {
+          devices?: DeviceStats[]
+          browsers?: DeviceStats[]
+          keywords?: { keyword: string; count: number }[]
+          os?: DeviceStats[]
+        }
         setDeviceStats(data.devices || [])
         setBrowserStats(data.browsers || [])
         setKeywordStats(data.keywords || [])
