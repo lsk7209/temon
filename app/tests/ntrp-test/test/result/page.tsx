@@ -134,7 +134,7 @@ export default function NTRPTestResult() {
       })
 
       const pdfBytes = await pdfDoc.save()
-      const blob = new Blob([pdfBytes], { type: "application/pdf" })
+      const blob = new Blob([pdfBytes as BlobPart], { type: "application/pdf" })
       const url = URL.createObjectURL(blob)
       const link = document.createElement("a")
       link.download = `ntrp-result-${levelObj.level}-${dayjs().format("YYYYMMDD")}.pdf`
