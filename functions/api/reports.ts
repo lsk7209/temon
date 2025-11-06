@@ -7,7 +7,7 @@
 
 import type { PagesFunction } from '@cloudflare/workers-types'
 import { Hono } from 'hono'
-import { getDrizzleDB, getTodayFunnel, getChannelPerformance, getBrowserConversion, getTopKeywords, getGeoStats, getTimeHeatmap, getWebVitalsStats } from '../../../lib/drizzle/queries'
+import { getDrizzleDB, getTodayFunnel, getChannelPerformance, getBrowserConversion, getTopKeywords, getGeoStats, getTimeHeatmap, getWebVitalsStats } from '@/lib/drizzle/queries'
 
 type Env = {
   DB: D1Database
