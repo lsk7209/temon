@@ -8,21 +8,24 @@ pages_build_output_dir = ".next"
 # D1 데이터베이스 설정
 # 주의: README에서는 temon-mbti-db를 사용하지만, analytics용으로 temon-analytics를 사용
 # 두 데이터베이스가 필요한 경우 모두 추가하거나, 하나로 통합 필요
-[[d1_databases]]
-binding = "DB"
-database_name = "temon-analytics"
-database_id = "" # 배포 후 생성: wrangler d1 create temon-analytics
+# 
+# Dashboard에서 설정하거나, database_id를 설정한 후 주석 해제:
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "temon-analytics"
+# database_id = "your-database-id-here"
 
 # 테스트 결과 저장용 데이터베이스 (필요시 별도 추가)
 # [[d1_databases]]
 # binding = "TEST_DB"
 # database_name = "temon-mbti-db"
-# database_id = "" # 배포 후 생성: wrangler d1 create temon-mbti-db
+# database_id = "your-database-id-here"
 
 # KV 네임스페이스 (세션/UTM 캐싱)
-[[kv_namespaces]]
-binding = "SESSIONS"
-id = "" # 배포 후 생성: wrangler kv:namespace create "SESSIONS"
+# Dashboard에서 설정하거나, id를 설정한 후 주석 해제:
+# [[kv_namespaces]]
+# binding = "SESSIONS"
+# id = "your-kv-namespace-id-here"
 
 # 환경 변수
 [vars]
