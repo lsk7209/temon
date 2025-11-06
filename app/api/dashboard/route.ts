@@ -1,11 +1,14 @@
 /**
  * 관리자 대시보드 API
  * GET /api/dashboard - 대시보드 통계 데이터 조회
+ * 
+ * 주의: output: 'export' 사용 시 API 라우트는 빌드에서 제외됩니다.
+ * 실제 API는 functions/api/reports.ts에서 처리됩니다.
  */
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
-export const runtime = 'edge'
+// export const dynamic = 'force-dynamic' // output: 'export'와 호환되지 않음
+// export const revalidate = 0
+// export const runtime = 'edge'
 
 import { NextRequest, NextResponse } from 'next/server'
 import { initDatabase } from '@/lib/db/client'

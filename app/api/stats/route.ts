@@ -2,11 +2,13 @@
  * 테스트 통계 API
  * GET /api/stats?testId=xxx - 테스트 통계 조회
  * 
- * Route Segment Config: Next.js 14 베스트 프랙티스
+ * 주의: output: 'export' 사용 시 API 라우트는 빌드에서 제외됩니다.
+ * 실제 API는 Cloudflare Pages Functions에서 처리됩니다.
  */
-export const dynamic = 'force-dynamic' // 항상 동적 렌더링
-export const revalidate = 300 // 5분간 캐싱 (통계 데이터는 자주 변경되지 않음)
-export const runtime = 'edge' // Edge Runtime 사용
+
+// export const dynamic = 'force-dynamic' // output: 'export'와 호환되지 않음
+// export const revalidate = 300 // 5분간 캐싱 (통계 데이터는 자주 변경되지 않음)
+// export const runtime = 'edge' // Edge Runtime 사용
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getDatabase } from '@/lib/db/client'

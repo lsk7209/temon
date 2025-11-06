@@ -1,10 +1,13 @@
 /**
  * Reports API 프록시
  * Next.js → Cloudflare Functions
+ * 
+ * 주의: output: 'export' 사용 시 API 라우트는 빌드에서 제외됩니다.
+ * 실제 API는 functions/api/reports.ts에서 처리됩니다.
  */
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// export const dynamic = 'force-dynamic' // output: 'export'와 호환되지 않음
+// export const revalidate = 0
 
 import { NextRequest, NextResponse } from 'next/server'
 

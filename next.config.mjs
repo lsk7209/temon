@@ -11,7 +11,8 @@ const nextConfig = {
     unoptimized: true, // Cloudflare Pages 호환성
   },
   // Cloudflare Pages 호환성
-  // output: 'standalone' 제거 - Cloudflare Pages는 정적 파일과 Functions 사용
+  // output: 'export' 제거 - Cloudflare Pages는 Next.js를 공식 지원
+  // API 라우트는 Cloudflare Pages Functions로 처리
   
   // 빌드 최적화: webpack 캐시 제외 (Cloudflare Pages 25MB 제한)
   webpack: (config, { isServer }) => {

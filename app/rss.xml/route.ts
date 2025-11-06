@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import { ALL_TESTS } from '@/lib/tests-config'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 3600 // 1시간마다 재생성
+// export const dynamic = 'force-dynamic' // output: 'export'와 호환되지 않음
+// export const revalidate = 3600 // 1시간마다 재생성
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.temon.kr'
