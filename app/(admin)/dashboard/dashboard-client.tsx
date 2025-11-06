@@ -4,7 +4,7 @@
  * 대시보드 클라이언트 컴포넌트
  */
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -146,6 +146,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
     if (startDate && endDate && dateRange !== 'custom') {
       fetchReports()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate, endDate, dateRange])
 
   const handleExportCSV = () => {

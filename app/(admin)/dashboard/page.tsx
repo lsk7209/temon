@@ -63,7 +63,12 @@ export default async function DashboardPage({
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Suspense fallback={<div>Loading...</div>}>
-        <DashboardClient initialData={reports} />
+        {/* 임시로 간단한 컴포넌트 렌더링 */}
+        <div className="container mx-auto p-8">
+          <h1 className="text-3xl font-bold">Analytics 대시보드</h1>
+          <p className="text-muted-foreground mt-2">데이터 로딩 중...</p>
+        </div>
+        {/* <DashboardClient initialData={reports} /> */}
       </Suspense>
     </div>
   )
