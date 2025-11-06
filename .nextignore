@@ -1,0 +1,7 @@
+# Cloudflare Pages 배포 시 제외할 파일
+# .next/cache 디렉토리는 빌드 출력에 포함하지 않음 (25MB 제한)
+
+cache/
+*.pack
+*.cache
+

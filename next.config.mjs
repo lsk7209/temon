@@ -12,6 +12,30 @@ const nextConfig = {
   },
   // Cloudflare Pages 호환성
   // output: 'standalone' 제거 - Cloudflare Pages는 정적 파일과 Functions 사용
+  
+  // 빌드 최적화: webpack 캐시 제외 (Cloudflare Pages 25MB 제한)
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // 클라이언트 빌드에서 캐시 최소화
+      config.optimization = {
+        ...config.optimization,
+        minimize: true,
+      }
+    }
+    return config
+  },
+  
+  // 빌드 출력 최적화
+  experimental: {
+    outputFileTracingExcludes: {
+      '*': [
+        'node_modules/@swc/core-linux-x64-gnu',
+        'node_modules/@swc/core-linux-x64-musl',
+        'node_modules/@esbuild/linux-x64',
+        'node_modules/webpack',
+      ],
+    },
+  },
 }
 
 export default nextConfig
