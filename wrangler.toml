@@ -1,9 +1,9 @@
-# Cloudflare Workers 설정 파일
-# https://developers.cloudflare.com/workers/wrangler/configuration/
+# Cloudflare Pages 설정 파일
+# 주의: Cloudflare Pages는 Workers 설정과 일부 호환되지 않습니다
+# Dashboard에서 빌드 설정을 추가하는 것이 가장 중요합니다
 
-name = "temon-admin"
-main = "functions/index.ts"
-compatibility_date = "2025-11-01"
+# Pages 빌드 출력 디렉토리
+pages_build_output_dir = ".next"
 
 # D1 데이터베이스 설정
 # 주의: README에서는 temon-mbti-db를 사용하지만, analytics용으로 temon-analytics를 사용
@@ -29,22 +29,12 @@ id = "" # 배포 후 생성: wrangler kv:namespace create "SESSIONS"
 ADMIN_TOKEN = "" # 배포 시 설정 필요
 NODE_ENV = "production"
 
-# Cron Triggers
-[triggers]
-crons = ["*/5 * * * *", "0 * * * *", "0 0 * * *"]
-# 5분: KPI 캐시
-# 1시간: 섹션 이탈률/브라우저 전환률 리프레시
-# 1일: 키워드 Top, 리텐션 코호트, 성능-전환 상관 리포트
+# Cron Triggers는 별도 Worker로 배포해야 합니다
+# wrangler-cron.toml 파일을 참고하세요
 
-# 빌드 설정
-[build]
-command = "npm run build"
-cwd = "."
-
-# Cloudflare Pages 설정
-# 주의: Cloudflare Pages Dashboard에서도 빌드 설정을 해야 함
+# 빌드 설정은 Cloudflare Pages Dashboard에서 설정해야 합니다:
 # - Framework preset: Next.js
 # - Build command: npm run build
 # - Build output directory: .next
-pages_build_output_dir = ".next"
+# - Root directory: / (기본값)
 

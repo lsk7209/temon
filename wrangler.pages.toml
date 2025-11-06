@@ -1,0 +1,21 @@
+# Cloudflare Pages 전용 설정 파일
+# 이 파일은 Cloudflare Pages 배포 시 사용됩니다
+
+# Cloudflare Pages 빌드 설정
+pages_build_output_dir = ".next"
+
+# D1 데이터베이스 바인딩 (Dashboard에서도 설정 필요)
+[[d1_databases]]
+binding = "DB"
+database_name = "temon-analytics"
+database_id = "" # Dashboard에서 설정된 database_id 사용
+
+# KV 네임스페이스 바인딩 (Dashboard에서도 설정 필요)
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "" # Dashboard에서 설정된 id 사용
+
+# 환경 변수 (Dashboard에서도 설정 필요)
+[vars]
+NODE_ENV = "production"
+
