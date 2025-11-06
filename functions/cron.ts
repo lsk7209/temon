@@ -5,6 +5,7 @@
  * 파일 기반 라우팅: functions/cron.ts → /cron
  */
 
+import type { PagesFunction } from '@cloudflare/workers-types'
 import { Hono } from 'hono'
 import { getDrizzleDB } from '../../lib/drizzle/queries'
 
@@ -45,6 +46,15 @@ app.get('/', async (c) => {
   }
 })
 
-// Cloudflare Pages Functions는 default export를 사용
-export default app
+// Cloudflare Pages Functions는 fetch handler를 기대합니다
+export const onRequest: PagesFunction = async (context) => {
+  return app.fetch(context.request, context.env, context)
+}
+
+// 또는 default export
+export default {
+  fetch: (request: Request, env: any, ctx: ExecutionContext) => {
+    return app.fetch(request, env, ctx)
+  }
+}
 
