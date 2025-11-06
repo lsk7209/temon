@@ -6,8 +6,9 @@
  * 실제 API는 functions/api/reports.ts에서 처리됩니다.
  */
 
-// export const dynamic = 'force-dynamic' // output: 'export'와 호환되지 않음
-// export const revalidate = 0
+// 동적 라우트로 명시 (request.headers 사용)
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 import { NextRequest, NextResponse } from 'next/server'
 
