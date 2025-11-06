@@ -200,7 +200,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {startDate ? format(startDate, 'yyyy-MM-dd', { locale: ko }) : '시작일'}
                   </Button>
-                </Popover>
+                </PopoverTrigger>
                 <PopoverContent>
                   <Calendar mode="single" selected={startDate} onSelect={setStartDate} />
                 </PopoverContent>
