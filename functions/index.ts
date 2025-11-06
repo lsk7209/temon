@@ -1,6 +1,9 @@
 /**
  * Cloudflare Functions 진입점
  * Hono 라우터로 API 라우팅
+ * 
+ * 주의: Cloudflare Pages Functions는 파일 기반 라우팅을 사용합니다.
+ * _worker.ts 파일을 통해 이 앱을 export합니다.
  */
 
 import { Hono } from 'hono'

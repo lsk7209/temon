@@ -42,5 +42,9 @@ command = "npm run build"
 cwd = "."
 
 # Cloudflare Pages 설정
+# 주의: Cloudflare Pages Dashboard에서도 빌드 설정을 해야 함
+# - Framework preset: Next.js
+# - Build command: npm run build
+# - Build output directory: .next
 pages_build_output_dir = ".next"
 
