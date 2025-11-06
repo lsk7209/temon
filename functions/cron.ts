@@ -48,6 +48,6 @@ app.get('/', async (c) => {
 
 // Cloudflare Pages Functions는 onRequest export를 선호합니다
 export const onRequest: PagesFunction<Env> = async (context) => {
-  return app.fetch(context.request, context.env, context) as any
+  return app.fetch(context.request as any, context.env, context) as any
 }
 
