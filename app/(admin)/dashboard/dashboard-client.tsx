@@ -391,6 +391,24 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
         <div>
           <h1 className="text-3xl font-bold">Analytics 대시보드</h1>
           <p className="text-muted-foreground mt-2">테몬 플랫폼 통계 분석</p>
+          {/* DB 연결 상태 표시 */}
+          {data && (
+            <div className="mt-2">
+              {data.kpi.sessions === 0 && data.kpi.attempts_started === 0 ? (
+                <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 text-sm">
+                  <span>⚠️</span>
+                  <span>
+                    데이터가 없습니다. D1 데이터베이스가 연결되어 있고 데이터가 수집되고 있는지 확인해주세요.
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2 text-green-600 dark:text-green-400 text-sm">
+                  <span>✅</span>
+                  <span>데이터 수집 중: {data.kpi.sessions.toLocaleString()}개 세션</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
         <div className="flex items-center space-x-4">
           <Select value={dateRange} onValueChange={(v) => setDateRange(v as any)}>

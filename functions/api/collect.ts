@@ -145,6 +145,16 @@ app.post('/', async (c) => {
     const ip = c.req.header('cf-connecting-ip') || 'unknown'
     // 실제로는 KV나 Durable Objects 사용 권장
 
+    // DB 연결 확인
+    if (!c.env.DB) {
+      console.error('D1 Database not configured - data will not be saved')
+      return c.json({ 
+        success: false, 
+        message: 'Database not configured',
+        error: 'D1 데이터베이스가 설정되지 않았습니다. 데이터가 저장되지 않습니다.'
+      }, 503)
+    }
+
     const db = drizzle(c.env.DB, { schema })
 
     // 세션 관리
@@ -243,6 +253,24 @@ app.post('/', async (c) => {
     return c.json({ success: true }, 200)
   } catch (error) {
     console.error('Collect error:', error)
+    
+    // DB 관련 오류인지 확인
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    const isDbError = errorMessage.includes('database') || 
+                      errorMessage.includes('D1') || 
+                      errorMessage.includes('binding') ||
+                      errorMessage.includes('SQL') ||
+                      errorMessage.includes('no such table')
+    
+    if (isDbError) {
+      return c.json({ 
+        success: false, 
+        error: 'Database error',
+        message: '데이터베이스 오류가 발생했습니다. D1 데이터베이스가 올바르게 설정되었는지 확인해주세요.',
+        dbConnected: false
+      }, 503)
+    }
+    
     return c.json({ success: false, error: 'Internal server error' }, 500)
   }
 })
