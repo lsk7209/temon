@@ -168,7 +168,11 @@ wrangler d1 execute temon-db --file=./migrations/000_init.sql
 1. **Pages 프로젝트 > Settings > Environment Variables**
 
 2. **Production 환경 변수 추가**:
-   - `ADMIN_TOKEN`: 관리자 대시보드 접근 토큰 (임의의 긴 문자열, 예: `your-secret-admin-token-here`)
+   - `ADMIN_TOKEN`: 관리자 대시보드 접근 토큰
+     - **생성 방법**: 임의의 긴 문자열 (최소 32자 이상 권장)
+     - **예시**: `a3f8b9c2d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2`
+     - **생성 도구**: https://www.random.org/strings/ 또는 `openssl rand -hex 32`
+     - **자세한 가이드**: `ADMIN_TOKEN_GUIDE.md` 참고
 
 ---
 
