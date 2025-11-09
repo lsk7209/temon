@@ -7,6 +7,7 @@ import AnalyticsProvider from "@/components/analytics-provider"
 import Script from "next/script"
 import { Suspense } from "react"
 import AdminHeadScripts from "@/components/admin-head-scripts"
+import AdSenseScript from "@/components/adsense-script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -77,12 +78,7 @@ export default function RootLayout({
             gtag('config', '${process.env.NEXT_PUBLIC_GA_ID || 'G-2TLW7Z2VQW'}');
           `}
         </Script>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3050601904412736"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+        <AdSenseScript />
         <Script src="/analytics.js" strategy="afterInteractive" />
       </head>
       <body className={inter.className}>
