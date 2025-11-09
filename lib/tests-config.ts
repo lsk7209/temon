@@ -316,6 +316,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["피부", "스킨케어", "루틴", "뷰티", "성향"],
     new: true,
   },
+  {
+    id: "phone-style",
+    title: "📱 스마트폰 사용 스타일",
+    description: "당신의 스마트폰 사용 습관으로 알아보는 성향",
+    icon: Smartphone,
+    href: "/tests/phone-style",
+    color: "from-blue-500 to-indigo-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["스마트폰", "사용 습관", "앱", "생활", "성향"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
