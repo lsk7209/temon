@@ -330,6 +330,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["스마트폰", "사용 습관", "앱", "생활", "성향"],
     new: true,
   },
+  {
+    id: "spend-style",
+    title: "💰 소비 성향",
+    description: "당신의 소비 습관으로 알아보는 성향",
+    icon: ShoppingBag,
+    href: "/tests/spend-style",
+    color: "from-green-500 to-emerald-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["소비", "구매", "예산", "생활", "성향"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
