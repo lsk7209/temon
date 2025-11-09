@@ -302,6 +302,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["퇴근 루틴", "저녁 루틴", "퇴근 후 뭐하지", "야근 후 회복", "저녁 습관", "성격"],
     new: true,
   },
+  {
+    id: "skin-routine",
+    title: "✨ 피부 루틴 성향",
+    description: "당신의 스킨케어 습관으로 알아보는 성향",
+    icon: Sparkles,
+    href: "/tests/skin-routine",
+    color: "from-pink-500 to-rose-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "뷰티",
+    tags: ["피부", "스킨케어", "루틴", "뷰티", "성향"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
