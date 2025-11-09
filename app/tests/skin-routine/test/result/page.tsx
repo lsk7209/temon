@@ -83,10 +83,10 @@ function ResultContent() {
           />
         </div>
 
-        {/* 루틴 특징 */}
+        {/* 루틴 성향 특징 */}
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">✨ 루틴 특징</CardTitle>
+            <CardTitle className="text-2xl">✨ 루틴 성향 특징</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
@@ -101,44 +101,55 @@ function ResultContent() {
         </Card>
 
         {/* 추천 루틴 */}
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur">
-            <CardHeader>
-              <CardTitle className="text-xl">🌅 아침 루틴</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ol className="space-y-2">
-                {result.amRoutine.map((step, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="mr-2 font-semibold">{index + 1}.</span>
-                    <span className="text-gray-700 dark:text-gray-300">{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur">
-            <CardHeader>
-              <CardTitle className="text-xl">🌙 저녁 루틴</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ol className="space-y-2">
-                {result.pmRoutine.map((step, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="mr-2 font-semibold">{index + 1}.</span>
-                    <span className="text-gray-700 dark:text-gray-300">{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* 피해야 할 실수 */}
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">⚠️ 피해야 할 실수</CardTitle>
+            <CardTitle className="text-2xl">⚙️ 추천 루틴</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                🌅 아침
+              </h3>
+              <ol className="space-y-1 list-decimal list-inside">
+                {result.routines.am.map((item, index) => (
+                  <li key={index} className="text-gray-700 dark:text-gray-300">
+                    {item}
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                🌙 저녁
+              </h3>
+              <ol className="space-y-1 list-decimal list-inside">
+                {result.routines.pm.map((item, index) => (
+                  <li key={index} className="text-gray-700 dark:text-gray-300">
+                    {item}
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                📅 주간 관리
+              </h3>
+              <ul className="space-y-1">
+                {result.routines.weekly.map((item, index) => (
+                  <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
+                    <span className="mr-2">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 주의할 성분 조합과 대체 팁 */}
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">⚠️ 주의할 성분 조합과 대체 팁</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
@@ -152,19 +163,19 @@ function ResultContent() {
           </CardContent>
         </Card>
 
-        {/* 추천 카테고리 */}
+        {/* 7일 적용 체크리스트 */}
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">💡 추천 성분/제품 카테고리</CardTitle>
+            <CardTitle className="text-2xl">✅ 7일 적용 체크리스트</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-wrap gap-2">
-              {result.recommend.map((item, index) => (
-                <Badge key={index} variant="secondary" className="text-sm px-3 py-1">
+            <ol className="space-y-3 list-decimal list-inside">
+              {result.checklist.map((item, index) => (
+                <li key={index} className="text-gray-700 dark:text-gray-300">
                   {item}
-                </Badge>
+                </li>
               ))}
-            </div>
+            </ol>
           </CardContent>
         </Card>
 
@@ -176,26 +187,26 @@ function ResultContent() {
           <CardContent className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                민감 피부는 어떻게 루틴을 짜야 하나요?
+                강한 활성 성분은 어떻게 도입해야 하나요?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                민감 피부는 저자극 제품을 선택하고, 단계를 최소화하는 것이 좋습니다. 테스트 결과에서 추천하는 루틴을 참고하되, 개인의 피부 반응을 주의 깊게 관찰하세요.
+                저농도부터 시작하여 점진적으로 농도를 높이고, 피부 반응을 주의 깊게 관찰하세요. 테스트 결과에서 제시하는 각 유형별 성분 도입 가이드를 참고하세요.
               </p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                각질케어는 얼마나 자주 해야 하나요?
+                레티노이드와 각질 제거는 같이 써도 되나요?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                피부 타입과 상태에 따라 다르지만, 일반적으로 주 1-2회 정도가 적당합니다. 테스트 결과에서 제시하는 각 유형별 가이드를 참고하세요.
+                레티노이드와 각질 제거 성분(AHA/BHA)을 같은 날 사용하는 것은 피하는 것이 좋습니다. 테스트 결과에서 추천하는 주간 관리 가이드를 확인하세요.
               </p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                선크림은 어떤 기준으로 고르면 좋나요?
+                여행 중 루틴은 어떻게 간소화하나요?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                SPF 지수와 PA 등급을 확인하고, 자신의 피부 타입에 맞는 제형(크림, 젤, 스틱 등)을 선택하세요. 테스트 결과에서 추천하는 카테고리를 참고할 수 있습니다.
+                필수 단계만 남기고 멀티 제품을 활용하는 것이 좋습니다. 테스트 결과에서 각 유형별 여행 루틴 가이드를 참고하세요.
               </p>
             </div>
           </CardContent>

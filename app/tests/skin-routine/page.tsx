@@ -7,9 +7,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "피부 루틴 성향 테스트 | 12문항으로 보는 나의 스킨케어 유형",
+  title: "피부 루틴 성향 테스트 | 12문항으로 찾는 나만의 스킨케어 유형",
   description:
-    "세안, 토너, 보습, 선크림 습관으로 성향을 16유형으로 분석합니다. 2분 완성.",
+    "세안·보습·활성 성분·생활습관으로 16유형 분석. 결과별 루틴 가이드 제공.",
   keywords: "피부 루틴, 스킨케어, 성향 테스트, MBTI, 뷰티, 무료 테스트",
   alternates: {
     canonical: "/tests/skin-routine",
@@ -29,10 +29,10 @@ export default function SkinRoutineIntro() {
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              ✨ 피부 루틴에도 성향이 있다면?
+              ✨ 피부 루틴 성향으로 보는 나의 스킨케어 스타일
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              당신의 세안부터 보습까지, 루틴 습관으로 성향을 알아보세요.
+              세안, 보습, 활성 성분 사용, 생활습관까지 12문항으로 분석해 16유형으로 매핑
             </p>
           </div>
 
@@ -86,26 +86,26 @@ export default function SkinRoutineIntro() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                  민감 피부는 어떻게 루틴을 짜야 하나요?
+                  강한 활성 성분은 어떻게 도입해야 하나요?
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  민감 피부는 저자극 제품을 선택하고, 단계를 최소화하는 것이 좋습니다. 테스트 결과에서 추천하는 루틴을 참고하되, 개인의 피부 반응을 주의 깊게 관찰하세요.
+                  저농도부터 시작하여 점진적으로 농도를 높이고, 피부 반응을 주의 깊게 관찰하세요. 테스트 결과에서 제시하는 각 유형별 성분 도입 가이드를 참고하세요.
                 </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                  각질케어는 얼마나 자주 해야 하나요?
+                  레티노이드와 각질 제거는 같이 써도 되나요?
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  피부 타입과 상태에 따라 다르지만, 일반적으로 주 1-2회 정도가 적당합니다. 테스트 결과에서 제시하는 각 유형별 가이드를 참고하세요.
+                  레티노이드와 각질 제거 성분(AHA/BHA)을 같은 날 사용하는 것은 피하는 것이 좋습니다. 테스트 결과에서 추천하는 주간 관리 가이드를 확인하세요.
                 </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                  선크림은 어떤 기준으로 고르면 좋나요?
+                  여행 중 루틴은 어떻게 간소화하나요?
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  SPF 지수와 PA 등급을 확인하고, 자신의 피부 타입에 맞는 제형(크림, 젤, 스틱 등)을 선택하세요. 테스트 결과에서 추천하는 카테고리를 참고할 수 있습니다.
+                  필수 단계만 남기고 멀티 제품을 활용하는 것이 좋습니다. 테스트 결과에서 각 유형별 여행 루틴 가이드를 참고하세요.
                 </p>
               </div>
             </div>
