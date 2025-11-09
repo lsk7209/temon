@@ -7,6 +7,17 @@ import { useState, useCallback } from 'react'
 import { saveTestResult } from '@/lib/api-client'
 import { trackTestComplete } from '@/lib/analytics'
 
+// analytics.js에서 제공하는 전역 함수 타입
+declare global {
+  interface Window {
+    temonAnalytics?: {
+      trackAttemptStarted?: (quizId: string, attemptId: string) => void
+      trackAttemptCompleted?: (attemptId: string) => void
+      trackAttemptAbandoned?: (attemptId: string, reason?: string) => void
+    }
+  }
+}
+
 interface UseTestResultOptions {
   testId: string
   onSuccess?: (resultId: string, resultType: string) => void
@@ -22,7 +33,27 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
       setIsSaving(true)
       setError(null)
 
+      // attempt_id 생성 (결과 ID와 동일하게 사용)
+      const attemptId = `attempt_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+
       try {
+        // 테스트 시작 이벤트 전송 (D1 데이터베이스에 저장)
+        if (typeof window !== 'undefined' && window.temonAnalytics?.trackAttemptStarted) {
+          window.temonAnalytics.trackAttemptStarted(testId, attemptId)
+        } else {
+          // analytics.js가 로드되지 않은 경우 직접 전송
+          fetch('/api/collect', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'attempt_started',
+              quiz_id: testId,
+              attempt_id: attemptId,
+            }),
+            keepalive: true,
+          }).catch(console.error)
+        }
+
         // 결과 저장
         const response = await saveTestResult({
           testId,
@@ -30,7 +61,23 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
           answers,
         })
 
-        // Analytics 추적
+        // 테스트 완료 이벤트 전송 (D1 데이터베이스에 저장)
+        if (typeof window !== 'undefined' && window.temonAnalytics?.trackAttemptCompleted) {
+          window.temonAnalytics.trackAttemptCompleted(attemptId)
+        } else {
+          // analytics.js가 로드되지 않은 경우 직접 전송
+          fetch('/api/collect', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'attempt_completed',
+              attempt_id: attemptId,
+            }),
+            keepalive: true,
+          }).catch(console.error)
+        }
+
+        // Google Analytics 추적
         trackTestComplete(testId, resultType)
 
         // 성공 콜백 (resultType 전달)
@@ -42,6 +89,22 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
       } catch (err) {
         const error = err instanceof Error ? err : new Error('Failed to save test result')
         setError(error)
+
+        // 테스트 이탈 이벤트 전송
+        if (typeof window !== 'undefined' && window.temonAnalytics?.trackAttemptAbandoned) {
+          window.temonAnalytics.trackAttemptAbandoned(attemptId, 'save_error')
+        } else {
+          fetch('/api/collect', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'attempt_abandoned',
+              attempt_id: attemptId,
+              reason: 'save_error',
+            }),
+            keepalive: true,
+          }).catch(console.error)
+        }
 
         // 에러 콜백 (resultType 전달)
         if (onError) {
