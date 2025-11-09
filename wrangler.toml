@@ -24,14 +24,23 @@ database_id = "b78fdac5-09b7-43b8-86db-133f5cd4c768"
 # database_id = "your-database-id-here"
 
 # KV 네임스페이스 (세션/UTM 캐싱)
-# Dashboard에서 설정하거나, id를 설정한 후 주석 해제:
+# 선택사항: 세션 관리를 위해 사용되지만, 없어도 작동함 (D1에 직접 저장)
+# KV 네임스페이스를 생성한 후 id를 설정하고 주석 해제:
 # [[kv_namespaces]]
 # binding = "SESSIONS"
 # id = "your-kv-namespace-id-here"
+# 
+# KV 네임스페이스 생성 방법:
+# 1. Cloudflare Dashboard > Workers & Pages > KV
+# 2. Create a namespace 클릭
+# 3. Namespace title: temon-sessions 입력
+# 4. 생성된 Namespace ID를 위의 id에 입력
 
 # 환경 변수
 [vars]
-ADMIN_TOKEN = "" # 배포 시 설정 필요
+# ADMIN_TOKEN: 관리자 대시보드 API 접근 토큰
+# 생성된 토큰 (64자 랜덤 hex 문자열)
+ADMIN_TOKEN = "02aa3c5ef24829dd7efd3660008e9584443d755d975fd32c6fbdb228c9a76322"
 NODE_ENV = "production"
 
 # Cron Triggers는 별도 Worker로 배포해야 합니다

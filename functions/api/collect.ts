@@ -13,7 +13,7 @@ import * as schema from '@/lib/drizzle/schema'
 
 type Env = {
   DB: D1Database
-  SESSIONS: KVNamespace
+  SESSIONS?: KVNamespace // 선택사항: 없어도 작동함 (D1에 직접 저장)
 }
 
 const app = new Hono<{ Bindings: Env }>()
@@ -48,17 +48,19 @@ async function getOrCreateSession(
 ): Promise<string> {
   const db = drizzle(env.DB, { schema })
 
-  // KV에서 세션 확인
-  const cached = await env.SESSIONS.get(sessionId)
-  if (cached) {
-    const sessionData = JSON.parse(cached)
-    const lastActivity = sessionData.lastActivity || 0
-    const now = Date.now()
+  // KV에서 세션 확인 (KV가 설정된 경우에만)
+  if (env.SESSIONS) {
+    const cached = await env.SESSIONS.get(sessionId)
+    if (cached) {
+      const sessionData = JSON.parse(cached)
+      const lastActivity = sessionData.lastActivity || 0
+      const now = Date.now()
 
-    // 30분 이내 활동이면 기존 세션 유지
-    if (now - lastActivity < SESSION_TIMEOUT) {
-      await env.SESSIONS.put(sessionId, JSON.stringify({ ...sessionData, lastActivity: now }))
-      return sessionId
+      // 30분 이내 활동이면 기존 세션 유지
+      if (now - lastActivity < SESSION_TIMEOUT) {
+        await env.SESSIONS.put(sessionId, JSON.stringify({ ...sessionData, lastActivity: now }))
+        return sessionId
+      }
     }
   }
 
@@ -87,7 +89,11 @@ async function getOrCreateSession(
   }
 
   await db.insert(schema.session).values(newSession)
-  await env.SESSIONS.put(sessionId, JSON.stringify({ lastActivity: Date.now(), utm: {} }))
+  
+  // KV에 세션 캐시 저장 (KV가 설정된 경우에만)
+  if (env.SESSIONS) {
+    await env.SESSIONS.put(sessionId, JSON.stringify({ lastActivity: Date.now(), utm: {} }))
+  }
 
   return sessionId
 }
