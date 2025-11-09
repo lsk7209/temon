@@ -51,21 +51,9 @@ function cleanupRateLimitMap() {
 }
 
 export function middleware(request: NextRequest) {
-  // 관리자 대시보드 접근 제어
-  if (request.nextUrl.pathname.startsWith('/dashboard')) {
-    const authHeader = request.headers.get('Authorization')
-    const token = authHeader?.replace('Bearer ', '') || request.cookies.get('admin_token')?.value
-    
-    const adminToken = process.env.ADMIN_TOKEN
-    
-    if (!adminToken || token !== adminToken) {
-      // 클라이언트 사이드에서 토큰 입력 받도록 리다이렉트
-      if (request.nextUrl.pathname === '/dashboard') {
-        return NextResponse.redirect(new URL('/admin', request.url))
-      }
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-  }
+  // output: 'export' 사용 시 서버 사이드 미들웨어가 제한적이므로
+  // 관리자 대시보드 접근 제어는 클라이언트 사이드에서 처리
+  // (dashboard-client.tsx에서 localStorage 확인 후 리다이렉트)
 
   // Rate Limit 체크 (API 엔드포인트만)
   if (request.nextUrl.pathname.startsWith('/api/')) {

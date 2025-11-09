@@ -26,8 +26,18 @@ export default function AdminAuth({ onAuthenticated }: AdminAuthProps) {
     try {
       // 간단한 비밀번호 확인
       if (password === "1234") {
+        // ADMIN_TOKEN을 localStorage에 저장
+        // wrangler.toml에 설정된 값과 동일해야 함
+        // 프로덕션에서는 Cloudflare Pages Environment Variables에서 가져옴
+        const adminToken = process.env.NEXT_PUBLIC_ADMIN_TOKEN || 
+                          "02aa3c5ef24829dd7efd3660008e9584443d755d975fd32c6fbdb228c9a76322"
+        localStorage.setItem('admin_token', adminToken)
+        
         trackAdminLogin()
         onAuthenticated()
+        
+        // 대시보드로 리다이렉트
+        window.location.href = '/dashboard'
       } else {
         setError("비밀번호가 올바르지 않습니다.")
         trackError("invalid_password", "admin_auth")
