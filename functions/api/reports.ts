@@ -45,8 +45,8 @@ app.get('/', async (c) => {
     const finalStartDate = startDate || todayStart
     const finalEndDate = endDate || todayEnd
 
-    // KPI
-    const funnel = await getTodayFunnel(db)
+    // KPI (날짜 범위 적용)
+    const funnel = await getTodayFunnel(db, finalStartDate, finalEndDate)
     const completionRate = funnel.started > 0 ? funnel.completed / funnel.started : 0
     const abandonRate = funnel.started > 0 ? funnel.abandoned / funnel.started : 0
 

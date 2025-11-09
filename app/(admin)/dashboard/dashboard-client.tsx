@@ -100,17 +100,28 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
         return
       }
 
-      const res = await fetch(`/api/reports?${params.toString()}`, {
+      // Cloudflare Pages Functions는 같은 도메인에서 /api/reports로 접근 가능
+      // 프로덕션에서는 자동으로 Functions로 라우팅됨
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/reports'
+      const res = await fetch(`${apiUrl}?${params.toString()}`, {
         headers: {
           Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
         },
       })
+      
       if (res.ok) {
         const json = await res.json() as DashboardData
         setData(json)
+      } else {
+        const errorText = await res.text()
+        console.error('Failed to fetch reports:', res.status, errorText)
+        // 에러 발생 시 사용자에게 알림
+        alert(`데이터를 불러올 수 없습니다. (${res.status})\n관리자에게 문의하세요.`)
       }
     } catch (error) {
       console.error('Failed to fetch reports:', error)
+      alert('데이터를 불러오는 중 오류가 발생했습니다.\n네트워크 연결을 확인하세요.')
     } finally {
       setLoading(false)
     }
@@ -159,12 +170,26 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
     console.log('Export PDF')
   }
 
+  if (loading && !data) {
+    return (
+      <div className="container mx-auto p-8">
+        <Card>
+          <CardContent className="p-8 text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
+            <p>데이터를 불러오는 중...</p>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
   if (!data) {
     return (
       <div className="container mx-auto p-8">
         <Card>
           <CardContent className="p-8 text-center">
-            <p>데이터를 불러올 수 없습니다.</p>
+            <p className="mb-4">데이터를 불러올 수 없습니다.</p>
+            <Button onClick={fetchReports}>다시 시도</Button>
           </CardContent>
         </Card>
       </div>
@@ -173,6 +198,18 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
 
   return (
     <div className="container mx-auto p-8 space-y-8">
+      {/* 로딩 오버레이 */}
+      {loading && data && (
+        <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
+          <Card className="p-4">
+            <CardContent className="text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto mb-2"></div>
+              <p className="text-sm">데이터를 업데이트하는 중...</p>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
       {/* 헤더 */}
       <div className="flex items-center justify-between">
         <div>

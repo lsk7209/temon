@@ -12,13 +12,18 @@ export function getDrizzleDB(env: { DB: D1Database }) {
 }
 
 /**
- * 오늘의 퍼널 데이터
+ * 퍼널 데이터 (날짜 범위 지정 가능)
  */
-export async function getTodayFunnel(db: ReturnType<typeof getDrizzleDB>) {
+export async function getTodayFunnel(
+  db: ReturnType<typeof getDrizzleDB>,
+  startDate?: number,
+  endDate?: number
+) {
+  // 날짜 범위가 지정되지 않으면 오늘로 설정
   const today = new Date()
   today.setHours(0, 0, 0, 0)
-  const todayStart = today.getTime()
-  const todayEnd = todayStart + 24 * 60 * 60 * 1000
+  const todayStart = startDate || today.getTime()
+  const todayEnd = endDate || (todayStart + 24 * 60 * 60 * 1000)
 
   const views = await db
     .select({ count: count() })
