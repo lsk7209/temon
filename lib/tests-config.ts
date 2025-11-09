@@ -344,6 +344,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["소비", "구매", "예산", "생활", "성향"],
     new: true,
   },
+  {
+    id: "sleep-chronotype",
+    title: "🌙 수면 크로노타입",
+    description: "당신의 수면 리듬으로 알아보는 성향",
+    icon: Moon,
+    href: "/tests/sleep-chronotype",
+    color: "from-indigo-500 to-purple-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["수면", "크로노타입", "리듬", "생활", "성향"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
