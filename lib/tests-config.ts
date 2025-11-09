@@ -331,34 +331,6 @@ export const ALL_TESTS: Test[] = [
     new: true,
   },
   {
-    id: "phone-style",
-    title: "📱 스마트폰 사용 스타일",
-    description: "당신의 스마트폰 사용 습관으로 알아보는 성향",
-    icon: Smartphone,
-    href: "/tests/phone-style",
-    color: "from-blue-500 to-indigo-600",
-    participants: "0",
-    rating: 5.0,
-    badge: "NEW",
-    category: "생활",
-    tags: ["스마트폰", "사용 습관", "앱", "생활", "성향"],
-    new: true,
-  },
-  {
-    id: "spend-style",
-    title: "💰 소비 성향",
-    description: "당신의 소비 습관으로 알아보는 성향",
-    icon: ShoppingBag,
-    href: "/tests/spend-style",
-    color: "from-green-500 to-emerald-600",
-    participants: "0",
-    rating: 5.0,
-    badge: "NEW",
-    category: "생활",
-    tags: ["소비", "구매", "예산", "생활", "성향"],
-    new: true,
-  },
-  {
     id: "spending-style",
     title: "💰 소비 성향 테스트",
     description: "계획성, 즉흥성, 비교 습관으로 알아보는 나의 소비 패턴",
@@ -391,8 +363,25 @@ export const ALL_TESTS: Test[] = [
 // Get all unique categories
 export const CATEGORIES = ["전체", ...Array.from(new Set(ALL_TESTS.map((test) => test.category)))]
 
-// Get tests for homepage (first 9)
-export const getHomePageTests = () => ALL_TESTS.slice(0, 9)
+// Get tests for homepage (first 9, 중복 제거 후)
+export const getHomePageTests = () => {
+  const uniqueTests = getAllTests()
+  return uniqueTests.slice(0, 9)
+}
 
-// Get all tests
-export const getAllTests = () => ALL_TESTS
+// Get all tests (중복 제거 및 정렬)
+export const getAllTests = () => {
+  // id 기준으로 중복 제거 (나중에 나온 항목 유지)
+  const uniqueTests = new Map<string, Test>()
+  for (const test of ALL_TESTS) {
+    uniqueTests.set(test.id, test)
+  }
+  
+  // id 기준으로 정렬하여 일관성 유지
+  return Array.from(uniqueTests.values()).sort((a, b) => {
+    // 먼저 id로 정렬
+    if (a.id < b.id) return -1
+    if (a.id > b.id) return 1
+    return 0
+  })
+}

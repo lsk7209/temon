@@ -36,14 +36,25 @@ export default function TestsPageClient() {
     trackClick(`test_card_${testId}`, window.location.pathname)
   }
 
-  // 필터링된 테스트
-  const filteredTests = allTests.filter(test => {
-    const matchesSearch = test.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         test.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         test.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-    const matchesCategory = selectedCategory === "전체" || test.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
+  // 필터링된 테스트 (중복 제거 및 정렬)
+  const filteredTests = allTests
+    .filter(test => {
+      const matchesSearch = test.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           test.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           test.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+      const matchesCategory = selectedCategory === "전체" || test.category === selectedCategory
+      return matchesSearch && matchesCategory
+    })
+    // id 기준으로 정렬하여 일관성 유지 (중복 방지)
+    .sort((a, b) => {
+      if (a.id < b.id) return -1
+      if (a.id > b.id) return 1
+      return 0
+    })
+    // href 기준으로도 중복 제거 (혹시 모를 href 중복 방지)
+    .filter((test, index, self) => 
+      index === self.findIndex(t => t.href === test.href)
+    )
 
   // 페이지네이션
   const totalPages = Math.ceil(filteredTests.length / TESTS_PER_PAGE)
