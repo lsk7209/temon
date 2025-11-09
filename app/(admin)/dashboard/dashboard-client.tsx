@@ -136,13 +136,31 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
       })
       
       if (res.ok) {
-        const json = await res.json() as DashboardData
+        const json = await res.json() as DashboardData & { dbConnected?: boolean; message?: string }
+        
+        // DB 연결 상태 확인
+        if (json.dbConnected === false) {
+          alert(`⚠️ 데이터베이스 연결 오류\n\n${json.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
+        }
+        
         setData(json)
       } else {
         const errorText = await res.text()
-        console.error('Failed to fetch reports:', res.status, errorText)
-        // 에러 발생 시 사용자에게 알림
-        alert(`데이터를 불러올 수 없습니다. (${res.status})\n관리자에게 문의하세요.`)
+        let errorData
+        try {
+          errorData = JSON.parse(errorText)
+        } catch {
+          errorData = { message: errorText }
+        }
+        
+        console.error('Failed to fetch reports:', res.status, errorData)
+        
+        // DB 연결 오류인 경우
+        if (errorData.dbConnected === false || res.status === 503) {
+          alert(`⚠️ 데이터베이스 연결 오류\n\n${errorData.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
+        } else {
+          alert(`데이터를 불러올 수 없습니다. (${res.status})\n${errorData.message || '관리자에게 문의하세요.'}`)
+        }
       }
     } catch (error) {
       console.error('Failed to fetch reports:', error)
@@ -186,11 +204,30 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
         })
         
         if (res.ok) {
-          const json = await res.json() as DashboardData
+          const json = await res.json() as DashboardData & { dbConnected?: boolean; message?: string }
+          
+          // DB 연결 상태 확인
+          if (json.dbConnected === false) {
+            alert(`⚠️ 데이터베이스 연결 오류\n\n${json.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
+          }
+          
           setData(json)
         } else {
           const errorText = await res.text()
-          console.error('Failed to fetch initial data:', res.status, errorText)
+          let errorData
+          try {
+            errorData = JSON.parse(errorText)
+          } catch {
+            errorData = { message: errorText }
+          }
+          
+          console.error('Failed to fetch initial data:', res.status, errorData)
+          
+          // DB 연결 오류인 경우
+          if (errorData.dbConnected === false || res.status === 503) {
+            alert(`⚠️ 데이터베이스 연결 오류\n\n${errorData.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
+          }
+          
           // 에러가 발생해도 빈 데이터 구조를 설정하여 UI가 표시되도록 함
           setData({
             kpi: {

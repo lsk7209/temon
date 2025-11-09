@@ -29,6 +29,15 @@ app.get('/', async (c) => {
   }
 
   try {
+    // DB 연결 확인
+    if (!c.env.DB) {
+      return c.json({ 
+        error: 'Database not configured',
+        message: 'D1 데이터베이스가 설정되지 않았습니다. Cloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.',
+        dbConnected: false
+      }, 503)
+    }
+
     const db = getDrizzleDB(c.env)
 
     // 쿼리 파라미터
@@ -111,10 +120,32 @@ app.get('/', async (c) => {
       searchEngines,
       searchKeywords,
       trafficSource,
+      dbConnected: true,
     })
   } catch (error) {
     console.error('Reports error:', error)
-    return c.json({ error: 'Internal server error' }, 500)
+    
+    // DB 연결 오류인지 확인
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    const isDbError = errorMessage.includes('database') || 
+                      errorMessage.includes('D1') || 
+                      errorMessage.includes('binding') ||
+                      errorMessage.includes('SQL')
+    
+    if (isDbError) {
+      return c.json({ 
+        error: 'Database connection error',
+        message: '데이터베이스 연결에 실패했습니다. D1 데이터베이스가 올바르게 설정되었는지 확인해주세요.',
+        dbConnected: false,
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
+      }, 503)
+    }
+    
+    return c.json({ 
+      error: 'Internal server error',
+      message: '서버 오류가 발생했습니다.',
+      dbConnected: true
+    }, 500)
   }
 })
 
