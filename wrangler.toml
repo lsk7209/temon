@@ -10,14 +10,12 @@ name = "temon"
 pages_build_output_dir = "out"
 
 # D1 데이터베이스 설정
-# 주의: README에서는 temon-mbti-db를 사용하지만, analytics용으로 temon-analytics를 사용
-# 두 데이터베이스가 필요한 경우 모두 추가하거나, 하나로 통합 필요
-# 
-# Dashboard에서 설정하거나, database_id를 설정한 후 주석 해제:
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "temon-analytics"
-# database_id = "your-database-id-here"
+# Analytics 통계 데이터 저장용
+# 주의: Cloudflare Pages는 Dashboard에서 바인딩해야 하지만, 참고용으로 설정 파일에도 추가
+[[d1_databases]]
+binding = "DB"
+database_name = "temon-db"
+database_id = "b78fdac5-09b7-43b8-86db-133f5cd4c768"
 
 # 테스트 결과 저장용 데이터베이스 (필요시 별도 추가)
 # [[d1_databases]]
