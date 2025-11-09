@@ -82,7 +82,7 @@ interface DashboardData {
 
 export default function DashboardClient({ initialData }: { initialData: DashboardData | null }) {
   const [data, setData] = useState<DashboardData | null>(initialData)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true) // 초기 로딩 상태를 true로 설정
   const [dateRange, setDateRange] = useState<'today' | '7d' | '30d' | 'custom'>('today')
   const [startDate, setStartDate] = useState<Date | undefined>()
   const [endDate, setEndDate] = useState<Date | undefined>()
@@ -126,6 +126,114 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
       setLoading(false)
     }
   }
+
+  // 초기 데이터 로드
+  useEffect(() => {
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const start = today
+    const end = new Date(today.getTime() + 24 * 60 * 60 * 1000 - 1)
+    
+    setStartDate(start)
+    setEndDate(end)
+    
+    // 즉시 데이터 로드
+    const loadInitialData = async () => {
+      setLoading(true)
+      const params = new URLSearchParams()
+      params.set('startDate', start.getTime().toString())
+      params.set('endDate', end.getTime().toString())
+
+      const token = localStorage.getItem('admin_token')
+      if (!token) {
+        window.location.href = '/admin'
+        setLoading(false)
+        return
+      }
+
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/reports'
+        const res = await fetch(`${apiUrl}?${params.toString()}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        })
+        
+        if (res.ok) {
+          const json = await res.json() as DashboardData
+          setData(json)
+        } else {
+          const errorText = await res.text()
+          console.error('Failed to fetch initial data:', res.status, errorText)
+          // 에러가 발생해도 빈 데이터 구조를 설정하여 UI가 표시되도록 함
+          setData({
+            kpi: {
+              sessions: 0,
+              attempts_started: 0,
+              completed: 0,
+              abandoned: 0,
+              completion_rate: 0,
+              abandon_rate: 0,
+              avg_duration_p50: 0,
+            },
+            funnel: {
+              visit: 0,
+              start: 0,
+              firstPage: 0,
+              complete: 0,
+            },
+            channels: [],
+            keywords: [],
+            browser: [],
+            geo: [],
+            timeHeatmap: [],
+            perf: {
+              lcp: null,
+              fid: null,
+              cls: null,
+              ttfb: null,
+            },
+          })
+        }
+      } catch (error) {
+        console.error('Failed to fetch initial data:', error)
+        // 에러가 발생해도 빈 데이터 구조를 설정
+        setData({
+          kpi: {
+            sessions: 0,
+            attempts_started: 0,
+            completed: 0,
+            abandoned: 0,
+            completion_rate: 0,
+            abandon_rate: 0,
+            avg_duration_p50: 0,
+          },
+          funnel: {
+            visit: 0,
+            start: 0,
+            firstPage: 0,
+            complete: 0,
+          },
+          channels: [],
+          keywords: [],
+          browser: [],
+          geo: [],
+          timeHeatmap: [],
+          perf: {
+            lcp: null,
+            fid: null,
+            cls: null,
+            ttfb: null,
+          },
+        })
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadInitialData()
+  }, [])
 
   useEffect(() => {
     if (dateRange === 'custom' && startDate && endDate) {
