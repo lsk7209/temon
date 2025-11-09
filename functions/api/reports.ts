@@ -7,7 +7,7 @@
 
 import type { PagesFunction } from '@cloudflare/workers-types'
 import { Hono } from 'hono'
-import { getDrizzleDB, getTodayFunnel, getChannelPerformance, getBrowserConversion, getTopKeywords, getGeoStats, getTimeHeatmap, getWebVitalsStats } from '@/lib/drizzle/queries'
+import { getDrizzleDB, getTodayFunnel, getChannelPerformance, getBrowserConversion, getTopKeywords, getGeoStats, getTimeHeatmap, getWebVitalsStats, getSearchEngineStats, getSearchKeywords, getTrafficSource } from '@/lib/drizzle/queries'
 
 type Env = {
   DB: D1Database
@@ -90,6 +90,15 @@ app.get('/', async (c) => {
     // Web Vitals
     const perf = await getWebVitalsStats(db, finalStartDate, finalEndDate)
 
+    // 검색 엔진별 유입 통계
+    const searchEngines = await getSearchEngineStats(db, finalStartDate, finalEndDate)
+
+    // 검색 엔진별 키워드 분석
+    const searchKeywords = await getSearchKeywords(db, finalStartDate, finalEndDate)
+
+    // 유입 경로 분류
+    const trafficSource = await getTrafficSource(db, finalStartDate, finalEndDate)
+
     return c.json({
       kpi,
       funnel: funnelData,
@@ -99,6 +108,9 @@ app.get('/', async (c) => {
       geo,
       timeHeatmap,
       perf,
+      searchEngines,
+      searchKeywords,
+      trafficSource,
     })
   } catch (error) {
     console.error('Reports error:', error)

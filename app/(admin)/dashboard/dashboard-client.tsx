@@ -21,6 +21,9 @@ import GeoTable from '@/components/(dashboard)/geo-table'
 import TimeHeatmap from '@/components/(dashboard)/time-heatmap'
 import PerfChart from '@/components/(dashboard)/perf-chart'
 import KeywordsList from '@/components/(dashboard)/keywords-list'
+import SearchEngineTable from '@/components/(dashboard)/search-engine-table'
+import SearchKeywordsTable from '@/components/(dashboard)/search-keywords-table'
+import TrafficSourceChart from '@/components/(dashboard)/traffic-source-chart'
 
 interface DashboardData {
   kpi: {
@@ -78,6 +81,28 @@ interface DashboardData {
     cls: number | null
     ttfb: number | null
   }
+  searchEngines?: Array<{
+    searchEngine: string
+    sessions: number
+    attempts: number
+    completes: number
+    convRate: number
+  }>
+  searchKeywords?: Array<{
+    searchEngine: string
+    keyword: string
+    sessions: number
+    attempts: number
+    completes: number
+    convRate: number
+  }>
+  trafficSource?: Array<{
+    trafficSource: string
+    sessions: number
+    attempts: number
+    completes: number
+    convRate: number
+  }>
 }
 
 export default function DashboardClient({ initialData }: { initialData: DashboardData | null }) {
@@ -194,6 +219,9 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
               cls: null,
               ttfb: null,
             },
+            searchEngines: [],
+            searchKeywords: [],
+            trafficSource: [],
           })
         }
       } catch (error) {
@@ -226,6 +254,9 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
             cls: null,
             ttfb: null,
           },
+          searchEngines: [],
+          searchKeywords: [],
+          trafficSource: [],
         })
       } finally {
         setLoading(false)
@@ -447,6 +478,42 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
           <PerfChart data={data.perf} />
         </CardContent>
       </Card>
+
+      {/* 검색 엔진별 유입 통계 */}
+      {data.searchEngines && data.searchEngines.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle>검색 엔진별 유입 통계</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <SearchEngineTable data={data.searchEngines} />
+          </CardContent>
+        </Card>
+      )}
+
+      {/* 검색 엔진별 키워드 분석 */}
+      {data.searchKeywords && data.searchKeywords.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle>검색 엔진별 키워드 분석</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <SearchKeywordsTable data={data.searchKeywords} />
+          </CardContent>
+        </Card>
+      )}
+
+      {/* 유입 경로 분류 */}
+      {data.trafficSource && data.trafficSource.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle>유입 경로 분류</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <TrafficSourceChart data={data.trafficSource} />
+          </CardContent>
+        </Card>
+      )}
     </div>
   )
 }

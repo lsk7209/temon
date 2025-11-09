@@ -220,3 +220,128 @@ export async function getWebVitalsStats(
   return result[0] || { lcp: null, fid: null, cls: null, ttfb: null }
 }
 
+/**
+ * 검색 엔진별 유입 통계
+ */
+export async function getSearchEngineStats(
+  db: ReturnType<typeof getDrizzleDB>,
+  startDate: number,
+  endDate: number
+) {
+  // 검색 엔진 판별 함수 (SQLite CASE 문)
+  const searchEngineCase = sql<string>`
+    CASE
+      WHEN ${schema.pageView.referrerHost} LIKE '%google.%' OR ${schema.pageView.referrerHost} LIKE '%google.co.%' THEN 'Google'
+      WHEN ${schema.pageView.referrerHost} LIKE '%naver.%' OR ${schema.pageView.referrerHost} LIKE '%naver.com%' THEN 'Naver'
+      WHEN ${schema.pageView.referrerHost} LIKE '%daum.%' OR ${schema.pageView.referrerHost} LIKE '%daum.net%' THEN 'Daum'
+      WHEN ${schema.pageView.referrerHost} LIKE '%bing.%' OR ${schema.pageView.referrerHost} LIKE '%bing.com%' THEN 'Bing'
+      WHEN ${schema.pageView.referrerHost} LIKE '%yahoo.%' OR ${schema.pageView.referrerHost} LIKE '%yahoo.co.%' THEN 'Yahoo'
+      WHEN ${schema.pageView.referrerHost} IS NULL OR ${schema.pageView.referrerHost} = '' THEN 'Direct'
+      ELSE 'Other'
+    END
+  `.as('searchEngine')
+
+  const result = await db
+    .select({
+      searchEngine: searchEngineCase,
+      sessions: sql<number>`COUNT(DISTINCT ${schema.pageView.sessionId})`.as('sessions'),
+      attempts: sql<number>`COUNT(DISTINCT ${schema.attempt.attemptId})`.as('attempts'),
+      completes: sql<number>`SUM(CASE WHEN ${schema.attempt.completedAt} IS NOT NULL THEN 1 ELSE 0 END)`.as('completes'),
+    })
+    .from(schema.pageView)
+    .leftJoin(schema.attempt, eq(schema.pageView.sessionId, schema.attempt.sessionId))
+    .where(and(gte(schema.pageView.occurredAt, startDate), lte(schema.pageView.occurredAt, endDate)))
+    .groupBy(sql`searchEngine`)
+    .orderBy(desc(sql`sessions`))
+
+  return result.map((row) => ({
+    ...row,
+    convRate: row.attempts > 0 ? row.completes / row.attempts : 0,
+  }))
+}
+
+/**
+ * 검색 엔진별 키워드 분석
+ */
+export async function getSearchKeywords(
+  db: ReturnType<typeof getDrizzleDB>,
+  startDate: number,
+  endDate: number
+) {
+  // 검색 엔진 판별
+  const searchEngineCase = sql<string>`
+    CASE
+      WHEN ${schema.pageView.referrerHost} LIKE '%google.%' OR ${schema.pageView.referrerHost} LIKE '%google.co.%' THEN 'Google'
+      WHEN ${schema.pageView.referrerHost} LIKE '%naver.%' OR ${schema.pageView.referrerHost} LIKE '%naver.com%' THEN 'Naver'
+      WHEN ${schema.pageView.referrerHost} LIKE '%daum.%' OR ${schema.pageView.referrerHost} LIKE '%daum.net%' THEN 'Daum'
+      WHEN ${schema.pageView.referrerHost} LIKE '%bing.%' OR ${schema.pageView.referrerHost} LIKE '%bing.com%' THEN 'Bing'
+      WHEN ${schema.pageView.referrerHost} LIKE '%yahoo.%' OR ${schema.pageView.referrerHost} LIKE '%yahoo.co.%' THEN 'Yahoo'
+      ELSE 'Other'
+    END
+  `.as('searchEngine')
+
+  const result = await db
+    .select({
+      searchEngine: searchEngineCase,
+      keyword: sql<string>`COALESCE(LOWER(${schema.pageView.utmTerm}), '(not provided)')`.as('keyword'),
+      sessions: sql<number>`COUNT(DISTINCT ${schema.pageView.sessionId})`.as('sessions'),
+      attempts: sql<number>`COUNT(DISTINCT ${schema.attempt.attemptId})`.as('attempts'),
+      completes: sql<number>`SUM(CASE WHEN ${schema.attempt.completedAt} IS NOT NULL THEN 1 ELSE 0 END)`.as('completes'),
+    })
+    .from(schema.pageView)
+    .leftJoin(schema.attempt, eq(schema.pageView.sessionId, schema.attempt.sessionId))
+    .where(
+      and(
+        gte(schema.pageView.occurredAt, startDate),
+        lte(schema.pageView.occurredAt, endDate),
+        sql`(${schema.pageView.referrerHost} LIKE '%google.%' OR ${schema.pageView.referrerHost} LIKE '%naver.%' OR ${schema.pageView.referrerHost} LIKE '%daum.%' OR ${schema.pageView.referrerHost} LIKE '%bing.%' OR ${schema.pageView.referrerHost} LIKE '%yahoo.%')`
+      )
+    )
+    .groupBy(sql`searchEngine`, schema.pageView.utmTerm)
+    .orderBy(desc(sql`sessions`))
+    .limit(50)
+
+  return result.map((row) => ({
+    ...row,
+    convRate: row.attempts > 0 ? row.completes / row.attempts : 0,
+  }))
+}
+
+/**
+ * 유입 경로 분류 (직접, 검색, 소셜, 링크 등)
+ */
+export async function getTrafficSource(
+  db: ReturnType<typeof getDrizzleDB>,
+  startDate: number,
+  endDate: number
+) {
+  // 유입 경로 분류
+  const trafficSourceCase = sql<string>`
+    CASE
+      WHEN ${schema.pageView.referrerHost} IS NULL OR ${schema.pageView.referrerHost} = '' THEN 'Direct'
+      WHEN ${schema.pageView.referrerHost} LIKE '%google.%' OR ${schema.pageView.referrerHost} LIKE '%naver.%' OR ${schema.pageView.referrerHost} LIKE '%daum.%' OR ${schema.pageView.referrerHost} LIKE '%bing.%' OR ${schema.pageView.referrerHost} LIKE '%yahoo.%' THEN 'Search'
+      WHEN ${schema.pageView.referrerHost} LIKE '%facebook.%' OR ${schema.pageView.referrerHost} LIKE '%instagram.%' OR ${schema.pageView.referrerHost} LIKE '%twitter.%' OR ${schema.pageView.referrerHost} LIKE '%x.com%' OR ${schema.pageView.referrerHost} LIKE '%kakao.%' OR ${schema.pageView.referrerHost} LIKE '%tiktok.%' THEN 'Social'
+      WHEN ${schema.pageView.utmSource} IS NOT NULL AND ${schema.pageView.utmSource} <> '' THEN 'Campaign'
+      ELSE 'Referral'
+    END
+  `.as('trafficSource')
+
+  const result = await db
+    .select({
+      trafficSource: trafficSourceCase,
+      sessions: sql<number>`COUNT(DISTINCT ${schema.pageView.sessionId})`.as('sessions'),
+      attempts: sql<number>`COUNT(DISTINCT ${schema.attempt.attemptId})`.as('attempts'),
+      completes: sql<number>`SUM(CASE WHEN ${schema.attempt.completedAt} IS NOT NULL THEN 1 ELSE 0 END)`.as('completes'),
+    })
+    .from(schema.pageView)
+    .leftJoin(schema.attempt, eq(schema.pageView.sessionId, schema.attempt.sessionId))
+    .where(and(gte(schema.pageView.occurredAt, startDate), lte(schema.pageView.occurredAt, endDate)))
+    .groupBy(sql`trafficSource`)
+    .orderBy(desc(sql`sessions`))
+
+  return result.map((row) => ({
+    ...row,
+    convRate: row.attempts > 0 ? row.completes / row.attempts : 0,
+  }))
+}
+
