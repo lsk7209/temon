@@ -512,6 +512,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["OTT", "시청 습관", "정주행", "추천 알고리즘", "스포일러", "성격"],
     new: true,
   },
+  {
+    id: "bungeoppang",
+    title: "🐟 붕어빵 취향 테스트",
+    description: "맛 선택, 구매 방식, 먹는 습관으로 16유형 분석",
+    icon: Cake,
+    href: "/tests/bungeoppang",
+    color: "from-orange-500 to-red-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "음식",
+    tags: ["붕어빵", "겨울 간식", "팥 슈크림", "길거리 간식", "성향 테스트", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
