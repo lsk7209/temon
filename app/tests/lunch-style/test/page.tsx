@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation"
 import { useTestResult } from "@/hooks/use-test-result"
 import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { useEffect } from "react"
-import { convertAnswersToRecord } from "@/lib/utils/test-answers"
 
 const questions = [
   {
