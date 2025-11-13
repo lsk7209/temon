@@ -1,5 +1,9 @@
 import type { Metadata } from "next"
 import TestsPageClient from "./tests-page-client"
+import Script from "next/script"
+import { generateBreadcrumbSchema } from "@/lib/seo-utils"
+
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.temon.kr"
 
 export const metadata: Metadata = {
   title: "MBTI 테스트 모음 - 무료 성격 테스트 전체보기 | 테몬",
@@ -12,10 +16,51 @@ export const metadata: Metadata = {
     title: "MBTI 테스트 모음 - 무료 성격 테스트 전체보기",
     description: "MBTI 테스트 모음으로 모든 무료 성격 테스트를 한 번에 확인하세요! 다양한 MBTI 테스트를 무료로 시작해보세요.",
     type: "website",
-    url: "https://www.temon.kr/tests",
+    url: `${baseUrl}/tests`,
+    siteName: "테몬",
+    locale: "ko_KR",
+    images: [
+      {
+        url: `${baseUrl}/og-tests.png`,
+        width: 1200,
+        height: 630,
+        alt: "MBTI 테스트 모음",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MBTI 테스트 모음 - 무료 성격 테스트 전체보기",
+    description: "MBTI 테스트 모음으로 모든 무료 성격 테스트를 한 번에 확인하세요!",
+    images: [`${baseUrl}/og-tests.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 }
 
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "홈", url: baseUrl },
+  { name: "테스트 모음", url: `${baseUrl}/tests` },
+])
+
 export default function TestsPage() {
-  return <TestsPageClient />
+  return (
+    <>
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
+      />
+      <TestsPageClient />
+    </>
+  )
 }

@@ -45,13 +45,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   
   // MetadataRoute.Sitemap 형식으로 변환
   const sitemapEntries: MetadataRoute.Sitemap = [
-    ...staticRoutes,
-    ...testRoutes.map(route => ({
-      url: route.path,
-      lastModified: route.lastModified || new Date(),
-      changeFrequency: route.changeFrequency || 'weekly' as const,
-      priority: route.priority || 0.5,
-    })),
+    // 홈페이지 - 최우선
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1.0,
+    },
+    // 테스트 모음 페이지 - 높은 우선순위
+    {
+      url: `${baseUrl}/tests`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    // 정적 라우트
+    ...staticRoutes.filter(route => route.url !== baseUrl && route.url !== `${baseUrl}/tests`),
+    // 테스트 라우트 - 인트로 페이지만 포함 (결과 페이지는 제외)
+    ...testRoutes
+      .filter(route => !route.path.includes('/test/result'))
+      .map(route => ({
+        url: route.path,
+        lastModified: route.lastModified || new Date(),
+        changeFrequency: route.changeFrequency || 'weekly' as const,
+        priority: route.priority || 0.8, // 테스트 페이지는 높은 우선순위
+      })),
   ]
 
   return sitemapEntries

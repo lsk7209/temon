@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Clapperboard, Sparkles } from "lucide-react"
+import { generateTestPageSchemas } from "@/lib/seo-utils"
+import Script from "next/script"
+
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.temon.kr"
 
 export const metadata: Metadata = {
   title: "K-드라마 인물 매칭 테스트 | 드라마 속 나는 어떤 캐릭터? | 테몬",
@@ -18,25 +22,83 @@ export const metadata: Metadata = {
     title: "K-드라마 인물 매칭 테스트 | 드라마 속 나는 어떤 캐릭터?",
     description: "K-드라마 상황 12문항으로 성향을 분석해 16가지 캐릭터 유형으로 매칭합니다. 약 3분, 결과 공유 이미지 자동 생성.",
     type: "website",
-    url: "https://www.temon.kr/tests/kdrama-character",
+    url: `${baseUrl}/tests/kdrama-character`,
+    siteName: "테몬",
+    locale: "ko_KR",
+    images: [
+      {
+        url: `${baseUrl}/og-tests/kdrama-character.png`,
+        width: 1200,
+        height: 630,
+        alt: "K-드라마 인물 매칭 테스트",
+      },
+    ],
   },
-  other: {
-    "schema:Quiz": JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Quiz",
-      name: "K-드라마 인물 매칭 테스트",
-      description: "K-드라마 상황 12문항으로 성향을 분석해 16가지 캐릭터 유형으로 매칭합니다.",
-      inLanguage: "ko",
-      url: "https://www.temon.kr/tests/kdrama-character",
-      publisher: { "@type": "Organization", name: "Temon" },
-    }),
+  twitter: {
+    card: "summary_large_image",
+    title: "K-드라마 인물 매칭 테스트 | 드라마 속 나는 어떤 캐릭터?",
+    description: "K-드라마 상황 12문항으로 성향을 분석해 16가지 캐릭터 유형으로 매칭합니다.",
+    images: [`${baseUrl}/og-tests/kdrama-character.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 }
 
+const faqs = [
+  {
+    question: "K-드라마 인물 매칭 테스트는 무엇인가요?",
+    answer: "K-드라마 속 상황에서의 선택을 바탕으로 16가지 캐릭터 유형으로 매칭하는 성격 테스트입니다. 12문항으로 약 3분 소요되며, 무료로 이용할 수 있습니다.",
+  },
+  {
+    question: "테스트 결과는 어떻게 나오나요?",
+    answer: "테스트 완료 후 16가지 캐릭터 유형 중 하나로 매칭되며, 해당 유형의 특징, 추천 서사·장르, 케미가 좋은 상대 유형 등의 정보를 제공합니다.",
+  },
+  {
+    question: "테스트 결과를 공유할 수 있나요?",
+    answer: "네, 테스트 결과는 자동으로 공유 이미지가 생성되어 카카오톡, 인스타그램 등 다양한 SNS에 공유할 수 있습니다.",
+  },
+]
+
+const schemas = generateTestPageSchemas({
+  testId: "kdrama-character",
+  testTitle: "K-드라마 인물 매칭 테스트",
+  testDescription: "K-드라마 상황 12문항으로 성향을 분석해 16가지 캐릭터 유형으로 매칭합니다.",
+  questionCount: 12,
+  duration: "PT3M",
+  faqs,
+})
+
 export default function KdramaCharacterIntro() {
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
-      <main className="container max-w-[720px] mx-auto px-4 py-8">
+    <>
+      {/* SEO, AEO, GEO 최적화를 위한 구조화 데이터 */}
+      <Script
+        id="quiz-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: schemas.quiz }}
+      />
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: schemas.faq }}
+      />
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: schemas.breadcrumb }}
+      />
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+        <main className="container max-w-[720px] mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Drama Elements */}
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -224,7 +286,8 @@ export default function KdramaCharacterIntro() {
           </Card>
         </div>
       </main>
-    </div>
+      </div>
+    </>
   )
 }
 

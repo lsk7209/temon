@@ -8,6 +8,7 @@ import Script from "next/script"
 import { Suspense } from "react"
 import AdminHeadScripts from "@/components/admin-head-scripts"
 import AdSenseScript from "@/components/adsense-script"
+import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo-utils"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -54,8 +55,21 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
-  generator: 'v0.app',
+  generator: "Next.js",
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: {
+      "naver-site-verification": process.env.NAVER_SITE_VERIFICATION || "",
+    },
+  },
 }
 
 export default function RootLayout({
@@ -63,9 +77,27 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.temon.kr"
+  const organizationSchema = generateOrganizationSchema()
+  const websiteSchema = generateWebSiteSchema({
+    target: `${baseUrl}/tests?q={search_term_string}`,
+    queryInput: "required name=search_term_string",
+  })
+
   return (
     <html lang="ko">
       <head>
+        {/* SEO, AEO, GEO 최적화를 위한 구조화 데이터 */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: organizationSchema }}
+        />
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: websiteSchema }}
+        />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID || 'G-2TLW7Z2VQW'}`}
           strategy="afterInteractive"
