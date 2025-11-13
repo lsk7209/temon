@@ -862,6 +862,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["의자", "앉기", "스타일", "자세", "성격"],
     new: true,
   },
+  {
+    id: "water-drinking",
+    title: "💧 물 마시는 습관 테스트",
+    description: "물 마시는 방식, 습관으로 알아보는 나의 성격",
+    icon: Droplets,
+    href: "/tests/water-drinking",
+    color: "from-blue-500 to-cyan-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["물", "마시기", "습관", "방식", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
