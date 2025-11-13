@@ -37,7 +37,8 @@ export function getDatabase(): Database {
  * Drizzle ORM 데이터베이스 가져오기 (새로운 스키마용)
  */
 export function getDb(env: { DB: D1Database }) {
-  return drizzle(env.DB, { schema })
+  // D1Database 타입을 직접 전달 (타입 호환성 보장)
+  return drizzle(env.DB as any, { schema })
 }
 
 export type Db = ReturnType<typeof getDb>
