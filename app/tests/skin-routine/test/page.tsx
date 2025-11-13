@@ -13,6 +13,7 @@ import { useTestResult } from "@/hooks/use-test-result"
 import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { SKIN_ROUTINE_QUESTIONS, type OptionTag } from "@/lib/data/skin-routine-questions"
 import { decideType } from "@/lib/utils/skin-routine-scorer"
+import { convertStringArrayToRecord } from "@/lib/utils/test-answers"
 
 export default function SkinRoutineTest() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -59,8 +60,10 @@ export default function SkinRoutineTest() {
       } else {
         // 모든 질문 완료 - 결과 계산 및 저장
         const result = decideType(newAnswers)
+        // string[]를 Record<number, string>로 변환
+        const answersRecord = convertStringArrayToRecord(newAnswers)
         // 결과 저장 시도 (성공/실패 모두 onSuccess/onError에서 처리)
-        await saveResult(result, newAnswers)
+        await saveResult(result, answersRecord)
       }
     }, 500) // 0.5초 딜레이로 선택 확인 후 자동 이동
   }
