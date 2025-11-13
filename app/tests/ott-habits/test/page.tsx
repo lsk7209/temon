@@ -104,13 +104,19 @@ export default function OTTHabitsTest() {
     trackTestStart("ott-habits")
   }, [])
 
+  // 진행률 추적
+  useEffect(() => {
+    if (currentQuestion > 0) {
+      trackTestProgress("ott-habits", currentQuestion + 1, questions.length)
+    }
+  }, [currentQuestion])
+
   const handleAnswer = (choice: string[]) => {
     const newAnswers = [...answers, choice]
     setAnswers(newAnswers)
     setSelectedChoice("")
 
     if (currentQuestion < questions.length - 1) {
-      trackTestProgress("ott-habits", currentQuestion + 1, questions.length)
       setCurrentQuestion(currentQuestion + 1)
     } else {
       // Calculate result

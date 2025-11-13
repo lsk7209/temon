@@ -104,13 +104,19 @@ export default function LoveReactionTest() {
     trackTestStart("love-reaction")
   }, [])
 
+  // 진행률 추적
+  useEffect(() => {
+    if (currentQuestion > 0) {
+      trackTestProgress("love-reaction", currentQuestion + 1, questions.length)
+    }
+  }, [currentQuestion])
+
   const handleAnswer = (choice: string[]) => {
     const newAnswers = [...answers, choice]
     setAnswers(newAnswers)
     setSelectedChoice("")
 
     if (currentQuestion < questions.length - 1) {
-      trackTestProgress("love-reaction", currentQuestion + 1, questions.length)
       setCurrentQuestion(currentQuestion + 1)
     } else {
       // Calculate result
