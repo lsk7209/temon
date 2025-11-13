@@ -5,7 +5,7 @@ const nextConfig = {
     ignoreDuringBuilds: process.env.NODE_ENV === 'development',
   },
   typescript: {
-    ignoreBuildErrors: process.env.NODE_ENV === 'development',
+    ignoreBuildErrors: false, // Functions 타입 체크를 위해 활성화
   },
   images: {
     unoptimized: true, // Cloudflare Pages 호환성
