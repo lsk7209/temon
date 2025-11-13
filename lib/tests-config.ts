@@ -540,6 +540,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["K드라마", "캐릭터 유형", "드라마 성향", "드라마 인물 MBTI", "성격 테스트"],
     new: true,
   },
+  {
+    id: "kdrama-character",
+    title: "🎬 K-드라마 인물 매칭 테스트",
+    description: "드라마 속 상황 선택으로 내 캐릭터 유형 찾기",
+    icon: Clapperboard,
+    href: "/tests/kdrama-character",
+    color: "from-pink-500 to-purple-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "엔터테인먼트",
+    tags: ["K드라마", "캐릭터 테스트", "인물 매칭", "드라마 캐릭터", "성격 테스트"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
