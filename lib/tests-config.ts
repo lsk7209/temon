@@ -792,6 +792,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["양말", "선택", "신기", "매칭", "성격"],
     new: true,
   },
+  {
+    id: "clothing-order",
+    title: "👔 옷 입는 순서 테스트",
+    description: "옷 입는 순서, 스타일로 알아보는 나의 성격",
+    icon: Shirt,
+    href: "/tests/clothing-order",
+    color: "from-indigo-500 to-purple-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["옷", "입기", "순서", "조합", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
