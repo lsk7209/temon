@@ -1,4 +1,4 @@
-import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, type LucideIcon } from "lucide-react"
+import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, Bed, type LucideIcon } from "lucide-react"
 
 export interface Test {
   id: string
@@ -734,6 +734,20 @@ export const ALL_TESTS: Test[] = [
     badge: "NEW",
     category: "음식",
     tags: ["고기", "굽기", "레어", "웰던", "성격"],
+    new: true,
+  },
+  {
+    id: "bed-making",
+    title: "🛏️ 침대 정리 스타일 테스트",
+    description: "침대 정리 습관, 베개 배치로 알아보는 나의 성격",
+    icon: Bed,
+    href: "/tests/bed-making",
+    color: "from-blue-500 to-indigo-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["침대", "정리", "베개", "배치", "성격"],
     new: true,
   },
 ]
