@@ -1,4 +1,4 @@
-import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, type LucideIcon } from "lucide-react"
+import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, type LucideIcon } from "lucide-react"
 
 export interface Test {
   id: string
@@ -706,6 +706,20 @@ export const ALL_TESTS: Test[] = [
     badge: "NEW",
     category: "음식",
     tags: ["찌개", "국물", "된장찌개", "김치찌개", "성격"],
+    new: true,
+  },
+  {
+    id: "salad-dressing",
+    title: "🥗 샐러드 드레싱 선택 테스트",
+    description: "샐러드 드레싱 선택으로 알아보는 나의 성격",
+    icon: Salad,
+    href: "/tests/salad-dressing",
+    color: "from-green-500 to-lime-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "음식",
+    tags: ["샐러드", "드레싱", "올리브오일", "발사믹", "성격"],
     new: true,
   },
 ]
