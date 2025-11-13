@@ -722,6 +722,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["샐러드", "드레싱", "올리브오일", "발사믹", "성격"],
     new: true,
   },
+  {
+    id: "meat-grilling",
+    title: "🍖 고기 굽는 스타일 테스트",
+    description: "고기 굽는 방식, 익힘 정도 선호로 알아보는 나의 성격",
+    icon: Drumstick,
+    href: "/tests/meat-grilling",
+    color: "from-red-500 to-orange-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "음식",
+    tags: ["고기", "굽기", "레어", "웰던", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
