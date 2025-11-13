@@ -116,7 +116,7 @@ export default function KdramaMatchTest() {
       // Calculate result
       const resultType = calculateMBTIResult(newAnswers)
       const answersRecord = convertAnswersToRecord(newAnswers)
-      saveResult(answersRecord, resultType)
+      saveResult(resultType, answersRecord)
     }
   }
 
