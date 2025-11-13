@@ -5,7 +5,7 @@
 
 import { drizzle } from 'drizzle-orm/d1'
 import * as schema from './schema'
-import type { TestResult, TestStats } from './types'
+import type { TestResult, TestStats, AggregatedStats } from './types'
 
 // Cloudflare D1 Database 타입
 export interface D1Database {
@@ -178,6 +178,66 @@ class Database {
       resultCounts: JSON.parse(result.result_counts || '{}'),
       createdAt: result.created_at,
       updatedAt: result.updated_at,
+    }
+  }
+
+  /**
+   * 날짜 범위별 통계 조회
+   */
+  async getStatsByDateRange(
+    testId: string,
+    fromDate: string,
+    toDate: string
+  ): Promise<AggregatedStats | null> {
+    const stmt = this.db.prepare(
+      `SELECT 
+        SUM(started_count) as total_started,
+        SUM(completed_count) as total_completed,
+        GROUP_CONCAT(result_counts) as all_result_counts
+      FROM test_stats 
+      WHERE test_id = ? AND date >= ? AND date <= ?`
+    )
+
+    const result = await stmt.bind(testId, fromDate, toDate).first<{
+      total_started: number | null
+      total_completed: number | null
+      all_result_counts: string | null
+    }>()
+
+    if (!result || result.total_started === null) {
+      return null
+    }
+
+    // 모든 날짜의 result_counts를 합산
+    const resultDistribution: Record<string, number> = {}
+    if (result.all_result_counts) {
+      const countsArray = result.all_result_counts.split(',')
+      countsArray.forEach((countStr) => {
+        try {
+          const counts = JSON.parse(countStr)
+          Object.keys(counts).forEach((key) => {
+            resultDistribution[key] = (resultDistribution[key] || 0) + counts[key]
+          })
+        } catch {
+          // JSON 파싱 실패 시 무시
+        }
+      })
+    }
+
+    const totalStarted = result.total_started || 0
+    const totalCompleted = result.total_completed || 0
+    const completionRate = totalStarted > 0 ? totalCompleted / totalStarted : 0
+
+    return {
+      testId,
+      totalStarted,
+      totalCompleted,
+      completionRate,
+      resultDistribution,
+      dateRange: {
+        from: fromDate,
+        to: toDate,
+      },
     }
   }
 }
