@@ -115,3 +115,4 @@ Functions 설정을 변경한 후:
 - 코드는 완성되었지만, Cloudflare Pages 설정이 필요합니다
 - Dashboard 설정이 완료되면 즉시 작동할 것입니다
 
+
