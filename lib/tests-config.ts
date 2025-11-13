@@ -778,6 +778,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["화장실", "사용", "정리", "습관", "성격"],
     new: true,
   },
+  {
+    id: "sock-wearing",
+    title: "🧦 양말 신는 스타일 테스트",
+    description: "양말 선택, 신는 방식으로 알아보는 나의 성격",
+    icon: Shirt,
+    href: "/tests/sock-wearing",
+    color: "from-yellow-500 to-orange-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["양말", "선택", "신기", "매칭", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
