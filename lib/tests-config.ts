@@ -876,6 +876,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["물", "마시기", "습관", "방식", "성격"],
     new: true,
   },
+  {
+    id: "mirror-habit",
+    title: "🪞 거울 보는 습관 테스트",
+    description: "거울 보는 방식, 습관으로 알아보는 나의 성격",
+    icon: Camera,
+    href: "/tests/mirror-habit",
+    color: "from-rose-500 to-pink-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["거울", "보기", "습관", "방식", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
