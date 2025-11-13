@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const database = initDatabase(db)
+    initDatabase(db)
 
     // 전체 통계 조회
     const today = new Date().toISOString().split('T')[0]
