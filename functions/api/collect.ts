@@ -46,7 +46,7 @@ async function getOrCreateSession(
   anonymousId: string,
   request: Request
 ): Promise<string> {
-  const db = drizzle(env.DB, { schema })
+  const db = drizzle(env.DB as any, { schema })
 
   // KV에서 세션 확인 (KV가 설정된 경우에만)
   if (env.SESSIONS) {
@@ -161,7 +161,7 @@ app.post('/', async (c) => {
       }, 503)
     }
 
-    const db = drizzle(c.env.DB, { schema })
+    const db = drizzle(c.env.DB as any, { schema })
 
     // 세션 관리
     const finalSessionId = await getOrCreateSession(c.env, sessionId, anonymousId, c.req.raw)

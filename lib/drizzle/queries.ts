@@ -8,7 +8,8 @@ import { drizzle } from 'drizzle-orm/d1'
 import * as schema from './schema'
 
 export function getDrizzleDB(env: { DB: D1Database }) {
-  return drizzle(env.DB, { schema })
+  // D1Database 타입 호환성을 위해 as any 사용
+  return drizzle(env.DB as any, { schema })
 }
 
 /**
