@@ -526,6 +526,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["붕어빵", "겨울 간식", "팥 슈크림", "길거리 간식", "성향 테스트", "성격"],
     new: true,
   },
+  {
+    id: "kdrama-match",
+    title: "🎬 K-드라마 인물 매칭 테스트",
+    description: "드라마 속 상황 선택으로 16가지 캐릭터 유형 매칭",
+    icon: Clapperboard,
+    href: "/tests/kdrama-match",
+    color: "from-pink-500 to-purple-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "엔터테인먼트",
+    tags: ["K드라마", "캐릭터 유형", "드라마 성향", "드라마 인물 MBTI", "성격 테스트"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
