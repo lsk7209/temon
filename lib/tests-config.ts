@@ -484,6 +484,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["유튜브", "시청 습관", "영상 배속", "플레이리스트", "유튜브 유형", "성격"],
     new: true,
   },
+  {
+    id: "love-reaction",
+    title: "💕 연애 상황 반응 테스트",
+    description: "연락 습관, 갈등 해결, 데이트 운영, 감정 표현으로 16유형 분석",
+    icon: Heart,
+    href: "/tests/love-reaction",
+    color: "from-pink-500 to-rose-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "관계",
+    tags: ["연애", "연락", "데이트", "갈등 해결", "감정 표현", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
