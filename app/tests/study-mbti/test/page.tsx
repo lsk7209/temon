@@ -7,6 +7,7 @@ import { Progress } from "@/components/ui/progress"
 import { useRouter } from "next/navigation"
 import { useTestResult } from "@/hooks/use-test-result"
 import { trackTestStart, trackTestProgress } from "@/lib/analytics"
+import { convertAnswersToRecord } from "@/lib/utils/test-answers"
 
 const questions = [
   {
