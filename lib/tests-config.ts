@@ -848,6 +848,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["세탁", "습관", "방식", "정리", "성격"],
     new: true,
   },
+  {
+    id: "chair-sitting",
+    title: "🪑 의자 앉는 스타일 테스트",
+    description: "의자 앉는 방식, 스타일로 알아보는 나의 성격",
+    icon: Bed,
+    href: "/tests/chair-sitting",
+    color: "from-emerald-500 to-teal-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["의자", "앉기", "스타일", "자세", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
