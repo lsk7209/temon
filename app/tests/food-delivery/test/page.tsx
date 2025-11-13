@@ -155,13 +155,12 @@ export default function FoodDeliveryTest() {
         // 모든 질문 완료 - 결과 계산 및 저장
         const result = calculateMBTI(newAnswers)
 
-        // string[][]를 Record<number, string>로 변환
+        // 이미 Record<number, string> 형식이므로 변환 불필요
 
-        const answersRecord = convertAnswersToRecord(newAnswers)
 
         // 결과 저장 시도 (성공/실패 모두 onSuccess/onError에서 처리)
 
-        await saveResult(result, answersRecord)
+        await saveResult(result, newAnswers)
       }
     }, 500) // 0.5초 딜레이로 선택 확인 후 자동 이동
   }

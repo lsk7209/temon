@@ -157,7 +157,7 @@ export default function PetMBTITest() {
         // string[][]를 Record<number, string>로 변환
 
         const answersRecord = convertAnswersToRecord(newAnswers)
-        await saveResult(result, answersRecord)
+        await saveResult(result, newAnswers)
       }
     }, 500) // 0.5초 딜레이로 선택 확인 후 자동 이동
   }
