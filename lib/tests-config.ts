@@ -498,6 +498,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["연애", "연락", "데이트", "갈등 해결", "감정 표현", "성격"],
     new: true,
   },
+  {
+    id: "ott-habits",
+    title: "📺 OTT 시청 습관 테스트",
+    description: "정주행 방식, 추천 활용, 스포 대처, 감상 기록 습관으로 16유형 분석",
+    icon: Play,
+    href: "/tests/ott-habits",
+    color: "from-purple-500 to-indigo-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "엔터테인먼트",
+    tags: ["OTT", "시청 습관", "정주행", "추천 알고리즘", "스포일러", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
