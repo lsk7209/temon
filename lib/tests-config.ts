@@ -694,6 +694,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["김밥", "재료", "선택", "조합", "성격"],
     new: true,
   },
+  {
+    id: "stew-vs-soup",
+    title: "🍲 찌개 vs 국물 스타일 테스트",
+    description: "찌개 종류 선택, 국물 마시는 습관으로 알아보는 나의 성격",
+    icon: Soup,
+    href: "/tests/stew-vs-soup",
+    color: "from-orange-500 to-red-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "음식",
+    tags: ["찌개", "국물", "된장찌개", "김치찌개", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
