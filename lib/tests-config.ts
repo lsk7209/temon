@@ -834,6 +834,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["가방", "정리", "스타일", "조합", "성격"],
     new: true,
   },
+  {
+    id: "laundry-habit",
+    title: "🧺 세탁 습관 테스트",
+    description: "세탁 방식, 습관으로 알아보는 나의 성격",
+    icon: Droplets,
+    href: "/tests/laundry-habit",
+    color: "from-cyan-500 to-blue-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["세탁", "습관", "방식", "정리", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
