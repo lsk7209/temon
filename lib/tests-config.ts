@@ -890,6 +890,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["거울", "보기", "습관", "방식", "성격"],
     new: true,
   },
+  {
+    id: "book-reading",
+    title: "📚 책 읽는 습관 테스트",
+    description: "책 읽는 방식, 습관으로 알아보는 나의 성격",
+    icon: BookOpen,
+    href: "/tests/book-reading",
+    color: "from-violet-500 to-purple-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["책", "읽기", "습관", "방식", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
