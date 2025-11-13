@@ -3,7 +3,12 @@
  * 일일 통계 집계 작업
  */
 
-import type { D1Database, Env } from '../lib/db/client'
+import type { D1Database } from '../lib/db/client'
+import type { ScheduledEvent, ExecutionContext } from '@cloudflare/workers-types'
+
+type Env = {
+  DB: D1Database
+}
 
 /**
  * Cron 이벤트 핸들러
@@ -25,9 +30,6 @@ export default {
  * 일일 통계 집계
  */
 async function aggregateDailyStats(db: D1Database): Promise<void> {
-  const { initDatabase } = await import('../lib/db/client')
-  const database = initDatabase(db)
-
   const yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
   const dateStr = yesterday.toISOString().split('T')[0]
@@ -72,14 +74,22 @@ async function aggregateDailyStats(db: D1Database): Promise<void> {
         resultCounts[r.result_type] = r.count
       })
 
-      // 통계 저장/업데이트
-      await database.upsertTestStats({
-        testId,
-        date: dateStr,
-        startedCount,
-        completedCount,
-        resultCounts,
-      })
+      // 통계 저장/업데이트 (INSERT OR REPLACE 사용)
+      const resultCountsJson = JSON.stringify(resultCounts)
+      const now = Math.floor(Date.now() / 1000)
+
+      await db
+        .prepare(
+          `INSERT INTO test_stats (test_id, date, started_count, completed_count, result_counts, created_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?)
+           ON CONFLICT(test_id, date) DO UPDATE SET
+             started_count = excluded.started_count,
+             completed_count = excluded.completed_count,
+             result_counts = excluded.result_counts,
+             updated_at = excluded.updated_at`
+        )
+        .bind(testId, dateStr, startedCount, completedCount, resultCountsJson, now, now)
+        .run()
 
       console.log(`✅ 통계 집계 완료: ${testId} (${dateStr})`)
     } catch (error) {
