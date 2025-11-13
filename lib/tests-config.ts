@@ -512,6 +512,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["K드라마", "캐릭터 테스트", "인물 매칭", "드라마 캐릭터", "성격 테스트"],
     new: true,
   },
+  {
+    id: "hamburger-combo",
+    title: "🍔 햄버거 조합 스타일 테스트",
+    description: "패티, 빵, 야채, 소스 선택으로 알아보는 나의 성격",
+    icon: UtensilsCrossed,
+    href: "/tests/hamburger-combo",
+    color: "from-orange-500 to-red-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "음식",
+    tags: ["햄버거", "패티", "빵", "소스", "조합", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
