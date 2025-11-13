@@ -806,6 +806,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["옷", "입기", "순서", "조합", "성격"],
     new: true,
   },
+  {
+    id: "subway-vs-bus",
+    title: "🚇 지하철 vs 버스 선택 테스트",
+    description: "지하철 vs 버스 선택 기준으로 알아보는 나의 성격",
+    icon: Plane,
+    href: "/tests/subway-vs-bus",
+    color: "from-sky-500 to-blue-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["지하철", "버스", "대중교통", "선택", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
