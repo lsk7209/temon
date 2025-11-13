@@ -1,4 +1,4 @@
-import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, Bed, type LucideIcon } from "lucide-react"
+import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, Bed, DoorOpen, type LucideIcon } from "lucide-react"
 
 export interface Test {
   id: string
@@ -748,6 +748,20 @@ export const ALL_TESTS: Test[] = [
     badge: "NEW",
     category: "생활",
     tags: ["침대", "정리", "베개", "배치", "성격"],
+    new: true,
+  },
+  {
+    id: "door-closing",
+    title: "🚪 문 닫는 스타일 테스트",
+    description: "문 닫는 방식, 잠금 습관으로 알아보는 나의 성격",
+    icon: DoorOpen,
+    href: "/tests/door-closing",
+    color: "from-purple-500 to-pink-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["문", "닫기", "잠금", "습관", "성격"],
     new: true,
   },
 ]
