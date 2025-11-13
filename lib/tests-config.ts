@@ -764,6 +764,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["문", "닫기", "잠금", "습관", "성격"],
     new: true,
   },
+  {
+    id: "bathroom-habit",
+    title: "🚿 화장실 사용 습관 테스트",
+    description: "화장실 사용 패턴, 정리 습관으로 알아보는 나의 성격",
+    icon: Droplets,
+    href: "/tests/bathroom-habit",
+    color: "from-cyan-500 to-blue-600",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "생활",
+    tags: ["화장실", "사용", "정리", "습관", "성격"],
+    new: true,
+  },
 ]
 
 // Get all unique categories
