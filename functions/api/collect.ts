@@ -9,7 +9,7 @@ import type { PagesFunction } from '@cloudflare/workers-types'
 import { Hono } from 'hono'
 import { drizzle } from 'drizzle-orm/d1'
 import { eq } from 'drizzle-orm'
-import * as schema from '@/lib/drizzle/schema'
+import * as schema from '../../lib/drizzle/schema'
 
 type Env = {
   DB: D1Database

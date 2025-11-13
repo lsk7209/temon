@@ -7,7 +7,7 @@
 
 import type { PagesFunction } from '@cloudflare/workers-types'
 import { Hono } from 'hono'
-import { initDatabase } from '@/lib/db/client'
+import { initDatabase } from '../../lib/db/client'
 import type { D1Database } from '@cloudflare/workers-types'
 
 type Env = {

@@ -7,7 +7,7 @@
 
 import type { PagesFunction } from '@cloudflare/workers-types'
 import { Hono } from 'hono'
-import { getDrizzleDB } from '@/lib/drizzle/queries'
+import { getDrizzleDB } from '../lib/drizzle/queries'
 
 type Env = {
   DB: D1Database
