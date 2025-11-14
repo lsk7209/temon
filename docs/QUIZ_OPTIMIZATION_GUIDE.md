@@ -1,89 +1,154 @@
 # 퀴즈 코드 최적화 가이드
 
-## 개선 사항 요약
+## 개요
 
-### 1. 접근성 개선 ✅
-- `aria-label` 추가: 버튼에 명확한 라벨 제공
-- `aria-pressed` 추가: 선택 상태 표시
-- `role="radiogroup"` 추가: 라디오 그룹 의미 전달
-- 키보드 이벤트 핸들러: Enter/Space 키 지원
-- `focus-visible` 스타일: 키보드 포커스 시각화
-- `aria-hidden="true"`: 장식용 요소 숨김
+퀴즈 테스트 페이지의 중복 코드를 제거하고 재사용 가능한 컴포넌트와 훅으로 최적화했습니다.
 
-### 2. 성능 최적화 ✅
-- `isProcessing` 상태 추가: 중복 클릭 방지
-- `isSaving` 상태 활용: 로딩 상태 표시
-- `disabled` 속성: 처리 중 버튼 비활성화
-- 컴포넌트 언마운트 시 상태 정리
+## 최적화 내용
 
-### 3. 사용자 경험 개선 ✅
-- 로딩 상태 메시지: "결과 저장 중..." 표시
-- 버튼 비활성화 피드백: opacity 및 cursor 변경
-- 중복 선택 방지: 처리 중일 때 클릭 무시
+### 1. 커스텀 훅: `useQuizLogic`
 
-## 적용된 퀴즈
+**위치**: `hooks/use-quiz-logic.ts`
 
-✅ `food-temperature` - 최적화 완료
+**기능**:
+- 퀴즈 상태 관리 (currentQuestion, answers, selectedChoice, isProcessing)
+- 진행률 계산
+- 분석 추적 (trackTestStart, trackTestProgress)
+- 선택지 처리 및 자동 진행
+- 결과 저장 및 라우팅
 
-## 적용 필요 퀴즈
-
-다음 퀴즈들에 동일한 최적화를 적용해야 합니다:
-- `food-texture`
-- `food-presentation`
-- `food-combination`
-- `food-timing`
-- `food-waste`
-- `food-allergy`
-
-## 적용 방법
-
-각 퀴즈의 `test/page.tsx` 파일에서:
-
-1. `isProcessing` 상태 추가
-2. `handleChoiceSelect`에 중복 방지 로직 추가
-3. 버튼에 접근성 속성 추가
-4. 로딩 상태 표시 추가
-5. useEffect cleanup 추가
-
-## 코드 예시
-
+**사용 예시**:
 ```typescript
-// 상태 추가
-const [isProcessing, setIsProcessing] = useState(false)
+import { useQuizLogic } from "@/hooks/use-quiz-logic"
 
-// handleChoiceSelect 수정
-const handleChoiceSelect = useCallback(
-  async (tags: string[]) => {
-    if (isProcessing || isSaving) return
-    
-    setIsProcessing(true)
-    // ... 기존 로직
-  },
-  [currentQuestion, answers, questions.length, saveResult, isProcessing, isSaving]
-)
-
-// 버튼에 접근성 속성 추가
-<button
-  type="button"
-  disabled={isProcessing || isSaving}
-  aria-label={`선택지 1: ${currentQ.a1.text}`}
-  aria-pressed={selectedChoice === currentQ.a1.tags.join(",")}
-  onKeyDown={(e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault()
-      handleChoiceSelect(currentQ.a1.tags)
-    }
-  }}
-  className="... focus-visible:outline-none focus-visible:ring-2 ..."
->
+const { 
+  currentQuestion, 
+  currentQ, 
+  progress, 
+  handleChoiceSelect, 
+  handlePrevious 
+} = useQuizLogic({
+  testId: "food-label",
+  questions,
+  resultPath: "/tests/food-label/test/result",
+})
 ```
 
-## 체크리스트
+### 2. 재사용 가능한 컴포넌트
 
-- [x] 접근성 속성 추가
-- [x] 키보드 이벤트 핸들러
-- [x] 중복 선택 방지
-- [x] 로딩 상태 표시
-- [x] 메모리 누수 방지
-- [ ] 나머지 퀴즈 적용
+#### `QuizChoiceButton`
+**위치**: `components/quiz/quiz-choice-button.tsx`
 
+**기능**:
+- 접근성 지원 (aria-label, aria-pressed, keyboard navigation)
+- 성능 최적화 (memo)
+- 색상 스키마 커스터마이징
+- 비활성화 상태 처리
+
+#### `QuizProgressBar`
+**위치**: `components/quiz/quiz-progress-bar.tsx`
+
+**기능**:
+- 진행률 표시
+- 현재 질문 번호 표시
+- 성능 최적화 (memo)
+
+#### `QuizContainer`
+**위치**: `components/quiz/quiz-container.tsx`
+
+**기능**:
+- 전체 퀴즈 레이아웃
+- ProgressBar와 ChoiceButton 통합
+- 이전 버튼 및 로딩 상태 표시
+
+## 마이그레이션 가이드
+
+### 기존 코드 (Before)
+
+```typescript
+export default function FoodLabelTest() {
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [answers, setAnswers] = useState<string[][]>([])
+  const [selectedChoice, setSelectedChoice] = useState<string>("")
+  const [isProcessing, setIsProcessing] = useState(false)
+  const router = useRouter()
+  const { saveResult, isSaving } = useTestResult({...})
+  
+  // ... 많은 중복 코드 ...
+  
+  return (
+    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+      {/* ... 중복된 UI 코드 ... */}
+    </div>
+  )
+}
+```
+
+### 최적화된 코드 (After)
+
+```typescript
+import { useQuizLogic } from "@/hooks/use-quiz-logic"
+import { QuizContainer } from "@/components/quiz/quiz-container"
+import { getQuizColorScheme } from "@/lib/utils/quiz-color-schemes"
+
+const questions = [...] // 질문 데이터
+
+export default function FoodLabelTest() {
+  const quizLogic = useQuizLogic({
+    testId: "food-label",
+    questions,
+    resultPath: "/tests/food-label/test/result",
+  })
+
+  return (
+    <QuizContainer
+      {...quizLogic}
+      colorClasses={getQuizColorScheme("blue-green")}
+    />
+  )
+}
+```
+
+### 코드 라인 수 비교
+
+- **기존 코드**: ~290줄
+- **최적화된 코드**: ~70줄
+- **감소율**: 약 76% 감소
+
+### 색상 스키마 사용법
+
+```typescript
+// 사용 가능한 색상 스키마
+getQuizColorScheme("blue-green")      // 파란색-초록색
+getQuizColorScheme("blue-purple")     // 파란색-보라색
+getQuizColorScheme("orange-red")      // 주황색-빨간색
+getQuizColorScheme("yellow-orange")   // 노란색-주황색
+getQuizColorScheme("green-emerald")   // 초록색-에메랄드
+getQuizColorScheme("blue-indigo")     // 파란색-인디고
+getQuizColorScheme("amber-yellow")    // 앰버-노란색
+```
+
+## 성능 최적화
+
+1. **메모이제이션**: `memo`를 사용하여 불필요한 리렌더링 방지
+2. **useCallback**: 핸들러 함수 메모이제이션
+3. **useMemo**: 계산된 값 메모이제이션
+4. **타임아웃 정리**: cleanup 함수로 메모리 누수 방지
+
+## 접근성 개선
+
+1. **ARIA 속성**: `aria-label`, `aria-pressed`, `role="radiogroup"`
+2. **키보드 네비게이션**: Enter/Space 키 지원
+3. **포커스 관리**: `focus-visible` 스타일
+
+## 다음 단계
+
+1. 기존 퀴즈들을 새로운 컴포넌트로 마이그레이션
+2. 색상 스키마를 테마 시스템으로 통합
+3. 테스트 코드 작성
+4. Storybook 스토리 추가
+
+## 참고
+
+- [React 최적화 가이드](https://react.dev/learn/render-and-commit)
+- [Next.js 성능 최적화](https://nextjs.org/docs/app/building-your-application/optimizing)

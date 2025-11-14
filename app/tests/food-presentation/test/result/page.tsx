@@ -252,9 +252,8 @@ function ResultContent() {
     }
   }, [resultId])
 
-  const currentUrl = typeof window !== "undefined" ? window.location.href : ""
   const shareTitle = `나의 음식 플레이팅 선호도는 "${character.label}" ${character.emoji}`
-  const shareText = `${character.summary}\n\n나도 음식 플레이팅 선호도 테스트 하러 가기 🎨`
+  const shareDescription = `${character.summary}\n\n나도 음식 플레이팅 선호도 테스트 하러 가기 🎨`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -275,7 +274,14 @@ function ResultContent() {
               </div>
 
               <div className="pt-6">
-                <ShareButtons title={shareTitle} text={shareText} url={currentUrl} />
+                <ShareButtons
+                  testId="food-presentation"
+                  testPath="/tests/food-presentation/test/result"
+                  resultType={mbtiType}
+                  resultId={resultId || undefined}
+                  title={shareTitle}
+                  description={shareDescription}
+                />
               </div>
             </div>
           </CardContent>

@@ -1,4 +1,4 @@
-import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, Bed, DoorOpen, Shirt, Thermometer, Cookie, Palette, Timer, Recycle, AlertTriangle, type LucideIcon } from "lucide-react"
+import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, Bed, DoorOpen, Shirt, Thermometer, Cookie, Palette, Timer, Recycle, AlertTriangle, Flame, Candy, type LucideIcon } from "lucide-react"
 
 export interface Test {
   id: string
@@ -1000,6 +1000,34 @@ export const ALL_TESTS: Test[] = [
     badge: "NEW",
     category: "음식",
     tags: ["알레르기", "건강", "주의"],
+    new: true,
+  },
+  {
+    id: "food-spiciness",
+    title: "🌶️ 매운맛 선호도 테스트",
+    description: "매운맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    icon: Flame,
+    href: "/tests/food-spiciness",
+    color: "from-red-500 to-orange-500",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "음식",
+    tags: ["매운맛", "선호도", "음식 취향"],
+    new: true,
+  },
+  {
+    id: "food-sweetness",
+    title: "🍬 단맛 선호도 테스트",
+    description: "단맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    icon: Candy,
+    href: "/tests/food-sweetness",
+    color: "from-pink-500 to-purple-500",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "음식",
+    tags: ["단맛", "선호도", "음식 취향"],
     new: true,
   },
 ]
