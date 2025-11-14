@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation"
 import { useTestResult } from "@/hooks/use-test-result"
 import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { convertAnswersToRecord } from "@/lib/utils/test-answers"
+import { calculateMBTI } from "@/lib/utils/mbti-calculator"
 
 const questions = [
   {
@@ -100,7 +101,10 @@ export default function BookReadingTest() {
     },
   })
 
-  const progress = ((currentQuestion + 1) / questions.length) * 100
+  const progress = useMemo(
+    () => ((currentQuestion + 1) / questions.length) * 100,
+    [currentQuestion, questions.length]
+  )
 
   useEffect(() => {
     trackTestStart("book-reading")
@@ -110,56 +114,39 @@ export default function BookReadingTest() {
     if (currentQuestion > 0) {
       trackTestProgress("book-reading", currentQuestion + 1, questions.length)
     }
-  }, [currentQuestion])
+  }, [currentQuestion, questions.length])
 
-  const handleChoiceSelect = async (tags: string[]) => {
-    setSelectedChoice(tags.join(","))
-    const currentQuestionIndex = currentQuestion
+  const handleChoiceSelect = useCallback(
+    async (tags: string[]) => {
+      setSelectedChoice(tags.join(","))
+      const currentQuestionIndex = currentQuestion
 
-    setTimeout(async () => {
-      const newAnswers = [...answers, tags]
-      setAnswers(newAnswers)
+      setTimeout(async () => {
+        const newAnswers = [...answers, tags]
+        setAnswers(newAnswers)
 
-      if (currentQuestionIndex < questions.length - 1) {
-        setCurrentQuestion(currentQuestionIndex + 1)
-        setSelectedChoice("")
-      } else {
-        const result = calculateMBTI(newAnswers)
-        const answersRecord = convertAnswersToRecord(newAnswers)
-        await saveResult(result, answersRecord)
-      }
-    }, 500)
-  }
+        if (currentQuestionIndex < questions.length - 1) {
+          setCurrentQuestion(currentQuestionIndex + 1)
+          setSelectedChoice("")
+        } else {
+          const result = calculateMBTI(newAnswers)
+          const answersRecord = convertAnswersToRecord(newAnswers)
+          await saveResult(result, answersRecord)
+        }
+      }, 500)
+    },
+    [currentQuestion, answers, questions.length, saveResult]
+  )
 
-  const handlePrevious = () => {
+  const handlePrevious = useCallback(() => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1)
       setAnswers(answers.slice(0, -1))
       setSelectedChoice("")
     }
-  }
+  }, [currentQuestion, answers])
 
-  const calculateMBTI = (answers: string[][]): string => {
-    const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 }
-
-    answers.forEach((tags) => {
-      tags.forEach((tag) => {
-        if (tag in scores) {
-          scores[tag as keyof typeof scores]++
-        }
-      })
-    })
-
-    const result =
-      (scores.E >= scores.I ? "E" : "I") +
-      (scores.S >= scores.N ? "S" : "N") +
-      (scores.T >= scores.F ? "T" : "F") +
-      (scores.J >= scores.P ? "J" : "P")
-
-    return result
-  }
-
-  const currentQ = questions[currentQuestion]
+  const currentQ = useMemo(() => questions[currentQuestion], [currentQuestion])
 
   return (
     <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
