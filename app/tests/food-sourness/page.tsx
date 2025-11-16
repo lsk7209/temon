@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Lemon } from "lucide-react"
+import { Star } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "🍋 신맛 선호도 테스트 | 테몬",
@@ -22,7 +22,7 @@ export default function FoodSournessPage() {
           <CardContent className="p-8 md:p-12 text-center space-y-8">
             <div className="flex justify-center">
               <div className="w-24 h-24 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg">
-                <Lemon className="h-12 w-12 text-white" />
+                <Star className="h-12 w-12 text-white" />
               </div>
             </div>
 
