@@ -1,4 +1,4 @@
-import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, Bed, DoorOpen, Shirt, Thermometer, Cookie, Palette, Timer, Recycle, AlertTriangle, Flame, Candy, FileText, Snowflake, Sprout, Star, type LucideIcon } from "lucide-react"
+import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, Bed, DoorOpen, Shirt, Thermometer, Cookie, Palette, Timer, Recycle, AlertTriangle, Flame, Candy, FileText, Snowflake, Sprout, Star, Lemon, type LucideIcon } from "lucide-react"
 
 export interface Test {
   id: string
@@ -1028,6 +1028,20 @@ export const ALL_TESTS: Test[] = [
     badge: "NEW",
     category: "음식",
     tags: ["단맛", "선호도", "음식 취향"],
+    new: true,
+  },
+  {
+    id: "food-sourness",
+    title: "🍋 신맛 선호도 테스트",
+    description: "신맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    icon: Lemon,
+    href: "/tests/food-sourness",
+    color: "from-yellow-500 to-orange-500",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "음식",
+    tags: ["신맛", "선호도", "음식 취향"],
     new: true,
   },
   {
