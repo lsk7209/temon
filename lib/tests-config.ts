@@ -2108,6 +2108,20 @@ export const ALL_TESTS: Test[] = [
     tags: ["할인 상품", "구매", "생활 패턴"],
     new: true,
   },
+  {
+    id: "food-new",
+    title: "✨ 신상품 시도 스타일 테스트",
+    description: "새로운 음식 상품을 발견했을 때의 반응과 선택 방식으로 알아보는 나의 성격 유형",
+    icon: Sparkles,
+    href: "/tests/food-new",
+    color: "from-purple-500 via-pink-500 to-rose-500",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "음식",
+    tags: ["신상품", "모험", "트렌드"],
+    new: true,
+  },
 ]
 
 // Get all unique categories

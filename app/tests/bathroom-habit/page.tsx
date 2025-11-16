@@ -108,31 +108,31 @@ export default function BathroomHabitIntro() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                   <div className="space-y-4">
                     <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
-                      <p className="font-medium">1. 화장실 사용 시간은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">빠르게 vs 천천히</p>
+                      <p className="font-medium">1. 화장실에서 핸드폰을 떨어뜨렸을 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">당황해서 바로 확인 vs 침착하게 처리</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                      <p className="font-medium">2. 화장실 정리 습관은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">항상 정리 vs 가끔 정리</p>
+                      <p className="font-medium">2. 화장실 휴지가 다 떨어졌을 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">당황해서 둘러보기 vs 침착하게 대안 찾기</p>
                     </div>
                     <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
-                      <p className="font-medium">3. 화장실 사용 순서는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 순서 vs 그때그때</p>
+                      <p className="font-medium">3. 화장실 문이 잠겨있는데 급할 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">문 두드리기 vs 조용히 기다리기</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                      <p className="font-medium">4. 화장실 물건 배치 방식은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">정돈된 배치 vs 자연스럽게</p>
+                      <p className="font-medium">4. 화장실에서 이상한 소리가 들릴 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">궁금해서 확인하기 vs 무시하고 나가기</p>
                     </div>
                     <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
-                      <p className="font-medium">5. 화장실 사용 이유는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">필요할 때 vs 습관</p>
+                      <p className="font-medium">5. 화장실에서 옆 칸 사람이 이상한 소리를 낼 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">웃음 나오기 vs 무시하기</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                      <p className="font-medium">6. 화장실 사용 후기는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">확인하기 vs 그냥 가기</p>
+                      <p className="font-medium">6. 화장실에서 핸드폰 알림이 울렸을 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">바로 확인하기 vs 나중에 확인하기</p>
                     </div>
                   </div>
                 </div>

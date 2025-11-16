@@ -8,79 +8,80 @@ import { useRouter } from "next/navigation"
 import { useTestResult } from "@/hooks/use-test-result"
 import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { convertAnswersToRecord } from "@/lib/utils/test-answers"
+import { calculateMBTI } from "@/lib/utils/mbti-calculator"
 
 const questions = [
   {
     id: 1,
-    q: "찜닭 vs 치킨 선택 기준은?",
-    a1: { text: "찜닭 선호, 따뜻한 국물", tags: ["F"] },
-    a2: { text: "치킨 선호, 바삭한 맛", tags: ["T"] },
+    q: "배가 고파서 '찜닭'과 '치킨' 중 하나를 선택해야 할 때",
+    a1: { text: "따뜻한 국물이 있는 찜닭을 선택한다", tags: ["F"] },
+    a2: { text: "바삭한 맛의 치킨을 선택한다", tags: ["T"] },
   },
   {
     id: 2,
-    q: "먹는 방식은?",
-    a1: { text: "국물과 함께, 따뜻하게", tags: ["F"] },
-    a2: { text: "바삭하게, 상쾌하게", tags: ["T"] },
+    q: "찜닭을 먹다가 국물이 너무 뜨거워서 입 안이 데일 것 같을 때",
+    a1: { text: "국물을 불어가면서 천천히 마신다", tags: ["F"] },
+    a2: { text: "치킨처럼 바삭한 부분만 먹는다", tags: ["T"] },
   },
   {
     id: 3,
-    q: "선택 이유는?",
-    a1: { text: "따뜻함, 위로", tags: ["F"] },
-    a2: { text: "바삭함, 효율", tags: ["T"] },
+    q: "힘든 하루를 보내고 위로가 필요할 때",
+    a1: { text: "따뜻한 찜닭으로 위로받는다", tags: ["F"] },
+    a2: { text: "바삭한 치킨으로 스트레스를 푼다", tags: ["T"] },
   },
   {
     id: 4,
-    q: "함께 먹는 음식은?",
-    a1: { text: "밥과 함께, 따뜻하게", tags: ["F"] },
-    a2: { text: "맥주와 함께, 상쾌하게", tags: ["T"] },
+    q: "찜닭이나 치킨을 먹을 때 함께 먹고 싶은 음식이 있을 때",
+    a1: { text: "밥과 함께 따뜻하게 먹는다", tags: ["F"] },
+    a2: { text: "맥주와 함께 상쾌하게 먹는다", tags: ["T"] },
   },
   {
     id: 5,
-    q: "매운 정도는?",
-    a1: { text: "매운맛 선호, 자극적", tags: ["E"] },
-    a2: { text: "순한맛 선호, 편안하게", tags: ["I"] },
+    q: "찜닭이나 치킨을 주문할 때 매운 정도를 선택할 때",
+    a1: { text: "매운맛을 선택해서 자극을 받는다", tags: ["E"] },
+    a2: { text: "순한맛을 선택해서 편안하게 먹는다", tags: ["I"] },
   },
   {
     id: 6,
-    q: "먹는 감정은?",
-    a1: { text: "따뜻함, 위로받는 느낌", tags: ["F"] },
-    a2: { text: "상쾌함, 즐거운 느낌", tags: ["T"] },
+    q: "찜닭을 먹다가 따뜻한 국물이 너무 좋아서 감동받을 때",
+    a1: { text: "따뜻함과 위로를 느낀다", tags: ["F"] },
+    a2: { text: "상쾌하고 즐거운 느낌을 받는다", tags: ["T"] },
   },
   {
     id: 7,
-    q: "먹는 사람은?",
-    a1: { text: "혼자 조용히", tags: ["I"] },
-    a2: { text: "사람들과 함께", tags: ["E"] },
+    q: "찜닭이나 치킨을 먹을 때 함께 먹고 싶은 사람이 있을 때",
+    a1: { text: "혼자 조용히 먹는다", tags: ["I"] },
+    a2: { text: "친구들과 함께 먹는다", tags: ["E"] },
   },
   {
     id: 8,
-    q: "먹는 계획은?",
-    a1: { text: "미리 계획, 정해둠", tags: ["J"] },
-    a2: { text: "그때그때 결정", tags: ["P"] },
+    q: "찜닭이나 치킨을 먹기 전에 계획을 세울 때",
+    a1: { text: "미리 언제 어디서 먹을지 계획한다", tags: ["J"] },
+    a2: { text: "그때그때 즉흥적으로 결정한다", tags: ["P"] },
   },
   {
     id: 9,
-    q: "선택 기준은?",
-    a1: { text: "인기 메뉴, 트렌드", tags: ["S"] },
-    a2: { text: "나만의 취향, 특별함", tags: ["N"] },
+    q: "찜닭이나 치킨을 선택할 때 메뉴를 고를 때",
+    a1: { text: "인기 메뉴나 트렌드를 따라 선택한다", tags: ["S"] },
+    a2: { text: "나만의 특별한 취향으로 선택한다", tags: ["N"] },
   },
   {
     id: 10,
-    q: "먹는 후기는?",
-    a1: { text: "후기 공유, 경험 나누기", tags: ["E"] },
-    a2: { text: "조용히 즐기기", tags: ["I"] },
+    q: "찜닭이나 치킨을 먹고 맛있어서 공유하고 싶을 때",
+    a1: { text: "즉시 친구들에게 후기를 공유한다", tags: ["E"] },
+    a2: { text: "조용히 혼자만의 맛집으로 간직한다", tags: ["I"] },
   },
   {
     id: 11,
-    q: "선택 이유는?",
-    a1: { text: "감성, 위로", tags: ["F"] },
-    a2: { text: "효율, 실용", tags: ["T"] },
+    q: "찜닭이나 치킨을 선택할 때 선택하는 이유를 생각할 때",
+    a1: { text: "감성적이고 위로받는 이유로 선택한다", tags: ["F"] },
+    a2: { text: "효율적이고 실용적인 이유로 선택한다", tags: ["T"] },
   },
   {
     id: 12,
-    q: "먹는 순서는?",
-    a1: { text: "정해진 순서, 체계적으로", tags: ["J"] },
-    a2: { text: "그때그때, 유연하게", tags: ["P"] },
+    q: "찜닭이나 치킨을 먹을 때 먹는 순서가 있을 때",
+    a1: { text: "정해진 순서대로 체계적으로 먹는다", tags: ["J"] },
+    a2: { text: "그때그때 편한 대로 먹는다", tags: ["P"] },
   },
 ]
 
@@ -137,26 +138,6 @@ export default function ChickenVsJjimdakTest() {
       setAnswers(answers.slice(0, -1))
       setSelectedChoice("")
     }
-  }
-
-  const calculateMBTI = (answers: string[][]): string => {
-    const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 }
-
-    answers.forEach((tags) => {
-      tags.forEach((tag) => {
-        if (tag in scores) {
-          scores[tag as keyof typeof scores]++
-        }
-      })
-    })
-
-    const result =
-      (scores.E >= scores.I ? "E" : "I") +
-      (scores.S >= scores.N ? "S" : "N") +
-      (scores.T >= scores.F ? "T" : "F") +
-      (scores.J >= scores.P ? "J" : "P")
-
-    return result
   }
 
   const currentQ = questions[currentQuestion]

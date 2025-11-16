@@ -8,79 +8,80 @@ import { useRouter } from "next/navigation"
 import { useTestResult } from "@/hooks/use-test-result"
 import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { convertAnswersToRecord } from "@/lib/utils/test-answers"
+import { calculateMBTI } from "@/lib/utils/mbti-calculator"
 
 const questions = [
   {
     id: 1,
-    q: "문 닫는 방식은?",
-    a1: { text: "천천히, 조용히", tags: ["I"] },
-    a2: { text: "빠르게, 확실하게", tags: ["E"] },
+    q: "집에 들어가다가 문을 닫을 때 옆집에서 시끄러운 소리가 들릴 때",
+    a1: { text: "조용히 천천히 닫는다", tags: ["I"] },
+    a2: { text: "빠르게 확실하게 닫는다", tags: ["E"] },
   },
   {
     id: 2,
-    q: "문 잠금 습관은?",
-    a1: { text: "항상 잠그기, 체계적으로", tags: ["J"] },
-    a2: { text: "가끔 잠그기, 유연하게", tags: ["P"] },
+    q: "집을 나가다가 문을 잠글지 말지 고민될 때",
+    a1: { text: "항상 잠그는 습관이 있어서 잠근다", tags: ["J"] },
+    a2: { text: "상황에 따라 가끔 안 잠근다", tags: ["P"] },
   },
   {
     id: 3,
-    q: "문 닫는 순서는?",
-    a1: { text: "정해진 순서, 체계적으로", tags: ["J"] },
-    a2: { text: "그때그때, 유연하게", tags: ["P"] },
+    q: "여러 개의 문을 닫아야 할 때",
+    a1: { text: "정해진 순서대로 체계적으로 닫는다", tags: ["J"] },
+    a2: { text: "그때그때 편한 대로 닫는다", tags: ["P"] },
   },
   {
     id: 4,
-    q: "문 닫는 이유는?",
-    a1: { text: "습관, 루틴", tags: ["J"] },
-    a2: { text: "필요할 때, 그때그때", tags: ["P"] },
+    q: "문을 닫다가 친구가 와서 '문 열어줘!'라고 외칠 때",
+    a1: { text: "문 닫는 루틴을 끝내고 연다", tags: ["J"] },
+    a2: { text: "즉시 문을 다시 연다", tags: ["P"] },
   },
   {
     id: 5,
-    q: "문 닫는 감정은?",
-    a1: { text: "평온함, 차분하게", tags: ["I"] },
-    a2: { text: "긴장, 신경 쓰임", tags: ["E"] },
+    q: "문을 닫다가 문이 삐걱거리거나 이상한 소리가 날 때",
+    a1: { text: "조용히 확인하고 천천히 닫는다", tags: ["I"] },
+    a2: { text: "당황해서 빠르게 닫는다", tags: ["E"] },
   },
   {
     id: 6,
-    q: "문 닫는 후기는?",
-    a1: { text: "확인하기, 꼼꼼하게", tags: ["F"] },
-    a2: { text: "그냥 가기, 실용적으로", tags: ["T"] },
+    q: "문을 닫고 나가다가 문이 제대로 잠겼는지 불안할 때",
+    a1: { text: "다시 돌아가서 확인한다", tags: ["F"] },
+    a2: { text: "그냥 가고 신경 안 쓴다", tags: ["T"] },
   },
   {
     id: 7,
-    q: "문 닫는 사람은?",
-    a1: { text: "혼자 조용히", tags: ["I"] },
-    a2: { text: "사람들과 함께", tags: ["E"] },
+    q: "문을 닫다가 가족이나 친구들이 함께 있을 때",
+    a1: { text: "혼자 조용히 닫는다", tags: ["I"] },
+    a2: { text: "함께 닫으면서 대화한다", tags: ["E"] },
   },
   {
     id: 8,
-    q: "문 닫는 선택 이유는?",
-    a1: { text: "실용성, 효율", tags: ["S"] },
-    a2: { text: "의미, 특별함", tags: ["N"] },
+    q: "문을 닫다가 문 종류나 스타일을 선택할 수 있을 때",
+    a1: { text: "실용적이고 효율적인 걸 선택한다", tags: ["S"] },
+    a2: { text: "특별하고 의미 있는 걸 선택한다", tags: ["N"] },
   },
   {
     id: 9,
-    q: "문 닫는 계획은?",
-    a1: { text: "미리 계획, 목표 정함", tags: ["J"] },
-    a2: { text: "즉흥적으로, 그때그때", tags: ["P"] },
+    q: "문을 닫기 전에 계획을 세울 수 있을 때",
+    a1: { text: "미리 언제 어떻게 닫을지 계획한다", tags: ["J"] },
+    a2: { text: "그때그때 즉흥적으로 닫는다", tags: ["P"] },
   },
   {
     id: 10,
-    q: "문 닫는 감정은?",
-    a1: { text: "즐거움, 기쁨", tags: ["E"] },
-    a2: { text: "평온함, 차분하게", tags: ["I"] },
+    q: "문을 닫다가 문 닫는 게 재미있고 즐거울 때",
+    a1: { text: "조용히 혼자 즐긴다", tags: ["I"] },
+    a2: { text: "친구들에게 공유하고 함께 즐긴다", tags: ["E"] },
   },
   {
     id: 11,
-    q: "문 닫는 이유는?",
-    a1: { text: "감성, 의미", tags: ["F"] },
-    a2: { text: "효율, 실용", tags: ["T"] },
+    q: "문을 닫다가 문 닫는 이유나 의미를 생각할 때",
+    a1: { text: "감성적이고 의미 있는 이유를 생각한다", tags: ["F"] },
+    a2: { text: "실용적이고 효율적인 이유만 생각한다", tags: ["T"] },
   },
   {
     id: 12,
-    q: "문 닫는 후기는?",
-    a1: { text: "후기 공유, 경험 나누기", tags: ["E"] },
-    a2: { text: "조용히 즐기기", tags: ["I"] },
+    q: "문을 닫다가 문 닫는 경험이 특별해서 공유하고 싶을 때",
+    a1: { text: "즉시 친구들에게 경험을 공유한다", tags: ["E"] },
+    a2: { text: "혼자만의 특별한 경험으로 간직한다", tags: ["I"] },
   },
 ]
 
@@ -137,26 +138,6 @@ export default function DoorClosingTest() {
       setAnswers(answers.slice(0, -1))
       setSelectedChoice("")
     }
-  }
-
-  const calculateMBTI = (answers: string[][]): string => {
-    const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 }
-
-    answers.forEach((tags) => {
-      tags.forEach((tag) => {
-        if (tag in scores) {
-          scores[tag as keyof typeof scores]++
-        }
-      })
-    })
-
-    const result =
-      (scores.E >= scores.I ? "E" : "I") +
-      (scores.S >= scores.N ? "S" : "N") +
-      (scores.T >= scores.F ? "T" : "F") +
-      (scores.J >= scores.P ? "J" : "P")
-
-    return result
   }
 
   const currentQ = questions[currentQuestion]

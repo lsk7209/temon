@@ -8,79 +8,80 @@ import { useRouter } from "next/navigation"
 import { useTestResult } from "@/hooks/use-test-result"
 import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { convertAnswersToRecord } from "@/lib/utils/test-answers"
+import { calculateMBTI } from "@/lib/utils/mbti-calculator"
 
 const questions = [
   {
     id: 1,
-    q: "국물 있는 음식을 먹을 때 당신은?",
-    a1: { text: "국물까지 다 마심, 국물이 맛있어", tags: ["F"] },
-    a2: { text: "국물은 남김, 밥만 먹음", tags: ["T"] },
+    q: "국물 있는 음식을 먹다가 국물이 너무 뜨거워서 입 안이 데일 것 같을 때",
+    a1: { text: "불어가면서 천천히 마신다", tags: ["F", "J"] },
+    a2: { text: "국물은 건너뛰고 밥만 먹는다", tags: ["T", "P"] },
   },
   {
     id: 2,
-    q: "비빔밥을 먹을 때 당신은?",
-    a1: { text: "골고루 비빔, 조합의 재미", tags: ["N"] },
-    a2: { text: "한 가지씩 먹기, 정돈된 맛", tags: ["S"] },
+    q: "비빔밥을 먹다가 재료들이 완전히 뒤섞여서 어지러울 때",
+    a1: { text: "더 골고루 비벼서 완전히 섞는다", tags: ["N", "P"] },
+    a2: { text: "한 가지씩 정돈해서 따로따로 먹는다", tags: ["S", "J"] },
   },
   {
     id: 3,
-    q: "음식 선택 기준은?",
-    a1: { text: "국물 있는 음식 선호, 따뜻함", tags: ["F"] },
-    a2: { text: "비빔 음식 선호, 간편함", tags: ["T"] },
+    q: "식당에서 '된장찌개'와 '비빔밥' 중 하나를 선택해야 할 때",
+    a1: { text: "따뜻한 된장찌개를 선택한다", tags: ["F", "N"] },
+    a2: { text: "간편한 비빔밥을 선택한다", tags: ["T", "S"] },
   },
   {
     id: 4,
-    q: "국물의 역할은?",
-    a1: { text: "음식의 일부, 필수", tags: ["F"] },
-    a2: { text: "선택사항, 없어도 OK", tags: ["T"] },
+    q: "국물 있는 음식을 먹다가 국물이 다 떨어져서 밥만 남았을 때",
+    a1: { text: "직원에게 국물을 더 달라고 요청한다", tags: ["E", "F"] },
+    a2: { text: "그냥 남은 밥만 먹는다", tags: ["I", "T"] },
   },
   {
     id: 5,
-    q: "비빔의 매력은?",
-    a1: { text: "조합의 재미, 다양한 맛", tags: ["N"] },
-    a2: { text: "간편함, 효율적", tags: ["S"] },
+    q: "비빔밥을 먹다가 맛을 보니 완전히 밋밋하고 재미없을 때",
+    a1: { text: "고추장이나 양념을 더 넣어본다", tags: ["E", "P"] },
+    a2: { text: "그냥 먹거나 포장한다", tags: ["I", "J"] },
   },
   {
     id: 6,
-    q: "음식 먹는 순서는?",
-    a1: { text: "국물 먼저, 따뜻하게", tags: ["J"] },
-    a2: { text: "그때그때, 유연하게", tags: ["P"] },
+    q: "국물 있는 음식을 먹다가 국물이 너무 짜서 바다물 같을 때",
+    a1: { text: "물을 넣거나 국물을 덜 마신다", tags: ["E", "F"] },
+    a2: { text: "그냥 참고 먹는다", tags: ["I", "T"] },
   },
   {
     id: 7,
-    q: "국물 있는 음식 먹을 때 감정은?",
-    a1: { text: "따뜻함, 위로받는 느낌", tags: ["F"] },
-    a2: { text: "단순히 배부름, 실용적", tags: ["T"] },
+    q: "비빔밥을 먹다가 너무 매워서 입 안이 불타오를 것 같을 때",
+    a1: { text: "밥을 더 넣어서 매운맛을 완화시킨다", tags: ["E", "F"] },
+    a2: { text: "그냥 참고 먹거나 포장한다", tags: ["I", "T"] },
   },
   {
     id: 8,
-    q: "비빔 음식 먹을 때 감정은?",
-    a1: { text: "재미있음, 조합의 즐거움", tags: ["E"] },
-    a2: { text: "편안함, 조용히 즐김", tags: ["I"] },
+    q: "국물 있는 음식을 먹다가 친구가 와서 '나도 먹고 싶어! 나눠줘!'라고 할 때",
+    a1: { text: "즉시 국물을 나눠주고 함께 먹는다", tags: ["E", "F"] },
+    a2: { text: "지금은 혼자 먹고 싶다고 말한다", tags: ["I", "T"] },
   },
   {
     id: 9,
-    q: "음식 선택 계획은?",
-    a1: { text: "미리 계획, 정해둠", tags: ["J"] },
-    a2: { text: "그때그때 결정", tags: ["P"] },
+    q: "비빔밥을 먹다가 양이 너무 많아서 절반도 못 먹었을 때",
+    a1: { text: "포장해서 집에 가져간다", tags: ["J", "S"] },
+    a2: { text: "그냥 남기고 나간다", tags: ["P", "N"] },
   },
   {
     id: 10,
-    q: "음식 먹는 사람은?",
-    a1: { text: "혼자 조용히", tags: ["I"] },
-    a2: { text: "사람들과 함께", tags: ["E"] },
+    q: "국물 있는 음식을 먹다가 국물이 너무 차가워서 맛이 없을 때",
+    a1: { text: "따뜻한 국물을 더 달라고 요청한다", tags: ["E", "F"] },
+    a2: { text: "그냥 먹는다", tags: ["I", "T"] },
   },
   {
     id: 11,
-    q: "국물 vs 비빔 선택 이유는?",
-    a1: { text: "감성, 위로", tags: ["F"] },
-    a2: { text: "효율, 실용", tags: ["T"] },
+    q: "비빔밥을 먹다가 너무 달아서 당뇨 걸릴 것 같을 때",
+    a1: { text: "고춧가루나 매운 양념을 넣어서 조정한다", tags: ["E", "F"] },
+    a2: { text: "그냥 먹는다", tags: ["I", "T"] },
   },
   {
     id: 12,
-    q: "음식 먹는 후기는?",
-    a1: { text: "후기 공유, 경험 나누기", tags: ["E"] },
-    a2: { text: "조용히 즐기기", tags: ["I"] },
+    q: "점심시간에 '김치찌개'와 '돌솥비빔밥' 중 하나를 선택해야 할 때",
+    a1: { text: "따뜻한 김치찌개를 선택한다", tags: ["F", "N"] },
+    a2: { text: "간편한 돌솥비빔밥을 선택한다", tags: ["T", "S"] },
   },
 ]
 
@@ -137,26 +138,6 @@ export default function SoupVsBibimTest() {
       setAnswers(answers.slice(0, -1))
       setSelectedChoice("")
     }
-  }
-
-  const calculateMBTI = (answers: string[][]): string => {
-    const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 }
-
-    answers.forEach((tags) => {
-      tags.forEach((tag) => {
-        if (tag in scores) {
-          scores[tag as keyof typeof scores]++
-        }
-      })
-    })
-
-    const result =
-      (scores.E >= scores.I ? "E" : "I") +
-      (scores.S >= scores.N ? "S" : "N") +
-      (scores.T >= scores.F ? "T" : "F") +
-      (scores.J >= scores.P ? "J" : "P")
-
-    return result
   }
 
   const currentQ = questions[currentQuestion]

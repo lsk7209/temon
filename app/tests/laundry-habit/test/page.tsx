@@ -8,79 +8,80 @@ import { useRouter } from "next/navigation"
 import { useTestResult } from "@/hooks/use-test-result"
 import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { convertAnswersToRecord } from "@/lib/utils/test-answers"
+import { calculateMBTI } from "@/lib/utils/mbti-calculator"
 
 const questions = [
   {
     id: 1,
-    q: "세탁 방식은?",
-    a1: { text: "정해진 순서, 체계적으로", tags: ["J"] },
-    a2: { text: "그때그때, 유연하게", tags: ["P"] },
+    q: "세탁을 하다가 세탁물이 산더미처럼 쌓였을 때",
+    a1: { text: "정해진 순서대로 체계적으로 정리한다", tags: ["J"] },
+    a2: { text: "그때그때 필요한 것만 빨리 한다", tags: ["P"] },
   },
   {
     id: 2,
-    q: "세탁 기준은?",
-    a1: { text: "체계적, 논리적", tags: ["T"] },
-    a2: { text: "감성적, 의미 있게", tags: ["F"] },
+    q: "세탁을 하다가 옷을 분류할 때",
+    a1: { text: "색깔, 재질, 온도별로 논리적으로 분류한다", tags: ["T"] },
+    a2: { text: "느낌이나 기분에 따라 의미 있게 분류한다", tags: ["F"] },
   },
   {
     id: 3,
-    q: "세탁 속도는?",
-    a1: { text: "천천히, 꼼꼼하게", tags: ["F"] },
-    a2: { text: "빠르게, 실용적으로", tags: ["T"] },
+    q: "세탁을 하다가 시간이 부족해서 급할 때",
+    a1: { text: "천천히 꼼꼼하게 끝까지 한다", tags: ["F"] },
+    a2: { text: "빨리 중요한 것만 하고 끝낸다", tags: ["T"] },
   },
   {
     id: 4,
-    q: "세탁 계획은?",
-    a1: { text: "미리 계획, 목표 정함", tags: ["J"] },
-    a2: { text: "즉흥적으로, 그때그때", tags: ["P"] },
+    q: "세탁을 하기 전에 계획을 세울 때",
+    a1: { text: "미리 언제 무엇을 어떻게 할지 계획한다", tags: ["J"] },
+    a2: { text: "그때그때 즉흥적으로 한다", tags: ["P"] },
   },
   {
     id: 5,
-    q: "세탁 후기는?",
-    a1: { text: "확인하기, 꼼꼼하게", tags: ["F"] },
-    a2: { text: "그냥 가기, 실용적으로", tags: ["T"] },
+    q: "세탁을 끝내고 나가다가 세탁물이 제대로 되었는지 불안할 때",
+    a1: { text: "다시 돌아가서 확인한다", tags: ["F"] },
+    a2: { text: "그냥 가고 신경 안 쓴다", tags: ["T"] },
   },
   {
     id: 6,
-    q: "세탁하는 사람은?",
-    a1: { text: "혼자 조용히", tags: ["I"] },
-    a2: { text: "사람들과 함께", tags: ["E"] },
+    q: "세탁을 하다가 가족이나 친구들이 함께 있을 때",
+    a1: { text: "혼자 조용히 한다", tags: ["I"] },
+    a2: { text: "함께 하면서 대화한다", tags: ["E"] },
   },
   {
     id: 7,
-    q: "세탁 이유는?",
-    a1: { text: "실용성, 효율", tags: ["S"] },
-    a2: { text: "의미, 특별함", tags: ["N"] },
+    q: "세탁을 하다가 세탁 방법이나 제품을 선택할 때",
+    a1: { text: "실용적이고 효율적인 걸 선택한다", tags: ["S"] },
+    a2: { text: "특별하고 의미 있는 걸 선택한다", tags: ["N"] },
   },
   {
     id: 8,
-    q: "세탁 방식은?",
-    a1: { text: "정해진 순서, 체계적으로", tags: ["J"] },
-    a2: { text: "자연스럽게, 유연하게", tags: ["P"] },
+    q: "세탁을 하다가 여러 옷을 세탁해야 할 때",
+    a1: { text: "정해진 순서대로 체계적으로 한다", tags: ["J"] },
+    a2: { text: "자연스럽게 편한 대로 한다", tags: ["P"] },
   },
   {
     id: 9,
-    q: "세탁 감정은?",
-    a1: { text: "평온함, 차분하게", tags: ["I"] },
-    a2: { text: "즐거움, 기쁨", tags: ["E"] },
+    q: "세탁을 하다가 세탁하는 게 재미있고 즐거울 때",
+    a1: { text: "조용히 혼자 즐긴다", tags: ["I"] },
+    a2: { text: "친구들에게 공유하고 함께 즐긴다", tags: ["E"] },
   },
   {
     id: 10,
-    q: "세탁 기준은?",
-    a1: { text: "감성, 의미", tags: ["F"] },
-    a2: { text: "효율, 실용", tags: ["T"] },
+    q: "세탁을 하다가 세탁 기준이나 원칙을 정할 때",
+    a1: { text: "감성적이고 의미 있는 기준을 정한다", tags: ["F"] },
+    a2: { text: "실용적이고 효율적인 기준만 정한다", tags: ["T"] },
   },
   {
     id: 11,
-    q: "세탁 후기는?",
-    a1: { text: "후기 공유, 경험 나누기", tags: ["E"] },
-    a2: { text: "조용히 즐기기", tags: ["I"] },
+    q: "세탁을 끝내고 세탁 경험이 특별해서 공유하고 싶을 때",
+    a1: { text: "즉시 친구들에게 경험을 공유한다", tags: ["E"] },
+    a2: { text: "혼자만의 특별한 경험으로 간직한다", tags: ["I"] },
   },
   {
     id: 12,
-    q: "세탁 이유는?",
-    a1: { text: "의미, 특별함", tags: ["N"] },
-    a2: { text: "실용성, 효율", tags: ["S"] },
+    q: "세탁을 하다가 세탁하는 이유나 의미를 생각할 때",
+    a1: { text: "특별한 의미나 목적을 부여한다", tags: ["N"] },
+    a2: { text: "단순히 옷이 더러워서 한다", tags: ["S"] },
   },
 ]
 
@@ -137,26 +138,6 @@ export default function LaundryHabitTest() {
       setAnswers(answers.slice(0, -1))
       setSelectedChoice("")
     }
-  }
-
-  const calculateMBTI = (answers: string[][]): string => {
-    const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 }
-
-    answers.forEach((tags) => {
-      tags.forEach((tag) => {
-        if (tag in scores) {
-          scores[tag as keyof typeof scores]++
-        }
-      })
-    })
-
-    const result =
-      (scores.E >= scores.I ? "E" : "I") +
-      (scores.S >= scores.N ? "S" : "N") +
-      (scores.T >= scores.F ? "T" : "F") +
-      (scores.J >= scores.P ? "J" : "P")
-
-    return result
   }
 
   const currentQ = questions[currentQuestion]
