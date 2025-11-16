@@ -2,7 +2,7 @@
 
 ## 목표: 50개 퀴즈 개발
 
-### 완료된 퀴즈 (3/50)
+### 완료된 퀴즈 (10/50)
 
 1. ✅ **food-spiciness** - 매운맛 선호도 테스트
    - 파일: app/tests/food-spiciness/page.tsx
@@ -22,14 +22,50 @@
    - 파일: app/tests/food-sourness/test/result/page.tsx
    - 상태: 완료
 
-### 개발 중인 퀴즈 (47/50)
-4. 🔄 **food-saltiness** - 짠맛 선호도 테스트
-5. ⏳ **food-bitterness** - 쓴맛 선호도 테스트
-6. ⏳ **food-umami** - 감칠맛 선호도 테스트
-7. ⏳ **food-crispy** - 바삭함 선호도 테스트
-8. ⏳ **food-chewy** - 쫄깃함 선호도 테스트
-9. ⏳ **food-creamy** - 부드러움 선호도 테스트
-10. ⏳ **food-crunchy** - 아삭함 선호도 테스트
+4. ✅ **food-saltiness** - 짠맛 선호도 테스트
+   - 파일: app/tests/food-saltiness/page.tsx
+   - 파일: app/tests/food-saltiness/test/page.tsx
+   - 파일: app/tests/food-saltiness/test/result/page.tsx
+   - 상태: 완료
+
+5. ✅ **food-bitterness** - 쓴맛 선호도 테스트
+   - 파일: app/tests/food-bitterness/page.tsx
+   - 파일: app/tests/food-bitterness/test/page.tsx
+   - 파일: app/tests/food-bitterness/test/result/page.tsx
+   - 상태: 완료
+
+6. ✅ **food-umami** - 감칠맛 선호도 테스트
+   - 파일: app/tests/food-umami/page.tsx
+   - 파일: app/tests/food-umami/test/page.tsx
+   - 파일: app/tests/food-umami/test/result/page.tsx
+   - 상태: 완료
+
+7. ✅ **food-crispy** - 바삭함 선호도 테스트
+   - 파일: app/tests/food-crispy/page.tsx
+   - 파일: app/tests/food-crispy/test/page.tsx
+   - 파일: app/tests/food-crispy/test/result/page.tsx
+   - 상태: 완료
+
+8. ✅ **food-chewy** - 쫄깃함 선호도 테스트
+   - 파일: app/tests/food-chewy/page.tsx
+   - 파일: app/tests/food-chewy/test/page.tsx
+   - 파일: app/tests/food-chewy/test/result/page.tsx
+   - 상태: 완료
+
+9. ✅ **food-creamy** - 부드러움 선호도 테스트
+   - 파일: app/tests/food-creamy/page.tsx
+   - 파일: app/tests/food-creamy/test/page.tsx
+   - 파일: app/tests/food-creamy/test/result/page.tsx
+   - 상태: 완료
+
+10. ✅ **food-crunchy** - 아삭함 선호도 테스트
+   - 파일: app/tests/food-crunchy/page.tsx
+   - 파일: app/tests/food-crunchy/test/page.tsx
+   - 파일: app/tests/food-crunchy/test/result/page.tsx
+   - 상태: 완료
+
+### 개발 중인 퀴즈 (40/50)
+11. 🔄 **food-portion** - 음식 양 선호도 테스트
 11. ⏳ **food-portion** - 음식 양 선호도 테스트
 12. ⏳ **food-plating** - 음식 접시 배치 스타일
 13. ⏳ **food-garnishing-style** - 음식 장식 선호도
@@ -83,5 +119,5 @@
 - 각 타입별 특징, 추천, 팁, 잘 맞는 타입
 - 공유 기능
 
-## 진행률: 3/50 (6%)
+## 진행률: 10/50 (20%)
 
