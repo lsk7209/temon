@@ -42,6 +42,7 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
           window.temonAnalytics.trackAttemptStarted(testId, attemptId)
         } else {
           // analytics.js가 로드되지 않은 경우 직접 전송
+          // 404 에러는 조용히 무시 (Cloudflare Functions 미배포 시 정상)
           fetch('/api/collect', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -51,7 +52,12 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
               attempt_id: attemptId,
             }),
             keepalive: true,
-          }).catch(console.error)
+          }).catch((error) => {
+            // 404 에러는 조용히 무시
+            if (error?.status !== 404 && error?.name !== 'TypeError') {
+              console.error('Analytics error:', error)
+            }
+          })
         }
 
         // 결과 저장
@@ -66,6 +72,7 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
           window.temonAnalytics.trackAttemptCompleted(attemptId)
         } else {
           // analytics.js가 로드되지 않은 경우 직접 전송
+          // 404 에러는 조용히 무시 (Cloudflare Functions 미배포 시 정상)
           fetch('/api/collect', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -74,7 +81,12 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
               attempt_id: attemptId,
             }),
             keepalive: true,
-          }).catch(console.error)
+          }).catch((error) => {
+            // 404 에러는 조용히 무시
+            if (error?.status !== 404 && error?.name !== 'TypeError') {
+              console.error('Analytics error:', error)
+            }
+          })
         }
 
         // Google Analytics 추적

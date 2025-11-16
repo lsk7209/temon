@@ -98,6 +98,7 @@
     }
 
     // 비동기 전송 (fire and forget)
+    // 404 에러는 조용히 무시 (Cloudflare Functions가 배포되지 않은 경우)
     fetch(COLLECT_ENDPOINT, {
       method: 'POST',
       headers: {
@@ -106,7 +107,10 @@
       body: JSON.stringify(payload),
       keepalive: true,
     }).catch((error) => {
-      console.error('Analytics error:', error)
+      // 404 에러는 조용히 무시 (Functions 미배포 시 정상 동작)
+      if (error.name !== 'TypeError' && error.status !== 404) {
+        console.error('Analytics error:', error)
+      }
     })
   }
 
