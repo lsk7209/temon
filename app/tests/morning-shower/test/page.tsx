@@ -1,0 +1,267 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Progress } from "@/components/ui/progress"
+import { useRouter } from "next/navigation"
+import { useTestResult } from "@/hooks/use-test-result"
+import { trackTestStart, trackTestProgress } from "@/lib/analytics"
+import { convertAnswersToRecord } from "@/lib/utils/test-answers"
+
+const questions = [
+  {
+    id: 1,
+    q: "아침에 샤워할 때",
+    a1: { text: "빠르게 5-10분 효율적으로 한다", tags: ["J", "T"] },
+    a2: { text: "여유롭게 20-30분 힐링 타임으로 한다", tags: ["P", "F"] },
+  },
+  {
+    id: 2,
+    q: "샤워 중에 생각이 떠올랐을 때",
+    a1: { text: "아무 생각 없이 편안하게 즐긴다", tags: ["S", "I"] },
+    a2: { text: "여러 생각과 아이디어가 떠오른다", tags: ["N", "E"] },
+  },
+  {
+    id: 3,
+    q: "샤워 제품을 고를 때",
+    a1: { text: "같은 제품을 고정해서 안정적으로 사용한다", tags: ["S", "J"] },
+    a2: { text: "새로운 제품을 시도해서 다양하게 사용한다", tags: ["N", "P"] },
+  },
+  {
+    id: 4,
+    q: "샤워할 때 물 온도를 조절할 때",
+    a1: { text: "따뜻한 물로 몸을 따뜻하게 한다", tags: ["F"] },
+    a2: { text: "시원한 물로 상쾌하게 한다", tags: ["T"] },
+  },
+  {
+    id: 5,
+    q: "샤워를 마치고 나서 루틴을 정할 때",
+    a1: { text: "정해진 루틴을 체계적으로 한다", tags: ["J", "S"] },
+    a2: { text: "그때그때 유연하게 한다", tags: ["P", "N"] },
+  },
+  {
+    id: 6,
+    q: "샤워 시간을 정할 때",
+    a1: { text: "정해진 시간에 규칙적으로 한다", tags: ["J", "S"] },
+    a2: { text: "그때그때 기분에 따라 다르게 한다", tags: ["P", "N"] },
+  },
+  {
+    id: 7,
+    q: "샤워 중에 노래를 부를 때",
+    a1: { text: "노래를 부르며 즐겁게 한다", tags: ["E", "F"] },
+    a2: { text: "조용히 혼자만의 시간을 즐긴다", tags: ["I", "T"] },
+  },
+  {
+    id: 8,
+    q: "샤워 중에 물을 사용할 때",
+    a1: { text: "물을 아끼며 효율적으로 사용한다", tags: ["T", "J"] },
+    a2: { text: "충분히 사용하며 편안하게 즐긴다", tags: ["F", "P"] },
+  },
+  {
+    id: 9,
+    q: "샤워를 마치고 나서 느낄 때",
+    a1: { text: "상쾌하고 에너지가 충만하다", tags: ["E", "T"] },
+    a2: { text: "편안하고 평온함을 느낀다", tags: ["I", "F"] },
+  },
+  {
+    id: 10,
+    q: "샤워를 할 때 빈도를 생각할 때",
+    a1: { text: "매일 정해진 시간에 한다", tags: ["J", "S"] },
+    a2: { text: "필요할 때 유연하게 한다", tags: ["P", "N"] },
+  },
+  {
+    id: 11,
+    q: "샤워 중에 스트레스를 해소할 때",
+    a1: { text: "샤워로 스트레스를 해소한다", tags: ["F", "E"] },
+    a2: { text: "샤워는 단순히 청결 목적이라고 생각한다", tags: ["T", "I"] },
+  },
+  {
+    id: 12,
+    q: "샤워를 마치고 나서 준비할 때",
+    a1: { text: "빠르게 준비하고 효율적으로 한다", tags: ["E", "J"] },
+    a2: { text: "여유롭게 준비하고 천천히 한다", tags: ["I", "P"] },
+  },
+]
+
+export default function MorningShowerTest() {
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [answers, setAnswers] = useState<string[][]>([])
+  const [selectedChoice, setSelectedChoice] = useState<string | null>(null)
+  const [isProcessing, setIsProcessing] = useState(false)
+  const router = useRouter()
+  const { saveTestResult, isSaving } = useTestResult()
+
+  const progress = ((currentQuestion + 1) / questions.length) * 100
+
+  useEffect(() => {
+    trackTestStart("morning-shower")
+  }, [])
+
+  const handleChoiceSelect = async (tags: string[]) => {
+    if (isProcessing) return
+
+    setIsProcessing(true)
+    setSelectedChoice(tags.join(","))
+
+    const newAnswers = [...answers, tags]
+    setAnswers(newAnswers)
+
+    trackTestProgress("morning-shower", currentQuestion + 1, questions.length)
+
+    if (currentQuestion < questions.length - 1) {
+      setTimeout(() => {
+        setCurrentQuestion(currentQuestion + 1)
+        setSelectedChoice(null)
+        setIsProcessing(false)
+      }, 500)
+    } else {
+      const result = calculateMBTI(newAnswers)
+      const answerRecord = convertAnswersToRecord(newAnswers, questions.length)
+
+      try {
+        const resultId = await saveTestResult({
+          testId: "morning-shower",
+          resultType: result,
+          answers: answerRecord,
+        })
+
+        router.push(`/tests/morning-shower/test/result?type=${result}&id=${resultId}`)
+      } catch (error) {
+        console.error("결과 저장 실패:", error)
+        router.push(`/tests/morning-shower/test/result?type=${result}`)
+      }
+    }
+  }
+
+  const handlePrevious = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1)
+      setAnswers(answers.slice(0, -1))
+      setSelectedChoice(null)
+    }
+  }
+
+  const calculateMBTI = (answers: string[][]): string => {
+    const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 }
+
+    answers.forEach((tags) => {
+      tags.forEach((tag) => {
+        if (tag in scores) {
+          scores[tag as keyof typeof scores]++
+        }
+      })
+    })
+
+    const result =
+      (scores.E >= scores.I ? "E" : "I") +
+      (scores.S >= scores.N ? "S" : "N") +
+      (scores.T >= scores.F ? "T" : "F") +
+      (scores.J >= scores.P ? "J" : "P")
+
+    return result
+  }
+
+  const currentQ = questions[currentQuestion]
+
+  return (
+    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+      <div className="container max-w-2xl mx-auto px-4 py-4">
+        <div className="flex items-center space-x-4">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            {currentQuestion + 1} / {questions.length}
+          </span>
+          <Progress value={progress} className="flex-1" />
+          <div className="text-sm text-muted-foreground">{Math.round(progress)}%</div>
+        </div>
+      </div>
+
+      <main className="container max-w-[720px] mx-auto px-4 py-8">
+        <Card className="border-0 shadow-2xl bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardContent className="p-8">
+            <div className="text-center mb-8">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-2xl">{currentQuestion + 1}</span>
+              </div>
+              <h1 className="text-2xl md:text-3xl font-bold leading-tight text-gray-800 dark:text-gray-200">
+                {currentQ.q}
+              </h1>
+            </div>
+
+            <div className="space-y-4">
+              <button
+                onClick={() => handleChoiceSelect(currentQ.a1.tags)}
+                disabled={isProcessing}
+                className={`w-full p-6 text-left rounded-2xl border-2 transition-all duration-300 transform hover:scale-[1.02] ${
+                  selectedChoice === currentQ.a1.tags.join(",")
+                    ? "border-blue-500 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950 shadow-lg"
+                    : "border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 dark:border-gray-700 dark:hover:border-blue-600 dark:hover:bg-blue-950/50"
+                }`}
+              >
+                <div className="flex items-center space-x-4">
+                  <div
+                    className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                      selectedChoice === currentQ.a1.tags.join(",")
+                        ? "border-blue-500 bg-blue-500"
+                        : "border-gray-300 dark:border-gray-600"
+                    }`}
+                  >
+                    {selectedChoice === currentQ.a1.tags.join(",") && (
+                      <div className="w-3 h-3 rounded-full bg-white" />
+                    )}
+                  </div>
+                  <span className="text-lg font-medium flex-1 text-gray-800 dark:text-gray-200">
+                    {currentQ.a1.text}
+                  </span>
+                </div>
+              </button>
+
+              <button
+                onClick={() => handleChoiceSelect(currentQ.a2.tags)}
+                disabled={isProcessing}
+                className={`w-full p-6 text-left rounded-2xl border-2 transition-all duration-300 transform hover:scale-[1.02] ${
+                  selectedChoice === currentQ.a2.tags.join(",")
+                    ? "border-blue-500 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950 shadow-lg"
+                    : "border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 dark:border-gray-700 dark:hover:border-blue-600 dark:hover:bg-blue-950/50"
+                }`}
+              >
+                <div className="flex items-center space-x-4">
+                  <div
+                    className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                      selectedChoice === currentQ.a2.tags.join(",")
+                        ? "border-blue-500 bg-blue-500"
+                        : "border-gray-300 dark:border-gray-600"
+                    }`}
+                  >
+                    {selectedChoice === currentQ.a2.tags.join(",") && (
+                      <div className="w-3 h-3 rounded-full bg-white" />
+                    )}
+                  </div>
+                  <span className="text-lg font-medium flex-1 text-gray-800 dark:text-gray-200">
+                    {currentQ.a2.text}
+                  </span>
+                </div>
+              </button>
+            </div>
+
+            <div className="flex justify-between mt-8">
+              <Button
+                variant="outline"
+                onClick={handlePrevious}
+                disabled={currentQuestion === 0}
+                className="flex items-center space-x-2 bg-white/50 dark:bg-gray-800/50"
+              >
+                <span>이전</span>
+              </Button>
+
+              <div className="flex items-center text-sm text-muted-foreground">
+                <span>답변을 선택하면 자동으로 다음으로 이동합니다</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </main>
+    </div>
+  )
+}
+

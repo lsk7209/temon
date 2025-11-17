@@ -69,6 +69,15 @@ export const quizColorSchemes: Record<string, QuizColorClasses> = {
     radioSelected: "border-amber-500 bg-amber-500",
     questionNumberBg: "bg-gradient-to-br from-amber-400 to-yellow-500",
   },
+  "blue-cyan": {
+    selectedBorder: "border-blue-500",
+    selectedBg: "bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950",
+    hoverBorder: "hover:border-blue-300 dark:hover:border-blue-600",
+    hoverBg: "hover:bg-blue-50/50 dark:hover:bg-blue-950/50",
+    focusRing: "focus-visible:ring-blue-500",
+    radioSelected: "border-blue-500 bg-blue-500",
+    questionNumberBg: "bg-gradient-to-br from-blue-400 to-cyan-500",
+  },
 }
 
 export function getQuizColorScheme(schemeName: string): QuizColorClasses {
