@@ -1,15 +1,17 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { useRouter } from "next/navigation"
-import { useTestResult } from "@/hooks/use-test-result"
-import { trackTestStart, trackTestProgress } from "@/lib/analytics"
-import { convertAnswersToRecord } from "@/lib/utils/test-answers"
+/**
+ * Component: MorningAlarmTest
+ * 아침 알람 테스트 페이지
+ * @example <MorningAlarmTest />
+ */
 
-const questions = [
+import { useQuizLogic } from "@/hooks/use-quiz-logic"
+import { QuizContainer } from "@/components/quiz/quiz-container"
+import { getQuizColorScheme } from "@/lib/utils/quiz-color-schemes"
+import type { QuizQuestion } from "@/hooks/use-quiz-logic"
+
+const questions: QuizQuestion[] = [
   {
     id: 1,
     q: "아침 알람이 울렸을 때",
@@ -85,186 +87,24 @@ const questions = [
 ]
 
 export default function MorningAlarmTest() {
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [answers, setAnswers] = useState<string[][]>([])
-  const [selectedChoice, setSelectedChoice] = useState<string | null>(null)
-  const [isProcessing, setIsProcessing] = useState(false)
-  const router = useRouter()
-  const { saveTestResult, isSaving } = useTestResult()
-
-  const progress = ((currentQuestion + 1) / questions.length) * 100
-
-  useEffect(() => {
-    trackTestStart("morning-alarm")
-  }, [])
-
-  const handleChoiceSelect = async (tags: string[]) => {
-    if (isProcessing) return
-
-    setIsProcessing(true)
-    setSelectedChoice(tags.join(","))
-
-    const newAnswers = [...answers, tags]
-    setAnswers(newAnswers)
-
-    trackTestProgress("morning-alarm", currentQuestion + 1, questions.length)
-
-    if (currentQuestion < questions.length - 1) {
-      setTimeout(() => {
-        setCurrentQuestion(currentQuestion + 1)
-        setSelectedChoice(null)
-        setIsProcessing(false)
-      }, 500)
-    } else {
-      // 마지막 질문
-      const result = calculateMBTI(newAnswers)
-      const answerRecord = convertAnswersToRecord(newAnswers, questions.length)
-
-      try {
-        const resultId = await saveTestResult({
-          testId: "morning-alarm",
-          resultType: result,
-          answers: answerRecord,
-        })
-
-        router.push(`/tests/morning-alarm/test/result?type=${result}&id=${resultId}`)
-      } catch (error) {
-        console.error("결과 저장 실패:", error)
-        router.push(`/tests/morning-alarm/test/result?type=${result}`)
-      }
-    }
-  }
-
-  const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1)
-      setAnswers(answers.slice(0, -1))
-      setSelectedChoice(null)
-    }
-  }
-
-  const calculateMBTI = (answers: string[][]): string => {
-    const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 }
-
-    answers.forEach((tags) => {
-      tags.forEach((tag) => {
-        if (tag in scores) {
-          scores[tag as keyof typeof scores]++
-        }
-      })
-    })
-
-    const result =
-      (scores.E >= scores.I ? "E" : "I") +
-      (scores.S >= scores.N ? "S" : "N") +
-      (scores.T >= scores.F ? "T" : "F") +
-      (scores.J >= scores.P ? "J" : "P")
-
-    return result
-  }
-
-  const currentQ = questions[currentQuestion]
+  const quizLogic = useQuizLogic({
+    testId: "morning-alarm",
+    questions,
+    resultPath: "/tests/morning-alarm/test/result",
+  })
 
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
-      {/* Progress Bar */}
-      <div className="container max-w-2xl mx-auto px-4 py-4">
-        <div className="flex items-center space-x-4">
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            {currentQuestion + 1} / {questions.length}
-          </span>
-          <Progress value={progress} className="flex-1" />
-          <div className="text-sm text-muted-foreground">{Math.round(progress)}%</div>
-        </div>
-      </div>
-
-      {/* Question Content */}
-      <main className="container max-w-[720px] mx-auto px-4 py-8">
-        <Card className="border-0 shadow-2xl bg-white/90 dark:bg-gray-800/90 backdrop-blur">
-          <CardContent className="p-8">
-            <div className="text-center mb-8">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-2xl">{currentQuestion + 1}</span>
-              </div>
-              <h1 className="text-2xl md:text-3xl font-bold leading-tight text-gray-800 dark:text-gray-200">
-                {currentQ.q}
-              </h1>
-            </div>
-
-            <div className="space-y-4">
-              <button
-                onClick={() => handleChoiceSelect(currentQ.a1.tags)}
-                disabled={isProcessing}
-                className={`w-full p-6 text-left rounded-2xl border-2 transition-all duration-300 transform hover:scale-[1.02] ${
-                  selectedChoice === currentQ.a1.tags.join(",")
-                    ? "border-orange-500 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950 dark:to-red-950 shadow-lg"
-                    : "border-gray-200 hover:border-orange-300 hover:bg-orange-50/50 dark:border-gray-700 dark:hover:border-orange-600 dark:hover:bg-orange-950/50"
-                }`}
-              >
-                <div className="flex items-center space-x-4">
-                  <div
-                    className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
-                      selectedChoice === currentQ.a1.tags.join(",")
-                        ? "border-orange-500 bg-orange-500"
-                        : "border-gray-300 dark:border-gray-600"
-                    }`}
-                  >
-                    {selectedChoice === currentQ.a1.tags.join(",") && (
-                      <div className="w-3 h-3 rounded-full bg-white" />
-                    )}
-                  </div>
-                  <span className="text-lg font-medium flex-1 text-gray-800 dark:text-gray-200">
-                    {currentQ.a1.text}
-                  </span>
-                </div>
-              </button>
-
-              <button
-                onClick={() => handleChoiceSelect(currentQ.a2.tags)}
-                disabled={isProcessing}
-                className={`w-full p-6 text-left rounded-2xl border-2 transition-all duration-300 transform hover:scale-[1.02] ${
-                  selectedChoice === currentQ.a2.tags.join(",")
-                    ? "border-orange-500 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950 dark:to-red-950 shadow-lg"
-                    : "border-gray-200 hover:border-orange-300 hover:bg-orange-50/50 dark:border-gray-700 dark:hover:border-orange-600 dark:hover:bg-orange-950/50"
-                }`}
-              >
-                <div className="flex items-center space-x-4">
-                  <div
-                    className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
-                      selectedChoice === currentQ.a2.tags.join(",")
-                        ? "border-orange-500 bg-orange-500"
-                        : "border-gray-300 dark:border-gray-600"
-                    }`}
-                  >
-                    {selectedChoice === currentQ.a2.tags.join(",") && (
-                      <div className="w-3 h-3 rounded-full bg-white" />
-                    )}
-                  </div>
-                  <span className="text-lg font-medium flex-1 text-gray-800 dark:text-gray-200">
-                    {currentQ.a2.text}
-                  </span>
-                </div>
-              </button>
-            </div>
-
-            <div className="flex justify-between mt-8">
-              <Button
-                variant="outline"
-                onClick={handlePrevious}
-                disabled={currentQuestion === 0}
-                className="flex items-center space-x-2 bg-white/50 dark:bg-gray-800/50"
-              >
-                <span>이전</span>
-              </Button>
-
-              <div className="flex items-center text-sm text-muted-foreground">
-                <span>답변을 선택하면 자동으로 다음으로 이동합니다</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </main>
-    </div>
+    <QuizContainer
+      currentQuestion={quizLogic.currentQuestion}
+      currentQ={quizLogic.currentQ}
+      selectedChoice={quizLogic.selectedChoice}
+      isProcessing={quizLogic.isProcessing}
+      isSaving={quizLogic.isSaving}
+      progress={quizLogic.progress}
+      questionsLength={quizLogic.questionsLength}
+      colorClasses={getQuizColorScheme("orange-red")}
+      onChoiceSelect={quizLogic.handleChoiceSelect}
+      onPrevious={quizLogic.handlePrevious}
+    />
   )
 }
-

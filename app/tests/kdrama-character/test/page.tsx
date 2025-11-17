@@ -1,15 +1,17 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { useRouter } from "next/navigation"
-import { useTestResult } from "@/hooks/use-test-result"
-import { trackTestStart, trackTestProgress } from "@/lib/analytics"
-import { convertAnswersToRecord } from "@/lib/utils/test-answers"
+/**
+ * Component: KdramaCharacterTest
+ * 드라마 캐릭터 테스트 페이지
+ * @example <KdramaCharacterTest />
+ */
 
-const questions = [
+import { useQuizLogic } from "@/hooks/use-quiz-logic"
+import { QuizContainer } from "@/components/quiz/quiz-container"
+import { getQuizColorScheme } from "@/lib/utils/quiz-color-schemes"
+import type { QuizQuestion } from "@/hooks/use-quiz-logic"
+
+const questions: QuizQuestion[] = [
   {
     id: 1,
     q: "새로운 직장에서 첫날",
@@ -84,156 +86,70 @@ const questions = [
   },
 ]
 
-export default function KdramaCharacterTest() {
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [answers, setAnswers] = useState<string[][]>([])
-  const [selectedChoice, setSelectedChoice] = useState<string>("")
-  const router = useRouter()
-  const { saveResult, isSaving } = useTestResult({
-    testId: "kdrama-character",
-    onSuccess: (resultId, resultType) => {
-      router.push(`/tests/kdrama-character/test/result?type=${resultType}&id=${resultId}`)
-    },
-    onError: (error, resultType) => {
-      console.error("결과 저장 실패:", error)
-      router.push(`/tests/kdrama-character/test/result?type=${resultType}`)
-    },
+// 커스텀 MBTI 계산 함수 (마지막 4개 답변에 1.5x 가중치 적용)
+function calculateMBTIResult(answers: string[][]): string {
+  const scores: Record<string, number> = {
+    E: 0,
+    I: 0,
+    S: 0,
+    N: 0,
+    T: 0,
+    F: 0,
+    J: 0,
+    P: 0,
+  }
+
+  // 마지막 4개 답변에 1.5x 가중치 적용
+  const lastFourStartIndex = Math.max(0, answers.length - 4)
+  answers.forEach((answerTags, index) => {
+    const weight = index >= lastFourStartIndex ? 1.5 : 1
+    answerTags.forEach((tag) => {
+      if (scores.hasOwnProperty(tag)) {
+        scores[tag] += weight
+      }
+    })
   })
 
-  useEffect(() => {
-    trackTestStart("kdrama-character")
-  }, [])
+  // MBTI 타입 결정
+  const eScore = scores.E
+  const iScore = scores.I
+  const sScore = scores.S
+  const nScore = scores.N
+  const tScore = scores.T
+  const fScore = scores.F
+  const jScore = scores.J
+  const pScore = scores.P
 
-  // 진행률 추적
-  useEffect(() => {
-    if (currentQuestion > 0) {
-      trackTestProgress("kdrama-character", currentQuestion + 1, questions.length)
-    }
-  }, [currentQuestion])
+  // 동점 처리: 마지막 답변의 태그 우선
+  const lastAnswer = answers[answers.length - 1] || []
+  const firstLetter = eScore > iScore ? "E" : eScore < iScore ? "I" : lastAnswer.includes("E") ? "E" : "I"
+  const secondLetter = sScore > nScore ? "S" : sScore < nScore ? "N" : lastAnswer.includes("S") ? "S" : "N"
+  const thirdLetter = tScore > fScore ? "T" : tScore < fScore ? "F" : lastAnswer.includes("T") ? "T" : "F"
+  const fourthLetter = jScore > pScore ? "J" : jScore < pScore ? "P" : lastAnswer.includes("J") ? "J" : "P"
 
-  const handleAnswer = (choice: string[]) => {
-    const newAnswers = [...answers, choice]
-    setAnswers(newAnswers)
-    setSelectedChoice("")
-
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1)
-    } else {
-      // Calculate result
-      const resultType = calculateMBTIResult(newAnswers)
-      const answersRecord = convertAnswersToRecord(newAnswers)
-      saveResult(resultType, answersRecord)
-    }
-  }
-
-  const calculateMBTIResult = (answers: string[][]): string => {
-    const scores: Record<string, number> = {
-      E: 0,
-      I: 0,
-      S: 0,
-      N: 0,
-      T: 0,
-      F: 0,
-      J: 0,
-      P: 0,
-    }
-
-    // Sum up tags from all answers (last 4 answers get 1.5x weight for tie-breaking)
-    const lastFourStartIndex = Math.max(0, answers.length - 4)
-    answers.forEach((answerTags, index) => {
-      const weight = index >= lastFourStartIndex ? 1.5 : 1
-      answerTags.forEach((tag) => {
-        if (scores.hasOwnProperty(tag)) {
-          scores[tag] += weight
-        }
-      })
-    })
-
-    // Determine MBTI type
-    const eScore = scores.E
-    const iScore = scores.I
-    const sScore = scores.S
-    const nScore = scores.N
-    const tScore = scores.T
-    const fScore = scores.F
-    const jScore = scores.J
-    const pScore = scores.P
-
-    // For ties, prefer the last answer's tag
-    let firstLetter = eScore > iScore ? "E" : eScore < iScore ? "I" : answers[answers.length - 1]?.includes("E") ? "E" : "I"
-    let secondLetter = sScore > nScore ? "S" : sScore < nScore ? "N" : answers[answers.length - 1]?.includes("S") ? "S" : "N"
-    let thirdLetter = tScore > fScore ? "T" : tScore < fScore ? "F" : answers[answers.length - 1]?.includes("T") ? "T" : "F"
-    let fourthLetter = jScore > pScore ? "J" : jScore < pScore ? "P" : answers[answers.length - 1]?.includes("J") ? "J" : "P"
-
-    return firstLetter + secondLetter + thirdLetter + fourthLetter
-  }
-
-  const currentQ = questions[currentQuestion]
-  const progress = ((currentQuestion + 1) / questions.length) * 100
-
-  return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
-      {/* Progress Bar */}
-      <div className="sticky top-0 z-10 w-full bg-white/80 backdrop-blur-sm border-b border-gray-200 dark:bg-gray-900/80 dark:border-gray-800">
-        <div className="max-w-[720px] mx-auto px-4 py-3">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              {currentQuestion + 1} / {questions.length}
-            </span>
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{Math.round(progress)}%</span>
-          </div>
-          <Progress value={progress} className="h-2" />
-        </div>
-      </div>
-
-      <main className="container max-w-[720px] mx-auto px-4 py-8">
-        <Card className="border-0 shadow-xl">
-          <CardContent className="p-6 md:p-8">
-            <div className="space-y-8">
-              <div className="text-center space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">{currentQ.q}</h2>
-              </div>
-
-              <div className="space-y-4">
-                <Button
-                  variant={selectedChoice === "a1" ? "default" : "outline"}
-                  size="lg"
-                  className="w-full h-auto py-6 px-6 text-left justify-start text-lg"
-                  onClick={() => {
-                    setSelectedChoice("a1")
-                    setTimeout(() => handleAnswer(currentQ.a1.tags), 300)
-                  }}
-                  disabled={isSaving}
-                >
-                  <span className="mr-3">A</span>
-                  {currentQ.a1.text}
-                </Button>
-
-                <Button
-                  variant={selectedChoice === "a2" ? "default" : "outline"}
-                  size="lg"
-                  className="w-full h-auto py-6 px-6 text-left justify-start text-lg"
-                  onClick={() => {
-                    setSelectedChoice("a2")
-                    setTimeout(() => handleAnswer(currentQ.a2.tags), 300)
-                  }}
-                  disabled={isSaving}
-                >
-                  <span className="mr-3">B</span>
-                  {currentQ.a2.text}
-                </Button>
-              </div>
-
-              {isSaving && (
-                <div className="text-center text-muted-foreground">
-                  <p>결과를 분석하고 있어요...</p>
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      </main>
-    </div>
-  )
+  return firstLetter + secondLetter + thirdLetter + fourthLetter
 }
 
+export default function KdramaCharacterTest() {
+  const quizLogic = useQuizLogic({
+    testId: "kdrama-character",
+    questions,
+    resultPath: "/tests/kdrama-character/test/result",
+    calculateResult: calculateMBTIResult,
+  })
+
+  return (
+    <QuizContainer
+      currentQuestion={quizLogic.currentQuestion}
+      currentQ={quizLogic.currentQ}
+      selectedChoice={quizLogic.selectedChoice}
+      isProcessing={quizLogic.isProcessing}
+      isSaving={quizLogic.isSaving}
+      progress={quizLogic.progress}
+      questionsLength={quizLogic.questionsLength}
+      colorClasses={getQuizColorScheme("blue-green")}
+      onChoiceSelect={quizLogic.handleChoiceSelect}
+      onPrevious={quizLogic.handlePrevious}
+    />
+  )
+}

@@ -1,16 +1,17 @@
 "use client"
 
-import { useState, useEffect, useMemo, useCallback } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { useRouter } from "next/navigation"
-import { useTestResult } from "@/hooks/use-test-result"
-import { trackTestStart, trackTestProgress } from "@/lib/analytics"
-import { convertAnswersToRecord } from "@/lib/utils/test-answers"
-import { calculateMBTI } from "@/lib/utils/mbti-calculator"
+/**
+ * Component: StoreChoiceTest
+ * 매장 선택 테스트 페이지
+ * @example <StoreChoiceTest />
+ */
 
-const questions = [
+import { useQuizLogic } from "@/hooks/use-quiz-logic"
+import { QuizContainer } from "@/components/quiz/quiz-container"
+import { getQuizColorScheme } from "@/lib/utils/quiz-color-schemes"
+import type { QuizQuestion } from "@/hooks/use-quiz-logic"
+
+const questions: QuizQuestion[] = [
   {
     id: 1,
     q: "새로운 매장을 발견했을 때",
@@ -86,125 +87,24 @@ const questions = [
 ]
 
 export default function StoreChoiceTest() {
-  const router = useRouter()
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [answers, setAnswers] = useState<string[][]>([])
-  const [selectedChoice, setSelectedChoice] = useState<string>("")
-  const [isProcessing, setIsProcessing] = useState(false)
-  const { saveResult, isSaving } = useTestResult({
+  const quizLogic = useQuizLogic({
     testId: "store-choice",
-    onSuccess: (resultId, resultType) => {
-      router.push(`/tests/store-choice/test/result?type=${resultType}&id=${resultId}`)
-    },
-    onError: (error, resultType) => {
-      console.error("결과 저장 실패:", error)
-      router.push(`/tests/store-choice/test/result?type=${resultType}`)
-    },
+    questions,
+    resultPath: "/tests/store-choice/test/result",
   })
 
-  useEffect(() => {
-    trackTestStart("store-choice")
-  }, [])
-
-  const progress = useMemo(
-    () => ((currentQuestion + 1) / questions.length) * 100,
-    [currentQuestion, questions.length]
-  )
-
-  const handleChoiceSelect = useCallback(
-    async (tags: string[]) => {
-      if (isProcessing || isSaving) return
-
-      setIsProcessing(true)
-      setSelectedChoice(tags.join(","))
-      const currentQuestionIndex = currentQuestion
-
-      setTimeout(async () => {
-        const newAnswers = [...answers, tags]
-        setAnswers(newAnswers)
-
-        if (currentQuestionIndex < questions.length - 1) {
-          setCurrentQuestion(currentQuestionIndex + 1)
-          setSelectedChoice("")
-          setIsProcessing(false)
-        } else {
-          const mbti = calculateMBTI(newAnswers)
-          await saveResult(mbti, convertAnswersToRecord(newAnswers))
-          setIsProcessing(false)
-        }
-      }, 500)
-    },
-    [currentQuestion, answers, isProcessing, isSaving, questions.length, saveResult]
-  )
-
-  const handlePrevious = useCallback(() => {
-    if (isProcessing || isSaving) return
-
-    if (currentQuestion > 0) {
-      setCurrentQuestion((prev) => prev - 1)
-      setAnswers((prev) => prev.slice(0, prev.length - 1))
-      setSelectedChoice("")
-    } else {
-      router.push("/tests/store-choice")
-    }
-  }, [currentQuestion, isProcessing, isSaving, router])
-
-  const currentQ = questions[currentQuestion]
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col items-center justify-center p-4">
-      <Card className="w-full max-w-2xl mx-auto shadow-xl rounded-lg p-6 md:p-8 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
-        <CardContent className="p-0">
-          <div className="text-center mb-6">
-            <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-              {currentQuestion + 1} / {questions.length}
-            </p>
-            <Progress value={progress} className="w-full mt-2 h-2 bg-purple-200 dark:bg-gray-600" indicatorClassName="bg-gradient-to-r from-purple-400 via-pink-500 to-rose-500" />
-          </div>
-
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center leading-relaxed">
-            {currentQ.q}
-          </h2>
-
-          <div className="space-y-4">
-            {[currentQ.a1, currentQ.a2].map((choice, index) => (
-              <Button
-                key={index}
-                className={`w-full h-auto py-4 px-6 text-lg md:text-xl rounded-xl transition-all duration-200 ease-in-out
-                  ${selectedChoice === choice.tags.join(",")
-                    ? "bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 text-white shadow-lg transform scale-105"
-                    : "bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
-                  }
-                  ${isProcessing || isSaving ? "opacity-70 cursor-not-allowed" : "hover:shadow-md hover:-translate-y-1"}`}
-                onClick={() => handleChoiceSelect(choice.tags)}
-                disabled={isProcessing || isSaving}
-                aria-label={`Question ${currentQuestion + 1}, Choice ${index + 1}: ${choice.text}`}
-                aria-pressed={selectedChoice === choice.tags.join(",")}
-                role="radio"
-              >
-                {choice.text}
-              </Button>
-            ))}
-          </div>
-
-          <div className="mt-8 flex justify-between">
-            <Button
-              variant="outline"
-              onClick={handlePrevious}
-              disabled={isProcessing || isSaving}
-              className="text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700"
-            >
-              이전
-            </Button>
-            {isSaving && (
-              <p className="text-purple-600 dark:text-purple-400 font-semibold animate-pulse">
-                결과 분석 중...
-              </p>
-            )}
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+    <QuizContainer
+      currentQuestion={quizLogic.currentQuestion}
+      currentQ={quizLogic.currentQ}
+      selectedChoice={quizLogic.selectedChoice}
+      isProcessing={quizLogic.isProcessing}
+      isSaving={quizLogic.isSaving}
+      progress={quizLogic.progress}
+      questionsLength={quizLogic.questionsLength}
+      colorClasses={getQuizColorScheme("rose-pink-purple")}
+      onChoiceSelect={quizLogic.handleChoiceSelect}
+      onPrevious={quizLogic.handlePrevious}
+    />
   )
 }
-
