@@ -5,38 +5,30 @@ const nextConfig = {
     ignoreDuringBuilds: process.env.NODE_ENV === 'development',
   },
   typescript: {
-    ignoreBuildErrors: false, // Functions 타입 체크를 위해 활성화
+    ignoreBuildErrors: false,
   },
+  // Vercel은 이미지 최적화를 자동으로 지원
   images: {
-    unoptimized: true, // Cloudflare Pages 호환성
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.temon.kr',
+      },
+    ],
   },
-  // Cloudflare Pages 호환성
-  // Next.js 14를 Cloudflare Pages에 배포하려면 정적 사이트 생성 필요
-  output: 'export', // 정적 사이트 생성 (SSG)
-  // API 라우트는 Cloudflare Pages Functions로 처리
+  // Vercel은 서버 사이드 렌더링 지원 (output: 'export' 제거)
+  // API 라우트는 Next.js API Routes 사용 가능
   
-  // 빌드 최적화: webpack 캐시 제외 (Cloudflare Pages 25MB 제한)
+  // 빌드 최적화
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      // 클라이언트 빌드에서 캐시 최소화
       config.optimization = {
         ...config.optimization,
         minimize: true,
       }
     }
     return config
-  },
-  
-  // 빌드 출력 최적화
-  experimental: {
-    outputFileTracingExcludes: {
-      '*': [
-        'node_modules/@swc/core-linux-x64-gnu',
-        'node_modules/@swc/core-linux-x64-musl',
-        'node_modules/@esbuild/linux-x64',
-        'node_modules/webpack',
-      ],
-    },
   },
 }
 
