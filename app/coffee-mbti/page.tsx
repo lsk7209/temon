@@ -1,28 +1,49 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import Script from "next/script"
+import { generateQuizSchema } from "@/lib/seo-utils"
+
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.temon.kr"
 
 export const metadata: Metadata = {
   title: "커피 MBTI - 당신의 커피 취향으로 알아보는 성격 유형 | 테몬",
   description:
-    "좋아하는 커피로 알아보는 나의 성격! 16가지 커피 유형 중 당신은 어떤 커피일까요? 재미있는 커피 MBTI 테스트를 지금 시작해보세요.",
+    "커피 MBTI 테스트로 알아보는 나의 성격! 좋아하는 커피로 16가지 커피 유형 중 당신은 어떤 커피일까요? 재미있는 커피 MBTI 테스트를 지금 시작해보세요.",
   keywords: "커피 MBTI, 커피 테스트, 성격 테스트, MBTI, 커피 유형, 심리테스트",
+  alternates: {
+    canonical: "/coffee-mbti",
+  },
   openGraph: {
     title: "커피 MBTI - 당신의 커피 취향으로 알아보는 성격 유형",
     description: "좋아하는 커피로 알아보는 나의 성격! 16가지 커피 유형 중 당신은 어떤 커피일까요?",
     type: "website",
-    url: "https://temon.vercel.app/coffee-mbti",
+    url: "https://www.temon.kr/coffee-mbti",
   },
 }
 
 export default function CoffeeMBTI() {
+  const quizSchema = generateQuizSchema({
+    name: "커피 MBTI 테스트",
+    description: "좋아하는 커피로 알아보는 나의 성격! 16가지 커피 유형 중 당신은 어떤 커피일까요?",
+    url: `${baseUrl}/coffee-mbti`,
+    questionCount: 12,
+    duration: "PT3M",
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
+    <>
+      <Script
+        id="coffee-mbti-quiz-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: quizSchema }}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">☕ 커피 MBTI</h1>
-            <p className="text-xl text-gray-600 mb-8">당신의 커피 취향으로 알아보는 성격 유형</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">☕ 커피 MBTI 테스트</h1>
+            <p className="text-xl text-gray-600 mb-8">커피 취향으로 알아보는 나의 성격 유형</p>
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
@@ -67,5 +88,6 @@ export default function CoffeeMBTI() {
         </div>
       </div>
     </div>
+    </>
   )
 }

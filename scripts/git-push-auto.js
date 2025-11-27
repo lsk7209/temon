@@ -36,9 +36,16 @@ function main() {
   console.log('\n📝 변경된 파일:');
   execCommand('git status -s');
 
-  // 3. 자동 커밋 메시지 생성 (타임스탬프 포함)
+  // 3. 자동 커밋 메시지 생성 (변경된 파일 기반)
   const timestamp = new Date().toLocaleString('ko-KR');
-  const commitMessage = `개발 완료 - ${timestamp}`;
+  
+  // 변경된 파일 목록 가져오기
+  const changedFiles = execSync('git diff --cached --name-only', { encoding: 'utf8' }).trim().split('\n').filter(Boolean);
+  const changedFilesSummary = changedFiles.length > 0 
+    ? `\n\n변경된 파일: ${changedFiles.length}개` 
+    : '';
+  
+  const commitMessage = `SEO 개선 및 sitemap.xml 생성 완료 - ${timestamp}${changedFilesSummary}`;
 
   // 4. 모든 변경사항 추가
   console.log('\n📦 변경사항 스테이징 중...');

@@ -8,13 +8,16 @@ import { Trophy, Users, Clock, Sparkles } from "lucide-react"
 export const metadata: Metadata = {
   title: "NTRP 테스트 - 정확한 테니스 실력 레벨 측정 | 테몬",
   description:
-    "당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 1.0부터 7.0까지 정확한 레벨을 알아보는 테스트입니다.",
+    "NTRP 테스트로 당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 1.0부터 7.0까지 정확한 레벨을 알아보는 테스트입니다.",
   keywords: "NTRP, 테니스 실력, 테니스 레벨, 테니스 테스트, 스포츠 테스트",
+  alternates: {
+    canonical: "/ntrp-test",
+  },
   openGraph: {
     title: "NTRP 테스트 - 정확한 테니스 실력 레벨 측정",
     description: "당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 정확한 레벨을 알아보는 테스트입니다.",
     type: "website",
-    url: "https://temon.vercel.app/ntrp-test",
+    url: "https://www.temon.kr/ntrp-test",
   },
 }
 

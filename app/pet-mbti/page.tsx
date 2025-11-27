@@ -1,8 +1,25 @@
+import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Heart, Sparkles } from "lucide-react"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "반려동물 MBTI - 나에게 맞는 펫 찾기 테스트 | 테몬",
+  description:
+    "반려동물 MBTI 테스트로 나에게 맞는 펫을 찾아보세요! 당신의 라이프스타일에 딱 맞는 펫은 누구일까요? 16가지 찰떡 펫 추천 테스트를 지금 시작해보세요.",
+  keywords: "반려동물 MBTI, 펫 테스트, 반려동물 테스트, 성격 테스트, MBTI, 심리테스트",
+  alternates: {
+    canonical: "/pet-mbti",
+  },
+  openGraph: {
+    title: "반려동물 MBTI - 나에게 맞는 펫 찾기 테스트",
+    description: "당신의 라이프스타일에 딱 맞는 펫은 누구일까요? 16가지 찰떡 펫 추천 테스트",
+    type: "website",
+    url: "https://www.temon.kr/pet-mbti",
+  },
+}
 
 export default function PetMBTIIntro() {
   return (

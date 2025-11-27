@@ -1,8 +1,25 @@
+import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, BookOpen, Sparkles } from "lucide-react"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "공부 MBTI - 학습 습관으로 알아보는 성격 유형 | 테몬",
+  description:
+    "공부 MBTI 테스트로 알아보는 나의 학습 DNA! 형광펜 덕후부터 올빵 벼락치기까지, 공부 습관에도 MBTI가 있다면? 5분 만에 내 학습 캐릭터를 확인하는 재미있는 테스트를 지금 시작해보세요.",
+  keywords: "공부 MBTI, 학습 습관 테스트, 공부 스타일 테스트, 성격 테스트, MBTI, 심리테스트",
+  alternates: {
+    canonical: "/study-mbti",
+  },
+  openGraph: {
+    title: "공부 MBTI - 학습 습관으로 알아보는 성격 유형",
+    description: "형광펜 덕후부터 올빵 벼락치기까지, 5분 만에 내 학습 DNA 확인하기",
+    type: "website",
+    url: "https://www.temon.kr/study-mbti",
+  },
+}
 
 export default function StudyMBTIIntro() {
   return (

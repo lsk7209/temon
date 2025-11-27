@@ -5,13 +5,16 @@ import { Button } from "@/components/ui/button"
 export const metadata: Metadata = {
   title: "백설공주 에겐테토 테스트 - 나는 누구일까? | 테몬",
   description:
-    "백설공주와 일곱 난장이 이야기로 알아보는 나의 성향! 감정파 에겐일까? 효율파 테토일까? 재미있는 병맛 테스트를 지금 시작해보세요.",
+    "백설공주 에겐테토 테스트로 알아보는 나의 성향! 백설공주와 일곱 난장이 이야기로 감정파 에겐일까? 효율파 테토일까? 재미있는 병맛 테스트를 지금 시작해보세요.",
   keywords: "백설공주, 에겐테토, 성격 테스트, MBTI, 병맛 테스트, 심리테스트",
+  alternates: {
+    canonical: "/snowwhite-mbti",
+  },
   openGraph: {
     title: "백설공주 에겐테토 테스트 - 나는 누구일까?",
     description: "백설공주와 일곱 난장이 이야기로 알아보는 나의 성향! 감정파 에겐일까? 효율파 테토일까?",
     type: "website",
-    url: "https://temon.vercel.app/snowwhite-mbti",
+    url: "https://www.temon.kr/snowwhite-mbti",
   },
 }
 

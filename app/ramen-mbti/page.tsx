@@ -5,13 +5,16 @@ import { Button } from "@/components/ui/button"
 export const metadata: Metadata = {
   title: "라면 MBTI - 당신의 라면 취향으로 알아보는 성격 유형 | 테몬",
   description:
-    "좋아하는 라면으로 알아보는 나의 성격! 16가지 라면 유형 중 당신은 어떤 라면일까요? 재미있는 라면 MBTI 테스트를 지금 시작해보세요.",
+    "라면 MBTI 테스트로 알아보는 나의 성격! 좋아하는 라면으로 16가지 라면 유형 중 당신은 어떤 라면일까요? 재미있는 라면 MBTI 테스트를 지금 시작해보세요.",
   keywords: "라면 MBTI, 라면 테스트, 성격 테스트, MBTI, 라면 유형, 심리테스트",
+  alternates: {
+    canonical: "/ramen-mbti",
+  },
   openGraph: {
     title: "라면 MBTI - 당신의 라면 취향으로 알아보는 성격 유형",
     description: "좋아하는 라면으로 알아보는 나의 성격! 16가지 라면 유형 중 당신은 어떤 라면일까요?",
     type: "website",
-    url: "https://temon.vercel.app/ramen-mbti",
+    url: "https://www.temon.kr/ramen-mbti",
   },
 }
 

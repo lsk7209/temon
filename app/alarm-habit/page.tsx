@@ -8,13 +8,16 @@ import { Clock, Users, Sparkles } from "lucide-react"
 export const metadata: Metadata = {
   title: "알람 습관 MBTI - 기상 패턴으로 보는 당신의 성격 | 테몬",
   description:
-    "알람 끄는 방식으로 알아보는 나의 성격! 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요? 재미있는 알람 습관 테스트를 지금 시작해보세요.",
+    "알람 습관 MBTI 테스트로 알아보는 나의 성격! 알람 끄는 방식으로 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요? 재미있는 알람 습관 테스트를 지금 시작해보세요.",
   keywords: "알람 습관, 기상 패턴, 성격 테스트, MBTI, 알람 테스트, 심리테스트",
+  alternates: {
+    canonical: "/alarm-habit",
+  },
   openGraph: {
     title: "알람 습관 MBTI - 기상 패턴으로 보는 당신의 성격",
     description: "알람 끄는 방식으로 알아보는 나의 성격! 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요?",
     type: "website",
-    url: "https://temon.vercel.app/alarm-habit",
+    url: "https://www.temon.kr/alarm-habit",
   },
 }
 
