@@ -3,13 +3,17 @@
  * POST /api/results - 결과 저장
  * GET /api/results?id={id} - 결과 조회
  * 
- * 주의: output: 'export' 사용 시 API 라우트는 빌드에서 제외됩니다.
- * 실제 API는 Cloudflare Pages Functions에서 처리됩니다.
+ * Vercel Edge Runtime 최적화
  */
 
-// export const dynamic = 'force-dynamic' // output: 'export'와 호환되지 않음
-// export const revalidate = 0 // 캐싱 비활성화
-// export const runtime = 'edge' // Edge Runtime 사용 (Cloudflare 호환)
+// Vercel Edge Runtime 사용 (최저 지연시간)
+export const runtime = 'edge'
+
+// 동적 렌더링 (캐싱 없음)
+export const dynamic = 'force-dynamic'
+
+// 캐싱 비활성화 (실시간 데이터)
+export const revalidate = 0
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getDatabase } from '@/lib/db/client'

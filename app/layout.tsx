@@ -9,6 +9,8 @@ import { Suspense } from "react"
 import AdminHeadScripts from "@/components/admin-head-scripts"
 import AdSenseScript from "@/components/adsense-script"
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo-utils"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -121,6 +123,9 @@ export default function RootLayout({
             <main className="min-h-screen">{children}</main>
           </AnalyticsProvider>
         </Suspense>
+        {/* Vercel Analytics & Speed Insights */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

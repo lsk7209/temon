@@ -1,5 +1,12 @@
 import { MetadataRoute } from 'next'
 
+/**
+ * Robots.txt 생성 (Vercel 최적화)
+ * 
+ * Vercel ISR: 1시간마다 재생성 (성능 최적화)
+ */
+export const revalidate = 3600 // 1시간마다 재생성
+
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.temon.kr'
 

@@ -3,7 +3,7 @@ import { ALL_TESTS } from '@/lib/tests-config'
 import { generateTestRoutes, getStaticRoutes, scanTestDirectories } from '@/lib/sitemap-utils'
 
 /**
- * 자동 사이트맵 생성
+ * 자동 사이트맵 생성 (Vercel 최적화)
  * 
  * 새로운 테스트를 추가하면 자동으로 사이트맵에 포함됩니다:
  * 
@@ -16,7 +16,11 @@ import { generateTestRoutes, getStaticRoutes, scanTestDirectories } from '@/lib/
  * - 자동으로 스캔되어 사이트맵에 포함됨
  * 
  * 두 방법 모두 자동으로 작동하며, 파일 시스템 스캔이 우선됩니다.
+ * 
+ * Vercel ISR: 1시간마다 재생성 (성능 최적화)
  */
+export const revalidate = 3600 // 1시간마다 재생성
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.temon.kr'
   
