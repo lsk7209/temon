@@ -217,7 +217,7 @@ export function generateWebSiteSchema(searchAction?: { target: string; queryInpu
 }
 
 /**
- * Organization 스키마 생성 (브랜드 신뢰도 향상)
+ * Organization 스키마 생성 (브랜드 신뢰도 향상 및 검색 엔진 최적화)
  */
 export function generateOrganizationSchema(): string {
   return JSON.stringify({
@@ -225,11 +225,19 @@ export function generateOrganizationSchema(): string {
     "@type": "Organization",
     name: "테몬",
     url: "https://www.temon.kr",
-    logo: "https://www.temon.kr/logo.png",
+    logo: "https://www.temon.kr/placeholder-logo.png",
     description: "무료 성격 테스트 및 MBTI 테스트 플랫폼",
+    inLanguage: "ko",
+    areaServed: "KR",
     sameAs: [
       // 향후 소셜 미디어 링크 추가 가능
     ],
+    // 검색 엔진 최적화를 위한 추가 정보
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://www.temon.kr/tests?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
   })
 }
 
