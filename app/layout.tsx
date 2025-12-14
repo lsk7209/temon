@@ -21,6 +21,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.temon.kr"),
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": [
+        { url: "/rss.xml", title: "테몬 MBTI RSS Feed" },
+      ],
+      "application/atom+xml": [
+        { url: "/feed.xml", title: "테몬 MBTI Atom Feed" },
+      ],
+    },
   },
   icons: {
     icon: [
