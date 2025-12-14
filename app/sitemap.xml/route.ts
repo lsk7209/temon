@@ -12,7 +12,8 @@ import { generateTestRoutes, getStaticRoutes, scanTestDirectories } from '@/lib/
 export const revalidate = 3600 // 1시간마다 재생성
 
 export async function GET() {
-  const baseUrl = 'https://www.temon.kr'
+  // 등록한 사이트 주소와 일치하도록 설정 (www 없음)
+  const baseUrl = 'https://temon.kr'
   
   try {
     // 정적 라우트 (홈, 테스트 목록, 관리자 페이지 등)
@@ -69,17 +70,22 @@ export async function GET() {
         })),
     ]
 
-    // XML 생성 (Google 및 네이버 검색 최적화)
+    // XML 생성 (Google, Naver, Daum 검색 최적화)
+    // 모바일 최적화 태그 포함, 네이버 검색 최적화
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
-${allRoutes.map(route => `  <url>
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${allRoutes.map(route => {
+      // 모바일 최적화 및 네이버 검색 최적화
+      return `  <url>
     <loc>${route.url}</loc>
     <lastmod>${route.lastModified.toISOString()}</lastmod>
     <changefreq>${route.changeFrequency}</changefreq>
     <priority>${route.priority}</priority>
     <mobile:mobile/>
-  </url>`).join('\n')}
+  </url>`
+    }).join('\n')}
 </urlset>`
 
     return new NextResponse(sitemap, {

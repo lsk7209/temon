@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "MBTI 테스트 - 무료 성격 테스트 모음 | 테몬",
   description: "MBTI 테스트로 알아보는 나만의 성격 유형! 커피, 라면, 반려동물, 공부 습관 등 다양한 주제로 재미있는 MBTI 테스트를 무료로 시작해보세요.",
   keywords: "MBTI, 성격테스트, MBTI 테스트, 커피MBTI, 라면MBTI, 반려동물MBTI, 공부MBTI, 알람습관, NTRP테스트, 무료 테스트",
-  metadataBase: new URL("https://www.temon.kr"),
+  metadataBase: new URL("https://temon.kr"),
   alternates: {
     canonical: "/",
     types: {
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "테몬 MBTI - 나만의 성격 유형 테스트",
     description: "커피, 라면, 반려동물, 공부 습관 등 다양한 주제로 알아보는 재미있는 MBTI 테스트",
-    url: "https://www.temon.kr",
+    url: "https://temon.kr",
     siteName: "테몬 MBTI",
     locale: "ko_KR",
     type: "website",
     images: [
       {
-        url: 'https://www.temon.kr/placeholder-logo.png',
+        url: 'https://temon.kr/placeholder-logo.png',
         width: 1200,
         height: 630,
         alt: '테몬 MBTI',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "테몬 MBTI - 나만의 성격 유형 테스트",
     description: "커피, 라면, 반려동물, 공부 습관 등 다양한 주제로 알아보는 재미있는 MBTI 테스트",
-    images: ['https://www.temon.kr/placeholder-logo.png'],
+    images: ['https://temon.kr/placeholder-logo.png'],
   },
   robots: {
     index: true,
@@ -93,7 +93,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.temon.kr"
+  const baseUrl = "https://temon.kr"
   const organizationSchema = generateOrganizationSchema()
   const websiteSchema = generateWebSiteSchema({
     target: `${baseUrl}/tests?q={search_term_string}`,
@@ -114,21 +114,23 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: websiteSchema }}
         />
-        {/* Google tag (gtag.js) */}
+        {/* Google tag (gtag.js) - 지연 로딩으로 페이지 속도 최적화 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-L167CCPS8E"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-tag" strategy="afterInteractive">
+        <Script id="google-tag" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-L167CCPS8E');
+            gtag('config', 'G-L167CCPS8E', {
+              page_path: window.location.pathname,
+            });
           `}
         </Script>
-        {/* Microsoft Clarity */}
-        <Script id="microsoft-clarity" strategy="afterInteractive">
+        {/* Microsoft Clarity - 지연 로딩 */}
+        <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -138,7 +140,7 @@ export default function RootLayout({
           `}
         </Script>
         <AdSenseScript />
-        <Script src="/analytics.js" strategy="afterInteractive" />
+        <Script src="/analytics.js" strategy="lazyOnload" />
         {/* 네이버 검색 최적화 메타 태그 */}
         {process.env.NAVER_SITE_VERIFICATION && (
           <meta name="naver-site-verification" content={process.env.NAVER_SITE_VERIFICATION} />
@@ -146,6 +148,17 @@ export default function RootLayout({
         {/* 네이버 검색 최적화 - 모바일 최적화 */}
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
+        {/* 네이버 검색 최적화 - 콘텐츠 유형 */}
+        <meta name="naver" content="index,follow" />
+        {/* 다음(Daum) 검색 최적화 */}
+        <meta name="daum" content="index,follow" />
+        {/* 검색 엔진 최적화 - 언어 및 지역 */}
+        <meta httpEquiv="content-language" content="ko-KR" />
+        <meta name="geo.region" content="KR" />
+        {/* 모바일 최적화 */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body className={inter.className}>
         <Suspense fallback={null}>

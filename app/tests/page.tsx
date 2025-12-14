@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import TestsPageClient from "./tests-page-client"
 import Script from "next/script"
-import { generateBreadcrumbSchema } from "@/lib/seo-utils"
+import { generateBreadcrumbSchema, generateItemListSchema } from "@/lib/seo-utils"
+import { ALL_TESTS } from "@/lib/tests-config"
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.temon.kr"
+const baseUrl = "https://temon.kr"
 
 export const metadata: Metadata = {
   title: "MBTI 테스트 모음 - 무료 성격 테스트 전체보기 | 테몬",
@@ -52,6 +53,16 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "테스트 모음", url: `${baseUrl}/tests` },
 ])
 
+// ItemList 스키마 생성 (테스트 목록 최적화)
+const itemListItems = ALL_TESTS.slice(0, 20).map(test => ({
+  name: test.title,
+  description: test.description,
+  url: `${baseUrl}${test.href}`,
+  image: `${baseUrl}/og-tests/${test.id}.png`,
+}))
+
+const itemListSchema = generateItemListSchema(itemListItems)
+
 export default function TestsPage() {
   return (
     <>
@@ -59,6 +70,11 @@ export default function TestsPage() {
         id="breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
+      />
+      <Script
+        id="itemlist-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: itemListSchema }}
       />
       <TestsPageClient />
     </>

@@ -24,7 +24,7 @@ export interface FAQItem {
  * 기본 메타데이터 생성
  */
 export function generateMetadata(config: SEOConfig): Metadata {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.temon.kr"
+  const baseUrl = "https://temon.kr"
   const canonical = config.canonical || "/"
   const fullUrl = `${baseUrl}${canonical}`
 
@@ -87,7 +87,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
  * 테스트 페이지 메타데이터 생성
  */
 export function generateTestMetadata(testId: string, testTitle: string, testDescription: string): Metadata {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.temon.kr"
+  const baseUrl = "https://temon.kr"
   const canonical = `/tests/${testId}`
   const fullUrl = `${baseUrl}${canonical}`
 
@@ -172,7 +172,7 @@ export function generateQuizSchema(config: {
     publisher: {
       "@type": "Organization",
       name: "테몬",
-      url: "https://www.temon.kr",
+      url: "https://temon.kr",
     },
     ...(config.questionCount && { numberOfQuestions: config.questionCount }),
     ...(config.duration && { timeRequired: config.duration }),
@@ -197,15 +197,22 @@ export function generateBreadcrumbSchema(items: Array<{ name: string; url: strin
 
 /**
  * WebSite 스키마 생성 (검색 엔진 최적화)
+ * Google, Naver, Daum 검색 최적화
  */
 export function generateWebSiteSchema(searchAction?: { target: string; queryInput: string }): string {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "테몬",
-    url: "https://www.temon.kr",
+    name: "테몬 MBTI",
+    alternateName: "테몬",
+    url: "https://temon.kr",
     description: "무료 성격 테스트 및 MBTI 테스트 모음",
     inLanguage: "ko",
+    publisher: {
+      "@type": "Organization",
+      name: "테몬",
+      url: "https://temon.kr",
+    },
     ...(searchAction && {
       potentialAction: {
         "@type": "SearchAction",
@@ -218,26 +225,78 @@ export function generateWebSiteSchema(searchAction?: { target: string; queryInpu
 
 /**
  * Organization 스키마 생성 (브랜드 신뢰도 향상 및 검색 엔진 최적화)
+ * Google, Naver, Daum 검색 최적화
  */
 export function generateOrganizationSchema(): string {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "테몬",
-    url: "https://www.temon.kr",
-    logo: "https://www.temon.kr/placeholder-logo.png",
+    url: "https://temon.kr",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://temon.kr/placeholder-logo.png",
+      width: 512,
+      height: 512,
+    },
     description: "무료 성격 테스트 및 MBTI 테스트 플랫폼",
     inLanguage: "ko",
-    areaServed: "KR",
+    areaServed: {
+      "@type": "Country",
+      name: "KR",
+    },
     sameAs: [
       // 향후 소셜 미디어 링크 추가 가능
     ],
     // 검색 엔진 최적화를 위한 추가 정보
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://www.temon.kr/tests?q={search_term_string}",
+      target: "https://temon.kr/tests?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
+    // 네이버 검색 최적화를 위한 추가 정보
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "admin@temon.kr",
+      contactType: "customer service",
+      areaServed: "KR",
+      availableLanguage: "ko",
+    },
+  })
+}
+
+/**
+ * ItemList 스키마 생성 (테스트 목록 페이지 최적화)
+ * Google, Naver 검색 최적화
+ */
+export function generateItemListSchema(items: Array<{
+  name: string
+  description: string
+  url: string
+  image?: string
+}>): string {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "MBTI 테스트 모음",
+    description: "다양한 주제의 무료 성격 테스트 및 MBTI 테스트",
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Quiz",
+        name: item.name,
+        description: item.description,
+        url: item.url,
+        ...(item.image && {
+          image: {
+            "@type": "ImageObject",
+            url: item.image,
+          },
+        }),
+      },
+    })),
   })
 }
 
@@ -256,7 +315,7 @@ export function generateTestPageSchemas(config: {
   faq: string
   breadcrumb: string
 } {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.temon.kr"
+  const baseUrl = "https://temon.kr"
   const testUrl = `${baseUrl}/tests/${config.testId}`
 
   return {

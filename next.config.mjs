@@ -51,6 +51,47 @@ const nextConfig = {
   
   // 프로덕션 소스맵 비활성화 (보안 및 성능)
   productionBrowserSourceMaps: false,
+  
+  // SEO 및 검색 엔진 최적화
+  // 리다이렉트 설정 (www -> non-www 통일)
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.temon.kr',
+          },
+        ],
+        destination: 'https://temon.kr/:path*',
+        permanent: true,
+      },
+    ]
+  },
+  
+  // 헤더 최적화 (검색 엔진 크롤링 효율 향상)
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+          },
+        ],
+      },
+    ]
+  },
 }
 
 export default nextConfig
