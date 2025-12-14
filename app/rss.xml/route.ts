@@ -23,8 +23,8 @@ function formatRFC822Date(date: Date): string {
 }
 
 export async function GET() {
-  // 등록한 사이트 주소와 일치하도록 명시적으로 설정
-  const baseUrl = 'https://www.temon.kr'
+  // 등록한 사이트 주소와 일치하도록 명시적으로 설정 (www 없음)
+  const baseUrl = 'https://temon.kr'
   const currentDate = new Date()
   const formattedDate = formatRFC822Date(currentDate)
 

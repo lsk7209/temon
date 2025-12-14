@@ -5,8 +5,8 @@ import { ALL_TESTS } from '@/lib/tests-config'
 // export const revalidate = 3600 // 1시간마다 재생성
 
 export async function GET() {
-  // 등록한 사이트 주소와 일치하도록 명시적으로 설정
-  const baseUrl = 'https://www.temon.kr'
+  // 등록한 사이트 주소와 일치하도록 명시적으로 설정 (www 없음)
+  const baseUrl = 'https://temon.kr'
   const currentDate = new Date().toISOString()
 
   // 최신 테스트 선택
