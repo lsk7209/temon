@@ -14,7 +14,13 @@ export async function GET() {
 
   const feedItems = recentTests.map((test) => {
     const testUrl = `${baseUrl}${test.href}`
-    const description = `${test.description} - ${test.title} 무료 테스트`
+    // 설명 중복 제거 및 개선
+    const description = test.description.includes('무료 테스트') 
+      ? `${test.description}` 
+      : `${test.description} - ${test.title}`
+    
+    // 카테고리와 태그 중복 제거
+    const uniqueTags = test.tags.filter(tag => tag !== test.category)
     
     return `    <entry>
       <id>${testUrl}</id>
@@ -28,7 +34,7 @@ export async function GET() {
       <summary type="html"><![CDATA[${description}]]></summary>
       <content type="html"><![CDATA[<p>${description}</p><p><a href="${testUrl}">테스트 시작하기 →</a></p>]]></content>
       <category term="${test.category}"/>
-      ${test.tags.map(tag => `<category term="${tag}"/>`).join('\n      ')}
+      ${uniqueTags.map(tag => `<category term="${tag}"/>`).join('\n      ')}
     </entry>`
   }).join('\n')
 
