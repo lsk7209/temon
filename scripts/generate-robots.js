@@ -32,6 +32,8 @@ Disallow: /admin
 Disallow: /tests/*/test/result
 
 Sitemap: ${baseUrl}/sitemap.xml
+
+#DaumWebMasterTool:c31e7b96662307b31cb400ef4928000f10b5e2655ff33772379f888ea18c1179:OkBMPAodCv39zGs73L6HFQ==
 `
 }
 
