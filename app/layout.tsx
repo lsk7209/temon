@@ -72,6 +72,12 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+    // 네이버 검색봇 최적화
+    other: {
+      "naverbot": "index,follow",
+      "Yeti": "index,follow",
+      "Yeti-Mobile": "index,follow",
+    },
   },
   generator: "Next.js",
   verification: {
@@ -133,6 +139,13 @@ export default function RootLayout({
         </Script>
         <AdSenseScript />
         <Script src="/analytics.js" strategy="afterInteractive" />
+        {/* 네이버 검색 최적화 메타 태그 */}
+        {process.env.NAVER_SITE_VERIFICATION && (
+          <meta name="naver-site-verification" content={process.env.NAVER_SITE_VERIFICATION} />
+        )}
+        {/* 네이버 검색 최적화 - 모바일 최적화 */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="format-detection" content="telephone=no" />
       </head>
       <body className={inter.className}>
         <Suspense fallback={null}>

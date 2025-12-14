@@ -1,21 +1,61 @@
+# Google 및 네이버 검색봇 최적화 설정
+# https://www.robotstxt.org/robotstxt.html
+
+# 모든 검색봇 기본 설정
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin
 Disallow: /tests/*/test/result
+Crawl-delay: 1
 
+# Google 검색봇 최적화
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
 Disallow: /admin
 Disallow: /tests/*/test/result
+Crawl-delay: 0
 
-User-agent: Yeti
+# Google 이미지 검색봇
+User-agent: Googlebot-Image
 Allow: /
 Disallow: /api/
 Disallow: /admin
 Disallow: /tests/*/test/result
 
+# Google 모바일 검색봇
+User-agent: Googlebot-Mobile
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /tests/*/test/result
+
+# 네이버 검색봇 (Yeti)
+User-agent: Yeti
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /tests/*/test/result
+Crawl-delay: 1
+
+# 네이버 모바일 검색봇
+User-agent: Yeti-Mobile
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /tests/*/test/result
+Crawl-delay: 1
+
+# 다음(Daum) 검색봇
+User-agent: Daumoa
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /tests/*/test/result
+
+# 사이트맵 위치
 Sitemap: https://www.temon.kr/sitemap.xml
 
+# Daum WebMaster Tool 인증
 #DaumWebMasterTool:c31e7b96662307b31cb400ef4928000f10b5e2655ff33772379f888ea18c1179:OkBMPAodCv39zGs73L6HFQ==
