@@ -73,12 +73,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-    // 네이버 검색봇 최적화
-    other: {
-      "naverbot": "index,follow",
-      "Yeti": "index,follow",
-      "Yeti-Mobile": "index,follow",
-    },
   },
   generator: "Next.js",
   verification: {

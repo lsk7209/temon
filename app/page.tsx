@@ -58,11 +58,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-    other: {
-      "naverbot": "index,follow",
-      "Yeti": "index,follow",
-      "Yeti-Mobile": "index,follow",
-    },
   },
 }
 

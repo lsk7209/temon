@@ -68,11 +68,6 @@ export function generateQuizMetadata(config: QuizSEOConfig): Metadata {
         "max-image-preview": "large",
         "max-snippet": -1,
       },
-      other: {
-        "naverbot": "index,follow",
-        "Yeti": "index,follow",
-        "Yeti-Mobile": "index,follow",
-      },
     },
   }
 }
@@ -80,7 +75,11 @@ export function generateQuizMetadata(config: QuizSEOConfig): Metadata {
 /**
  * Generate structured data schemas for quiz pages
  */
-export function generateQuizSchemas(config: QuizSEOConfig) {
+export function generateQuizSchemas(config: QuizSEOConfig): {
+  quiz: Record<string, any>
+  breadcrumb: Record<string, any>
+  faq?: Record<string, any>
+} {
   const fullUrl = `${baseUrl}${config.canonical}`
 
   const quizSchema = createQuizSchema({
@@ -98,7 +97,11 @@ export function generateQuizSchemas(config: QuizSEOConfig) {
     { name: config.title, url: fullUrl },
   ])
 
-  const schemas = {
+  const schemas: {
+    quiz: Record<string, any>
+    breadcrumb: Record<string, any>
+    faq?: Record<string, any>
+  } = {
     quiz: quizSchema,
     breadcrumb: breadcrumbSchema,
   }
@@ -186,10 +189,6 @@ export function generateTestPageMetadata(config: {
       googleBot: {
         index: false,
         follow: true,
-      },
-      other: {
-        "naverbot": "noindex,follow",
-        "Yeti": "noindex,follow",
       },
     },
   }
@@ -331,11 +330,6 @@ export function generateUniqueTestMetadata(config: {
         "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,
-      },
-      other: {
-        "naverbot": "index,follow",
-        "Yeti": "index,follow",
-        "Yeti-Mobile": "index,follow",
       },
     },
   }
