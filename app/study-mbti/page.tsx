@@ -4,28 +4,61 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, BookOpen, Sparkles } from "lucide-react"
 import Link from "next/link"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
 
-export const metadata: Metadata = {
-  title: "공부 MBTI - 학습 습관으로 알아보는 성격 유형 | 테몬",
-  description:
-    "공부 MBTI 테스트로 알아보는 나의 학습 DNA! 형광펜 덕후부터 올빵 벼락치기까지, 공부 습관에도 MBTI가 있다면? 5분 만에 내 학습 캐릭터를 확인하는 재미있는 테스트를 지금 시작해보세요.",
-  keywords: "공부 MBTI, 학습 습관 테스트, 공부 스타일 테스트, 성격 테스트, MBTI, 심리테스트",
-  alternates: {
-    canonical: "/study-mbti",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "학습 습관으로 알아보는 성격 유형 테스트. 16가지 공부 MBTI 유형 발견!"
+// Full description for Google/AI
+const fullDescription = "공부 MBTI 테스트로 알아보는 나의 학습 DNA! 형광펜 덕후부터 올빵 벼락치기까지, 공부 습관에도 MBTI가 있다면? 5분 만에 내 학습 캐릭터를 확인하는 재미있는 테스트. 16가지 학습 스타일 중 당신은 어떤 유형일까요? 지금 바로 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "study-mbti",
+  title: "공부 MBTI",
+  shortDescription,
+  fullDescription,
+  keywords: "공부 MBTI, 학습 습관 테스트, 공부 스타일 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/study-mbti",
+  questionCount: 12,
+  duration: "PT5M",
+})
+
+const faqs = [
+  ...getDefaultQuizFAQs("공부 MBTI 테스트"),
+  {
+    question: "공부를 잘하지 못해도 테스트할 수 있나요?",
+    answer: "네, 가능합니다. 테스트는 공부 습관과 스타일을 통해 성격을 알아보는 것이므로, 공부 성적과는 관계없이 솔직하게 답변하시면 됩니다.",
   },
-  openGraph: {
-    title: "공부 MBTI - 학습 습관으로 알아보는 성격 유형",
-    description: "형광펜 덕후부터 올빵 벼락치기까지, 5분 만에 내 학습 DNA 확인하기",
-    type: "website",
-    url: "https://www.temon.kr/study-mbti",
+  {
+    question: "어떤 학습 스타일 유형들이 나오나요?",
+    answer: "형광펜 덕후, 올빵 벼락치기, 계획형 학습자, 즉흥형 학습자 등 16가지 학습 캐릭터 유형이 있습니다. 각 유형은 MBTI 16가지 성격 유형과 매칭되어 있어요.",
   },
-}
+]
 
 export default function StudyMBTIIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "study-mbti",
+    title: "공부 MBTI",
+    shortDescription,
+    fullDescription,
+    keywords: "공부 MBTI, 학습 습관 테스트",
+    canonical: "/study-mbti",
+    questionCount: 12,
+    duration: "PT5M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950">
-      {/* Hero Section */}
-      <main className="container max-w-4xl mx-auto px-4 py-8">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="study-mbti-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="study-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="study-mbti-faq-schema" data={schemas.faq} />}
+
+      <article className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950">
+        {/* Hero Section */}
+        <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Study Elements */}
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -218,7 +251,13 @@ export default function StudyMBTIIntro() {
             </CardContent>
           </Card>
         </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-20 mb-12">
+          <FAQSection faqs={faqs} title="공부 MBTI 테스트 자주 묻는 질문" />
+        </section>
       </main>
-    </div>
+    </article>
+    </>
   )
 }

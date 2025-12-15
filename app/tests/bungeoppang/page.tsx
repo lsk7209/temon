@@ -4,39 +4,60 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Fish, Sparkles } from "lucide-react"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
 
-export const metadata: Metadata = {
-  title: "붕어빵 취향 테스트 | 맛 선택·구매 방식·먹는 습관 16유형 | 테몬",
-  description:
-    "붕어빵 맛 선택, 구매 방식, 먹는 습관으로 16유형을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성.",
-  keywords:
-    "붕어빵 테스트, 겨울 간식, 팥 슈크림, 길거리 간식, 성향 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/bungeoppang",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "붕어빵 취향 테스트. 맛 선택·구매 방식·먹는 습관 16유형 분석!"
+// Full description for Google/AI
+const fullDescription = "붕어빵 취향 테스트로 알아보는 나의 유형! 붕어빵 맛 선택, 구매 방식, 먹는 습관으로 16유형을 분석합니다. 팥, 슈크림, 고구마 등 다양한 맛 선택부터 구매 방식, 먹는 습관까지. 12문항, 약 3분 소요, 결과 공유 이미지 자동 생성. 재미있는 붕어빵 테스트를 지금 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "bungeoppang",
+  title: "붕어빵 취향 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "붕어빵 테스트, 겨울 간식, 팥 슈크림, 길거리 간식, 성향 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/bungeoppang",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getDefaultQuizFAQs("붕어빵 취향 테스트"),
+  {
+    question: "어떤 붕어빵 유형들이 나오나요?",
+    answer: "분위기 전파형, 감성 몰입형, 케어 큐레이터형, 의미 탐구형 등 16가지 붕어빵 유형이 있습니다. 각 유형은 MBTI 16가지 성격 유형과 매칭되어 있어요.",
   },
-  openGraph: {
-    title: "붕어빵 취향 테스트 | 맛 선택·구매 방식·먹는 습관 16유형",
-    description: "붕어빵 맛 선택, 구매 방식, 먹는 습관으로 16유형을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/bungeoppang",
+  {
+    question: "붕어빵을 자주 먹지 않아도 테스트할 수 있나요?",
+    answer: "네, 가능합니다. 테스트는 붕어빵 취향을 통해 성격을 알아보는 것이지만, 자주 먹지 않으시더라도 일반적인 선호도를 바탕으로 답변하시면 됩니다.",
   },
-  other: {
-    "schema:Quiz": JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Quiz",
-      name: "붕어빵 취향 테스트",
-      description: "붕어빵 취향으로 16유형 분석",
-      inLanguage: "ko",
-      url: "https://www.temon.kr/tests/bungeoppang",
-      publisher: { "@type": "Organization", name: "Temon" },
-    }),
-  },
-}
+]
 
 export default function BungeoppangIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "bungeoppang",
+    title: "붕어빵 취향 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "붕어빵 테스트, 겨울 간식",
+    canonical: "/tests/bungeoppang",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
-      <main className="container max-w-[720px] mx-auto px-4 py-8">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="bungeoppang-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="bungeoppang-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="bungeoppang-faq-schema" data={schemas.faq} />}
+
+      <article className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+        <main className="container max-w-[720px] mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Bungeoppang Elements */}
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -225,8 +246,14 @@ export default function BungeoppangIntro() {
             </CardContent>
           </Card>
         </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-20 mb-12">
+          <FAQSection faqs={faqs} title="붕어빵 취향 테스트 자주 묻는 질문" />
+        </section>
       </main>
-    </div>
+    </article>
+    </>
   )
 }
 

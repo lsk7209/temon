@@ -4,26 +4,59 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Heart, Sparkles } from "lucide-react"
 import Link from "next/link"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
 
-export const metadata: Metadata = {
-  title: "반려동물 MBTI - 나에게 맞는 펫 찾기 테스트 | 테몬",
-  description:
-    "반려동물 MBTI 테스트로 나에게 맞는 펫을 찾아보세요! 당신의 라이프스타일에 딱 맞는 펫은 누구일까요? 16가지 찰떡 펫 추천 테스트를 지금 시작해보세요.",
-  keywords: "반려동물 MBTI, 펫 테스트, 반려동물 테스트, 성격 테스트, MBTI, 심리테스트",
-  alternates: {
-    canonical: "/pet-mbti",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "반려동물 성향으로 알아보는 성격 테스트. 나에게 맞는 펫 찾기!"
+// Full description for Google/AI
+const fullDescription = "반려동물 MBTI 테스트로 나에게 맞는 펫을 찾아보세요! 당신의 라이프스타일에 딱 맞는 펫은 누구일까요? 16가지 찰떡 펫 추천 테스트로 나의 성격과 잘 맞는 반려동물을 알아보세요. 지금 바로 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "pet-mbti",
+  title: "반려동물 MBTI",
+  shortDescription,
+  fullDescription,
+  keywords: "반려동물 MBTI, 펫 테스트, 반려동물 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/pet-mbti",
+  questionCount: 12,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getDefaultQuizFAQs("반려동물 MBTI 테스트"),
+  {
+    question: "반려동물을 키우지 않아도 테스트할 수 있나요?",
+    answer: "네, 가능합니다. 테스트는 반려동물 선호도를 통해 성격을 알아보는 것이므로, 현재 반려동물을 키우지 않으시더라도 일반적인 선호도를 바탕으로 답변하시면 됩니다.",
   },
-  openGraph: {
-    title: "반려동물 MBTI - 나에게 맞는 펫 찾기 테스트",
-    description: "당신의 라이프스타일에 딱 맞는 펫은 누구일까요? 16가지 찰떡 펫 추천 테스트",
-    type: "website",
-    url: "https://www.temon.kr/pet-mbti",
+  {
+    question: "어떤 반려동물 유형들이 나오나요?",
+    answer: "강아지, 고양이, 새, 물고기, 파충류 등 다양한 반려동물 유형이 포함되어 있습니다. 각 유형은 MBTI 16가지 성격 유형과 매칭되어 있어요.",
   },
-}
+]
 
 export default function PetMBTIIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "pet-mbti",
+    title: "반려동물 MBTI",
+    shortDescription,
+    fullDescription,
+    keywords: "반려동물 MBTI, 펫 테스트",
+    canonical: "/pet-mbti",
+    questionCount: 12,
+    duration: "PT2M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 dark:from-pink-950 dark:via-purple-950 dark:to-blue-950 relative overflow-hidden">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="pet-mbti-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="pet-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="pet-mbti-faq-schema" data={schemas.faq} />}
+
+      <article className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 dark:from-pink-950 dark:via-purple-950 dark:to-blue-950 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating Paw Prints */}
@@ -69,6 +102,10 @@ export default function PetMBTIIntro() {
 
       {/* Hero Section */}
       <main className="container max-w-4xl mx-auto px-4 py-8 relative z-10">
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-20">
+          <FAQSection faqs={faqs} title="반려동물 MBTI 테스트 자주 묻는 질문" />
+        </section>
         <div className="text-center space-y-8">
           {/* Animated Pet Icons */}
           <div className="relative mx-auto w-40 h-40 mb-8">
@@ -278,7 +315,13 @@ export default function PetMBTIIntro() {
             </CardContent>
           </Card>
         </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-20 mb-12">
+          <FAQSection faqs={faqs} title="반려동물 MBTI 테스트 자주 묻는 질문" />
+        </section>
       </main>
-    </div>
+    </article>
+    </>
   )
 }

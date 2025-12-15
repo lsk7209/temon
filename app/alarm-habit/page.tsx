@@ -4,27 +4,60 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Clock, Users, Sparkles } from "lucide-react"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
 
-export const metadata: Metadata = {
-  title: "알람 습관 MBTI - 기상 패턴으로 보는 당신의 성격 | 테몬",
-  description:
-    "알람 습관 MBTI 테스트로 알아보는 나의 성격! 알람 끄는 방식으로 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요? 재미있는 알람 습관 테스트를 지금 시작해보세요.",
-  keywords: "알람 습관, 기상 패턴, 성격 테스트, MBTI, 알람 테스트, 심리테스트",
-  alternates: {
-    canonical: "/alarm-habit",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "기상 패턴으로 알아보는 성격 테스트. 알람 습관 MBTI 16유형 발견!"
+// Full description for Google/AI
+const fullDescription = "알람 습관 MBTI 테스트로 알아보는 나의 성격! 알람 끄는 방식으로 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요? 기상 패턴과 알람 사용 습관으로 알아보는 16가지 성격 유형. 재미있는 알람 습관 테스트를 지금 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "alarm-habit",
+  title: "알람 습관 MBTI",
+  shortDescription,
+  fullDescription,
+  keywords: "알람 습관, 기상 패턴, 성격 테스트, MBTI, 알람 테스트, 심리테스트, 무료 테스트",
+  canonical: "/alarm-habit",
+  questionCount: 8,
+  duration: "PT1M",
+})
+
+const faqs = [
+  ...getDefaultQuizFAQs("알람 습관 MBTI 테스트"),
+  {
+    question: "알람을 사용하지 않아도 테스트할 수 있나요?",
+    answer: "네, 가능합니다. 테스트는 일반적인 기상 패턴과 선호도를 바탕으로 하므로, 알람을 사용하지 않으시더라도 자연스러운 기상 습관을 바탕으로 답변하시면 됩니다.",
   },
-  openGraph: {
-    title: "알람 습관 MBTI - 기상 패턴으로 보는 당신의 성격",
-    description: "알람 끄는 방식으로 알아보는 나의 성격! 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요?",
-    type: "website",
-    url: "https://www.temon.kr/alarm-habit",
+  {
+    question: "어떤 기상 캐릭터 유형들이 나오나요?",
+    answer: "스누즈파, 칼기상파, 새벽 러너, 야행성 인간 등 16가지 기상 캐릭터 유형이 있습니다. 각 유형은 MBTI 16가지 성격 유형과 매칭되어 있어요.",
   },
-}
+]
 
 export default function AlarmHabitIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "alarm-habit",
+    title: "알람 습관 MBTI",
+    shortDescription,
+    fullDescription,
+    keywords: "알람 습관, 기상 패턴",
+    canonical: "/alarm-habit",
+    questionCount: 8,
+    duration: "PT1M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 dark:from-blue-950 dark:via-purple-950 dark:to-indigo-950">
-      <main className="container max-w-4xl mx-auto px-4 py-8">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="alarm-habit-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="alarm-habit-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="alarm-habit-faq-schema" data={schemas.faq} />}
+
+      <article className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 dark:from-blue-950 dark:via-purple-950 dark:to-indigo-950">
+        <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Alarm Clock */}
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -214,7 +247,13 @@ export default function AlarmHabitIntro() {
             </CardContent>
           </Card>
         </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-20 mb-12">
+          <FAQSection faqs={faqs} title="알람 습관 MBTI 테스트 자주 묻는 질문" />
+        </section>
       </main>
-    </div>
+    </article>
+    </>
   )
 }

@@ -11,6 +11,7 @@ import AdSenseScript from "@/components/adsense-script"
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo-utils"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { JsonLd } from "@/components/json-ld"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -104,16 +105,8 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         {/* SEO, AEO, GEO 최적화를 위한 구조화 데이터 */}
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: organizationSchema }}
-        />
-        <Script
-          id="website-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: websiteSchema }}
-        />
+        <JsonLd id="organization-schema" data={JSON.parse(organizationSchema)} />
+        <JsonLd id="website-schema" data={JSON.parse(websiteSchema)} />
         {/* Google tag (gtag.js) - 지연 로딩으로 페이지 속도 최적화 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-L167CCPS8E"
