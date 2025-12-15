@@ -57,6 +57,16 @@ export function middleware(request: NextRequest) {
   // 관리자 대시보드 접근 제어는 클라이언트 사이드에서 처리
   // (dashboard-client.tsx에서 localStorage 확인 후 리다이렉트)
 
+  // www -> non-www 리다이렉트 (리다이렉션 루프 방지)
+  const hostname = request.headers.get('host') || ''
+  const url = request.nextUrl.clone()
+  
+  // www.temon.kr을 temon.kr로 리다이렉트
+  if (hostname === 'www.temon.kr' || hostname.startsWith('www.temon.kr:')) {
+    url.hostname = 'temon.kr'
+    return NextResponse.redirect(url, 308) // 308 Permanent Redirect
+  }
+
   // Rate Limit 체크 (API 엔드포인트만)
   if (request.nextUrl.pathname.startsWith('/api/')) {
     const key = getRateLimitKey(request)

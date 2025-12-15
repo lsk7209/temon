@@ -54,19 +54,9 @@ const nextConfig = {
   
   // SEO 및 검색 엔진 최적화
   // 리다이렉트 설정 (www -> non-www 통일)
+  // 주의: Vercel 도메인 설정과 충돌하지 않도록 조건부로만 적용
   async redirects() {
     const redirects = [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.temon.kr',
-          },
-        ],
-        destination: 'https://temon.kr/:path*',
-        permanent: true,
-      },
       // 레거시 경로 리다이렉트 (서버 사이드로 처리하여 리다이렉션 경고 제거)
       {
         source: '/test/:slug',
