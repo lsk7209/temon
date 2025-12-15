@@ -250,13 +250,9 @@ export function generateResultPageMetadata(config: {
         follow: true,
         "max-video-preview": -1,
         "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-      other: {
-        "naverbot": "index,follow",
-        "Yeti": "index,follow",
-      },
+      "max-snippet": -1,
     },
+  },
   }
 }
 
