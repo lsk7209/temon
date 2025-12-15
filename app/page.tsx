@@ -8,8 +8,15 @@ const canonical = "/"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "무료 MBTI 성격 테스트 모음. 커피, 라면, 반려동물 등 다양한 주제로 알아보는 나의 성격!"
-// Full description for Google/AI (140-160자 권장)
-const fullDescription = "테몬에서 무료로 제공하는 재미있는 MBTI 성격 테스트 모음! 커피, 라면, 반려동물, 공부 습관 등 일상 속 선택으로 알아보는 나의 진짜 성격. 16가지 성격 유형 중 당신은 어떤 유형일까요? 지금 바로 무료로 시작해보세요."
+// Full description for Google/AI (140-160자 최적화)
+let fullDescription = "테몬에서 무료로 제공하는 재미있는 MBTI 성격 테스트 모음! 커피, 라면, 반려동물, 공부 습관 등 일상 속 선택으로 알아보는 나의 진짜 성격. 16가지 성격 유형 중 당신은 어떤 유형일까요? 지금 바로 무료로 시작해보세요."
+
+// 140-160자 범위로 조정
+if (fullDescription.length < 140) {
+  fullDescription = "테몬에서 무료로 제공하는 재미있는 MBTI 성격 테스트 모음! 커피, 라면, 반려동물, 공부 습관 등 일상 속 선택으로 알아보는 나의 진짜 성격. 16가지 성격 유형 중 당신은 어떤 유형일까요? 지금 바로 무료로 시작해보세요. 2분이면 끝!"
+} else if (fullDescription.length > 160) {
+  fullDescription = fullDescription.substring(0, 157) + "..."
+}
 
 export const metadata: Metadata = {
   title: "MBTI 테스트 모음 - 무료 성격 테스트로 알아보는 나의 유형 | 테몬", // 40-60자 최적화
