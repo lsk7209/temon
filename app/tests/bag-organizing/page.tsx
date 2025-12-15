@@ -5,22 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, ShoppingBag, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "가방 정리 스타일 테스트 | 가방 정리 방식으로 보는 16유형 | 테몬",
-  description:
-    "가방 정리 방식, 스타일로 16유형 성향을 분석합니다. 가방 한 개에 내 성격이. 12문항, 결과 공유 이미지 자동 생성.",
-  keywords:
-    "가방 테스트, 가방 정리, 정리 스타일, 성향 테스트, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/bag-organizing",
-  },
-  openGraph: {
-    title: "가방 정리 스타일 테스트 | 가방 정리 방식으로 보는 16유형",
-    description: "가방 정리 방식, 스타일로 16유형 성향을 분석합니다. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/bag-organizing",
-  },
-}
+import { generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
+
+export const metadata: Metadata = generateUniqueTestMetadata({
+  testName: "가방 정리 스타일 테스트",
+  testCategory: "가방 정리 방식",
+  testDescription: "가방 정리 방식과 스타일로 16유형 성향을 분석합니다. 가방 한 개에 내 성격이 담겨있어요. 정리 방식, 정리 기준, 정리 속도 등으로 알아보는 나의 성격 유형. 12문항, 약 3분 소요, 결과 공유 이미지 자동 생성.",
+  keywords: "가방 테스트, 가방 정리, 정리 스타일, 성향 테스트, 심리테스트, 무료 테스트",
+  canonical: "/tests/bag-organizing",
+})
 
 export default function BagOrganizingIntro() {
   return (
@@ -108,30 +101,30 @@ export default function BagOrganizingIntro() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                   <div className="space-y-4">
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
-                      <p className="font-medium">1. 가방 정리 방식은?</p>
+                      <h3 className="font-medium">1. 가방 정리 방식은?</h3>
                       <p className="text-sm text-muted-foreground mt-1">정해진 위치 vs 그때그때</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-                      <p className="font-medium">2. 정리 기준은?</p>
+                      <h3 className="font-medium">2. 정리 기준은?</h3>
                       <p className="text-sm text-muted-foreground mt-1">체계적 vs 자연스럽게</p>
                     </div>
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
-                      <p className="font-medium">3. 정리 속도는?</p>
+                      <h3 className="font-medium">3. 정리 속도는?</h3>
                       <p className="text-sm text-muted-foreground mt-1">천천히 vs 빠르게</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-                      <p className="font-medium">4. 정리 계획은?</p>
+                      <h3 className="font-medium">4. 정리 계획은?</h3>
                       <p className="text-sm text-muted-foreground mt-1">미리 계획 vs 그때그때</p>
                     </div>
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
-                      <p className="font-medium">5. 정리 후기는?</p>
+                      <h3 className="font-medium">5. 정리 후기는?</h3>
                       <p className="text-sm text-muted-foreground mt-1">확인하기 vs 그냥 가기</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-                      <p className="font-medium">6. 정리 이유는?</p>
+                      <h3 className="font-medium">6. 정리 이유는?</h3>
                       <p className="text-sm text-muted-foreground mt-1">실용성 vs 감성</p>
                     </div>
                   </div>

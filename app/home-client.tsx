@@ -82,8 +82,8 @@ export default function HomeClient() {
               return (
                 <div key={feature.title} className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
                   <FeatureIcon className={`w-8 h-8 mx-auto mb-2 ${feature.color}`} />
-                  <div className="font-bold text-gray-900">{feature.title}</div>
-                  <div className="text-sm text-gray-600">{feature.description}</div>
+                  <h3 className="font-bold text-gray-900">{feature.title}</h3>
+                  <p className="text-sm text-gray-600">{feature.description}</p>
                 </div>
               )
             })}
@@ -121,7 +121,10 @@ export default function HomeClient() {
                       <CardTitle className="text-2xl font-bold group-hover:text-violet-600 transition-colors">
                         {test.title}
                       </CardTitle>
-                      <CardDescription className="text-base text-gray-600">{test.description}</CardDescription>
+                      <CardDescription className="text-base text-gray-600">
+                        <h3 className="sr-only">{test.title} 테스트 설명</h3>
+                        {test.description}
+                      </CardDescription>
                     </CardHeader>
                     <CardFooter className="flex items-center justify-between pt-4 border-t">
                       <div className="flex items-center gap-4">
