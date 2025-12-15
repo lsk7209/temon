@@ -5,22 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, CreditCard, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "모바일 결제 스타일 테스트 | 16유형 분석 | 테몬",
-  description:
-    "모바일로 결제하는 스타일로 알아보는 나의 성격 유형. 결제할 때 결제 수단을 고를 때, 결제 오류가 났을 때 등 구체적인 상황으로 분석합니다.",
-  keywords:
-    "모바일 결제, 결제, 결제 스타일, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/phone-payment",
-  },
-  openGraph: {
-    title: "모바일 결제 스타일 테스트 | 16유형 분석",
-    description: "모바일로 결제하는 스타일로 알아보는 나의 성격 유형. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/phone-payment",
-  },
-}
+import { generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
+
+export const metadata: Metadata = generateUniqueTestMetadata({
+  testName: "모바일 결제 스타일 테스트",
+  testCategory: "모바일 결제 방식",
+  testDescription: "모바일로 결제하는 스타일로 알아보는 나의 성격 유형. 결제할 때 결제 수단을 고를 때, 결제 오류가 났을 때 등 구체적인 상황으로 분석합니다.",
+  keywords: "모바일 결제, 결제, 결제 스타일, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/phone-payment",
+})
 
 export default function PhonePaymentIntro() {
   return (

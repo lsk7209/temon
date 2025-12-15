@@ -5,22 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, MessageSquare, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "메시지 답장 스타일 테스트 | 16유형 분석 | 테몬",
-  description:
-    "메시지를 답장하는 스타일로 알아보는 나의 성격 유형. 메시지가 왔을 때, 읽씹을 당했을 때 등 구체적인 상황으로 분석합니다.",
-  keywords:
-    "메시지, 답장, 소통, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/phone-message",
-  },
-  openGraph: {
-    title: "메시지 답장 스타일 테스트 | 16유형 분석",
-    description: "메시지를 답장하는 스타일로 알아보는 나의 성격 유형. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/phone-message",
-  },
-}
+import { generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
+
+export const metadata: Metadata = generateUniqueTestMetadata({
+  testName: "메시지 답장 스타일 테스트",
+  testCategory: "스마트폰 메시지 답장",
+  testDescription: "메시지를 답장하는 스타일로 알아보는 나의 성격 유형. 메시지가 왔을 때, 읽씹을 당했을 때 등 구체적인 상황으로 분석합니다.",
+  keywords: "메시지, 답장, 소통, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/phone-message",
+})
 
 export default function PhoneMessageIntro() {
   return (

@@ -5,22 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, MessageSquare, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "SNS 사용 습관 테스트 | 16유형 분석 | 테몬",
-  description:
-    "SNS를 사용하는 습관으로 알아보는 나의 성격 유형. SNS에 올릴 사진을 고를 때, SNS 피드를 볼 때 등 구체적인 상황으로 분석합니다.",
-  keywords:
-    "SNS, 소셜미디어, SNS 습관, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/phone-social-media",
-  },
-  openGraph: {
-    title: "SNS 사용 습관 테스트 | 16유형 분석",
-    description: "SNS를 사용하는 습관으로 알아보는 나의 성격 유형. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/phone-social-media",
-  },
-}
+import { generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
+
+export const metadata: Metadata = generateUniqueTestMetadata({
+  testName: "SNS 사용 습관 테스트",
+  testCategory: "소셜미디어 사용",
+  testDescription: "SNS를 사용하는 습관으로 알아보는 나의 성격 유형. SNS에 올릴 사진을 고를 때, SNS 피드를 볼 때 등 구체적인 상황으로 분석합니다.",
+  keywords: "SNS, 소셜미디어, SNS 습관, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/phone-social-media",
+})
 
 export default function PhoneSocialMediaIntro() {
   return (

@@ -5,22 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Cloud, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "백업 습관 테스트 | 16유형 분석 | 테몬",
-  description:
-    "스마트폰 데이터를 백업하는 습관으로 알아보는 나의 성격 유형. 사진을 백업할 때, 데이터를 잃어버렸을 때 등 구체적인 상황으로 분석합니다.",
-  keywords:
-    "백업, 스마트폰, 데이터 백업, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/phone-backup",
-  },
-  openGraph: {
-    title: "백업 습관 테스트 | 16유형 분석",
-    description: "스마트폰 데이터를 백업하는 습관으로 알아보는 나의 성격 유형. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/phone-backup",
-  },
-}
+import { generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
+
+export const metadata: Metadata = generateUniqueTestMetadata({
+  testName: "백업 습관 테스트",
+  testCategory: "스마트폰 데이터 백업",
+  testDescription: "스마트폰 데이터를 백업하는 습관으로 알아보는 나의 성격 유형. 사진을 백업할 때, 데이터를 잃어버렸을 때 등 구체적인 상황으로 분석합니다.",
+  keywords: "백업, 스마트폰, 데이터 백업, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/phone-backup",
+})
 
 export default function PhoneBackupIntro() {
   return (

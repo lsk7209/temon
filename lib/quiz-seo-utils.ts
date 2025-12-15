@@ -261,3 +261,77 @@ export function generateResultPageMetadata(config: {
   }
 }
 
+/**
+ * Generate unique title and description for test pages
+ * Prevents duplicate title/description issues in Naver Webmaster Tools
+ */
+export function generateUniqueTestMetadata(config: {
+  testName: string
+  testCategory: string
+  testDescription: string
+  keywords: string
+  canonical: string
+}): Metadata {
+  const baseUrl = "https://temon.kr"
+  const fullUrl = `${baseUrl}${config.canonical}`
+  
+  // 고유한 제목 생성 (카테고리와 테스트명을 조합)
+  const uniqueTitle = `${config.testName} - ${config.testCategory}으로 알아보는 성격 유형 | 테몬`
+  
+  // Naver 최적화: 80자 이하 설명
+  const shortDescription = config.testDescription.length > 80 
+    ? config.testDescription.substring(0, 77) + "..."
+    : config.testDescription
+  
+  // 전체 설명 (OpenGraph용)
+  const fullDescription = `${config.testName} 테스트로 알아보는 나의 성격 유형. ${config.testDescription} 12문항, 약 3분 소요, 결과 공유 이미지 자동 생성.`
+
+  return {
+    title: uniqueTitle,
+    description: shortDescription,
+    keywords: config.keywords,
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: config.canonical,
+    },
+    openGraph: {
+      title: uniqueTitle,
+      description: fullDescription,
+      type: "website",
+      url: fullUrl,
+      siteName: "테몬",
+      locale: "ko_KR",
+      images: [
+        {
+          url: `${baseUrl}/og-tests/${config.canonical.replace('/tests/', '').replace('/', '')}.png`,
+          width: 1200,
+          height: 630,
+          alt: config.testName,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: uniqueTitle,
+      description: fullDescription,
+      images: [`${baseUrl}/og-tests/${config.canonical.replace('/tests/', '').replace('/', '')}.png`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+      other: {
+        "naverbot": "index,follow",
+        "Yeti": "index,follow",
+        "Yeti-Mobile": "index,follow",
+      },
+    },
+  }
+}
+

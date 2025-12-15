@@ -55,7 +55,7 @@ const nextConfig = {
   // SEO 및 검색 엔진 최적화
   // 리다이렉트 설정 (www -> non-www 통일)
   async redirects() {
-    return [
+    const redirects = [
       {
         source: '/:path*',
         has: [
@@ -67,7 +67,36 @@ const nextConfig = {
         destination: 'https://temon.kr/:path*',
         permanent: true,
       },
+      // 레거시 경로 리다이렉트 (서버 사이드로 처리하여 리다이렉션 경고 제거)
+      {
+        source: '/test/:slug',
+        destination: '/tests/:slug',
+        permanent: true,
+      },
     ]
+
+    // 개별 테스트 경로 리다이렉트
+    const testRedirects = [
+      { from: '/ramen-mbti', to: '/tests/ramen-mbti' },
+      { from: '/coffee-mbti', to: '/tests/coffee-mbti' },
+      { from: '/study-mbti', to: '/tests/study-mbti' },
+      { from: '/alarm-habit', to: '/tests/alarm-habit' },
+      { from: '/ntrp-test', to: '/tests/ntrp-test' },
+      { from: '/pet-mbti', to: '/tests/pet-mbti' },
+      { from: '/kdrama-mbti', to: '/tests/kdrama-mbti' },
+      { from: '/kpop-idol', to: '/tests/kpop-idol' },
+      { from: '/snowwhite-mbti', to: '/tests/snowwhite-mbti' },
+    ]
+
+    testRedirects.forEach(({ from, to }) => {
+      redirects.push({
+        source: from,
+        destination: to,
+        permanent: true,
+      })
+    })
+
+    return redirects
   },
   
   // 헤더 최적화 (검색 엔진 크롤링 효율 향상)

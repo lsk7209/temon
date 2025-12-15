@@ -5,22 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Search, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "검색 습관 테스트 | 16유형 분석 | 테몬",
-  description:
-    "스마트폰으로 검색하는 습관으로 알아보는 나의 성격 유형. 궁금한 것이 생겼을 때, 검색 결과를 볼 때 등 구체적인 상황으로 분석합니다.",
-  keywords:
-    "검색, 스마트폰, 검색 습관, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/phone-search",
-  },
-  openGraph: {
-    title: "검색 습관 테스트 | 16유형 분석",
-    description: "스마트폰으로 검색하는 습관으로 알아보는 나의 성격 유형. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/phone-search",
-  },
-}
+import { generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
+
+export const metadata: Metadata = generateUniqueTestMetadata({
+  testName: "검색 습관 테스트",
+  testCategory: "스마트폰 검색",
+  testDescription: "스마트폰으로 검색하는 습관으로 알아보는 나의 성격 유형. 궁금한 것이 생겼을 때, 검색 결과를 볼 때 등 구체적인 상황으로 분석합니다.",
+  keywords: "검색, 스마트폰, 검색 습관, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/phone-search",
+})
 
 export default function PhoneSearchIntro() {
   return (
