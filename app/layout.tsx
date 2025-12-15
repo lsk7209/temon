@@ -16,18 +16,18 @@ import { JsonLd } from "@/components/json-ld"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "MBTI 테스트 - 무료 성격 테스트 모음 | 테몬",
-  description: "MBTI 테스트로 알아보는 나만의 성격 유형! 커피, 라면, 반려동물, 공부 습관 등 다양한 주제로 재미있는 MBTI 테스트를 무료로 시작해보세요.",
-  keywords: "MBTI, 성격테스트, MBTI 테스트, 커피MBTI, 라면MBTI, 반려동물MBTI, 공부MBTI, 알람습관, NTRP테스트, 무료 테스트",
+  title: "MBTI ?�스??- 무료 ?�격 ?�스??모음 | ?�몬",
+  description: "MBTI ?�스?�로 ?�아보는 ?�만???�격 ?�형! 커피, ?�면, 반려?�물, 공�? ?��? ???�양??주제�??��??�는 MBTI ?�스?��? 무료�??�작?�보?�요.",
+  keywords: "MBTI, ?�격?�스?? MBTI ?�스?? 커피MBTI, ?�면MBTI, 반려?�물MBTI, 공�?MBTI, ?�람?��?, NTRP?�스?? 무료 ?�스??,
   metadataBase: new URL("https://temon.kr"),
   alternates: {
     canonical: "/",
     types: {
       "application/rss+xml": [
-        { url: "/rss.xml", title: "테몬 MBTI RSS Feed" },
+        { url: "/rss.xml", title: "?�몬 MBTI RSS Feed" },
       ],
       "application/atom+xml": [
-        { url: "/feed.xml", title: "테몬 MBTI Atom Feed" },
+        { url: "/feed.xml", title: "?�몬 MBTI Atom Feed" },
       ],
     },
   },
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: "테몬 MBTI - 나만의 성격 유형 테스트",
-    description: "커피, 라면, 반려동물, 공부 습관 등 다양한 주제로 알아보는 재미있는 MBTI 테스트",
+    title: "?�몬 MBTI - ?�만???�격 ?�형 ?�스??,
+    description: "커피, ?�면, 반려?�물, 공�? ?��? ???�양??주제�??�아보는 ?��??�는 MBTI ?�스??,
     url: "https://temon.kr",
-    siteName: "테몬 MBTI",
+    siteName: "?�몬 MBTI",
     locale: "ko_KR",
     type: "website",
     images: [
@@ -53,14 +53,14 @@ export const metadata: Metadata = {
         url: 'https://temon.kr/placeholder-logo.png',
         width: 1200,
         height: 630,
-        alt: '테몬 MBTI',
+        alt: '?�몬 MBTI',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "테몬 MBTI - 나만의 성격 유형 테스트",
-    description: "커피, 라면, 반려동물, 공부 습관 등 다양한 주제로 알아보는 재미있는 MBTI 테스트",
+    title: "?�몬 MBTI - ?�만???�격 ?�형 ?�스??,
+    description: "커피, ?�면, 반려?�물, 공�? ?��? ???�양??주제�??�아보는 ?��??�는 MBTI ?�스??,
     images: ['https://temon.kr/placeholder-logo.png'],
   },
   robots: {
@@ -98,10 +98,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        {/* SEO, AEO, GEO 최적화를 위한 구조화 데이터 */}
+        {/* SEO, AEO, GEO 최적?��? ?�한 구조???�이??*/}
         <JsonLd id="organization-schema" data={JSON.parse(organizationSchema)} />
         <JsonLd id="website-schema" data={JSON.parse(websiteSchema)} />
-        {/* Google tag (gtag.js) - 지연 로딩으로 페이지 속도 최적화 */}
+        {/* Google tag (gtag.js) - 지??로딩?�로 ?�이지 ?�도 최적??*/}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-L167CCPS8E"
           strategy="lazyOnload"
@@ -116,7 +116,7 @@ export default function RootLayout({
             });
           `}
         </Script>
-        {/* Microsoft Clarity - 지연 로딩 */}
+        {/* Microsoft Clarity - 지??로딩 */}
         <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
@@ -128,21 +128,21 @@ export default function RootLayout({
         </Script>
         <AdSenseScript />
         <Script src="/analytics.js" strategy="lazyOnload" />
-        {/* 네이버 검색 최적화 메타 태그 */}
+        {/* ?�이�?검??최적??메�? ?�그 */}
         {process.env.NAVER_SITE_VERIFICATION && (
           <meta name="naver-site-verification" content={process.env.NAVER_SITE_VERIFICATION} />
         )}
-        {/* 네이버 검색 최적화 - 모바일 최적화 */}
+        {/* ?�이�?검??최적??- 모바??최적??*/}
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
-        {/* 네이버 검색 최적화 - 콘텐츠 유형 */}
+        {/* ?�이�?검??최적??- 콘텐�??�형 */}
         <meta name="naver" content="index,follow" />
-        {/* 다음(Daum) 검색 최적화 */}
+        {/* ?�음(Daum) 검??최적??*/}
         <meta name="daum" content="index,follow" />
-        {/* 검색 엔진 최적화 - 언어 및 지역 */}
+        {/* 검???�진 최적??- ?�어 �?지??*/}
         <meta httpEquiv="content-language" content="ko-KR" />
         <meta name="geo.region" content="KR" />
-        {/* 모바일 최적화 */}
+        {/* 모바??최적??*/}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

@@ -107,6 +107,47 @@ const nextConfig = {
             key: 'X-Robots-Tag',
             value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
           },
+          // 검색 엔진별 최적화 헤더
+          {
+            key: 'X-Googlebot',
+            value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+          },
+          {
+            key: 'X-Yeti',
+            value: 'index, follow',
+          },
+          {
+            key: 'X-Daumoa',
+            value: 'index, follow',
+          },
+        ],
+      },
+      // sitemap.xml 최적화
+      {
+        source: '/sitemap.xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+          },
+          {
+            key: 'Content-Type',
+            value: 'application/xml; charset=utf-8',
+          },
+        ],
+      },
+      // RSS/Feed 최적화
+      {
+        source: '/:path(rss|feed).xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+          },
+          {
+            key: 'Content-Type',
+            value: 'application/xml; charset=utf-8',
+          },
         ],
       },
     ]
