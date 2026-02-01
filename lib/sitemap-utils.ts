@@ -22,11 +22,11 @@ export async function scanAppDirectory(
   excludePaths: string[] = ['api', 'admin', '(admin)', '_next', 'test']
 ): Promise<string[]> {
   const routes: string[] = []
-  
+
   async function scanDirectory(dir: string, baseRoute: string = ''): Promise<void> {
     try {
       const entries = await readdir(dir, { withFileTypes: true })
-      
+
       for (const entry of entries) {
         // 제외할 경로 스킵
         if (excludePaths.some(exclude => entry.name.includes(exclude))) {
@@ -76,7 +76,7 @@ export async function scanTestDirectories(
     for (const entry of entries) {
       if (entry.isDirectory()) {
         const testDir = join(baseDir, entry.name)
-        
+
         // page.tsx 파일이 있는지 확인 (인트로 페이지)
         const introPage = join(testDir, 'page.tsx')
         if (existsSync(introPage)) {
@@ -103,7 +103,7 @@ export async function generateTestRoutes(
 
   for (const testId of testIds) {
     const testBasePath = join(process.cwd(), 'app', 'tests', testId)
-    
+
     // 인트로 페이지가 존재하는지 확인
     const introPageExists = existsSync(join(testBasePath, 'page.tsx'))
     if (introPageExists) {
@@ -143,6 +143,7 @@ export async function generateTestRoutes(
 
 /**
  * 정적 라우트 정의
+ * 참고: admin 페이지는 robots.txt에서 차단되므로 sitemap에서 제외
  */
 export function getStaticRoutes(baseUrl: string): RouteInfo[] {
   return [
@@ -157,12 +158,6 @@ export function getStaticRoutes(baseUrl: string): RouteInfo[] {
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
-    },
-    {
-      path: `${baseUrl}/admin`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
     },
   ]
 }

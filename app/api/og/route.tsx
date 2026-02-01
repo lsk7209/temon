@@ -1,12 +1,3 @@
-/**
- * Dynamic Open Graph Image Generation API Route
- * 
- * Generates dynamic OG images for better social media sharing
- * and SEO optimization.
- * 
- * Usage: /api/og?title=커피 MBTI&subtitle=커피 취향으로 알아보는 성격 유형
- */
-
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
 
@@ -15,17 +6,9 @@ export const runtime = 'edge'
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    
-    // Extract parameters from query string
     const title = searchParams.get('title') || '테몬 MBTI'
-    const subtitle = searchParams.get('subtitle') || '무료 성격 테스트'
-    const testId = searchParams.get('testId') || ''
-    const difficulty = searchParams.get('difficulty') || ''
-    const participants = searchParams.get('participants') || ''
-    
-    // Font configuration (using system fonts for edge runtime)
-    // In production, you might want to use custom fonts via @vercel/og
-    
+    const description = searchParams.get('desc') || '나의 성향을 알아보세요!'
+
     return new ImageResponse(
       (
         <div
@@ -36,126 +19,96 @@ export async function GET(request: NextRequest) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            padding: '80px',
-            fontFamily: 'system-ui, -apple-system, sans-serif',
+            backgroundImage: 'linear-gradient(to bottom right, #4F46E5, #9333EA)',
+            padding: '40px 80px',
+            textAlign: 'center',
           }}
         >
-          {/* Main Title */}
+          {/* Branding Badge */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 40,
+              left: 40,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <div
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: '50%',
+                backgroundColor: '#fff',
+                marginRight: 10,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 20,
+              }}
+            >
+              🧪
+            </div>
+            <span
+              style={{
+                fontSize: 24,
+                fontWeight: 'bold',
+                color: 'white',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              테몬 MBTI
+            </span>
+          </div>
+
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              textAlign: 'center',
-              width: '100%',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              borderRadius: 20,
+              padding: '40px 60px',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
             }}
           >
-            <h1
+            <div
               style={{
-                fontSize: title.length > 20 ? 64 : 80,
+                fontSize: 60,
                 fontWeight: 900,
                 color: 'white',
-                marginBottom: '20px',
                 lineHeight: 1.2,
-                textShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                marginBottom: 20,
+                textShadow: '0 2px 10px rgba(0,0,0,0.2)',
+                wordBreak: 'keep-all',
               }}
             >
               {title}
-            </h1>
-            
-            {/* Subtitle */}
-            {subtitle && (
-              <p
-                style={{
-                  fontSize: 32,
-                  fontWeight: 600,
-                  color: 'rgba(255,255,255,0.95)',
-                  marginBottom: '40px',
-                  maxWidth: '900px',
-                }}
-              >
-                {subtitle}
-              </p>
-            )}
-            
-            {/* Metadata Row */}
+            </div>
+
             <div
               style={{
-                display: 'flex',
-                flexDirection: 'row',
-                gap: '40px',
-                alignItems: 'center',
-                marginTop: '40px',
+                fontSize: 30,
+                color: '#E9D5FF',
+                lineHeight: 1.5,
+                fontWeight: 500,
               }}
             >
-              {/* Difficulty Badge */}
-              {difficulty && (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    backgroundColor: 'rgba(255,255,255,0.2)',
-                    padding: '12px 24px',
-                    borderRadius: '12px',
-                    fontSize: 24,
-                    color: 'white',
-                    fontWeight: 600,
-                  }}
-                >
-                  난이도: {difficulty}
-                </div>
-              )}
-              
-              {/* Participants Count */}
-              {participants && (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    backgroundColor: 'rgba(255,255,255,0.2)',
-                    padding: '12px 24px',
-                    borderRadius: '12px',
-                    fontSize: 24,
-                    color: 'white',
-                    fontWeight: 600,
-                  }}
-                >
-                  참여자: {participants}
-                </div>
-              )}
+              {description}
             </div>
-            
-            {/* Brand Footer */}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '60px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 28,
-                  fontWeight: 700,
-                  color: 'white',
-                  textShadow: '0 2px 8px rgba(0,0,0,0.3)',
-                }}
-              >
-                테몬 MBTI
-              </div>
-              <div
-                style={{
-                  fontSize: 20,
-                  color: 'rgba(255,255,255,0.8)',
-                }}
-              >
-                무료 성격 테스트
-              </div>
-            </div>
+          </div>
+
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 40,
+              fontSize: 20,
+              color: 'rgba(255, 255, 255, 0.6)',
+            }}
+          >
+            지금 바로 무료로 테스트해보세요! 👉
           </div>
         </div>
       ),
@@ -165,32 +118,9 @@ export async function GET(request: NextRequest) {
       }
     )
   } catch (e: any) {
-    console.error('OG Image generation failed:', e.message)
-    
-    // Return a fallback image
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            color: 'white',
-            fontSize: 48,
-            fontWeight: 700,
-          }}
-        >
-          테몬 MBTI
-        </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-      }
-    )
+    console.log(`${e.message}`)
+    return new Response(`Failed to generate the image`, {
+      status: 500,
+    })
   }
 }
-

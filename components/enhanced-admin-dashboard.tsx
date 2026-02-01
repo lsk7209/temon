@@ -19,9 +19,7 @@ import {
   Smartphone,
   Tablet,
   Globe,
-  Laptop,
   Code,
-  Settings,
   Save,
   Trash2,
   Coffee,
@@ -84,13 +82,13 @@ export default function EnhancedAdminDashboard() {
   const [lastUpdated, setLastUpdated] = useState<Date>(new Date())
   const [gaConnected, setGaConnected] = useState(false)
   const [activeTab, setActiveTab] = useState("overview")
-  
+
   // 상세 통계 데이터
   const [deviceStats, setDeviceStats] = useState<DeviceStats[]>([])
   const [browserStats, setBrowserStats] = useState<BrowserStats[]>([])
   const [keywordStats, setKeywordStats] = useState<KeywordStats[]>([])
   const [osStats, setOsStats] = useState<OsStats[]>([])
-  
+
   // Head 스크립트 관리
   const [scripts, setScripts] = useState<ScriptConfig[]>([])
   const [editingScript, setEditingScript] = useState<ScriptConfig | null>(null)
@@ -106,44 +104,11 @@ export default function EnhancedAdminDashboard() {
     "NTRP 테스트": Trophy,
   }
 
-  const loadStats = async () => {
-    setIsLoading(true)
-    try {
-      const response = await fetch('/api/dashboard')
-      if (response.ok) {
-        const data = await response.json() as DashboardStats
-        setStats(data)
-        
-        // 상세 통계 로드
-        loadDetailedStats()
-      } else {
-        const fallbackStats = getAdvancedStats()
-        setStats(fallbackStats)
-        loadMockDetailedStats()
-      }
-      setLastUpdated(new Date())
-      setGaConnected(checkGAConnection())
-    } catch (error) {
-      console.error("통계 로딩 실패:", error)
-      const fallbackStats = getAdvancedStats()
-      setStats(fallbackStats)
-      loadMockDetailedStats()
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   const loadDetailedStats = async () => {
     try {
-      // 실제 API 호출 (추후 구현)
       const response = await fetch('/api/admin/stats/detailed')
       if (response.ok) {
-        const data = await response.json() as {
-          devices?: DeviceStats[]
-          browsers?: BrowserStats[]
-          keywords?: KeywordStats[]
-          os?: OsStats[]
-        }
+        const data = await response.json()
         setDeviceStats(data.devices || [])
         setBrowserStats(data.browsers || [])
         setKeywordStats(data.keywords || [])
@@ -154,6 +119,27 @@ export default function EnhancedAdminDashboard() {
     } catch (error) {
       console.error("상세 통계 로딩 실패:", error)
       loadMockDetailedStats()
+    }
+  }
+
+  const loadStats = async () => {
+    setIsLoading(true)
+    try {
+      const response = await fetch('/api/dashboard')
+      if (response.ok) {
+        const data = await response.json() as DashboardStats
+        setStats(data)
+        loadDetailedStats()
+      } else {
+        // Fallback or error handling
+        console.error("Dashboard API returned error")
+      }
+      setLastUpdated(new Date())
+      setGaConnected(checkGAConnection())
+    } catch (error) {
+      console.error("통계 로딩 실패:", error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -255,7 +241,17 @@ export default function EnhancedAdminDashboard() {
     return <div className="p-8 text-center">로딩 중...</div>
   }
 
-  if (!stats) return null
+  // Handle case where stats failed to load
+  if (!stats) {
+    return (
+      <div className="p-8 text-center text-red-500">
+        <p>통계 데이터를 불러오는데 실패했습니다.</p>
+        <Button onClick={loadStats} variant="outline" className="mt-4">
+          다시 시도
+        </Button>
+      </div>
+    )
+  }
 
   const completionRate =
     stats.totalTestsStarted > 0 ? Math.round((stats.totalTestsCompleted / stats.totalTestsStarted) * 100) : 0
@@ -354,7 +350,7 @@ export default function EnhancedAdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {Object.entries(stats.testStats).map(([testName, data]) => {
+                {stats.testStats && Object.entries(stats.testStats).map(([testName, data]) => {
                   const Icon = testIcons[testName] || Activity
                   const rate = data.started > 0 ? Math.round((data.completed / data.started) * 100) : 0
 
@@ -592,7 +588,7 @@ export default function EnhancedAdminDashboard() {
 
               <div className="bg-muted p-4 rounded-lg">
                 <p className="text-sm text-muted-foreground">
-                  💡 <strong>주의사항:</strong> 스크립트는 localStorage에 저장되며, 실제 적용을 위해서는 
+                  💡 <strong>주의사항:</strong> 스크립트는 localStorage에 저장되며, 실제 적용을 위해서는
                   layout.tsx에서 이 데이터를 읽어와 head에 삽입해야 합니다.
                 </p>
               </div>
@@ -603,4 +599,3 @@ export default function EnhancedAdminDashboard() {
     </div>
   )
 }
-

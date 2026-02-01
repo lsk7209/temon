@@ -18,6 +18,76 @@ export interface Test {
 
 export const ALL_TESTS: Test[] = [
   {
+    id: "meeting-villain",
+    title: "😈 회의 빌런 테스트",
+    description: "회의 시간, 당신의 역할과 행동 패턴으로 알아보는 16가지 유형",
+    icon: Users,
+    href: "/tests/meeting-villain",
+    color: "from-gray-500 to-slate-600",
+    participants: "800+",
+    rating: 4.8,
+    badge: "NEW",
+    category: "직장",
+    tags: ["직장", "회의", "성격", "빌런"],
+    new: true,
+  },
+  {
+    id: "breakup-style",
+    title: "💔 이별 후유증 유형",
+    description: "이별 후 나의 행동과 감정 처리를 통해 알아보는 극복 스타일",
+    icon: Heart,
+    href: "/tests/breakup-style",
+    color: "from-rose-500 to-pink-600",
+    participants: "1.2K",
+    rating: 4.9,
+    badge: "NEW",
+    category: "연애",
+    tags: ["이별", "연애", "심리", "극복"],
+    new: true,
+  },
+  {
+    id: "hotel-breakfast",
+    title: "🥞 호텔 조식 공략법",
+    description: "뷔페에서 음식을 담고 먹는 스타일로 알아보는 여행 성향",
+    icon: UtensilsCrossed,
+    href: "/tests/hotel-breakfast",
+    color: "from-orange-500 to-yellow-600",
+    participants: "600+",
+    rating: 4.7,
+    badge: "NEW",
+    category: "여행",
+    tags: ["여행", "음식", "호텔", "성격"],
+    new: true,
+  },
+  {
+    id: "investment-style",
+    title: "📈 주식 투자 스타일",
+    description: "나는 야수의 심장일까, 소심한 개미일까? 투자 성향 분석",
+    icon: DollarSign,
+    href: "/tests/investment-style",
+    color: "from-green-500 to-emerald-600",
+    participants: "2.5K",
+    rating: 4.8,
+    badge: "NEW",
+    category: "재테크",
+    tags: ["주식", "투자", "돈", "성격"],
+    new: true,
+  },
+  {
+    id: "zombie-survival",
+    title: "🧟‍♂️ 좀비 아포칼립스 생존",
+    description: "좀비 사태 발생 시 나의 생존 확률과 역할 분석",
+    icon: AlertTriangle,
+    href: "/tests/zombie-survival",
+    color: "from-red-900 to-gray-900",
+    participants: "3.1K",
+    rating: 4.9,
+    badge: "NEW",
+    category: "상상",
+    tags: ["좀비", "생존", "상상", "MBTI"],
+    new: true,
+  },
+  {
     id: "coffee-mbti",
     title: "☕ 커피 MBTI",
     description: "당신의 커피 취향으로 알아보는 성격 유형",
@@ -2700,7 +2770,7 @@ export const getAllTests = () => {
   for (const test of ALL_TESTS) {
     uniqueTests.set(test.id, test)
   }
-  
+
   // id 기준으로 정렬하여 일관성 유지
   return Array.from(uniqueTests.values()).sort((a, b) => {
     // 먼저 id로 정렬

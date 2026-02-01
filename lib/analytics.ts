@@ -41,6 +41,24 @@ declare global {
   }
 }
 
+// 서버 트래킹 전송
+async function sendTrackingEvent(type: string, payload: any) {
+  try {
+    if (typeof window === "undefined") return
+
+    await fetch('/api/analytics/track', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ type, payload }),
+      keepalive: true, // 페이지 이동 시에도 전송 보장
+    })
+  } catch (error) {
+    console.error("서버 트래킹 오류:", error)
+  }
+}
+
 // 기본 방문 추적
 export function trackVisit() {
   if (typeof window === "undefined") return
@@ -53,6 +71,12 @@ export function trackVisit() {
         event_category: "engagement",
       })
     }
+    // 서버 트래킹
+    sendTrackingEvent('page_view', {
+      path: window.location.pathname,
+      referrer: document.referrer,
+      searchKeyword: new URLSearchParams(window.location.search).get('q')
+    })
     console.log("📊 방문 추적 완료")
   } catch (error) {
     console.error("방문 추적 오류:", error)
@@ -71,6 +95,12 @@ export function trackPageVisit(pathname: string) {
         event_category: "navigation",
       })
     }
+    // 서버 트래킹
+    sendTrackingEvent('page_view', {
+      path: pathname,
+      referrer: document.referrer,
+      searchKeyword: new URLSearchParams(window.location.search).get('q')
+    })
     console.log(`📊 페이지 방문 추적: ${pathname}`)
   } catch (error) {
     console.error("페이지 방문 추적 오류:", error)
@@ -88,6 +118,8 @@ export function trackTestStart(testId: string) {
         event_category: "engagement",
       })
     }
+    // 서버 트래킹
+    sendTrackingEvent('test_start', { testId })
     console.log(`📊 테스트 시작 추적: ${testId}`)
   } catch (error) {
     console.error("테스트 시작 추적 오류:", error)

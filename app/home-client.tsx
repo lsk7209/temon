@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, TrendingUp, Users, Sparkles, ArrowRight } from "lucide-react"
+import { shouldShowParticipants, formatParticipants } from "@/lib/format-participants"
 import type { LucideIcon } from "lucide-react"
 import { getHomePageTests, ALL_TESTS } from "@/lib/tests-config"
 
@@ -132,10 +133,12 @@ export default function HomeClient() {
                           <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                           <span className="font-semibold">{test.rating}</span>
                         </div>
-                        <div className="flex items-center gap-1 text-gray-600">
-                          <Users className="w-4 h-4" />
-                          <span className="text-sm">{test.participants}</span>
-                        </div>
+                        {shouldShowParticipants(test.participants) && (
+                          <div className="flex items-center gap-1 text-gray-600">
+                            <Users className="w-4 h-4" />
+                            <span className="text-sm">{test.participants}</span>
+                          </div>
+                        )}
                       </div>
                       <Button
                         size="sm"

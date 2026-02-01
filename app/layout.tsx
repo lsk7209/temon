@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
+import Footer from "@/components/footer"
 import AnalyticsProvider from "@/components/analytics-provider"
 import Script from "next/script"
 import { Suspense } from "react"
@@ -22,6 +23,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://temon.kr"),
   alternates: {
     canonical: "/",
+    languages: {
+      "ko-KR": "https://temon.kr",
+    },
     types: {
       "application/rss+xml": [
         { url: "/rss.xml", title: "테몬 MBTI RSS Feed" },
@@ -50,10 +54,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: 'https://temon.kr/placeholder-logo.png',
+        url: 'https://temon.kr/api/og?title=테몬%20MBTI&desc=무료%20성격%20테스트%20모음',
         width: 1200,
         height: 630,
-        alt: '테몬 MBTI',
+        alt: '테몬 MBTI - 무료 성격 테스트',
       },
     ],
   },
@@ -61,7 +65,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "테몬 MBTI - 나만의 성격 유형 테스트",
     description: "커피, 라면, 반려동물, 공부 습관 등 다양한 주제로 알아보는 재미있는 MBTI 테스트",
-    images: ['https://temon.kr/placeholder-logo.png'],
+    images: ['https://temon.kr/api/og?title=테몬%20MBTI&desc=무료%20성격%20테스트%20모음'],
   },
   robots: {
     index: true,
@@ -162,6 +166,7 @@ export default function RootLayout({
             <AdminHeadScripts />
             <Header />
             <main className="min-h-screen">{children}</main>
+            <Footer />
           </AnalyticsProvider>
         </Suspense>
         {/* Vercel Analytics & Speed Insights */}

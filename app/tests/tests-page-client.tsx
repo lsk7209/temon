@@ -4,16 +4,47 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Input } from "@/components/ui/input"
 import { Search, Star, Users, ChevronLeft, ChevronRight, TestTube } from "lucide-react"
 import { useState, useEffect } from "react"
 import { trackClick, trackSearch } from "@/lib/analytics"
-import { getAllTests, CATEGORIES, ALL_TESTS } from "@/lib/tests-config"
+import { getAllTests, CATEGORIES, ALL_TESTS, Test } from "@/lib/tests-config"
+import { Sparkles } from "lucide-react"
+import { shouldShowParticipants, formatParticipants } from "@/lib/format-participants"
 
 const TESTS_PER_PAGE = 12
 
-export default function TestsPageClient() {
-  const allTests = getAllTests()
+interface DynamicTest {
+  id: string
+  title: string
+  description: string
+  slug: string
+  category: string
+}
+
+interface TestsPageClientProps {
+  dynamicTests?: DynamicTest[]
+}
+
+export default function TestsPageClient({ dynamicTests = [] }: TestsPageClientProps) {
+  // Map dynamic tests to the Test interface
+  const mappedDynamicTests: Test[] = dynamicTests.map(t => ({
+    id: t.id,
+    title: t.title,
+    description: t.description || "",
+    icon: Sparkles,
+    href: `/tests/${t.slug}`,
+    color: "from-violet-500 to-fuchsia-500",
+    participants: "0",
+    rating: 5.0,
+    badge: "AI",
+    category: t.category || "기타",
+    tags: ["AI", "New", t.title],
+    new: true
+  }))
+
+  const allTests = [...mappedDynamicTests, ...getAllTests()]
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("전체")
   const [currentPage, setCurrentPage] = useState(1)
@@ -40,8 +71,8 @@ export default function TestsPageClient() {
   const filteredTests = allTests
     .filter(test => {
       const matchesSearch = test.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           test.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           test.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+        test.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        test.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
       const matchesCategory = selectedCategory === "전체" || test.category === selectedCategory
       return matchesSearch && matchesCategory
     })
@@ -52,7 +83,7 @@ export default function TestsPageClient() {
       return 0
     })
     // href 기준으로도 중복 제거 (혹시 모를 href 중복 방지)
-    .filter((test, index, self) => 
+    .filter((test, index, self) =>
       index === self.findIndex(t => t.href === test.href)
     )
 
@@ -84,29 +115,55 @@ export default function TestsPageClient() {
       <section className="px-4 pb-8">
         <div className="max-w-7xl mx-auto">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-6 mb-8">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <div className="flex flex-col gap-6">
+              {/* 검색바 */}
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <Input
                   type="text"
-                  placeholder="테스트 검색..."
+                  placeholder="관심 있는 테스트를 검색해보세요..."
                   value={searchTerm}
                   onChange={(e) => handleSearch(e.target.value)}
-                  className="pl-10 w-full"
+                  className="pl-12 h-12 text-lg rounded-full border-gray-200 focus-visible:ring-violet-500 bg-white/50 backdrop-blur-sm transition-all hover:bg-white"
                 />
               </div>
-              <div className="flex flex-wrap gap-2">
-                {CATEGORIES.map((category) => (
-                  <Button
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => handleCategoryFilter(category)}
-                    className={selectedCategory === category ? "bg-gradient-to-r from-violet-500 to-pink-500" : ""}
-                  >
-                    {category}
-                  </Button>
-                ))}
+
+              {/* 카테고리 필터 */}
+              <div className="border-t pt-4">
+                <div className="flex items-center gap-2 text-sm text-gray-500 mb-3 px-1">
+                  <span className="font-semibold">카테고리</span>
+                  <span className="text-xs bg-gray-100 px-2 py-0.5 rounded-full text-gray-400">
+                    좌우로 스크롤하여 확인하세요
+                  </span>
+                </div>
+                <ScrollArea className="w-full whitespace-nowrap rounded-lg">
+                  <div className="flex w-max space-x-2 p-1">
+                    <Button
+                      variant={selectedCategory === "전체" ? "default" : "outline"}
+                      onClick={() => handleCategoryFilter("전체")}
+                      className={`rounded-full px-6 transition-all ${selectedCategory === "전체"
+                          ? "bg-gradient-to-r from-violet-500 to-pink-500 text-white border-0 shadow-md transform scale-105"
+                          : "hover:bg-violet-50 hover:text-violet-600 border-gray-200"
+                        }`}
+                    >
+                      전체
+                    </Button>
+                    {CATEGORIES.map((category) => (
+                      <Button
+                        key={category}
+                        variant={selectedCategory === category ? "default" : "outline"}
+                        onClick={() => handleCategoryFilter(category)}
+                        className={`rounded-full px-5 transition-all ${selectedCategory === category
+                            ? "bg-gradient-to-r from-violet-500 to-pink-500 text-white border-0 shadow-md transform scale-105"
+                            : "hover:bg-violet-50 hover:text-violet-600 border-gray-200"
+                          }`}
+                      >
+                        {category}
+                      </Button>
+                    ))}
+                  </div>
+                  <ScrollBar orientation="horizontal" className="invisible sm:visible" />
+                </ScrollArea>
               </div>
             </div>
           </div>
@@ -166,10 +223,12 @@ export default function TestsPageClient() {
                               <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                               <span className="font-semibold">{test.rating}</span>
                             </div>
-                            <div className="flex items-center gap-1 text-gray-600">
-                              <Users className="w-4 h-4" />
-                              <span className="text-sm">{test.participants}</span>
-                            </div>
+                            {shouldShowParticipants(test.participants) && (
+                              <div className="flex items-center gap-1 text-gray-600">
+                                <Users className="w-4 h-4" />
+                                <span className="text-sm">{test.participants}</span>
+                              </div>
+                            )}
                           </div>
                           <Button
                             size="sm"

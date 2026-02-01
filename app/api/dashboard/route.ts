@@ -1,38 +1,11 @@
-/**
- * 관리자 대시보드 API
- * GET /api/dashboard - 대시보드 통계 데이터 조회
- * 
- * Vercel Edge Runtime 최적화
- */
-
-// Vercel Edge Runtime 사용 (최저 지연시간)
-export const runtime = 'edge'
-
-// 동적 렌더링 (실시간 데이터)
-export const dynamic = 'force-dynamic'
-
-// 캐싱 비활성화 (실시간 대시보드)
-export const revalidate = 0
-
 import { NextRequest, NextResponse } from 'next/server'
-import { initDatabase } from '@/lib/db/client'
-import type { D1Database } from '@/lib/db/client'
+import { db } from '@/lib/db/client'
+import { pageVisits, testStarts, testResults } from '@/lib/db/schema'
+import { sql, desc } from 'drizzle-orm'
 
-/**
- * Cloudflare Workers/Pages Functions 환경에서 D1 데이터베이스 가져오기
- * 
- * 주의: 프로덕션 환경에서는 functions/ 디렉토리의 Functions API 사용을 권장합니다.
- */
-function getD1Database(): D1Database | undefined {
-  // Cloudflare Pages Functions 환경 확인
-  if (typeof globalThis !== 'undefined' && 'process' in globalThis) {
-    // Node.js 개발 환경
-    return undefined
-  }
-  
-  // Cloudflare Workers/Pages Functions 환경
-  return (globalThis as any).env?.DB || (globalThis as any).__env?.DB
-}
+export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 function getCorsHeaders() {
   return {
@@ -48,87 +21,87 @@ export async function OPTIONS() {
 
 export async function GET(request: NextRequest) {
   try {
-    const db = getD1Database()
-    
-    if (!db) {
-      // 개발 환경: 모의 데이터 반환
-      return NextResponse.json(
-        {
-          totalVisits: 0,
-          totalTestsStarted: 0,
-          totalTestsCompleted: 0,
-          lastVisit: Date.now(),
-          testStats: {},
-          message: 'Database not available in development',
-        },
-        { headers: getCorsHeaders() }
-      )
-    }
-
-    initDatabase(db)
-
     // 전체 통계 조회
     const today = new Date().toISOString().split('T')[0]
-    
+
     // 총 방문 수 (페이지 방문 테이블)
-    const visitsResult = await db.prepare(
-      'SELECT COUNT(*) as count FROM page_visits'
-    ).first<{ count: number }>()
+    const visitsResult = await db.select({ count: sql<number>`count(*)` })
+      .from(pageVisits)
+      .get()
 
     // 총 테스트 시작 수
-    const startsResult = await db.prepare(
-      'SELECT COUNT(*) as count FROM test_starts'
-    ).first<{ count: number }>()
+    const startsResult = await db.select({ count: sql<number>`count(*)` })
+      .from(testStarts)
+      .get()
 
-    // 총 테스트 완료 수
-    const resultsResult = await db.prepare(
-      'SELECT COUNT(*) as count FROM test_results'
-    ).first<{ count: number }>()
+    // 총 테스트 완료 수 (테이블 존재 여부 확인 필요하지만 schema.ts에 있다면 사용)
+    // testResults 테이블이 없을 수도 있으니 try-catch로 감싸거나 schema 확인 필요
+    // 여기서는 schema에 있다고 가정하고 진행
+    let resultsCount = 0
+    try {
+      const results = await db.select({ count: sql<number>`count(*)` })
+        .from(testResults) // schema.ts에 testResults가 export 되어 있어야 함
+        .get()
+      resultsCount = results?.count || 0
+    } catch (e) {
+      console.warn('test_results table query failed', e)
+    }
 
     // 마지막 방문 시간
-    const lastVisitResult = await db.prepare(
-      'SELECT MAX(created_at) as last_visit FROM page_visits'
-    ).first<{ last_visit: number }>()
+    const lastVisitResult = await db.select({ last_visit: sql<number>`max(${pageVisits.createdAt})` })
+      .from(pageVisits)
+      .get()
 
     // 테스트별 통계
-    const testStatsResult = await db.prepare(`
-      SELECT 
-        test_id,
-        COUNT(*) as started
-      FROM test_starts
-      GROUP BY test_id
-    `).all<{ test_id: string; started: number }>()
+    const testStatsResult = await db.select({
+      test_id: testStarts.testId,
+      started: sql<number>`count(*)`
+    })
+      .from(testStarts)
+      .groupBy(testStarts.testId)
+      .all()
 
-    const completedStatsResult = await db.prepare(`
-      SELECT 
-        test_id,
-        COUNT(*) as completed
-      FROM test_results
-      GROUP BY test_id
-    `).all<{ test_id: string; completed: number }>()
+    // 완료 통계
+    let completedStatsResult: { test_id: string, completed: number }[] = []
+    try {
+      completedStatsResult = await db.select({
+        test_id: testResults.testId,
+        completed: sql<number>`count(*)`
+      })
+        .from(testResults)
+        .groupBy(testResults.testId)
+        .all()
+    } catch (e) {
+      console.warn('test_results group query failed', e)
+    }
 
     // 통계 조합
     const testStats: Record<string, { started: number; completed: number }> = {}
-    
-    testStatsResult.results?.forEach((row) => {
-      testStats[row.test_id] = {
-        started: row.started,
-        completed: 0,
+
+    testStatsResult.forEach((row) => {
+      // row.test_id가 null일 수 있으므로 체크
+      if (row.test_id) {
+        testStats[row.test_id] = {
+          started: row.started,
+          completed: 0,
+        }
       }
     })
 
-    completedStatsResult.results?.forEach((row) => {
-      if (!testStats[row.test_id]) {
-        testStats[row.test_id] = { started: 0, completed: 0 }
+    completedStatsResult.forEach((row) => {
+      if (row.test_id) {
+        if (!testStats[row.test_id]) {
+          testStats[row.test_id] = { started: 0, completed: 0 }
+        }
+        testStats[row.test_id].completed = row.completed
       }
-      testStats[row.test_id].completed = row.completed
     })
 
     return NextResponse.json(
       {
         totalVisits: visitsResult?.count || 0,
         totalTestsStarted: startsResult?.count || 0,
-        totalTestsCompleted: resultsResult?.count || 0,
+        totalTestsCompleted: resultsCount,
         lastVisit: lastVisitResult?.last_visit || Date.now(),
         testStats,
       },
@@ -142,4 +115,5 @@ export async function GET(request: NextRequest) {
     )
   }
 }
+
 

@@ -3,11 +3,11 @@
  */
 
 import { eq, and, desc } from 'drizzle-orm'
-import { getDb } from '../client'
+import { db } from '../client'
 import { tests, questions, resultTypes } from '../schema'
-import type { Db } from '../client'
+import type { Database } from '../client'
 
-export async function getTestBySlug(db: Db, slug: string) {
+export async function getTestBySlug(db: Database, slug: string) {
   const test = await db
     .select()
     .from(tests)
@@ -36,7 +36,7 @@ export async function getTestBySlug(db: Db, slug: string) {
   }
 }
 
-export async function getAllTests(db: Db, options?: {
+export async function getAllTests(db: Database, options?: {
   status?: 'draft' | 'published' | 'archived'
   category?: string
   limit?: number
@@ -60,7 +60,7 @@ export async function getAllTests(db: Db, options?: {
   return await query
 }
 
-export async function createTest(db: Db, data: {
+export async function createTest(db: Database, data: {
   id: string
   slug: string
   title: string

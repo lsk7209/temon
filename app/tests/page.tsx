@@ -2,6 +2,9 @@ import type { Metadata } from "next"
 import TestsPageClient from "./tests-page-client"
 import { JsonLd, createBreadcrumbSchema, createItemListSchema } from "@/components/json-ld"
 import { ALL_TESTS } from "@/lib/tests-config"
+import { db } from "@/lib/db/client"
+import { tests } from "@/lib/db/schema"
+import { eq, desc } from "drizzle-orm"
 
 const baseUrl = "https://temon.kr"
 
@@ -53,7 +56,34 @@ export const metadata: Metadata = {
   },
 }
 
-export default function TestsPage() {
+export default async function TestsPage() {
+  // Fetch published tests from DB
+  let dynamicTests: {
+    id: string;
+    title: string;
+    description: string | null;
+    slug: string;
+    category: string | null;
+  }[] = []
+
+  try {
+    const dbTestsData = await db.select({
+      id: tests.id,
+      title: tests.title,
+      description: tests.description,
+      slug: tests.slug,
+      category: tests.category
+    })
+      .from(tests)
+      .where(eq(tests.status, 'published'))
+      .orderBy(desc(tests.createdAt))
+      .all()
+
+    dynamicTests = dbTestsData
+  } catch (error) {
+    console.error("Failed to fetch dynamic tests:", error)
+  }
+
   // Generate structured data schemas
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "홈", url: baseUrl },
@@ -61,7 +91,18 @@ export default function TestsPage() {
   ])
 
   // ItemList 스키마 생성 (테스트 목록 최적화)
-  const itemListItems = ALL_TESTS.slice(0, 20).map(test => ({
+  // Combine static and dynamic for schema
+  const allTestsForSchema = [
+    ...dynamicTests.map(t => ({
+      title: t.title,
+      description: t.description || "",
+      href: `/tests/${t.slug}`,
+      id: t.id
+    })),
+    ...ALL_TESTS
+  ]
+
+  const itemListItems = allTestsForSchema.slice(0, 20).map(test => ({
     name: test.title,
     description: test.description,
     url: `${baseUrl}${test.href}`,
@@ -75,7 +116,11 @@ export default function TestsPage() {
       {/* Structured Data for SEO/GEO */}
       <JsonLd id="tests-breadcrumb-schema" data={breadcrumbSchema} />
       <JsonLd id="tests-itemlist-schema" data={itemListSchema} />
-      <TestsPageClient />
+      <TestsPageClient dynamicTests={dynamicTests.map(t => ({
+        ...t,
+        description: t.description || "",
+        category: t.category || "기타"
+      }))} />
     </>
   )
 }

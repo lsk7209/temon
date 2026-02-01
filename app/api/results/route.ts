@@ -6,43 +6,12 @@
  * Vercel Edge Runtime 최적화
  */
 
-// Vercel Edge Runtime 사용 (최저 지연시간)
 export const runtime = 'edge'
-
-// 동적 렌더링 (캐싱 없음)
 export const dynamic = 'force-dynamic'
-
-// 캐싱 비활성화 (실시간 데이터)
 export const revalidate = 0
 
 import { NextRequest, NextResponse } from 'next/server'
-import { getDatabase } from '@/lib/db/client'
-import { initDatabase } from '@/lib/db/client'
-import type { D1Database } from '@/lib/db/client'
-
-/**
- * Cloudflare Workers/Pages Functions 환경에서 D1 데이터베이스 가져오기
- * 
- * 주의: Next.js API Routes는 Cloudflare Pages에서 자동으로 Functions로 변환됩니다.
- * 하지만 context 객체에 직접 접근하기 어려우므로, 이 방식은 제한적입니다.
- * 
- * 대안:
- * 1. functions/ 디렉토리에 별도 API를 만들어 사용
- * 2. Cloudflare Pages Functions의 onRequest 핸들러 사용
- * 3. 환경 변수로 데이터베이스 연결 정보 전달
- */
-function getD1Database(): D1Database | undefined {
-  // Cloudflare Pages Functions 환경 확인
-  if (typeof globalThis !== 'undefined' && 'process' in globalThis) {
-    // Node.js 개발 환경 (로컬 개발 시)
-    return undefined
-  }
-  
-  // Cloudflare Workers/Pages Functions 환경
-  // 실제로는 context.env.DB를 통해 접근해야 하지만,
-  // Next.js Route Handler에서는 직접 접근이 어려움
-  return (globalThis as any).env?.DB || (globalThis as any).__env?.DB
-}
+import { saveTestResult, getTestResult } from '@/lib/db/queries/results'
 
 /**
  * CORS 헤더 설정
@@ -96,13 +65,6 @@ export async function OPTIONS() {
  */
 export async function POST(request: NextRequest) {
   try {
-    // 데이터베이스 초기화
-    const db = getD1Database()
-    if (db) {
-      initDatabase(db)
-    }
-    const database = getDatabase()
-
     // 요청 본문 파싱 및 검증
     let body: unknown
     try {
@@ -132,12 +94,12 @@ export async function POST(request: NextRequest) {
       undefined
 
     // 결과 저장
-    const resultId = await database.saveTestResult({
+    const resultId = await saveTestResult({
       testId,
       resultType,
       answers,
       userAgent,
-      ipAddress,
+      userIp: ipAddress,
     })
 
     return NextResponse.json(
@@ -146,14 +108,6 @@ export async function POST(request: NextRequest) {
     )
   } catch (error) {
     console.error('Error saving test result:', error)
-    
-    // 에러 타입별 처리
-    if (error instanceof Error && error.message.includes('Database not initialized')) {
-      return NextResponse.json(
-        { error: 'Database connection failed' },
-        { status: 503, headers: getCorsHeaders() }
-      )
-    }
 
     return NextResponse.json(
       { error: 'Internal server error' },
@@ -167,13 +121,6 @@ export async function POST(request: NextRequest) {
  */
 export async function GET(request: NextRequest) {
   try {
-    // 데이터베이스 초기화
-    const db = getD1Database()
-    if (db) {
-      initDatabase(db)
-    }
-    const database = getDatabase()
-
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id')
 
@@ -184,15 +131,15 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // UUID 형식 검증 (간단한 검증)
-    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    // UUID 형식 검증 (간단한 검증) (길이 및 하이픈 체크)
+    if (id.length > 50) { // 너무 긴 ID 방어
       return NextResponse.json(
         { error: 'Invalid id format' },
         { status: 400, headers: getCorsHeaders() }
       )
     }
 
-    const result = await database.getTestResult(id)
+    const result = await getTestResult(id)
 
     if (!result) {
       return NextResponse.json(
@@ -205,17 +152,9 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Error fetching test result:', error)
 
-    if (error instanceof Error && error.message.includes('Database not initialized')) {
-      return NextResponse.json(
-        { error: 'Database connection failed' },
-        { status: 503, headers: getCorsHeaders() }
-      )
-    }
-
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500, headers: getCorsHeaders() }
     )
   }
 }
-

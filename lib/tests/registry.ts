@@ -10,8 +10,8 @@ import coffeeMbtiQuestions from "./questions/coffee-mbti.json"
 // 질문 데이터를 동적으로 로드하는 함수 (필요시)
 async function loadQuestions(testId: string) {
   try {
-    const module = await import(`./questions/${testId}.json`)
-    return module.default
+    const pkg = await import(`./questions/${testId}.json`)
+    return pkg.default
   } catch (error) {
     console.error(`Failed to load questions for ${testId}:`, error)
     return null

@@ -44,21 +44,21 @@ export function generateMetadata(config: SEOConfig): Metadata {
       locale: "ko_KR",
       images: config.ogImage
         ? [
-            {
-              url: config.ogImage,
-              width: 1200,
-              height: 630,
-              alt: config.title,
-            },
-          ]
+          {
+            url: config.ogImage,
+            width: 1200,
+            height: 630,
+            alt: config.title,
+          },
+        ]
         : [
-            {
-              url: `${baseUrl}/og-image.png`,
-              width: 1200,
-              height: 630,
-              alt: config.title,
-            },
-          ],
+          {
+            url: `${baseUrl}/og-image.png`,
+            width: 1200,
+            height: 630,
+            alt: config.title,
+          },
+        ],
     },
     twitter: {
       card: "summary_large_image",
@@ -235,9 +235,9 @@ export function generateOrganizationSchema(): string {
     url: "https://temon.kr",
     logo: {
       "@type": "ImageObject",
-      url: "https://temon.kr/placeholder-logo.png",
-      width: 512,
-      height: 512,
+      url: "https://temon.kr/apple-touch-icon.png",
+      width: 180,
+      height: 180,
     },
     description: "무료 성격 테스트 및 MBTI 테스트 플랫폼",
     inLanguage: "ko",

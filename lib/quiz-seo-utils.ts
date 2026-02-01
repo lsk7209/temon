@@ -26,7 +26,7 @@ export interface QuizSEOConfig {
  */
 export function generateQuizMetadata(config: QuizSEOConfig): Metadata {
   const fullUrl = `${baseUrl}${config.canonical}`
-  const ogImage = config.image || `${baseUrl}/og-tests/${config.quizId}.png`
+  const ogImage = config.image || `${baseUrl}/api/og?title=${encodeURIComponent(config.title)}&desc=${encodeURIComponent(config.shortDescription)}`
 
   return {
     title: `${config.title} | 무료 성격 테스트 | 테몬`,
@@ -170,7 +170,7 @@ export function generateTestPageMetadata(config: {
       locale: "ko_KR",
       images: [
         {
-          url: `${baseUrl}/og-tests/${config.quizId}.png`,
+          url: `${baseUrl}/api/og?title=${encodeURIComponent(config.quizTitle)}&desc=${encodeURIComponent("지금 바로 테스트를 시작해보세요!")}`,
           width: 1200,
           height: 630,
           alt: config.quizTitle,
@@ -181,7 +181,7 @@ export function generateTestPageMetadata(config: {
       card: "summary_large_image",
       title: `${config.quizTitle} 테스트 진행`,
       description: config.fullDescription,
-      images: [`${baseUrl}/og-tests/${config.quizId}.png`],
+      images: [`${baseUrl}/api/og?title=${encodeURIComponent(config.quizTitle)}&desc=${encodeURIComponent("지금 바로 테스트를 시작해보세요!")}`],
     },
     robots: {
       index: false, // 테스트 진행 페이지는 인덱싱하지 않음
@@ -208,7 +208,7 @@ export function generateResultPageMetadata(config: {
 }): Metadata {
   const baseUrl = "https://temon.kr"
   const fullUrl = `${baseUrl}${config.canonical}`
-  const title = config.resultType 
+  const title = config.resultType
     ? `${config.quizTitle} 결과 - ${config.resultType} 유형 | 테몬`
     : `${config.quizTitle} 결과 | 무료 성격 테스트 | 테몬`
 
@@ -229,7 +229,7 @@ export function generateResultPageMetadata(config: {
       locale: "ko_KR",
       images: [
         {
-          url: `${baseUrl}/og-tests/${config.quizId}-result.png`,
+          url: `${baseUrl}/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent("나의 결과는?")}`,
           width: 1200,
           height: 630,
           alt: `${config.quizTitle} 결과`,
@@ -240,7 +240,7 @@ export function generateResultPageMetadata(config: {
       card: "summary_large_image",
       title,
       description: config.fullDescription,
-      images: [`${baseUrl}/og-tests/${config.quizId}-result.png`],
+      images: [`${baseUrl}/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent("나의 결과는?")}`],
     },
     robots: {
       index: true,
@@ -250,9 +250,9 @@ export function generateResultPageMetadata(config: {
         follow: true,
         "max-video-preview": -1,
         "max-image-preview": "large",
-      "max-snippet": -1,
+        "max-snippet": -1,
+      },
     },
-  },
   }
 }
 
@@ -269,16 +269,16 @@ export function generateUniqueTestMetadata(config: {
 }): Metadata {
   const baseUrl = "https://temon.kr"
   const fullUrl = `${baseUrl}${config.canonical}`
-  
+
   // 고유한 제목 생성 (40-60자 최적화)
   const uniqueTitle = `${config.testName} - ${config.testCategory}으로 알아보는 성격 유형 | 테몬`
-  
+
   // Naver 최적화: 80자 이하 설명
   let shortDescription = config.testDescription
   if (shortDescription.length > 80) {
     shortDescription = shortDescription.substring(0, 77) + "..."
   }
-  
+
   // 전체 설명 (140-160자 최적화, OpenGraph용)
   let fullDescription = `${config.testName} 테스트로 알아보는 나의 성격 유형. ${config.testDescription} 12문항, 약 3분 소요, 결과 공유 이미지 자동 생성.`
   if (fullDescription.length < 140) {
@@ -304,7 +304,7 @@ export function generateUniqueTestMetadata(config: {
       locale: "ko_KR",
       images: [
         {
-          url: `${baseUrl}/og-tests/${config.canonical.replace('/tests/', '').replace('/', '')}.png`,
+          url: `${baseUrl}/api/og?title=${encodeURIComponent(config.testName)}&desc=${encodeURIComponent(shortDescription)}`,
           width: 1200,
           height: 630,
           alt: config.testName,
@@ -315,7 +315,7 @@ export function generateUniqueTestMetadata(config: {
       card: "summary_large_image",
       title: uniqueTitle,
       description: fullDescription,
-      images: [`${baseUrl}/og-tests/${config.canonical.replace('/tests/', '').replace('/', '')}.png`],
+      images: [`${baseUrl}/api/og?title=${encodeURIComponent(config.testName)}&desc=${encodeURIComponent(shortDescription)}`],
     },
     robots: {
       index: true,

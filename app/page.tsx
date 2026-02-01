@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     images: [
       {
-        url: `${baseUrl}/og-image.png`,
+        url: `${baseUrl}/api/og?title=${encodeURIComponent("테몬 MBTI")}&desc=${encodeURIComponent("무료 성격 테스트 모음")}`,
         width: 1200,
         height: 630,
         alt: "테몬 MBTI - 무료 성격 테스트",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MBTI 테스트 - 무료 성격 테스트 모음 | 테몬",
     description: fullDescription,
-    images: [`${baseUrl}/og-image.png`],
+    images: [`${baseUrl}/api/og?title=${encodeURIComponent("테몬 MBTI")}&desc=${encodeURIComponent("무료 성격 테스트 모음")}`],
   },
   robots: {
     index: true,
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const displayTests = getHomePageTests()
-  
+
   // Generate structured data
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "홈", url: baseUrl },
@@ -74,7 +74,7 @@ export default function HomePage() {
     name: test.title,
     description: test.description,
     url: `${baseUrl}${test.href}`,
-    image: `${baseUrl}/og-tests/${test.id}.png`,
+    image: `${baseUrl}/api/og?title=${encodeURIComponent(test.title)}&desc=${encodeURIComponent(test.description)}`,
   }))
 
   const itemListSchema = createItemListSchema(itemListItems)
@@ -84,7 +84,7 @@ export default function HomePage() {
       {/* Structured Data for SEO/GEO */}
       <JsonLd id="home-breadcrumb-schema" data={breadcrumbSchema} />
       <JsonLd id="home-itemlist-schema" data={itemListSchema} />
-      
+
       <HomeClient />
     </>
   )
