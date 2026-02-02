@@ -10,7 +10,8 @@
     "create-test": "ts-node scripts/create-test.ts",
     "git-push": "node scripts/git-push.js",
     "git-push-auto": "node scripts/git-push-auto.js",
-    "deploy": "npm run build && npm run git-push-auto"
+    "deploy": "npm run build && npm run git-push-auto",
+    "indexnow": "node scripts/indexnow-submit.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
