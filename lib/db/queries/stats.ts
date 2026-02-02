@@ -1,10 +1,11 @@
 import { eq, and, gte, lte } from 'drizzle-orm'
-import { db } from '../client'
+import { getDb } from '../client'
 import { testStats } from '../schema'
 
 export async function getTestStats(testId: string, date?: string) {
     // date 파라미터가 있지만 schema에는 lastUpdated만 있음. 
     // 기존 로직을 최대한 보존하되, 실제로는 testId로 조회
+    const db = getDb()
     const stats = await db.select().from(testStats).where(eq(testStats.testId, testId)).get()
     return stats
 }

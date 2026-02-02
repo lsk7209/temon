@@ -3,7 +3,6 @@
  */
 
 import { eq, and, desc } from 'drizzle-orm'
-import { db } from '../client'
 import { tests, questions, resultTypes } from '../schema'
 import type { Database } from '../client'
 
