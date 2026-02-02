@@ -4,7 +4,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ShareButtons } from "@/components/share-buttons"
-import { db } from "@/lib/db/client"
+import { getDb } from "@/lib/db/client"
 import { tests, testResults, resultTypes } from "@/lib/db/schema"
 import { eq, and, or } from "drizzle-orm"
 import { ExternalLink, RefreshCw } from "lucide-react"
@@ -15,6 +15,7 @@ interface Props {
 
 async function getResultData(slugOrId: string, resultId: string) {
     // 1. Get Test Info First (to resolve ID from Slug)
+    const db = getDb()
     const test = await db.select()
         .from(tests)
         .where(or(eq(tests.id, slugOrId), eq(tests.slug, slugOrId)))
