@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -104,46 +104,7 @@ export default function EnhancedAdminDashboard() {
     "NTRP 테스트": Trophy,
   }
 
-  const loadDetailedStats = async () => {
-    try {
-      const response = await fetch('/api/admin/stats/detailed')
-      if (response.ok) {
-        const data = await response.json()
-        setDeviceStats(data.devices || [])
-        setBrowserStats(data.browsers || [])
-        setKeywordStats(data.keywords || [])
-        setOsStats(data.os || [])
-      } else {
-        loadMockDetailedStats()
-      }
-    } catch (error) {
-      console.error("상세 통계 로딩 실패:", error)
-      loadMockDetailedStats()
-    }
-  }
-
-  const loadStats = async () => {
-    setIsLoading(true)
-    try {
-      const response = await fetch('/api/dashboard')
-      if (response.ok) {
-        const data = await response.json() as DashboardStats
-        setStats(data)
-        loadDetailedStats()
-      } else {
-        // Fallback or error handling
-        console.error("Dashboard API returned error")
-      }
-      setLastUpdated(new Date())
-      setGaConnected(checkGAConnection())
-    } catch (error) {
-      console.error("통계 로딩 실패:", error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const loadMockDetailedStats = () => {
+  const loadMockDetailedStats = useCallback(() => {
     // 모의 데이터 (실제로는 API에서 가져옴)
     setDeviceStats([
       { device: "Desktop", count: 4500, percentage: 65 },
@@ -169,7 +130,46 @@ export default function EnhancedAdminDashboard() {
       { os: "Android", count: 900, percentage: 13 },
       { os: "macOS", count: 450, percentage: 6 },
     ])
-  }
+  }, [])
+
+  const loadDetailedStats = useCallback(async () => {
+    try {
+      const response = await fetch('/api/admin/stats/detailed')
+      if (response.ok) {
+        const data = await response.json()
+        setDeviceStats(data.devices || [])
+        setBrowserStats(data.browsers || [])
+        setKeywordStats(data.keywords || [])
+        setOsStats(data.os || [])
+      } else {
+        loadMockDetailedStats()
+      }
+    } catch (error) {
+      console.error("상세 통계 로딩 실패:", error)
+      loadMockDetailedStats()
+    }
+  }, [loadMockDetailedStats])
+
+  const loadStats = useCallback(async () => {
+    setIsLoading(true)
+    try {
+      const response = await fetch('/api/dashboard')
+      if (response.ok) {
+        const data = await response.json() as DashboardStats
+        setStats(data)
+        loadDetailedStats()
+      } else {
+        // Fallback or error handling
+        console.error("Dashboard API returned error")
+      }
+      setLastUpdated(new Date())
+      setGaConnected(checkGAConnection())
+    } catch (error) {
+      console.error("통계 로딩 실패:", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [loadDetailedStats])
 
   const loadScripts = () => {
     try {
@@ -235,7 +235,7 @@ export default function EnhancedAdminDashboard() {
     loadScripts()
     const interval = setInterval(loadStats, 30000)
     return () => clearInterval(interval)
-  }, [])
+  }, [loadStats])
 
   if (isLoading && !stats) {
     return <div className="p-8 text-center">로딩 중...</div>

@@ -112,7 +112,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
   const [startDate, setStartDate] = useState<Date | undefined>()
   const [endDate, setEndDate] = useState<Date | undefined>()
 
-  const fetchReports = async () => {
+  const fetchReports = React.useCallback(async () => {
     setLoading(true)
     try {
       const params = new URLSearchParams()
@@ -134,15 +134,15 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
           'Content-Type': 'application/json',
         },
       })
-      
+
       if (res.ok) {
         const json = await res.json() as DashboardData & { dbConnected?: boolean; message?: string }
-        
+
         // DB 연결 상태 확인
         if (json.dbConnected === false) {
           alert(`⚠️ 데이터베이스 연결 오류\n\n${json.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
         }
-        
+
         setData(json)
       } else {
         const errorText = await res.text()
@@ -152,9 +152,9 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
         } catch {
           errorData = { message: errorText }
         }
-        
+
         console.error('Failed to fetch reports:', res.status, errorData)
-        
+
         // DB 연결 오류인 경우
         if (errorData.dbConnected === false || res.status === 503) {
           alert(`⚠️ 데이터베이스 연결 오류\n\n${errorData.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
@@ -168,7 +168,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
     } finally {
       setLoading(false)
     }
-  }
+  }, [startDate, endDate])
 
   // 초기 데이터 로드
   useEffect(() => {
@@ -176,10 +176,10 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
     today.setHours(0, 0, 0, 0)
     const start = today
     const end = new Date(today.getTime() + 24 * 60 * 60 * 1000 - 1)
-    
+
     setStartDate(start)
     setEndDate(end)
-    
+
     // 즉시 데이터 로드
     const loadInitialData = async () => {
       setLoading(true)
@@ -202,15 +202,15 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
             'Content-Type': 'application/json',
           },
         })
-        
+
         if (res.ok) {
           const json = await res.json() as DashboardData & { dbConnected?: boolean; message?: string }
-          
+
           // DB 연결 상태 확인
           if (json.dbConnected === false) {
             alert(`⚠️ 데이터베이스 연결 오류\n\n${json.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
           }
-          
+
           setData(json)
         } else {
           const errorText = await res.text()
@@ -220,14 +220,14 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
           } catch {
             errorData = { message: errorText }
           }
-          
+
           console.error('Failed to fetch initial data:', res.status, errorData)
-          
+
           // DB 연결 오류인 경우
           if (errorData.dbConnected === false || res.status === 503) {
             alert(`⚠️ 데이터베이스 연결 오류\n\n${errorData.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
           }
-          
+
           // 에러가 발생해도 빈 데이터 구조를 설정하여 UI가 표시되도록 함
           setData({
             kpi: {
@@ -327,14 +327,13 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
       setStartDate(start)
       setEndDate(new Date(today.getTime() + 24 * 60 * 60 * 1000 - 1))
     }
-  }, [dateRange])
+  }, [dateRange, fetchReports, startDate, endDate])
 
   useEffect(() => {
     if (startDate && endDate && dateRange !== 'custom') {
       fetchReports()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startDate, endDate, dateRange])
+  }, [startDate, endDate, dateRange, fetchReports])
 
   const handleExportCSV = () => {
     // CSV 내보내기 로직

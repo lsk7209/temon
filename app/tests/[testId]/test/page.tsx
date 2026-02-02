@@ -5,6 +5,8 @@ import { eq, or, asc } from "drizzle-orm"
 import { notFound } from "next/navigation"
 import ClientRunner from "./client-runner"
 
+export const dynamic = 'force-dynamic'
+
 // Fetch test and questions
 // Fetch test and questions
 async function getQuizData(slugOrId: string) {
