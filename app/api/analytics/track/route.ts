@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/lib/db/client'
+import { getDb } from '@/lib/db/client'
 import { pageVisits, testStarts } from '@/lib/db/schema'
 
 export const runtime = 'edge'
@@ -28,6 +28,8 @@ export async function POST(request: NextRequest) {
         const userAgent = request.headers.get('user-agent') || ''
         const ip = request.headers.get('x-forwarded-for') || 'unknown'
         const { browser, os, device } = parseUserAgent(userAgent)
+
+        const db = getDb()
 
         if (type === 'page_view') {
             const { path, referrer, searchKeyword } = payload

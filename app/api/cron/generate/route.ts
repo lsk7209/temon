@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { db } from '@/lib/db/client'
+import { getDb } from '@/lib/db/client'
 import { testQueue, tests, questions, resultTypes } from '@/lib/db/schema'
 import { eq, sql } from 'drizzle-orm'
 import { nanoid } from 'nanoid'
@@ -14,6 +14,7 @@ export async function GET() {
   let queueItem = null;
   try {
     // 1. 대기열에서 처리할 항목 1개 조회
+    const db = getDb()
     queueItem = await db.select()
       .from(testQueue)
       .where(eq(testQueue.status, 'pending'))
@@ -148,6 +149,7 @@ export async function GET() {
 
     // 실패 상태 업데이트
     if (queueItem) { // queueItem is now accessible here
+      const db = getDb()
       await db.update(testQueue)
         .set({ status: 'failed', logs: error.message })
         .where(eq(testQueue.id, queueItem.id))

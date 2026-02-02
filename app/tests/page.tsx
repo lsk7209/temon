@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import TestsPageClient from "./tests-page-client"
 import { JsonLd, createBreadcrumbSchema, createItemListSchema } from "@/components/json-ld"
 import { ALL_TESTS } from "@/lib/tests-config"
-import { db } from "@/lib/db/client"
+import { getDb } from "@/lib/db/client"
 import { tests } from "@/lib/db/schema"
 import { eq, desc } from "drizzle-orm"
 
@@ -67,6 +67,7 @@ export default async function TestsPage() {
   }[] = []
 
   try {
+    const db = getDb()
     const dbTestsData = await db.select({
       id: tests.id,
       title: tests.title,

@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
 import { generateTestPageMetadata } from "@/lib/quiz-seo-utils"
 import { notFound } from "next/navigation"
-import { db } from "@/lib/db/client"
+import { getDb } from "@/lib/db/client"
 import { tests } from "@/lib/db/schema"
 import { eq, or } from "drizzle-orm"
 
 async function getTest(slugOrId: string) {
   try {
+    const db = getDb()
     const test = await db.select()
       .from(tests)
       .where(or(eq(tests.id, slugOrId), eq(tests.slug, slugOrId)))

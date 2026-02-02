@@ -1,13 +1,15 @@
 import { NextResponse } from 'next/server'
-import { db } from '@/lib/db/client'
+import { getDb } from '@/lib/db/client'
 import { testQueue } from '@/lib/db/schema'
-import { desc, sql, eq } from 'drizzle-orm'
+import { desc, sql, eq, asc } from 'drizzle-orm'
 import { nanoid } from 'nanoid'
 
 export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 
 export async function GET() {
     try {
+        const db = getDb()
         // 대기열 상태 조회
         const stats = await db.select({
             status: testQueue.status,
@@ -31,6 +33,34 @@ export async function GET() {
     }
 }
 
+export async function DELETE(request: Request) {
+    try {
+        const { searchParams } = new URL(request.url)
+        const id = searchParams.get('id')
+
+        if (!id) {
+            return NextResponse.json(
+                { error: 'ID is required' },
+                { status: 400 }
+            )
+        }
+
+        const db = getDb()
+        const result = await db.delete(testQueue)
+            .where(eq(testQueue.id, id))
+            .execute()
+
+        if (result.rowsAffected === 0) {
+            return NextResponse.json({ error: 'Item not found' }, { status: 404 })
+        }
+
+        return NextResponse.json({ success: true, message: `Item with ID ${id} deleted` })
+    } catch (error) {
+        console.error('Queue Delete Error:', error)
+        return NextResponse.json({ error: 'Failed to delete item' }, { status: 500 })
+    }
+}
+
 export async function POST(req: Request) {
     try {
         const { topics } = await req.json()
@@ -44,6 +74,8 @@ export async function POST(req: Request) {
             keyword: topic.trim(),
             status: 'pending',
         })).filter(item => item.keyword.length > 0)
+
+        const db = getDb()
 
         if (newItems.length > 0) {
             await db.insert(testQueue).values(newItems)

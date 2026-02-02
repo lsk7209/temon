@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/lib/db/client'
+import { getDb } from '@/lib/db/client'
 import { sql, desc } from 'drizzle-orm'
 import { pageVisits } from '@/lib/db/schema'
 
@@ -8,6 +8,7 @@ export const runtime = 'edge'
 export async function GET(request: NextRequest) {
     try {
         // Device Stats
+        const db = getDb()
         const devices = await db.select({
             device: pageVisits.deviceType,
             count: sql<number>`count(*)`,

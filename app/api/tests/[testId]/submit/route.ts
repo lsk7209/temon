@@ -1,6 +1,6 @@
 
 import { NextResponse } from 'next/server'
-import { db } from '@/lib/db/client'
+import { getDb } from '@/lib/db/client'
 import { tests, questions, resultTypes, testResults, testStats } from '@/lib/db/schema'
 import { eq, sql } from 'drizzle-orm'
 import { nanoid } from 'nanoid'
@@ -16,6 +16,7 @@ export async function POST(
         const { answers } = body // { questionId: "choice1" | "choice2" }
 
         // 1. Fetch all questions for this test to calculate scores
+        const db = getDb()
         const allQuestions = await db.select()
             .from(questions)
             .where(eq(questions.testId, params.testId))

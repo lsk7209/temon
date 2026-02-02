@@ -7,7 +7,7 @@ const authToken = process.env.TURSO_AUTH_TOKEN;
 
 // Build-time safe: don't create client if URL is missing
 let client: Client | null = null;
-let db: ReturnType<typeof drizzle> | null = null;
+let db: ReturnType<typeof drizzle<typeof schema>> | null = null;
 
 if (url) {
   client = createClient({

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/lib/db/client'
+import { getDb } from '@/lib/db/client'
 import { pageVisits, testStarts, testResults } from '@/lib/db/schema'
 import { sql, desc } from 'drizzle-orm'
 
@@ -25,6 +25,7 @@ export async function GET(request: NextRequest) {
     const today = new Date().toISOString().split('T')[0]
 
     // 총 방문 수 (페이지 방문 테이블)
+    const db = getDb()
     const visitsResult = await db.select({ count: sql<number>`count(*)` })
       .from(pageVisits)
       .get()

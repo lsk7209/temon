@@ -1,5 +1,5 @@
 
-import { db } from "@/lib/db/client"
+import { getDb } from "@/lib/db/client"
 import { questions, tests } from "@/lib/db/schema"
 import { eq, or, asc } from "drizzle-orm"
 import { notFound } from "next/navigation"
@@ -11,6 +11,7 @@ export const dynamic = 'force-dynamic'
 // Fetch test and questions
 async function getQuizData(slugOrId: string) {
     console.log(`[QuizDebug] Fetching quiz data for: ${slugOrId}`)
+    const db = getDb()
 
     // 1. Get Test ID first (if slug provided)
     // Use proper type assertion or ensure schema match. 
@@ -23,6 +24,7 @@ async function getQuizData(slugOrId: string) {
 
     if (!test) return null
 
+    // 2. Get Questions
     // 2. Get Questions
     const questionsList = await db.select()
         .from(questions)

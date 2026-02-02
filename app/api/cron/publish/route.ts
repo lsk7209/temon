@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { db } from '@/lib/db/client'
+import { getDb } from '@/lib/db/client'
 import { tests } from '@/lib/db/schema'
 import { eq, asc, isNull } from 'drizzle-orm'
 
@@ -8,6 +8,7 @@ export const dynamic = 'force-dynamic'
 export async function GET() {
     try {
         // 1. 가장 오래된 'draft' 상태의 테스트 1개 조회
+        const db = getDb()
         const draftTest = await db.select()
             .from(tests)
             .where(eq(tests.status, 'draft'))
