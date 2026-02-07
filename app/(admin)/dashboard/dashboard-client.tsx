@@ -125,9 +125,10 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
         return
       }
 
-      // Cloudflare Pages Functions는 같은 도메인에서 /api/reports로 접근 가능
+      // Cloudflare Pages Functions는 같은 도메인에서 /api/dashboard-stats로 접근 가능
       // 프로덕션에서는 자동으로 Functions로 라우팅됨
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/reports'
+      // 참고: /api/reports는 광고 차단기에 의해 차단될 수 있어 변경함
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/dashboard-stats'
       const res = await fetch(`${apiUrl}?${params.toString()}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -195,7 +196,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
       }
 
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/reports'
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/dashboard-stats'
         const res = await fetch(`${apiUrl}?${params.toString()}`, {
           headers: {
             Authorization: `Bearer ${token}`,
