@@ -31,12 +31,15 @@ export async function GET() {
       .where(eq(testQueue.id, queueItem.id))
 
     // 3. AI 생성 요청
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite-preview-02-05" })
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" })
 
     // 프롬프트: 퀴즈 구조 생성 (JSON Only)
     const prompt = `
       Create a fun MBTI-style personality test about "${queueItem.keyword}".
       Language: Korean (Natural, viral, fun tone).
+      Requirements:
+      - 12 unique questions (E/I, S/N, T/F, J/P balanced)
+      - 16 unique results (MBTI types)
       Output JSON format ONLY:
       {
         "title": "Main Title (catchy)",
@@ -57,21 +60,14 @@ export async function GET() {
              "label": "Result Name (fun nickname)",
              "summary": "Short summary",
              "traits": ["Trait 1", "Trait 2"],
-             "tips": ["Tip 1", "Tip 2"]
+             "presets": {
+                "key1": ["Value..."],
+                "key2": ["Value..."],
+                "key3": ["Value..."]
+             },
+             "pitfalls": ["ENFP"], // Worst match MBTI codes
+             "recommend": ["ESTJ"] // Best match MBTI codes
            }
-          {
-            "type": "ISTJ",
-            "label": "Fun Nickname",
-            "summary": "One-line summary",
-            "traits": ["Trait1", "Trait2", "Trait3"],
-            "presets": {
-               "key1": ["Value..."],
-               "key2": ["Value..."],
-               "key3": ["Value..."]
-            },
-            "pitfalls": ["ENFP"], // Worst match MBTI codes
-            "recommend": ["ESTJ"] // Best match MBTI codes
-          }
         ]
       }
     `
@@ -101,10 +97,10 @@ export async function GET() {
       title: quizData.title,
       description: quizData.description,
       category: 'ai-generated',
-      status: 'published', // Direct publish for now as per flow, or draft?
+      status: 'draft', // 예약 발행을 위해 draft로 저장
       questionCount: quizData.questions.length,
       resultTypeCount: quizData.results.length,
-      publishedAt: new Date(),
+      // publishedAt은 publish cron에서 설정됨
     })
 
     // 2. Insert Questions
