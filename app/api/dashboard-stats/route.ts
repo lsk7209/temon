@@ -3,7 +3,7 @@ import { getDb } from '@/lib/db/client'
 import { pageVisits, testStarts, testResults } from '@/lib/db/schema'
 import { sql, and, gte, lte } from 'drizzle-orm'
 
-export const runtime = 'edge'
+// export const runtime = 'edge' // Removed for stability with libsql
 export const dynamic = 'force-dynamic'
 
 function getCorsHeaders() {
@@ -74,6 +74,7 @@ export async function GET(request: NextRequest) {
         const abandoned = Math.max(0, started - completedCount)
 
         return NextResponse.json({
+            success: true,
             kpi: {
                 sessions,
                 attempts_started: started,
@@ -102,7 +103,7 @@ export async function GET(request: NextRequest) {
     } catch (error) {
         console.error('Dashboard stats api error:', error)
         return NextResponse.json(
-            { error: 'Internal server error', message: '데이터를 불러오는 중 오류가 발생했습니다.' },
+            { success: false, error: 'Internal server error', message: '데이터를 불러오는 중 오류가 발생했습니다.' },
             { status: 500, headers: getCorsHeaders() }
         )
     }

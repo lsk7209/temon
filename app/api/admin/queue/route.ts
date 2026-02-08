@@ -26,10 +26,10 @@ export async function GET() {
             .limit(20)
             .all()
 
-        return NextResponse.json({ stats, recentItems })
+        return NextResponse.json({ success: true, stats, recentItems })
     } catch (error) {
         console.error('Queue Fetch Error:', error)
-        return NextResponse.json({ error: 'Failed to fetch queue' }, { status: 500 })
+        return NextResponse.json({ success: false, error: 'Failed to fetch queue' }, { status: 500 })
     }
 }
 
@@ -40,7 +40,7 @@ export async function DELETE(request: Request) {
 
         if (!id) {
             return NextResponse.json(
-                { error: 'ID is required' },
+                { success: false, error: 'ID is required' },
                 { status: 400 }
             )
         }
@@ -51,13 +51,13 @@ export async function DELETE(request: Request) {
             .execute()
 
         if (result.rowsAffected === 0) {
-            return NextResponse.json({ error: 'Item not found' }, { status: 404 })
+            return NextResponse.json({ success: false, error: 'Item not found' }, { status: 404 })
         }
 
         return NextResponse.json({ success: true, message: `Item with ID ${id} deleted` })
     } catch (error) {
         console.error('Queue Delete Error:', error)
-        return NextResponse.json({ error: 'Failed to delete item' }, { status: 500 })
+        return NextResponse.json({ success: false, error: 'Failed to delete item' }, { status: 500 })
     }
 }
 
@@ -66,28 +66,58 @@ export async function POST(req: Request) {
         const { topics } = await req.json()
 
         if (!topics || !Array.isArray(topics) || topics.length === 0) {
-            return NextResponse.json({ error: 'No topics provided' }, { status: 400 })
+            return NextResponse.json({ success: false, error: 'No topics provided' }, { status: 400 })
         }
-
-        const newItems = topics.map(topic => ({
-            id: nanoid(),
-            keyword: topic.trim(),
-            status: 'pending',
-        })).filter(item => item.keyword.length > 0)
 
         const db = getDb()
 
+        // 중복 키워드 필터링
+        const cleanedTopics = topics
+            .map((topic: string) => topic.trim().toLowerCase())
+            .filter((topic: string) => topic.length > 0)
+
+        // 이미 존재하는 키워드 조회 (pending, processing, completed 상태 모두)
+        const existingItems = await db.select({ keyword: testQueue.keyword })
+            .from(testQueue)
+            .all()
+
+        const existingKeywords = new Set(
+            existingItems.map(item => item.keyword.toLowerCase())
+        )
+
+        // 중복 제거: 이미 큐에 있는 키워드 제외
+        const uniqueTopics = cleanedTopics.filter(
+            (topic: string) => !existingKeywords.has(topic)
+        )
+
+        // 입력 내 중복 제거
+        const dedupedTopics = [...new Set(uniqueTopics)]
+
+        const newItems = dedupedTopics.map((topic: string) => ({
+            id: nanoid(),
+            keyword: topic,
+            status: 'pending',
+        }))
+
+        let insertedCount = 0
         if (newItems.length > 0) {
             await db.insert(testQueue).values(newItems)
+            insertedCount = newItems.length
         }
+
+        const skippedCount = cleanedTopics.length - insertedCount
 
         return NextResponse.json({
             success: true,
-            count: newItems.length,
-            message: `${newItems.length} topics added to queue`
+            inserted: insertedCount,
+            skipped: skippedCount,
+            message: skippedCount > 0
+                ? `${insertedCount} topics added, ${skippedCount} duplicates skipped`
+                : `${insertedCount} topics added to queue`
         })
     } catch (error) {
         console.error('Queue Insert Error:', error)
-        return NextResponse.json({ error: 'Failed to add topics' }, { status: 500 })
+        return NextResponse.json({ success: false, error: 'Failed to add topics' }, { status: 500 })
     }
 }
+

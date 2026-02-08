@@ -3,7 +3,7 @@ import { getDb } from '@/lib/db/client'
 import { pageVisits, testStarts, testResults } from '@/lib/db/schema'
 import { sql, desc } from 'drizzle-orm'
 
-export const runtime = 'edge'
+// export const runtime = 'edge' // Removed for stability with libsql
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
@@ -100,6 +100,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       {
+        success: true,
         totalVisits: visitsResult?.count || 0,
         totalTestsStarted: startsResult?.count || 0,
         totalTestsCompleted: resultsCount,
@@ -111,7 +112,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Dashboard API error:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch dashboard stats' },
+      { success: false, error: 'Failed to fetch dashboard stats' },
       { status: 500, headers: getCorsHeaders() }
     )
   }

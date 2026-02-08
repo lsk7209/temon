@@ -22,10 +22,10 @@ export async function GET() {
             .limit(50)
             .all()
 
-        return NextResponse.json({ items })
+        return NextResponse.json({ success: true, items })
     } catch (error) {
         console.error('Tests Fetch Error:', error)
-        return NextResponse.json({ error: 'Failed to fetch tests' }, { status: 500 })
+        return NextResponse.json({ success: false, error: 'Failed to fetch tests' }, { status: 500 })
     }
 }
 
@@ -35,7 +35,7 @@ export async function DELETE(request: Request) {
         const id = searchParams.get('id')
 
         if (!id) {
-            return NextResponse.json({ error: 'ID is required' }, { status: 400 })
+            return NextResponse.json({ success: false, error: 'ID is required' }, { status: 400 })
         }
 
         const db = getDb()
@@ -46,6 +46,6 @@ export async function DELETE(request: Request) {
         return NextResponse.json({ success: true })
     } catch (error) {
         console.error('Tests Delete Error:', error)
-        return NextResponse.json({ error: 'Failed to delete test' }, { status: 500 })
+        return NextResponse.json({ success: false, error: 'Failed to delete test' }, { status: 500 })
     }
 }
