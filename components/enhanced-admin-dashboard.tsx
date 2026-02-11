@@ -688,7 +688,7 @@ export default function EnhancedAdminDashboard() {
                                   <Link
                                     href={`/tests/${testId}`}
                                     target="_blank"
-                                    className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-600 hover:text-indigo-800 flex items-center gap-1 text-xs"
+                                    className="text-indigo-600 hover:text-indigo-800 flex items-center gap-1 text-xs"
                                   >
                                     <ExternalLink className="h-3 w-3" />
                                     보기
