@@ -27,7 +27,7 @@ const ChoiceSchema = z.object({
 
 const QuestionSchema = z.object({
   text: z.string().min(1),
-  choices: z.tuple([ChoiceSchema, ChoiceSchema])
+  choices: z.array(ChoiceSchema).min(2).transform(arr => arr.slice(0, 2))
 })
 
 const ResultSchema = z.object({
@@ -87,8 +87,11 @@ export async function GET() {
       Language: Korean (Natural, viral, fun tone).
       Requirements:
       - 12 unique questions (E/I, S/N, T/F, J/P balanced)
+      - Exactly 2 choices for each question. (No more, no less)
       - 16 unique results (one for each MBTI type: ISTJ, ISFJ, INFJ, INTJ, ISTP, ISFP, INFP, INTP, ESTP, ESFP, ENFP, ENTP, ESTJ, ESFJ, ENFJ, ENTJ)
-      Output JSON format ONLY:
+      - Output JSON format ONLY. Do not include extra text.
+      
+      Output structure:
       {
         "title": "Main Title (catchy)",
         "description": "Short description (under 100 chars)",
@@ -97,8 +100,8 @@ export async function GET() {
           {
             "text": "Question text (situation)",
             "choices": [
-              { "text": "Choice 1", "tags": ["E", "S"] },
-              { "text": "Choice 2", "tags": ["I", "N"] }
+              { "text": "Choice 1", "tags": ["E"] },
+              { "text": "Choice 2", "tags": ["I"] }
             ]
           }
         ],
