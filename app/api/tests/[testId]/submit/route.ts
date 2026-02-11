@@ -82,7 +82,7 @@ export async function POST(
             userAgent: req.headers.get('user-agent'),
         })
 
-        return NextResponse.json({ resultId: finalResultId })
+        return NextResponse.json({ resultId: newResultId })
 
     } catch (error: any) {
         console.error('Submit Error:', error)

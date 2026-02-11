@@ -53,7 +53,9 @@ export default async function QuizPage({ params }: { params: { testId: string } 
             questionOrder: q.questionOrder,
             questionText: q.questionText,
             choice1Text: q.choice1Text,
-            choice2Text: q.choice2Text
+            choice2Text: q.choice2Text,
+            choice1Tags: q.choice1Tags,
+            choice2Tags: q.choice2Tags
         }
         // console.log(`[QuizDebug] Mapped Q${mapped.questionOrder}:`, mapped)
         return mapped

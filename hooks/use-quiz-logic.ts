@@ -11,7 +11,7 @@ import { convertAnswersToRecord } from "@/lib/utils/test-answers"
 import { calculateMBTI } from "@/lib/utils/mbti-calculator"
 
 export interface QuizQuestion {
-  id: number
+  id: number | string
   q: string
   a1: { text: string; tags: string[] }
   a2: { text: string; tags: string[] }
@@ -35,7 +35,7 @@ export function useQuizLogic({
   const [selectedChoice, setSelectedChoice] = useState<string>("")
   const [isProcessing, setIsProcessing] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
-  
+
   const router = useRouter()
   const { saveResult, isSaving } = useTestResult({
     testId,
