@@ -30,6 +30,7 @@ import {
   Trophy,
   ListPlus,
   Loader2,
+  Zap,
 } from "lucide-react"
 import { toast } from "sonner"
 import { getAdvancedStats, checkGAConnection, sendTestEvent } from "@/lib/analytics"
@@ -562,8 +563,43 @@ export default function EnhancedAdminDashboard() {
                   <ListPlus className="h-5 w-5" />
                   주제 대량 입력
                 </CardTitle>
-                <CardDescription>
-                  한 줄에 하나의 주제를 입력하세요. AI가 자동으로 MBTI 퀴즈를 생성합니다.
+                <CardDescription className="flex items-center justify-between">
+                  <span>새로운 퀴즈 주제를 입력하면 AI가 자동으로 생성합니다.</span>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="text-xs">
+                      <AlarmClock className="mr-1 h-3 w-3" />
+                      자동 실행: 매시 00분
+                    </Badge>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={async () => {
+                        try {
+                          setIsSubmittingQueue(true)
+                          const res = await fetch('/api/cron/generate')
+                          const data = await res.json()
+                          if (data.success) {
+                            toast.success("즉시 생성이 시작되었습니다!")
+                            fetchQueue() // 데이터 갱신
+                          } else {
+                            toast.error(data.message || "생성 실패")
+                          }
+                        } catch (e) {
+                          toast.error("요청 중 오류 발생")
+                        } finally {
+                          setIsSubmittingQueue(false)
+                        }
+                      }}
+                      disabled={isSubmittingQueue}
+                    >
+                      {isSubmittingQueue ? (
+                        <Loader2 className="mr-2 h-3 w-3 animate-spin" />
+                      ) : (
+                        <Zap className="mr-2 h-3 w-3 text-yellow-500" />
+                      )}
+                      지금 즉시 실행
+                    </Button>
+                  </div>
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
