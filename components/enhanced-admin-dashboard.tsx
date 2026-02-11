@@ -28,7 +28,10 @@ import {
   BookOpen,
   AlarmClock,
   Trophy,
+  ListPlus,
+  Loader2,
 } from "lucide-react"
+import { toast } from "sonner"
 import { getAdvancedStats, checkGAConnection, sendTestEvent } from "@/lib/analytics"
 
 interface TestStat {
@@ -94,6 +97,12 @@ export default function EnhancedAdminDashboard() {
   const [editingScript, setEditingScript] = useState<ScriptConfig | null>(null)
   const [scriptName, setScriptName] = useState("")
   const [scriptContent, setScriptContent] = useState("")
+
+  // 퀴즈 공장 상태
+  const [queueTopics, setQueueTopics] = useState("")
+  const [isSubmittingQueue, setIsSubmittingQueue] = useState(false)
+  const [queueItems, setQueueItems] = useState<any[]>([])
+  const [queueStats, setQueueStats] = useState<any[]>([])
 
   const testIcons: Record<string, React.ComponentType<{ className?: string }>> = {
     "커피 MBTI": Coffee,
@@ -182,6 +191,42 @@ export default function EnhancedAdminDashboard() {
     }
   }
 
+  const fetchQueue = async () => {
+    try {
+      const res = await fetch('/api/admin/queue')
+      const data = await res.json()
+      if (data.recentItems) setQueueItems(data.recentItems)
+      if (data.stats) setQueueStats(data.stats)
+    } catch (error) {
+      console.error("Failed to fetch queue", error)
+    }
+  }
+
+  const handleQueueSubmit = async () => {
+    if (!queueTopics.trim()) return
+    setIsSubmittingQueue(true)
+    try {
+      const topicList = queueTopics.split('\n').filter(t => t.trim().length > 0)
+      const res = await fetch('/api/admin/queue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topics: topicList }),
+      })
+      if (res.ok) {
+        const data = await res.json()
+        toast.success(`${data.count}개 주제가 대기열에 추가되었습니다.`)
+        setQueueTopics("")
+        fetchQueue()
+      } else {
+        toast.error("추가에 실패했습니다.")
+      }
+    } catch (error) {
+      toast.error("오류가 발생했습니다.")
+    } finally {
+      setIsSubmittingQueue(false)
+    }
+  }
+
   const saveScripts = (newScripts: ScriptConfig[]) => {
     try {
       localStorage.setItem('admin_head_scripts', JSON.stringify(newScripts))
@@ -233,9 +278,10 @@ export default function EnhancedAdminDashboard() {
   useEffect(() => {
     loadStats()
     loadScripts()
+    if (activeTab === 'queue') fetchQueue()
     const interval = setInterval(loadStats, 30000)
     return () => clearInterval(interval)
-  }, [loadStats])
+  }, [loadStats, activeTab])
 
   if (isLoading && !stats) {
     return <div className="p-8 text-center">로딩 중...</div>
@@ -282,11 +328,12 @@ export default function EnhancedAdminDashboard() {
 
       {/* 탭 메뉴 */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="overview">개요</TabsTrigger>
           <TabsTrigger value="statistics">통계</TabsTrigger>
           <TabsTrigger value="keywords">키워드</TabsTrigger>
           <TabsTrigger value="devices">브라우저/기기</TabsTrigger>
+          <TabsTrigger value="queue">퀴즈 공장</TabsTrigger>
           <TabsTrigger value="scripts">스크립트</TabsTrigger>
         </TabsList>
 
@@ -504,6 +551,109 @@ export default function EnhancedAdminDashboard() {
               </Table>
             </CardContent>
           </Card>
+        </TabsContent>
+
+        {/* 퀴즈 공장 탭 */}
+        <TabsContent value="queue" className="space-y-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <ListPlus className="h-5 w-5" />
+                  주제 대량 입력
+                </CardTitle>
+                <CardDescription>
+                  한 줄에 하나의 주제를 입력하세요. AI가 자동으로 MBTI 퀴즈를 생성합니다.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <Textarea
+                  placeholder="주제를 입력하세요...&#13;&#10;연애 세포 테스트&#13;&#10;탕수육 부먹 찍먹 테스트"
+                  className="min-h-[250px] font-mono"
+                  value={queueTopics}
+                  onChange={(e) => setQueueTopics(e.target.value)}
+                />
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">
+                    {queueTopics.split('\n').filter(t => t.trim()).length}개 감지됨
+                  </span>
+                  <Button onClick={handleQueueSubmit} disabled={isSubmittingQueue || !queueTopics.trim()}>
+                    {isSubmittingQueue && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    대기열 추가
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="space-y-4">
+              <div className="grid grid-cols-3 gap-4">
+                <Card>
+                  <CardHeader className="py-4">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">대기중</CardTitle>
+                    <div className="text-2xl font-bold mt-2">
+                      {queueStats.find(s => s.status === 'pending')?.count || 0}
+                    </div>
+                  </CardHeader>
+                </Card>
+                <Card>
+                  <CardHeader className="py-4">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">완료</CardTitle>
+                    <div className="text-2xl font-bold mt-2 text-green-600">
+                      {queueStats.find(s => s.status === 'completed')?.count || 0}
+                    </div>
+                  </CardHeader>
+                </Card>
+                <Card>
+                  <CardHeader className="py-4">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">실패</CardTitle>
+                    <div className="text-2xl font-bold mt-2 text-red-600">
+                      {queueStats.find(s => s.status === 'failed')?.count || 0}
+                    </div>
+                  </CardHeader>
+                </Card>
+              </div>
+
+              <Card className="max-h-[380px] flex flex-col">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle>최근 작업</CardTitle>
+                    <Button onClick={fetchQueue} variant="outline" size="sm">
+                      <RefreshCw className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardHeader>
+                <CardContent className="flex-1 overflow-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>상태</TableHead>
+                        <TableHead>주제</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {queueItems.map((item) => (
+                        <TableRow key={item.id}>
+                          <TableCell>
+                            <Badge variant={item.status === 'completed' ? 'default' : item.status === 'failed' ? 'destructive' : 'outline'}>
+                              {item.status === 'pending' ? '대기중' : item.status === 'completed' ? '완료' : '실패'}
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="font-medium">{item.keyword}</TableCell>
+                        </TableRow>
+                      ))}
+                      {queueItems.length === 0 && (
+                        <TableRow>
+                          <TableCell colSpan={2} className="text-center py-8 text-muted-foreground">
+                            대기열이 비어있습니다.
+                          </TableCell>
+                        </TableRow>
+                      )}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </TabsContent>
 
         {/* 스크립트 관리 탭 */}

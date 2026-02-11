@@ -14,7 +14,7 @@ export default function AdminFixPage() {
         // Add a small delay to ensure localStorage is updated
         setTimeout(() => {
             alert('✅ 관리자 권한이 복구되었습니다.\n확인을 누르면 대시보드로 이동합니다.')
-            router.push('/dashboard')
+            router.push('/admin')
         }, 500)
     }, [router])
 

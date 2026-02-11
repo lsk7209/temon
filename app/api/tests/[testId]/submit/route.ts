@@ -1,11 +1,11 @@
 
 import { NextResponse } from 'next/server'
 import { getDb } from '@/lib/db/client'
-import { tests, questions, resultTypes, testResults, testStats } from '@/lib/db/schema'
+import { tests, questions, resultTypes, testResults } from '@/lib/db/schema'
 import { eq, sql } from 'drizzle-orm'
 import { nanoid } from 'nanoid'
 
-export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 
 export async function POST(
     req: Request,
