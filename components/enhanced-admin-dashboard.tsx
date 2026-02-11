@@ -31,7 +31,9 @@ import {
   ListPlus,
   Loader2,
   Zap,
+  ExternalLink,
 } from "lucide-react"
+import Link from "next/link"
 import { toast } from "sonner"
 import { getAdvancedStats, checkGAConnection, sendTestEvent } from "@/lib/analytics"
 
@@ -667,16 +669,36 @@ export default function EnhancedAdminDashboard() {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {queueItems.map((item) => (
-                        <TableRow key={item.id}>
-                          <TableCell>
-                            <Badge variant={item.status === 'completed' ? 'default' : item.status === 'failed' ? 'destructive' : 'outline'}>
-                              {item.status === 'pending' ? '대기중' : item.status === 'completed' ? '완료' : '실패'}
-                            </Badge>
-                          </TableCell>
-                          <TableCell className="font-medium">{item.keyword}</TableCell>
-                        </TableRow>
-                      ))}
+                      {queueItems.map((item) => {
+                        const testId = item.status === 'completed' && item.logs?.startsWith('Generated: ')
+                          ? item.logs.split('Generated: ')[1]
+                          : null;
+
+                        return (
+                          <TableRow key={item.id}>
+                            <TableCell>
+                              <Badge variant={item.status === 'completed' ? 'default' : item.status === 'failed' ? 'destructive' : 'outline'}>
+                                {item.status === 'pending' ? '대기중' : item.status === 'completed' ? '완료' : '실패'}
+                              </Badge>
+                            </TableCell>
+                            <TableCell className="font-medium">
+                              <div className="flex items-center justify-between group">
+                                <span>{item.keyword}</span>
+                                {testId && (
+                                  <Link
+                                    href={`/tests/${testId}`}
+                                    target="_blank"
+                                    className="opacity-0 group-hover:opacity-100 transition-opacity text-indigo-600 hover:text-indigo-800 flex items-center gap-1 text-xs"
+                                  >
+                                    <ExternalLink className="h-3 w-3" />
+                                    보기
+                                  </Link>
+                                )}
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
                       {queueItems.length === 0 && (
                         <TableRow>
                           <TableCell colSpan={2} className="text-center py-8 text-muted-foreground">
