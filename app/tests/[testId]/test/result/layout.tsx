@@ -1,21 +1,14 @@
 import type { Metadata } from "next"
 import { generateResultPageMetadata } from "@/lib/quiz-seo-utils"
 import { ALL_TESTS } from "@/lib/tests-config"
-import { notFound } from "next/navigation"
 
 export async function generateMetadata({ params }: { params: { testId: string } }): Promise<Metadata> {
-  const test = ALL_TESTS.find(t => t.id === params.testId)
-  
-  if (!test) {
-    return {
-      title: "테스트 결과를 찾을 수 없습니다 | 테몬",
-      description: "요청하신 테스트 결과를 찾을 수 없습니다.",
-    }
-  }
+  const test = ALL_TESTS.find((t) => t.id === params.testId)
+  const defaultTitle = test?.title || "테스트"
 
   // 테스트 이름에서 이모지 제거
-  const testName = test.title.replace(/[^\w\s가-힣]/g, '').trim() || test.title
-  
+  const testName = defaultTitle.replace(/[^\w\s가-힣]/g, "").trim() || defaultTitle
+
   // Naver-optimized description (under 80 chars)
   const shortDescription = `${testName} 테스트 결과 확인. 나의 성격 유형은?`
   // Full description for Google/AI (140-160자 최적화)
@@ -38,17 +31,8 @@ export async function generateMetadata({ params }: { params: { testId: string } 
 
 export default function TestResultLayout({
   children,
-  params,
 }: {
   children: React.ReactNode
-  params: { testId: string }
 }) {
-  const test = ALL_TESTS.find(t => t.id === params.testId)
-  
-  if (!test) {
-    notFound()
-  }
-
   return <>{children}</>
 }
-
