@@ -22,6 +22,8 @@ export interface UseQuizLogicOptions {
   questions: QuizQuestion[]
   resultPath: string
   calculateResult?: (answers: string[][]) => string
+  buildSuccessPath?: (params: { resultPath: string; resultId: string; resultType: string }) => string
+  buildErrorPath?: (params: { resultPath: string; resultType: string }) => string
 }
 
 export function useQuizLogic({
@@ -29,6 +31,8 @@ export function useQuizLogic({
   questions,
   resultPath,
   calculateResult = calculateMBTI,
+  buildSuccessPath,
+  buildErrorPath,
 }: UseQuizLogicOptions) {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<string[][]>([])
@@ -40,11 +44,17 @@ export function useQuizLogic({
   const { saveResult, isSaving } = useTestResult({
     testId,
     onSuccess: (resultId, resultType) => {
-      router.push(`${resultPath}?type=${resultType}&id=${resultId}`)
+      const nextPath = buildSuccessPath
+        ? buildSuccessPath({ resultPath, resultId, resultType })
+        : `${resultPath}?type=${resultType}&id=${resultId}`
+      router.push(nextPath)
     },
     onError: (error, resultType) => {
       console.error("결과 저장 실패:", error)
-      router.push(`${resultPath}?type=${resultType}`)
+      const fallbackPath = buildErrorPath
+        ? buildErrorPath({ resultPath, resultType })
+        : `${resultPath}?type=${resultType}`
+      router.push(fallbackPath)
     },
   })
 
@@ -129,4 +139,3 @@ export function useQuizLogic({
     questionsLength: questions.length,
   }
 }
-
