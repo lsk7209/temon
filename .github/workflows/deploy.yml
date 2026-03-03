@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: QA checks
+        run: npm run qa:intro-cta && npm run qa:result-pages && npm run qa:routing && npx tsc --noEmit
+
       - name: Build
         run: npm run build
         env:
