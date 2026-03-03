@@ -4,6 +4,7 @@ import { questions, tests } from "@/lib/db/schema"
 import { eq, or, asc } from "drizzle-orm"
 import { notFound } from "next/navigation"
 import ClientRunner from "./client-runner"
+import type { DynamicTestQuestion } from "./types"
 
 export const dynamic = 'force-dynamic'
 
@@ -47,7 +48,7 @@ export default async function QuizPage({ params }: { params: { testId: string } 
     }
 
     // Simplify questions for client
-    const clientQuestions = data.questions.map(q => {
+    const clientQuestions: DynamicTestQuestion[] = data.questions.map(q => {
         const mapped = {
             id: q.id,
             questionOrder: q.questionOrder,

@@ -7,19 +7,11 @@ import { Progress } from "@/components/ui/progress"
 import { Loader2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
-interface Question {
-  id: string
-  questionOrder: number
-  questionText: string
-  choice1Text: string
-  choice2Text: string
-  choice1Tags?: string
-  choice2Tags?: string
-}
+import type { DynamicTestQuestion } from "./types"
 
 interface Props {
   testId: string
-  questions: Question[]
+  questions: DynamicTestQuestion[]
 }
 
 export default function ClientRunner({ testId, questions }: Props) {
