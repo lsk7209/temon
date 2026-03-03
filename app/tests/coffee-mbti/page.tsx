@@ -103,16 +103,6 @@ export default function CoffeeMBTI() {
                 </div>
               </div>
             </section>
-
-            <Link href="/tests/coffee-mbti/test">
-              <Button
-                size="lg"
-                className="w-full md:w-auto px-12 py-4 text-lg font-semibold bg-amber-600 hover:bg-amber-700 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
-              >
-                테스트 시작하기 🚀
-              </Button>
-            </Link>
-
             {/* CTA Section */}
             <section className="text-center mb-8">
               <Link href="/tests/coffee-mbti/test">
