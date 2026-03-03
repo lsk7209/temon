@@ -40,7 +40,7 @@ export function useQuizLogic({
   const { saveResult, isSaving } = useTestResult({
     testId,
     onSuccess: (resultId, resultType) => {
-      router.push(`${resultPath}/${resultId}?type=${resultType}`)
+      router.push(`${resultPath}?type=${resultType}&id=${resultId}`)
     },
     onError: (error, resultType) => {
       console.error("결과 저장 실패:", error)
@@ -129,4 +129,3 @@ export function useQuizLogic({
     questionsLength: questions.length,
   }
 }
-
