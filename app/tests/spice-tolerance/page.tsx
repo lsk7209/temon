@@ -66,7 +66,7 @@ export default function SpiceToleranceIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>참여자 집계중</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
