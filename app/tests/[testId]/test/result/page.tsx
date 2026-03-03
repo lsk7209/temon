@@ -5,18 +5,25 @@ import { Button } from "@/components/ui/button"
 interface ResultEntryPageProps {
   params: { testId: string }
   searchParams: {
-    id?: string
-    type?: string
+    id?: string | string[]
+    type?: string | string[]
   }
 }
 
-export default function ResultEntryPage({ params, searchParams }: ResultEntryPageProps) {
-  const resultId = searchParams.id
-  const resultType = searchParams.type
+const toSingleParam = (value?: string | string[]) =>
+  Array.isArray(value) ? value[0] : value
 
-  if (resultId) {
+const normalizeTestId = (value: string) => value.replace(/[^a-z0-9-]/gi, "")
+
+export default function ResultEntryPage({ params, searchParams }: ResultEntryPageProps) {
+  const resultId = toSingleParam(searchParams.id)
+  const resultType = toSingleParam(searchParams.type)
+  const safeTestId = normalizeTestId(params.testId)
+
+  if (resultId && safeTestId) {
+    const encodedId = encodeURIComponent(resultId)
     const query = resultType ? `?type=${encodeURIComponent(resultType)}` : ""
-    redirect(`/tests/${params.testId}/test/result/${resultId}${query}`)
+    redirect(`/tests/${safeTestId}/test/result/${encodedId}${query}`)
   }
 
   return (
@@ -28,7 +35,7 @@ export default function ResultEntryPage({ params, searchParams }: ResultEntryPag
         </p>
         <div className="flex flex-col gap-3 pt-2">
           <Button asChild size="lg">
-            <Link href={`/tests/${params.testId}/test`}>테스트 다시 하기</Link>
+            <Link href={safeTestId ? `/tests/${safeTestId}/test` : "/"}>테스트 다시 하기</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link href="/">다른 테스트 보기</Link>
