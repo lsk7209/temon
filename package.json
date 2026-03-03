@@ -13,7 +13,9 @@
     "deploy": "npm run build && npm run git-push-auto",
     "indexnow": "node scripts/indexnow-submit.js",
     "qa:intro-cta": "node scripts/check-intro-cta-duplicates.mjs",
-    "qa:result-pages": "node scripts/check-result-page-coverage.mjs"
+    "qa:result-pages": "node scripts/check-result-page-coverage.mjs",
+    "qa:routing": "node scripts/check-quiz-routing-consistency.mjs",
+    "qa:full": "npm run qa:intro-cta && npm run qa:result-pages && npm run qa:routing && npx tsc --noEmit && npm run lint"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
