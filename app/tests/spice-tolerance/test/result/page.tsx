@@ -1,7 +1,5 @@
 import { MbtiResultPage } from "@/components/quiz/mbti-result-page"
-import { buildGenericMbtiResults } from "@/lib/utils/mbti-generic-results"
-
-const SPICE_TOLERANCE_RESULTS = buildGenericMbtiResults("매운맛 선호")
+import { SPICE_TOLERANCE_RESULTS } from "@/lib/data/spice-tolerance-results"
 
 export default function SpiceToleranceResultPage() {
   return (

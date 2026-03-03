@@ -1,7 +1,5 @@
 import { MbtiResultPage } from "@/components/quiz/mbti-result-page"
-import { buildGenericMbtiResults } from "@/lib/utils/mbti-generic-results"
-
-const FOOD_BRAND_RESULTS = buildGenericMbtiResults("음식 브랜드")
+import { FOOD_BRAND_RESULTS } from "@/lib/data/food-brand-results"
 
 export default function FoodBrandResultPage() {
   return (
