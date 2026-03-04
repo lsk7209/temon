@@ -1,16 +1,40 @@
 /**
  * IndexNow Submission Script
- * 
+ *
  * Usage:
  * node scripts/indexnow-submit.js [url1] [url2] ...
- * 
+ *
  * If no URLs provided, verifies the API Key location only (dry run).
  */
 
-const INDEXNOW_HOST = 'temon.kr'
-const INDEXNOW_KEY = '186d3c7ad0df4ce9ae53deb59055ed23'
-const INDEXNOW_KEY_LOCATION = `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`
-const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow'
+const RAW_INDEXNOW_HOST = process.env.INDEXNOW_HOST || 'temon.kr'
+const INDEXNOW_HOST = normalizeHost(RAW_INDEXNOW_HOST)
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY?.trim()
+const INDEXNOW_KEY_LOCATION = process.env.INDEXNOW_KEY_LOCATION?.trim() || (INDEXNOW_KEY ? `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt` : '')
+const INDEXNOW_ENDPOINT = process.env.INDEXNOW_ENDPOINT || 'https://api.indexnow.org/indexnow'
+
+if (!INDEXNOW_KEY) {
+    console.error('❌ INDEXNOW_KEY is not configured. Set it in your environment before running this script.')
+    process.exit(1)
+}
+
+function normalizeHost(value) {
+    const trimmed = (value || '').trim().toLowerCase()
+
+    if (!trimmed) {
+        return 'temon.kr'
+    }
+
+    try {
+        if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+            return new URL(trimmed).hostname
+        }
+
+        return new URL(`https://${trimmed}`).hostname
+    } catch {
+        return trimmed.replace(/^https?:\/\//, '').split('/')[0]
+    }
+}
 
 async function submitToIndexNow(urls) {
     console.log(`🚀 Submitting to IndexNow...`)
@@ -21,7 +45,7 @@ async function submitToIndexNow(urls) {
         host: INDEXNOW_HOST,
         key: INDEXNOW_KEY,
         keyLocation: INDEXNOW_KEY_LOCATION,
-        urlList: urls
+        urlList: urls,
     }
 
     try {
@@ -73,14 +97,21 @@ async function main() {
         console.log(`ℹ️ No URLs provided. Performing connectivity check...`)
         await verifyKeyLocation()
         console.log(`\nTo submit URLs, run:`)
-        console.log(`npm run indexnow https://temon.kr/tests/new-test`)
+        console.log(`npm run indexnow https://${INDEXNOW_HOST}/tests/new-test`)
         return
     }
 
-    const validUrls = args.filter(url => url.startsWith('http'))
+    const validUrls = args.filter((url) => {
+        try {
+            const parsed = new URL(url)
+            return parsed.hostname.toLowerCase() === INDEXNOW_HOST
+        } catch {
+            return false
+        }
+    })
 
     if (validUrls.length === 0) {
-        console.error(`❌ No valid URLs provided. URLs must start with http/https.`)
+        console.error(`❌ No valid URLs provided. URLs must be absolute and match host: ${INDEXNOW_HOST}`)
         return
     }
 
