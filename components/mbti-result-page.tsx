@@ -36,6 +36,7 @@ function toKoreanLabel(key: string): string {
     mustEat: "필수 메뉴",
     habit: "습관",
     style: "스타일",
+    tip: "실행 팁",
     symbol: "상징 키워드",
     skill: "주요 스킬",
     weakness: "약점",
