@@ -7,10 +7,11 @@
 
 const RAW_INDEXNOW_HOST = process.env.INDEXNOW_HOST || 'temon.kr'
 const INDEXNOW_HOST = normalizeHost(RAW_INDEXNOW_HOST)
-const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '186d3c7ad0df4ce9ae53deb59055ed23'
-const INDEXNOW_KEY_LOCATION = process.env.INDEXNOW_KEY_LOCATION || `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY?.trim()
+const INDEXNOW_KEY_LOCATION = process.env.INDEXNOW_KEY_LOCATION?.trim()
 const INDEXNOW_ENDPOINT = process.env.INDEXNOW_ENDPOINT || 'https://api.indexnow.org/indexnow'
-const INDEXNOW_TIMEOUT_MS = Number(process.env.INDEXNOW_TIMEOUT_MS || 8000)
+const parsedTimeout = Number(process.env.INDEXNOW_TIMEOUT_MS || 8000)
+const INDEXNOW_TIMEOUT_MS = Number.isFinite(parsedTimeout) && parsedTimeout > 0 ? parsedTimeout : 8000
 
 export interface IndexNowResponse {
     success: boolean
@@ -41,6 +42,12 @@ function normalizeHost(value: string): string {
  * @param urls Array of absolute URLs to submit (e.g., ['https://temon.kr/tests/new-test'])
  */
 export async function submitUrlsToIndexNow(urls: string[]): Promise<IndexNowResponse> {
+    if (!INDEXNOW_KEY) {
+        return { success: false, message: 'INDEXNOW_KEY is not configured' }
+    }
+
+    const keyLocation = INDEXNOW_KEY_LOCATION || `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`
+
     if (!urls.length) {
         return { success: false, message: 'No URLs provided' }
     }
@@ -62,7 +69,7 @@ export async function submitUrlsToIndexNow(urls: string[]): Promise<IndexNowResp
     const payload = {
         host: INDEXNOW_HOST,
         key: INDEXNOW_KEY,
-        keyLocation: INDEXNOW_KEY_LOCATION,
+        keyLocation,
         urlList: validUrls,
     }
 

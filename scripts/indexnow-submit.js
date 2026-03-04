@@ -9,9 +9,14 @@
 
 const RAW_INDEXNOW_HOST = process.env.INDEXNOW_HOST || 'temon.kr'
 const INDEXNOW_HOST = normalizeHost(RAW_INDEXNOW_HOST)
-const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '186d3c7ad0df4ce9ae53deb59055ed23'
-const INDEXNOW_KEY_LOCATION = process.env.INDEXNOW_KEY_LOCATION || `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY?.trim()
+const INDEXNOW_KEY_LOCATION = process.env.INDEXNOW_KEY_LOCATION?.trim() || (INDEXNOW_KEY ? `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt` : '')
 const INDEXNOW_ENDPOINT = process.env.INDEXNOW_ENDPOINT || 'https://api.indexnow.org/indexnow'
+
+if (!INDEXNOW_KEY) {
+    console.error('❌ INDEXNOW_KEY is not configured. Set it in your environment before running this script.')
+    process.exit(1)
+}
 
 function normalizeHost(value) {
     const trimmed = (value || '').trim().toLowerCase()

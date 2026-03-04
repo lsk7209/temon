@@ -38,12 +38,20 @@ export async function POST(request: Request) {
 
     const result = await submitUrlsToIndexNow(sanitizedUrls)
 
+    const status = result.success
+      ? 200
+      : result.message.includes('No URLs provided') ||
+          result.message.includes('No valid URLs for host found') ||
+          result.message.includes('INDEXNOW_KEY is not configured')
+        ? 400
+        : 502
+
     return NextResponse.json(
       {
         ...result,
         submittedCount: sanitizedUrls.length,
       },
-      { status: result.success ? 200 : 502 },
+      { status },
     )
   } catch (error) {
     console.error('IndexNow ping API error:', error)
