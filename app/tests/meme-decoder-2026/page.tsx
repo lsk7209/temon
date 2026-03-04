@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock3, Sparkles, Sparkles } from "lucide-react"
+import { Clock3, Sparkles } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "🧩 2026 밈 해석력 테스트 | 테몬",
