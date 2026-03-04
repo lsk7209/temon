@@ -6,21 +6,39 @@ import { getQuizColorScheme } from "@/lib/utils/quiz-color-schemes"
 import type { QuizQuestion } from "@/hooks/use-quiz-logic"
 
 const questions: QuizQuestion[] = [
-  { id: 1, q: "📥 인박스 제로 성향 테스트에서 나는", a1: { text: "계획/기준을 먼저 세운다", tags: ["I", "J"] }, a2: { text: "실행하며 조정한다", tags: ["E", "P"] } },
-  { id: 2, q: "새 선택지를 보면", a1: { text: "검증된 방식 우선", tags: ["S", "T"] }, a2: { text: "새 가능성 우선", tags: ["N", "F"] } },
-  { id: 3, q: "문제 발생 시", a1: { text: "원인 분석 후 해결", tags: ["T", "J"] }, a2: { text: "유연한 대안 시도", tags: ["F", "P"] } },
-  { id: 4, q: "피드백을 보면", a1: { text: "데이터 중심 해석", tags: ["T", "S"] }, a2: { text: "맥락 중심 해석", tags: ["F", "N"] } },
-  { id: 5, q: "시간 부족하면", a1: { text: "핵심 우선순위 압축", tags: ["I", "J"] }, a2: { text: "속도감 있게 완료", tags: ["E", "P"] } },
-  { id: 6, q: "협업에서는", a1: { text: "역할/일정 명확화", tags: ["J", "T"] }, a2: { text: "상황 맞춤 조율", tags: ["P", "F"] } },
-  { id: 7, q: "반복 작업은", a1: { text: "표준화/효율화", tags: ["S", "J"] }, a2: { text: "상황별 유연 대응", tags: ["N", "P"] } },
-  { id: 8, q: "아이디어 선택", a1: { text: "현실성/실행성", tags: ["S", "T"] }, a2: { text: "확장성/새로움", tags: ["N", "F"] } },
-  { id: 9, q: "커뮤니케이션", a1: { text: "핵심만 간결히", tags: ["I", "T"] }, a2: { text: "맥락 충분히 설명", tags: ["E", "F"] } },
-  { id: 10, q: "준비 단계", a1: { text: "체크리스트 작성", tags: ["J", "S"] }, a2: { text: "핵심만 잡고 시작", tags: ["P", "N"] } },
-  { id: 11, q: "최종 검수", a1: { text: "기준표로 꼼꼼히", tags: ["I", "J"] }, a2: { text: "흐름으로 최종 조정", tags: ["E", "P"] } },
-  { id: 12, q: "다음 사이클", a1: { text: "회고 문서로 정리", tags: ["I", "J"] }, a2: { text: "바로 다음 실험", tags: ["E", "P"] } },
+  { id: 1, q: "메일/메시지 확인", a1: { text: "정해진 시간에 일괄 확인", tags: ['I', 'J'] }, a2: { text: "수시 확인", tags: ['E', 'P'] } },
+  { id: 2, q: "읽은 메시지", a1: { text: "즉시 처리/보관", tags: ['T', 'J'] }, a2: { text: "일단 읽고 나중 처리", tags: ['F', 'P'] } },
+  { id: 3, q: "분류 기준", a1: { text: "프로젝트/우선순위 태그", tags: ['S', 'T'] }, a2: { text: "사람/맥락 기준", tags: ['N', 'F'] } },
+  { id: 4, q: "긴 답장이 필요하면", a1: { text: "임시 초안 저장", tags: ['J', 'I'] }, a2: { text: "머릿속에 두고 나중 작성", tags: ['P', 'E'] } },
+  { id: 5, q: "미응답 관리", a1: { text: "후속 알림 설정", tags: ['J', 'S'] }, a2: { text: "기억에 의존", tags: ['P', 'N'] } },
+  { id: 6, q: "중요 대화", a1: { text: "요약 노트 생성", tags: ['T', 'S'] }, a2: { text: "원문 스레드 유지", tags: ['F', 'N'] } },
+  { id: 7, q: "알림 끄기", a1: { text: "집중 시간 전면 차단", tags: ['I', 'J'] }, a2: { text: "중요 채널만 유지", tags: ['E', 'P'] } },
+  { id: 8, q: "하루 마감", a1: { text: "인박스 0 상태 맞춤", tags: ['J', 'T'] }, a2: { text: "핵심만 처리", tags: ['P', 'F'] } },
+  { id: 9, q: "스팸/잡음", a1: { text: "기준 만들어 즉시 정리", tags: ['S', 'J'] }, a2: { text: "가끔 몰아서 정리", tags: ['N', 'P'] } },
+  { id: 10, q: "협업 툴 메시지", a1: { text: "채널 규칙 합의", tags: ['T', 'J'] }, a2: { text: "개인별 유연 대응", tags: ['F', 'P'] } },
+  { id: 11, q: "응답 톤", a1: { text: "짧고 명확", tags: ['I', 'T'] }, a2: { text: "맥락 자세히", tags: ['E', 'F'] } },
+  { id: 12, q: "운영 목표", a1: { text: "정돈된 커뮤니케이션", tags: ['J', 'S'] }, a2: { text: "관계 유지 우선", tags: ['P', 'N'] } },
 ]
 
 export default function TestPage() {
-  const quizLogic = useQuizLogic({ testId: "inbox-zero-style", questions, resultPath: "/tests/inbox-zero-style/test/result" })
-  return <QuizContainer {...{ currentQuestion: quizLogic.currentQuestion, currentQ: quizLogic.currentQ, selectedChoice: quizLogic.selectedChoice, isProcessing: quizLogic.isProcessing, isSaving: quizLogic.isSaving, progress: quizLogic.progress, questionsLength: quizLogic.questionsLength, colorClasses: getQuizColorScheme("green"), onChoiceSelect: quizLogic.handleChoiceSelect, onPrevious: quizLogic.handlePrevious }} />
+  const quizLogic = useQuizLogic({
+    testId: "inbox-zero-style",
+    questions,
+    resultPath: "/tests/inbox-zero-style/test/result",
+  })
+
+  return (
+    <QuizContainer
+      currentQuestion={quizLogic.currentQuestion}
+      currentQ={quizLogic.currentQ}
+      selectedChoice={quizLogic.selectedChoice}
+      isProcessing={quizLogic.isProcessing}
+      isSaving={quizLogic.isSaving}
+      progress={quizLogic.progress}
+      questionsLength={quizLogic.questionsLength}
+      colorClasses={getQuizColorScheme("green")}
+      onChoiceSelect={quizLogic.handleChoiceSelect}
+      onPrevious={quizLogic.handlePrevious}
+    />
+  )
 }

@@ -6,21 +6,39 @@ import { getQuizColorScheme } from "@/lib/utils/quiz-color-schemes"
 import type { QuizQuestion } from "@/hooks/use-quiz-logic"
 
 const questions: QuizQuestion[] = [
-  { id: 1, q: "🎤 음성메모 활용 스타일 테스트에서 나는", a1: { text: "계획/기준을 먼저 세운다", tags: ["I", "J"] }, a2: { text: "실행하며 조정한다", tags: ["E", "P"] } },
-  { id: 2, q: "새 선택지를 보면", a1: { text: "검증된 방식 우선", tags: ["S", "T"] }, a2: { text: "새 가능성 우선", tags: ["N", "F"] } },
-  { id: 3, q: "문제 발생 시", a1: { text: "원인 분석 후 해결", tags: ["T", "J"] }, a2: { text: "유연한 대안 시도", tags: ["F", "P"] } },
-  { id: 4, q: "피드백을 보면", a1: { text: "데이터 중심 해석", tags: ["T", "S"] }, a2: { text: "맥락 중심 해석", tags: ["F", "N"] } },
-  { id: 5, q: "시간 부족하면", a1: { text: "핵심 우선순위 압축", tags: ["I", "J"] }, a2: { text: "속도감 있게 완료", tags: ["E", "P"] } },
-  { id: 6, q: "협업에서는", a1: { text: "역할/일정 명확화", tags: ["J", "T"] }, a2: { text: "상황 맞춤 조율", tags: ["P", "F"] } },
-  { id: 7, q: "반복 작업은", a1: { text: "표준화/효율화", tags: ["S", "J"] }, a2: { text: "상황별 유연 대응", tags: ["N", "P"] } },
-  { id: 8, q: "아이디어 선택", a1: { text: "현실성/실행성", tags: ["S", "T"] }, a2: { text: "확장성/새로움", tags: ["N", "F"] } },
-  { id: 9, q: "커뮤니케이션", a1: { text: "핵심만 간결히", tags: ["I", "T"] }, a2: { text: "맥락 충분히 설명", tags: ["E", "F"] } },
-  { id: 10, q: "준비 단계", a1: { text: "체크리스트 작성", tags: ["J", "S"] }, a2: { text: "핵심만 잡고 시작", tags: ["P", "N"] } },
-  { id: 11, q: "최종 검수", a1: { text: "기준표로 꼼꼼히", tags: ["I", "J"] }, a2: { text: "흐름으로 최종 조정", tags: ["E", "P"] } },
-  { id: 12, q: "다음 사이클", a1: { text: "회고 문서로 정리", tags: ["I", "J"] }, a2: { text: "바로 다음 실험", tags: ["E", "P"] } },
+  { id: 1, q: "아이디어가 뜨면", a1: { text: "즉시 음성으로 캡처", tags: ['E', 'P'] }, a2: { text: "머릿속 정리 후 기록", tags: ['I', 'J'] } },
+  { id: 2, q: "음성메모 길이", a1: { text: "핵심 30초 압축", tags: ['S', 'T'] }, a2: { text: "맥락 포함 2~3분", tags: ['N', 'F'] } },
+  { id: 3, q: "파일 제목", a1: { text: "규칙형 태그 사용", tags: ['J', 'S'] }, a2: { text: "감각적 제목 사용", tags: ['P', 'N'] } },
+  { id: 4, q: "재청취 주기", a1: { text: "매일 짧게 정리", tags: ['I', 'J'] }, a2: { text: "필요할 때만 검색", tags: ['E', 'P'] } },
+  { id: 5, q: "텍스트 전환", a1: { text: "중요 메모는 바로 전환", tags: ['T', 'J'] }, a2: { text: "음성 상태로 보관", tags: ['F', 'P'] } },
+  { id: 6, q: "아이디어 분류", a1: { text: "프로젝트별 폴더", tags: ['S', 'J'] }, a2: { text: "하나의 인박스", tags: ['N', 'P'] } },
+  { id: 7, q: "길에서 기록할 때", a1: { text: "핵심 키워드 우선", tags: ['T', 'S'] }, a2: { text: "상황 설명까지", tags: ['F', 'N'] } },
+  { id: 8, q: "공유 여부", a1: { text: "팀 협업용으로 공유", tags: ['E', 'T'] }, a2: { text: "개인 아카이브 중심", tags: ['I', 'F'] } },
+  { id: 9, q: "중복 아이디어", a1: { text: "유사 아이디어 병합", tags: ['J', 'T'] }, a2: { text: "각각 독립 보존", tags: ['P', 'F'] } },
+  { id: 10, q: "장기 보관", a1: { text: "월간 아카이브 정리", tags: ['I', 'S'] }, a2: { text: "최신 위주 순환", tags: ['E', 'N'] } },
+  { id: 11, q: "실행 연결", a1: { text: "메모→할일 즉시 연결", tags: ['J', 'T'] }, a2: { text: "영감 저장 후 나중 실행", tags: ['P', 'F'] } },
+  { id: 12, q: "도구 선택", a1: { text: "한 앱 집중 사용", tags: ['S', 'J'] }, a2: { text: "상황별 앱 분산", tags: ['N', 'P'] } },
 ]
 
 export default function TestPage() {
-  const quizLogic = useQuizLogic({ testId: "voice-note-style", questions, resultPath: "/tests/voice-note-style/test/result" })
-  return <QuizContainer {...{ currentQuestion: quizLogic.currentQuestion, currentQ: quizLogic.currentQ, selectedChoice: quizLogic.selectedChoice, isProcessing: quizLogic.isProcessing, isSaving: quizLogic.isSaving, progress: quizLogic.progress, questionsLength: quizLogic.questionsLength, colorClasses: getQuizColorScheme("blue"), onChoiceSelect: quizLogic.handleChoiceSelect, onPrevious: quizLogic.handlePrevious }} />
+  const quizLogic = useQuizLogic({
+    testId: "voice-note-style",
+    questions,
+    resultPath: "/tests/voice-note-style/test/result",
+  })
+
+  return (
+    <QuizContainer
+      currentQuestion={quizLogic.currentQuestion}
+      currentQ={quizLogic.currentQ}
+      selectedChoice={quizLogic.selectedChoice}
+      isProcessing={quizLogic.isProcessing}
+      isSaving={quizLogic.isSaving}
+      progress={quizLogic.progress}
+      questionsLength={quizLogic.questionsLength}
+      colorClasses={getQuizColorScheme("blue")}
+      onChoiceSelect={quizLogic.handleChoiceSelect}
+      onPrevious={quizLogic.handlePrevious}
+    />
+  )
 }
