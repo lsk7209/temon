@@ -6,21 +6,21 @@ import { getQuizColorScheme } from "@/lib/utils/quiz-color-schemes"
 import type { QuizQuestion } from "@/hooks/use-quiz-logic"
 
 const questions: QuizQuestion[] = [
-  { id: 1, q: "✂️ 숏폼 편집 성향 테스트에서 나는", a1: { text: "계획과 기준을 먼저 세운다", tags: ["I", "J"] }, a2: { text: "일단 실행 후 조정한다", tags: ["E", "P"] } },
-  { id: 2, q: "새로운 선택지를 보면", a1: { text: "검증된 방법 우선", tags: ["S", "T"] }, a2: { text: "새로운 가능성 우선", tags: ["N", "F"] } },
-  { id: 3, q: "문제 상황에서는", a1: { text: "원인 분석 후 해결", tags: ["T", "J"] }, a2: { text: "유연한 대안 즉시 시도", tags: ["F", "P"] } },
-  { id: 4, q: "피드백을 받을 때", a1: { text: "데이터 중심 해석", tags: ["T", "S"] }, a2: { text: "사용자 맥락 중심 해석", tags: ["F", "N"] } },
-  { id: 5, q: "시간이 부족하면", a1: { text: "핵심 우선순위로 압축", tags: ["I", "J"] }, a2: { text: "속도감 있게 완료", tags: ["E", "P"] } },
-  { id: 6, q: "협업할 때", a1: { text: "역할/일정을 명확히", tags: ["J", "T"] }, a2: { text: "상황 맞춰 유연 조율", tags: ["P", "F"] } },
-  { id: 7, q: "반복 작업은", a1: { text: "표준화해 효율화", tags: ["S", "J"] }, a2: { text: "상황마다 다르게", tags: ["N", "P"] } },
-  { id: 8, q: "아이디어를 고를 때", a1: { text: "현실성/실행성 우선", tags: ["S", "T"] }, a2: { text: "확장성/새로움 우선", tags: ["N", "F"] } },
-  { id: 9, q: "커뮤니케이션은", a1: { text: "핵심만 간결하게", tags: ["I", "T"] }, a2: { text: "맥락을 충분히 설명", tags: ["E", "F"] } },
-  { id: 10, q: "준비 단계에서는", a1: { text: "체크리스트 작성", tags: ["J", "S"] }, a2: { text: "핵심만 잡고 출발", tags: ["P", "N"] } },
-  { id: 11, q: "최종 검수 시", a1: { text: "기준표로 꼼꼼히", tags: ["I", "J"] }, a2: { text: "전체 흐름으로 최종", tags: ["E", "P"] } },
-  { id: 12, q: "다음 사이클은", a1: { text: "회고 문서로 정리", tags: ["I", "J"] }, a2: { text: "바로 다음 실험", tags: ["E", "P"] } },
+  { id: 1, q: "✂️ 편집 시작 전에 먼저 하는 일은", a1: { text: "스크립트 비트맵 작성", tags: ['I', 'J'] }, a2: { text: "원본을 훑으며 포인트 체크", tags: ['E', 'P'] } },
+  { id: 2, q: "첫 3초 구성은", a1: { text: "핵심 메시지 바로 제시", tags: ['T', 'J'] }, a2: { text: "궁금증을 남기는 장면 배치", tags: ['F', 'P'] } },
+  { id: 3, q: "점프컷 기준은", a1: { text: "의미 단위로 정교하게", tags: ['S', 'T'] }, a2: { text: "템포감 우선으로 과감하게", tags: ['N', 'F'] } },
+  { id: 4, q: "자막 스타일은", a1: { text: "통일된 템플릿 사용", tags: ['S', 'J'] }, a2: { text: "영상마다 분위기 변주", tags: ['N', 'P'] } },
+  { id: 5, q: "배경음악 선택은", a1: { text: "대사 전달 우선", tags: ['I', 'T'] }, a2: { text: "감정 몰입 우선", tags: ['E', 'F'] } },
+  { id: 6, q: "중간 이탈이 보이면", a1: { text: "이탈 구간 원인 분석", tags: ['T', 'J'] }, a2: { text: "전개 톤을 즉시 바꿔본다", tags: ['F', 'P'] } },
+  { id: 7, q: "B-roll 삽입은", a1: { text: "정보 보강용으로 최소화", tags: ['S', 'J'] }, a2: { text: "분위기 전환용으로 적극 활용", tags: ['N', 'P'] } },
+  { id: 8, q: "자막 길이는", a1: { text: "읽기 속도 계산해 제한", tags: ['T', 'S'] }, a2: { text: "현장감 살리며 유연 조절", tags: ['F', 'N'] } },
+  { id: 9, q: "썸네일 프레임 추출은", a1: { text: "메시지 명확 컷 우선", tags: ['I', 'J'] }, a2: { text: "시선 끄는 표정 컷 우선", tags: ['E', 'P'] } },
+  { id: 10, q: "편집 마감 직전", a1: { text: "체크리스트로 QA", tags: ['J', 'T'] }, a2: { text: "한 번에 느낌으로 최종", tags: ['P', 'F'] } },
+  { id: 11, q: "영상 길이 판단은", a1: { text: "핵심 전달 완료 시점", tags: ['S', 'T'] }, a2: { text: "감정 리듬이 살아있는 시점", tags: ['N', 'F'] } },
+  { id: 12, q: "다음 영상 개선은", a1: { text: "지표 기반 수정", tags: ['I', 'J'] }, a2: { text: "댓글 반응 기반 수정", tags: ['E', 'P'] } },
 ]
 
 export default function TestPage() {
   const quizLogic = useQuizLogic({ testId: "shortform-edit-style", questions, resultPath: "/tests/shortform-edit-style/test/result" })
-  return <QuizContainer {...{ currentQuestion: quizLogic.currentQuestion, currentQ: quizLogic.currentQ, selectedChoice: quizLogic.selectedChoice, isProcessing: quizLogic.isProcessing, isSaving: quizLogic.isSaving, progress: quizLogic.progress, questionsLength: quizLogic.questionsLength, colorClasses: getQuizColorScheme("pink"), onChoiceSelect: quizLogic.handleChoiceSelect, onPrevious: quizLogic.handlePrevious }} />
+  return <QuizContainer {...{ currentQuestion: quizLogic.currentQuestion, currentQ: quizLogic.currentQ, selectedChoice: quizLogic.selectedChoice, isProcessing: quizLogic.isProcessing, isSaving: quizLogic.isSaving, progress: quizLogic.progress, questionsLength: quizLogic.questionsLength, colorClasses: getQuizColorScheme("rose"), onChoiceSelect: quizLogic.handleChoiceSelect, onPrevious: quizLogic.handlePrevious } } />
 }

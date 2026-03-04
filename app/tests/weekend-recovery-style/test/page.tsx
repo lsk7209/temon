@@ -6,21 +6,21 @@ import { getQuizColorScheme } from "@/lib/utils/quiz-color-schemes"
 import type { QuizQuestion } from "@/hooks/use-quiz-logic"
 
 const questions: QuizQuestion[] = [
-  { id: 1, q: "🛌 주말 회복 루틴 테스트에서 나는", a1: { text: "계획과 기준을 먼저 세운다", tags: ["I", "J"] }, a2: { text: "일단 실행 후 조정한다", tags: ["E", "P"] } },
-  { id: 2, q: "새로운 선택지를 보면", a1: { text: "검증된 방법 우선", tags: ["S", "T"] }, a2: { text: "새로운 가능성 우선", tags: ["N", "F"] } },
-  { id: 3, q: "문제 상황에서는", a1: { text: "원인 분석 후 해결", tags: ["T", "J"] }, a2: { text: "유연한 대안 즉시 시도", tags: ["F", "P"] } },
-  { id: 4, q: "피드백을 받을 때", a1: { text: "데이터 중심 해석", tags: ["T", "S"] }, a2: { text: "사용자 맥락 중심 해석", tags: ["F", "N"] } },
-  { id: 5, q: "시간이 부족하면", a1: { text: "핵심 우선순위로 압축", tags: ["I", "J"] }, a2: { text: "속도감 있게 완료", tags: ["E", "P"] } },
-  { id: 6, q: "협업할 때", a1: { text: "역할/일정을 명확히", tags: ["J", "T"] }, a2: { text: "상황 맞춰 유연 조율", tags: ["P", "F"] } },
-  { id: 7, q: "반복 작업은", a1: { text: "표준화해 효율화", tags: ["S", "J"] }, a2: { text: "상황마다 다르게", tags: ["N", "P"] } },
-  { id: 8, q: "아이디어를 고를 때", a1: { text: "현실성/실행성 우선", tags: ["S", "T"] }, a2: { text: "확장성/새로움 우선", tags: ["N", "F"] } },
-  { id: 9, q: "커뮤니케이션은", a1: { text: "핵심만 간결하게", tags: ["I", "T"] }, a2: { text: "맥락을 충분히 설명", tags: ["E", "F"] } },
-  { id: 10, q: "준비 단계에서는", a1: { text: "체크리스트 작성", tags: ["J", "S"] }, a2: { text: "핵심만 잡고 출발", tags: ["P", "N"] } },
-  { id: 11, q: "최종 검수 시", a1: { text: "기준표로 꼼꼼히", tags: ["I", "J"] }, a2: { text: "전체 흐름으로 최종", tags: ["E", "P"] } },
-  { id: 12, q: "다음 사이클은", a1: { text: "회고 문서로 정리", tags: ["I", "J"] }, a2: { text: "바로 다음 실험", tags: ["E", "P"] } },
+  { id: 1, q: "🛌 토요일 아침 시작은", a1: { text: "충분한 수면으로 회복", tags: ['I', 'S'] }, a2: { text: "가벼운 외출로 리셋", tags: ['E', 'N'] } },
+  { id: 2, q: "주말 계획을 세울 때", a1: { text: "휴식과 할 일을 배치", tags: ['J', 'T'] }, a2: { text: "기분 따라 유동적으로", tags: ['P', 'F'] } },
+  { id: 3, q: "피곤이 누적됐을 때", a1: { text: "몸 상태 체크 후 조절", tags: ['S', 'J'] }, a2: { text: "하고 싶은 일로 기분 전환", tags: ['N', 'P'] } },
+  { id: 4, q: "운동을 넣는 방식은", a1: { text: "짧아도 루틴 유지", tags: ['I', 'J'] }, a2: { text: "컨디션 좋은 날 몰아서", tags: ['E', 'P'] } },
+  { id: 5, q: "사회적 약속이 많아지면", a1: { text: "회복 시간을 먼저 확보", tags: ['T', 'J'] }, a2: { text: "사람 에너지로 충전", tags: ['F', 'P'] } },
+  { id: 6, q: "집안일 처리 방식은", a1: { text: "시간 블록으로 끝낸다", tags: ['S', 'T'] }, a2: { text: "틈날 때 나눠서 한다", tags: ['N', 'F'] } },
+  { id: 7, q: "주말 콘텐츠 소비는", a1: { text: "머리 비우는 가벼운 것", tags: ['I', 'F'] }, a2: { text: "영감 주는 새로운 것", tags: ['E', 'N'] } },
+  { id: 8, q: "일요일 저녁이 되면", a1: { text: "다음 주 준비를 시작", tags: ['J', 'S'] }, a2: { text: "마지막 휴식을 더 누린다", tags: ['P', 'N'] } },
+  { id: 9, q: "회복 체감이 낮을 때", a1: { text: "수면·식사부터 재점검", tags: ['T', 'S'] }, a2: { text: "일정 밀도를 줄여본다", tags: ['F', 'N'] } },
+  { id: 10, q: "디지털 디톡스는", a1: { text: "정해둔 시간에 시행", tags: ['I', 'J'] }, a2: { text: "필요할 때 즉시 오프", tags: ['E', 'P'] } },
+  { id: 11, q: "월요일 불안을 줄이는 법은", a1: { text: "체크리스트 준비", tags: ['T', 'J'] }, a2: { text: "긍정 루틴으로 마음 세팅", tags: ['F', 'P'] } },
+  { id: 12, q: "이상적인 주말은", a1: { text: "안정적으로 회복되는 주말", tags: ['S', 'J'] }, a2: { text: "활력과 재미가 살아나는 주말", tags: ['N', 'P'] } },
 ]
 
 export default function TestPage() {
   const quizLogic = useQuizLogic({ testId: "weekend-recovery-style", questions, resultPath: "/tests/weekend-recovery-style/test/result" })
-  return <QuizContainer {...{ currentQuestion: quizLogic.currentQuestion, currentQ: quizLogic.currentQ, selectedChoice: quizLogic.selectedChoice, isProcessing: quizLogic.isProcessing, isSaving: quizLogic.isSaving, progress: quizLogic.progress, questionsLength: quizLogic.questionsLength, colorClasses: getQuizColorScheme("purple"), onChoiceSelect: quizLogic.handleChoiceSelect, onPrevious: quizLogic.handlePrevious }} />
+  return <QuizContainer {...{ currentQuestion: quizLogic.currentQuestion, currentQ: quizLogic.currentQ, selectedChoice: quizLogic.selectedChoice, isProcessing: quizLogic.isProcessing, isSaving: quizLogic.isSaving, progress: quizLogic.progress, questionsLength: quizLogic.questionsLength, colorClasses: getQuizColorScheme("teal"), onChoiceSelect: quizLogic.handleChoiceSelect, onPrevious: quizLogic.handlePrevious } } />
 }

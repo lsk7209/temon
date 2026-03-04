@@ -6,21 +6,21 @@ import { getQuizColorScheme } from "@/lib/utils/quiz-color-schemes"
 import type { QuizQuestion } from "@/hooks/use-quiz-logic"
 
 const questions: QuizQuestion[] = [
-  { id: 1, q: "📈 크리에이터 피드백 반영 성향 테스트에서 나는", a1: { text: "계획과 기준을 먼저 세운다", tags: ["I", "J"] }, a2: { text: "일단 실행 후 조정한다", tags: ["E", "P"] } },
-  { id: 2, q: "새로운 선택지를 보면", a1: { text: "검증된 방법 우선", tags: ["S", "T"] }, a2: { text: "새로운 가능성 우선", tags: ["N", "F"] } },
-  { id: 3, q: "문제 상황에서는", a1: { text: "원인 분석 후 해결", tags: ["T", "J"] }, a2: { text: "유연한 대안 즉시 시도", tags: ["F", "P"] } },
-  { id: 4, q: "피드백을 받을 때", a1: { text: "데이터 중심 해석", tags: ["T", "S"] }, a2: { text: "사용자 맥락 중심 해석", tags: ["F", "N"] } },
-  { id: 5, q: "시간이 부족하면", a1: { text: "핵심 우선순위로 압축", tags: ["I", "J"] }, a2: { text: "속도감 있게 완료", tags: ["E", "P"] } },
-  { id: 6, q: "협업할 때", a1: { text: "역할/일정을 명확히", tags: ["J", "T"] }, a2: { text: "상황 맞춰 유연 조율", tags: ["P", "F"] } },
-  { id: 7, q: "반복 작업은", a1: { text: "표준화해 효율화", tags: ["S", "J"] }, a2: { text: "상황마다 다르게", tags: ["N", "P"] } },
-  { id: 8, q: "아이디어를 고를 때", a1: { text: "현실성/실행성 우선", tags: ["S", "T"] }, a2: { text: "확장성/새로움 우선", tags: ["N", "F"] } },
-  { id: 9, q: "커뮤니케이션은", a1: { text: "핵심만 간결하게", tags: ["I", "T"] }, a2: { text: "맥락을 충분히 설명", tags: ["E", "F"] } },
-  { id: 10, q: "준비 단계에서는", a1: { text: "체크리스트 작성", tags: ["J", "S"] }, a2: { text: "핵심만 잡고 출발", tags: ["P", "N"] } },
-  { id: 11, q: "최종 검수 시", a1: { text: "기준표로 꼼꼼히", tags: ["I", "J"] }, a2: { text: "전체 흐름으로 최종", tags: ["E", "P"] } },
-  { id: 12, q: "다음 사이클은", a1: { text: "회고 문서로 정리", tags: ["I", "J"] }, a2: { text: "바로 다음 실험", tags: ["E", "P"] } },
+  { id: 1, q: "📝 업로드 직후 댓글이 몰리면", a1: { text: "유형별로 분류해 읽는다", tags: ['I', 'J'] }, a2: { text: "느낌 오는 반응부터 본다", tags: ['E', 'P'] } },
+  { id: 2, q: "날카로운 비판 댓글을 보면", a1: { text: "사실/의견을 분리한다", tags: ['T', 'S'] }, a2: { text: "시청자 의도를 먼저 추측한다", tags: ['F', 'N'] } },
+  { id: 3, q: "조회수는 높은데 저장률이 낮으면", a1: { text: "구간 이탈 데이터를 확인한다", tags: ['T', 'J'] }, a2: { text: "후킹 톤부터 바꿔본다", tags: ['F', 'P'] } },
+  { id: 4, q: "피드백 반영 주기는", a1: { text: "주간 단위로 묶어 업데이트", tags: ['J', 'S'] }, a2: { text: "아이디어 생길 때 즉시 반영", tags: ['P', 'N'] } },
+  { id: 5, q: "팀원이 다른 방향을 제시하면", a1: { text: "브랜드 기준표로 판단", tags: ['T', 'J'] }, a2: { text: "새 포맷 실험 기회로 본다", tags: ['F', 'P'] } },
+  { id: 6, q: "악플 대응 기준은", a1: { text: "명확한 운영 원칙을 둔다", tags: ['I', 'J'] }, a2: { text: "분위기에 맞춰 유연 대응", tags: ['E', 'P'] } },
+  { id: 7, q: "좋은 피드백을 받았을 때", a1: { text: "재현 가능한 요소를 기록", tags: ['S', 'T'] }, a2: { text: "감각적인 포인트를 확장", tags: ['N', 'F'] } },
+  { id: 8, q: "썸네일 지적이 반복되면", a1: { text: "A/B 테스트로 검증", tags: ['T', 'S'] }, a2: { text: "새 비주얼 톤을 과감히 시도", tags: ['F', 'N'] } },
+  { id: 9, q: "피드백 회의에서 나는", a1: { text: "핵심 개선안 3개를 제시", tags: ['I', 'T'] }, a2: { text: "전체 공감대를 먼저 만든다", tags: ['E', 'F'] } },
+  { id: 10, q: "성과가 안 나올 때", a1: { text: "원인 가설을 다시 세운다", tags: ['J', 'T'] }, a2: { text: "콘텐츠 에너지부터 리셋", tags: ['P', 'F'] } },
+  { id: 11, q: "반복 요청이 들어오면", a1: { text: "시리즈화 가능성 검토", tags: ['S', 'J'] }, a2: { text: "신선한 변주 포인트 탐색", tags: ['N', 'P'] } },
+  { id: 12, q: "다음 업로드 준비는", a1: { text: "피드백 반영 체크리스트로 시작", tags: ['I', 'J'] }, a2: { text: "새 메시지 한 줄로 시작", tags: ['E', 'P'] } },
 ]
 
 export default function TestPage() {
   const quizLogic = useQuizLogic({ testId: "creator-feedback-style", questions, resultPath: "/tests/creator-feedback-style/test/result" })
-  return <QuizContainer {...{ currentQuestion: quizLogic.currentQuestion, currentQ: quizLogic.currentQ, selectedChoice: quizLogic.selectedChoice, isProcessing: quizLogic.isProcessing, isSaving: quizLogic.isSaving, progress: quizLogic.progress, questionsLength: quizLogic.questionsLength, colorClasses: getQuizColorScheme("green"), onChoiceSelect: quizLogic.handleChoiceSelect, onPrevious: quizLogic.handlePrevious }} />
+  return <QuizContainer {...{ currentQuestion: quizLogic.currentQuestion, currentQ: quizLogic.currentQ, selectedChoice: quizLogic.selectedChoice, isProcessing: quizLogic.isProcessing, isSaving: quizLogic.isSaving, progress: quizLogic.progress, questionsLength: quizLogic.questionsLength, colorClasses: getQuizColorScheme("purple"), onChoiceSelect: quizLogic.handleChoiceSelect, onPrevious: quizLogic.handlePrevious } } />
 }
