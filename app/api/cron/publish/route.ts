@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { getDb } from '@/lib/db/client'
 import { tests } from '@/lib/db/schema'
 import { eq, asc, and } from 'drizzle-orm'
+import { submitUrlsToIndexNow } from '@/lib/indexnow'
 
 export const dynamic = 'force-dynamic'
 
@@ -40,12 +41,21 @@ export async function GET() {
             return NextResponse.json({ message: 'Test already published by another job' })
         }
 
+        const testUrl = `https://temon.kr/tests/${draftTest.slug}`
+        const indexNowResult = await submitUrlsToIndexNow([
+            'https://temon.kr/',
+            'https://temon.kr/tests',
+            testUrl,
+        ])
+
         return NextResponse.json({
             success: true,
             publishedTest: {
                 id: draftTest.id,
-                title: draftTest.title
-            }
+                title: draftTest.title,
+                slug: draftTest.slug,
+            },
+            indexNow: indexNowResult,
         })
 
     } catch (error: any) {
