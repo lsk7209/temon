@@ -30,3 +30,9 @@
 ## 운영 메모
 - 퀴즈 배치 발행 시 주 3~5개 단위로 노출 테스트
 - 발행 24시간/72시간 기준으로 CTR, 공유율, 완료율 비교
+
+
+## TOP 10 브리프 데이터
+- 구현용 초안 데이터 파일: `lib/data/trending-quiz-briefs.ts`
+- 포함 항목: one-liner, target keywords, sample questions(4), result archetypes(4)
+- 목적: 기획→질문 작성→결과 카피 작성의 제작 리드타임 단축
