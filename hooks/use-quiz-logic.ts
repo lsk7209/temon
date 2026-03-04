@@ -129,4 +129,3 @@ export function useQuizLogic({
     questionsLength: questions.length,
   }
 }
-

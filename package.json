@@ -11,7 +11,13 @@
     "git-push": "node scripts/git-push.js",
     "git-push-auto": "node scripts/git-push-auto.js",
     "deploy": "npm run build && npm run git-push-auto",
-    "indexnow": "node scripts/indexnow-submit.js"
+    "indexnow": "node scripts/indexnow-submit.js",
+    "qa:intro-cta": "node scripts/check-intro-cta-duplicates.mjs",
+    "qa:result-pages": "node scripts/check-result-page-coverage.mjs",
+    "qa:routing": "node scripts/check-quiz-routing-consistency.mjs",
+    "qa:full": "npm run qa:intro-cta && npm run qa:result-pages && npm run qa:routing && npm run qa:top10-content && npx tsc --noEmit && npm run lint",
+    "generate:top10-quizzes": "node scripts/generate-top10-quiz-templates.mjs",
+    "qa:top10-content": "node scripts/check-top10-content-quality.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
