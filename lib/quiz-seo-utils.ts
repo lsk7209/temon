@@ -154,6 +154,57 @@ export function getIntroUseCases(quizTitle: string): string[] {
   ]
 }
 
+export function getIntroLandingParagraphs(quizTitle: string): string[] {
+  const lowerTitle = quizTitle.toLowerCase()
+
+  if (lowerTitle.includes("k-drama") || lowerTitle.includes("드라마")) {
+    return [
+      "This intro targets visitors who want to know which drama-style role matches their real social behavior, not just their favorite character type.",
+      "The strongest use case is comparing how you react in conflict, romance, and group scenes. That makes the result feel closer to a casting pattern than a random label.",
+    ]
+  }
+
+  if (lowerTitle.includes("idol") || lowerTitle.includes("아이돌") || lowerTitle.includes("k-pop")) {
+    return [
+      "This page works best for visitors who want a fast answer to where they naturally fit in a group dynamic such as leader, visual, performer, or mood maker.",
+      "The useful comparison point is not celebrity fandom. It is whether your real-life energy goes first into spotlight, coordination, emotion, or atmosphere.",
+    ]
+  }
+
+  if (lowerTitle.includes("pet") || lowerTitle.includes("반려")) {
+    return [
+      "This intro is most useful when you want a lightweight way to compare your emotional style, routine preference, and companionship needs with an animal match.",
+      "The result becomes more valuable when you read it alongside your real home routine, sensitivity level, and how much interaction you actually want day to day.",
+    ]
+  }
+
+  if (lowerTitle.includes("ramen") || lowerTitle.includes("라면")) {
+    return [
+      "This landing page works well for food-topic search traffic because the quiz connects a familiar choice pattern with a broader personality interpretation.",
+      "The key signal is not the menu itself, but how you customize, simplify, repeat, or experiment. That is where the result gets practical.",
+    ]
+  }
+
+  if (lowerTitle.includes("study") || lowerTitle.includes("공부")) {
+    return [
+      "This intro is aimed at visitors who want a study-style explanation they can actually apply to focus, repetition, note-taking, or test preparation.",
+      "The result is most useful when you compare it with your real learning routine instead of the style you wish you had.",
+    ]
+  }
+
+  if (lowerTitle.includes("alarm") || lowerTitle.includes("기상")) {
+    return [
+      "This page helps visitors connect morning behavior with routine design, not just wake-up willpower.",
+      "The result becomes actionable when you compare alarm style, first action after waking, and evening wind-down habits as one loop.",
+    ]
+  }
+
+  return [
+    `${quizTitle} is designed for visitors who want a short, specific quiz that can be completed quickly and shared easily.`,
+    "The result works best when you connect it to your real repeat behavior, not the answer that feels most flattering in the moment.",
+  ]
+}
+
 export function getListingFAQs(): Array<{ question: string; answer: string }> {
   return [
     {

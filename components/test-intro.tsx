@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Droplets, Sparkles, CheckCircle2, PlayCircle } from "lucide-react"
 import { JsonLd, createQuizSchema } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
-import { getDefaultQuizFAQs, getIntroHighlights, getIntroUseCases } from "@/lib/quiz-seo-utils"
+import { getDefaultQuizFAQs, getIntroHighlights, getIntroLandingParagraphs, getIntroUseCases } from "@/lib/quiz-seo-utils"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 
 interface TestIntroProps {
@@ -87,6 +87,7 @@ export function TestIntro({
     })
     const faqs = getDefaultQuizFAQs(title)
     const highlights = getIntroHighlights(title)
+    const landingParagraphs = getIntroLandingParagraphs(title)
     const useCases = getIntroUseCases(title)
 
     return (
@@ -186,11 +187,13 @@ export function TestIntro({
                         <CardContent className="p-8 md:p-12">
                             <div className="space-y-6">
                                 <h2 className="text-2xl font-bold text-gray-800">Why This Quiz Works</h2>
-                                <p className="text-gray-600 leading-relaxed max-w-3xl">
-                                    This intro page is designed to work as a search landing page, not just a start button.
-                                    It explains what the quiz is about, who it fits, and how the result can actually be
-                                    used after completion.
-                                </p>
+                                <div className="space-y-4 max-w-3xl">
+                                    {landingParagraphs.map((paragraph) => (
+                                        <p key={paragraph} className="text-gray-600 leading-relaxed">
+                                            {paragraph}
+                                        </p>
+                                    ))}
+                                </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {highlights.map((item) => (
                                         <div key={item} className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
