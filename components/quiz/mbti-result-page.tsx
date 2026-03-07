@@ -11,6 +11,7 @@ import { ShareButtons } from "@/components/share-buttons"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { JsonLd, createFAQSchema } from "@/components/json-ld"
 import { getDefaultResultFAQs } from "@/lib/quiz-seo-utils"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 export interface MbtiResultRecord {
   mbti: string
@@ -242,6 +243,8 @@ function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageP
             </Link>
           </CardContent>
         </Card>
+
+        <RelatedTestsSection testId={testId} title="More Quizzes In Similar Topics" />
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Link href={testPath}>

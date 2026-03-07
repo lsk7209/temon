@@ -8,6 +8,7 @@ import { Clock, Users, Droplets, Sparkles, CheckCircle2, PlayCircle } from "luci
 import { JsonLd, createQuizSchema } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { getDefaultQuizFAQs, getIntroHighlights } from "@/lib/quiz-seo-utils"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 interface TestIntroProps {
     id: string
@@ -196,6 +197,8 @@ export function TestIntro({
                     </Card>
 
                     <FAQSection faqs={faqs} className="max-w-none" />
+
+                    <RelatedTestsSection testId={id} title="Related Quizzes For More Page Views" />
                 </div>
             </main>
         </div>
