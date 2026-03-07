@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 const ramenCharacters = {
   ENFP: {
@@ -368,6 +369,29 @@ ${shareUrl}`
           </CardContent>
         </Card>
 
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
+          <CardHeader className="pb-4 sm:pb-6">
+            <CardTitle className="text-xl sm:text-2xl flex items-center space-x-2">
+              <span>🧭</span>
+              <span>라면 취향이 말해주는 성향</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              라면 결과는 음식 취향 자체보다 즉흥성, 안정성, 실험 욕구, 반복 선호를 보여주는 생활형 성향 해석에
+              가깝습니다.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              토핑 선택과 조리 방식에서 같은 패턴이 반복된다면 당신의 일상 의사결정 방식도 비슷하게 움직일 가능성이
+              높습니다.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              그래서 이 결과는 먹거리 취향을 넘어서 작은 선택을 어떻게 커스터마이즈하는지, 혹은 얼마나 익숙한 방식을
+              선호하는지 읽는 데 유용합니다.
+            </p>
+          </CardContent>
+        </Card>
+
         {/* Other Tests */}
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
           <CardHeader className="pb-4 sm:pb-6">
@@ -418,6 +442,10 @@ ${shareUrl}`
         </Card>
 
         {/* 다른 테스트하기 버튼 */}
+        <div className="mb-6 sm:mb-8">
+          <RelatedTestsSection testId="ramen-mbti" title="음식 취향과 연결되는 퀴즈 더 보기" />
+        </div>
+
         <div className="mt-8 text-center">
           <Link href="/tests">
             <Button

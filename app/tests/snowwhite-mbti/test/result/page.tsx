@@ -1,157 +1,103 @@
 "use client"
 
+import { Suspense } from "react"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import { Heart, Home, RotateCcw, Share2, Sparkles, TrendingUp, Users } from "lucide-react"
+
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Share2, RotateCcw, Heart, TrendingUp, Users, Sparkles, Home } from "lucide-react"
-import Link from "next/link"
-import { useSearchParams } from "next/navigation"
-import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
-import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 
 const characters = {
   princess: {
-    name: "백설 에겐공주",
-    emoji: "🍎💖",
-    summary: "다정, 순수, 웃음, 공감",
+    name: "백설공주형",
+    emoji: "🍎",
+    summary: "다정하고 공감이 빠른 관계 중심형",
     description: [
-      "예쁜 건 그냥 좋아하는 순수파. 친구 울면 같이 울고, 웃으면 더 크게 웃음.",
-      "분위기 메이커지만 가끔 속기 쉬움. '우리 그냥 같이 놀자~'로 싸움 중재.",
-      "가족 모임에서 '사랑해요!' 제일 먼저 외침. 난장이 집에서 먼저 청소하고 '같이 먹자~'",
+      "주변 분위기를 빠르게 읽고 상대의 감정에 먼저 반응하는 편입니다.",
+      "사람들과 함께 있을 때 에너지가 살아나고, 자연스럽게 분위기를 부드럽게 만드는 힘이 있습니다.",
+      "좋아하는 사람에게는 표현도 아끼지 않아서 친밀한 관계에서 특히 강점이 드러납니다.",
     ],
-    dailyLife: [
-      "친구들과 함께 있을 때 가장 행복해요",
-      "작은 것에도 감동받고 기뻐해요",
-      "다른 사람의 기분을 잘 알아채요",
-      "갈등이 생기면 먼저 화해를 시도해요",
-    ],
-    strengths: [
-      "순수한 마음으로 사람들에게 사랑받아요",
-      "긍정적인 에너지로 분위기를 밝게 만들어요",
-      "공감 능력이 뛰어나 좋은 친구가 되어줘요",
-      "누구와도 쉽게 친해지는 친화력이 있어요",
-    ],
-    growthTips: [
-      "가끔은 자신의 의견을 더 확실하게 표현해보세요",
-      "모든 사람을 기쁘게 할 필요는 없어요",
-      "순수함도 좋지만 현실적인 판단도 필요해요",
-    ],
+    dailyLife: ["먼저 안부를 묻는다", "작은 변화도 잘 알아챈다", "분위기 조율을 맡는다", "갈등을 오래 끌지 않는다"],
+    strengths: ["따뜻한 공감 능력", "부드러운 분위기 메이킹", "관계 유지력", "진심이 전달되는 표현력"],
+    growthTips: ["거절이 필요한 순간을 연습하기", "내 감정도 우선순위에 두기", "모두를 만족시키려는 압박 줄이기"],
     compatibility: {
-      best: { type: "prince", reason: "서로를 배려하고 이해하는 완벽한 조합이에요" },
-      good: { type: "dwarf", reason: "체계적인 성향이 당신의 순수함을 잘 보완해줘요" },
+      best: { type: "prince", reason: "서로를 배려하는 성향이 만나 안정적인 관계를 만들기 쉽습니다." },
+      good: { type: "dwarf", reason: "상대의 실행력과 책임감이 당신의 따뜻함을 현실적으로 받쳐 줍니다." },
     },
-    famousCharacters: ["백설공주 (동화)", "신데렐라 (동화)", "라푼젤 (동화)"],
-    lifeMotto: "세상은 아름답고, 사람들은 모두 좋은 마음을 가지고 있어요!",
-    bgColor: "from-pink-100 to-rose-100",
-    borderColor: "border-pink-300",
+    famousCharacters: ["백설공주", "신데렐라", "벨"],
+    lifeMotto: "따뜻함은 약점이 아니라 가장 강한 연결 방식이다.",
+    bgColor: "from-rose-100 to-pink-100",
+    borderColor: "border-rose-300",
   },
   prince: {
-    name: "에겐왕자",
-    emoji: "🌹💙",
-    summary: "착함, 배려, 든든, 다정",
+    name: "왕자형",
+    emoji: "🤴",
+    summary: "배려와 책임감이 강한 안정형",
     description: [
-      "친구 먼저 챙기는 따뜻한 왕자님. 남을 도와주다 자기 일은 뒤로 밀림.",
-      "무거운 짐 대신 들어줌. 친구 공부 도와주느라 자기 공부는 뒷전.",
-      "숲속을 헤매며 끝까지 찾아주는 왕자. 항상 다른 사람을 먼저 생각하는 따뜻한 마음.",
+      "내 사람을 챙기는 데 익숙하고, 필요할 때 자연스럽게 앞에 나서는 편입니다.",
+      "요란하게 드러나지 않아도 꾸준히 관계를 지키는 힘이 있습니다.",
+      "믿을 수 있는 사람이라는 인상을 주기 쉬워서 의지받는 경우가 많습니다.",
     ],
-    dailyLife: [
-      "친구가 힘들어하면 가장 먼저 달려가요",
-      "다른 사람을 돕는 것에서 보람을 느껴요",
-      "자신보다 남을 먼저 배려해요",
-      "조용하지만 든든한 존재감이 있어요",
-    ],
-    strengths: [
-      "배려심이 깊어 주변 사람들에게 신뢰받아요",
-      "책임감이 강해 맡은 일을 끝까지 해내요",
-      "인내심이 있어 어려운 상황도 잘 견뎌요",
-      "따뜻한 마음으로 사람들을 감동시켜요",
-    ],
-    growthTips: [
-      "가끔은 자신을 먼저 챙기는 것도 필요해요",
-      "모든 것을 혼자 해결하려 하지 마세요",
-      "도움을 요청하는 것도 용기예요",
-    ],
+    dailyLife: ["약속을 잘 지킨다", "도움 요청을 잘 받아준다", "불편한 상황을 정리한다", "내 몫을 끝까지 책임진다"],
+    strengths: ["신뢰를 주는 태도", "꾸준한 책임감", "조용한 리더십", "상대를 편하게 만드는 안정감"],
+    growthTips: ["혼자 해결하려는 습관 줄이기", "도움을 요청하는 연습", "감정 표현을 조금 더 직접적으로 하기"],
     compatibility: {
-      best: { type: "princess", reason: "서로의 순수함과 따뜻함이 완벽하게 어울려요" },
-      good: { type: "queen", reason: "강한 리더십이 당신의 배려심을 잘 이끌어줘요" },
+      best: { type: "princess", reason: "상대의 따뜻한 표현과 당신의 안정감이 균형을 이룹니다." },
+      good: { type: "queen", reason: "추진력 있는 상대와 만나면 관계의 방향이 더 선명해질 수 있습니다." },
     },
-    famousCharacters: ["왕자님 (백설공주)", "야수 (미녀와 야수)", "알라딘 (알라딘)"],
-    lifeMotto: "다른 사람을 돕는 것이 나의 행복이에요!",
-    bgColor: "from-blue-100 to-cyan-100",
-    borderColor: "border-blue-300",
+    famousCharacters: ["왕자님", "에릭 왕자", "플린 라이더"],
+    lifeMotto: "믿음은 말보다 반복되는 행동에서 나온다.",
+    bgColor: "from-sky-100 to-cyan-100",
+    borderColor: "border-sky-300",
   },
   queen: {
-    name: "테토여왕",
-    emoji: "👑⚡",
-    summary: "결단력, 추진력, 리더십, 카리스마",
+    name: "여왕형",
+    emoji: "👑",
+    summary: "판단이 빠르고 중심을 잡는 주도형",
     description: [
-      "결정 빠른 리더 타입. 친구들이 망설이면 먼저 '이렇게 하자!'",
-      "놀이터에서 놀이 먼저 정함. 프로젝트 시작 전에 역할 먼저 나눔.",
-      "거울에게도 '빨리 말해!'라고 다그치는 여왕. 효율적이고 추진력 있는 리더.",
+      "상황을 넓게 보고 빠르게 결정하는 힘이 강한 편입니다.",
+      "모호한 상태를 오래 두기보다 기준을 세우고 움직이는 쪽에 가깝습니다.",
+      "주도권을 잡았을 때 가장 편하고, 목표가 생기면 실행 속도도 빨라집니다.",
     ],
-    dailyLife: [
-      "빠른 결정력으로 일을 추진해요",
-      "목표가 생기면 바로 실행에 옮겨요",
-      "그룹에서 자연스럽게 리더 역할을 해요",
-      "명확한 기준과 원칙을 가지고 있어요",
-    ],
-    strengths: [
-      "강한 리더십으로 팀을 이끌어요",
-      "빠른 의사결정으로 효율을 높여요",
-      "자신감 있는 태도로 신뢰를 얻어요",
-      "목표 지향적이고 성취욕이 강해요",
-    ],
-    growthTips: [
-      "가끔은 다른 사람의 의견도 들어보세요",
-      "완벽함을 추구하다 스트레스받지 마세요",
-      "부드러운 소통도 리더십의 일부예요",
-    ],
+    dailyLife: ["결정을 미루지 않는다", "정리와 우선순위 설정이 빠르다", "주변에서 리더 역할을 맡긴다", "기준이 분명하다"],
+    strengths: ["추진력", "상황 판단력", "리더십", "명확한 의사결정"],
+    growthTips: ["상대의 속도도 고려하기", "완벽한 통제보다 유연함 늘리기", "감정보다 결과만 보지 않기"],
     compatibility: {
-      best: { type: "dwarf", reason: "체계적인 실행력이 당신의 비전을 현실로 만들어줘요" },
-      good: { type: "prince", reason: "따뜻한 배려가 당신의 강한 면을 부드럽게 해줘요" },
+      best: { type: "dwarf", reason: "상대의 꼼꼼한 실행력이 당신의 방향성을 현실로 연결해 줍니다." },
+      good: { type: "prince", reason: "배려형 파트너와 만나면 강한 추진력이 더 안정적으로 작동합니다." },
     },
-    famousCharacters: ["여왕 (백설공주)", "말레피센트 (잠자는 숲속의 공주)", "우르술라 (인어공주)"],
-    lifeMotto: "최고가 되기 위해서는 최선을 다해야 해요!",
-    bgColor: "from-purple-100 to-violet-100",
-    borderColor: "border-purple-300",
+    famousCharacters: ["엘사", "말레피센트", "미란다 프리슬리"],
+    lifeMotto: "방향이 분명하면 속도는 자연스럽게 따라온다.",
+    bgColor: "from-violet-100 to-purple-100",
+    borderColor: "border-violet-300",
   },
   dwarf: {
-    name: "난장이 테토남",
-    emoji: "📋💪",
-    summary: "리더십, 책임, 실행, 분담",
+    name: "난쟁이형",
+    emoji: "⛏️",
+    summary: "실행력과 성실함으로 신뢰를 쌓는 현실형",
     description: [
-      "모임 시작하면 '너는 이거, 나는 이거!' 역할 분담. 일이 빨리 굴러가지만 가끔 너무 성급.",
-      "청소할 때 '너 바닥, 나는 창문'. 블록 놀이 때도 역할 나눔.",
-      "난장이들 앞에서 화이트보드 꺼내며 '분담표 만들자!' 체계적이고 실행력 있는 조직가.",
+      "해야 할 일을 구조화하고 차근차근 끝내는 데 강점이 있습니다.",
+      "화려하게 보이기보다 실제로 돌아가게 만드는 역할을 잘 해냅니다.",
+      "작은 디테일까지 신경 쓰는 편이라 주변에서 믿고 맡기는 경우가 많습니다.",
     ],
-    dailyLife: [
-      "일을 시작하기 전에 계획을 세워요",
-      "역할 분담과 시스템을 중요하게 생각해요",
-      "효율적인 방법을 찾는 것을 좋아해요",
-      "책임감 있게 맡은 일을 완수해요",
-    ],
-    strengths: [
-      "체계적인 계획으로 일을 효율적으로 처리해요",
-      "팀워크를 중요하게 생각하고 협력을 이끌어내요",
-      "실행력이 뛰어나 계획을 현실로 만들어요",
-      "책임감이 강해 신뢰받는 사람이에요",
-    ],
-    growthTips: [
-      "가끔은 즉흥적인 것도 즐겨보세요",
-      "완벽한 계획이 아니어도 괜찮아요",
-      "유연성을 가지고 상황에 대처해보세요",
-    ],
+    dailyLife: ["체크리스트를 잘 쓴다", "맡은 일을 끝까지 밀고 간다", "과정 관리가 꼼꼼하다", "실수 줄이는 데 강하다"],
+    strengths: ["꾸준한 실행력", "높은 책임감", "현실 감각", "디테일 관리"],
+    growthTips: ["가끔은 즉흥성도 허용하기", "과도한 부담감 줄이기", "성과를 스스로 인정하기"],
     compatibility: {
-      best: { type: "queen", reason: "강한 리더십과 실행력이 완벽한 시너지를 만들어요" },
-      good: { type: "princess", reason: "순수한 에너지가 당신의 체계적인 면을 부드럽게 해줘요" },
+      best: { type: "queen", reason: "상대의 방향성과 당신의 실행력이 합쳐질 때 시너지가 큽니다." },
+      good: { type: "princess", reason: "상대의 따뜻함이 당신의 단단함을 부드럽게 만들어 줍니다." },
     },
-    famousCharacters: ["일곱 난장이 (백설공주)", "지니 (알라딘)", "티몬과 품바 (라이온 킹)"],
-    lifeMotto: "계획과 실행, 그리고 팀워크가 성공의 열쇠예요!",
-    bgColor: "from-yellow-100 to-amber-100",
-    borderColor: "border-yellow-300",
+    famousCharacters: ["행복이", "성실이", "도비"],
+    lifeMotto: "결과는 결국 꾸준한 실행이 만든다.",
+    bgColor: "from-amber-100 to-yellow-100",
+    borderColor: "border-amber-300",
   },
-}
+} as const
 
 function ResultContent() {
   const searchParams = useSearchParams()
@@ -166,243 +112,233 @@ function ResultContent() {
   }
 
   const handleShare = async () => {
+    const shareText = `나는 ${character.name} ${character.emoji}! 백설공주 캐릭터 테스트 결과: ${character.summary}`
+
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `나는 ${character.emoji} ${character.name}!`,
-          text: `백설공주 에겐테토 테스트 결과: ${character.summary}`,
+          title: `나는 ${character.name}!`,
+          text: shareText,
           url: window.location.href,
         })
-      } catch (err) {
-        console.log("Error sharing:", err)
+        return
+      } catch (error) {
+        console.log("Error sharing:", error)
       }
-    } else {
-      navigator.clipboard.writeText(window.location.href)
-      alert("링크가 복사되었습니다!")
     }
+
+    await navigator.clipboard.writeText(`${shareText}\n\n${window.location.href}`)
+    alert("결과 링크를 복사했습니다.")
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-violet-50 to-sky-50">
       <ResultFaqSchema quizTitle="Snow White MBTI Test" resultName={character.name} />
-      <main className="container max-w-4xl mx-auto px-4 py-8">
-        {/* Character Card */}
-        <Card className={`border-0 shadow-2xl bg-gradient-to-br ${character.bgColor} mb-8`}>
+      <main className="container mx-auto max-w-4xl px-4 py-8">
+        <Card className={`mb-8 border-0 bg-gradient-to-br ${character.bgColor} shadow-2xl`}>
           <CardContent className="p-8 text-center">
-            <div className="space-y-6">
-              <div className="text-8xl mb-4 animate-bounce">{character.emoji}</div>
+            <div className="mb-4 text-7xl">{character.emoji}</div>
+            <Badge variant="secondary" className={`mb-4 border-2 ${character.borderColor}`}>
+              {resultType.toUpperCase()}
+            </Badge>
+            <h1 className="mb-3 text-4xl font-bold md:text-5xl">{character.name}</h1>
+            <p className="text-lg text-gray-700 md:text-2xl">"{character.summary}"</p>
 
-              <div>
-                <Badge variant="secondary" className={`mb-4 ${character.bgColor} ${character.borderColor} border-2`}>
-                  {resultType.toUpperCase()}
-                </Badge>
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">{character.name}</h1>
-                <p className="text-xl md:text-2xl text-gray-700 font-medium">"{character.summary}"</p>
-              </div>
-
-              {/* Share Buttons */}
-              <div className="flex flex-col sm:flex-row justify-center gap-3">
-                <Button
-                  size="lg"
-                  onClick={handleShare}
-                  className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700"
-                >
-                  <Share2 className="h-5 w-5 mr-2" />
-                  친구들에게 공유하기
-                </Button>
-                <Button variant="outline" size="lg" asChild className="bg-white">
-                  <Link href="/tests/snowwhite-mbti/test">
-                    <RotateCcw className="h-5 w-5 mr-2" />
-                    다시 테스트
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild className="bg-white">
-                  <Link href="/">
-                    <Home className="h-5 w-5 mr-2" />
-                    홈으로
-                  </Link>
-                </Button>
-              </div>
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button
+                size="lg"
+                onClick={handleShare}
+                className="bg-gradient-to-r from-pink-500 to-violet-600 hover:from-pink-600 hover:to-violet-700"
+              >
+                <Share2 className="mr-2 h-5 w-5" />
+                결과 공유하기
+              </Button>
+              <Button variant="outline" size="lg" asChild className="bg-white">
+                <Link href="/tests/snowwhite-mbti/test">
+                  <RotateCcw className="mr-2 h-5 w-5" />
+                  다시 테스트
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild className="bg-white">
+                <Link href="/">
+                  <Home className="mr-2 h-5 w-5" />
+                  홈으로
+                </Link>
+              </Button>
             </div>
           </CardContent>
         </Card>
 
-        {/* Description */}
-        <Card className="border-0 shadow-xl bg-white/90 backdrop-blur mb-8">
+        <Card className="mb-8 border-0 bg-white/90 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center space-x-2">
-              <span>✨</span>
-              <span>당신의 성격</span>
+            <CardTitle className="flex items-center space-x-2 text-2xl">
+              <span>성향 해석</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {character.description.map((paragraph, index) => (
-              <p key={index} className="text-lg leading-relaxed text-gray-700">
+            {character.description.map((paragraph) => (
+              <p key={paragraph} className="text-base leading-relaxed text-gray-700 sm:text-lg">
                 {paragraph}
               </p>
             ))}
           </CardContent>
         </Card>
 
-        {/* Daily Life */}
-        <Card className="border-0 shadow-xl bg-white/90 backdrop-blur mb-8">
+        <Card className="mb-8 border-0 bg-white/90 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center space-x-2">
-              <span>🌟</span>
-              <span>일상 속 모습</span>
+            <CardTitle className="flex items-center space-x-2 text-2xl">
+              <Users className="h-6 w-6 text-pink-600" />
+              <span>일상에서 보이는 패턴</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {character.dailyLife.map((item, index) => (
+            <div className="grid gap-4 md:grid-cols-2">
+              {character.dailyLife.map((item) => (
                 <div
-                  key={index}
-                  className={`p-4 bg-gradient-to-br ${character.bgColor} rounded-lg border-2 ${character.borderColor}`}
+                  key={item}
+                  className={`rounded-lg border-2 ${character.borderColor} bg-gradient-to-br ${character.bgColor} p-4 text-gray-800`}
                 >
-                  <span className="text-base font-medium text-gray-800">• {item}</span>
+                  {item}
                 </div>
               ))}
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-xl bg-white/90 backdrop-blur mb-8">
+        <Card className="mb-8 border-0 bg-white/90 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center space-x-2">
-              <TrendingUp className="h-6 w-6 text-green-600" />
-              <span>당신의 장점</span>
+            <CardTitle className="flex items-center space-x-2 text-2xl">
+              <TrendingUp className="h-6 w-6 text-emerald-600" />
+              <span>강점</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-3">
-              {character.strengths.map((strength, index) => (
-                <li key={index} className="flex items-start gap-3 text-gray-700">
-                  <span className="text-green-500 text-xl mt-0.5">✓</span>
-                  <span className="text-base leading-relaxed">{strength}</span>
+            <ul className="space-y-3 text-gray-700">
+              {character.strengths.map((strength) => (
+                <li key={strength} className="flex items-start gap-3">
+                  <span className="mt-0.5 text-lg text-emerald-500">•</span>
+                  <span>{strength}</span>
                 </li>
               ))}
             </ul>
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-xl bg-white/90 backdrop-blur mb-8">
+        <Card className="mb-8 border-0 bg-white/90 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center space-x-2">
-              <Sparkles className="h-6 w-6 text-orange-600" />
+            <CardTitle className="flex items-center space-x-2 text-2xl">
+              <Sparkles className="h-6 w-6 text-orange-500" />
               <span>성장 포인트</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-3">
-              {character.growthTips.map((tip, index) => (
-                <li key={index} className="flex items-start gap-3 text-gray-700">
-                  <span className="text-orange-500 text-xl mt-0.5">💡</span>
-                  <span className="text-base leading-relaxed">{tip}</span>
+            <ul className="space-y-3 text-gray-700">
+              {character.growthTips.map((tip) => (
+                <li key={tip} className="flex items-start gap-3">
+                  <span className="mt-0.5 text-lg text-orange-500">•</span>
+                  <span>{tip}</span>
                 </li>
               ))}
             </ul>
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-xl bg-white/90 backdrop-blur mb-8">
+        <Card className="mb-8 border-0 bg-white/90 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center space-x-2">
+            <CardTitle className="flex items-center space-x-2 text-2xl">
               <Heart className="h-6 w-6 text-rose-600" />
-              <span>궁합</span>
+              <span>잘 맞는 조합</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className={`p-5 bg-gradient-to-br ${character.bgColor} rounded-lg border-2 ${character.borderColor}`}>
-              <p className="font-bold text-lg text-gray-800 mb-2">
-                💕 최고의 궁합: {characters[character.compatibility.best.type as keyof typeof characters].name}
+            <div className={`rounded-lg border-2 ${character.borderColor} bg-gradient-to-br ${character.bgColor} p-5`}>
+              <p className="mb-2 text-lg font-bold text-gray-800">
+                최고의 조합: {characters[character.compatibility.best.type].name}
               </p>
               <p className="text-gray-700">{character.compatibility.best.reason}</p>
             </div>
-            <div className={`p-5 bg-gradient-to-br ${character.bgColor} rounded-lg border-2 ${character.borderColor}`}>
-              <p className="font-bold text-lg text-gray-800 mb-2">
-                💖 좋은 궁합: {characters[character.compatibility.good.type as keyof typeof characters].name}
+            <div className={`rounded-lg border-2 ${character.borderColor} bg-gradient-to-br ${character.bgColor} p-5`}>
+              <p className="mb-2 text-lg font-bold text-gray-800">
+                좋은 조합: {characters[character.compatibility.good.type].name}
               </p>
               <p className="text-gray-700">{character.compatibility.good.reason}</p>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-xl bg-white/90 backdrop-blur mb-8">
+        <Card className="mb-8 border-0 bg-white/90 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center space-x-2">
-              <Users className="h-6 w-6 text-violet-600" />
-              <span>비슷한 동화 캐릭터</span>
-            </CardTitle>
+            <CardTitle className="text-2xl">닮은 캐릭터</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-3">
-              {character.famousCharacters.map((char, index) => (
+              {character.famousCharacters.map((famousCharacter) => (
                 <span
-                  key={index}
-                  className={`px-4 py-2 bg-gradient-to-br ${character.bgColor} rounded-full text-base font-medium text-gray-800 border-2 ${character.borderColor}`}
+                  key={famousCharacter}
+                  className={`rounded-full border-2 ${character.borderColor} bg-gradient-to-br ${character.bgColor} px-4 py-2 text-base font-medium text-gray-800`}
                 >
-                  {char}
+                  {famousCharacter}
                 </span>
               ))}
             </div>
           </CardContent>
         </Card>
 
-        <Card className={`border-0 shadow-xl bg-gradient-to-br ${character.bgColor} mb-8`}>
+        <Card className={`mb-8 border-0 bg-gradient-to-br ${character.bgColor} shadow-xl`}>
           <CardContent className="p-8 text-center">
-            <p className="text-xl md:text-2xl font-bold text-gray-800 mb-2">💬 인생 좌우명</p>
-            <p className="text-lg md:text-xl text-gray-700 italic">"{character.lifeMotto}"</p>
+            <p className="mb-2 text-xl font-bold text-gray-800 md:text-2xl">한 줄 해석</p>
+            <p className="text-lg italic text-gray-700 md:text-xl">"{character.lifeMotto}"</p>
           </CardContent>
         </Card>
 
-        {/* Meme Phrase */}
-        <Card className={`border-0 shadow-xl bg-gradient-to-br ${character.bgColor} mb-8`}>
-          <CardContent className="p-8 text-center">
-            <p className="text-2xl md:text-3xl font-bold text-gray-800">
-              나는 {character.name}래 {character.emoji}
+        <Card className="mb-8 border-0 bg-white/90 shadow-xl">
+          <CardHeader>
+            <CardTitle className="text-2xl">결과를 읽는 법</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
+              이 결과는 동화 캐릭터를 빌려 관계 스타일과 판단 방식, 감정 표현 패턴을 가볍게 해석한 카드입니다.
+            </p>
+            <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
+              평소 친구 관계, 말투, 일 처리 방식에서 비슷한 흐름이 반복된다면 현재 결과가 실제 성향과 맞닿아 있을 가능성이 큽니다.
+            </p>
+            <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
+              중요한 건 결과 이름보다 어떤 강점이 자주 나타나는지 확인하고, 성장 포인트를 생활 습관에 연결하는 것입니다.
             </p>
           </CardContent>
         </Card>
 
-        {/* Other Tests */}
-        <Card className="border-0 shadow-xl bg-white/90 backdrop-blur">
+        <Card className="border-0 bg-white/90 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center space-x-2">
-              <span>🎯</span>
-              <span>다른 테스트도 해보세요!</span>
-            </CardTitle>
+            <CardTitle className="text-2xl">다른 테스트도 해보기</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid gap-6 md:grid-cols-3">
               {[
                 {
                   slug: "kdrama-mbti",
-                  title: "K-드라마 클리셰",
+                  title: "K-드라마 캐릭터 테스트",
                   emoji: "🎬",
-                  description: "드라마 속 나는 어떤 캐릭터?",
-                  participants: "15.3K",
+                  description: "드라마 속 어떤 캐릭터와 닮았는지 확인해보세요.",
                 },
                 {
                   slug: "kpop-idol",
-                  title: "K-팝 아이돌 포지션",
+                  title: "K-아이돌 포지션 테스트",
                   emoji: "🎤",
-                  description: "아이돌 그룹에서 나의 포지션은?",
-                  participants: "18.7K",
+                  description: "아이돌 그룹 안에서 내 포지션을 찾아보는 테스트입니다.",
                 },
                 {
-                  slug: "coffee-mbti",
-                  title: "커피 MBTI",
-                  emoji: "☕",
-                  description: "커피 취향으로 알아보는 성격",
-                  participants: "12.5K",
+                  slug: "pet-mbti",
+                  title: "반려동물 MBTI",
+                  emoji: "🐾",
+                  description: "성향과 잘 맞는 반려동물 타입을 알아보세요.",
                 },
               ].map((test) => (
-                <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">
+                <Card key={test.slug} className="transition-all duration-300 hover:shadow-lg">
                   <CardContent className="p-6 text-center">
-                    <div className="text-4xl mb-3">{test.emoji}</div>
-                    <h3 className="font-bold mb-2">{test.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-3">{test.description}</p>
-                    <p className="text-xs text-muted-foreground mb-4">{test.participants}명 참여</p>
+                    <div className="mb-3 text-4xl">{test.emoji}</div>
+                    <h3 className="mb-2 font-bold">{test.title}</h3>
+                    <p className="mb-4 text-sm text-muted-foreground">{test.description}</p>
                     <Button size="sm" variant="outline" asChild>
                       <Link href={`/${test.slug}`}>테스트 하기</Link>
                     </Button>
@@ -413,14 +349,17 @@ function ResultContent() {
           </CardContent>
         </Card>
 
-        {/* 다른 테스트하기 버튼 */}
+        <div className="mb-6 mt-8">
+          <RelatedTestsSection testId="snowwhite-mbti" title="캐릭터 취향과 함께 볼 만한 테스트" />
+        </div>
+
         <div className="mt-8 text-center">
           <Link href="/tests">
             <Button
               variant="outline"
-              className="border-2 border-cyan-300 hover:bg-cyan-50 font-medium py-6 px-8 bg-transparent"
+              className="border-2 border-cyan-300 bg-transparent px-8 py-6 font-medium hover:bg-cyan-50"
             >
-              다른 테스트하기
+              다른 테스트 더 보기
             </Button>
           </Link>
         </div>

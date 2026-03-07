@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 const studyCharacters = {
   ENFP: {
@@ -344,6 +345,29 @@ function ResultContent() {
           </CardContent>
         </Card>
 
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl flex items-center space-x-2">
+              <span>🧭</span>
+              <span>학습 스타일 결과를 활용하는 법</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              이 결과는 머리가 좋고 나쁨을 가르는 것이 아니라, 정보를 받아들이고 반복하고 정리하는 방식이 어디에 맞는지
+              보여주는 학습 선호 해석입니다.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              지금까지 잘 풀렸던 과목이나 공부 루틴을 떠올렸을 때 비슷한 패턴이 반복된다면 이 결과는 실제 습관과 맞닿아
+              있을 가능성이 큽니다.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              중요한 것은 결과를 그대로 따르기보다, 공부법 팁 중 바로 적용 가능한 한두 개만 먼저 실험해보는 것입니다.
+              그렇게 해야 결과가 생산적인 루틴 개선으로 이어집니다.
+            </p>
+          </CardContent>
+        </Card>
+
         {/* Other Tests */}
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
           <CardHeader>
@@ -394,6 +418,10 @@ function ResultContent() {
         </Card>
 
         {/* 다른 테스트하기 버튼 */}
+        <div className="mb-6 sm:mb-8">
+          <RelatedTestsSection testId="study-mbti" title="공부 습관과 함께 보면 좋은 퀴즈" />
+        </div>
+
         <div className="mt-8 text-center">
           <Link href="/tests">
             <Button

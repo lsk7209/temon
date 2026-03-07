@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 const petCharacters = {
   ENFP: {
@@ -513,6 +514,29 @@ ${shareUrl}`
           </CardContent>
         </Card>
 
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
+          <CardHeader className="pb-4 sm:pb-6">
+            <CardTitle className="text-xl sm:text-2xl flex items-center space-x-2">
+              <span>🧭</span>
+              <span>이 펫 매칭 결과를 읽는 법</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              이 결과는 단순히 귀여운 동물을 추천하는 카드가 아니라, 당신이 어떤 관계 리듬과 돌봄 방식을 편하게 느끼는지
+              보여주는 해석에 가깝습니다.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              추천된 펫의 에너지 수준, 애착 방식, 생활 패턴이 평소의 인간관계 취향과도 닮아 있다면 결과 적합도가 높다고
+              볼 수 있습니다.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              실제 반려동물 선택에서는 귀여움보다 생활 여건, 돌봄 시간, 비용, 소음과 털 관리까지 같이 봐야 하므로 이
+              결과는 출발점으로 활용하는 것이 가장 좋습니다.
+            </p>
+          </CardContent>
+        </Card>
+
         {/* Other Tests */}
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
           <CardHeader className="pb-4 sm:pb-6">
@@ -563,6 +587,10 @@ ${shareUrl}`
         </Card>
 
         {/* 다른 테스트하기 버튼 */}
+        <div className="mb-6 sm:mb-8">
+          <RelatedTestsSection testId="pet-mbti" title="동물 취향과 성향이 비슷한 퀴즈 더 보기" />
+        </div>
+
         <div className="mt-8 text-center">
           <Link href="/tests">
             <Button
