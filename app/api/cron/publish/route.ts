@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getDb } from '@/lib/db/client'
 import { tests } from '@/lib/db/schema'
+import { submitUrlsToIndexNow } from '@/lib/indexnow'
 import { eq, asc, and } from 'drizzle-orm'
 
 export const dynamic = 'force-dynamic'
@@ -8,6 +9,7 @@ export const dynamic = 'force-dynamic'
 export async function GET() {
     try {
         const db = getDb()
+        const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || 'https://temon.kr').replace(/\/$/, '')
 
         // 1. 가장 오래된 'draft' 상태의 테스트 1개 조회
         const draftTest = await db.select()
@@ -40,12 +42,21 @@ export async function GET() {
             return NextResponse.json({ message: 'Test already published by another job' })
         }
 
+        const publishedUrls = [
+            `${baseUrl}/tests`,
+            `${baseUrl}/tests/${draftTest.slug}`,
+        ]
+
+        const indexNow = await submitUrlsToIndexNow(publishedUrls)
+
         return NextResponse.json({
             success: true,
             publishedTest: {
                 id: draftTest.id,
+                slug: draftTest.slug,
                 title: draftTest.title
-            }
+            },
+            indexNow,
         })
 
     } catch (error: any) {

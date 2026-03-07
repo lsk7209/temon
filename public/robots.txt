@@ -6,7 +6,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin
-Disallow: /tests/*/test/result
+Disallow: /tests/*/test/result/*
 Crawl-delay: 1
 
 # Google 검색봇 최적화
@@ -14,7 +14,7 @@ User-agent: Googlebot
 Allow: /
 Disallow: /api/
 Disallow: /admin
-Disallow: /tests/*/test/result
+Disallow: /tests/*/test/result/*
 Crawl-delay: 0
 
 # Google 이미지 검색봇
@@ -22,21 +22,21 @@ User-agent: Googlebot-Image
 Allow: /
 Disallow: /api/
 Disallow: /admin
-Disallow: /tests/*/test/result
+Disallow: /tests/*/test/result/*
 
 # Google 모바일 검색봇
 User-agent: Googlebot-Mobile
 Allow: /
 Disallow: /api/
 Disallow: /admin
-Disallow: /tests/*/test/result
+Disallow: /tests/*/test/result/*
 
 # 네이버 검색봇 (Yeti)
 User-agent: Yeti
 Allow: /
 Disallow: /api/
 Disallow: /admin
-Disallow: /tests/*/test/result
+Disallow: /tests/*/test/result/*
 Crawl-delay: 1
 
 # 네이버 모바일 검색봇
@@ -44,7 +44,7 @@ User-agent: Yeti-Mobile
 Allow: /
 Disallow: /api/
 Disallow: /admin
-Disallow: /tests/*/test/result
+Disallow: /tests/*/test/result/*
 Crawl-delay: 1
 
 # 다음(Daum) 검색봇
@@ -52,9 +52,10 @@ User-agent: Daumoa
 Allow: /
 Disallow: /api/
 Disallow: /admin
-Disallow: /tests/*/test/result
+Disallow: /tests/*/test/result/*
 
 # 사이트맵 위치
+Sitemap: https://temon.kr/sitemap-index.xml
 Sitemap: https://temon.kr/sitemap.xml
 
 # Daum WebMaster Tool 인증

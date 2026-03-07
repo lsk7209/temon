@@ -5,9 +5,8 @@
  * Used for real-time indexing of new tests and updates.
  */
 
-const INDEXNOW_HOST = 'temon.kr'
-const INDEXNOW_KEY = '186d3c7ad0df4ce9ae53deb59055ed23'
-const INDEXNOW_KEY_LOCATION = `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`
+const DEFAULT_HOST = 'temon.kr'
+const DEFAULT_KEY = '186d3c7ad0df4ce9ae53deb59055ed23'
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow'
 
 export interface IndexNowResponse {
@@ -16,26 +15,57 @@ export interface IndexNowResponse {
     status?: number
 }
 
+function getIndexNowConfig() {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || `https://${DEFAULT_HOST}`
+    const normalizedBaseUrl = baseUrl.replace(/\/$/, '')
+    const host = new URL(normalizedBaseUrl).host
+    const key = process.env.INDEXNOW_KEY || DEFAULT_KEY
+
+    return {
+        host,
+        key,
+        keyLocation: `${normalizedBaseUrl}/${key}.txt`,
+    }
+}
+
+function normalizeUrls(urls: string[], host: string) {
+    return Array.from(
+        new Set(
+            urls
+                .map((url) => url.trim())
+                .filter(Boolean)
+                .filter((url) => {
+                    try {
+                        return new URL(url).host === host
+                    } catch {
+                        return false
+                    }
+                })
+        )
+    )
+}
+
 /**
  * Submit URLs to IndexNow
  * @param urls Array of absolute URLs to submit (e.g., ['https://temon.kr/tests/new-test'])
  */
 export async function submitUrlsToIndexNow(urls: string[]): Promise<IndexNowResponse> {
+    const { host, key, keyLocation } = getIndexNowConfig()
+
     if (!urls.length) {
         return { success: false, message: 'No URLs provided' }
     }
 
-    // Ensure all URLs are absolute and belong to the host
-    const validUrls = urls.filter(url => url.includes(INDEXNOW_HOST))
+    const validUrls = normalizeUrls(urls, host)
 
     if (!validUrls.length) {
         return { success: false, message: 'No valid URLs for host found' }
     }
 
     const payload = {
-        host: INDEXNOW_HOST,
-        key: INDEXNOW_KEY,
-        keyLocation: INDEXNOW_KEY_LOCATION,
+        host,
+        key,
+        keyLocation,
         urlList: validUrls
     }
 

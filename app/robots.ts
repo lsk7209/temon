@@ -54,7 +54,7 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 1, // 다음은 안정적 크롤링
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: [`${baseUrl}/sitemap-index.xml`, `${baseUrl}/sitemap.xml`],
   }
 }
 
