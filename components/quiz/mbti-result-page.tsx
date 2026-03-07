@@ -49,6 +49,31 @@ function buildPracticalTips(result: MbtiResultRecord) {
   ]
 }
 
+function buildInterpretationParagraphs(result: MbtiResultRecord) {
+  const firstTrait = result.traits[0] || `${result.name} tends to show a stable preference pattern`
+  const secondTrait = result.traits[1] || "This result usually appears when your choices are consistent across the quiz"
+  const firstPitfall = result.pitfalls?.[0] || "The main blind spot is usually overusing the same strength in every situation"
+
+  return [
+    `${result.name} is best understood as a practical tendency profile. The core signal in this result is simple: ${firstTrait.toLowerCase()}. That pattern usually means you rely on familiar priorities when making quick choices.`,
+    `A second reading comes from the consistency of your answers. ${secondTrait}. In other words, this result is not random. It usually appears when your preference stays stable across several different situations.`,
+    `The most useful next step is to combine the strengths of ${result.name} with situational awareness. ${firstPitfall}. When you know where the pattern helps and where it can become rigid, the result becomes much more actionable.`,
+  ]
+}
+
+function buildComparisonSignals(result: MbtiResultRecord) {
+  const firstPresetEntry = result.presets ? Object.entries(result.presets)[0] : null
+  const firstPresetLabel = firstPresetEntry ? formatSectionTitle(firstPresetEntry[0]) : "decision style"
+  const firstPresetItem = firstPresetEntry?.[1]?.[0] || "a repeatable preference in everyday choices"
+  const recommendation = result.recommend?.[0] || "a different type can complement your weak spots"
+
+  return [
+    `${result.name} often stands out through ${firstPresetLabel.toLowerCase()} rather than one dramatic trait.`,
+    `A good clue is whether you repeatedly choose ${firstPresetItem.toLowerCase()}. If yes, this result likely matches your default habit pattern.`,
+    `When comparing with nearby types, the biggest separator is usually whether ${recommendation.toLowerCase()}. That is where your result becomes more specific than a generic mood test.`,
+  ]
+}
+
 function buildFaqItems(result: MbtiResultRecord) {
   return [
     {
@@ -73,6 +98,8 @@ function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageP
   const { resolvedType, loading } = useResolvedResultType(Object.keys(results), type, resultId)
   const result = resolvedType ? results[resolvedType] : null
   const practicalTips = result ? buildPracticalTips(result) : []
+  const interpretationParagraphs = result ? buildInterpretationParagraphs(result) : []
+  const comparisonSignals = result ? buildComparisonSignals(result) : []
   const faqItems = result ? buildFaqItems(result) : []
   const resultFaqSchema = result ? createFAQSchema(getDefaultResultFAQs(testId, result.name)) : null
 
@@ -141,6 +168,19 @@ function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageP
           </CardContent>
         </Card>
 
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">Practical Interpretation</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {interpretationParagraphs.map((paragraph) => (
+              <p key={paragraph} className="leading-relaxed text-gray-700 dark:text-gray-300">
+                {paragraph}
+              </p>
+            ))}
+          </CardContent>
+        </Card>
+
         {result.presets &&
           Object.entries(result.presets).map(([key, items]) => (
             <Card key={key} className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
@@ -203,6 +243,22 @@ function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageP
           <CardContent>
             <ul className="space-y-2">
               {practicalTips.map((item, index) => (
+                <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
+                  <span className="mr-2">-</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">How This Result Usually Shows Up</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2">
+              {comparisonSignals.map((item, index) => (
                 <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
                   <span className="mr-2">-</span>
                   <span>{item}</span>
