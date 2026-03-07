@@ -8,6 +8,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 
 const petCharacters = {
   ENFP: {
@@ -343,6 +344,7 @@ ${shareUrl}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 dark:from-pink-950 dark:via-purple-950 dark:to-blue-950 relative overflow-hidden">
+      <ResultFaqSchema quizTitle="Pet MBTI Test" resultName={`${character.name} - ${character.pet}`} />
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div

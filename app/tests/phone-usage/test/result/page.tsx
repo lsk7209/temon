@@ -15,6 +15,7 @@ import { ShareButtons } from "@/components/share-buttons"
 import { PHONE_USAGE_RESULTS } from "@/lib/data/phone-usage-results"
 import type { ResultType } from "@/lib/data/phone-usage-results"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 
 function ResultContent() {
   const searchParams = useSearchParams()
@@ -58,6 +59,7 @@ function ResultContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950">
+      <ResultFaqSchema quizTitle="Phone Usage Style Test" resultName={result.name} />
       <div className="container max-w-4xl mx-auto px-4 py-8">
         {/* 헤더 */}
         <div className="text-center mb-8">

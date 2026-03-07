@@ -8,6 +8,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 
 const studyCharacters = {
   ENFP: {
@@ -236,6 +237,7 @@ function ResultContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950">
+      <ResultFaqSchema quizTitle="Study MBTI Test" resultName={character.name} />
       {/* Main Result */}
       <main className="container max-w-4xl mx-auto px-4 py-8">
         {/* Character Card */}

@@ -8,6 +8,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 
 const alarmCharacters = {
   ENFP: {
@@ -266,6 +267,7 @@ ${shareUrl}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-950 dark:via-indigo-950 dark:to-purple-950">
+      <ResultFaqSchema quizTitle="Alarm Habit Test" resultName={character.name} />
       {/* Main Result */}
       <main className="container max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Character Card */}

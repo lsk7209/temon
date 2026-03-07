@@ -8,6 +8,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 
 const characters = {
   princess: {
@@ -183,6 +184,7 @@ function ResultContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+      <ResultFaqSchema quizTitle="Snow White MBTI Test" resultName={character.name} />
       <main className="container max-w-4xl mx-auto px-4 py-8">
         {/* Character Card */}
         <Card className={`border-0 shadow-2xl bg-gradient-to-br ${character.bgColor} mb-8`}>

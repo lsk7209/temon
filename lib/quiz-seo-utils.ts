@@ -233,6 +233,57 @@ export function generateMbtiResultMetadata(config: {
   }
 }
 
+export function generateGenericResultMetadata(config: {
+  quizTitle: string
+  title: string
+  description: string
+  canonical: string
+}): Metadata {
+  const fullUrl = `${baseUrl}${config.canonical}`
+
+  return {
+    title: `${config.quizTitle} Result | ${config.title} | Temon`,
+    description: config.description,
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: config.canonical,
+    },
+    openGraph: {
+      title: `${config.quizTitle} Result | ${config.title} | Temon`,
+      description: config.description,
+      type: "website",
+      url: fullUrl,
+      siteName: "Temon",
+      locale: "ko_KR",
+      images: [
+        {
+          url: `${baseUrl}/api/og?title=${encodeURIComponent(config.quizTitle)}&desc=${encodeURIComponent(config.title)}`,
+          width: 1200,
+          height: 630,
+          alt: config.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${config.quizTitle} Result | ${config.title} | Temon`,
+      description: config.description,
+      images: [`${baseUrl}/api/og?title=${encodeURIComponent(config.quizTitle)}&desc=${encodeURIComponent(config.title)}`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  }
+}
+
 /**
  * Generate metadata for test pages (/test/page.tsx)
  * These are client component pages, so we need a server wrapper

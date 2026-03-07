@@ -16,13 +16,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin', '/tests/*/test/result'],
+        disallow: ['/api/', '/admin', '/tests/*/test/result/*'],
         crawlDelay: 1,
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/api/', '/admin', '/tests/*/test/result'],
+        disallow: ['/api/', '/admin', '/tests/*/test/result/*'],
         crawlDelay: 0, // Google은 최대 속도 크롤링
       },
       {
@@ -33,24 +33,24 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'Googlebot-Mobile',
         allow: '/',
-        disallow: ['/api/', '/admin', '/tests/*/test/result'],
+        disallow: ['/api/', '/admin', '/tests/*/test/result/*'],
       },
       {
         userAgent: 'Yeti',
         allow: '/',
-        disallow: ['/api/', '/admin', '/tests/*/test/result'],
+        disallow: ['/api/', '/admin', '/tests/*/test/result/*'],
         crawlDelay: 1, // 네이버는 안정적 크롤링
       },
       {
         userAgent: 'Yeti-Mobile',
         allow: '/',
-        disallow: ['/api/', '/admin', '/tests/*/test/result'],
+        disallow: ['/api/', '/admin', '/tests/*/test/result/*'],
         crawlDelay: 1,
       },
       {
         userAgent: 'Daumoa',
         allow: '/',
-        disallow: ['/api/', '/admin', '/tests/*/test/result'],
+        disallow: ['/api/', '/admin', '/tests/*/test/result/*'],
         crawlDelay: 1, // 다음은 안정적 크롤링
       },
     ],

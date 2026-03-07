@@ -61,7 +61,7 @@ export async function GET() {
         })),
       // 테스트 라우트 - 인트로 페이지만 포함 (결과 페이지는 제외)
       ...testRoutes
-        .filter(route => !route.path.includes('/test/result'))
+        .filter(route => !route.path.endsWith('/test'))
         .map(route => ({
           url: route.path,
           lastModified: route.lastModified || new Date(),

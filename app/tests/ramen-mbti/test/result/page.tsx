@@ -8,6 +8,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 
 const ramenCharacters = {
   ENFP: {
@@ -251,6 +252,7 @@ ${shareUrl}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 dark:from-orange-950 dark:via-red-950 dark:to-yellow-950">
+      <ResultFaqSchema quizTitle="Ramen MBTI Test" resultName={character.name} />
       {/* Main Result */}
       <main className="container max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Character Card */}

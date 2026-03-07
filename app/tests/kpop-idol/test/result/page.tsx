@@ -7,6 +7,7 @@ import Link from "next/link"
 import { Share2, RotateCcw, Home, Sparkles, TrendingUp, Users, Star, Heart } from "lucide-react"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 
 const results = {
   leader: {
@@ -234,6 +235,7 @@ function ResultContent() {
 
   return (
     <div className={`min-h-screen ${result.bgColor} py-12`}>
+      <ResultFaqSchema quizTitle="K-Pop Idol Test" resultName={result.title} />
       <div className="container mx-auto px-4 max-w-2xl">
         <Card className="p-8 md:p-12 shadow-xl border-2 border-purple-200 bg-white/90 backdrop-blur">
           <div className="text-center mb-8">
