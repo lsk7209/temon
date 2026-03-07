@@ -136,6 +136,26 @@ export default async function TestsPage() {
             Start with a topic you already care about, then compare completion, share, and repeat behavior.
             Short quizzes with clear themes usually perform best for both search entry and social circulation.
           </p>
+          <div className="grid gap-4 md:grid-cols-3 mb-8">
+            <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+              <h3 className="font-semibold text-gray-900 mb-2">Search Landing</h3>
+              <p className="text-sm leading-relaxed text-gray-600">
+                Topic-driven quiz pages work best when the title, intro, and result page all match the same intent.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+              <h3 className="font-semibold text-gray-900 mb-2">Fast Completion</h3>
+              <p className="text-sm leading-relaxed text-gray-600">
+                Most quizzes finish quickly, which helps mobile visitors complete, share, and continue to a second quiz.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+              <h3 className="font-semibold text-gray-900 mb-2">Repeat Visits</h3>
+              <p className="text-sm leading-relaxed text-gray-600">
+                The strongest growth comes from moving visitors between related themes such as food, habits, study, and relationships.
+              </p>
+            </div>
+          </div>
           <FAQSection faqs={listingFaqs} className="max-w-none" />
         </div>
       </section>

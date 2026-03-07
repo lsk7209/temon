@@ -146,6 +146,14 @@ export function getIntroHighlights(quizTitle: string): string[] {
   ]
 }
 
+export function getIntroUseCases(quizTitle: string): string[] {
+  return [
+    `${quizTitle} works well for first-time visitors who want a short quiz with a clear topic and a fast result.`,
+    "It is also useful when you want a shareable result page that can spark comparison with friends or partners.",
+    "For repeat visitors, the main value is checking whether the same preference pattern appears across different quiz themes.",
+  ]
+}
+
 export function getListingFAQs(): Array<{ question: string; answer: string }> {
   return [
     {
