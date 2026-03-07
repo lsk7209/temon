@@ -8,6 +8,7 @@ import { Share2, RotateCcw, Home, Sparkles, TrendingUp, Users, Star, Heart } fro
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 const results = {
   leader: {
@@ -373,10 +374,29 @@ function ResultContent() {
               </div>
             </div>
 
+            <div className="bg-gradient-to-r from-violet-50 to-fuchsia-50 p-6 rounded-lg border border-violet-200">
+              <h3 className="font-bold text-lg mb-3 text-gray-800">How To Use This Result</h3>
+              <div className="space-y-3 text-gray-700 leading-relaxed">
+                <p>
+                  This result is most useful when you compare it with the role you naturally take in teams, friend
+                  groups, and public-facing situations. If that same pattern keeps showing up, the idol label is acting
+                  as a shortcut for a real social preference.
+                </p>
+                <p>
+                  The main value is identifying where your energy goes first: spotlight, coordination, performance,
+                  emotional delivery, or atmosphere. That makes the page more actionable than the title alone.
+                </p>
+              </div>
+            </div>
+
             <div className={`bg-gradient-to-r ${result.color} p-6 rounded-lg text-white text-center`}>
               <p className="text-2xl font-bold mb-2">당신의 포지션</p>
               <p className="text-xl italic">{result.subtitle}</p>
             </div>
+          </div>
+
+          <div className="mb-6">
+            <RelatedTestsSection testId="kpop-idol" title="아이돌 캐릭터 결과와 이어서 보기 좋은 퀴즈" />
           </div>
 
           <div className="space-y-3">

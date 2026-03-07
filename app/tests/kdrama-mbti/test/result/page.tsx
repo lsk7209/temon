@@ -8,6 +8,7 @@ import { Share2, RotateCcw, Home, Heart, TrendingUp, Users, Sparkles } from "luc
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 const results = {
   chaebol: {
@@ -360,10 +361,29 @@ ${shareUrl}`
               </div>
             </div>
 
+            <div className="bg-gradient-to-r from-violet-50 to-fuchsia-50 p-6 rounded-lg border border-violet-200">
+              <h3 className="font-bold text-lg mb-3 text-gray-800">How To Use This Result</h3>
+              <div className="space-y-3 text-gray-700 leading-relaxed">
+                <p>
+                  Use this result as a comparison tool. If the same role keeps repeating in your conversations, dating
+                  style, and group situations, the result is probably pointing to a stable social pattern rather than a
+                  random mood.
+                </p>
+                <p>
+                  The practical next step is choosing one strength to lean into and one habit to soften. That makes the
+                  result more useful than just sharing the headline.
+                </p>
+              </div>
+            </div>
+
             <div className={`bg-gradient-to-r ${result.color} p-6 rounded-lg text-white text-center`}>
               <p className="text-2xl font-bold mb-2">대표 밈</p>
               <p className="text-xl italic">{result.meme}</p>
             </div>
+          </div>
+
+          <div className="mb-6">
+            <RelatedTestsSection testId="kdrama-mbti" title="드라마 취향과 함께 보면 좋은 퀴즈" />
           </div>
 
           <div className="space-y-3">
