@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
-import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import KpopClient from "./kpop-client"
 
 // Naver-optimized description (under 80 chars)
@@ -21,7 +22,7 @@ export const metadata: Metadata = generateQuizMetadata({
 })
 
 const faqs = [
-  ...getDefaultQuizFAQs("K-팝 아이돌 포지션 테스트"),
+  ...getTopicQuizFAQs("K-팝 아이돌 포지션 테스트"),
   {
     question: "K-팝을 잘 모르는데 테스트할 수 있나요?",
     answer: "네, 가능합니다. 테스트는 일반적인 팀 상황에서의 선택을 바탕으로 하므로, K-팝을 잘 모르시더라도 솔직하게 답변하시면 됩니다.",

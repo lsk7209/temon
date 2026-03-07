@@ -2,7 +2,8 @@ import type { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 import { TestIntro } from "@/components/test-intro"
 import { JsonLd } from "@/components/json-ld"
-import { generateQuizSchemas, generateUniqueTestMetadata, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
+import { generateQuizSchemas, generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { getDb, isDbAvailable } from "@/lib/db/client"
 import { tests } from "@/lib/db/schema"
 import { eq, or } from "drizzle-orm"
@@ -60,7 +61,7 @@ export default async function DynamicTestPage({ params }: Props) {
   }
 
   const fullDescription = test.description || ""
-  const faqs = getDefaultQuizFAQs(test.title)
+  const faqs = getTopicQuizFAQs(test.title)
   const schemas = generateQuizSchemas({
     quizId: params.testId,
     title: test.title,

@@ -7,7 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Droplets, Sparkles, CheckCircle2, PlayCircle } from "lucide-react"
 import { JsonLd, createQuizSchema } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
-import { getDefaultQuizFAQs, getIntroHighlights, getIntroLandingParagraphs, getIntroUseCases } from "@/lib/quiz-seo-utils"
+import { getIntroHighlights, getIntroLandingParagraphs, getIntroUseCases } from "@/lib/quiz-seo-utils"
+import { getIntroSearchIntents, getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 
 interface TestIntroProps {
@@ -85,10 +86,11 @@ export function TestIntro({
         duration: `PT${avgMinutes}M`,
         image: `https://www.temon.kr/images/tests/${id}/thumbnail.jpg` // Fallback
     })
-    const faqs = getDefaultQuizFAQs(title)
+    const faqs = getTopicQuizFAQs(title)
     const highlights = getIntroHighlights(title)
     const landingParagraphs = getIntroLandingParagraphs(title)
     const useCases = getIntroUseCases(title)
+    const searchIntents = getIntroSearchIntents(title)
 
     return (
         <div className={`min-h-screen ${t.bg}`}>
@@ -211,6 +213,21 @@ export function TestIntro({
                                 <h2 className="text-2xl font-bold text-gray-800">Who This Quiz Is For</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {useCases.map((item) => (
+                                        <div key={item} className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
+                                            <p className="text-gray-700 leading-relaxed">{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
+                        <CardContent className="p-8 md:p-12">
+                            <div className="space-y-6">
+                                <h2 className="text-2xl font-bold text-gray-800">Search Intent Match</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    {searchIntents.map((item) => (
                                         <div key={item} className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
                                             <p className="text-gray-700 leading-relaxed">{item}</p>
                                         </div>

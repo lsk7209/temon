@@ -6,7 +6,8 @@ import { Clock, Users, BookOpen, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
-import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "학습 습관으로 알아보는 성격 유형 테스트. 16가지 공부 MBTI 유형 발견!"
@@ -25,7 +26,7 @@ export const metadata: Metadata = generateQuizMetadata({
 })
 
 const faqs = [
-  ...getDefaultQuizFAQs("공부 MBTI 테스트"),
+  ...getTopicQuizFAQs("공부 MBTI 테스트"),
   {
     question: "공부를 잘하지 못해도 테스트할 수 있나요?",
     answer: "네, 가능합니다. 테스트는 공부 습관과 스타일을 통해 성격을 알아보는 것이므로, 공부 성적과는 관계없이 솔직하게 답변하시면 됩니다.",

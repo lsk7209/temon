@@ -6,7 +6,8 @@ import { Clock, Users, Heart, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
-import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "반려동물 성향으로 알아보는 성격 테스트. 나에게 맞는 펫 찾기!"
@@ -25,7 +26,7 @@ export const metadata: Metadata = generateQuizMetadata({
 })
 
 const faqs = [
-  ...getDefaultQuizFAQs("반려동물 MBTI 테스트"),
+  ...getTopicQuizFAQs("반려동물 MBTI 테스트"),
   {
     question: "반려동물을 키우지 않아도 테스트할 수 있나요?",
     answer: "네, 가능합니다. 테스트는 반려동물 선호도를 통해 성격을 알아보는 것이므로, 현재 반려동물을 키우지 않으시더라도 일반적인 선호도를 바탕으로 답변하시면 됩니다.",
