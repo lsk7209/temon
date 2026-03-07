@@ -102,7 +102,7 @@ export default function FoodBrandTest() {
       isSaving={quizLogic.isSaving}
       progress={quizLogic.progress}
       questionsLength={quizLogic.questionsLength}
-      colorClasses={getQuizColorScheme("blue-indigo-purple")}
+      colorClasses={getQuizColorScheme("indigo-purple-pink")}
       onChoiceSelect={quizLogic.handleChoiceSelect}
       onPrevious={quizLogic.handlePrevious}
     />

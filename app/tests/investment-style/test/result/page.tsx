@@ -1,0 +1,19 @@
+"use client"
+
+import { MbtiResultPage } from "@/components/quiz/mbti-result-page"
+import { INVESTMENT_STYLE_RESULTS } from "@/lib/data/investment-style-results"
+
+export default function InvestmentStyleResultPage() {
+  return (
+    <MbtiResultPage
+      testId="investment-style"
+      testPath="/tests/investment-style/test"
+      results={INVESTMENT_STYLE_RESULTS}
+      theme={{
+        page: "bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950",
+        accent: "from-green-500 to-emerald-500",
+        spinner: "border-green-600",
+      }}
+    />
+  )
+}

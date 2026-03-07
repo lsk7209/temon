@@ -38,7 +38,7 @@ export default function BreakupStyleTest() {
             isSaving={quizLogic.isSaving}
             progress={quizLogic.progress}
             questionsLength={quizLogic.questionsLength}
-            colorClasses={getQuizColorScheme("rose")} // rose/pink theme
+            colorClasses={getQuizColorScheme("rose-pink")}
             onChoiceSelect={quizLogic.handleChoiceSelect}
             onPrevious={quizLogic.handlePrevious}
         />

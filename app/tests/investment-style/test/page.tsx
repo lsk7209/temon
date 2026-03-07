@@ -36,7 +36,7 @@ export default function InvestmentStyleTest() {
             isSaving={quizLogic.isSaving}
             progress={quizLogic.progress}
             questionsLength={quizLogic.questionsLength}
-            colorClasses={getQuizColorScheme("green")} // green theme
+            colorClasses={getQuizColorScheme("green-emerald")}
             onChoiceSelect={quizLogic.handleChoiceSelect}
             onPrevious={quizLogic.handlePrevious}
         />

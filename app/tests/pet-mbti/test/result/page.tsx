@@ -7,6 +7,7 @@ import { Share2, RotateCcw, Heart, AlertTriangle } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
+import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 
 const petCharacters = {
   ENFP: {
@@ -297,8 +298,15 @@ const petCharacters = {
 
 function ResultContent() {
   const searchParams = useSearchParams()
-  const mbtiType = (searchParams.get("type") as keyof typeof petCharacters) || "ENFP"
+  const type = searchParams.get("type")
+  const resultId = searchParams.get("id")
+  const { resolvedType, loading } = useResolvedResultType(Object.keys(petCharacters), type, resultId)
+  const mbtiType = (resolvedType as keyof typeof petCharacters) || "ENFP"
   const character = petCharacters[mbtiType]
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   const handleShare = async () => {
     const shareText = `나는 ${character.emoji} ${character.name}! 나와 찰떡인 반려동물은 ${character.petEmoji} ${character.pet}이래요!`

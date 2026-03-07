@@ -7,6 +7,7 @@ import { Share2, RotateCcw } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
+import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 
 const studyCharacters = {
   ENFP: {
@@ -205,8 +206,15 @@ const studyCharacters = {
 
 function ResultContent() {
   const searchParams = useSearchParams()
-  const mbtiType = (searchParams.get("type") as keyof typeof studyCharacters) || "ENFP"
+  const type = searchParams.get("type")
+  const resultId = searchParams.get("id")
+  const { resolvedType, loading } = useResolvedResultType(Object.keys(studyCharacters), type, resultId)
+  const mbtiType = (resolvedType as keyof typeof studyCharacters) || "ENFP"
   const character = studyCharacters[mbtiType]
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   const handleShare = async () => {
     if (navigator.share) {

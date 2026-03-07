@@ -36,7 +36,7 @@ export default function HotelBreakfastTest() {
             isSaving={quizLogic.isSaving}
             progress={quizLogic.progress}
             questionsLength={quizLogic.questionsLength}
-            colorClasses={getQuizColorScheme("orange")} // orange theme
+            colorClasses={getQuizColorScheme("amber-orange")}
             onChoiceSelect={quizLogic.handleChoiceSelect}
             onPrevious={quizLogic.handlePrevious}
         />

@@ -39,7 +39,7 @@ export default function MeetingVillainTest() {
             isSaving={quizLogic.isSaving}
             progress={quizLogic.progress}
             questionsLength={quizLogic.questionsLength}
-            colorClasses={getQuizColorScheme("slate")} // gray/slate theme
+            colorClasses={getQuizColorScheme("slate-gray")}
             onChoiceSelect={quizLogic.handleChoiceSelect}
             onPrevious={quizLogic.handlePrevious}
         />

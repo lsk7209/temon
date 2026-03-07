@@ -7,6 +7,7 @@ import { Share2, RotateCcw, Heart, TrendingUp, Users, Sparkles, Home } from "luc
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
+import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 
 const characters = {
   princess: {
@@ -153,8 +154,15 @@ const characters = {
 
 function ResultContent() {
   const searchParams = useSearchParams()
-  const resultType = (searchParams.get("type") as keyof typeof characters) || "princess"
+  const type = searchParams.get("type")
+  const resultId = searchParams.get("id")
+  const { resolvedType, loading } = useResolvedResultType(Object.keys(characters), type, resultId)
+  const resultType = (resolvedType as keyof typeof characters) || "princess"
   const character = characters[resultType]
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   const handleShare = async () => {
     if (navigator.share) {

@@ -14,23 +14,23 @@ import { Suspense, useEffect, useState } from "react"
 import { ShareButtons } from "@/components/share-buttons"
 import { PHONE_USAGE_RESULTS } from "@/lib/data/phone-usage-results"
 import type { ResultType } from "@/lib/data/phone-usage-results"
+import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 
 function ResultContent() {
   const searchParams = useSearchParams()
-  const type = searchParams.get("type") || ""
+  const type = searchParams.get("type")
   const resultId = searchParams.get("id")
+  const { resolvedType, loading } = useResolvedResultType(Object.keys(PHONE_USAGE_RESULTS), type, resultId)
 
   const [result, setResult] = useState<ResultType | null>(null)
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (type && PHONE_USAGE_RESULTS[type]) {
-      setResult(PHONE_USAGE_RESULTS[type])
-      setLoading(false)
+    if (resolvedType && PHONE_USAGE_RESULTS[resolvedType]) {
+      setResult(PHONE_USAGE_RESULTS[resolvedType])
     } else {
-      setLoading(false)
+      setResult(null)
     }
-  }, [type])
+  }, [resolvedType])
 
   if (loading) {
     return (

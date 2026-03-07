@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card"
 import Link from "next/link"
 import { Share2, RotateCcw, Home, Sparkles, TrendingUp, Users, Star, Heart } from "lucide-react"
 import { Suspense } from "react"
+import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 
 const results = {
   leader: {
@@ -206,8 +207,14 @@ const results = {
 
 function ResultContent() {
   const searchParams = useSearchParams()
-  const type = searchParams.get("type") || "leader"
-  const result = results[type as keyof typeof results]
+  const type = searchParams.get("type")
+  const resultId = searchParams.get("id")
+  const { resolvedType, loading } = useResolvedResultType(Object.keys(results), type, resultId)
+  const result = results[(resolvedType as keyof typeof results) || "leader"]
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   const handleShare = async () => {
     if (navigator.share) {
