@@ -4,6 +4,9 @@ import * as schema from './schema';
 
 const url = process.env.TURSO_DATABASE_URL;
 const authToken = process.env.TURSO_AUTH_TOKEN;
+const globalForDbWarning = globalThis as typeof globalThis & {
+  __temonDbWarningShown?: boolean;
+};
 
 // Build-time safe: don't create client if URL is missing
 let client: Client | null = null;
@@ -16,7 +19,14 @@ if (url) {
   });
   db = drizzle(client, { schema });
 } else {
-  console.warn('TURSO_DATABASE_URL is not defined. DB operations will fail at runtime.');
+  if (!globalForDbWarning.__temonDbWarningShown) {
+    console.warn('TURSO_DATABASE_URL is not defined. DB operations will fail at runtime.');
+    globalForDbWarning.__temonDbWarningShown = true;
+  }
+}
+
+export function isDbAvailable() {
+  return db !== null;
 }
 
 // Helper to get DB with runtime check

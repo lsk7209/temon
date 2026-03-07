@@ -1,5 +1,5 @@
 
-import { getDb } from "@/lib/db/client"
+import { getDb, isDbAvailable } from "@/lib/db/client"
 import { questions, tests } from "@/lib/db/schema"
 import { eq, or, asc } from "drizzle-orm"
 import { notFound } from "next/navigation"
@@ -10,6 +10,10 @@ export const dynamic = 'force-dynamic'
 // Fetch test and questions
 // Fetch test and questions
 async function getQuizData(slugOrId: string) {
+    if (!isDbAvailable()) {
+        return null
+    }
+
     const db = getDb()
 
     // 1. Get Test ID first (if slug provided)

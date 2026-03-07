@@ -38,12 +38,39 @@ function formatSectionTitle(key: string) {
     .replace(/^./, (value) => value.toUpperCase())
 }
 
+function buildPracticalTips(result: MbtiResultRecord) {
+  return [
+    `${result.name} types do better when they keep one clear decision rule instead of reacting randomly.`,
+    `If your result is ${result.mbti}, compare your last three choices and look for the repeat pattern.`,
+    `Use this result as a preference map, not a fixed label. Your context still changes the outcome.`,
+  ]
+}
+
+function buildFaqItems(result: MbtiResultRecord) {
+  return [
+    {
+      question: `What does ${result.mbti} mean in this test?`,
+      answer: `${result.mbti} summarizes the preference pattern this quiz detected from your choices. It reflects tendencies, not a strict identity label.`,
+    },
+    {
+      question: "Can the result change if I retake the quiz?",
+      answer: "Yes. If your mood, context, or decision criteria change, the result can also change. That is useful signal, not an error.",
+    },
+    {
+      question: "How should I use this result?",
+      answer: `Use ${result.name} as a quick guide for habits, strengths, and blind spots. The best use is to compare it with your real behavior over time.`,
+    },
+  ]
+}
+
 function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageProps) {
   const searchParams = useSearchParams()
   const type = searchParams.get("type")
   const resultId = searchParams.get("id")
   const { resolvedType, loading } = useResolvedResultType(Object.keys(results), type, resultId)
   const result = resolvedType ? results[resolvedType] : null
+  const practicalTips = result ? buildPracticalTips(result) : []
+  const faqItems = result ? buildFaqItems(result) : []
 
   if (loading) {
     return (
@@ -163,6 +190,54 @@ function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageP
             </CardContent>
           </Card>
         )}
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">How To Use This Result</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2">
+              {practicalTips.map((item, index) => (
+                <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
+                  <span className="mr-2">-</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">FAQ</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">{item.question}</h3>
+                <p className="text-gray-700 dark:text-gray-300">{item.answer}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">Keep Exploring</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col sm:flex-row gap-3">
+            <Link href={testPath} className="flex-1">
+              <Button variant="outline" className="w-full">
+                Retake this quiz
+              </Button>
+            </Link>
+            <Link href="/tests" className="flex-1">
+              <Button variant="outline" className="w-full">
+                Browse more tests
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Link href={testPath}>

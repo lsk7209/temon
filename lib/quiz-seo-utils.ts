@@ -138,6 +138,31 @@ export function getDefaultQuizFAQs(quizTitle: string): Array<{ question: string;
   ]
 }
 
+export function getIntroHighlights(quizTitle: string): string[] {
+  return [
+    `${quizTitle} is designed to be completed quickly without sign-up or payment.`,
+    "The result is most useful when you answer from your real habit instead of your ideal self-image.",
+    "Retaking the quiz later can show how your preference changes by context, mood, or timing.",
+  ]
+}
+
+export function getListingFAQs(): Array<{ question: string; answer: string }> {
+  return [
+    {
+      question: "Which quiz topics perform best on Temon?",
+      answer: "Short quizzes with strong daily-life topics such as food, habits, sleep, study, and relationships usually perform best for both search entry and social sharing.",
+    },
+    {
+      question: "Are the quizzes on the tests page free?",
+      answer: "Yes. The quiz collection can be browsed and started immediately without payment, and most quizzes are designed to finish within a few minutes.",
+    },
+    {
+      question: "How should I choose my first quiz?",
+      answer: "Start from a topic you already care about. Strong topic relevance usually improves completion rate, result sharing, and repeat visits.",
+    },
+  ]
+}
+
 /**
  * Generate metadata for test pages (/test/page.tsx)
  * These are client component pages, so we need a server wrapper

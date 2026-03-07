@@ -1,11 +1,15 @@
 import type { Metadata } from "next"
 import { generateTestPageMetadata } from "@/lib/quiz-seo-utils"
 import { notFound } from "next/navigation"
-import { getDb } from "@/lib/db/client"
+import { getDb, isDbAvailable } from "@/lib/db/client"
 import { tests } from "@/lib/db/schema"
 import { eq, or } from "drizzle-orm"
 
 async function getTest(slugOrId: string) {
+  if (!isDbAvailable()) {
+    return null
+  }
+
   try {
     const db = getDb()
     const test = await db.select()
