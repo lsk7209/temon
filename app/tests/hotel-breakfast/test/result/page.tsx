@@ -17,6 +17,7 @@ export default function HotelBreakfastResultPage() {
   return (
     <MbtiResultPage
       testId="hotel-breakfast"
+      quizTitle="Hotel Breakfast Test"
       testPath="/tests/hotel-breakfast/test"
       results={HOTEL_BREAKFAST_RESULTS}
       theme={{

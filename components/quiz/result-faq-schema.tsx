@@ -1,7 +1,7 @@
 "use client"
 
 import { JsonLd, createFAQSchema } from "@/components/json-ld"
-import { getDefaultResultFAQs } from "@/lib/quiz-seo-utils"
+import { getTopicResultFAQs } from "@/lib/quiz-topic-copy"
 
 interface ResultFaqSchemaProps {
   quizTitle: string
@@ -9,5 +9,5 @@ interface ResultFaqSchemaProps {
 }
 
 export function ResultFaqSchema({ quizTitle, resultName }: ResultFaqSchemaProps) {
-  return <JsonLd id={`${quizTitle}-result-faq`} data={createFAQSchema(getDefaultResultFAQs(quizTitle, resultName))} />
+  return <JsonLd id={`${quizTitle}-result-faq`} data={createFAQSchema(getTopicResultFAQs(quizTitle, resultName))} />
 }

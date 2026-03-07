@@ -17,6 +17,7 @@ export default function BreakupStyleResultPage() {
   return (
     <MbtiResultPage
       testId="breakup-style"
+      quizTitle="Breakup Style Test"
       testPath="/tests/breakup-style/test"
       results={BREAKUP_STYLE_RESULTS}
       theme={{

@@ -204,3 +204,185 @@ export function getIntroSearchIntents(quizTitle: string): string[] {
     "Completion and sharing both improve when the landing page makes the time cost, result usefulness, and next-click path obvious.",
   ]
 }
+
+export function getTopicResultFAQs(
+  quizTitle: string,
+  resultName: string,
+): Array<{ question: string; answer: string }> {
+  const lowerTitle = quizTitle.toLowerCase()
+
+  if (lowerTitle.includes("drama")) {
+    return [
+      {
+        question: `What does ${resultName} mean in ${quizTitle}?`,
+        answer: `${resultName} reflects the kind of role energy you project in conflict, affection, and group attention. It works best as a reading of behavior patterns, not as a literal fictional identity.`,
+      },
+      {
+        question: "Why does this drama-style result feel specific?",
+        answer: "Drama quizzes feel specific when the result connects your social pacing, emotional expression, and decision style into one recognizable archetype.",
+      },
+      {
+        question: "How should I use this result page?",
+        answer: "Use it to compare your real reactions in relationships, friend groups, and stressful scenes. That is where the role label becomes practical.",
+      },
+    ]
+  }
+
+  if (lowerTitle.includes("idol") || lowerTitle.includes("k-pop")) {
+    return [
+      {
+        question: `What does ${resultName} mean in ${quizTitle}?`,
+        answer: `${resultName} describes the role you most naturally occupy in a group setting, such as direction, energy, atmosphere, or coordination.`,
+      },
+      {
+        question: "Is this result about talent or personality?",
+        answer: "It is closer to personality in motion. The result focuses on how you behave in group dynamics rather than on performance skill alone.",
+      },
+      {
+        question: "What is the best way to use this result?",
+        answer: "Compare it with how you act in real teams, friendships, and social events. That makes the role label more useful and more shareable.",
+      },
+    ]
+  }
+
+  if (lowerTitle.includes("pet")) {
+    return [
+      {
+        question: `How should I read ${resultName} in ${quizTitle}?`,
+        answer: `${resultName} is an animal-style summary of your attachment, comfort, stimulation, and routine pattern. The point is the lifestyle metaphor, not a literal animal match.`,
+      },
+      {
+        question: "Why do pet-style results feel accurate?",
+        answer: "They often feel accurate because animal metaphors make emotional style, sensitivity, and social energy easier to notice and compare.",
+      },
+      {
+        question: "How can I use this result in daily life?",
+        answer: "Use it as a quick check on your routine needs, interaction level, and recovery style. That is where the result becomes more than a fun label.",
+      },
+    ]
+  }
+
+  if (lowerTitle.includes("ramen") || lowerTitle.includes("spice") || lowerTitle.includes("food")) {
+    return [
+      {
+        question: `What does ${resultName} mean in ${quizTitle}?`,
+        answer: `${resultName} translates your food choice pattern into a repeatable personality or habit signal. The useful part is the decision pattern behind the taste preference.`,
+      },
+      {
+        question: "Why do food results work so well?",
+        answer: "Food choices are familiar and low-friction, so visitors answer quickly. That often reveals real preference patterns without overthinking.",
+      },
+      {
+        question: "What should I do after reading this result?",
+        answer: "Compare it with your ordering habits, comfort choices, and willingness to experiment. Then use the related quizzes to see whether the same pattern repeats in other topics.",
+      },
+    ]
+  }
+
+  if (lowerTitle.includes("study")) {
+    return [
+      {
+        question: `What does ${resultName} mean in ${quizTitle}?`,
+        answer: `${resultName} describes the learning pattern that showed up most strongly in your answers, such as structure, immersion, flexibility, or pressure response.`,
+      },
+      {
+        question: "Can I use this result to improve studying?",
+        answer: "Yes. The result is most useful when you turn it into one or two concrete changes in revision rhythm, note-taking, break timing, or review strategy.",
+      },
+      {
+        question: "Why might this result change later?",
+        answer: "Study behavior changes with stress, deadlines, and environment. That is useful information because it shows which parts of your method are stable and which are situational.",
+      },
+    ]
+  }
+
+  if (lowerTitle.includes("alarm") || lowerTitle.includes("phone")) {
+    return [
+      {
+        question: `What does ${resultName} mean in ${quizTitle}?`,
+        answer: `${resultName} points to the repeat pattern behind your daily habit loop. It highlights how you start, react, delay, or recover inside the same routine.`,
+      },
+      {
+        question: "How can I make this result actionable?",
+        answer: "Pick the one repeated behavior described in the result that costs you the most time or energy. Change that first instead of trying to redesign everything at once.",
+      },
+      {
+        question: "Why are habit-based result pages useful?",
+        answer: "Habit topics work because visitors can immediately compare the result with something they do every day. That makes the interpretation easier to trust and apply.",
+      },
+    ]
+  }
+
+  return [
+    {
+      question: `What does ${resultName} mean in ${quizTitle}?`,
+      answer: `${resultName} is the strongest preference pattern detected by the quiz. It should be used as a practical interpretation aid rather than a fixed identity label.`,
+    },
+    {
+      question: "Can this result change later?",
+      answer: "Yes. Changes in context, mood, or decision criteria can shift the result. That variation is useful because it shows how stable your pattern really is.",
+    },
+    {
+      question: "How should I use this result page?",
+      answer: "Use the result as a quick reference for your strengths, blind spots, and repeat habits. The page becomes more useful when you compare it with real behavior over time.",
+    },
+  ]
+}
+
+export function getTopicResultUseCases(quizTitle: string, resultName: string): string[] {
+  const lowerTitle = quizTitle.toLowerCase()
+
+  if (lowerTitle.includes("drama")) {
+    return [
+      `${resultName} works best when you compare it with your real behavior in conflict, romance, and group scenes.`,
+      "It is especially useful as shareable comparison content because role-based labels are easy to discuss with friends.",
+      "The strongest next click is usually another entertainment or relationship-style quiz.",
+    ]
+  }
+
+  if (lowerTitle.includes("idol") || lowerTitle.includes("k-pop")) {
+    return [
+      `${resultName} becomes clearer when you compare it with how you behave in teams, chats, or fast-moving social settings.`,
+      "This kind of result is strongest when it is used as a group-role explanation instead of a celebrity fantasy label.",
+      "Visitors who identify with one role often keep clicking into other pop-culture and personality quizzes.",
+    ]
+  }
+
+  if (lowerTitle.includes("pet")) {
+    return [
+      `${resultName} is most useful when you connect it to your actual home rhythm and social battery.`,
+      "Animal-style results work well because they make emotional patterns easier to recognize without heavy self-analysis.",
+      "The next useful step is checking whether the same pattern repeats in habit, food, or relationship quizzes.",
+    ]
+  }
+
+  if (lowerTitle.includes("ramen") || lowerTitle.includes("spice") || lowerTitle.includes("food")) {
+    return [
+      `${resultName} is best used as a clue about your comfort zone, experimentation level, and repeat-choice habit.`,
+      "Food-themed results perform well because visitors can immediately test whether the pattern shows up in real ordering behavior.",
+      "A strong next step is exploring other daily-life quizzes to see whether the same decision style appears again.",
+    ]
+  }
+
+  if (lowerTitle.includes("study")) {
+    return [
+      `${resultName} is most useful when you turn the interpretation into one practical study adjustment this week.`,
+      "Study results become more accurate when you compare them with your actual exam period behavior rather than your ideal plan.",
+      "The best follow-up is another habit or productivity quiz that shows whether the same routine pattern is recurring.",
+    ]
+  }
+
+  if (lowerTitle.includes("alarm") || lowerTitle.includes("phone")) {
+    return [
+      `${resultName} matters most when you map it onto one real loop you repeat every day.`,
+      "Habit-based result pages are strongest when they lead to one small behavioral change instead of a full routine reset.",
+      "The next click usually comes from curiosity about whether the same pattern appears in another routine-based quiz.",
+    ]
+  }
+
+  return [
+    `${resultName} is most useful when you compare it with your real repeat behavior instead of a one-off mood.`,
+    "The strongest value of a result page is showing how one pattern repeats across different kinds of choices.",
+    "Use related quizzes to test whether the same preference appears in nearby topics.",
+  ]
+}

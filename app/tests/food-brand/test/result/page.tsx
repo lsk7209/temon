@@ -17,6 +17,7 @@ export default function FoodBrandResultPage() {
   return (
     <MbtiResultPage
       testId="food-brand"
+      quizTitle="Food Brand Test"
       testPath="/tests/food-brand/test"
       results={FOOD_BRAND_RESULTS}
       theme={{

@@ -17,6 +17,7 @@ export default function MeetingVillainResultPage() {
   return (
     <MbtiResultPage
       testId="meeting-villain"
+      quizTitle="Meeting Villain Test"
       testPath="/tests/meeting-villain/test"
       results={MEETING_VILLAIN_RESULTS}
       theme={{

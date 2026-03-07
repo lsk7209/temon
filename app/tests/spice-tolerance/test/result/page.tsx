@@ -17,6 +17,7 @@ export default function SpiceToleranceResultPage() {
   return (
     <MbtiResultPage
       testId="spice-tolerance"
+      quizTitle="Spice Tolerance Test"
       testPath="/tests/spice-tolerance/test"
       results={SPICE_TOLERANCE_RESULTS}
       theme={{

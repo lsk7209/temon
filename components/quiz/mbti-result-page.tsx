@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ShareButtons } from "@/components/share-buttons"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { JsonLd, createFAQSchema } from "@/components/json-ld"
-import { getDefaultResultFAQs } from "@/lib/quiz-seo-utils"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 
 export interface MbtiResultRecord {
@@ -25,6 +25,7 @@ export interface MbtiResultRecord {
 
 interface MbtiResultPageProps {
   testId: string
+  quizTitle?: string
   testPath: string
   results: Record<string, MbtiResultRecord>
   theme: {
@@ -74,34 +75,23 @@ function buildComparisonSignals(result: MbtiResultRecord) {
   ]
 }
 
-function buildFaqItems(result: MbtiResultRecord) {
-  return [
-    {
-      question: `What does ${result.mbti} mean in this test?`,
-      answer: `${result.mbti} summarizes the preference pattern this quiz detected from your choices. It reflects tendencies, not a strict identity label.`,
-    },
-    {
-      question: "Can the result change if I retake the quiz?",
-      answer: "Yes. If your mood, context, or decision criteria change, the result can also change. That is useful signal, not an error.",
-    },
-    {
-      question: "How should I use this result?",
-      answer: `Use ${result.name} as a quick guide for habits, strengths, and blind spots. The best use is to compare it with your real behavior over time.`,
-    },
-  ]
+function buildFaqItems(quizTitle: string, result: MbtiResultRecord) {
+  return getTopicResultFAQs(quizTitle, result.name)
 }
 
-function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageProps) {
+function ResultPageContent({ testId, quizTitle, testPath, results, theme }: MbtiResultPageProps) {
   const searchParams = useSearchParams()
   const type = searchParams.get("type")
   const resultId = searchParams.get("id")
   const { resolvedType, loading } = useResolvedResultType(Object.keys(results), type, resultId)
   const result = resolvedType ? results[resolvedType] : null
+  const resolvedQuizTitle = quizTitle || testId
   const practicalTips = result ? buildPracticalTips(result) : []
   const interpretationParagraphs = result ? buildInterpretationParagraphs(result) : []
   const comparisonSignals = result ? buildComparisonSignals(result) : []
-  const faqItems = result ? buildFaqItems(result) : []
-  const resultFaqSchema = result ? createFAQSchema(getDefaultResultFAQs(testId, result.name)) : null
+  const faqItems = result ? buildFaqItems(resolvedQuizTitle, result) : []
+  const resultUseCases = result ? getTopicResultUseCases(resolvedQuizTitle, result.name) : []
+  const resultFaqSchema = result ? createFAQSchema(getTopicResultFAQs(resolvedQuizTitle, result.name)) : null
 
   if (loading) {
     return (
@@ -259,6 +249,22 @@ function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageP
           <CardContent>
             <ul className="space-y-2">
               {comparisonSignals.map((item, index) => (
+                <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
+                  <span className="mr-2">-</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2">
+              {resultUseCases.map((item, index) => (
                 <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
                   <span className="mr-2">-</span>
                   <span>{item}</span>

@@ -17,6 +17,7 @@ export default function InvestmentStyleResultPage() {
   return (
     <MbtiResultPage
       testId="investment-style"
+      quizTitle="Investment Style Test"
       testPath="/tests/investment-style/test"
       results={INVESTMENT_STYLE_RESULTS}
       theme={{

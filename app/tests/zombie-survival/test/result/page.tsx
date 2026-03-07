@@ -17,6 +17,7 @@ export default function ZombieSurvivalResultPage() {
   return (
     <MbtiResultPage
       testId="zombie-survival"
+      quizTitle="Zombie Survival Test"
       testPath="/tests/zombie-survival/test"
       results={ZOMBIE_SURVIVAL_RESULTS}
       theme={{
