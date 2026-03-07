@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 const alarmCharacters = {
   ENFP: {
@@ -383,6 +384,29 @@ ${shareUrl}`
           </CardContent>
         </Card>
 
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
+          <CardHeader className="pb-4 sm:pb-6">
+            <CardTitle className="text-xl sm:text-2xl flex items-center space-x-2">
+              <span>🧭</span>
+              <span>이 기상 유형이 의미하는 것</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              {character.name} 유형은 아침의 성실함만 말해주지 않습니다. 잠에서 깬 직후 어떤 자극에 반응하고,
+              하루를 여는 리듬을 어떻게 설계하는지까지 보여주는 생활 패턴 결과에 가깝습니다.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              같은 유형이 반복해서 나온다면 최근 기상 시간, 알람 설정 방식, 잠들기 전 루틴이 일정하게 굳어 있다는 뜻일
+              가능성이 높습니다. 즉 결과는 성격보다 습관 구조를 읽는 데 더 유용합니다.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              이 결과를 실제로 활용하려면 아침만 보지 말고 전날 밤 루틴까지 함께 점검해야 합니다. 기상 유형은 보통 취침
+              준비 방식과 세트로 움직이기 때문입니다.
+            </p>
+          </CardContent>
+        </Card>
+
         {/* Other Tests */}
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
           <CardHeader className="pb-4 sm:pb-6">
@@ -433,6 +457,10 @@ ${shareUrl}`
         </Card>
 
         {/* 다른 테스트하기 버튼 */}
+        <div className="mb-6 sm:mb-8">
+          <RelatedTestsSection testId="alarm-habit" title="아침 습관과 함께 보면 좋은 퀴즈" />
+        </div>
+
         <div className="mt-8 text-center">
           <Link href="/tests">
             <Button

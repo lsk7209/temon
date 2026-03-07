@@ -357,6 +357,22 @@ function ResultContent() {
               </div>
             </div>
 
+            <div className="bg-gradient-to-r from-slate-50 to-zinc-50 p-6 rounded-lg border border-slate-200">
+              <h3 className="font-bold text-lg mb-3 text-gray-800">Interpretation Notes</h3>
+              <div className="space-y-3 text-gray-700 leading-relaxed">
+                <p>
+                  {result.title} is less about fantasy casting and more about how you naturally hold attention in group
+                  settings. Think about presentations, social gatherings, and collaborative work. If you take a similar
+                  role there, this result is probably capturing a real preference pattern.
+                </p>
+                <p>
+                  The main separator from nearby types is where your energy goes first: spotlight, coordination, emotional
+                  delivery, or atmosphere control. That comparison makes the result much more useful than the headline
+                  alone.
+                </p>
+              </div>
+            </div>
+
             <div className={`bg-gradient-to-r ${result.color} p-6 rounded-lg text-white text-center`}>
               <p className="text-2xl font-bold mb-2">당신의 포지션</p>
               <p className="text-xl italic">{result.subtitle}</p>

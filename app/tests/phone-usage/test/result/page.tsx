@@ -16,6 +16,7 @@ import { PHONE_USAGE_RESULTS } from "@/lib/data/phone-usage-results"
 import type { ResultType } from "@/lib/data/phone-usage-results"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 function ResultContent() {
   const searchParams = useSearchParams()
@@ -98,6 +99,26 @@ function ResultContent() {
                 </li>
               ))}
             </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">🧭 이 결과를 어떻게 해석하면 좋을까</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p>
+              {result.name} 유형은 단순히 스마트폰을 많이 쓰는지 적게 쓰는지를 뜻하지 않습니다. 어떤 기능에
+              우선순위를 두고, 주의를 어떻게 배분하고, 반복 습관을 어떤 방식으로 만드는지가 더 핵심입니다.
+            </p>
+            <p>
+              이 결과가 잘 맞는 사람은 최근 한 달 정도의 실제 사용 패턴을 떠올렸을 때 비슷한 흐름이 반복됩니다.
+              알림을 다루는 방식, 홈 화면 정리 방식, 자동화 선호도에서 같은 경향이 보이면 결과 신뢰도가 높습니다.
+            </p>
+            <p>
+              중요한 포인트는 이 결과를 고정 라벨로 보지 않는 것입니다. 업무 기간, 시험 기간, 여행 중 같은 상황 변화에
+              따라 사용 스타일은 달라질 수 있으니 현재 컨디션과 역할 기준으로 읽는 편이 더 실용적입니다.
+            </p>
           </CardContent>
         </Card>
 
@@ -214,6 +235,8 @@ function ResultContent() {
             </div>
           </CardContent>
         </Card>
+
+        <RelatedTestsSection testId="phone-usage" title="비슷한 디지털 습관 퀴즈 더 보기" />
 
         {/* CTA 버튼 */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

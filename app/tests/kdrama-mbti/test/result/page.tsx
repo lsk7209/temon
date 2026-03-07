@@ -344,6 +344,22 @@ ${shareUrl}`
               <p className="text-gray-700 leading-relaxed">{result.advice}</p>
             </div>
 
+            <div className="bg-gradient-to-r from-slate-50 to-zinc-50 p-6 rounded-lg border border-slate-200">
+              <h3 className="font-bold text-lg mb-3 text-gray-800">Interpretation Notes</h3>
+              <div className="space-y-3 text-gray-700 leading-relaxed">
+                <p>
+                  {result.title} works best as a pattern explanation, not a one-line label. If your relationship choices,
+                  daily reactions, and drama preference all point in the same direction, this result is likely reflecting
+                  a stable tendency instead of a temporary mood.
+                </p>
+                <p>
+                  The useful part is comparison. Check whether you consistently prioritize control, emotion, humor,
+                  loyalty, or romance in similar scenes. That is usually where this result becomes more actionable than a
+                  simple entertainment quiz outcome.
+                </p>
+              </div>
+            </div>
+
             <div className={`bg-gradient-to-r ${result.color} p-6 rounded-lg text-white text-center`}>
               <p className="text-2xl font-bold mb-2">대표 밈</p>
               <p className="text-xl italic">{result.meme}</p>
