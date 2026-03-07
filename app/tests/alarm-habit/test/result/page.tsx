@@ -407,6 +407,22 @@ ${shareUrl}`
           </CardContent>
         </Card>
 
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
+          <CardHeader className="pb-4 sm:pb-6">
+            <CardTitle className="text-xl sm:text-2xl">Routine Reset</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              This result becomes useful when you connect it to one specific morning bottleneck. Instead of changing
+              everything at once, adjust one alarm, one wake-up trigger, or one preparation habit first.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+              Morning style is usually tied to sleep timing, evening wind-down, and how much decision-making happens
+              right after waking up. That is why small routine edits often work better than motivation alone.
+            </p>
+          </CardContent>
+        </Card>
+
         {/* Other Tests */}
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
           <CardHeader className="pb-4 sm:pb-6">

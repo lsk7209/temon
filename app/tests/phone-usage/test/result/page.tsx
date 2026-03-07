@@ -239,6 +239,23 @@ function ResultContent() {
         <RelatedTestsSection testId="phone-usage" title="비슷한 디지털 습관 퀴즈 더 보기" />
 
         {/* CTA 버튼 */}
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">Action Guide</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p>
+              The fastest way to use this result is to change one screen, one notification rule, and one automation
+              setting. That keeps the result practical instead of turning it into a generic personality label.
+            </p>
+            <p>
+              If your current phone setup feels noisy, slow, or exhausting, compare that pain point with the pattern this
+              page describes first. The biggest improvement usually comes from removing repeated friction, not adding more
+              features.
+            </p>
+          </CardContent>
+        </Card>
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Link href="/tests/phone-usage/test">
             <Button size="lg" variant="outline" className="w-full sm:w-auto">
