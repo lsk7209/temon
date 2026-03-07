@@ -1,7 +1,17 @@
-"use client"
-
+import type { Metadata } from "next"
 import { MbtiResultPage } from "@/components/quiz/mbti-result-page"
 import { BREAKUP_STYLE_RESULTS } from "@/lib/data/breakup-style-results"
+import { generateMbtiResultMetadata } from "@/lib/quiz-seo-utils"
+
+const defaultResult = BREAKUP_STYLE_RESULTS.ISTJ
+
+export const metadata: Metadata = generateMbtiResultMetadata({
+  quizTitle: "Breakup Style Test",
+  resultName: defaultResult.name,
+  resultCode: defaultResult.mbti,
+  summary: defaultResult.summary,
+  canonical: "/tests/breakup-style/test/result",
+})
 
 export default function BreakupStyleResultPage() {
   return (

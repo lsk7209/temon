@@ -1,7 +1,17 @@
-"use client"
-
+import type { Metadata } from "next"
 import { MbtiResultPage } from "@/components/quiz/mbti-result-page"
 import { MEETING_VILLAIN_RESULTS } from "@/lib/data/meeting-villain-results"
+import { generateMbtiResultMetadata } from "@/lib/quiz-seo-utils"
+
+const defaultResult = MEETING_VILLAIN_RESULTS.ISTJ
+
+export const metadata: Metadata = generateMbtiResultMetadata({
+  quizTitle: "Meeting Villain Test",
+  resultName: defaultResult.name,
+  resultCode: defaultResult.mbti,
+  summary: defaultResult.summary,
+  canonical: "/tests/meeting-villain/test/result",
+})
 
 export default function MeetingVillainResultPage() {
   return (

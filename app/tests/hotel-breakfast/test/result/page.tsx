@@ -1,7 +1,17 @@
-"use client"
-
+import type { Metadata } from "next"
 import { MbtiResultPage } from "@/components/quiz/mbti-result-page"
 import { HOTEL_BREAKFAST_RESULTS } from "@/lib/data/hotel-breakfast-results"
+import { generateMbtiResultMetadata } from "@/lib/quiz-seo-utils"
+
+const defaultResult = HOTEL_BREAKFAST_RESULTS.ISTJ
+
+export const metadata: Metadata = generateMbtiResultMetadata({
+  quizTitle: "Hotel Breakfast Style Test",
+  resultName: defaultResult.name,
+  resultCode: defaultResult.mbti,
+  summary: defaultResult.summary,
+  canonical: "/tests/hotel-breakfast/test/result",
+})
 
 export default function HotelBreakfastResultPage() {
   return (

@@ -163,6 +163,76 @@ export function getListingFAQs(): Array<{ question: string; answer: string }> {
   ]
 }
 
+export function getDefaultResultFAQs(quizTitle: string, resultName: string): Array<{ question: string; answer: string }> {
+  return [
+    {
+      question: `What does ${resultName} mean in ${quizTitle}?`,
+      answer: `${resultName} describes the dominant preference pattern detected by the quiz. It should be used as a practical interpretation aid, not a fixed identity label.`,
+    },
+    {
+      question: "Can this result change if I retake the quiz?",
+      answer: "Yes. Changes in mood, context, or decision criteria can change the result. That is useful signal about situational preference, not necessarily inconsistency.",
+    },
+    {
+      question: "How should I use this result page?",
+      answer: "Use the traits, watchouts, and recommendations as a quick reference. The best next step is to compare the result with your real behavior and share it with someone who knows you well.",
+    },
+  ]
+}
+
+export function generateMbtiResultMetadata(config: {
+  quizTitle: string
+  resultName: string
+  resultCode: string
+  summary: string
+  canonical: string
+}): Metadata {
+  const fullUrl = `${baseUrl}${config.canonical}`
+  const title = `${config.quizTitle} Result: ${config.resultName} (${config.resultCode}) | Temon`
+
+  return {
+    title,
+    description: config.summary,
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: config.canonical,
+    },
+    openGraph: {
+      title,
+      description: config.summary,
+      type: "website",
+      url: fullUrl,
+      siteName: "Temon",
+      locale: "ko_KR",
+      images: [
+        {
+          url: `${baseUrl}/api/og?title=${encodeURIComponent(config.resultName)}&desc=${encodeURIComponent(config.resultCode)}`,
+          width: 1200,
+          height: 630,
+          alt: config.resultName,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: config.summary,
+      images: [`${baseUrl}/api/og?title=${encodeURIComponent(config.resultName)}&desc=${encodeURIComponent(config.resultCode)}`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  }
+}
+
 /**
  * Generate metadata for test pages (/test/page.tsx)
  * These are client component pages, so we need a server wrapper

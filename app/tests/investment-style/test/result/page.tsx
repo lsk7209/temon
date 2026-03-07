@@ -1,7 +1,17 @@
-"use client"
-
+import type { Metadata } from "next"
 import { MbtiResultPage } from "@/components/quiz/mbti-result-page"
 import { INVESTMENT_STYLE_RESULTS } from "@/lib/data/investment-style-results"
+import { generateMbtiResultMetadata } from "@/lib/quiz-seo-utils"
+
+const defaultResult = INVESTMENT_STYLE_RESULTS.ISTJ
+
+export const metadata: Metadata = generateMbtiResultMetadata({
+  quizTitle: "Investment Style Test",
+  resultName: defaultResult.name,
+  resultCode: defaultResult.mbti,
+  summary: defaultResult.summary,
+  canonical: "/tests/investment-style/test/result",
+})
 
 export default function InvestmentStyleResultPage() {
   return (

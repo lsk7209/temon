@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ShareButtons } from "@/components/share-buttons"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { JsonLd, createFAQSchema } from "@/components/json-ld"
+import { getDefaultResultFAQs } from "@/lib/quiz-seo-utils"
 
 export interface MbtiResultRecord {
   mbti: string
@@ -71,6 +73,7 @@ function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageP
   const result = resolvedType ? results[resolvedType] : null
   const practicalTips = result ? buildPracticalTips(result) : []
   const faqItems = result ? buildFaqItems(result) : []
+  const resultFaqSchema = result ? createFAQSchema(getDefaultResultFAQs(testId, result.name)) : null
 
   if (loading) {
     return (
@@ -98,6 +101,7 @@ function ResultPageContent({ testId, testPath, results, theme }: MbtiResultPageP
 
   return (
     <div className={`min-h-screen ${theme.page}`}>
+      {resultFaqSchema && <JsonLd id={`${testId}-result-faq-schema`} data={resultFaqSchema} />}
       <div className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <div className={`inline-block px-6 py-3 bg-gradient-to-r ${theme.accent} rounded-full mb-4`}>
