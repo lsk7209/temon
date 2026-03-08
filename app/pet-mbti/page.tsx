@@ -7,8 +7,10 @@ import Link from "next/link"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "반려동물 성향으로 알아보는 성격 테스트. 나에게 맞는 펫 찾기!"
@@ -318,7 +320,17 @@ export default function PetMBTIIntro() {
           </Card>
         </div>
 
-        <AnswerEngineSection quizTitle="Pet MBTI" />
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Pet MBTI" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Pet MBTI" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="pet-mbti" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
 
         {/* FAQ Section for AI Bot Optimization */}
         <section className="mt-20 mb-12">

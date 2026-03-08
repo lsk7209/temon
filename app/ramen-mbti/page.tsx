@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "라면 취향으로 알아보는 성격 유형 테스트. 16가지 라면 MBTI 유형 발견!"
@@ -108,6 +110,10 @@ export default function RamenMBTI() {
             </section>
 
             <AnswerEngineSection quizTitle="Ramen MBTI" />
+
+            <LandingConversionSection quizTitle="Ramen MBTI" />
+
+            <RelatedTestsSection testId="ramen-mbti" title="Next Quizzes Search Visitors Usually Click" />
 
             {/* FAQ Section for AI Bot Optimization */}
             <section className="mt-12">
