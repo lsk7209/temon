@@ -18,7 +18,7 @@ import { saveTestResult, getTestResult } from '@/lib/db/queries/results'
  */
 function getCorsHeaders() {
   return {
-    'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_APP_URL || '*',
+    'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_APP_URL || 'https://temon.kr',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
   }

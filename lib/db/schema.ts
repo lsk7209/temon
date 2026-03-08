@@ -3,7 +3,7 @@
  * Drizzle ORM을 사용한 테스트 플랫폼 스키마
  */
 
-import { sqliteTable, text, integer, real } from 'drizzle-orm/sqlite-core'
+import { sqliteTable, text, integer, real, index } from 'drizzle-orm/sqlite-core'
 import { sql } from 'drizzle-orm'
 
 // 테스트 메타데이터
@@ -44,7 +44,9 @@ export const questions = sqliteTable('questions', {
   choice1Tags: text('choice_1_tags').notNull(), // JSON array: ["E", "S"]
   choice2Text: text('choice_2_text').notNull(),
   choice2Tags: text('choice_2_tags').notNull(),
-})
+}, (table) => [
+  index('idx_questions_test_id').on(table.testId),
+])
 
 // 결과 타입 데이터
 export const resultTypes = sqliteTable('result_types', {
@@ -58,7 +60,10 @@ export const resultTypes = sqliteTable('result_types', {
   tips: text('tips', { mode: 'json' }), // JSON array
   matchTypes: text('match_types'), // JSON array or comma-separated
   emoji: text('emoji'),
-})
+}, (table) => [
+  index('idx_result_types_test_id').on(table.testId),
+  index('idx_result_types_type_code').on(table.typeCode),
+])
 
 // 테스트 결과 저장
 export const testResults = sqliteTable('test_results', {
@@ -69,7 +74,10 @@ export const testResults = sqliteTable('test_results', {
   userIp: text('user_ip'),
   userAgent: text('user_agent'),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
-})
+}, (table) => [
+  index('idx_test_results_test_id').on(table.testId),
+  index('idx_test_results_created_at').on(table.createdAt),
+])
 
 // 통계 집계 (크론으로 주기적 업데이트)
 export const testStats = sqliteTable('test_stats', {
@@ -101,15 +109,4 @@ export const testStarts = sqliteTable('test_starts', {
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 })
 
-// 인덱스
-export const indexes = {
-  testsSlug: 'idx_tests_slug',
-  testsStatus: 'idx_tests_status',
-  testsCategory: 'idx_tests_category',
-  questionsTestId: 'idx_questions_test_id',
-  resultTypesTestId: 'idx_result_types_test_id',
-  resultTypesTypeCode: 'idx_result_types_type_code',
-  testResultsTestId: 'idx_test_results_test_id',
-  testResultsCreatedAt: 'idx_test_results_created_at',
-}
 

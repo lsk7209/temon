@@ -329,8 +329,9 @@ export function trackCTAClick(ctaName: string, location: string) {
   }
 }
 
-// 로컬 통계 데이터 (시뮬레이션)
+/** @deprecated 시뮬레이션 데이터 - 실제 데이터로 교체 필요 */
 export function getStats() {
+  console.warn('[MOCK DATA] This function returns simulated data');
   return {
     totalVisits: 15420,
     testsCompleted: 8934,
@@ -340,8 +341,9 @@ export function getStats() {
   }
 }
 
-// 고급 통계 데이터 (시뮬레이션)
+/** @deprecated 시뮬레이션 데이터 - 실제 데이터로 교체 필요 */
 export function getAdvancedStats() {
+  console.warn('[MOCK DATA] This function returns simulated data');
   return {
     totalVisits: Math.floor(Math.random() * 5000) + 15000,
     totalTestsStarted: Math.floor(Math.random() * 3000) + 8000,
@@ -376,14 +378,16 @@ export function getAdvancedStats() {
   }
 }
 
-// 완료율 계산
+/** @deprecated 시뮬레이션 데이터 - 실제 데이터로 교체 필요 */
 export function getCompletionRate() {
+  console.warn('[MOCK DATA] This function returns simulated data');
   const stats = getStats()
   return Math.round((stats.testsCompleted / stats.totalVisits) * 100)
 }
 
-// 활성 사용자 수 (시뮬레이션)
+/** @deprecated 시뮬레이션 데이터 - 실제 데이터로 교체 필요 */
 export function getActiveUsers() {
+  console.warn('[MOCK DATA] This function returns simulated data');
   return Math.floor(Math.random() * 50) + 20 // 20-70 사이의 랜덤 값
 }
 

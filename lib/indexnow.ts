@@ -6,7 +6,7 @@
  */
 
 const DEFAULT_HOST = 'temon.kr'
-const DEFAULT_KEY = '186d3c7ad0df4ce9ae53deb59055ed23'
+const DEFAULT_KEY = process.env.INDEXNOW_KEY || ''
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow'
 
 export interface IndexNowResponse {

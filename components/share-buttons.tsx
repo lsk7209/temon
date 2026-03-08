@@ -7,7 +7,7 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Share2, Check } from 'lucide-react'
+import { Share2, Check, MessageCircle } from 'lucide-react'
 import { createShareLink } from '@/lib/api-client'
 import { trackShare } from '@/lib/analytics'
 
@@ -82,23 +82,57 @@ export function ShareButtons({
     }
   }
 
+  const handleKakao = () => {
+    trackShare(testId, 'share_kakao')
+    const kakaoUrl = `https://story.kakao.com/share?url=${encodeURIComponent(shareUrl)}`
+    window.open(kakaoUrl, '_blank', 'noopener,noreferrer')
+  }
+
+  const handleTwitter = () => {
+    trackShare(testId, 'share_twitter')
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(hookText)}`
+    window.open(twitterUrl, '_blank', 'noopener,noreferrer')
+  }
+
   return (
-    <Button
-      onClick={handleShare}
-      className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-    >
-      {copied ? (
-        <>
-          <Check className="h-5 w-5 mr-2" />
-          복사됨!
-        </>
-      ) : (
-        <>
-          <Share2 className="h-5 w-5 mr-2" />
-          친구들에게 공유하기
-        </>
-      )}
-    </Button>
+    <div className="flex flex-col gap-3 w-full">
+      <Button
+        onClick={handleShare}
+        className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+      >
+        {copied ? (
+          <>
+            <Check className="h-5 w-5 mr-2" />
+            복사됨!
+          </>
+        ) : (
+          <>
+            <Share2 className="h-5 w-5 mr-2" />
+            친구들에게 공유하기
+          </>
+        )}
+      </Button>
+      <div className="flex gap-3">
+        <Button
+          onClick={handleKakao}
+          variant="outline"
+          className="flex-1 bg-[#FEE500] hover:bg-[#FDD800] text-[#191919] border-[#FEE500] font-semibold"
+        >
+          <MessageCircle className="h-5 w-5 mr-2" />
+          카카오톡
+        </Button>
+        <Button
+          onClick={handleTwitter}
+          variant="outline"
+          className="flex-1 bg-black hover:bg-gray-800 text-white border-black font-semibold"
+        >
+          <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+          X (트위터)
+        </Button>
+      </div>
+    </div>
   )
 }
 

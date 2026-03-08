@@ -84,8 +84,8 @@ export async function POST(
 
         return NextResponse.json({ resultId: newResultId })
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Submit Error:', error)
-        return NextResponse.json({ error: error.message }, { status: 500 })
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
     }
 }

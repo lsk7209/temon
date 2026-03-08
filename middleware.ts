@@ -60,6 +60,18 @@ export function middleware(request: NextRequest) {
   // 주의: www <-> non-www 리다이렉트는 Vercel 도메인 설정에서 처리
   // middleware에서 리다이렉트를 하면 Vercel 도메인 설정과 충돌하여 무한 루프 발생 가능
 
+  // Admin API 인증 체크 (미들웨어 레벨)
+  if (request.nextUrl.pathname.startsWith('/api/admin/')) {
+    const authHeader = request.headers.get('authorization')
+    const adminToken = process.env.ADMIN_TOKEN
+    if (!adminToken || authHeader !== `Bearer ${adminToken}`) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+  }
+
   // Rate Limit 체크 (API 엔드포인트만)
   if (request.nextUrl.pathname.startsWith('/api/')) {
     const key = getRateLimitKey(request)
@@ -96,12 +108,14 @@ export function middleware(request: NextRequest) {
   // Permissions Policy
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
 
-  // Content Security Policy (필요시 조정)
-  // Vercel Analytics와 AdSense를 위해 CSP는 선택적으로 설정
-  // response.headers.set(
-  //   'Content-Security-Policy',
-  //   "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://vercel.live;"
-  // )
+  // HSTS
+  response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains')
+
+  // Content Security Policy (GA, AdSense 호환)
+  response.headers.set(
+    'Content-Security-Policy',
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self' https:; frame-src 'self' https:;"
+  )
 
   // 개발 환경에서만 요청 로깅
   if (process.env.NODE_ENV === 'development') {

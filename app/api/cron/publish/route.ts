@@ -6,7 +6,12 @@ import { eq, asc, and } from 'drizzle-orm'
 
 export const dynamic = 'force-dynamic'
 
-export async function GET() {
+export async function GET(request: Request) {
+    const authHeader = request.headers.get('authorization');
+    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     try {
         const db = getDb()
         const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || 'https://temon.kr').replace(/\/$/, '')
@@ -59,7 +64,7 @@ export async function GET() {
             indexNow,
         })
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Publish Error:', error)
         return NextResponse.json({ success: false, error: 'Failed to publish test' }, { status: 500 })
     }

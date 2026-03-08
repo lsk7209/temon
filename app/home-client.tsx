@@ -57,7 +57,7 @@ export default function HomeClient() {
             재밌는 테스트 🎯
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto font-medium">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto font-medium">
             커피, 라면, 반려동물... 일상 속 선택으로 알아보는 나의 진짜 성격! 💜
           </p>
 
@@ -65,6 +65,7 @@ export default function HomeClient() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-violet-500 to-pink-500 hover:from-violet-600 hover:to-pink-600 text-white text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
+              asChild
             >
               <Link href="/tests">테스트 시작하기 🚀</Link>
             </Button>
@@ -72,17 +73,18 @@ export default function HomeClient() {
               size="lg"
               variant="outline"
               className="border-2 border-violet-500 text-violet-600 hover:bg-violet-50 text-lg px-8 py-6 rounded-full bg-transparent"
+              asChild
             >
               <Link href="/tests">전체 테스트 보기</Link>
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
             {features.map((feature) => {
               const FeatureIcon = feature.icon
               return (
-                <div key={feature.title} className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                <div key={feature.title} className="bg-background/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
                   <FeatureIcon className={`w-8 h-8 mx-auto mb-2 ${feature.color}`} />
                   <h3 className="font-bold text-gray-900">{feature.title}</h3>
                   <p className="text-sm text-gray-600">{feature.description}</p>
@@ -247,7 +249,8 @@ export default function HomeClient() {
           <p className="text-xl mb-8 opacity-90">2분이면 끝! 나를 더 잘 알 수 있는 시간 ✨</p>
           <Button
             size="lg"
-            className="bg-white text-violet-600 hover:bg-gray-100 text-lg px-12 py-6 rounded-full font-bold shadow-xl"
+            className="bg-background text-violet-600 hover:bg-muted text-lg px-12 py-6 rounded-full font-bold shadow-xl"
+            asChild
           >
             <Link href="/tests">무료로 시작하기 →</Link>
           </Button>

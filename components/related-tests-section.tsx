@@ -12,7 +12,7 @@ interface RelatedTestsSectionProps {
 
 export function RelatedTestsSection({
   testId,
-  title = "Related Quizzes You May Also Like",
+  title = "함께 즐길 수 있는 테스트",
 }: RelatedTestsSectionProps) {
   const relatedTests = getRelatedTests(testId)
 
@@ -36,7 +36,7 @@ export function RelatedTestsSection({
             <h3 className="mb-2 text-lg font-bold text-gray-900">{test.title}</h3>
             <p className="mb-4 text-sm leading-relaxed text-gray-600">{test.description}</p>
             <Button asChild variant="outline" className="w-full bg-transparent">
-              <Link href={test.href}>View quiz</Link>
+              <Link href={test.href}>테스트 보기</Link>
             </Button>
           </div>
         ))}

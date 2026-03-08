@@ -103,39 +103,41 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         {/* SEO, AEO, GEO 최적화를 위한 구조화된 데이터 */}
-        <JsonLd id="organization-schema" data={JSON.parse(organizationSchema)} />
-        <JsonLd id="website-schema" data={JSON.parse(websiteSchema)} />
+        <JsonLd id="organization-schema" data={organizationSchema} />
+        <JsonLd id="website-schema" data={websiteSchema} />
         {/* Google tag (gtag.js) - 지연 로딩으로 페이지 속도 최적화 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-L167CCPS8E"
-          strategy="lazyOnload"
-        />
-        <Script id="google-tag" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-L167CCPS8E', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+            strategy="lazyOnload"
+          />
+        )}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <Script id="google-tag" strategy="lazyOnload">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+                page_path: window.location.pathname,
+              });
+            `}
+          </Script>
+        )}
         {/* Microsoft Clarity - 지연 로딩 */}
-        <Script id="microsoft-clarity" strategy="lazyOnload">
-          {`
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "h9v55vfsel");
-          `}
-        </Script>
+        {process.env.NEXT_PUBLIC_CLARITY_ID && (
+          <Script id="microsoft-clarity" strategy="lazyOnload">
+            {`
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");
+            `}
+          </Script>
+        )}
         <AdSenseScript />
         <Script src="/analytics.js" strategy="lazyOnload" />
-        {/* 네이버 검색 최적화 메타 태그 */}
-        {process.env.NAVER_SITE_VERIFICATION && (
-          <meta name="naver-site-verification" content={process.env.NAVER_SITE_VERIFICATION} />
-        )}
         {/* 네이버 검색 최적화 - 모바일 최적화 */}
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
@@ -161,11 +163,14 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body className={inter.className}>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded">
+          본문 바로가기
+        </a>
         <Suspense fallback={null}>
           <AnalyticsProvider>
             <AdminHeadScripts />
             <Header />
-            <main className="min-h-screen">{children}</main>
+            <main id="main-content" className="min-h-screen">{children}</main>
             <Footer />
           </AnalyticsProvider>
         </Suspense>

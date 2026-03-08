@@ -48,7 +48,12 @@ const QuizDataSchema = z.object({
   results: z.array(ResultSchema).length(16)
 })
 
-export async function GET() {
+export async function GET(request: Request) {
+  const authHeader = request.headers.get('authorization');
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const db = getDb() // 한 번만 생성하여 재사용
   let queueItem: typeof testQueue.$inferSelect | null = null
 
@@ -194,20 +199,22 @@ export async function GET() {
 
     return NextResponse.json({ success: true, testId, title: quizData.title })
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Generation Error:', error)
+
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
 
     // 실패 상태 업데이트 (동일한 db 인스턴스 사용)
     if (queueItem) {
       try {
         await db.update(testQueue)
-          .set({ status: 'failed', logs: error.message?.slice(0, 500) })
+          .set({ status: 'failed', logs: errorMessage.slice(0, 500) })
           .where(eq(testQueue.id, queueItem.id))
       } catch (updateError) {
         console.error('Failed to update queue status:', updateError)
       }
     }
 
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 })
+    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 })
   }
 }

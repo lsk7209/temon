@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getDb } from '@/lib/db/client'
 import { pageVisits, testStarts } from '@/lib/db/schema'
+import { z } from 'zod'
 
 export const runtime = 'edge'
+
+const trackSchema = z.object({
+    type: z.enum(['page_view', 'test_start']),
+    payload: z.object({}).passthrough(),
+})
 
 function parseUserAgent(ua: string) {
     const browser = /chrome|crios/i.test(ua) ? 'Chrome' :
@@ -24,7 +30,12 @@ function parseUserAgent(ua: string) {
 
 export async function POST(request: NextRequest) {
     try {
-        const { type, payload } = await request.json() as { type: string, payload: any }
+        const body = await request.json()
+        const parsed = trackSchema.safeParse(body)
+        if (!parsed.success) {
+            return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
+        }
+        const { type, payload } = parsed.data as { type: string, payload: Record<string, any> }
         const userAgent = request.headers.get('user-agent') || ''
         const ip = request.headers.get('x-forwarded-for') || 'unknown'
         const { browser, os, device } = parseUserAgent(userAgent)

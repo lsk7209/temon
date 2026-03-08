@@ -53,7 +53,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
         ]
         : [
           {
-            url: `${baseUrl}/og-image.png`,
+            url: `${baseUrl}/api/og?title=${encodeURIComponent(config.title)}`,
             width: 1200,
             height: 630,
             alt: config.title,
@@ -64,7 +64,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
       card: "summary_large_image",
       title: config.title,
       description: config.description,
-      images: config.ogImage ? [config.ogImage] : [`${baseUrl}/og-image.png`],
+      images: config.ogImage ? [config.ogImage] : [`${baseUrl}/api/og?title=${encodeURIComponent(config.title)}`],
     },
     robots: {
       index: true,
@@ -107,7 +107,7 @@ export function generateTestMetadata(testId: string, testTitle: string, testDesc
       locale: "ko_KR",
       images: [
         {
-          url: `${baseUrl}/og-tests/${testId}.png`,
+          url: `${baseUrl}/api/og?title=${encodeURIComponent(testTitle)}&desc=${encodeURIComponent(testDescription)}`,
           width: 1200,
           height: 630,
           alt: testTitle,
@@ -118,7 +118,7 @@ export function generateTestMetadata(testId: string, testTitle: string, testDesc
       card: "summary_large_image",
       title: `${testTitle} | 무료 성격 테스트`,
       description: testDescription,
-      images: [`${baseUrl}/og-tests/${testId}.png`],
+      images: [`${baseUrl}/api/og?title=${encodeURIComponent(testTitle)}&desc=${encodeURIComponent(testDescription)}`],
     },
     robots: {
       index: true,
@@ -199,8 +199,8 @@ export function generateBreadcrumbSchema(items: Array<{ name: string; url: strin
  * WebSite 스키마 생성 (검색 엔진 최적화)
  * Google, Naver, Daum 검색 최적화
  */
-export function generateWebSiteSchema(searchAction?: { target: string; queryInput: string }): string {
-  return JSON.stringify({
+export function generateWebSiteSchema(searchAction?: { target: string; queryInput: string }): Record<string, unknown> {
+  return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "테몬 MBTI",
@@ -220,15 +220,15 @@ export function generateWebSiteSchema(searchAction?: { target: string; queryInpu
         "query-input": searchAction.queryInput,
       },
     }),
-  })
+  }
 }
 
 /**
  * Organization 스키마 생성 (브랜드 신뢰도 향상 및 검색 엔진 최적화)
  * Google, Naver, Daum 검색 최적화
  */
-export function generateOrganizationSchema(): string {
-  return JSON.stringify({
+export function generateOrganizationSchema(): Record<string, unknown> {
+  return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "테몬",
@@ -245,16 +245,7 @@ export function generateOrganizationSchema(): string {
       "@type": "Country",
       name: "KR",
     },
-    sameAs: [
-      // 향후 소셜 미디어 링크 추가 가능
-    ],
-    // 검색 엔진 최적화를 위한 추가 정보
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://temon.kr/tests?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
-    // 네이버 검색 최적화를 위한 추가 정보
+    sameAs: [],
     contactPoint: {
       "@type": "ContactPoint",
       email: "admin@temon.kr",
@@ -262,7 +253,7 @@ export function generateOrganizationSchema(): string {
       areaServed: "KR",
       availableLanguage: "ko",
     },
-  })
+  }
 }
 
 /**

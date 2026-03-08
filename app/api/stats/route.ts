@@ -7,7 +7,6 @@
 
 export const runtime = 'edge'
 export const revalidate = 300 // ISR: 5분
-export const dynamic = 'force-dynamic'
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getTestStats, getStatsByDateRange } from '@/lib/db/queries/stats'
@@ -17,7 +16,7 @@ import { getTestStats, getStatsByDateRange } from '@/lib/db/queries/stats'
  */
 function getCorsHeaders() {
   return {
-    'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_APP_URL || '*',
+    'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_APP_URL || 'https://temon.kr',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   }

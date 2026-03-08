@@ -98,7 +98,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
       <div className={`min-h-screen ${theme.page} flex items-center justify-center`}>
         <div className="text-center">
           <div className={`animate-spin rounded-full h-12 w-12 border-b-2 ${theme.spinner} mx-auto mb-4`} />
-          <p className="text-gray-600 dark:text-gray-400">Loading result...</p>
+          <p className="text-gray-600 dark:text-gray-400">결과 불러오는 중...</p>
         </div>
       </div>
     )
@@ -108,9 +108,9 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
     return (
       <div className={`min-h-screen ${theme.page} flex items-center justify-center`}>
         <div className="text-center">
-          <p className="text-gray-600 dark:text-gray-400 mb-4">Result not found.</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">결과를 찾을 수 없습니다.</p>
           <Link href={testPath}>
-            <Button>Try again</Button>
+            <Button>다시 시도하기</Button>
           </Link>
         </div>
       </div>
@@ -144,7 +144,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
 
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">Traits</CardTitle>
+            <CardTitle className="text-2xl">특성</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
@@ -160,7 +160,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
 
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">Practical Interpretation</CardTitle>
+            <CardTitle className="text-2xl">실용적 해석</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {interpretationParagraphs.map((paragraph) => (
@@ -193,7 +193,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
         {result.pitfalls && (
           <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
             <CardHeader>
-              <CardTitle className="text-2xl">Watchouts</CardTitle>
+              <CardTitle className="text-2xl">주의할 점</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
@@ -211,7 +211,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
         {result.recommend && (
           <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
             <CardHeader>
-              <CardTitle className="text-2xl">Best Match</CardTitle>
+              <CardTitle className="text-2xl">최고의 궁합</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
@@ -228,7 +228,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
 
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">How To Use This Result</CardTitle>
+            <CardTitle className="text-2xl">결과 활용법</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
@@ -244,7 +244,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
 
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">How This Result Usually Shows Up</CardTitle>
+            <CardTitle className="text-2xl">이 결과가 나타나는 방식</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
@@ -260,7 +260,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
 
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+            <CardTitle className="text-2xl">이 결과가 유용한 순간</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
@@ -276,7 +276,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
 
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">FAQ</CardTitle>
+            <CardTitle className="text-2xl">자주 묻는 질문</CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
             {faqItems.map((item) => (
@@ -290,37 +290,24 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
 
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">Keep Exploring</CardTitle>
+            <CardTitle className="text-2xl">더 알아보기</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col sm:flex-row gap-3">
             <Link href={testPath} className="flex-1">
               <Button variant="outline" className="w-full">
-                Retake this quiz
+                <RotateCcw className="mr-2 h-4 w-4" />
+                다시 테스트하기
               </Button>
             </Link>
             <Link href="/tests" className="flex-1">
               <Button variant="outline" className="w-full">
-                Browse more tests
+                다른 테스트 보기
               </Button>
             </Link>
           </CardContent>
         </Card>
 
-        <RelatedTestsSection testId={testId} title="More Quizzes In Similar Topics" />
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <Link href={testPath}>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto">
-              <RotateCcw className="mr-2 h-4 w-4" />
-              Retry test
-            </Button>
-          </Link>
-          <Link href="/tests">
-            <Button size="lg" variant="outline" className="w-full sm:w-auto">
-              View other tests
-            </Button>
-          </Link>
-        </div>
+        <RelatedTestsSection testId={testId} title="비슷한 주제의 테스트" />
       </div>
     </div>
   )
@@ -333,7 +320,7 @@ export function MbtiResultPage(props: MbtiResultPageProps) {
         <div className={`min-h-screen ${props.theme.page} flex items-center justify-center`}>
           <div className="text-center">
             <div className={`animate-spin rounded-full h-12 w-12 border-b-2 ${props.theme.spinner} mx-auto mb-4`} />
-            <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+            <p className="text-gray-600 dark:text-gray-400">불러오는 중...</p>
           </div>
         </div>
       }

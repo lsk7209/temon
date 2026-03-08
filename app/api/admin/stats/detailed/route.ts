@@ -2,11 +2,16 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getDb } from '@/lib/db/client'
 import { sql, desc } from 'drizzle-orm'
 import { pageVisits } from '@/lib/db/schema'
+import { verifyAdminToken } from '@/lib/admin-auth'
 
 export const runtime = 'edge'
 
 export async function GET(request: NextRequest) {
     try {
+        const isAdmin = await verifyAdminToken()
+        if (!isAdmin) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+        }
         // Device Stats
         const db = getDb()
         const searchEngineCase = sql<string>`

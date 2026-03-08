@@ -3,12 +3,17 @@ import { getDb } from '@/lib/db/client'
 import { testQueue } from '@/lib/db/schema'
 import { desc, sql, eq, asc } from 'drizzle-orm'
 import { nanoid } from 'nanoid'
+import { verifyAdminToken } from '@/lib/admin-auth'
 
 export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
     try {
+        const isAdmin = await verifyAdminToken()
+        if (!isAdmin) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+        }
         const db = getDb()
         // 대기열 상태 조회
         const stats = await db.select({
@@ -35,6 +40,10 @@ export async function GET() {
 
 export async function DELETE(request: Request) {
     try {
+        const isAdmin = await verifyAdminToken()
+        if (!isAdmin) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+        }
         const { searchParams } = new URL(request.url)
         const id = searchParams.get('id')
 
@@ -63,6 +72,10 @@ export async function DELETE(request: Request) {
 
 export async function POST(req: Request) {
     try {
+        const isAdmin = await verifyAdminToken()
+        if (!isAdmin) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+        }
         const { topics } = await req.json()
 
         if (!topics || !Array.isArray(topics) || topics.length === 0) {

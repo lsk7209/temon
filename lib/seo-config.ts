@@ -15,7 +15,7 @@ export const SEO_CONFIG = {
   searchEngines: {
     google: {
       siteVerification: process.env.GOOGLE_SITE_VERIFICATION || '',
-      analyticsId: 'G-L167CCPS8E',
+      analyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '',
     },
     naver: {
       siteVerification: process.env.NAVER_SITE_VERIFICATION || '',
@@ -25,7 +25,7 @@ export const SEO_CONFIG = {
     },
     daum: {
       // 다음 검색 최적화 설정
-      webmasterTool: 'c31e7b96662307b31cb400ef4928000f10b5e2655ff33772379f888ea18c1179:OkBMPAodCv39zGs73L6HFQ==',
+      webmasterTool: process.env.DAUM_SITE_VERIFICATION || '',
     },
   },
   

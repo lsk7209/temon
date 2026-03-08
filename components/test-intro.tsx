@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Droplets, Sparkles, CheckCircle2, PlayCircle } from "lucide-react"
+import { Clock, Users, Sparkles, CheckCircle2, PlayCircle } from "lucide-react"
 import { JsonLd, createQuizSchema } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { getIntroHighlights, getIntroLandingParagraphs, getIntroUseCases } from "@/lib/quiz-seo-utils"
@@ -82,10 +82,10 @@ export function TestIntro({
     const jsonLd = createQuizSchema({
         name: title,
         description: description,
-        url: `https://www.temon.kr/tests/${id}`,
+        url: `https://temon.kr/tests/${id}`,
         questionCount: questionCount,
         duration: `PT${avgMinutes}M`,
-        image: `https://www.temon.kr/images/tests/${id}/thumbnail.jpg` // Fallback
+        image: `https://temon.kr/images/tests/${id}/thumbnail.jpg` // Fallback
     })
     const faqs = getTopicQuizFAQs(title)
     const highlights = getIntroHighlights(title)
@@ -189,7 +189,7 @@ export function TestIntro({
                     <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
                         <CardContent className="p-8 md:p-12">
                             <div className="space-y-6">
-                                <h2 className="text-2xl font-bold text-gray-800">Why This Quiz Works</h2>
+                                <h2 className="text-2xl font-bold text-gray-800">이 테스트가 효과적인 이유</h2>
                                 <div className="space-y-4 max-w-3xl">
                                     {landingParagraphs.map((paragraph) => (
                                         <p key={paragraph} className="text-gray-600 leading-relaxed">
@@ -211,7 +211,7 @@ export function TestIntro({
                     <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
                         <CardContent className="p-8 md:p-12">
                             <div className="space-y-6">
-                                <h2 className="text-2xl font-bold text-gray-800">Who This Quiz Is For</h2>
+                                <h2 className="text-2xl font-bold text-gray-800">이런 분에게 추천합니다</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {useCases.map((item) => (
                                         <div key={item} className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
@@ -226,7 +226,7 @@ export function TestIntro({
                     <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
                         <CardContent className="p-8 md:p-12">
                             <div className="space-y-6">
-                                <h2 className="text-2xl font-bold text-gray-800">Search Intent Match</h2>
+                                <h2 className="text-2xl font-bold text-gray-800">검색 의도 매칭</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {searchIntents.map((item) => (
                                         <div key={item} className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
@@ -242,7 +242,7 @@ export function TestIntro({
 
                     <FAQSection faqs={faqs} className="max-w-none" />
 
-                    <RelatedTestsSection testId={id} title="Related Quizzes For More Page Views" />
+                    <RelatedTestsSection testId={id} title="추천 테스트" />
                 </div>
             </main>
         </div>
