@@ -87,6 +87,14 @@ interface LandingPageStats {
   percentage: number
 }
 
+interface SeoOpportunity {
+  path: string
+  count: number
+  percentage: number
+  priority: "High" | "Medium" | "Watch"
+  action: string
+}
+
 interface ScriptConfig {
   id: string
   name: string
@@ -120,6 +128,31 @@ export default function EnhancedAdminDashboard() {
   const [isSubmittingQueue, setIsSubmittingQueue] = useState(false)
   const [queueItems, setQueueItems] = useState<any[]>([])
   const [queueStats, setQueueStats] = useState<any[]>([])
+
+  const seoOpportunities: SeoOpportunity[] = searchLandingPages.slice(0, 5).map((item) => {
+    const normalizedPath = item.path.toLowerCase()
+    let action = "Expand intro answer blocks, strengthen result-page guidance, and add tighter related-quiz links."
+    if (normalizedPath.includes("kdrama") || normalizedPath.includes("idol")) {
+      action = "Broaden entertainment-intent copy, strengthen comparison hooks, and add more share-focused result CTAs."
+    } else if (normalizedPath.includes("study") || normalizedPath.includes("alarm") || normalizedPath.includes("phone")) {
+      action = "Add practical action steps, outcome-focused snippets, and stronger problem-solving language."
+    } else if (normalizedPath.includes("pet") || normalizedPath.includes("ramen") || normalizedPath.includes("food")) {
+      action = "Thicken AEO copy, expand FAQ contrast points, and improve next-click depth into related lifestyle quizzes."
+    } else if (normalizedPath === "/tests") {
+      action = "Curate category blocks, surface top search winners, and tighten collection-page internal links."
+    }
+
+    const priority: SeoOpportunity["priority"] =
+      item.percentage >= 7 ? "High" : item.percentage >= 4 ? "Medium" : "Watch"
+
+    return {
+      path: item.path,
+      count: item.count,
+      percentage: item.percentage,
+      priority,
+      action,
+    }
+  })
 
   const testIcons: Record<string, React.ComponentType<{ className?: string }>> = {
     "커피 MBTI": Coffee,
@@ -480,6 +513,80 @@ export default function EnhancedAdminDashboard() {
                   ))}
                 </TableBody>
               </Table>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Zap className="h-5 w-5" />
+                SEO Action Queue
+              </CardTitle>
+              <CardDescription>검색 랜딩 페이지 기준으로 우선 손볼 후보와 권장 작업</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {seoOpportunities.map((item) => (
+                  <div key={`seo-opportunity-${item.path}`} className="rounded-xl border p-4">
+                    <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <p className="font-semibold">{item.path}</p>
+                          <Badge variant={item.priority === "High" ? "default" : item.priority === "Medium" ? "secondary" : "outline"}>
+                            {item.priority}
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{item.action}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {item.count.toLocaleString()} search landings, {item.percentage}% of tracked visits
+                        </p>
+                      </div>
+                      <Button variant="outline" size="sm" asChild>
+                        <Link href={item.path}>
+                          Open
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Zap className="h-5 w-5" />
+                SEO Action Queue
+              </CardTitle>
+              <CardDescription>검색 랜딩 페이지 기준으로 우선 손볼 후보와 권장 작업</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {seoOpportunities.map((item) => (
+                  <div key={`seo-opportunity-keywords-${item.path}`} className="rounded-xl border p-4">
+                    <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <p className="font-semibold">{item.path}</p>
+                          <Badge variant={item.priority === "High" ? "default" : item.priority === "Medium" ? "secondary" : "outline"}>
+                            {item.priority}
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{item.action}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {item.count.toLocaleString()} search landings, {item.percentage}% of tracked visits
+                        </p>
+                      </div>
+                      <Button variant="outline" size="sm" asChild>
+                        <Link href={item.path}>
+                          Open
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
