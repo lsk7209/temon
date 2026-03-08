@@ -5,6 +5,9 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 export const metadata: Metadata = {
   title: "스마트폰 사용 스타일 테스트 | 12문항으로 알아보는 16유형",
@@ -79,6 +82,18 @@ export default function PhoneUsageIntro() {
           </div>
 
           {/* FAQ 섹션 */}
+          <div className="mt-12 text-left">
+            <AnswerEngineSection quizTitle="Phone Usage Style Test" />
+          </div>
+
+          <div className="mt-12 text-left">
+            <LandingConversionSection quizTitle="Phone Usage Style Test" />
+          </div>
+
+          <div className="mt-12 text-left">
+            <RelatedTestsSection testId="phone-usage" title="Next Quizzes Search Visitors Usually Click" />
+          </div>
+
           <div className="mt-12 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-left">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               자주 묻는 질문

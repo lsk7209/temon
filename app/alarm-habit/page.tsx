@@ -7,8 +7,10 @@ import { Clock, Users, Sparkles } from "lucide-react"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "기상 패턴으로 알아보는 성격 테스트. 알람 습관 MBTI 16유형 발견!"
@@ -251,6 +253,10 @@ export default function AlarmHabitIntro() {
         </div>
 
         <AnswerEngineSection quizTitle="Alarm Habit MBTI" />
+
+        <LandingConversionSection quizTitle="Alarm Habit MBTI" />
+
+        <RelatedTestsSection testId="alarm-habit" title="Next Quizzes Search Visitors Usually Click" />
 
         {/* FAQ Section for AI Bot Optimization */}
         <section className="mt-20 mb-12">

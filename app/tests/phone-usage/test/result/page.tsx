@@ -92,6 +92,22 @@ function ResultContent() {
         {/* 사용 성향 요약 */}
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {resultUseCases.map((item) => (
+              <div
+                key={item}
+                className="rounded-xl border border-gray-100 bg-white p-4 text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+              >
+                {item}
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
             <CardTitle className="text-2xl">✨ 사용 성향 요약</CardTitle>
           </CardHeader>
           <CardContent>
@@ -197,6 +213,21 @@ function ResultContent() {
             <CardTitle className="text-2xl">✅ 7일 실천 체크리스트</CardTitle>
           </CardHeader>
           <CardContent>
+            <Card className="mb-6 bg-transparent shadow-none border-0">
+              <CardHeader className="px-0 pt-0">
+                <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+              </CardHeader>
+              <CardContent className="px-0 space-y-3">
+                {resultUseCases.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-xl border border-gray-100 bg-white p-4 text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
             <ol className="space-y-3 list-decimal list-inside">
               {result.checklist.map((item, index) => (
                 <li key={index} className="text-gray-700 dark:text-gray-300">
