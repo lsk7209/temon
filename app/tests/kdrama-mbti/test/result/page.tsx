@@ -9,6 +9,7 @@ import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 
 const results = {
   chaebol: {
@@ -184,6 +185,8 @@ function ResultContent() {
   const resultId = searchParams.get("id")
   const { resolvedType, loading } = useResolvedResultType(Object.keys(results), type, resultId)
   const result = results[(resolvedType as keyof typeof results) || "chaebol"]
+  const faqItems = getTopicResultFAQs("K-Drama MBTI Test", result.title)
+  const resultUseCases = getTopicResultUseCases("K-Drama MBTI Test", result.title)
 
   if (loading) {
     return <div>Loading...</div>
@@ -373,6 +376,27 @@ ${shareUrl}`
                   The practical next step is choosing one strength to lean into and one habit to soften. That makes the
                   result more useful than just sharing the headline.
                 </p>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-slate-50 to-zinc-50 p-6 rounded-lg border border-slate-200">
+              <h3 className="font-bold text-lg mb-3 text-gray-800">Where This Result Becomes Useful</h3>
+              <div className="space-y-3 text-gray-700 leading-relaxed">
+                {resultUseCases.map((item) => (
+                  <p key={item}>{item}</p>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-white to-pink-50 p-6 rounded-lg border border-pink-200">
+              <h3 className="font-bold text-lg mb-3 text-gray-800">FAQ</h3>
+              <div className="space-y-5 text-gray-700 leading-relaxed">
+                {faqItems.map((item) => (
+                  <div key={item.question}>
+                    <p className="font-semibold text-gray-900 mb-2">{item.question}</p>
+                    <p>{item.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
 

@@ -17,6 +17,7 @@ import type { ResultType } from "@/lib/data/phone-usage-results"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 
 function ResultContent() {
   const searchParams = useSearchParams()
@@ -57,6 +58,9 @@ function ResultContent() {
       </div>
     )
   }
+
+  const faqItems = getTopicResultFAQs("Phone Usage Style Test", result.name)
+  const resultUseCases = getTopicResultUseCases("Phone Usage Style Test", result.name)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950">
@@ -253,6 +257,31 @@ function ResultContent() {
               page describes first. The biggest improvement usually comes from removing repeated friction, not adding more
               features.
             </p>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+            {resultUseCases.map((item) => (
+              <p key={item}>{item}</p>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">FAQ</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{item.question}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{item.answer}</p>
+              </div>
+            ))}
           </CardContent>
         </Card>
 
