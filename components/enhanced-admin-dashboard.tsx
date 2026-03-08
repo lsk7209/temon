@@ -75,6 +75,18 @@ interface OsStats {
   percentage: number
 }
 
+interface SearchEngineStats {
+  engine: string
+  count: number
+  percentage: number
+}
+
+interface LandingPageStats {
+  path: string
+  count: number
+  percentage: number
+}
+
 interface ScriptConfig {
   id: string
   name: string
@@ -94,6 +106,8 @@ export default function EnhancedAdminDashboard() {
   const [browserStats, setBrowserStats] = useState<BrowserStats[]>([])
   const [keywordStats, setKeywordStats] = useState<KeywordStats[]>([])
   const [osStats, setOsStats] = useState<OsStats[]>([])
+  const [searchEngineStats, setSearchEngineStats] = useState<SearchEngineStats[]>([])
+  const [searchLandingPages, setSearchLandingPages] = useState<LandingPageStats[]>([])
 
   // Head 스크립트 관리
   const [scripts, setScripts] = useState<ScriptConfig[]>([])
@@ -142,6 +156,19 @@ export default function EnhancedAdminDashboard() {
       { os: "Android", count: 900, percentage: 13 },
       { os: "macOS", count: 450, percentage: 6 },
     ])
+    setSearchEngineStats([
+      { engine: "Google", count: 2400, percentage: 34 },
+      { engine: "Naver", count: 1500, percentage: 21 },
+      { engine: "Daum", count: 220, percentage: 3 },
+      { engine: "Direct", count: 1800, percentage: 26 },
+    ])
+    setSearchLandingPages([
+      { path: "/tests", count: 820, percentage: 12 },
+      { path: "/tests/kdrama-mbti", count: 510, percentage: 7 },
+      { path: "/tests/kpop-idol", count: 430, percentage: 6 },
+      { path: "/tests/pet-mbti", count: 360, percentage: 5 },
+      { path: "/tests/ramen-mbti", count: 310, percentage: 4 },
+    ])
   }, [])
 
   const loadDetailedStats = useCallback(async () => {
@@ -153,6 +180,8 @@ export default function EnhancedAdminDashboard() {
         setBrowserStats(data.browsers || [])
         setKeywordStats(data.keywords || [])
         setOsStats(data.os || [])
+        setSearchEngineStats(data.searchEngines || [])
+        setSearchLandingPages(data.searchLandingPages || [])
       } else {
         loadMockDetailedStats()
       }
@@ -424,6 +453,35 @@ export default function EnhancedAdminDashboard() {
               </div>
             </CardContent>
           </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Globe className="h-5 w-5" />
+                상위 검색 랜딩 페이지
+              </CardTitle>
+              <CardDescription>검색엔진 유입이 처음 닿는 페이지 상위 15개</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>페이지</TableHead>
+                    <TableHead className="text-right">유입 수</TableHead>
+                    <TableHead className="text-right">비중</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {searchLandingPages.map((item, index) => (
+                    <TableRow key={`${item.path}-${index}`}>
+                      <TableCell className="max-w-[320px] truncate font-medium">{item.path}</TableCell>
+                      <TableCell className="text-right">{item.count.toLocaleString()}</TableCell>
+                      <TableCell className="text-right">{item.percentage}%</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         {/* 통계 탭 */}
@@ -492,6 +550,57 @@ export default function EnhancedAdminDashboard() {
 
         {/* 키워드 탭 */}
         <TabsContent value="keywords" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Search className="h-5 w-5" />
+                검색엔진 유입 비중
+              </CardTitle>
+              <CardDescription>구글, 네이버, 다음 등 검색엔진별 방문 분포</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {searchEngineStats.map((item, index) => (
+                  <div key={`${item.engine}-${index}`} className="flex items-center justify-between p-4 border rounded-lg">
+                    <div>
+                      <p className="font-medium">{item.engine}</p>
+                      <p className="text-sm text-muted-foreground">{item.count.toLocaleString()}회 유입</p>
+                    </div>
+                    <Badge>{item.percentage}%</Badge>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Globe className="h-5 w-5" />
+                상위 검색 랜딩 페이지
+              </CardTitle>
+              <CardDescription>검색엔진 유입이 처음 닿는 페이지 상위 15개</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>페이지</TableHead>
+                    <TableHead className="text-right">유입 수</TableHead>
+                    <TableHead className="text-right">비중</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {searchLandingPages.map((item, index) => (
+                    <TableRow key={`keywords-${item.path}-${index}`}>
+                      <TableCell className="max-w-[320px] truncate font-medium">{item.path}</TableCell>
+                      <TableCell className="text-right">{item.count.toLocaleString()}</TableCell>
+                      <TableCell className="text-right">{item.percentage}%</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
