@@ -515,7 +515,7 @@ export default function EnhancedAdminDashboard() {
               </Table>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="hidden">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Zap className="h-5 w-5" />
