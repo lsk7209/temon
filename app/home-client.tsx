@@ -39,6 +39,7 @@ const features: Feature[] = [
 
 export default function HomeClient() {
   const displayTests = getHomePageTests()
+  const newTests = ALL_TESTS.filter((test) => test.new).slice(0, 8)
   const hasMoreTests = ALL_TESTS.length > 9
 
   return (
@@ -91,6 +92,75 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
+
+      {newTests.length > 0 && (
+        <section className="px-4 pb-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-8 flex items-end justify-between gap-4">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-black mb-2 bg-gradient-to-r from-pink-600 to-violet-600 bg-clip-text text-transparent">
+                  새로운 퀴즈
+                </h2>
+                <p className="text-lg text-gray-600">최근 추가된 퀴즈를 먼저 확인해보세요.</p>
+              </div>
+              <Link href="/tests">
+                <Button
+                  variant="outline"
+                  className="hidden sm:inline-flex border-2 border-pink-400 text-pink-600 hover:bg-pink-50 bg-white/80"
+                >
+                  전체 보기
+                </Button>
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+              {newTests.map((test) => {
+                const TestIcon = test.icon
+
+                return (
+                  <Link key={test.href} href={test.href}>
+                    <Card className="group h-full bg-white/90 backdrop-blur-sm border border-pink-100 hover:border-pink-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                      <CardHeader className="space-y-4">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className={`p-3 rounded-2xl bg-gradient-to-br ${test.color} shadow-lg`}>
+                            <TestIcon className="w-6 h-6 text-white" />
+                          </div>
+                          <Badge className="bg-gradient-to-r from-pink-500 to-violet-500 text-white border-0">
+                            NEW
+                          </Badge>
+                        </div>
+                        <div className="space-y-2">
+                          <CardTitle className="text-xl font-bold leading-snug group-hover:text-pink-600 transition-colors">
+                            {test.title}
+                          </CardTitle>
+                          <CardDescription className="text-sm leading-relaxed text-gray-600">
+                            {test.description}
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                      <CardFooter className="flex items-center justify-between border-t pt-4">
+                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                          <div className="flex items-center gap-1">
+                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            <span className="font-semibold">{test.rating}</span>
+                          </div>
+                          {shouldShowParticipants(test.participants) && (
+                            <div className="flex items-center gap-1">
+                              <Users className="w-4 h-4" />
+                              <span>{formatParticipants(test.participants)}</span>
+                            </div>
+                          )}
+                        </div>
+                        <span className="text-sm font-semibold text-pink-600">바로가기</span>
+                      </CardFooter>
+                    </Card>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Popular Tests */}
       <section className="py-16 px-4">
