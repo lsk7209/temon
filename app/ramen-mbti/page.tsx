@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
@@ -105,6 +106,8 @@ export default function RamenMBTI() {
                 <p>💡 정확한 결과를 위해 솔직하게 답변해주세요!</p>
               </div>
             </section>
+
+            <AnswerEngineSection quizTitle="Ramen MBTI" />
 
             {/* FAQ Section for AI Bot Optimization */}
             <section className="mt-12">

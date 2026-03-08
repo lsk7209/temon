@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import KDramaClient from "./kdrama-client"
@@ -55,6 +56,9 @@ export default function KDramaMBTIIntro() {
 
       <article>
         <KDramaClient />
+        <section className="container mx-auto px-4 pb-4 max-w-2xl">
+          <AnswerEngineSection quizTitle="K-Drama MBTI Test" />
+        </section>
         
         {/* FAQ Section for AI Bot Optimization */}
         <section className="container mx-auto px-4 py-12 max-w-2xl">

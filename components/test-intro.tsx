@@ -10,6 +10,7 @@ import { FAQSection } from "@/components/faq-section"
 import { getIntroHighlights, getIntroLandingParagraphs, getIntroUseCases } from "@/lib/quiz-seo-utils"
 import { getIntroSearchIntents, getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
 
 interface TestIntroProps {
     id: string
@@ -236,6 +237,8 @@ export function TestIntro({
                             </div>
                         </CardContent>
                     </Card>
+
+                    <AnswerEngineSection quizTitle={title} />
 
                     <FAQSection faqs={faqs} className="max-w-none" />
 

@@ -6,6 +6,7 @@ import { Clock, Users, BookOpen, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
@@ -252,6 +253,8 @@ export default function StudyMBTIIntro() {
             </CardContent>
           </Card>
         </div>
+
+        <AnswerEngineSection quizTitle="Study MBTI" />
 
         {/* FAQ Section for AI Bot Optimization */}
         <section className="mt-20 mb-12">
