@@ -10,6 +10,7 @@ import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 
 const ramenCharacters = {
   ENFP: {
@@ -213,6 +214,8 @@ function ResultContent() {
   const { resolvedType, loading } = useResolvedResultType(Object.keys(ramenCharacters), type, resultId)
   const mbtiType = (resolvedType as keyof typeof ramenCharacters) || "ENFP"
   const character = ramenCharacters[mbtiType]
+  const faqItems = getTopicResultFAQs("Ramen MBTI Test", character.name)
+  const resultUseCases = getTopicResultUseCases("Ramen MBTI Test", character.name)
 
   if (loading) {
     return <div>Loading...</div>
@@ -389,6 +392,33 @@ ${shareUrl}`
               그래서 이 결과는 먹거리 취향을 넘어서 작은 선택을 어떻게 커스터마이즈하는지, 혹은 얼마나 익숙한 방식을
               선호하는지 읽는 데 유용합니다.
             </p>
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
+          <CardHeader className="pb-4 sm:pb-6">
+            <CardTitle className="text-xl sm:text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {resultUseCases.map((item) => (
+              <p key={item} className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+                {item}
+              </p>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
+          <CardHeader className="pb-4 sm:pb-6">
+            <CardTitle className="text-xl sm:text-2xl">FAQ</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">{item.question}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
           </CardContent>
         </Card>
 

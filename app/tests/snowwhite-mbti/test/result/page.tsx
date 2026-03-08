@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 
 const characters = {
   princess: {
@@ -106,6 +107,8 @@ function ResultContent() {
   const { resolvedType, loading } = useResolvedResultType(Object.keys(characters), type, resultId)
   const resultType = (resolvedType as keyof typeof characters) || "princess"
   const character = characters[resultType]
+  const faqItems = getTopicResultFAQs("Snow White MBTI Test", character.name)
+  const resultUseCases = getTopicResultUseCases("Snow White MBTI Test", character.name)
 
   if (loading) {
     return <div>Loading...</div>
@@ -305,6 +308,33 @@ function ResultContent() {
             <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
               중요한 건 결과 이름보다 어떤 강점이 자주 나타나는지 확인하고, 성장 포인트를 생활 습관에 연결하는 것입니다.
             </p>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-8 border-0 bg-white/90 shadow-xl">
+          <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {resultUseCases.map((item) => (
+              <p key={item} className="text-base leading-relaxed text-gray-700 sm:text-lg">
+                {item}
+              </p>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="mb-8 border-0 bg-white/90 shadow-xl">
+          <CardHeader>
+            <CardTitle className="text-2xl">FAQ</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="mb-2 font-semibold text-gray-900">{item.question}</h3>
+                <p className="text-base leading-relaxed text-gray-700 sm:text-lg">{item.answer}</p>
+              </div>
+            ))}
           </CardContent>
         </Card>
 

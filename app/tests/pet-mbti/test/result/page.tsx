@@ -10,6 +10,7 @@ import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 
 const petCharacters = {
   ENFP: {
@@ -305,6 +306,8 @@ function ResultContent() {
   const { resolvedType, loading } = useResolvedResultType(Object.keys(petCharacters), type, resultId)
   const mbtiType = (resolvedType as keyof typeof petCharacters) || "ENFP"
   const character = petCharacters[mbtiType]
+  const faqItems = getTopicResultFAQs("Pet MBTI Test", `${character.name} - ${character.pet}`)
+  const resultUseCases = getTopicResultUseCases("Pet MBTI Test", `${character.name} - ${character.pet}`)
 
   if (loading) {
     return <div>Loading...</div>
@@ -534,6 +537,33 @@ ${shareUrl}`
               실제 반려동물 선택에서는 귀여움보다 생활 여건, 돌봄 시간, 비용, 소음과 털 관리까지 같이 봐야 하므로 이
               결과는 출발점으로 활용하는 것이 가장 좋습니다.
             </p>
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
+          <CardHeader className="pb-4 sm:pb-6">
+            <CardTitle className="text-xl sm:text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {resultUseCases.map((item) => (
+              <p key={item} className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+                {item}
+              </p>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
+          <CardHeader className="pb-4 sm:pb-6">
+            <CardTitle className="text-xl sm:text-2xl">FAQ</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">{item.question}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
           </CardContent>
         </Card>
 

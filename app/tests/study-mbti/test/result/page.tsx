@@ -10,6 +10,7 @@ import { Suspense } from "react"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 
 const studyCharacters = {
   ENFP: {
@@ -213,6 +214,8 @@ function ResultContent() {
   const { resolvedType, loading } = useResolvedResultType(Object.keys(studyCharacters), type, resultId)
   const mbtiType = (resolvedType as keyof typeof studyCharacters) || "ENFP"
   const character = studyCharacters[mbtiType]
+  const faqItems = getTopicResultFAQs("Study MBTI Test", character.name)
+  const resultUseCases = getTopicResultUseCases("Study MBTI Test", character.name)
 
   if (loading) {
     return <div>Loading...</div>
@@ -365,6 +368,33 @@ function ResultContent() {
               중요한 것은 결과를 그대로 따르기보다, 공부법 팁 중 바로 적용 가능한 한두 개만 먼저 실험해보는 것입니다.
               그렇게 해야 결과가 생산적인 루틴 개선으로 이어집니다.
             </p>
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {resultUseCases.map((item) => (
+              <p key={item} className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+                {item}
+              </p>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl">FAQ</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">{item.question}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
           </CardContent>
         </Card>
 
