@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, AlarmClock, Sparkles } from "lucide-react"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 export const metadata: Metadata = {
   title: "아침 알람 대하는 방식 테스트 | 16유형 분석 | 테몬",
@@ -213,6 +216,12 @@ export default function MorningAlarmIntro() {
               </div>
             </CardContent>
           </Card>
+
+          <AnswerEngineSection quizTitle="Morning Alarm Habit Test" />
+
+          <LandingConversionSection quizTitle="Morning Alarm Habit Test" />
+
+          <RelatedTestsSection testId="morning-alarm" title="Next Quizzes Search Visitors Usually Click" />
         </div>
       </main>
     </div>

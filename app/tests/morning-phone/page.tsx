@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Smartphone, Sparkles } from "lucide-react"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 export const metadata: Metadata = {
   title: "아침 핸드폰 체크 테스트 | 16유형 분석 | 테몬",
@@ -207,6 +210,12 @@ export default function MorningPhoneIntro() {
               </div>
             </CardContent>
           </Card>
+
+          <AnswerEngineSection quizTitle="Morning Phone Habit Test" />
+
+          <LandingConversionSection quizTitle="Morning Phone Habit Test" />
+
+          <RelatedTestsSection testId="morning-phone" title="Next Quizzes Search Visitors Usually Click" />
         </div>
       </main>
     </div>

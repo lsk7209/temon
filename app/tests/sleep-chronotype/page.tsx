@@ -5,6 +5,9 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 export const metadata: Metadata = {
   title: "수면 크로노타입 테스트 | 12문항으로 보는 나의 리듬",
@@ -79,6 +82,18 @@ export default function SleepChronotypeIntro() {
           </div>
 
           {/* FAQ 섹션 */}
+          <div className="mt-12 text-left">
+            <AnswerEngineSection quizTitle="Sleep Chronotype Test" />
+          </div>
+
+          <div className="mt-12 text-left">
+            <LandingConversionSection quizTitle="Sleep Chronotype Test" />
+          </div>
+
+          <div className="mt-12 text-left">
+            <RelatedTestsSection testId="sleep-chronotype" title="Next Quizzes Search Visitors Usually Click" />
+          </div>
+
           <div className="mt-12 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-left">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               자주 묻는 질문

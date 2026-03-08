@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Play, Sparkles } from "lucide-react"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
 export const metadata: Metadata = {
   title: "유튜브 시청 습관 테스트 | 추천·배속·플리 관리로 보는 16유형 | 테몬",
@@ -213,6 +216,12 @@ export default function YoutubeHabitIntro() {
               </div>
             </CardContent>
           </Card>
+
+          <AnswerEngineSection quizTitle="YouTube Habit Test" />
+
+          <LandingConversionSection quizTitle="YouTube Habit Test" />
+
+          <RelatedTestsSection testId="youtube-habit" title="Next Quizzes Search Visitors Usually Click" />
         </div>
       </main>
     </div>
