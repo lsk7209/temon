@@ -12,7 +12,10 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useState } from "react"
 import { ShareButtons } from "@/components/share-buttons"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 import { SLEEP_CHRONOTYPE_RESULTS } from "@/lib/data/sleep-chronotype-results"
+import { getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 import type { ResultType } from "@/lib/data/sleep-chronotype-results"
 
 function ResultContent() {
@@ -56,8 +59,11 @@ function ResultContent() {
     )
   }
 
+  const useCases = getTopicResultUseCases("Sleep Chronotype Test", result.name)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950 dark:to-purple-950">
+      <ResultFaqSchema quizTitle="Sleep Chronotype Test" resultName={result.name} />
       <div className="container max-w-4xl mx-auto px-4 py-8">
         {/* 헤더 */}
         <div className="text-center mb-8">
@@ -214,6 +220,26 @@ function ResultContent() {
         </Card>
 
         {/* CTA 버튼 */}
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-3">
+              {useCases.map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-500" />
+                  <p className="text-gray-700 dark:text-gray-300">{item}</p>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+
+        <div className="mb-8">
+          <RelatedTestsSection testId="sleep-chronotype" title="More Routine Quizzes To Compare" />
+        </div>
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Link href="/tests/sleep-chronotype/test">
             <Button size="lg" variant="outline" className="w-full sm:w-auto">

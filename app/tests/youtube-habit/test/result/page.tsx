@@ -8,7 +8,10 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useState } from "react"
 import { ShareButtons } from "@/components/share-buttons"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 import { getTestResult } from "@/lib/api-client"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 
 const youtubeTypes = {
   ENFP: {
@@ -163,6 +166,8 @@ function ResultContent() {
   const resultId = searchParams.get("id") || undefined
   const character = youtubeTypes[mbtiType]
   const [loadedResult, setLoadedResult] = useState<{ id: string; testId: string } | null>(null)
+  const useCases = getTopicResultUseCases("YouTube Habit Test", character.label)
+  const faqs = getTopicResultFAQs("YouTube Habit Test", character.label)
 
   // 결과 ID가 있으면 결과 정보 로드
   useEffect(() => {
@@ -179,6 +184,7 @@ function ResultContent() {
 
   return (
     <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+      <ResultFaqSchema quizTitle="YouTube Habit Test" resultName={character.label} />
       {/* Main Result */}
       <main className="container max-w-[720px] mx-auto px-4 py-8">
         {/* Character Card */}
@@ -295,6 +301,37 @@ function ResultContent() {
             <p className="text-lg leading-relaxed text-muted-foreground">{character.match}</p>
           </CardContent>
         </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {useCases.map((item, index) => (
+              <div key={index} className="rounded-xl bg-red-50 p-4 text-muted-foreground dark:bg-red-950/40">
+                {item}
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl">FAQ</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            {faqs.map((faq) => (
+              <div key={faq.question}>
+                <h3 className="mb-2 text-lg font-semibold">{faq.question}</h3>
+                <p className="leading-relaxed text-muted-foreground">{faq.answer}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <div className="mb-8">
+          <RelatedTestsSection testId="youtube-habit" title="More Lifestyle Quizzes To Compare" />
+        </div>
 
         {/* Other Tests */}
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">

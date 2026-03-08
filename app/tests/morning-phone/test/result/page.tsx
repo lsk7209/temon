@@ -8,7 +8,10 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useState } from "react"
 import { ShareButtons } from "@/components/share-buttons"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
 import { getTestResult } from "@/lib/api-client"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
 
 const phoneTypes = {
   ENFP: {
@@ -419,6 +422,8 @@ function ResultContent() {
   const resultId = searchParams.get("id") || undefined
   const character = phoneTypes[mbtiType]
   const [loadedResult, setLoadedResult] = useState<{ id: string; testId: string } | null>(null)
+  const useCases = getTopicResultUseCases("Morning Phone Habit Test", character.label)
+  const faqs = getTopicResultFAQs("Morning Phone Habit Test", character.label)
 
   useEffect(() => {
     if (resultId) {
@@ -434,6 +439,7 @@ function ResultContent() {
 
   return (
     <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+      <ResultFaqSchema quizTitle="Morning Phone Habit Test" resultName={character.label} />
       <main className="container max-w-[720px] mx-auto px-4 py-8">
         <Card className="border-0 shadow-2xl bg-white/90 backdrop-blur mb-8">
           <CardContent className="p-8 text-center">
@@ -567,6 +573,40 @@ function ResultContent() {
             </div>
           </CardContent>
         </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {useCases.map((item, index) => (
+              <div
+                key={index}
+                className="rounded-xl bg-gradient-to-br from-purple-50 to-pink-50 p-4 text-muted-foreground dark:from-purple-950 dark:to-pink-950"
+              >
+                {item}
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl">FAQ</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            {faqs.map((faq) => (
+              <div key={faq.question}>
+                <h3 className="mb-2 text-lg font-semibold">{faq.question}</h3>
+                <p className="leading-relaxed text-muted-foreground">{faq.answer}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <div className="mb-8">
+          <RelatedTestsSection testId="morning-phone" title="More Morning Routine Quizzes To Compare" />
+        </div>
 
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
           <CardHeader>
