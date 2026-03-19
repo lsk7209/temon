@@ -140,17 +140,17 @@ export function getDefaultQuizFAQs(quizTitle: string): Array<{ question: string;
 
 export function getIntroHighlights(quizTitle: string): string[] {
   return [
-    `${quizTitle} is designed to be completed quickly without sign-up or payment.`,
-    "The result is most useful when you answer from your real habit instead of your ideal self-image.",
-    "Retaking the quiz later can show how your preference changes by context, mood, or timing.",
+    `${quizTitle}는 회원가입이나 결제 없이 바로 시작할 수 있습니다.`,
+    "이상적인 나보다 평소 습관대로 답하면 더 정확한 결과를 얻을 수 있어요.",
+    "나중에 다시 해보면 상황이나 기분에 따라 결과가 달라질 수 있습니다.",
   ]
 }
 
 export function getIntroUseCases(quizTitle: string): string[] {
   return [
-    `${quizTitle} works well for first-time visitors who want a short quiz with a clear topic and a fast result.`,
-    "It is also useful when you want a shareable result page that can spark comparison with friends or partners.",
-    "For repeat visitors, the main value is checking whether the same preference pattern appears across different quiz themes.",
+    `${quizTitle}는 짧은 시간 안에 재미있는 결과를 얻고 싶은 분에게 딱 맞습니다.`,
+    "결과 페이지를 친구나 연인과 공유하며 서로 비교해보는 재미가 있어요.",
+    "여러 테스트를 반복하면 주제별로 나의 성향 패턴이 어떻게 달라지는지 확인할 수 있습니다.",
   ]
 }
 
@@ -159,65 +159,69 @@ export function getIntroLandingParagraphs(quizTitle: string): string[] {
 
   if (lowerTitle.includes("k-drama") || lowerTitle.includes("드라마")) {
     return [
-      "This intro targets visitors who want to know which drama-style role matches their real social behavior, not just their favorite character type.",
-      "The strongest use case is comparing how you react in conflict, romance, and group scenes. That makes the result feel closer to a casting pattern than a random label.",
+      "좋아하는 캐릭터가 아닌 실제 사회적 행동 패턴에서 나와 닮은 드라마 역할을 찾아보세요.",
+      "갈등, 연애, 단체 장면에서 나의 반응을 비교하면 단순한 라벨이 아닌 진짜 성향에 가까운 결과를 얻을 수 있어요.",
     ]
   }
 
   if (lowerTitle.includes("idol") || lowerTitle.includes("아이돌") || lowerTitle.includes("k-pop")) {
     return [
-      "This page works best for visitors who want a fast answer to where they naturally fit in a group dynamic such as leader, visual, performer, or mood maker.",
-      "The useful comparison point is not celebrity fandom. It is whether your real-life energy goes first into spotlight, coordination, emotion, or atmosphere.",
+      "리더, 비주얼, 퍼포머, 분위기 메이커 등 그룹에서 나의 자연스러운 역할을 빠르게 알아보세요.",
+      "연예인 팬덤이 아니라, 실생활에서 나의 에너지가 스포트라이트, 조율, 감정, 분위기 중 어디로 먼저 향하는지 확인해보세요.",
     ]
   }
 
   if (lowerTitle.includes("pet") || lowerTitle.includes("반려")) {
     return [
-      "This intro is most useful when you want a lightweight way to compare your emotional style, routine preference, and companionship needs with an animal match.",
-      "The result becomes more valuable when you read it alongside your real home routine, sensitivity level, and how much interaction you actually want day to day.",
+      "나의 감정 스타일, 루틴 선호도, 교감 방식을 반려동물 매칭으로 가볍게 비교해보세요.",
+      "실제 집에서의 생활 루틴, 민감도, 원하는 교감 수준과 함께 읽으면 결과가 더 의미 있어요.",
     ]
   }
 
   if (lowerTitle.includes("ramen") || lowerTitle.includes("라면")) {
     return [
-      "This landing page works well for food-topic search traffic because the quiz connects a familiar choice pattern with a broader personality interpretation.",
-      "The key signal is not the menu itself, but how you customize, simplify, repeat, or experiment. That is where the result gets practical.",
+      "익숙한 음식 선택 패턴에서 더 넓은 성격 해석을 연결하는 재미있는 테스트입니다.",
+      "메뉴 자체가 아니라 커스터마이징, 단순화, 반복, 실험하는 방식에서 진짜 성향이 드러나요.",
     ]
   }
 
   if (lowerTitle.includes("study") || lowerTitle.includes("공부")) {
     return [
-      "This intro is aimed at visitors who want a study-style explanation they can actually apply to focus, repetition, note-taking, or test preparation.",
-      "The result is most useful when you compare it with your real learning routine instead of the style you wish you had.",
+      "집중력, 반복 학습, 노트 정리, 시험 준비 등 실제 적용할 수 있는 공부 스타일을 알아보세요.",
+      "바라는 공부 스타일이 아닌 실제 학습 루틴과 비교하면 결과가 더 유용합니다.",
     ]
   }
 
   if (lowerTitle.includes("alarm") || lowerTitle.includes("기상")) {
     return [
-      "This page helps visitors connect morning behavior with routine design, not just wake-up willpower.",
-      "The result becomes actionable when you compare alarm style, first action after waking, and evening wind-down habits as one loop.",
+      "기상 의지력이 아닌 아침 행동 패턴과 루틴 설계를 연결해서 알아보는 테스트입니다.",
+      "알람 스타일, 일어난 후 첫 행동, 저녁 마무리 습관을 하나의 루프로 비교하면 더 실용적인 결과를 얻을 수 있어요.",
     ]
   }
 
   return [
-    `${quizTitle} is designed for visitors who want a short, specific quiz that can be completed quickly and shared easily.`,
-    "The result works best when you connect it to your real repeat behavior, not the answer that feels most flattering in the moment.",
+    `${quizTitle}는 짧은 시간에 완료하고 쉽게 공유할 수 있는 성격 테스트입니다.`,
+    "순간적으로 좋아 보이는 답이 아닌, 실제 반복되는 행동과 연결하면 결과가 더 정확해요.",
   ]
 }
 
 export function getListingFAQs(): Array<{ question: string; answer: string }> {
   return [
     {
-      question: "Which quiz topics perform best on Temon?",
-      answer: "Short quizzes with strong daily-life topics such as food, habits, sleep, study, and relationships usually perform best for both search entry and social sharing.",
+      question: "테몬에서 인기 있는 테스트 주제는 무엇인가요?",
+      answer: "음식, 습관, 수면, 공부, 연애 등 일상 속 주제의 짧은 테스트가 가장 인기가 많습니다. 검색 유입과 SNS 공유 모두에서 높은 참여율을 보입니다.",
     },
     {
-      question: "Are the quizzes on the tests page free?",
-      answer: "Yes. The quiz collection can be browsed and started immediately without payment, and most quizzes are designed to finish within a few minutes.",
+      question: "테스트는 무료인가요?",
+      answer: "네, 모든 테스트는 완전 무료입니다. 회원가입이나 결제 없이 바로 시작하실 수 있으며, 대부분 3분 이내에 완료됩니다.",
     },
     {
-      question: "How should I choose my first quiz?",
-      answer: "Start from a topic you already care about. Strong topic relevance usually improves completion rate, result sharing, and repeat visits.",
+      question: "어떤 테스트부터 시작하면 좋을까요?",
+      answer: "관심 있는 주제의 테스트부터 시작해보세요. 평소 관심사와 관련된 테스트일수록 결과에 대한 만족도가 높고, 공유 횟수도 많습니다.",
+    },
+    {
+      question: "테스트 결과는 정확한가요?",
+      answer: "테스트 결과는 MBTI의 16가지 성격 유형을 기반으로 재미있게 구성되어 있습니다. 전문적인 심리 진단은 아니지만, 나의 성향을 가볍게 파악하는 데 도움이 됩니다.",
     },
   ]
 }
@@ -225,16 +229,16 @@ export function getListingFAQs(): Array<{ question: string; answer: string }> {
 export function getDefaultResultFAQs(quizTitle: string, resultName: string): Array<{ question: string; answer: string }> {
   return [
     {
-      question: `What does ${resultName} mean in ${quizTitle}?`,
-      answer: `${resultName} describes the dominant preference pattern detected by the quiz. It should be used as a practical interpretation aid, not a fixed identity label.`,
+      question: `${quizTitle}에서 ${resultName} 유형은 어떤 의미인가요?`,
+      answer: `${resultName}은(는) 테스트에서 감지된 주요 선호 패턴을 설명합니다. 고정된 성격 라벨이 아닌, 나의 성향을 이해하는 참고 자료로 활용해보세요.`,
     },
     {
-      question: "Can this result change if I retake the quiz?",
-      answer: "Yes. Changes in mood, context, or decision criteria can change the result. That is useful signal about situational preference, not necessarily inconsistency.",
+      question: "다시 테스트하면 결과가 달라질 수 있나요?",
+      answer: "네, 기분이나 상황, 판단 기준에 따라 결과가 달라질 수 있습니다. 이는 상황에 따른 선호도 변화를 보여주는 유용한 신호입니다.",
     },
     {
-      question: "How should I use this result page?",
-      answer: "Use the traits, watchouts, and recommendations as a quick reference. The best next step is to compare the result with your real behavior and share it with someone who knows you well.",
+      question: "이 결과를 어떻게 활용하면 좋을까요?",
+      answer: "성격 특성, 주의점, 추천 사항을 참고하세요. 실제 행동과 비교하고, 나를 잘 아는 사람과 결과를 공유해보면 더 재미있습니다.",
     },
   ]
 }
@@ -247,7 +251,7 @@ export function generateMbtiResultMetadata(config: {
   canonical: string
 }): Metadata {
   const fullUrl = `${baseUrl}${config.canonical}`
-  const title = `${config.quizTitle} Result: ${config.resultName} (${config.resultCode}) | Temon`
+  const title = `${config.quizTitle} 결과: ${config.resultName} (${config.resultCode}) | 테몬`
 
   return {
     title,
@@ -261,7 +265,7 @@ export function generateMbtiResultMetadata(config: {
       description: config.summary,
       type: "website",
       url: fullUrl,
-      siteName: "Temon",
+      siteName: "테몬",
       locale: "ko_KR",
       images: [
         {
@@ -279,14 +283,11 @@ export function generateMbtiResultMetadata(config: {
       images: [`${baseUrl}/api/og?title=${encodeURIComponent(config.resultName)}&desc=${encodeURIComponent(config.resultCode)}`],
     },
     robots: {
-      index: true,
+      index: false,
       follow: true,
       googleBot: {
-        index: true,
+        index: false,
         follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
       },
     },
   }
@@ -301,18 +302,18 @@ export function generateGenericResultMetadata(config: {
   const fullUrl = `${baseUrl}${config.canonical}`
 
   return {
-    title: `${config.quizTitle} Result | ${config.title} | Temon`,
+    title: `${config.quizTitle} 결과 | ${config.title} | 테몬`,
     description: config.description,
     metadataBase: new URL(baseUrl),
     alternates: {
       canonical: config.canonical,
     },
     openGraph: {
-      title: `${config.quizTitle} Result | ${config.title} | Temon`,
+      title: `${config.quizTitle} 결과 | ${config.title} | 테몬`,
       description: config.description,
       type: "website",
       url: fullUrl,
-      siteName: "Temon",
+      siteName: "테몬",
       locale: "ko_KR",
       images: [
         {
@@ -325,19 +326,16 @@ export function generateGenericResultMetadata(config: {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${config.quizTitle} Result | ${config.title} | Temon`,
+      title: `${config.quizTitle} 결과 | ${config.title} | 테몬`,
       description: config.description,
       images: [`${baseUrl}/api/og?title=${encodeURIComponent(config.quizTitle)}&desc=${encodeURIComponent(config.title)}`],
     },
     robots: {
-      index: true,
+      index: false,
       follow: true,
       googleBot: {
-        index: true,
+        index: false,
         follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
       },
     },
   }
@@ -448,14 +446,11 @@ export function generateResultPageMetadata(config: {
       images: [`${baseUrl}/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent("나의 결과는?")}`],
     },
     robots: {
-      index: true,
+      index: false,
       follow: true,
       googleBot: {
-        index: true,
+        index: false,
         follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
       },
     },
   }

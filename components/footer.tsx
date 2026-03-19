@@ -24,14 +24,14 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div className="space-y-4">
-                        <h3 className="font-semibold text-sm">바로가기</h3>
+                        <h3 className="font-semibold text-sm">인기 테스트</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
                                 <Link
                                     href="/tests"
                                     className="text-muted-foreground hover:text-foreground transition-colors"
                                 >
-                                    전체 테스트
+                                    전체 테스트 모음
                                 </Link>
                             </li>
                             <li>
@@ -39,7 +39,7 @@ export default function Footer() {
                                     href="/tests/coffee-mbti"
                                     className="text-muted-foreground hover:text-foreground transition-colors"
                                 >
-                                    ☕ 커피 MBTI
+                                    커피 MBTI 테스트
                                 </Link>
                             </li>
                             <li>
@@ -47,7 +47,31 @@ export default function Footer() {
                                     href="/tests/ramen-mbti"
                                     className="text-muted-foreground hover:text-foreground transition-colors"
                                 >
-                                    🍜 라면 MBTI
+                                    라면 MBTI 테스트
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/tests/pet-mbti"
+                                    className="text-muted-foreground hover:text-foreground transition-colors"
+                                >
+                                    반려동물 MBTI 테스트
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/tests/study-mbti"
+                                    className="text-muted-foreground hover:text-foreground transition-colors"
+                                >
+                                    공부 MBTI 테스트
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/tests/alarm-habit"
+                                    className="text-muted-foreground hover:text-foreground transition-colors"
+                                >
+                                    알람 습관 테스트
                                 </Link>
                             </li>
                         </ul>

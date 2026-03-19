@@ -195,7 +195,6 @@ export default function HomeClient() {
                         {test.title}
                       </CardTitle>
                       <CardDescription className="text-base text-gray-600">
-                        <h3 className="sr-only">{test.title} 테스트 설명</h3>
                         {test.description}
                       </CardDescription>
                     </CardHeader>

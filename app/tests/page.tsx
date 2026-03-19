@@ -11,39 +11,39 @@ import { getListingFAQs } from "@/lib/quiz-seo-utils"
 const baseUrl = "https://temon.kr"
 
 const shortDescription =
-  "Free personality quizzes and MBTI-style tests on food, habits, sleep, study, and relationships."
+  "무료 MBTI 성격 테스트 모음. 음식, 습관, 연애, 공부 등 다양한 주제의 심리 테스트를 즐겨보세요."
 const fullDescription =
-  "Browse Temon's quiz collection to find short, shareable personality tests across food, habits, relationships, study, sleep, and more. Most quizzes finish in a few minutes and are designed for repeat visits and easy sharing."
+  "테몬에서 제공하는 무료 성격 테스트 모음! 커피, 라면, 반려동물, 공부 습관, 연애 스타일 등 일상 속 주제로 나의 MBTI 유형을 알아보세요. 대부분 3분 이내 완료, 결과 공유까지 가능합니다."
 
 export const metadata: Metadata = {
-  title: "Quiz Collection | Free Personality Tests | Temon",
+  title: "MBTI 테스트 모음 - 무료 성격 테스트 전체 목록 | 테몬",
   description: shortDescription,
-  keywords: "quiz collection, personality test, free quiz, MBTI quiz, temon",
+  keywords: "MBTI 테스트 모음, 성격 테스트, 무료 심리 테스트, MBTI 유형, 성격 유형 테스트, 테몬",
   metadataBase: new URL(baseUrl),
   alternates: {
     canonical: "/tests",
   },
   openGraph: {
-    title: "Quiz Collection | Free Personality Tests | Temon",
+    title: "MBTI 테스트 모음 - 무료 성격 테스트 전체 목록 | 테몬",
     description: fullDescription,
     type: "website",
     url: `${baseUrl}/tests`,
-    siteName: "Temon",
+    siteName: "테몬",
     locale: "ko_KR",
     images: [
       {
-        url: `${baseUrl}/og-tests.png`,
+        url: `${baseUrl}/api/og?title=${encodeURIComponent("MBTI 테스트 모음")}&desc=${encodeURIComponent("무료 성격 테스트 전체 목록")}`,
         width: 1200,
         height: 630,
-        alt: "Temon quiz collection",
+        alt: "테몬 MBTI 테스트 모음 - 무료 성격 테스트",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Quiz Collection | Free Personality Tests | Temon",
+    title: "MBTI 테스트 모음 - 무료 성격 테스트 전체 목록 | 테몬",
     description: fullDescription,
-    images: [`${baseUrl}/og-tests.png`],
+    images: [`${baseUrl}/api/og?title=${encodeURIComponent("MBTI 테스트 모음")}&desc=${encodeURIComponent("무료 성격 테스트 전체 목록")}`],
   },
   robots: {
     index: true,
@@ -90,8 +90,8 @@ export default async function TestsPage() {
   }
 
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: "Home", url: baseUrl },
-    { name: "Quiz Collection", url: `${baseUrl}/tests` },
+    { name: "홈", url: baseUrl },
+    { name: "테스트 모음", url: `${baseUrl}/tests` },
   ])
 
   const allTestsForSchema = [
@@ -131,28 +131,27 @@ export default async function TestsPage() {
 
       <section className="container max-w-4xl mx-auto px-4 pb-16">
         <div className="rounded-3xl bg-white/80 p-8 shadow-lg backdrop-blur-sm">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">How To Use The Quiz Collection</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">테스트 이용 가이드</h2>
           <p className="text-gray-700 leading-relaxed mb-6">
-            Start with a topic you already care about, then compare completion, share, and repeat behavior.
-            Short quizzes with clear themes usually perform best for both search entry and social circulation.
+            관심 있는 주제의 테스트부터 시작해보세요. 짧고 재미있는 테스트로 나의 성격 유형을 알아보고, 결과를 친구들과 공유해보세요.
           </p>
           <div className="grid gap-4 md:grid-cols-3 mb-8">
             <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">Search Landing</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">간편한 시작</h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                Topic-driven quiz pages work best when the title, intro, and result page all match the same intent.
+                회원가입 없이 바로 시작! 12개 질문에 답하면 나의 성격 유형을 확인할 수 있습니다.
               </p>
             </div>
             <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">Fast Completion</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">빠른 완료</h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                Most quizzes finish quickly, which helps mobile visitors complete, share, and continue to a second quiz.
+                대부분의 테스트는 3분 이내에 완료됩니다. 모바일에서도 편하게 즐길 수 있어요.
               </p>
             </div>
             <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">Repeat Visits</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">결과 공유</h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                The strongest growth comes from moving visitors between related themes such as food, habits, study, and relationships.
+                테스트 결과를 SNS로 공유하고 친구들과 비교해보세요. 다양한 주제의 테스트를 연달아 즐겨보세요.
               </p>
             </div>
           </div>

@@ -6,14 +6,12 @@
  * to help search engines and AI bots understand the content better.
  */
 
-import Script from "next/script"
-
 interface JsonLdProps {
   /**
    * The structured data object (will be stringified to JSON)
    */
   data: Record<string, any> | Array<Record<string, any>>
-  
+
   /**
    * Unique ID for the script tag (required for multiple schemas on same page)
    */
@@ -22,7 +20,11 @@ interface JsonLdProps {
 
 /**
  * JsonLd Component
- * 
+ *
+ * Uses a regular <script> tag instead of next/script to ensure
+ * structured data is immediately available in the initial HTML
+ * for search engine crawlers (Googlebot, Yeti, etc.)
+ *
  * @example
  * ```tsx
  * <JsonLd
@@ -38,7 +40,7 @@ interface JsonLdProps {
  */
 export function JsonLd({ data, id }: JsonLdProps) {
   return (
-    <Script
+    <script
       id={id}
       type="application/ld+json"
       dangerouslySetInnerHTML={{

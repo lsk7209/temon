@@ -245,7 +245,6 @@ export function generateOrganizationSchema(): Record<string, unknown> {
       "@type": "Country",
       name: "KR",
     },
-    sameAs: [],
     contactPoint: {
       "@type": "ContactPoint",
       email: "admin@temon.kr",
