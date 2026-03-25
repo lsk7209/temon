@@ -50,12 +50,6 @@ export default function SnowWhiteMBTI() {
       <JsonLd id="snowwhite-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
       {schemas.faq && <JsonLd id="snowwhite-mbti-faq-schema" data={schemas.faq} />}
 
-      <>
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-2xl mx-auto text-center">
@@ -105,30 +99,6 @@ export default function SnowWhiteMBTI() {
             </div>
 
             <div className="bg-white rounded-2xl shadow-xl p-8 mt-8 text-left">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ 자주 묻는 질문</h2>
-              <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>'에겐'과 '테토'가 무엇인가요?</AccordionTrigger>
-                  <AccordionContent>
-                    '에겐'은 감정과 공감을 중요시하는 성향(Feeling), '테토'는 효율과 논리를 중요시하는 성향(Thinking)을 의미하는 인터넷 밈/신조어입니다.
-                    이 테스트는 이를 백설공주 세계관에 빗대어 재미있게 풀어냈습니다.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                  <AccordionTrigger>어떤 결과가 나오나요?</AccordionTrigger>
-                  <AccordionContent>
-                    백설 에겐공주, 에겐왕자, 테토여왕, 난장이 테토남 등 4가지 독특한 유형으로 당신의 성향을 분석해드립니다.
-                    각 유형별 특징과 궁합도 확인할 수 있습니다.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                  <AccordionTrigger>테스트 소요 시간은?</AccordionTrigger>
-                  <AccordionContent>
-                    약 2분 정도 소요됩니다. 10개의 짧고 재미있는 질문으로 구성되어 있어 부담 없이 즐길 수 있습니다.
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">관련 정보</h3>
                 <a
@@ -161,7 +131,6 @@ export default function SnowWhiteMBTI() {
         </section>
 </div>
       </div>
-    </>
     </>
   )
 }

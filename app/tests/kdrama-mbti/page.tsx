@@ -52,12 +52,6 @@ export default function KDramaMBTIIntro() {
       <JsonLd id="kdrama-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
       {schemas.faq && <JsonLd id="kdrama-mbti-faq-schema" data={schemas.faq} />}
 
-      <>
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 dark:from-pink-950 dark:via-purple-950 dark:to-blue-950">
         <main className="container max-w-4xl mx-auto px-4 py-8">
           <div className="text-center space-y-8">
@@ -189,46 +183,18 @@ export default function KDramaMBTIIntro() {
               </CardContent>
             </Card>
 
-            {/* FAQ Section */}
+            {/* Outlink */}
             <Card className="bg-white/80 backdrop-blur-sm border-2 border-purple-100 dark:bg-gray-800/80 dark:border-gray-700">
               <CardContent className="p-8 text-left">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">❓ 자주 묻는 질문</h2>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>K-드라마 클리셰 테스트란 무엇인가요?</AccordionTrigger>
-                    <AccordionContent>
-                      드라마에서 자주 등장하는 뻔하지만 재밌는 상황(클리셰)에서의 선택을 통해 당신의 성향을 분석하는 테스트입니다.
-                      10가지 흥미진진한 상황이 준비되어 있습니다.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>어떤 결과가 나오나요?</AccordionTrigger>
-                    <AccordionContent>
-                      재벌 2세 본부장, 캔디형 여주인공, 서브 남주, 악녀 등 드라마 속 대표적인 캐릭터 유형 중
-                      당신과 가장 닮은 캐릭터를 MBTI 기반으로 분석해 알려줍니다.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>테스트 결과는 정확한가요?</AccordionTrigger>
-                    <AccordionContent>
-                      MBTI 성격 유형 이론을 드라마 상황에 대입하여 분석하므로, 꽤 높은 정확도를 자랑합니다.
-                      하지만 드라마는 드라마일 뿐! 재미로 즐겨주세요.
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-
-                {/* Outlink */}
-                <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">관련 정보</h3>
-                  <a
-                    href="https://ko.wikipedia.org/wiki/%ED%95%9C%EA%B5%AD_%EB%93%9C%EB%9D%BC%EB%A7%88"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-purple-600 hover:text-purple-700 hover:underline dark:text-purple-400"
-                  >
-                    한국 드라마의 역사와 특징 <ExternalLink className="ml-1 h-4 w-4" />
-                  </a>
-                </div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">관련 정보</h3>
+                <a
+                  href="https://ko.wikipedia.org/wiki/%ED%95%9C%EA%B5%AD_%EB%93%9C%EB%9D%BC%EB%A7%88"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-purple-600 hover:text-purple-700 hover:underline dark:text-purple-400"
+                >
+                  한국 드라마의 역사와 특징 <ExternalLink className="ml-1 h-4 w-4" />
+                </a>
               </CardContent>
             </Card>
           </div>
@@ -251,7 +217,6 @@ export default function KDramaMBTIIntro() {
         </section>
 </main>
       </div>
-    </>
     </>
   )
 }

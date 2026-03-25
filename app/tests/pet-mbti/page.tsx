@@ -52,12 +52,6 @@ export default function PetMBTIIntro() {
       <JsonLd id="pet-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
       {schemas.faq && <JsonLd id="pet-mbti-faq-schema" data={schemas.faq} />}
 
-      <>
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 dark:from-pink-950 dark:via-purple-950 dark:to-blue-950 relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -313,46 +307,18 @@ export default function PetMBTIIntro() {
               </CardContent>
             </Card>
 
-            {/* FAQ Section */}
+            {/* Outlink */}
             <Card className="bg-white/80 backdrop-blur-sm border-2 border-purple-100 dark:bg-gray-800/80 dark:border-gray-700">
               <CardContent className="p-8 text-left">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">❓ 자주 묻는 질문</h2>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>반려동물을 키우지 않아도 테스트할 수 있나요?</AccordionTrigger>
-                    <AccordionContent>
-                      네, 물론입니다! 현재 반려동물이 없더라도 당신의 라이프스타일과 성향을 바탕으로 가장 잘 어울리는 반려동물을 추천해드립니다.
-                      미래의 반려동물을 미리 만나보는 재미를 느껴보세요.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>어떤 반려동물이 결과로 나오나요?</AccordionTrigger>
-                    <AccordionContent>
-                      강아지, 고양이뿐만 아니라 햄스터, 앵무새, 거북이, 고슴도치 등 다양한 반려동물 중
-                      당신의 성격과 찰떡궁합인 친구를 찾아드립니다.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>테스트 결과는 얼마나 정확한가요?</AccordionTrigger>
-                    <AccordionContent>
-                      MBTI 성격 유형 이론을 바탕으로 반려동물의 특성과 매칭하여 분석하므로, 꽤 높은 정확도를 자랑합니다.
-                      하지만 재미로 즐겨주시는 것을 추천드려요!
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-
-                {/* Outlink */}
-                <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">관련 정보</h3>
-                  <a
-                    href="https://ko.wikipedia.org/wiki/%EB%B0%98%EB%A0%A4%EB%8F%99%EB%AC%BC"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-purple-600 hover:text-purple-700 hover:underline dark:text-purple-400"
-                  >
-                    반려동물의 종류와 역사 <ExternalLink className="ml-1 h-4 w-4" />
-                  </a>
-                </div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">관련 정보</h3>
+                <a
+                  href="https://ko.wikipedia.org/wiki/%EB%B0%98%EB%A0%A4%EB%8F%99%EB%AC%BC"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-purple-600 hover:text-purple-700 hover:underline dark:text-purple-400"
+                >
+                  반려동물의 종류와 역사 <ExternalLink className="ml-1 h-4 w-4" />
+                </a>
               </CardContent>
             </Card>
           </div>

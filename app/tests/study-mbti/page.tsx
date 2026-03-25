@@ -52,12 +52,6 @@ export default function StudyMBTIIntro() {
       <JsonLd id="study-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
       {schemas.faq && <JsonLd id="study-mbti-faq-schema" data={schemas.faq} />}
 
-      <>
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950">
         {/* Hero Section */}
         <main className="container max-w-4xl mx-auto px-4 py-8">
@@ -253,46 +247,18 @@ export default function StudyMBTIIntro() {
               </CardContent>
             </Card>
 
-            {/* FAQ Section */}
+            {/* Outlink */}
             <Card className="bg-white/80 backdrop-blur-sm border-2 border-purple-100 dark:bg-gray-800/80 dark:border-gray-700">
               <CardContent className="p-8 text-left">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">❓ 자주 묻는 질문</h2>
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>이 테스트가 성적 향상에 도움이 되나요?</AccordionTrigger>
-                    <AccordionContent>
-                      자신의 학습 스타일을 이해하는 것은 효율적인 공부의 첫걸음입니다.
-                      본인에게 맞는 공부법과 환경을 찾아 적용하면 성적 향상에 긍정적인 영향을 줄 수 있습니다.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>어떤 공부 유형들이 있나요?</AccordionTrigger>
-                    <AccordionContent>
-                      형광펜 덕후, 벼락치기 장인, 계획표 신봉자, 스터디 그룹 리더 등 16가지의 재미있고 공감 가는 공부 유형으로 분석해드립니다.
-                      친구들과 서로의 유형을 비교해보세요.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>테스트 결과는 정확한가요?</AccordionTrigger>
-                    <AccordionContent>
-                      MBTI 이론을 학습 상황에 적용하여 분석하므로 높은 공감도를 자랑합니다.
-                      하지만 개인마다 차이가 있을 수 있으니, 맹신하기보다는 참고용으로 활용해주세요.
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-
-                {/* Outlink */}
-                <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">관련 정보</h3>
-                  <a
-                    href="https://ko.wikipedia.org/wiki/%ED%95%99%EC%8A%B5"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-indigo-600 hover:text-indigo-700 hover:underline dark:text-indigo-400"
-                  >
-                    효과적인 학습 방법 알아보기 <ExternalLink className="ml-1 h-4 w-4" />
-                  </a>
-                </div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">관련 정보</h3>
+                <a
+                  href="https://ko.wikipedia.org/wiki/%ED%95%99%EC%8A%B5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 hover:underline dark:text-indigo-400"
+                >
+                  효과적인 학습 방법 알아보기 <ExternalLink className="ml-1 h-4 w-4" />
+                </a>
               </CardContent>
             </Card>
           </div>
@@ -315,7 +281,6 @@ export default function StudyMBTIIntro() {
         </section>
 </main>
       </div>
-    </>
     </>
   )
 }

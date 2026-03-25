@@ -52,24 +52,6 @@ export default function KdramaCharacterIntro() {
       <JsonLd id="kdrama-character-breadcrumb-schema" data={schemas.breadcrumb} />
       {schemas.faq && <JsonLd id="kdrama-character-faq-schema" data={schemas.faq} />}
 
-      <>
-      {/* SEO, AEO, GEO 최적화를 위한 구조화 데이터 */}
-      <Script
-        id="quiz-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: schemas.quiz }}
-      />
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: schemas.faq }}
-      />
-      <Script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: schemas.breadcrumb }}
-      />
-
       <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
         <main className="container max-w-[720px] mx-auto px-4 py-8">
         <div className="text-center space-y-8">
@@ -277,7 +259,6 @@ export default function KdramaCharacterIntro() {
         </section>
 </main>
       </div>
-    </>
     </>
   )
 }
