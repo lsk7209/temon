@@ -342,6 +342,5 @@ export default function PetMBTIIntro() {
 </main>
       </div>
     </>
-    </>
   )
 }
