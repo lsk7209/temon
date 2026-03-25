@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Heart, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "연애 연락 텐션 테스트 | 썸·연애 연락 습관으로 보는 16유형 | 테몬",
-  description:
-    "연락 속도·길이·톤을 분석해 16가지 연애 커뮤니케이션 유형을 제시합니다. 실전 데이트 합의 팁과 궁합 유형 제공.",
-  keywords:
-    "연애 연락 테스트, 썸 연락, 연애 텐션, 커뮤니케이션 유형, 연락 스타일, 연애 MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/love-texting-style",
-  },
-  openGraph: {
-    title: "연애 연락 텐션 테스트 | 썸·연애 연락 습관으로 보는 16유형",
-    description: "연락 속도·길이·톤을 분석해 16가지 연애 커뮤니케이션 유형을 제시합니다. 실전 데이트 합의 팁과 궁합 유형 제공.",
-    type: "website",
-    url: "https://www.temon.kr/tests/love-texting-style",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "연락 속도·길이·톤을 분석해 16가지 연애 커뮤니케이션 유형을 제시합니다. 실전 데이트 합의 팁과 궁합 유형 제공."
+// Full description for Google/AI
+const fullDescription = "연락 속도·길이·톤을 분석해 16가지 연애 커뮤니케이션 유형을 제시합니다. 실전 데이트 합의 팁과 궁합 유형 제공."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "love-texting-style",
+  title: "연애 연락 텐션 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "연애 연락 테스트, 썸 연락, 연애 텐션, 커뮤니케이션 유형, 연락 스타일, 연애 MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/love-texting-style",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("연애 연락 텐션 테스트"),
+]
 
 export default function LoveTextingStyleIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "love-texting-style",
+    title: "연애 연락 텐션 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "연애 연락 테스트, 썸 연락, 연애 텐션, 커뮤니케이션 유형, 연락 스타일, 연애 MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/love-texting-style",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="love-texting-style-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="love-texting-style-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="love-texting-style-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Love Elements */}
@@ -69,7 +97,7 @@ export default function LoveTextingStyleIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>4,275명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -214,8 +242,25 @@ export default function LoveTextingStyleIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Love Texting Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Love Texting Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="love-texting-style" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="연애 연락 텐션 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

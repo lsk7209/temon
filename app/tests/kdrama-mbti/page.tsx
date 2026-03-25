@@ -1,62 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import Script from "next/script"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Clock, Users, Sparkles, ExternalLink } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "K-드라마 클리셰 테스트 - 무료 성격 테스트 | 테몬",
-  description:
-    "K-드라마 클리셰 테스트로 알아보는 나의 드라마 캐릭터! 재벌남/여부터 국밥 조연까지, 10개의 드라마 클리셰 상황에서 당신의 선택은? 무료로 시작해보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "K-드라마 클리셰 테스트로 알아보는 나의 드라마 캐릭터! 재벌남/여부터 국밥 조연까지, 10개의 드라마 클리셰 상황에서 당신의 선택은? 무..."
+// Full description for Google/AI
+const fullDescription = "K-드라마 클리셰 테스트로 알아보는 나의 드라마 캐릭터! 재벌남/여부터 국밥 조연까지, 10개의 드라마 클리셰 상황에서 당신의 선택은? 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "kdrama-mbti",
+  title: "K-드라마 클리셰 테스트 - 무료 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "K-드라마, 드라마 테스트, 클리셰 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/kdrama-mbti",
-  },
-  openGraph: {
-    title: "K-드라마 클리셰 테스트 - 무료 성격 테스트",
-    description: "K-드라마 클리셰 테스트로 알아보는 나의 드라마 캐릭터! 재벌남/여부터 국밥 조연까지, 무료로 시작해보세요.",
-    type: "website",
-    url: "https://www.temon.kr/tests/kdrama-mbti",
-  },
-}
+  canonical: "/tests/kdrama-mbti",
+  questionCount: 10,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("K-드라마 클리셰 테스트 - 무료 성격 테스트"),
+]
 
 export default function KDramaMBTIIntro() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "K-드라마 클리셰 테스트란 무엇인가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "드라마에서 자주 등장하는 뻔하지만 재밌는 상황(클리셰)에서의 선택을 통해 당신의 성향을 분석하는 테스트입니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "어떤 결과가 나오나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "재벌 2세 본부장, 캔디형 여주인공, 서브 남주 등 드라마 속 대표적인 캐릭터 유형 중 당신과 가장 닮은 캐릭터를 알려줍니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "테스트 결과는 정확한가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "MBTI 성격 유형 이론을 드라마 상황에 대입하여 분석하므로, 꽤 높은 정확도를 자랑합니다. 재미로 즐겨주세요!"
-        }
-      }
-    ]
-  }
+  const schemas = generateQuizSchemas({
+    quizId: "kdrama-mbti",
+    title: "K-드라마 클리셰 테스트 - 무료 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "K-드라마, 드라마 테스트, 클리셰 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/kdrama-mbti",
+    questionCount: 10,
+    duration: "PT2M",
+    faqs,
+  })
 
   return (
     <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="kdrama-mbti-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="kdrama-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="kdrama-mbti-faq-schema" data={schemas.faq} />}
+
+      <>
       <Script
         id="faq-schema"
         type="application/ld+json"
@@ -107,7 +103,7 @@ export default function KDramaMBTIIntro() {
               <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
                 <div className="flex items-center space-x-2">
                   <Users className="h-4 w-4" />
-                  <span>Coming Soon</span>
+                  <span>11,496명 참여</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="h-4 w-4" />
@@ -236,8 +232,26 @@ export default function KDramaMBTIIntro() {
               </CardContent>
             </Card>
           </div>
-        </main>
+        
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Kdrama Mbti Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Kdrama Mbti Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="kdrama-mbti" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="K-드라마 클리셰 테스트 - 무료 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
       </div>
+    </>
     </>
   )
 }

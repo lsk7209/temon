@@ -1,22 +1,57 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Sprout } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "🌶️ 양념 사용 스타일 테스트 | 테몬",
-  description: "양념 사용 스타일로 알아보는 나의 성격 유형 테스트",
-  openGraph: {
-    title: "🌶️ 양념 사용 스타일 테스트",
-    description: "양념 사용 스타일로 알아보는 나의 성격 유형 테스트",
-    type: "website",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "양념 사용 스타일로 알아보는 나의 성격 유형 테스트"
+// Full description for Google/AI
+const fullDescription = "양념 사용 스타일 테스트로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 양념 사용 스타일 테스트를 지금 바로 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "cooking-seasoning",
+  title: "양념 사용 스타일 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "양념 사용 스타일 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/cooking-seasoning",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("양념 사용 스타일 테스트"),
+]
 
 export default function CookingSeasoningPage() {
+  const schemas = generateQuizSchemas({
+    quizId: "cooking-seasoning",
+    title: "양념 사용 스타일 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "양념 사용 스타일 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/cooking-seasoning",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-pink-50 to-rose-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="cooking-seasoning-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="cooking-seasoning-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="cooking-seasoning-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-red-50 via-pink-50 to-rose-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <main className="container max-w-4xl mx-auto px-4 py-16">
         <Card className="border-0 shadow-2xl bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardContent className="p-8 md:p-12 text-center space-y-8">
@@ -65,8 +100,25 @@ export default function CookingSeasoningPage() {
             </div>
           </CardContent>
         </Card>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Cooking Seasoning Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Cooking Seasoning Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="cooking-seasoning" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="양념 사용 스타일 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

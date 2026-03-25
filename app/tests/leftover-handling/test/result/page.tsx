@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ShareButtons } from "@/components/share-buttons"
-import { Package, Heart, Lightbulb, Users, ArrowRight, Sparkles } from "lucide-react"
+import { Package, Heart, Lightbulb, Users, ArrowRight, Sparkles, RotateCcw } from "lucide-react"
 import { getTestResult } from "@/lib/api-client"
 
 const leftoverTypes = {
@@ -380,6 +380,15 @@ function ResultContent() {
         <Card className="border-0 shadow-xl bg-gradient-to-br from-amber-500 to-yellow-500">
           <CardContent className="p-8">
             <div className="text-center space-y-6 text-white">
+
+        <div className="text-center">
+          <Button size="lg" variant="outline" className="gap-2" asChild>
+            <Link href="/tests/leftover-handling/test">
+              <RotateCcw className="h-4 w-4" />
+              다시 테스트하기
+            </Link>
+          </Button>
+        </div>
               <h2 className="text-2xl font-bold">다른 테스트도 해보세요!</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Button

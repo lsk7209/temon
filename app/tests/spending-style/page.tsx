@@ -1,30 +1,55 @@
-/**
- * 소비 성향 테스트 인트로 페이지
- */
-
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
-export const metadata: Metadata = {
-  title: "소비 성향 테스트 | 12문항으로 알아보는 16유형",
-  description:
-    "계획 구매부터 즉흥 지출까지, 당신의 소비 패턴을 16유형으로 분석. 유형별 절약 팁과 추천 설정 제공.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "계획 구매부터 즉흥 지출까지, 당신의 소비 패턴을 16유형으로 분석. 유형별 절약 팁과 추천 설정 제공."
+// Full description for Google/AI
+const fullDescription = "계획 구매부터 즉흥 지출까지, 당신의 소비 패턴을 16유형으로 분석. 유형별 절약 팁과 추천 설정 제공."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "spending-style",
+  title: "소비 성향 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "소비, 구매, 예산, 가격, 충동구매, 성향 테스트, MBTI, 무료 테스트",
-  alternates: {
-    canonical: "/tests/spending-style",
-  },
-  openGraph: {
-    title: "소비 성향 테스트 | 12문항으로 알아보는 16유형",
-    description: "계획 구매부터 즉흥 지출까지, 당신의 소비 패턴을 16유형으로 분석. 유형별 절약 팁과 추천 설정 제공.",
-    type: "website",
-    url: "https://www.temon.kr/tests/spending-style",
-  },
-}
+  canonical: "/tests/spending-style",
+  questionCount: 12,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("소비 성향 테스트"),
+]
 
 export default function SpendingStyleIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "spending-style",
+    title: "소비 성향 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "소비, 구매, 예산, 가격, 충동구매, 성향 테스트, MBTI, 무료 테스트",
+    canonical: "/tests/spending-style",
+    questionCount: 12,
+    duration: "PT2M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="spending-style-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="spending-style-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="spending-style-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-8">
@@ -111,8 +136,25 @@ export default function SpendingStyleIntro() {
             </div>
           </div>
         </div>
-      </div>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Spending Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Spending Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="spending-style" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="소비 성향 테스트 자주 묻는 질문" />
+        </section>
+</div>
     </div>
+    </>
   )
 }
-

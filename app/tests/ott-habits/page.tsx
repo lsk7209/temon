@@ -1,41 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Play, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "OTT 시청 습관 테스트 | 정주행·추천 활용·스포 대처 16유형 | 테몬",
-  description:
-    "OTT 정주행 방식, 추천 활용, 스포일러 대처, 감상 기록 습관으로 16유형을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성.",
-  keywords:
-    "OTT 테스트, 시청 습관, 정주행, 추천 알고리즘, 스포일러, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/ott-habits",
-  },
-  openGraph: {
-    title: "OTT 시청 습관 테스트 | 정주행·추천 활용·스포 대처 16유형",
-    description: "OTT 정주행 방식, 추천 활용, 스포일러 대처, 감상 기록 습관으로 16유형을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/ott-habits",
-  },
-  other: {
-    "schema:Quiz": JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Quiz",
-      name: "OTT 시청 습관 테스트",
-      description: "OTT 시청 습관으로 16유형 분석",
-      inLanguage: "ko",
-      url: "https://www.temon.kr/tests/ott-habits",
-      publisher: { "@type": "Organization", name: "Temon" },
-    }),
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "OTT 정주행 방식, 추천 활용, 스포일러 대처, 감상 기록 습관으로 16유형을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성."
+// Full description for Google/AI
+const fullDescription = "OTT 정주행 방식, 추천 활용, 스포일러 대처, 감상 기록 습관으로 16유형을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "ott-habits",
+  title: "OTT 시청 습관 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "OTT 테스트, 시청 습관, 정주행, 추천 알고리즘, 스포일러, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/ott-habits",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("OTT 시청 습관 테스트"),
+]
 
 export default function OTTHabitsIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "ott-habits",
+    title: "OTT 시청 습관 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "OTT 테스트, 시청 습관, 정주행, 추천 알고리즘, 스포일러, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/ott-habits",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="ott-habits-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="ott-habits-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="ott-habits-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-[720px] mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated OTT Elements */}
@@ -80,7 +97,7 @@ export default function OTTHabitsIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>6,899명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -225,8 +242,25 @@ export default function OTTHabitsIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Ott Habits Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Ott Habits Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="ott-habits" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="OTT 시청 습관 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

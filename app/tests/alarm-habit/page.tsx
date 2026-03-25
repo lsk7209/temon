@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Clock, Users, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "알람 습관 MBTI 테스트 - 무료 성격 테스트 | 테몬",
-  description:
-    "알람 습관 MBTI 테스트로 알아보는 나의 성격! 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요? 재미있는 알람 습관 테스트를 무료로 시작해보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "알람 습관 MBTI 테스트로 알아보는 나의 성격! 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요? 재미있는 알람 습관 테스트를 무료로 시..."
+// Full description for Google/AI
+const fullDescription = "알람 습관 MBTI 테스트로 알아보는 나의 성격! 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요? 재미있는 알람 습관 테스트를 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "alarm-habit",
+  title: "알람 습관 MBTI 테스트 - 무료 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "알람 습관, 기상 패턴, 성격 테스트, MBTI, 알람 테스트, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/alarm-habit",
-  },
-  openGraph: {
-    title: "알람 습관 MBTI 테스트 - 무료 성격 테스트",
-    description: "알람 습관 MBTI 테스트로 알아보는 나의 성격! 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요?",
-    type: "website",
-    url: "https://www.temon.kr/tests/alarm-habit",
-  },
-}
+  canonical: "/tests/alarm-habit",
+  questionCount: 8,
+  duration: "PT1M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("알람 습관 MBTI 테스트 - 무료 성격 테스트"),
+]
 
 export default function AlarmHabitIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "alarm-habit",
+    title: "알람 습관 MBTI 테스트 - 무료 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "알람 습관, 기상 패턴, 성격 테스트, MBTI, 알람 테스트, 심리테스트, 무료 테스트",
+    canonical: "/tests/alarm-habit",
+    questionCount: 8,
+    duration: "PT1M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 dark:from-blue-950 dark:via-purple-950 dark:to-indigo-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="alarm-habit-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="alarm-habit-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="alarm-habit-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 dark:from-blue-950 dark:via-purple-950 dark:to-indigo-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Alarm Clock */}
@@ -214,7 +243,25 @@ export default function AlarmHabitIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Alarm Habit Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Alarm Habit Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="alarm-habit" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="알람 습관 MBTI 테스트 - 무료 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }

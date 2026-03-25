@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Coffee, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "카페 스타일 성격 테스트 | 당신은 어떤 카공족? | 테몬",
-  description:
-    "12문항으로 보는 나의 카페 라이프 스타일! 메뉴 선택부터 자리까지, 당신의 성격이 드러납니다. 카페에서의 나 스타일 테스트를 무료로 시작해보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 보는 나의 카페 라이프 스타일! 메뉴 선택부터 자리까지, 당신의 성격이 드러납니다. 카페에서의 나 스타일 테스트를 무료로 시작..."
+// Full description for Google/AI
+const fullDescription = "12문항으로 보는 나의 카페 라이프 스타일! 메뉴 선택부터 자리까지, 당신의 성격이 드러납니다. 카페에서의 나 스타일 테스트를 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "cafe-style",
+  title: "카페 스타일 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "카페 스타일, 카페 성격 테스트, 카공족, 카페 유형, 커피 취향, 카페 테스트, 서울 카공족, 동네 카페, 테이크아웃, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/cafe-style",
-  },
-  openGraph: {
-    title: "카페 스타일 성격 테스트 | 당신은 어떤 카공족?",
-    description: "12문항으로 보는 나의 카페 라이프 스타일! 메뉴 선택부터 자리까지, 당신의 성격이 드러납니다.",
-    type: "website",
-    url: "https://www.temon.kr/tests/cafe-style",
-  },
-}
+  canonical: "/tests/cafe-style",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("카페 스타일 성격 테스트"),
+]
 
 export default function CafeStyleIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "cafe-style",
+    title: "카페 스타일 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "카페 스타일, 카페 성격 테스트, 카공족, 카페 유형, 커피 취향, 카페 테스트, 서울 카공족, 동네 카페, 테이크아웃, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/cafe-style",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-brown-50 dark:from-amber-950 dark:via-orange-950 dark:to-brown-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="cafe-style-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="cafe-style-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="cafe-style-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-brown-50 dark:from-amber-950 dark:via-orange-950 dark:to-brown-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Coffee Elements */}
@@ -70,7 +99,7 @@ export default function CafeStyleIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>10,328명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -214,8 +243,25 @@ export default function CafeStyleIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Cafe Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Cafe Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="cafe-style" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="카페 스타일 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

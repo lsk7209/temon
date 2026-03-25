@@ -1,30 +1,55 @@
-/**
- * 피부 루틴 성향 테스트 인트로 페이지
- */
-
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
-export const metadata: Metadata = {
-  title: "피부 루틴 성향 테스트 | 12문항으로 찾는 나만의 스킨케어 유형",
-  description:
-    "세안·보습·활성 성분·생활습관으로 16유형 분석. 결과별 루틴 가이드 제공.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "세안·보습·활성 성분·생활습관으로 16유형 분석. 결과별 루틴 가이드 제공."
+// Full description for Google/AI
+const fullDescription = "피부 루틴 성향 테스트로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 피부 루틴 성향 테스트를 지금 바로 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "skin-routine",
+  title: "피부 루틴 성향 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "피부 루틴, 스킨케어, 성향 테스트, MBTI, 뷰티, 무료 테스트",
-  alternates: {
-    canonical: "/tests/skin-routine",
-  },
-  openGraph: {
-    title: "피부 루틴 성향 테스트 | 12문항으로 보는 나의 스킨케어 유형",
-    description: "세안, 토너, 보습, 선크림 습관으로 성향을 16유형으로 분석합니다. 2분 완성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/skin-routine",
-  },
-}
+  canonical: "/tests/skin-routine",
+  questionCount: 12,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("피부 루틴 성향 테스트"),
+]
 
 export default function SkinRoutineIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "skin-routine",
+    title: "피부 루틴 성향 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "피부 루틴, 스킨케어, 성향 테스트, MBTI, 뷰티, 무료 테스트",
+    canonical: "/tests/skin-routine",
+    questionCount: 12,
+    duration: "PT2M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-950 dark:to-rose-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="skin-routine-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="skin-routine-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="skin-routine-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-950 dark:to-rose-950">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-8">
@@ -111,8 +136,25 @@ export default function SkinRoutineIntro() {
             </div>
           </div>
         </div>
-      </div>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Skin Routine Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Skin Routine Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="skin-routine" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="피부 루틴 성향 테스트 자주 묻는 질문" />
+        </section>
+</div>
     </div>
+    </>
   )
 }
-

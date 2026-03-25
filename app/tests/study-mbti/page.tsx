@@ -1,62 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import Script from "next/script"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Clock, Users, BookOpen, Sparkles, ExternalLink } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "공부 MBTI 테스트 - 무료 성격 테스트 | 테몬",
-  description:
-    "공부 MBTI 테스트로 알아보는 나만의 공부 스타일! 형광펜 덕후부터 올빵 벼락치기까지, 학습 DNA를 무료로 확인해보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "공부 MBTI 테스트로 알아보는 나만의 공부 스타일! 형광펜 덕후부터 올빵 벼락치기까지, 학습 DNA를 무료로 확인해보세요."
+// Full description for Google/AI
+const fullDescription = "공부 MBTI 테스트로 알아보는 나만의 공부 스타일! 형광펜 덕후부터 올빵 벼락치기까지, 학습 DNA를 무료로 확인해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "study-mbti",
+  title: "공부 MBTI 테스트 - 무료 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "공부 MBTI, 공부 테스트, 학습 스타일, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/study-mbti",
-  },
-  openGraph: {
-    title: "공부 MBTI 테스트 - 무료 성격 테스트",
-    description: "공부 MBTI 테스트로 알아보는 나만의 공부 스타일! 형광펜 덕후부터 올빵 벼락치기까지, 학습 DNA를 확인해보세요.",
-    type: "website",
-    url: "https://www.temon.kr/tests/study-mbti",
-  },
-}
+  canonical: "/tests/study-mbti",
+  questionCount: 12,
+  duration: "PT5M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("공부 MBTI 테스트 - 무료 성격 테스트"),
+]
 
 export default function StudyMBTIIntro() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "이 테스트가 성적 향상에 도움이 되나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "자신의 학습 스타일을 이해하는 것은 효율적인 공부의 첫걸음입니다. 본인에게 맞는 공부법을 찾아 적용하면 성적 향상에 도움이 될 수 있습니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "어떤 공부 유형들이 있나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "형광펜 덕후, 벼락치기 장인, 계획표 신봉자 등 16가지의 재미있고 공감 가는 공부 유형으로 분석해드립니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "테스트 결과는 정확한가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "MBTI 이론을 학습 상황에 적용하여 분석하므로 높은 공감도를 자랑합니다. 하지만 맹신하기보다는 참고용으로 활용해주세요."
-        }
-      }
-    ]
-  }
+  const schemas = generateQuizSchemas({
+    quizId: "study-mbti",
+    title: "공부 MBTI 테스트 - 무료 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "공부 MBTI, 공부 테스트, 학습 스타일, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/study-mbti",
+    questionCount: 12,
+    duration: "PT5M",
+    faqs,
+  })
 
   return (
     <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="study-mbti-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="study-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="study-mbti-faq-schema" data={schemas.faq} />}
+
+      <>
       <Script
         id="faq-schema"
         type="application/ld+json"
@@ -300,8 +296,26 @@ export default function StudyMBTIIntro() {
               </CardContent>
             </Card>
           </div>
-        </main>
+        
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Study Mbti Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Study Mbti Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="study-mbti" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="공부 MBTI 테스트 - 무료 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
       </div>
+    </>
     </>
   )
 }

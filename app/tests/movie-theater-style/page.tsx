@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Film, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "영화관 관람 스타일 테스트 - 무료 성격 테스트 | 테몬",
-  description:
-    "영화관 관람 스타일 테스트로 알아보는 나의 관람 성향! 예매, 좌석, 팝콘, 엔딩크레딧까지—당신의 영화관 루틴으로 보는 관람 성향 테스트를 무료로 시작해보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "영화관 관람 스타일 테스트로 알아보는 나의 관람 성향! 예매, 좌석, 팝콘, 엔딩크레딧까지—당신의 영화관 루틴으로 보는 관람 성향 테스트를..."
+// Full description for Google/AI
+const fullDescription = "영화관 관람 스타일 테스트로 알아보는 나의 관람 성향! 예매, 좌석, 팝콘, 엔딩크레딧까지—당신의 영화관 루틴으로 보는 관람 성향 테스트를 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "movie-theater-style",
+  title: "영화관 관람 스타일 테스트 - 무료 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "영화관, 관람 스타일, 영화관 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/movie-theater-style",
-  },
-  openGraph: {
-    title: "영화관 관람 스타일 테스트 - 무료 성격 테스트",
-    description: "영화관 관람 스타일 테스트로 알아보는 나의 관람 성향! 예매, 좌석, 팝콘, 엔딩크레딧까지—당신의 영화관 루틴으로 보는 관람 성향 테스트를 무료로 시작해보세요.",
-    type: "website",
-    url: "https://www.temon.kr/tests/movie-theater-style",
-  },
-}
+  canonical: "/tests/movie-theater-style",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("영화관 관람 스타일 테스트 - 무료 성격 테스트"),
+]
 
 export default function MovieTheaterStyleIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "movie-theater-style",
+    title: "영화관 관람 스타일 테스트 - 무료 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "영화관, 관람 스타일, 영화관 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/movie-theater-style",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="movie-theater-style-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="movie-theater-style-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="movie-theater-style-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Movie Elements */}
@@ -68,7 +97,7 @@ export default function MovieTheaterStyleIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>3,744명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -212,8 +241,25 @@ export default function MovieTheaterStyleIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Movie Theater Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Movie Theater Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="movie-theater-style" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="영화관 관람 스타일 테스트 - 무료 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

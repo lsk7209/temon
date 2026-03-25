@@ -1,33 +1,55 @@
-/**
- * 스마트폰 사용 스타일 테스트 인트로 페이지
- */
-
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
-export const metadata: Metadata = {
-  title: "스마트폰 사용 스타일 테스트 | 12문항으로 알아보는 16유형",
-  description:
-    "알림 처리, 앱 정리, 집중 방해 요인, 소통 방식으로 16유형 분석. 결과 기반 생산성 팁 제공.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "알림 처리, 앱 정리, 집중 방해 요인, 소통 방식으로 16유형 분석. 결과 기반 생산성 팁 제공."
+// Full description for Google/AI
+const fullDescription = "알림 처리, 앱 정리, 집중 방해 요인, 소통 방식으로 16유형 분석. 결과 기반 생산성 팁 제공."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "phone-usage",
+  title: "스마트폰 사용 스타일 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "스마트폰, 사용 스타일, 앱, 습관, 성향 테스트, MBTI, 무료 테스트",
-  alternates: {
-    canonical: "/tests/phone-usage",
-  },
-  openGraph: {
-    title: "스마트폰 사용 스타일 테스트 | 12문항으로 알아보는 16유형",
-    description: "알림 처리, 앱 정리, 집중 방해 요인, 소통 방식으로 16유형 분석. 결과 기반 생산성 팁 제공.",
-    type: "website",
-    url: "https://www.temon.kr/tests/phone-usage",
-  },
-}
+  canonical: "/tests/phone-usage",
+  questionCount: 12,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("스마트폰 사용 스타일 테스트"),
+]
 
 export default function PhoneUsageIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "phone-usage",
+    title: "스마트폰 사용 스타일 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "스마트폰, 사용 스타일, 앱, 습관, 성향 테스트, MBTI, 무료 테스트",
+    canonical: "/tests/phone-usage",
+    questionCount: 12,
+    duration: "PT2M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="phone-usage-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="phone-usage-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="phone-usage-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-8">
@@ -126,8 +148,25 @@ export default function PhoneUsageIntro() {
             </div>
           </div>
         </div>
-      </div>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Phone Usage Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Phone Usage Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="phone-usage" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="스마트폰 사용 스타일 테스트 자주 묻는 질문" />
+        </section>
+</div>
     </div>
+    </>
   )
 }
-

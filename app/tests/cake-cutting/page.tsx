@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Cake, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "케이크 자르는 스타일 테스트 | 케이크 자르는 방식으로 보는 16유형 | 테몬",
-  description:
-    "케이크 자르는 방식, 조각 선택으로 16유형 성향을 분석합니다. 케이크 자르는 습관으로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성.",
-  keywords:
-    "케이크 테스트, 케이크 자르기, 조각 선택, 성향 테스트, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/cake-cutting",
-  },
-  openGraph: {
-    title: "케이크 자르는 스타일 테스트 | 케이크 자르는 방식으로 보는 16유형",
-    description: "케이크 자르는 방식, 조각 선택으로 16유형 성향을 분석합니다. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/cake-cutting",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "케이크 자르는 방식, 조각 선택으로 16유형 성향을 분석합니다. 케이크 자르는 습관으로 알아보는 나의 성격. 12문항, 결과 공유 이미지 ..."
+// Full description for Google/AI
+const fullDescription = "케이크 자르는 방식, 조각 선택으로 16유형 성향을 분석합니다. 케이크 자르는 습관으로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "cake-cutting",
+  title: "케이크 자르는 스타일 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "케이크 테스트, 케이크 자르기, 조각 선택, 성향 테스트, 심리테스트, 무료 테스트",
+  canonical: "/tests/cake-cutting",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("케이크 자르는 스타일 테스트"),
+]
 
 export default function CakeCuttingIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "cake-cutting",
+    title: "케이크 자르는 스타일 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "케이크 테스트, 케이크 자르기, 조각 선택, 성향 테스트, 심리테스트, 무료 테스트",
+    canonical: "/tests/cake-cutting",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="cake-cutting-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="cake-cutting-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="cake-cutting-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -66,7 +94,7 @@ export default function CakeCuttingIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>11,366명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -140,8 +168,25 @@ export default function CakeCuttingIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Cake Cutting Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Cake Cutting Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="cake-cutting" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="케이크 자르는 스타일 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

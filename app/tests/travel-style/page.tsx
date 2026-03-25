@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Plane, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "여행 짐 스타일 테스트 | 당신은 꼼꼼형 여행러? 즉흥형 여행러? | 테몬",
-  description:
-    "12문항으로 알아보는 나의 여행 짐 스타일! 계획형부터 즉흥형까지 성격 분석. 짐 싸는 습관 속에 숨은 나의 성격을 알아보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 알아보는 나의 여행 짐 스타일! 계획형부터 즉흥형까지 성격 분석. 짐 싸는 습관 속에 숨은 나의 성격을 알아보세요."
+// Full description for Google/AI
+const fullDescription = "12문항으로 알아보는 나의 여행 짐 스타일! 계획형부터 즉흥형까지 성격 분석. 짐 싸는 습관 속에 숨은 나의 성격을 알아보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "travel-style",
+  title: "여행 짐 스타일 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "여행 짐 스타일, 여행 성격 테스트, 짐 싸는 MBTI, 여행 스타일, 여행 테스트, 제주도, 도쿄, 오사카, 여행러, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/travel-style",
-  },
-  openGraph: {
-    title: "여행 짐 스타일 테스트 | 당신은 꼼꼼형 여행러? 즉흥형 여행러?",
-    description: "12문항으로 알아보는 나의 여행 짐 스타일! 계획형부터 즉흥형까지 성격 분석.",
-    type: "website",
-    url: "https://www.temon.kr/tests/travel-style",
-  },
-}
+  canonical: "/tests/travel-style",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("여행 짐 스타일 테스트"),
+]
 
 export default function TravelStyleIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "travel-style",
+    title: "여행 짐 스타일 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "여행 짐 스타일, 여행 성격 테스트, 짐 싸는 MBTI, 여행 스타일, 여행 테스트, 제주도, 도쿄, 오사카, 여행러, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/travel-style",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-50 dark:from-cyan-950 dark:via-blue-950 dark:to-indigo-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="travel-style-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="travel-style-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="travel-style-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-50 dark:from-cyan-950 dark:via-blue-950 dark:to-indigo-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Travel Elements */}
@@ -70,7 +99,7 @@ export default function TravelStyleIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>9,823명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -214,8 +243,25 @@ export default function TravelStyleIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Travel Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Travel Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="travel-style" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="여행 짐 스타일 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

@@ -1,33 +1,55 @@
-/**
- * 수면 크로노타입 테스트 인트로 페이지
- */
-
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
-export const metadata: Metadata = {
-  title: "수면 크로노타입 테스트 | 12문항으로 보는 나의 리듬",
-  description:
-    "기상·취침·집중 타이밍과 낮잠 습관으로 16유형 분석. 결과 공유 가능",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "기상·취침·집중 타이밍과 낮잠 습관으로 16유형 분석. 결과 공유 가능"
+// Full description for Google/AI
+const fullDescription = "수면 크로노타입 테스트로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 수면 크로노타입 테스트를 지금 바로 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "sleep-chronotype",
+  title: "수면 크로노타입 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "수면, 크로노타입, 리듬, 기상, 취침, 성향 테스트, MBTI, 무료 테스트",
-  alternates: {
-    canonical: "/tests/sleep-chronotype",
-  },
-  openGraph: {
-    title: "수면 크로노타입 테스트 | 12문항으로 보는 나의 리듬",
-    description: "기상·취침·집중 타이밍과 낮잠 습관으로 16유형 분석. 결과 공유 가능",
-    type: "website",
-    url: "https://www.temon.kr/tests/sleep-chronotype",
-  },
-}
+  canonical: "/tests/sleep-chronotype",
+  questionCount: 12,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("수면 크로노타입 테스트"),
+]
 
 export default function SleepChronotypeIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "sleep-chronotype",
+    title: "수면 크로노타입 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "수면, 크로노타입, 리듬, 기상, 취침, 성향 테스트, MBTI, 무료 테스트",
+    canonical: "/tests/sleep-chronotype",
+    questionCount: 12,
+    duration: "PT2M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950 dark:to-purple-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="sleep-chronotype-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="sleep-chronotype-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="sleep-chronotype-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950 dark:to-purple-950">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-8">
@@ -126,8 +148,25 @@ export default function SleepChronotypeIntro() {
             </div>
           </div>
         </div>
-      </div>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Sleep Chronotype Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Sleep Chronotype Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="sleep-chronotype" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="수면 크로노타입 테스트 자주 묻는 질문" />
+        </section>
+</div>
     </div>
+    </>
   )
 }
-
