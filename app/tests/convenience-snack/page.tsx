@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Store, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "편의점 간식 루틴 테스트 | 신상·행사·조합으로 보는 성향 | 테몬",
-  description:
-    "12문항으로 알아보는 나의 편의점 간식 루틴! 방문 이유부터 조합 습관까지. 사소한 선택이 당신의 성향을 말합니다.",
-  keywords:
-    "편의점 간식 테스트, 편의점 루틴, 편의점 신상품, 편의점 행사, 간식 선택 테스트, 편의점 조합, 간식 성향 MBTI, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/convenience-snack",
-  },
-  openGraph: {
-    title: "편의점 간식 루틴 테스트 | 신상·행사·조합으로 보는 성향",
-    description: "12문항으로 알아보는 나의 편의점 간식 루틴! 방문 이유부터 조합 습관까지. 사소한 선택이 당신의 성향을 말합니다.",
-    type: "website",
-    url: "https://www.temon.kr/tests/convenience-snack",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 알아보는 나의 편의점 간식 루틴! 방문 이유부터 조합 습관까지. 사소한 선택이 당신의 성향을 말합니다."
+// Full description for Google/AI
+const fullDescription = "12문항으로 알아보는 나의 편의점 간식 루틴! 방문 이유부터 조합 습관까지. 사소한 선택이 당신의 성향을 말합니다."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "convenience-snack",
+  title: "편의점 간식 루틴 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "편의점 간식 테스트, 편의점 루틴, 편의점 신상품, 편의점 행사, 간식 선택 테스트, 편의점 조합, 간식 성향 MBTI, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/convenience-snack",
+  questionCount: 12,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("편의점 간식 루틴 테스트"),
+]
 
 export default function ConvenienceSnackIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "convenience-snack",
+    title: "편의점 간식 루틴 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "편의점 간식 테스트, 편의점 루틴, 편의점 신상품, 편의점 행사, 간식 선택 테스트, 편의점 조합, 간식 성향 MBTI, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/convenience-snack",
+    questionCount: 12,
+    duration: "PT2M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="convenience-snack-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="convenience-snack-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="convenience-snack-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Convenience Store Elements */}
@@ -69,7 +97,7 @@ export default function ConvenienceSnackIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>8,722명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -218,8 +246,25 @@ export default function ConvenienceSnackIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Convenience Snack Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Convenience Snack Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="convenience-snack" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="편의점 간식 루틴 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

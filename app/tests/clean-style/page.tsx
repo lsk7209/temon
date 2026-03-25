@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Sparkles, Sparkles as SparklesIcon } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "방청소 성격 테스트 | 청소 습관으로 보는 MBTI 유형 | 테몬",
-  description:
-    "청소할 때마다 다른 당신의 모습! 12문항으로 알아보는 방 청소 스타일 성격 테스트 🧼 방 청소할 때마다 드러나는 성격 유형을 알아보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "청소할 때마다 다른 당신의 모습! 12문항으로 알아보는 방 청소 스타일 성격 테스트 🧼 방 청소할 때마다 드러나는 성격 유형을 알아보세요."
+// Full description for Google/AI
+const fullDescription = "청소할 때마다 다른 당신의 모습! 12문항으로 알아보는 방 청소 스타일 성격 테스트 🧼 방 청소할 때마다 드러나는 성격 유형을 알아보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "clean-style",
+  title: "방청소 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "청소 테스트, 방정리 MBTI, 성격별 청소 스타일, 방 청소, 청소 습관, 정리, 청소 성격 테스트, 서울 원룸 정리, 이사 준비, 인테리어 청소, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/clean-style",
-  },
-  openGraph: {
-    title: "방청소 성격 테스트 | 청소 습관으로 보는 MBTI 유형",
-    description: "청소할 때마다 다른 당신의 모습! 12문항으로 알아보는 방 청소 스타일 성격 테스트 🧼",
-    type: "website",
-    url: "https://www.temon.kr/tests/clean-style",
-  },
-}
+  canonical: "/tests/clean-style",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("방청소 성격 테스트"),
+]
 
 export default function CleanStyleIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "clean-style",
+    title: "방청소 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "청소 테스트, 방정리 MBTI, 성격별 청소 스타일, 방 청소, 청소 습관, 정리, 청소 성격 테스트, 서울 원룸 정리, 이사 준비, 인테리어 청소, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/clean-style",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 dark:from-blue-950 dark:via-cyan-950 dark:to-teal-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="clean-style-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="clean-style-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="clean-style-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 dark:from-blue-950 dark:via-cyan-950 dark:to-teal-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Cleaning Elements */}
@@ -70,7 +99,7 @@ export default function CleanStyleIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>5,986명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -215,8 +244,25 @@ export default function CleanStyleIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Clean Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Clean Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="clean-style" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="방청소 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Moon, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "퇴근 후 루틴 테스트 | 저녁 습관으로 알아보는 성격 유형 | 테몬",
-  description:
-    "12문항으로 퇴근 루틴을 분석해 16가지 성격 유형을 매칭. 운동·집콕·모임·자기계발까지, 당신의 퇴근 패턴은? 퇴근하고 집에 와서 하는 '그 행동들'에 당신의 성격이 숨어있습니다.",
-  keywords:
-    "퇴근 루틴 테스트, 저녁 루틴, 성격 테스트, 퇴근 후 뭐하지, 야근 후 회복 루틴, 서울 야간 PT, 동네 카페, 홈트, 야시장 산책, 저녁 습관",
-  alternates: {
-    canonical: "/tests/evening-routine",
-  },
-  openGraph: {
-    title: "퇴근 후 루틴 테스트 | 저녁 습관으로 알아보는 성격 유형",
-    description: "12문항으로 퇴근 루틴을 분석해 16가지 성격 유형을 매칭. 운동·집콕·모임·자기계발까지, 당신의 퇴근 패턴은?",
-    type: "website",
-    url: "https://www.temon.kr/tests/evening-routine",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 퇴근 루틴을 분석해 16가지 성격 유형을 매칭. 운동·집콕·모임·자기계발까지, 당신의 퇴근 패턴은? 퇴근하고 집에 와서 하는 "
+// Full description for Google/AI
+const fullDescription = "12문항으로 퇴근 루틴을 분석해 16가지 성격 유형을 매칭. 운동·집콕·모임·자기계발까지, 당신의 퇴근 패턴은? 퇴근하고 집에 와서 하는 "
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "evening-routine",
+  title: "퇴근 후 루틴 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "퇴근 루틴 테스트, 저녁 루틴, 성격 테스트, 퇴근 후 뭐하지, 야근 후 회복 루틴, 서울 야간 PT, 동네 카페, 홈트, 야시장 산책, 저녁 습관",
+  canonical: "/tests/evening-routine",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("퇴근 후 루틴 테스트"),
+]
 
 export default function EveningRoutineIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "evening-routine",
+    title: "퇴근 후 루틴 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "퇴근 루틴 테스트, 저녁 루틴, 성격 테스트, 퇴근 후 뭐하지, 야근 후 회복 루틴, 서울 야간 PT, 동네 카페, 홈트, 야시장 산책, 저녁 습관",
+    canonical: "/tests/evening-routine",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 dark:from-purple-950 dark:via-pink-950 dark:to-indigo-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="evening-routine-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="evening-routine-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="evening-routine-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 dark:from-purple-950 dark:via-pink-950 dark:to-indigo-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Evening Elements */}
@@ -71,7 +99,7 @@ export default function EveningRoutineIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>5,438명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -216,8 +244,25 @@ export default function EveningRoutineIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Evening Routine Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Evening Routine Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="evening-routine" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="퇴근 후 루틴 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

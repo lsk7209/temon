@@ -1,28 +1,57 @@
 import type { Metadata } from "next"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
+import { Card } from "@/components/ui/card"
 import { Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "K-팝 아이돌 포지션 테스트 - 무료 성격 테스트 | 테몬",
-  description:
-    "K-팝 아이돌 포지션 테스트로 알아보는 나의 포지션! 카리스마 리더부터 4차원 막내까지, 아이돌 그룹에서 내 포지션을 무료로 확인해보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "K-팝 아이돌 포지션 테스트로 알아보는 나의 포지션! 카리스마 리더부터 4차원 막내까지, 아이돌 그룹에서 내 포지션을 무료로 확인해보세요."
+// Full description for Google/AI
+const fullDescription = "K-팝 아이돌 포지션 테스트로 알아보는 나의 포지션! 카리스마 리더부터 4차원 막내까지, 아이돌 그룹에서 내 포지션을 무료로 확인해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "kpop-idol",
+  title: "K-팝 아이돌 포지션 테스트 - 무료 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "K-팝, 아이돌 테스트, 포지션 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/kpop-idol",
-  },
-  openGraph: {
-    title: "K-팝 아이돌 포지션 테스트 - 무료 성격 테스트",
-    description: "K-팝 아이돌 포지션 테스트로 알아보는 나의 포지션! 카리스마 리더부터 4차원 막내까지, 무료로 시작해보세요.",
-    type: "website",
-    url: "https://www.temon.kr/tests/kpop-idol",
-  },
-}
+  canonical: "/tests/kpop-idol",
+  questionCount: 8,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("K-팝 아이돌 포지션 테스트 - 무료 성격 테스트"),
+]
 
 export default function KpopIdolIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "kpop-idol",
+    title: "K-팝 아이돌 포지션 테스트 - 무료 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "K-팝, 아이돌 테스트, 포지션 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/kpop-idol",
+    questionCount: 8,
+    duration: "PT2M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="kpop-idol-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="kpop-idol-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="kpop-idol-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       <div className="container mx-auto px-4 py-12 max-w-2xl">
         <Card className="p-8 md:p-12 text-center shadow-xl border-2 border-purple-200 bg-white/90 backdrop-blur">
           <div className="mb-6 flex justify-center">
@@ -76,7 +105,25 @@ export default function KpopIdolIntro() {
 
           <p className="mt-6 text-sm text-gray-500">소요 시간: 약 2분 | 총 8문항</p>
         </Card>
-      </div>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Kpop Idol Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Kpop Idol Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="kpop-idol" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="K-팝 아이돌 포지션 테스트 - 무료 성격 테스트 자주 묻는 질문" />
+        </section>
+</div>
     </div>
+    </>
   )
 }

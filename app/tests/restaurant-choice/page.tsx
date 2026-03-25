@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, UtensilsCrossed, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "식당 선택 스타일 테스트 | 식당 선택으로 보는 16유형 | 테몬",
-  description:
-    "식당 고르는 기준과 방식으로 16유형 성향을 분석합니다. 식당 선택 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성.",
-  keywords:
-    "식당 테스트, 외식, 선택, 의사결정, 성향 테스트, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/restaurant-choice",
-  },
-  openGraph: {
-    title: "식당 선택 스타일 테스트 | 식당 선택으로 보는 16유형",
-    description: "식당 고르는 기준과 방식으로 16유형 성향을 분석합니다. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/restaurant-choice",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "식당 고르는 기준과 방식으로 16유형 성향을 분석합니다. 식당 선택 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+// Full description for Google/AI
+const fullDescription = "식당 고르는 기준과 방식으로 16유형 성향을 분석합니다. 식당 선택 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "restaurant-choice",
+  title: "식당 선택 스타일 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "식당 테스트, 외식, 선택, 의사결정, 성향 테스트, 심리테스트, 무료 테스트",
+  canonical: "/tests/restaurant-choice",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("식당 선택 스타일 테스트"),
+]
 
 export default function RestaurantChoiceIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "restaurant-choice",
+    title: "식당 선택 스타일 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "식당 테스트, 외식, 선택, 의사결정, 성향 테스트, 심리테스트, 무료 테스트",
+    canonical: "/tests/restaurant-choice",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="restaurant-choice-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="restaurant-choice-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="restaurant-choice-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -66,7 +94,7 @@ export default function RestaurantChoiceIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>12,603명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -140,8 +168,25 @@ export default function RestaurantChoiceIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Restaurant Choice Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Restaurant Choice Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="restaurant-choice" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="식당 선택 스타일 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

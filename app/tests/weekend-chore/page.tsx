@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Recycle, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "주말 집안일 테스트 | 16유형 분석 | 테몬",
-  description:
-    "주말에 집안일을 하는 방식으로 알아보는 나의 성격 유형. 주말에 집안일을 할 때, 주말에 빨래를 해야 할 때 등 구체적인 상황으로 분석합니다.",
-  keywords:
-    "주말 집안일, 집안일, 주말 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/weekend-chore",
-  },
-  openGraph: {
-    title: "주말 집안일 테스트 | 16유형 분석",
-    description: "주말에 집안일을 하는 방식으로 알아보는 나의 성격 유형. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/weekend-chore",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "주말에 집안일을 하는 방식으로 알아보는 나의 성격 유형. 주말에 집안일을 할 때, 주말에 빨래를 해야 할 때 등 구체적인 상황으로 분석합니다."
+// Full description for Google/AI
+const fullDescription = "주말에 집안일을 하는 방식으로 알아보는 나의 성격 유형. 주말에 집안일을 할 때, 주말에 빨래를 해야 할 때 등 구체적인 상황으로 분석합니다."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "weekend-chore",
+  title: "주말 집안일 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "주말 집안일, 집안일, 주말 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/weekend-chore",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("주말 집안일 테스트"),
+]
 
 export default function WeekendChoreIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "weekend-chore",
+    title: "주말 집안일 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "주말 집안일, 집안일, 주말 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/weekend-chore",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="weekend-chore-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="weekend-chore-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="weekend-chore-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -66,7 +94,7 @@ export default function WeekendChoreIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>11,860명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -208,8 +236,25 @@ export default function WeekendChoreIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Weekend Chore Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Weekend Chore Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="weekend-chore" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="주말 집안일 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

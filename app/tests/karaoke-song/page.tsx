@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Music, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "노래방 곡 선택 테스트 | 노래방 곡 선택 방식으로 보는 16유형 | 테몬",
-  description:
-    "노래방 곡 선택 방식으로 16유형 성향을 분석합니다. 곡 선택 기준, 부르는 스타일로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성.",
-  keywords:
-    "노래방 테스트, 노래방 곡 선택, 노래 스타일, 성향 테스트, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/karaoke-song",
-  },
-  openGraph: {
-    title: "노래방 곡 선택 테스트 | 노래방 곡 선택 방식으로 보는 16유형",
-    description: "노래방 곡 선택 방식으로 16유형 성향을 분석합니다. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/karaoke-song",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "노래방 곡 선택 방식으로 16유형 성향을 분석합니다. 곡 선택 기준, 부르는 스타일로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자..."
+// Full description for Google/AI
+const fullDescription = "노래방 곡 선택 방식으로 16유형 성향을 분석합니다. 곡 선택 기준, 부르는 스타일로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "karaoke-song",
+  title: "노래방 곡 선택 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "노래방 테스트, 노래방 곡 선택, 노래 스타일, 성향 테스트, 심리테스트, 무료 테스트",
+  canonical: "/tests/karaoke-song",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("노래방 곡 선택 테스트"),
+]
 
 export default function KaraokeSongIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "karaoke-song",
+    title: "노래방 곡 선택 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "노래방 테스트, 노래방 곡 선택, 노래 스타일, 성향 테스트, 심리테스트, 무료 테스트",
+    canonical: "/tests/karaoke-song",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="karaoke-song-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="karaoke-song-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="karaoke-song-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -66,7 +94,7 @@ export default function KaraokeSongIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>14,951명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -140,8 +168,25 @@ export default function KaraokeSongIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Karaoke Song Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Karaoke Song Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="karaoke-song" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="노래방 곡 선택 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

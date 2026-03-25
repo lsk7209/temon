@@ -3,6 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
 
 // Naver-optimized description (under 80 chars)
@@ -100,6 +103,14 @@ export default function SnowWhiteMBTI() {
           <div className="mt-8 text-sm text-gray-500">
             <p>💡 솔직하게 답변하면 더 재미있어요!</p>
           </div>
+        </div>
+
+        <div className="max-w-2xl mx-auto">
+          <AnswerEngineSection quizTitle="Snow White Personality Test" />
+
+          <LandingConversionSection quizTitle="Snow White Personality Test" />
+
+          <RelatedTestsSection testId="snowwhite-mbti" title="Next Quizzes Search Visitors Usually Click" />
         </div>
 
         {/* FAQ Section for AI Bot Optimization */}

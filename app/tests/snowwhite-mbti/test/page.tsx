@@ -72,6 +72,18 @@ const questions: QuizQuestion[] = [
     a1: { text: "심장이 뛰면 그게 정답이야!", tags: ["egen"] },
     a2: { text: "실현 가능한 길부터 고른다.", tags: ["teto"] },
   },
+  {
+    id: 11,
+    q: "난장이가 다른 난장이 뒷담화를 한다. 🗣️",
+    a1: { text: "얘들아 싸우지 마~ 다 좋은 사람이야!", tags: ["egen"] },
+    a2: { text: "증거 자료 수집 후 회의 소집.", tags: ["teto"] },
+  },
+  {
+    id: 12,
+    q: "독사과를 먹고 쓰러졌다! 왕자가 안 오면? 💀",
+    a1: { text: "기다려~ 사랑은 반드시 올 거야!", tags: ["egen"] },
+    a2: { text: "비상 해독제 키트 직접 만든다.", tags: ["teto"] },
+  },
 ]
 
 // Custom result calculation function for snowwhite-mbti

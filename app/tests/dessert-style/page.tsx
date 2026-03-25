@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Cake, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "디저트 취향 성격 테스트 | 나의 달콤한 취향 MBTI 🍩 | 테몬",
-  description:
-    "12문항으로 알아보는 나의 디저트 취향! 달콤, 진지, 즉흥, 감성까지 🍰 디저트를 고르는 순간, 당신의 성격이 드러납니다.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 알아보는 나의 디저트 취향! 달콤, 진지, 즉흥, 감성까지 🍰 디저트를 고르는 순간, 당신의 성격이 드러납니다."
+// Full description for Google/AI
+const fullDescription = "12문항으로 알아보는 나의 디저트 취향! 달콤, 진지, 즉흥, 감성까지 🍰 디저트를 고르는 순간, 당신의 성격이 드러납니다."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "dessert-style",
+  title: "디저트 취향 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "디저트 성격 테스트, 달콤한 취향 MBTI, 카페 취향 테스트, 디저트 취향, 카페 디저트, 마카롱, 케이크, 홍대 카페, 연남동 디저트, 제주 베이커리, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/dessert-style",
-  },
-  openGraph: {
-    title: "디저트 취향 성격 테스트 | 나의 달콤한 취향 MBTI 🍩",
-    description: "12문항으로 알아보는 나의 디저트 취향! 달콤, 진지, 즉흥, 감성까지 🍰",
-    type: "website",
-    url: "https://www.temon.kr/tests/dessert-style",
-  },
-}
+  canonical: "/tests/dessert-style",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("디저트 취향 성격 테스트"),
+]
 
 export default function DessertStyleIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "dessert-style",
+    title: "디저트 취향 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "디저트 성격 테스트, 달콤한 취향 MBTI, 카페 취향 테스트, 디저트 취향, 카페 디저트, 마카롱, 케이크, 홍대 카페, 연남동 디저트, 제주 베이커리, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/dessert-style",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950 dark:via-orange-950 dark:to-yellow-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="dessert-style-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="dessert-style-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="dessert-style-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950 dark:via-orange-950 dark:to-yellow-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Dessert Elements */}
@@ -68,7 +97,7 @@ export default function DessertStyleIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>3,755명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -213,8 +242,25 @@ export default function DessertStyleIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Dessert Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Dessert Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="dessert-style" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="디저트 취향 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

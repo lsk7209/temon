@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Trophy, Users, Clock, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "NTRP 테스트 - 무료 테니스 실력 측정 | 테몬",
-  description:
-    "NTRP 테스트로 당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 1.0부터 7.0까지 정확한 레벨을 무료로 알아보는 테스트입니다.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "NTRP 테스트로 당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 1.0부터 7.0까지 정확한 레벨을 무료로 알아보는 ..."
+// Full description for Google/AI
+const fullDescription = "NTRP 테스트로 당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 1.0부터 7.0까지 정확한 레벨을 무료로 알아보는 테스트입니다."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "ntrp-test",
+  title: "NTRP 테스트 - 무료 테니스 실력 측정",
+  shortDescription,
+  fullDescription,
   keywords: "NTRP, 테니스 실력, 테니스 레벨, 테니스 테스트, 스포츠 테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/ntrp-test",
-  },
-  openGraph: {
-    title: "NTRP 테스트 - 무료 테니스 실력 측정",
-    description: "NTRP 테스트로 당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 정확한 레벨을 알아보는 테스트입니다.",
-    type: "website",
-    url: "https://www.temon.kr/tests/ntrp-test",
-  },
-}
+  canonical: "/tests/ntrp-test",
+  questionCount: 15,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("NTRP 테스트 - 무료 테니스 실력 측정"),
+]
 
 export default function NTRPTestIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "ntrp-test",
+    title: "NTRP 테스트 - 무료 테니스 실력 측정",
+    shortDescription,
+    fullDescription,
+    keywords: "NTRP, 테니스 실력, 테니스 레벨, 테니스 테스트, 스포츠 테스트, 무료 테스트",
+    canonical: "/tests/ntrp-test",
+    questionCount: 15,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950 dark:via-emerald-950 dark:to-teal-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="ntrp-test-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="ntrp-test-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="ntrp-test-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950 dark:via-emerald-950 dark:to-teal-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Tennis Elements */}
@@ -211,7 +240,25 @@ export default function NTRPTestIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Ntrp Test Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Ntrp Test Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="ntrp-test" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="NTRP 테스트 - 무료 테니스 실력 측정 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }

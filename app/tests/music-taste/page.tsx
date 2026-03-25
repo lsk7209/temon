@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Music, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "음악 취향 성격 테스트 | 내 플레이리스트로 보는 MBTI 유형 | 테몬",
-  description:
-    "12문항으로 알아보는 당신의 음악 습관! 감성형? 분석형? 오늘의 나를 닮은 음악 유형 테스트 🎧 플레이리스트로 보는 성격 분석을 무료로 시작해보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 알아보는 당신의 음악 습관! 감성형? 분석형? 오늘의 나를 닮은 음악 유형 테스트 🎧 플레이리스트로 보는 성격 분석을 무료로..."
+// Full description for Google/AI
+const fullDescription = "12문항으로 알아보는 당신의 음악 습관! 감성형? 분석형? 오늘의 나를 닮은 음악 유형 테스트 🎧 플레이리스트로 보는 성격 분석을 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "music-taste",
+  title: "음악 취향 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "음악 취향, 음악 성격 테스트, 플레이리스트, MBTI, 음악 테스트, 멜론, 스포티파이, 유튜브뮤직, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/music-taste",
-  },
-  openGraph: {
-    title: "음악 취향 성격 테스트 | 내 플레이리스트로 보는 MBTI 유형",
-    description: "12문항으로 알아보는 당신의 음악 습관! 감성형? 분석형? 오늘의 나를 닮은 음악 유형 테스트 🎧",
-    type: "website",
-    url: "https://www.temon.kr/tests/music-taste",
-  },
-}
+  canonical: "/tests/music-taste",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("음악 취향 성격 테스트"),
+]
 
 export default function MusicTasteIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "music-taste",
+    title: "음악 취향 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "음악 취향, 음악 성격 테스트, 플레이리스트, MBTI, 음악 테스트, 멜론, 스포티파이, 유튜브뮤직, 심리테스트, 무료 테스트",
+    canonical: "/tests/music-taste",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-purple-950 dark:via-pink-950 dark:to-blue-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="music-taste-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="music-taste-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="music-taste-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-purple-950 dark:via-pink-950 dark:to-blue-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Music Elements */}
@@ -70,7 +99,7 @@ export default function MusicTasteIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>6,295명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -214,8 +243,25 @@ export default function MusicTasteIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Music Taste Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Music Taste Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="music-taste" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="음악 취향 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

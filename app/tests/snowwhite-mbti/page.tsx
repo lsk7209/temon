@@ -1,60 +1,56 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import Script from "next/script"
 import { Button } from "@/components/ui/button"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { ExternalLink } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "백설공주 에겐테토 테스트 - 무료 성격 테스트 | 테몬",
-  description:
-    "백설공주 에겐테토 테스트로 알아보는 나의 성향! 감정파 에겐일까? 효율파 테토일까? 재미있는 병맛 테스트를 무료로 시작해보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "백설공주 에겐테토 테스트로 알아보는 나의 성향! 감정파 에겐일까? 효율파 테토일까? 재미있는 병맛 테스트를 무료로 시작해보세요."
+// Full description for Google/AI
+const fullDescription = "백설공주 에겐테토 테스트로 알아보는 나의 성향! 감정파 에겐일까? 효율파 테토일까? 재미있는 병맛 테스트를 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "snowwhite-mbti",
+  title: "백설공주 에겐테토 테스트 - 무료 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "백설공주, 에겐테토, 성격 테스트, MBTI, 병맛 테스트, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/snowwhite-mbti",
-  },
-  openGraph: {
-    title: "백설공주 에겐테토 테스트 - 무료 성격 테스트",
-    description: "백설공주 에겐테토 테스트로 알아보는 나의 성향! 감정파 에겐일까? 효율파 테토일까?",
-    type: "website",
-    url: "https://www.temon.kr/tests/snowwhite-mbti",
-  },
-}
+  canonical: "/tests/snowwhite-mbti",
+  questionCount: 10,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("백설공주 에겐테토 테스트 - 무료 성격 테스트"),
+]
 
 export default function SnowWhiteMBTI() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "'에겐'과 '테토'가 무엇인가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "'에겐'은 감정과 공감을 중요시하는 성향(Feeling), '테토'는 효율과 논리를 중요시하는 성향(Thinking)을 의미하는 신조어입니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "어떤 결과가 나오나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "백설 에겐공주, 에겐왕자, 테토여왕, 난장이 테토남 등 4가지 재미있는 유형으로 당신의 성향을 분석해드립니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "테스트 소요 시간은?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "약 2분 정도 소요됩니다. 10개의 짧고 재미있는 질문으로 구성되어 있습니다."
-        }
-      }
-    ]
-  }
+  const schemas = generateQuizSchemas({
+    quizId: "snowwhite-mbti",
+    title: "백설공주 에겐테토 테스트 - 무료 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "백설공주, 에겐테토, 성격 테스트, MBTI, 병맛 테스트, 심리테스트, 무료 테스트",
+    canonical: "/tests/snowwhite-mbti",
+    questionCount: 10,
+    duration: "PT2M",
+    faqs,
+  })
 
   return (
     <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="snowwhite-mbti-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="snowwhite-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="snowwhite-mbti-faq-schema" data={schemas.faq} />}
+
+      <>
       <Script
         id="faq-schema"
         type="application/ld+json"
@@ -146,8 +142,26 @@ export default function SnowWhiteMBTI() {
               </div>
             </div>
           </div>
+        
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Snowwhite Mbti Test" />
         </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Snowwhite Mbti Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="snowwhite-mbti" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="백설공주 에겐테토 테스트 - 무료 성격 테스트 자주 묻는 질문" />
+        </section>
+</div>
       </div>
+    </>
     </>
   )
 }

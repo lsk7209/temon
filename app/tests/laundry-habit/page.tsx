@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Droplets, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "세탁 습관 테스트 | 세탁 방식으로 보는 16유형 | 테몬",
-  description:
-    "세탁 방식, 습관으로 16유형 성향을 분석합니다. 세탁 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성.",
-  keywords:
-    "세탁 테스트, 세탁 습관, 세탁 방식, 성향 테스트, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/laundry-habit",
-  },
-  openGraph: {
-    title: "세탁 습관 테스트 | 세탁 방식으로 보는 16유형",
-    description: "세탁 방식, 습관으로 16유형 성향을 분석합니다. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/laundry-habit",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "세탁 방식, 습관으로 16유형 성향을 분석합니다. 세탁 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+// Full description for Google/AI
+const fullDescription = "세탁 방식, 습관으로 16유형 성향을 분석합니다. 세탁 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "laundry-habit",
+  title: "세탁 습관 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "세탁 테스트, 세탁 습관, 세탁 방식, 성향 테스트, 심리테스트, 무료 테스트",
+  canonical: "/tests/laundry-habit",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("세탁 습관 테스트"),
+]
 
 export default function LaundryHabitIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "laundry-habit",
+    title: "세탁 습관 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "세탁 테스트, 세탁 습관, 세탁 방식, 성향 테스트, 심리테스트, 무료 테스트",
+    canonical: "/tests/laundry-habit",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="laundry-habit-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="laundry-habit-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="laundry-habit-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -66,7 +94,7 @@ export default function LaundryHabitIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>10,500명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -140,8 +168,25 @@ export default function LaundryHabitIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Laundry Habit Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Laundry Habit Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="laundry-habit" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="세탁 습관 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

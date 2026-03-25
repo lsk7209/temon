@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, MessageSquare, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "카톡 답장 스타일 테스트 | 답장 습관으로 보는 16유형 | 테몬",
-  description:
-    "12문항으로 답장 속도·길이·톤을 분석하여 16가지 의사소통 유형을 제시합니다. 실전 대화 팁과 궁합 유형 제공.",
-  keywords:
-    "카톡 답장 스타일, 메신저 성격 테스트, 카카오톡 답장 습관, 소통 스타일 MBTI, 읽씹 습관, 답장 속도, 메시지 스타일, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/kakao-reply-style",
-  },
-  openGraph: {
-    title: "카톡 답장 스타일 테스트 | 답장 속도·말투·읽씹 습관으로 보는 소통 성향",
-    description: "12문항으로 답장 속도·길이·톤을 분석하여 16가지 의사소통 유형을 제시합니다. 실전 대화 팁과 궁합 유형 제공.",
-    type: "website",
-    url: "https://www.temon.kr/tests/kakao-reply-style",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 답장 속도·길이·톤을 분석하여 16가지 의사소통 유형을 제시합니다. 실전 대화 팁과 궁합 유형 제공."
+// Full description for Google/AI
+const fullDescription = "12문항으로 답장 속도·길이·톤을 분석하여 16가지 의사소통 유형을 제시합니다. 실전 대화 팁과 궁합 유형 제공."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "kakao-reply-style",
+  title: "카톡 답장 스타일 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "카톡 답장 스타일, 메신저 성격 테스트, 카카오톡 답장 습관, 소통 스타일 MBTI, 읽씹 습관, 답장 속도, 메시지 스타일, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/kakao-reply-style",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("카톡 답장 스타일 테스트"),
+]
 
 export default function KakaoReplyStyleIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "kakao-reply-style",
+    title: "카톡 답장 스타일 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "카톡 답장 스타일, 메신저 성격 테스트, 카카오톡 답장 습관, 소통 스타일 MBTI, 읽씹 습관, 답장 속도, 메시지 스타일, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/kakao-reply-style",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="kakao-reply-style-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="kakao-reply-style-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="kakao-reply-style-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Message Elements */}
@@ -69,7 +97,7 @@ export default function KakaoReplyStyleIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>6,554명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -214,8 +242,25 @@ export default function KakaoReplyStyleIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Kakao Reply Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Kakao Reply Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="kakao-reply-style" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="카톡 답장 스타일 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

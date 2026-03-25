@@ -1,23 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, CreditCard, Sparkles } from "lucide-react"
 
-import { generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
+// Naver-optimized description (under 80 chars)
+const shortDescription = "phone payment로 알아보는 나의 성격 유형 테스트"
+// Full description for Google/AI
+const fullDescription = "phone payment로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 phone payment를 지금 바로 무료로 시작해보세요."
 
-export const metadata: Metadata = generateUniqueTestMetadata({
-  testName: "모바일 결제 스타일 테스트",
-  testCategory: "모바일 결제 방식",
-  testDescription: "모바일로 결제하는 스타일로 알아보는 나의 성격 유형. 결제할 때 결제 수단을 고를 때, 결제 오류가 났을 때 등 구체적인 상황으로 분석합니다.",
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "phone-payment",
+  title: "phone payment",
+  shortDescription,
+  fullDescription,
   keywords: "모바일 결제, 결제, 결제 스타일, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
   canonical: "/tests/phone-payment",
+  questionCount: 12,
+  duration: "PT3M",
 })
 
+const faqs = [
+  ...getTopicQuizFAQs("phone payment"),
+]
+
 export default function PhonePaymentIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "phone-payment",
+    title: "phone payment",
+    shortDescription,
+    fullDescription,
+    keywords: "모바일 결제, 결제, 결제 스타일, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/phone-payment",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="phone-payment-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="phone-payment-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="phone-payment-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -59,7 +94,7 @@ export default function PhonePaymentIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>12,768명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -201,9 +236,25 @@ export default function PhonePaymentIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Phone Payment Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Phone Payment Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="phone-payment" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="phone payment 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-
-

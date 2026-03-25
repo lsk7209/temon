@@ -72,6 +72,18 @@ const questions: QuizQuestion[] = [
     a1: { text: "슬로모션 키스 💋", tags: ["pure"] },
     a2: { text: "그냥 국밥 먹으며 크레딧 올라감 🍲", tags: ["comic"] },
   },
+  {
+    id: 11,
+    q: "드라마 속 감동 장면에서 당신은? 🎭",
+    a1: { text: "눈물 펑펑 쏟으며 감정 이입한다 😭", tags: ["crying"] },
+    a2: { text: "\"이건 PPL이야\" 하며 냉정하게 분석한다 🧐", tags: ["gukbap"] },
+  },
+  {
+    id: 12,
+    q: "드라마 속 파티에 초대받았다! 🥂",
+    a1: { text: "나 오늘 주인공이야! 화려하게 등장 💎", tags: ["chaebol"] },
+    a2: { text: "코믹한 실수로 웃음 폭탄 터뜨린다 🤣", tags: ["comic"] },
+  },
 ]
 
 // Custom result calculation for kdrama-mbti

@@ -1,62 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import Script from "next/script"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Clock, Users, Heart, Sparkles, ExternalLink } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "반려동물 MBTI 테스트 - 무료 성격 테스트 | 테몬",
-  description:
-    "반려동물 MBTI 테스트로 알아보는 나의 성격! 반려동물 성향으로 알아보는 성격 테스트를 무료로 시작해보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "반려동물 MBTI 테스트로 알아보는 나의 성격! 반려동물 성향으로 알아보는 성격 테스트를 무료로 시작해보세요."
+// Full description for Google/AI
+const fullDescription = "반려동물 MBTI 테스트로 알아보는 나의 성격! 반려동물 성향으로 알아보는 성격 테스트를 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "pet-mbti",
+  title: "반려동물 MBTI 테스트 - 무료 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "반려동물 MBTI, 반려동물 테스트, 성격 테스트, MBTI, 반려동물 유형, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/pet-mbti",
-  },
-  openGraph: {
-    title: "반려동물 MBTI 테스트 - 무료 성격 테스트",
-    description: "반려동물 MBTI 테스트로 알아보는 나의 성격! 반려동물 성향으로 알아보는 성격 테스트를 무료로 시작해보세요.",
-    type: "website",
-    url: "https://www.temon.kr/tests/pet-mbti",
-  },
-}
+  canonical: "/tests/pet-mbti",
+  questionCount: 12,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("반려동물 MBTI 테스트 - 무료 성격 테스트"),
+]
 
 export default function PetMBTIIntro() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "반려동물을 키우지 않아도 테스트할 수 있나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "네, 물론입니다! 현재 반려동물이 없더라도 당신의 라이프스타일과 성향을 바탕으로 가장 잘 어울리는 반려동물을 추천해드립니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "어떤 반려동물이 결과로 나오나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "강아지, 고양이뿐만 아니라 햄스터, 앵무새, 거북이 등 다양한 반려동물 중 당신의 성격과 찰떡궁합인 친구를 찾아드립니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "테스트 결과는 얼마나 정확한가요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "MBTI 성격 유형 이론을 바탕으로 반려동물의 특성과 매칭하여 분석하므로, 꽤 높은 정확도를 자랑합니다."
-        }
-      }
-    ]
-  }
+  const schemas = generateQuizSchemas({
+    quizId: "pet-mbti",
+    title: "반려동물 MBTI 테스트 - 무료 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "반려동물 MBTI, 반려동물 테스트, 성격 테스트, MBTI, 반려동물 유형, 심리테스트, 무료 테스트",
+    canonical: "/tests/pet-mbti",
+    questionCount: 12,
+    duration: "PT2M",
+    faqs,
+  })
 
   return (
     <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="pet-mbti-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="pet-mbti-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="pet-mbti-faq-schema" data={schemas.faq} />}
+
+      <>
       <Script
         id="faq-schema"
         type="application/ld+json"
@@ -173,7 +169,7 @@ export default function PetMBTIIntro() {
               <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
                 <div className="flex items-center space-x-2">
                   <Users className="h-4 w-4" />
-                  <span>Coming Soon</span>
+                  <span>3,704명 참여</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="h-4 w-4" />
@@ -360,8 +356,26 @@ export default function PetMBTIIntro() {
               </CardContent>
             </Card>
           </div>
-        </main>
+        
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Pet Mbti Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Pet Mbti Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="pet-mbti" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="반려동물 MBTI 테스트 - 무료 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
       </div>
+    </>
     </>
   )
 }

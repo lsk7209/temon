@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Train, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "지하철 vs 버스 선택 테스트 | 대중교통 선택으로 보는 16유형 | 테몬",
-  description:
-    "지하철 vs 버스 선택 기준으로 16유형 성향을 분석합니다. 지하철파 vs 버스파. 12문항, 결과 공유 이미지 자동 생성.",
-  keywords:
-    "지하철 테스트, 버스 테스트, 대중교통, 성향 테스트, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/subway-vs-bus",
-  },
-  openGraph: {
-    title: "지하철 vs 버스 선택 테스트 | 대중교통 선택으로 보는 16유형",
-    description: "지하철 vs 버스 선택 기준으로 16유형 성향을 분석합니다. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/subway-vs-bus",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "지하철 vs 버스 선택 기준으로 16유형 성향을 분석합니다. 지하철파 vs 버스파. 12문항, 결과 공유 이미지 자동 생성."
+// Full description for Google/AI
+const fullDescription = "지하철 vs 버스 선택 기준으로 16유형 성향을 분석합니다. 지하철파 vs 버스파. 12문항, 결과 공유 이미지 자동 생성."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "subway-vs-bus",
+  title: "지하철 vs 버스 선택 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "지하철 테스트, 버스 테스트, 대중교통, 성향 테스트, 심리테스트, 무료 테스트",
+  canonical: "/tests/subway-vs-bus",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("지하철 vs 버스 선택 테스트"),
+]
 
 export default function SubwayVsBusIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "subway-vs-bus",
+    title: "지하철 vs 버스 선택 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "지하철 테스트, 버스 테스트, 대중교통, 성향 테스트, 심리테스트, 무료 테스트",
+    canonical: "/tests/subway-vs-bus",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="subway-vs-bus-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="subway-vs-bus-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="subway-vs-bus-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -66,7 +94,7 @@ export default function SubwayVsBusIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>15,859명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -140,8 +168,25 @@ export default function SubwayVsBusIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Subway Vs Bus Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Subway Vs Bus Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="subway-vs-bus" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="지하철 vs 버스 선택 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

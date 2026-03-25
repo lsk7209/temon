@@ -3,6 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
 import { ExternalLink } from "lucide-react"
 
@@ -118,6 +121,12 @@ export default function RamenMBTI() {
                 <p>💡 정확한 결과를 위해 솔직하게 답변해주세요!</p>
               </div>
             </section>
+
+            <AnswerEngineSection quizTitle="Ramen MBTI" />
+
+            <LandingConversionSection quizTitle="Ramen MBTI" />
+
+            <RelatedTestsSection testId="ramen-mbti" title="Next Quizzes Search Visitors Usually Click" />
 
             {/* FAQ Section for AI Bot Optimization */}
             <section className="mt-12">

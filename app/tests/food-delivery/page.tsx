@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, UtensilsCrossed, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "배달 음식 스타일 테스트 | 당신은 어떤 타입의 주문러? | 테몬",
-  description:
-    "12문항으로 알아보는 나의 배달 습관! 즉흥형 vs 계획형, 도전자 vs 안정형 🍔 배달 앱을 켜는 순간, 당신의 성격이 드러납니다.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 알아보는 나의 배달 습관! 즉흥형 vs 계획형, 도전자 vs 안정형 🍔 배달 앱을 켜는 순간, 당신의 성격이 드러납니다."
+// Full description for Google/AI
+const fullDescription = "12문항으로 알아보는 나의 배달 습관! 즉흥형 vs 계획형, 도전자 vs 안정형 🍔 배달 앱을 켜는 순간, 당신의 성격이 드러납니다."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "food-delivery",
+  title: "배달 음식 스타일 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "배달 음식 스타일, 배달 성격 테스트, 음식 취향 테스트, 배달앱 유형, 배달의민족, 쿠팡이츠, 요기요, 배달 메뉴, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/food-delivery",
-  },
-  openGraph: {
-    title: "배달 음식 스타일 테스트 | 당신은 어떤 타입의 주문러?",
-    description: "12문항으로 알아보는 나의 배달 습관! 즉흥형 vs 계획형, 도전자 vs 안정형 🍔",
-    type: "website",
-    url: "https://www.temon.kr/tests/food-delivery",
-  },
-}
+  canonical: "/tests/food-delivery",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("배달 음식 스타일 테스트"),
+]
 
 export default function FoodDeliveryIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "food-delivery",
+    title: "배달 음식 스타일 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "배달 음식 스타일, 배달 성격 테스트, 음식 취향 테스트, 배달앱 유형, 배달의민족, 쿠팡이츠, 요기요, 배달 메뉴, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/food-delivery",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 dark:from-red-950 dark:via-orange-950 dark:to-yellow-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="food-delivery-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="food-delivery-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="food-delivery-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 dark:from-red-950 dark:via-orange-950 dark:to-yellow-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Food Elements */}
@@ -70,7 +99,7 @@ export default function FoodDeliveryIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>11,167명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -214,8 +243,25 @@ export default function FoodDeliveryIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Food Delivery Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Food Delivery Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="food-delivery" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="배달 음식 스타일 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

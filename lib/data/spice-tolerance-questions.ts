@@ -1,98 +1,98 @@
 export const SPICE_TOLERANCE_QUESTIONS = [
   {
     id: 1,
-    text: "A spicy menu shows up. What is your first reaction?",
+    text: "매운 메뉴가 눈에 들어왔다! 첫 반응은?",
     options: [
-      { label: "I want the full heat experience.", tag: "E" },
-      { label: "I check whether I can handle it first.", tag: "I" },
+      { label: "오! 완전 풀매운맛으로 가야지!", tag: "E" },
+      { label: "내가 이거 감당할 수 있나 먼저 확인한다", tag: "I" },
     ],
   },
   {
     id: 2,
-    text: "How do you pick a spicy dish?",
+    text: "매운 음식을 고를 때 기준은?",
     options: [
-      { label: "I stick to known levels and safe choices.", tag: "S" },
-      { label: "I try the new challenge menu.", tag: "N" },
+      { label: "늘 먹던 익숙한 매운맛 레벨로 간다", tag: "S" },
+      { label: "신메뉴 도전! 새로운 매운맛에 도전한다", tag: "N" },
     ],
   },
   {
     id: 3,
-    text: "What matters most when the dish arrives?",
+    text: "매운 음식이 나왔을 때 가장 중요한 건?",
     options: [
-      { label: "Whether the spice balance makes sense.", tag: "T" },
-      { label: "Whether the mood and thrill feel right.", tag: "F" },
+      { label: "매운맛의 밸런스가 잘 맞는지 따져본다", tag: "T" },
+      { label: "분위기와 짜릿한 느낌이 좋은지가 중요하다", tag: "F" },
     ],
   },
   {
     id: 4,
-    text: "How do you respond when the dish is hotter than expected?",
+    text: "예상보다 훨씬 매운 음식이 나왔을 때?",
     options: [
-      { label: "I follow my recovery routine immediately.", tag: "J" },
-      { label: "I improvise and keep going.", tag: "P" },
+      { label: "미리 준비해둔 우유/물로 바로 대응한다", tag: "J" },
+      { label: "일단 그냥 먹으면서 어떻게든 버텨본다", tag: "P" },
     ],
   },
   {
     id: 5,
-    text: "How often do you recommend spicy places to others?",
+    text: "매운 맛집을 친구에게 추천하는 스타일은?",
     options: [
-      { label: "Often. I like dragging friends into it.", tag: "E" },
-      { label: "Only when someone asks me directly.", tag: "I" },
+      { label: "자주! 친구들 끌고 같이 가는 걸 좋아한다", tag: "E" },
+      { label: "누가 물어볼 때만 조용히 알려준다", tag: "I" },
     ],
   },
   {
     id: 6,
-    text: "What is your preferred spicy profile?",
+    text: "선호하는 매운맛 스타일은?",
     options: [
-      { label: "Consistent, familiar, dependable heat.", tag: "S" },
-      { label: "Creative, layered, surprising heat.", tag: "N" },
+      { label: "한결같고 믿을 수 있는 깔끔한 매운맛", tag: "S" },
+      { label: "독창적이고 겹겹이 쌓인 복합 매운맛", tag: "N" },
     ],
   },
   {
     id: 7,
-    text: "Why do you keep eating spicy food?",
+    text: "매운 음식을 계속 먹는 이유는?",
     options: [
-      { label: "Because it works when the flavor is built well.", tag: "T" },
-      { label: "Because the emotional payoff is great.", tag: "F" },
+      { label: "맛의 구성이 논리적으로 잘 맞아서", tag: "T" },
+      { label: "먹고 나면 기분이 확 풀려서!", tag: "F" },
     ],
   },
   {
     id: 8,
-    text: "Before ordering, what do you prepare?",
+    text: "매운 음식 주문 전 준비하는 것은?",
     options: [
-      { label: "Water, side menu, and exit plan.", tag: "J" },
-      { label: "Nothing. I will handle it live.", tag: "P" },
+      { label: "물, 사이드 메뉴, 비상 탈출 계획까지!", tag: "J" },
+      { label: "아무것도 안 함. 실전에서 해결한다", tag: "P" },
     ],
   },
   {
     id: 9,
-    text: "What is your social style around spicy food?",
+    text: "매운 음식을 먹을 때 나의 소셜 스타일은?",
     options: [
-      { label: "I make it an event with people.", tag: "E" },
-      { label: "I enjoy the experience more quietly.", tag: "I" },
+      { label: "여러 사람이랑 이벤트처럼 즐긴다", tag: "E" },
+      { label: "혼자 조용히 집중해서 즐긴다", tag: "I" },
     ],
   },
   {
     id: 10,
-    text: "How do you judge a place after one visit?",
+    text: "매운 맛집 한 번 가보고 평가하는 기준은?",
     options: [
-      { label: "By whether the basics were solid.", tag: "S" },
-      { label: "By whether it gave me something memorable.", tag: "N" },
+      { label: "기본기가 탄탄한지 따져본다", tag: "S" },
+      { label: "기억에 남는 특별한 경험이었는지가 중요", tag: "N" },
     ],
   },
   {
     id: 11,
-    text: "What kind of spicy challenge is fun?",
+    text: "재미있는 매운맛 챌린지란?",
     options: [
-      { label: "One with clear rules and measurable levels.", tag: "T" },
-      { label: "One that feels dramatic and exciting.", tag: "F" },
+      { label: "명확한 규칙과 측정 가능한 레벨이 있는 것", tag: "T" },
+      { label: "극적이고 흥미진진한 분위기가 있는 것", tag: "F" },
     ],
   },
   {
     id: 12,
-    text: "What best describes your long-term heat habit?",
+    text: "나의 장기적인 매운맛 습관을 표현하면?",
     options: [
-      { label: "I keep a stable threshold and routine.", tag: "J" },
-      { label: "My tolerance moves with mood and curiosity.", tag: "P" },
+      { label: "일정한 한계선과 루틴을 유지한다", tag: "J" },
+      { label: "그날 기분과 호기심에 따라 달라진다", tag: "P" },
     ],
   },
 ]

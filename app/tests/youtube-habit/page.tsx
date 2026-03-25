@@ -1,33 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Play, Sparkles } from "lucide-react"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Clock, Users, Play, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "유튜브 시청 습관 테스트 | 추천·배속·플리 관리로 보는 16유형 | 테몬",
-  description:
-    "유튜브 시청 습관으로 16유형 성향을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성.",
-  keywords:
-    "유튜브 테스트, 시청 습관, 유튜브 유형, 영상 배속, 플레이리스트, 유튜브 MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/youtube-habit",
-  },
-  openGraph: {
-    title: "유튜브 시청 습관 테스트 | 추천·배속·플리 관리로 보는 16유형",
-    description: "유튜브 시청 습관으로 16유형 성향을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/youtube-habit",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "유튜브 시청 습관으로 16유형 성향을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성."
+// Full description for Google/AI
+const fullDescription = "유튜브 시청 습관으로 16유형 성향을 분석합니다. 12문항, 3분, 결과 공유 이미지 자동 생성."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "youtube-habit",
+  title: "유튜브 시청 습관 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "유튜브 테스트, 시청 습관, 유튜브 유형, 영상 배속, 플레이리스트, 유튜브 MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/youtube-habit",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("유튜브 시청 습관 테스트"),
+]
 
 export default function YoutubeHabitIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "youtube-habit",
+    title: "유튜브 시청 습관 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "유튜브 테스트, 시청 습관, 유튜브 유형, 영상 배속, 플레이리스트, 유튜브 MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/youtube-habit",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="youtube-habit-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="youtube-habit-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="youtube-habit-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated YouTube Elements */}
@@ -72,7 +97,7 @@ export default function YoutubeHabitIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>14,269명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -223,8 +248,25 @@ export default function YoutubeHabitIntro() {
 
           <RelatedTestsSection testId="youtube-habit" title="Next Quizzes Search Visitors Usually Click" />
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Youtube Habit Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Youtube Habit Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="youtube-habit" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="유튜브 시청 습관 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

@@ -60,6 +60,30 @@ const questions: QuizQuestion[] = [
     a1: { text: "카리스마 있게 중심을 잡는다", tags: ["dancer"] },
     a2: { text: "감정 담아 노래에 집중한다", tags: ["vocal"] },
   },
+  {
+    id: 9,
+    q: "뮤직비디오 촬영 중! 감독이 자유롭게 해보라고 한다",
+    a1: { text: "즉흥 안무로 분위기를 장악한다", tags: ["dancer"] },
+    a2: { text: "카메라 앞에서 비주얼 폭발 포즈", tags: ["visual"] },
+  },
+  {
+    id: 10,
+    q: "연습생 후배가 고민 상담을 요청했다",
+    a1: { text: "진지하게 앉아서 인생 조언을 해준다", tags: ["leader"] },
+    a2: { text: "노래 한 곡 불러주며 위로한다", tags: ["vocal"] },
+  },
+  {
+    id: 11,
+    q: "예능 프로그램에 출연! 당신의 역할은?",
+    a1: { text: "센스 있는 리액션과 비주얼 담당", tags: ["visual"] },
+    a2: { text: "몸으로 때우는 댄스 배틀 담당", tags: ["dancer"] },
+  },
+  {
+    id: 12,
+    q: "콘서트 마지막 곡! 어떻게 마무리할까?",
+    a1: { text: "감동적인 멘트로 팬들 울린다", tags: ["vocal"] },
+    a2: { text: "장난치며 팬들과 웃으며 끝낸다", tags: ["maknae"] },
+  },
 ]
 
 // Custom result calculation for kpop-idol test

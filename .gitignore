@@ -39,3 +39,4 @@ next-env.d.ts
 # Cloudflare (더 이상 사용하지 않음)
 .wrangler/
 wrangler.toml.local
+.claude/

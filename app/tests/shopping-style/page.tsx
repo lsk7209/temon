@@ -1,29 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, ShoppingBag, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "쇼핑 스타일 성격 테스트 | 나의 구매 스타일로 보는 MBTI | 테몬",
-  description:
-    "12문항으로 알아보는 나의 쇼핑 스타일! 계획형 vs 즉흥형, 실속형 vs 감성형 💳 쇼핑할 때마다 드러나는 진짜 나의 성격을 알아보세요.",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 알아보는 나의 쇼핑 스타일! 계획형 vs 즉흥형, 실속형 vs 감성형 💳 쇼핑할 때마다 드러나는 진짜 나의 성격을 알아보세요."
+// Full description for Google/AI
+const fullDescription = "12문항으로 알아보는 나의 쇼핑 스타일! 계획형 vs 즉흥형, 실속형 vs 감성형 💳 쇼핑할 때마다 드러나는 진짜 나의 성격을 알아보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "shopping-style",
+  title: "쇼핑 스타일 성격 테스트",
+  shortDescription,
+  fullDescription,
   keywords: "쇼핑 성격 테스트, 소비 스타일 MBTI, 쇼핑 습관 테스트, 구매 스타일, 쇼핑 습관, 무신사, 지그재그, 쿠팡, 롯데온, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/shopping-style",
-  },
-  openGraph: {
-    title: "쇼핑 스타일 성격 테스트 | 나의 구매 스타일로 보는 MBTI",
-    description: "12문항으로 알아보는 나의 쇼핑 스타일! 계획형 vs 즉흥형, 실속형 vs 감성형 💳",
-    type: "website",
-    url: "https://www.temon.kr/tests/shopping-style",
-  },
-}
+  canonical: "/tests/shopping-style",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("쇼핑 스타일 성격 테스트"),
+]
 
 export default function ShoppingStyleIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "shopping-style",
+    title: "쇼핑 스타일 성격 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "쇼핑 성격 테스트, 소비 스타일 MBTI, 쇼핑 습관 테스트, 구매 스타일, 쇼핑 습관, 무신사, 지그재그, 쿠팡, 롯데온, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/shopping-style",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-fuchsia-50 dark:from-pink-950 dark:via-rose-950 dark:to-fuchsia-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="shopping-style-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="shopping-style-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="shopping-style-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-fuchsia-50 dark:from-pink-950 dark:via-rose-950 dark:to-fuchsia-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Shopping Elements */}
@@ -68,7 +97,7 @@ export default function ShoppingStyleIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>9,427명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -213,8 +242,25 @@ export default function ShoppingStyleIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Shopping Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Shopping Style Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="shopping-style" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="쇼핑 스타일 성격 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

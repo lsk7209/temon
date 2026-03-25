@@ -6,6 +6,9 @@ import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Fish, Sparkles } from "lucide-react"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
 
 // Naver-optimized description (under 80 chars)
@@ -101,7 +104,7 @@ export default function BungeoppangIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>7,892명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -246,6 +249,12 @@ export default function BungeoppangIntro() {
             </CardContent>
           </Card>
         </div>
+
+        <AnswerEngineSection quizTitle="Bungeoppang Style Test" />
+
+        <LandingConversionSection quizTitle="Bungeoppang Style Test" />
+
+        <RelatedTestsSection testId="bungeoppang" title="Next Quizzes Search Visitors Usually Click" />
 
         {/* FAQ Section for AI Bot Optimization */}
         <section className="mt-20 mb-12">

@@ -106,10 +106,6 @@ export default function PetMBTIIntro() {
 
       {/* Hero Section */}
       <main className="container max-w-4xl mx-auto px-4 py-8 relative z-10">
-        {/* FAQ Section for AI Bot Optimization */}
-        <section className="mt-20">
-          <FAQSection faqs={faqs} title="반려동물 MBTI 테스트 자주 묻는 질문" />
-        </section>
         <div className="text-center space-y-8">
           {/* Animated Pet Icons */}
           <div className="relative mx-auto w-40 h-40 mb-8">
@@ -175,7 +171,7 @@ export default function PetMBTIIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>15,234명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />

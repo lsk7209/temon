@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, UtensilsCrossed, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "회사 점심 뭐 먹지 테스트 | 직장인 점심 의사결정 16유형 | 테몬",
-  description:
-    "12문항으로 알아보는 나의 회사 점심 의사결정 스타일! 후보 정리부터 대기줄, 결제 방식까지. 작은 선택이 업무 리듬을 말합니다.",
-  keywords:
-    "회사 점심, 점심 메뉴 결정, 직장인 점심 테스트, 점심 성향, 팀밥, 혼밥, 점심 의사결정, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/lunch-decider",
-  },
-  openGraph: {
-    title: "회사 점심 뭐 먹지 테스트 | 직장인 점심 의사결정 16유형",
-    description: "12문항으로 알아보는 나의 회사 점심 의사결정 스타일! 후보 정리부터 대기줄, 결제 방식까지. 작은 선택이 업무 리듬을 말합니다.",
-    type: "website",
-    url: "https://www.temon.kr/tests/lunch-decider",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "12문항으로 알아보는 나의 회사 점심 의사결정 스타일! 후보 정리부터 대기줄, 결제 방식까지. 작은 선택이 업무 리듬을 말합니다."
+// Full description for Google/AI
+const fullDescription = "12문항으로 알아보는 나의 회사 점심 의사결정 스타일! 후보 정리부터 대기줄, 결제 방식까지. 작은 선택이 업무 리듬을 말합니다."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "lunch-decider",
+  title: "회사 점심 뭐 먹지 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "회사 점심, 점심 메뉴 결정, 직장인 점심 테스트, 점심 성향, 팀밥, 혼밥, 점심 의사결정, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/lunch-decider",
+  questionCount: 12,
+  duration: "PT2M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("회사 점심 뭐 먹지 테스트"),
+]
 
 export default function LunchDeciderIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "lunch-decider",
+    title: "회사 점심 뭐 먹지 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "회사 점심, 점심 메뉴 결정, 직장인 점심 테스트, 점심 성향, 팀밥, 혼밥, 점심 의사결정, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/lunch-decider",
+    questionCount: 12,
+    duration: "PT2M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="lunch-decider-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="lunch-decider-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="lunch-decider-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Lunch Elements */}
@@ -69,7 +97,7 @@ export default function LunchDeciderIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>17,665명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -220,8 +248,25 @@ export default function LunchDeciderIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Lunch Decider Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Lunch Decider Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="lunch-decider" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="회사 점심 뭐 먹지 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

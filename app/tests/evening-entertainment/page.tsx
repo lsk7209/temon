@@ -1,30 +1,58 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Play, Sparkles } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "저녁 오락 선택 테스트 | 16유형 분석 | 테몬",
-  description:
-    "저녁에 오락을 선택하는 방식으로 알아보는 나의 성격 유형. 저녁에 뭐 볼지 고민될 때, 드라마가 끝났을 때 등 구체적인 상황으로 분석합니다.",
-  keywords:
-    "저녁 오락, 드라마 선택, 저녁 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
-  alternates: {
-    canonical: "/tests/evening-entertainment",
-  },
-  openGraph: {
-    title: "저녁 오락 선택 테스트 | 16유형 분석",
-    description: "저녁에 오락을 선택하는 방식으로 알아보는 나의 성격 유형. 12문항, 결과 공유 이미지 자동 생성.",
-    type: "website",
-    url: "https://www.temon.kr/tests/evening-entertainment",
-  },
-}
+// Naver-optimized description (under 80 chars)
+const shortDescription = "저녁에 오락을 선택하는 방식으로 알아보는 나의 성격 유형. 저녁에 뭐 볼지 고민될 때, 드라마가 끝났을 때 등 구체적인 상황으로 분석합니다."
+// Full description for Google/AI
+const fullDescription = "저녁에 오락을 선택하는 방식으로 알아보는 나의 성격 유형. 저녁에 뭐 볼지 고민될 때, 드라마가 끝났을 때 등 구체적인 상황으로 분석합니다."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "evening-entertainment",
+  title: "저녁 오락 선택 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "저녁 오락, 드라마 선택, 저녁 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  canonical: "/tests/evening-entertainment",
+  questionCount: 12,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("저녁 오락 선택 테스트"),
+]
 
 export default function EveningEntertainmentIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "evening-entertainment",
+    title: "저녁 오락 선택 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "저녁 오락, 드라마 선택, 저녁 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    canonical: "/tests/evening-entertainment",
+    questionCount: 12,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="evening-entertainment-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="evening-entertainment-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="evening-entertainment-faq-schema" data={schemas.faq} />}
+
+      <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -66,7 +94,7 @@ export default function EveningEntertainmentIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>9,473명 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -208,8 +236,25 @@ export default function EveningEntertainmentIntro() {
             </CardContent>
           </Card>
         </div>
-      </main>
+      
+        <div className="mt-12">
+          <AnswerEngineSection quizTitle="Evening Entertainment Test" />
+        </div>
+
+        <div className="mt-12">
+          <LandingConversionSection quizTitle="Evening Entertainment Test" />
+        </div>
+
+        <div className="mt-12">
+          <RelatedTestsSection testId="evening-entertainment" title="Next Quizzes Search Visitors Usually Click" />
+        </div>
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-12 mb-8">
+          <FAQSection faqs={faqs} title="저녁 오락 선택 테스트 자주 묻는 질문" />
+        </section>
+</main>
     </div>
+    </>
   )
 }
-

@@ -4,27 +4,64 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Trophy, Users, Clock, Sparkles } from "lucide-react"
+import { JsonLd } from "@/components/json-ld"
+import { FAQSection } from "@/components/faq-section"
+import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { LandingConversionSection } from "@/components/landing-conversion-section"
+import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
+import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
+import { RelatedTestsSection } from "@/components/related-tests-section"
 
-export const metadata: Metadata = {
-  title: "NTRP 테스트 - 정확한 테니스 실력 레벨 측정 | 테몬",
-  description:
-    "NTRP 테스트로 당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 1.0부터 7.0까지 정확한 레벨을 알아보는 테스트입니다.",
-  keywords: "NTRP, 테니스 실력, 테니스 레벨, 테니스 테스트, 스포츠 테스트",
-  alternates: {
-    canonical: "/ntrp-test",
+// Naver-optimized description (under 80 chars)
+const shortDescription = "NTRP 테스트로 정확한 테니스 실력 레벨 측정! 1.0~7.0 레벨 확인!"
+// Full description for Google/AI
+const fullDescription = "NTRP 테스트로 당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 1.0부터 7.0까지 정확한 레벨을 알아보는 테스트입니다. 포핸드, 백핸드, 서브, 발리 등 15가지 질문으로 나의 테니스 실력을 객관적으로 확인할 수 있습니다. 지금 바로 무료로 시작해보세요."
+
+export const metadata: Metadata = generateQuizMetadata({
+  quizId: "ntrp-test",
+  title: "NTRP 테스트",
+  shortDescription,
+  fullDescription,
+  keywords: "NTRP, 테니스 실력, 테니스 레벨, 테니스 테스트, 스포츠 테스트, 무료 테스트",
+  canonical: "/ntrp-test",
+  questionCount: 15,
+  duration: "PT3M",
+})
+
+const faqs = [
+  ...getTopicQuizFAQs("NTRP 테니스 레벨 테스트"),
+  {
+    question: "NTRP란 무엇인가요?",
+    answer: "NTRP(National Tennis Rating Program)는 미국테니스협회(USTA)에서 만든 테니스 실력 평가 기준입니다. 1.0(완전 초보)부터 7.0(프로 수준)까지 세분화된 레벨로 실력을 측정합니다.",
   },
-  openGraph: {
-    title: "NTRP 테스트 - 정확한 테니스 실력 레벨 측정",
-    description: "당신의 테니스 실력을 정확하게 측정해보세요! NTRP 공식 기준으로 정확한 레벨을 알아보는 테스트입니다.",
-    type: "website",
-    url: "https://www.temon.kr/ntrp-test",
+  {
+    question: "테니스를 막 시작한 초보자도 테스트할 수 있나요?",
+    answer: "네, 가능합니다. 테스트는 모든 수준의 플레이어를 대상으로 설계되었으며, 초보자도 솔직하게 답변하시면 현재 실력에 맞는 정확한 레벨을 확인할 수 있습니다.",
   },
-}
+]
 
 export default function NTRPTestIntro() {
+  const schemas = generateQuizSchemas({
+    quizId: "ntrp-test",
+    title: "NTRP 테스트",
+    shortDescription,
+    fullDescription,
+    keywords: "NTRP, 테니스 실력, 테니스 레벨",
+    canonical: "/ntrp-test",
+    questionCount: 15,
+    duration: "PT3M",
+    faqs,
+  })
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950 dark:via-emerald-950 dark:to-teal-950">
-      <main className="container max-w-4xl mx-auto px-4 py-8">
+    <>
+      {/* Structured Data for SEO/GEO */}
+      <JsonLd id="ntrp-test-quiz-schema" data={schemas.quiz} />
+      <JsonLd id="ntrp-test-breadcrumb-schema" data={schemas.breadcrumb} />
+      {schemas.faq && <JsonLd id="ntrp-test-faq-schema" data={schemas.faq} />}
+
+      <article className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950 dark:via-emerald-950 dark:to-teal-950">
+        <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Tennis Elements */}
           <div className="relative mx-auto w-32 h-32 mb-8">
@@ -211,7 +248,19 @@ export default function NTRPTestIntro() {
             </CardContent>
           </Card>
         </div>
+
+        <AnswerEngineSection quizTitle="NTRP Tennis Level Test" />
+
+        <LandingConversionSection quizTitle="NTRP Tennis Level Test" />
+
+        <RelatedTestsSection testId="ntrp-test" title="Next Quizzes Search Visitors Usually Click" />
+
+        {/* FAQ Section for AI Bot Optimization */}
+        <section className="mt-20 mb-12">
+          <FAQSection faqs={faqs} title="NTRP 테스트 자주 묻는 질문" />
+        </section>
       </main>
-    </div>
+    </article>
+    </>
   )
 }
