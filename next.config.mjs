@@ -28,13 +28,6 @@ const nextConfig = {
       'study-mbti',
     ]
     return [
-      // www → non-www (GSC canonical 통일)
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.temon.kr' }],
-        destination: 'https://temon.kr/:path*',
-        permanent: true,
-      },
       // 구 경로 → 신 경로
       ...legacyTests.map((slug) => ({
         source: `/${slug}/:path*`,
