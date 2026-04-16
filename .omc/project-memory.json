@@ -1,0 +1,322 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776306463754,
+  "projectRoot": "D:\\web\\temon",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "next",
+        "version": "14.2.16",
+        "category": "fullstack"
+      },
+      {
+        "name": "react",
+        "version": "18",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "18",
+        "category": "frontend"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": "npm run lint",
+    "devCommand": "npm run dev",
+    "scripts": {
+      "build": "next build",
+      "dev": "next dev",
+      "lint": "next lint",
+      "start": "next start",
+      "create-test": "ts-node scripts/create-test.ts",
+      "git-push": "node scripts/git-push.js",
+      "git-push-auto": "node scripts/git-push-auto.js",
+      "deploy": "npm run build && npm run git-push-auto",
+      "indexnow": "node scripts/indexnow-submit.js",
+      "audit:quizzes": "node scripts/audit-quizzes.js",
+      "audit:quiz-flows": "node scripts/audit-quiz-flows.js"
+    }
+  },
+  "conventions": {
+    "namingStyle": "camelCase",
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "app",
+      "components",
+      "docs",
+      "lib",
+      "public",
+      "scripts"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "app": {
+      "path": "app",
+      "purpose": "Application code",
+      "fileCount": 8,
+      "lastAccessed": 1776306463683,
+      "keyFiles": [
+        "error.tsx",
+        "globals.css",
+        "home-client.tsx",
+        "layout.tsx",
+        "loading.tsx"
+      ]
+    },
+    "components": {
+      "path": "components",
+      "purpose": "UI components",
+      "fileCount": 19,
+      "lastAccessed": 1776306463684,
+      "keyFiles": [
+        "admin-auth.tsx",
+        "admin-head-scripts.tsx",
+        "adsense-script.tsx",
+        "analytics-dashboard.tsx",
+        "analytics-provider.tsx"
+      ]
+    },
+    "data": {
+      "path": "data",
+      "purpose": "Data files",
+      "fileCount": 1,
+      "lastAccessed": 1776306463700,
+      "keyFiles": [
+        "generated-quiz.json"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 16,
+      "lastAccessed": 1776306463701,
+      "keyFiles": [
+        "ARCHITECTURE_PROPOSAL.md",
+        "BUILD_FIX.md",
+        "CLOUDFLARE_OPTIMIZATION.md",
+        "CODE_OPTIMIZATION_REPORT.md",
+        "CODE_OPTIMIZATION_SUMMARY.md"
+      ]
+    },
+    "drizzle": {
+      "path": "drizzle",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1776306463702,
+      "keyFiles": [
+        "0000_exotic_martin_li.sql",
+        "0001_modern_slayback.sql"
+      ]
+    },
+    "hooks": {
+      "path": "hooks",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1776306463702,
+      "keyFiles": [
+        "use-mobile.tsx",
+        "use-quiz-logic.ts",
+        "use-resolved-result-type.ts",
+        "use-test-result.ts",
+        "use-toast.ts"
+      ]
+    },
+    "lib": {
+      "path": "lib",
+      "purpose": "Library code",
+      "fileCount": 16,
+      "lastAccessed": 1776306463703,
+      "keyFiles": [
+        "admin-auth.ts",
+        "analytics.ts",
+        "api-client.ts",
+        "format-participants.ts",
+        "indexnow.ts"
+      ]
+    },
+    "migrations": {
+      "path": "migrations",
+      "purpose": "Database migrations",
+      "fileCount": 1,
+      "lastAccessed": 1776306463703,
+      "keyFiles": [
+        "000_init.sql"
+      ]
+    },
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 17,
+      "lastAccessed": 1776306463704,
+      "keyFiles": [
+        "186d3c7ad0df4ce9ae53deb59055ed23.txt",
+        "ads.txt",
+        "ai-index.json",
+        "analytics.js",
+        "apple-touch-icon.png"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 40,
+      "lastAccessed": 1776306463708,
+      "keyFiles": [
+        "analyze-patterns.js",
+        "audit-quiz-flows.js",
+        "audit-quizzes.js",
+        "check-queue-status.js",
+        "check-stats.js"
+      ]
+    },
+    "styles": {
+      "path": "styles",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1776306463709,
+      "keyFiles": [
+        "globals.css"
+      ]
+    },
+    "workers": {
+      "path": "workers",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1776306463709,
+      "keyFiles": [
+        "cron-stats.ts"
+      ]
+    },
+    "_archive": {
+      "path": "_archive",
+      "purpose": null,
+      "fileCount": 74,
+      "lastAccessed": 1776306463710,
+      "keyFiles": [
+        "ADMIN_TOKEN_GUIDE.md",
+        "ANALYTICS_DEPLOYMENT.md",
+        "CLOUDFLARE_D1_KV_SETUP.md",
+        "CLOUDFLARE_DEPLOYMENT_SUCCESS.md",
+        "CLOUDFLARE_REVIEW.md"
+      ]
+    },
+    "app\\api": {
+      "path": "app\\api",
+      "purpose": "API routes",
+      "fileCount": 0,
+      "lastAccessed": 1776306463711,
+      "keyFiles": []
+    },
+    "lib\\data": {
+      "path": "lib\\data",
+      "purpose": "Data files",
+      "fileCount": 23,
+      "lastAccessed": 1776306463713,
+      "keyFiles": [
+        "breakup-style-questions.ts",
+        "breakup-style-results.ts",
+        "food-brand-results.ts"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "app\\tests\\page.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1776306991590,
+      "type": "file"
+    },
+    {
+      "path": "components\\answer-engine-section.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776307060582,
+      "type": "file"
+    },
+    {
+      "path": "components\\landing-conversion-section.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776307096533,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.json",
+      "accessCount": 2,
+      "lastAccessed": 1776307128150,
+      "type": "file"
+    },
+    {
+      "path": "app\\tests\\kdrama-character\\page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776307296089,
+      "type": "file"
+    },
+    {
+      "path": "STATUS.md",
+      "accessCount": 2,
+      "lastAccessed": 1776307756143,
+      "type": "file"
+    },
+    {
+      "path": "app\\layout.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776306720145,
+      "type": "file"
+    },
+    {
+      "path": "app\\page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776306720297,
+      "type": "file"
+    },
+    {
+      "path": "app\\kdrama-mbti\\page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776306729857,
+      "type": "file"
+    },
+    {
+      "path": "app\\pet-mbti\\page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776306731161,
+      "type": "file"
+    },
+    {
+      "path": "app\\kpop-idol\\page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776306731243,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

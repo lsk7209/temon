@@ -1,0 +1,73 @@
+name: SEO Safeguard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  seo-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: robots.txt 안전 체크
+        run: |
+          if grep -q "Disallow: /$" public/robots.txt; then
+            echo "❌ ERROR: robots.txt가 전체 사이트를 차단하고 있습니다!"
+            exit 1
+          fi
+          echo "✅ robots.txt 안전 확인"
+
+      - name: AI 크롤러 허용 체크
+        run: |
+          for bot in GPTBot PerplexityBot ClaudeBot; do
+            if ! grep -q "User-agent: $bot" public/robots.txt; then
+              echo "⚠️  WARNING: $bot 허용 설정이 없습니다 (GEO 최적화 권장)"
+            fi
+          done
+          echo "✅ AI 크롤러 체크 완료"
+
+      - name: llms.txt 존재 확인
+        run: |
+          if [ ! -f "public/llms.txt" ]; then
+            echo "⚠️  WARNING: public/llms.txt가 없습니다 (AI 검색 최적화 권장)"
+          else
+            echo "✅ llms.txt 존재 확인"
+          fi
+
+      - name: 루트 layout.tsx noindex 체크
+        run: |
+          if grep -q "noindex" app/layout.tsx; then
+            echo "❌ ERROR: 루트 layout.tsx에 noindex가 설정되어 있습니다!"
+            exit 1
+          fi
+          echo "✅ 루트 레이아웃 noindex 없음 확인"
+
+      - name: html lang 속성 체크
+        run: |
+          if ! grep -q 'lang="ko"' app/layout.tsx; then
+            echo "❌ ERROR: <html lang="ko"> 설정이 없습니다!"
+            exit 1
+          fi
+          echo "✅ html lang=ko 확인"
+
+      - name: canonical 설정 체크
+        run: |
+          if ! grep -rq "canonical" app/layout.tsx app/page.tsx; then
+            echo "⚠️  WARNING: 루트 페이지에 canonical 설정이 없습니다"
+          else
+            echo "✅ canonical 설정 확인"
+          fi
+
+      - name: metadata 존재 체크
+        run: |
+          if ! grep -q "export const metadata" app/page.tsx && ! grep -q "export async function generateMetadata" app/page.tsx; then
+            echo "❌ ERROR: 홈페이지에 metadata가 없습니다!"
+            exit 1
+          fi
+          echo "✅ 홈페이지 metadata 확인"
+
+      - name: SEO 체크 완료
+        run: echo "🎉 SEO 세이프가드 모든 체크 통과"

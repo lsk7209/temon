@@ -1,0 +1,63 @@
+name: SEO Weekly Report
+
+on:
+  schedule:
+    # 매주 일요일 KST 07:00 (UTC 22:00 토요일)
+    - cron: '0 22 * * 6'
+  workflow_dispatch:
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: sitemap.xml 접근 확인
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://temon.kr/sitemap.xml)
+          if [ "$STATUS" != "200" ]; then
+            echo "❌ sitemap.xml 접근 실패: HTTP $STATUS"
+            exit 1
+          fi
+          echo "✅ sitemap.xml HTTP $STATUS"
+
+      - name: robots.txt 접근 확인
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://temon.kr/robots.txt)
+          echo "✅ robots.txt HTTP $STATUS"
+          # Disallow: / 전체 차단 체크
+          CONTENT=$(curl -s https://temon.kr/robots.txt)
+          if echo "$CONTENT" | grep -q "^Disallow: /$"; then
+            echo "❌ CRITICAL: robots.txt가 전체 사이트를 차단하고 있습니다!"
+            exit 1
+          fi
+
+      - name: 홈페이지 응답 확인
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://temon.kr)
+          echo "✅ 홈페이지 HTTP $STATUS"
+
+      - name: llms.txt 접근 확인
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://temon.kr/llms.txt)
+          echo "✅ llms.txt HTTP $STATUS"
+
+      - name: 보고서 생성
+        run: |
+          echo "# 테몬 SEO 주간 보고서 $(date '+%Y-%m-%d')" >> report.md
+          echo "" >> report.md
+          echo "## 엔드포인트 상태" >> report.md
+          for url in "/" "/tests" "/sitemap.xml" "/robots.txt" "/llms.txt" "/feed.xml"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://temon.kr$url")
+            if [ "$STATUS" = "200" ]; then
+              echo "- ✅ $url: $STATUS" >> report.md
+            else
+              echo "- ❌ $url: $STATUS" >> report.md
+            fi
+          done
+          cat report.md

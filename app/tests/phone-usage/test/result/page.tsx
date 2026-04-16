@@ -1,0 +1,353 @@
+/**
+ * 스마트폰 사용 스타일 테스트 결과 페이지
+ */
+
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { RotateCcw } from "lucide-react"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import { Suspense, useEffect, useState } from "react"
+import { ShareButtons } from "@/components/share-buttons"
+import { PHONE_USAGE_RESULTS } from "@/lib/data/phone-usage-results"
+import type { ResultType } from "@/lib/data/phone-usage-results"
+import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
+import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
+import { RelatedTestsSection } from "@/components/related-tests-section"
+import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
+
+function ResultContent() {
+  const searchParams = useSearchParams()
+  const type = searchParams.get("type")
+  const resultId = searchParams.get("id")
+  const { resolvedType, loading } = useResolvedResultType(Object.keys(PHONE_USAGE_RESULTS), type, resultId)
+
+  const [result, setResult] = useState<ResultType | null>(null)
+
+  useEffect(() => {
+    if (resolvedType && PHONE_USAGE_RESULTS[resolvedType]) {
+      setResult(PHONE_USAGE_RESULTS[resolvedType])
+    } else {
+      setResult(null)
+    }
+  }, [resolvedType])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400">결과를 불러오는 중...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!result) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">결과를 찾을 수 없습니다.</p>
+          <Link href="/tests/phone-usage/test">
+            <Button>다시 테스트하기</Button>
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  const faqItems = getTopicResultFAQs("Phone Usage Style Test", result.name)
+  const resultUseCases = getTopicResultUseCases("Phone Usage Style Test", result.name)
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950">
+      <ResultFaqSchema quizTitle="Phone Usage Style Test" resultName={result.name} />
+      <div className="container max-w-4xl mx-auto px-4 py-8">
+        {/* 헤더 */}
+        <div className="text-center mb-8">
+          <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-white">{result.name}</h1>
+          </div>
+          <p className="text-xl text-gray-700 dark:text-gray-300 mb-2">{result.summary}</p>
+          <Badge variant="outline" className="text-lg px-4 py-2">
+            {result.mbti}
+          </Badge>
+        </div>
+
+        {/* 공유 버튼 */}
+        <div className="mb-8 flex justify-center">
+          <ShareButtons
+            testId="phone-usage"
+            testPath="/tests/phone-usage/test"
+            resultType={result.mbti}
+            resultId={resultId || undefined}
+            title={`내 스마트폰 사용 스타일은 '${result.name}(${result.mbti})' 타입`}
+            description="너는 뭐야? 테스트 해보자!"
+          />
+        </div>
+
+        {/* 사용 성향 요약 */}
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {resultUseCases.map((item) => (
+              <div
+                key={item}
+                className="rounded-xl border border-gray-100 bg-white p-4 text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+              >
+                {item}
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">✨ 사용 성향 요약</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2">
+              {result.traits.map((trait, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="mr-2">•</span>
+                  <span className="text-gray-700 dark:text-gray-300">{trait}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">🧭 이 결과를 어떻게 해석하면 좋을까</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p>
+              {result.name} 유형은 단순히 스마트폰을 많이 쓰는지 적게 쓰는지를 뜻하지 않습니다. 어떤 기능에
+              우선순위를 두고, 주의를 어떻게 배분하고, 반복 습관을 어떤 방식으로 만드는지가 더 핵심입니다.
+            </p>
+            <p>
+              이 결과가 잘 맞는 사람은 최근 한 달 정도의 실제 사용 패턴을 떠올렸을 때 비슷한 흐름이 반복됩니다.
+              알림을 다루는 방식, 홈 화면 정리 방식, 자동화 선호도에서 같은 경향이 보이면 결과 신뢰도가 높습니다.
+            </p>
+            <p>
+              중요한 포인트는 이 결과를 고정 라벨로 보지 않는 것입니다. 업무 기간, 시험 기간, 여행 중 같은 상황 변화에
+              따라 사용 스타일은 달라질 수 있으니 현재 컨디션과 역할 기준으로 읽는 편이 더 실용적입니다.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* 추천 설정값 */}
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">⚙️ 추천 설정값</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                🔔 알림 프로필
+              </h3>
+              <ul className="space-y-1">
+                {result.settings.notify.map((item, index) => (
+                  <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
+                    <span className="mr-2">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                🏠 홈화면 구조
+              </h3>
+              <ul className="space-y-1">
+                {result.settings.home.map((item, index) => (
+                  <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
+                    <span className="mr-2">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                🤖 자동화
+              </h3>
+              <ul className="space-y-1">
+                {result.settings.auto.map((item, index) => (
+                  <li key={index} className="flex items-start text-gray-700 dark:text-gray-300">
+                    <span className="mr-2">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 생산성 팁과 리스크 관리 */}
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">⚠️ 생산성 팁과 리스크 관리</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2">
+              {result.risks.map((risk, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="mr-2">•</span>
+                  <span className="text-gray-700 dark:text-gray-300">{risk}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+
+        {/* 7일 실천 체크리스트 */}
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">✅ 7일 실천 체크리스트</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Card className="mb-6 bg-transparent shadow-none border-0">
+              <CardHeader className="px-0 pt-0">
+                <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+              </CardHeader>
+              <CardContent className="px-0 space-y-3">
+                {resultUseCases.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-xl border border-gray-100 bg-white p-4 text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+            <ol className="space-y-3 list-decimal list-inside">
+              {result.checklist.map((item, index) => (
+                <li key={index} className="text-gray-700 dark:text-gray-300">
+                  {item}
+                </li>
+              ))}
+            </ol>
+          </CardContent>
+        </Card>
+
+        {/* FAQ */}
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">❓ 자주 묻는 질문</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                알림을 최소화하려면 무엇부터 정리해야 하나요?
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                우선순위가 낮은 앱의 알림부터 차단하고, 중요 알림만 허용하는 것이 좋습니다. 테스트 결과에서 각 유형별 알림 관리 가이드를 참고하세요.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                집중 모드 자동화 기본 원칙은 무엇인가요?
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                일정이나 위치에 따라 자동으로 집중 모드가 켜지도록 설정하는 것이 효과적입니다. 테스트 결과에서 추천하는 자동화 설정을 확인하세요.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                사진·파일 정리를 주기적으로 유지하는 팁은?
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                수시로 정리하거나 주기적으로 대청소하는 방식 중 자신에게 맞는 방법을 선택하세요. 테스트 결과에서 각 유형별 정리 방법을 확인할 수 있습니다.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <RelatedTestsSection testId="phone-usage" title="비슷한 디지털 습관 퀴즈 더 보기" />
+
+        {/* CTA 버튼 */}
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">Action Guide</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p>
+              The fastest way to use this result is to change one screen, one notification rule, and one automation
+              setting. That keeps the result practical instead of turning it into a generic personality label.
+            </p>
+            <p>
+              If your current phone setup feels noisy, slow, or exhausting, compare that pain point with the pattern this
+              page describes first. The biggest improvement usually comes from removing repeated friction, not adding more
+              features.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+            {resultUseCases.map((item) => (
+              <p key={item}>{item}</p>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+          <CardHeader>
+            <CardTitle className="text-2xl">FAQ</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {faqItems.map((item) => (
+              <div key={item.question}>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{item.question}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{item.answer}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Link href="/tests/phone-usage/test">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto">
+              <RotateCcw className="mr-2 h-4 w-4" />
+              다시 테스트하기
+            </Button>
+          </Link>
+          <Link href="/tests">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto">
+              다른 테스트 보기
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function PhoneUsageResult() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600 dark:text-gray-400">로딩 중...</p>
+          </div>
+        </div>
+      }
+    >
+      <ResultContent />
+    </Suspense>
+  )
+}
+

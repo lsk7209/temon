@@ -1,0 +1,49 @@
+{
+  "site": {
+    "name": "테몬 MBTI",
+    "url": "https://temon.kr",
+    "description": "한국 최대 무료 MBTI 성격 테스트 플랫폼. 200개 이상의 다양한 주제 테스트 제공",
+    "language": "ko",
+    "lastUpdated": "2026-04-16"
+  },
+  "pages": [
+    { "url": "/", "title": "테몬 MBTI - 무료 성격 테스트 모음", "type": "home" },
+    { "url": "/tests", "title": "전체 테스트 목록", "type": "listing" },
+    { "url": "/privacy", "title": "개인정보처리방침", "type": "legal" },
+    { "url": "/terms", "title": "이용약관", "type": "legal" }
+  ],
+  "tests": [
+    { "id": "coffee-mbti", "title": "커피 MBTI", "description": "커피 취향으로 알아보는 성격 유형", "category": "음식", "url": "/tests/coffee-mbti" },
+    { "id": "ramen-mbti", "title": "라면 MBTI", "description": "라면 취향으로 알아보는 나의 성격", "category": "음식", "url": "/tests/ramen-mbti" },
+    { "id": "pet-mbti", "title": "반려동물 MBTI", "description": "반려동물 성향으로 알아보는 성격 테스트", "category": "라이프", "url": "/tests/pet-mbti" },
+    { "id": "alarm-habit", "title": "알람 습관 MBTI", "description": "아침 알람으로 보는 성격 유형", "category": "라이프", "url": "/tests/alarm-habit" },
+    { "id": "study-mbti", "title": "공부 MBTI", "description": "나만의 공부 스타일 찾기", "category": "라이프", "url": "/tests/study-mbti" },
+    { "id": "meeting-villain", "title": "회의 빌런 테스트", "description": "회의 시간, 당신의 역할과 행동 패턴으로 알아보는 16가지 유형", "category": "직장", "url": "/tests/meeting-villain" },
+    { "id": "breakup-style", "title": "이별 후유증 유형", "description": "이별 후 나의 행동과 감정 처리를 통해 알아보는 극복 스타일", "category": "연애", "url": "/tests/breakup-style" },
+    { "id": "hotel-breakfast", "title": "호텔 조식 공략법", "description": "뷔페에서 음식을 담고 먹는 스타일로 알아보는 여행 성향", "category": "여행", "url": "/tests/hotel-breakfast" },
+    { "id": "investment-style", "title": "주식 투자 스타일", "description": "나는 야수의 심장일까, 소심한 개미일까? 투자 성향 분석", "category": "재테크", "url": "/tests/investment-style" },
+    { "id": "zombie-survival", "title": "좀비 아포칼립스 생존", "description": "좀비 사태 발생 시 나의 생존 확률과 역할 분석", "category": "상상", "url": "/tests/zombie-survival" },
+    { "id": "kdrama-mbti", "title": "K-드라마 클리셰 테스트", "description": "드라마 속 당신은 어떤 캐릭터?", "category": "엔터", "url": "/tests/kdrama-mbti" },
+    { "id": "kdrama-character", "title": "K-드라마 캐릭터 유형", "description": "내가 드라마에 나온다면 어떤 캐릭터?", "category": "엔터", "url": "/tests/kdrama-character" },
+    { "id": "kpop-idol", "title": "K-팝 아이돌 포지션", "description": "아이돌 그룹에서 내 포지션은?", "category": "엔터", "url": "/tests/kpop-idol" },
+    { "id": "snowwhite-mbti", "title": "백설공주 에겐테토", "description": "백설공주로 알아보는 에겐 vs 테토 성향", "category": "상상", "url": "/tests/snowwhite-mbti" },
+    { "id": "ntrp-test", "title": "NTRP 테스트", "description": "테니스 실력 레벨 측정", "category": "스포츠", "url": "/tests/ntrp-test" },
+    { "id": "spending-style", "title": "소비 성향 테스트", "description": "내 돈 쓰는 스타일 분석", "category": "재테크", "url": "/tests/spending-style" },
+    { "id": "sleep-chronotype", "title": "수면 크로노타입", "description": "아침형 vs 저녁형 수면 유형 분석", "category": "라이프", "url": "/tests/sleep-chronotype" },
+    { "id": "skin-routine", "title": "피부 루틴 성향", "description": "스킨케어 루틴으로 알아보는 성향", "category": "라이프", "url": "/tests/skin-routine" },
+    { "id": "spice-tolerance", "title": "맵기 내성 테스트", "description": "나의 매운 음식 내성 레벨은?", "category": "음식", "url": "/tests/spice-tolerance" },
+    { "id": "phone-style", "title": "스마트폰 사용 스타일", "description": "폰 사용 패턴으로 알아보는 성격", "category": "라이프", "url": "/tests/phone-style" },
+    { "id": "phone-usage", "title": "스마트폰 사용 습관", "description": "스마트폰 습관으로 보는 성격 유형", "category": "라이프", "url": "/tests/phone-usage" },
+    { "id": "travel-style", "title": "여행 스타일 테스트", "description": "여행 짐 싸는 스타일로 보는 성격", "category": "여행", "url": "/tests/travel-style" },
+    { "id": "shopping-style", "title": "쇼핑 스타일 테스트", "description": "쇼핑 패턴으로 알아보는 성격 유형", "category": "라이프", "url": "/tests/shopping-style" },
+    { "id": "cafe-style", "title": "카페 스타일 성격 테스트", "description": "카페에서의 행동으로 보는 성격", "category": "음식", "url": "/tests/cafe-style" },
+    { "id": "clean-style", "title": "방 청소 스타일 테스트", "description": "청소 스타일로 알아보는 성격 유형", "category": "라이프", "url": "/tests/clean-style" },
+    { "id": "music-taste", "title": "음악 취향 성격 테스트", "description": "음악 취향으로 알아보는 성격", "category": "엔터", "url": "/tests/music-taste" },
+    { "id": "food-delivery", "title": "배달 음식 선택 테스트", "description": "배달 앱 사용 패턴으로 보는 성격", "category": "음식", "url": "/tests/food-delivery" },
+    { "id": "dessert-style", "title": "디저트 취향 성격 테스트", "description": "디저트 선택으로 알아보는 성격", "category": "음식", "url": "/tests/dessert-style" },
+    { "id": "kakao-reply-style", "title": "카카오 답장 스타일", "description": "카톡 답장 패턴으로 보는 성격 유형", "category": "연애", "url": "/tests/kakao-reply-style" },
+    { "id": "game-play-style", "title": "게임 플레이 스타일", "description": "게임하는 방식으로 알아보는 성격", "category": "엔터", "url": "/tests/game-play-style" }
+  ],
+  "totalTests": 200,
+  "categories": ["음식", "연애", "라이프", "직장", "재테크", "엔터", "여행", "상상", "스포츠"]
+}

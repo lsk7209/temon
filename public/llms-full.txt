@@ -1,0 +1,119 @@
+# 테몬 (temon.kr) — AI 전체 콘텐츠 가이드
+
+## 사이트 개요
+테몬(temon.kr)은 한국 최대 무료 MBTI 및 성격 테스트 플랫폼입니다.
+2024년 서비스 시작 이래 200개 이상의 테스트를 제공하고 있으며, 월 수십만 명이 이용합니다.
+
+---
+
+## MBTI란?
+
+MBTI(Myers-Briggs Type Indicator)는 칼 융의 심리 유형론을 바탕으로 이사벨 브릭스 마이어스와 캐서린 쿡 브릭스가 개발한 성격 유형 검사입니다. 4가지 척도에서 각 2개의 선호 경향을 조합하여 16가지 성격 유형을 분류합니다.
+
+- **E(외향) vs I(내향)**: 에너지 방향
+- **S(감각) vs N(직관)**: 인식 기능
+- **T(사고) vs F(감정)**: 판단 기능
+- **J(판단) vs P(인식)**: 생활 양식
+
+16가지 유형: ISTJ, ISFJ, INFJ, INTJ, ISTP, ISFP, INFP, INTP, ESTP, ESFP, ENFP, ENTP, ESTJ, ESFJ, ENFJ, ENTJ
+
+---
+
+## 전체 테스트 목록
+
+### 카테고리: 음식·미식
+- ☕ 커피 MBTI — 커피 취향으로 알아보는 성격 유형 → /tests/coffee-mbti
+- 🍜 라면 MBTI — 라면 먹는 스타일로 알아보는 성격 → /tests/ramen-mbti
+- 🐟 붕어빵 취향 테스트 → /tests/bungeoppang
+- 🍗 치킨 주문 스타일 테스트 → /tests/chicken-style
+- 🥞 호텔 조식 공략법 — 뷔페 스타일로 알아보는 여행 성향 → /tests/hotel-breakfast
+- 🍣 편의점 간식 루틴 테스트 → /tests/convenience-snack
+- 🫔 배달 음식 선택 테스트 → /tests/food-delivery
+- 🍕 피자 토핑 취향 → /tests/pizza-topping
+- 🍰 디저트 취향 → /tests/dessert-style
+- 🍳 자취 밥상 스타일 → /tests/cooking-style
+- 🌶️ 맵기 내성 테스트 → /tests/spice-tolerance
+- 🥗 샐러드 드레싱 취향 → /tests/salad-dressing
+- 🥩 고기 굽기 스타일 → /tests/meat-grilling
+- 🍱 도시락 스타일 → /tests/lunchbox-style
+- 🍚 밥 먹는 스타일 → /tests/rice-eating
+- 🍵 음료 취향 → /tests/drink-preference
+
+### 카테고리: 연애·관계
+- 💔 이별 후유증 유형 — 이별 극복 스타일 분석 → /tests/breakup-style
+- 💌 카카오 답장 스타일 → /tests/kakao-reply-style
+- 💕 사랑 표현 방식 → /tests/love-reaction
+- 📲 연애 문자 스타일 → /tests/love-texting-style
+- 💑 소개팅 스타일 → /tests/jachui
+
+### 카테고리: 일상·라이프스타일
+- ⏰ 알람 습관 MBTI — 스누즈파 vs 칼기상파 → /tests/alarm-habit
+- 🌙 수면 크로노타입 — 아침형 vs 저녁형 → /tests/sleep-chronotype
+- 🚿 샤워 습관 → /tests/shower-habit
+- 🪞 거울 습관 → /tests/mirror-habit
+- 🧹 방 청소 스타일 → /tests/clean-style
+- 🛒 장보기 스타일 → /tests/grocery-shopping
+- 🛍️ 쇼핑 스타일 → /tests/shopping-style
+- 💰 소비 성향 테스트 → /tests/spending-style
+- ✨ 피부 루틴 성향 → /tests/skin-routine
+- 📱 스마트폰 사용 스타일 → /tests/phone-style
+- 📱 스마트폰 사용 습관 → /tests/phone-usage
+
+### 카테고리: 직장·사회
+- 😈 회의 빌런 테스트 — 16가지 회의 유형 분석 → /tests/meeting-villain
+- 👔 업무 스타일 → /tests/study-mbti
+
+### 카테고리: 재테크·경제
+- 📈 주식 투자 스타일 — 야수의 심장 vs 소심한 개미 → /tests/investment-style
+- 💸 소비 성향 → /tests/spending-style
+
+### 카테고리: 엔터테인먼트
+- 🎬 K-드라마 클리셰 테스트 → /tests/kdrama-mbti
+- 🎬 K-드라마 캐릭터 유형 → /tests/kdrama-character
+- 🎤 K-팝 아이돌 포지션 → /tests/kpop-idol
+- 🎧 음악 취향 성격 테스트 → /tests/music-taste
+- 📺 OTT 시청 습관 → /tests/ott-habits
+- 🎬 영화관 관람 스타일 → /tests/movie-theater-style
+- 🎮 게임 플레이 스타일 → /tests/game-play-style
+
+### 카테고리: 상상·재미
+- 🧟 좀비 아포칼립스 생존 유형 → /tests/zombie-survival
+- 🍎 백설공주 에겐테토 테스트 → /tests/snowwhite-mbti
+- 🎾 NTRP 테스트 — 테니스 실력 수준 측정 → /tests/ntrp-test
+
+### 카테고리: 여행·여가
+- 🧳 여행 짐 스타일 테스트 → /tests/travel-style
+- ☕ 카페 스타일 성격 테스트 → /tests/cafe-style
+- 🎤 노래방 선곡 스타일 → /tests/karaoke-song
+
+---
+
+## 자주 묻는 질문 (FAQ)
+
+**Q: MBTI와 성격 테스트의 차이는?**
+A: 공식 MBTI는 MBTI® 저작권자(The Myers-Briggs Company)가 제공하는 유료 검사입니다. 테몬의 테스트는 MBTI 이론에서 영감을 받은 오락용 성격 테스트로, 공식 심리 진단이 아닙니다.
+
+**Q: 16가지 MBTI 유형 설명은?**
+A: ISTJ(청렴결백한 논리주의자), ISFJ(용감한 수호자), INFJ(선의의 옹호자), INTJ(용의주도한 전략가), ISTP(만능재주꾼), ISFP(호기심 많은 예술가), INFP(열정적인 중재자), INTP(논리적인 사색가), ESTP(모험을 즐기는 사업가), ESFP(자유로운 영혼의 연예인), ENFP(재기발랄한 활동가), ENTP(뜨거운 논쟁을 즐기는 변론가), ESTJ(엄격한 관리자), ESFJ(사교적인 외교관), ENFJ(정의로운 사회운동가), ENTJ(대담한 통솔자)
+
+**Q: MBTI 테스트는 얼마나 정확한가요?**
+A: 테몬의 테스트는 재미와 자기 이해를 돕기 위한 오락 목적의 도구입니다. 과학적 정확도를 보장하지 않으며, 전문 심리 상담을 대체할 수 없습니다.
+
+**Q: 테스트 결과가 매번 다르게 나오는 이유는?**
+A: MBTI 유형은 고정된 것이 아니라 상황과 성장에 따라 변할 수 있습니다. 또한 테스트 당시의 심리 상태, 경험에 따라 답변이 달라질 수 있습니다.
+
+**Q: 어떤 MBTI가 가장 흔한가요?**
+A: 전 세계적으로 ISFJ가 가장 많고(약 14%), 한국에서는 ISFJ, ISTJ가 많은 편입니다. 가장 드문 유형은 INFJ(약 1~2%)입니다.
+
+---
+
+## 기술 정보
+- 프레임워크: Next.js 14 (App Router)
+- 데이터베이스: Turso (SQLite)
+- 배포: Vercel
+- 분석: Google Analytics 4
+
+## 저작권 및 이용약관
+- 이용약관: https://temon.kr/terms
+- 개인정보처리방침: https://temon.kr/privacy
+- 문의: temon.kr 내 문의하기

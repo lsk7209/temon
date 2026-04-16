@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"python3 -c \\\"\\nimport json\\nwith open('D:/tools/gsc/data.json') as f:\\n    d = json.load(f)\\nprint('사이트 목록:', list(d.keys()))\\nif 'https://www.temon.kr/' in d:\\n    t = d['https://www.temo...",
+  "error": "Exit code 49\nPython was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.",
+  "timestamp": "2026-04-16T02:30:57.090Z",
+  "retry_count": 1
+}
