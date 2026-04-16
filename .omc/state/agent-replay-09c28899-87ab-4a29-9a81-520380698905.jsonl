@@ -1,2 +1,4 @@
 {"t":0,"agent":"ac41e96","agent_type":"unknown","event":"agent_stop","success":true}
 {"t":0,"agent":"system","event":"skill_invoked","skill_name":"ship"}
+{"t":0,"agent":"a30d63b","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"af7b575","agent_type":"unknown","event":"agent_stop","success":true}
