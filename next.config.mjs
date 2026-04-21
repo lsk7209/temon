@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  compress: true,
 
   // 번들 최적화 - 대형 패키지 트리셰이킹
   experimental: {
@@ -55,6 +56,16 @@ const nextConfig = {
         source: '/(.*)\\.(png|jpg|jpeg|gif|webp|avif|svg|ico|woff|woff2)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        source: '/:path*',
+        headers: [{ key: 'X-DNS-Prefetch-Control', value: 'on' }],
+      },
+      {
+        source: '/api/og',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800' },
         ],
       },
     ]
