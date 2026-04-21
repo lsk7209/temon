@@ -1,6 +1,6 @@
 {
   "version": "3.0",
-  "lastUpdated": "2026-04-16T02:41:34.491Z",
+  "lastUpdated": "2026-04-21T20:13:28.751Z",
   "activeFeatures": [
     "results",
     "study-mbti",
@@ -9,7 +9,13 @@
     "snowwhite-mbti",
     "kdrama-character",
     "temon",
-    "tests"
+    "tests",
+    "result",
+    "queue",
+    "submit",
+    "test",
+    "admin",
+    "db"
   ],
   "primaryFeature": "results",
   "features": {
@@ -100,9 +106,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-04-16T00:55:30.392Z",
-        "lastUpdated": "2026-04-16T02:38:15.475Z"
+        "lastUpdated": "2026-04-21T20:09:22.707Z"
       },
-      "lastFile": "D:\\web\\temon\\components\\landing-conversion-section.tsx"
+      "lastFile": "D:\\web\\temon\\components\\enhanced-admin-dashboard.tsx"
     },
     "tests": {
       "phase": "do",
@@ -116,6 +122,84 @@
         "lastUpdated": "2026-04-16T02:36:30.411Z"
       },
       "lastFile": "D:\\web\\temon\\app\\tests\\page.tsx"
+    },
+    "result": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-21T19:39:33.821Z",
+        "lastUpdated": "2026-04-21T19:39:33.822Z"
+      },
+      "lastFile": "D:\\web\\temon\\app\\tests\\[testId]\\test\\result\\page.tsx"
+    },
+    "queue": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-21T19:52:38.829Z",
+        "lastUpdated": "2026-04-21T19:56:04.583Z"
+      },
+      "lastFile": "D:\\web\\temon\\app\\api\\admin\\queue\\route.ts"
+    },
+    "submit": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-21T19:57:38.842Z",
+        "lastUpdated": "2026-04-21T19:59:21.764Z"
+      },
+      "lastFile": "D:\\web\\temon\\app\\api\\tests\\[testId]\\submit\\route.ts"
+    },
+    "test": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-21T20:01:17.153Z",
+        "lastUpdated": "2026-04-21T20:01:17.153Z"
+      },
+      "lastFile": "D:\\web\\temon\\app\\tests\\[testId]\\test\\client-runner.tsx"
+    },
+    "admin": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-21T20:03:21.307Z",
+        "lastUpdated": "2026-04-21T20:04:02.924Z"
+      },
+      "lastFile": "D:\\web\\temon\\components\\admin\\content-generator.tsx"
+    },
+    "db": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-21T20:12:43.281Z",
+        "lastUpdated": "2026-04-21T20:13:28.748Z"
+      },
+      "lastFile": "D:\\web\\temon\\lib\\db\\schema.ts"
     }
   },
   "pipeline": {
@@ -126,7 +210,7 @@
   "session": {
     "startedAt": "2026-04-16T00:34:38.964Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-04-16T02:41:34.491Z"
+    "lastActivity": "2026-04-21T20:13:28.751Z"
   },
   "history": [
     {
@@ -210,6 +294,132 @@
     {
       "timestamp": "2026-04-16T02:41:34.491Z",
       "feature": "kdrama-character",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T19:39:33.824Z",
+      "feature": "result",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T19:52:38.834Z",
+      "feature": "queue",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T19:54:08.838Z",
+      "feature": "queue",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T19:55:33.614Z",
+      "feature": "queue",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T19:56:04.587Z",
+      "feature": "queue",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T19:57:38.845Z",
+      "feature": "submit",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T19:59:21.767Z",
+      "feature": "submit",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:01:17.155Z",
+      "feature": "test",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:03:21.311Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:03:33.299Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:04:02.926Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:04:13.775Z",
+      "feature": "temon",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:04:55.919Z",
+      "feature": "temon",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:05:39.487Z",
+      "feature": "temon",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:05:59.273Z",
+      "feature": "temon",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:06:29.707Z",
+      "feature": "temon",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:07:40.969Z",
+      "feature": "temon",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:09:22.710Z",
+      "feature": "temon",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:12:43.284Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:13:18.211Z",
+      "feature": "db",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-21T20:13:28.750Z",
+      "feature": "db",
       "phase": "do",
       "action": "updated"
     }

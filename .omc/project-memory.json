@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776306463754,
+  "lastScanned": 1776801144476,
   "projectRoot": "D:\\web\\temon",
   "techStack": {
     "languages": [
@@ -24,7 +24,7 @@
     "frameworks": [
       {
         "name": "next",
-        "version": "14.2.16",
+        "version": "14.2.35",
         "category": "fullstack"
       },
       {
@@ -54,10 +54,7 @@
       "create-test": "ts-node scripts/create-test.ts",
       "git-push": "node scripts/git-push.js",
       "git-push-auto": "node scripts/git-push-auto.js",
-      "deploy": "npm run build && npm run git-push-auto",
-      "indexnow": "node scripts/indexnow-submit.js",
-      "audit:quizzes": "node scripts/audit-quizzes.js",
-      "audit:quiz-flows": "node scripts/audit-quiz-flows.js"
+      "deploy": "npm run build && npm run git-push-auto"
     }
   },
   "conventions": {
@@ -77,7 +74,10 @@
       "public",
       "scripts"
     ],
-    "gitBranches": null
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
   },
   "customNotes": [],
   "directoryMap": {
@@ -85,7 +85,7 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 8,
-      "lastAccessed": 1776306463683,
+      "lastAccessed": 1776801144427,
       "keyFiles": [
         "error.tsx",
         "globals.css",
@@ -98,7 +98,7 @@
       "path": "components",
       "purpose": "UI components",
       "fileCount": 19,
-      "lastAccessed": 1776306463684,
+      "lastAccessed": 1776801144441,
       "keyFiles": [
         "admin-auth.tsx",
         "admin-head-scripts.tsx",
@@ -111,7 +111,7 @@
       "path": "data",
       "purpose": "Data files",
       "fileCount": 1,
-      "lastAccessed": 1776306463700,
+      "lastAccessed": 1776801144442,
       "keyFiles": [
         "generated-quiz.json"
       ]
@@ -120,7 +120,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 16,
-      "lastAccessed": 1776306463701,
+      "lastAccessed": 1776801144443,
       "keyFiles": [
         "ARCHITECTURE_PROPOSAL.md",
         "BUILD_FIX.md",
@@ -133,17 +133,28 @@
       "path": "drizzle",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1776306463702,
+      "lastAccessed": 1776801144443,
       "keyFiles": [
         "0000_exotic_martin_li.sql",
         "0001_modern_slayback.sql"
+      ]
+    },
+    "functions": {
+      "path": "functions",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1776801144443,
+      "keyFiles": [
+        "cron.ts",
+        "package.json",
+        "_worker.d.ts"
       ]
     },
     "hooks": {
       "path": "hooks",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1776306463702,
+      "lastAccessed": 1776801144443,
       "keyFiles": [
         "use-mobile.tsx",
         "use-quiz-logic.ts",
@@ -156,7 +167,7 @@
       "path": "lib",
       "purpose": "Library code",
       "fileCount": 16,
-      "lastAccessed": 1776306463703,
+      "lastAccessed": 1776801144444,
       "keyFiles": [
         "admin-auth.ts",
         "analytics.ts",
@@ -169,7 +180,7 @@
       "path": "migrations",
       "purpose": "Database migrations",
       "fileCount": 1,
-      "lastAccessed": 1776306463703,
+      "lastAccessed": 1776801144444,
       "keyFiles": [
         "000_init.sql"
       ]
@@ -178,7 +189,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 17,
-      "lastAccessed": 1776306463704,
+      "lastAccessed": 1776801144445,
       "keyFiles": [
         "186d3c7ad0df4ce9ae53deb59055ed23.txt",
         "ads.txt",
@@ -191,7 +202,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 40,
-      "lastAccessed": 1776306463708,
+      "lastAccessed": 1776801144445,
       "keyFiles": [
         "analyze-patterns.js",
         "audit-quiz-flows.js",
@@ -204,7 +215,7 @@
       "path": "styles",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776306463709,
+      "lastAccessed": 1776801144446,
       "keyFiles": [
         "globals.css"
       ]
@@ -213,7 +224,7 @@
       "path": "workers",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776306463709,
+      "lastAccessed": 1776801144446,
       "keyFiles": [
         "cron-stats.ts"
       ]
@@ -222,7 +233,7 @@
       "path": "_archive",
       "purpose": null,
       "fileCount": 74,
-      "lastAccessed": 1776306463710,
+      "lastAccessed": 1776801144447,
       "keyFiles": [
         "ADMIN_TOKEN_GUIDE.md",
         "ANALYTICS_DEPLOYMENT.md",
@@ -235,14 +246,25 @@
       "path": "app\\api",
       "purpose": "API routes",
       "fileCount": 0,
-      "lastAccessed": 1776306463711,
+      "lastAccessed": 1776801144447,
       "keyFiles": []
+    },
+    "functions\\api": {
+      "path": "functions\\api",
+      "purpose": "API routes",
+      "fileCount": 7,
+      "lastAccessed": 1776801144450,
+      "keyFiles": [
+        "collect.ts",
+        "dashboard-stats.ts",
+        "dashboard.ts"
+      ]
     },
     "lib\\data": {
       "path": "lib\\data",
       "purpose": "Data files",
       "fileCount": 23,
-      "lastAccessed": 1776306463713,
+      "lastAccessed": 1776801144451,
       "keyFiles": [
         "breakup-style-questions.ts",
         "breakup-style-results.ts",
@@ -252,70 +274,82 @@
   },
   "hotPaths": [
     {
-      "path": "app\\tests\\page.tsx",
-      "accessCount": 9,
-      "lastAccessed": 1776306991590,
+      "path": "components\\enhanced-admin-dashboard.tsx",
+      "accessCount": 26,
+      "lastAccessed": 1776802165760,
       "type": "file"
     },
     {
-      "path": "components\\answer-engine-section.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1776307060582,
+      "path": "components\\admin\\content-generator.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1776801845156,
       "type": "file"
     },
     {
-      "path": "components\\landing-conversion-section.tsx",
+      "path": "lib\\db\\schema.ts",
+      "accessCount": 6,
+      "lastAccessed": 1776802410539,
+      "type": "file"
+    },
+    {
+      "path": "app\\api\\admin\\queue\\route.ts",
+      "accessCount": 5,
+      "lastAccessed": 1776801367111,
+      "type": "file"
+    },
+    {
+      "path": "app\\api\\tests\\[testId]\\submit\\route.ts",
+      "accessCount": 5,
+      "lastAccessed": 1776801564245,
+      "type": "file"
+    },
+    {
+      "path": "app",
+      "accessCount": 5,
+      "lastAccessed": 1776801655702,
+      "type": "directory"
+    },
+    {
+      "path": "app\\admin\\queue\\page.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1776801250958,
+      "type": "file"
+    },
+    {
+      "path": "components\\admin\\tests-list.tsx",
       "accessCount": 3,
-      "lastAccessed": 1776307096533,
+      "lastAccessed": 1776801814911,
+      "type": "file"
+    },
+    {
+      "path": "app\\tests\\[testId]\\test\\client-runner.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776801678921,
       "type": "file"
     },
     {
       "path": "tsconfig.json",
       "accessCount": 2,
-      "lastAccessed": 1776307128150,
+      "lastAccessed": 1776802500368,
       "type": "file"
     },
     {
-      "path": "app\\tests\\kdrama-character\\page.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1776307296089,
-      "type": "file"
-    },
-    {
-      "path": "STATUS.md",
-      "accessCount": 2,
-      "lastAccessed": 1776307756143,
-      "type": "file"
-    },
-    {
-      "path": "app\\layout.tsx",
+      "path": "app\\api\\analytics\\track\\route.ts",
       "accessCount": 1,
-      "lastAccessed": 1776306720145,
+      "lastAccessed": 1776801664704,
       "type": "file"
     },
     {
-      "path": "app\\page.tsx",
+      "path": "app\\api\\results\\route.ts",
       "accessCount": 1,
-      "lastAccessed": 1776306720297,
+      "lastAccessed": 1776801665937,
       "type": "file"
     },
     {
-      "path": "app\\kdrama-mbti\\page.tsx",
+      "path": "components",
       "accessCount": 1,
-      "lastAccessed": 1776306729857,
-      "type": "file"
-    },
-    {
-      "path": "app\\pet-mbti\\page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1776306731161,
-      "type": "file"
-    },
-    {
-      "path": "app\\kpop-idol\\page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1776306731243,
-      "type": "file"
+      "lastAccessed": 1776801757977,
+      "type": "directory"
     }
   ],
   "userDirectives": []

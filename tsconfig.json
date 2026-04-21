@@ -38,6 +38,7 @@
     "node_modules",
     "functions",
     "workers",
-    "_archive"
+    "_archive",
+    "scripts"
   ]
 }

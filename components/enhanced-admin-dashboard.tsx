@@ -1,13 +1,26 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useCallback } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { useState, useEffect, useCallback } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import {
   Users,
   CheckCircle,
@@ -32,136 +45,169 @@ import {
   Loader2,
   Zap,
   ExternalLink,
-} from "lucide-react"
-import Link from "next/link"
-import { toast } from "sonner"
-import { getAdvancedStats, checkGAConnection, sendTestEvent } from "@/lib/analytics"
+} from "lucide-react";
+import Link from "next/link";
+import { toast } from "sonner";
+import {
+  getAdvancedStats,
+  checkGAConnection,
+  sendTestEvent,
+} from "@/lib/analytics";
 
 interface TestStat {
-  started: number
-  completed: number
+  started: number;
+  completed: number;
 }
 
 interface DashboardStats {
-  totalVisits: number
-  totalTestsStarted: number
-  totalTestsCompleted: number
-  lastVisit: number
-  testStats: Record<string, TestStat>
+  totalVisits: number;
+  totalTestsStarted: number;
+  totalTestsCompleted: number;
+  lastVisit: number;
+  testStats: Record<string, TestStat>;
 }
 
 interface DeviceStats {
-  device: string
-  count: number
-  percentage: number
+  device: string;
+  count: number;
+  percentage: number;
 }
 
 interface BrowserStats {
-  browser: string
-  version: string
-  count: number
-  percentage: number
+  browser: string;
+  version: string;
+  count: number;
+  percentage: number;
 }
 
 interface KeywordStats {
-  keyword: string
-  count: number
-  percentage: number
+  keyword: string;
+  count: number;
+  percentage: number;
 }
 
 interface OsStats {
-  os: string
-  count: number
-  percentage: number
+  os: string;
+  count: number;
+  percentage: number;
 }
 
 interface SearchEngineStats {
-  engine: string
-  count: number
-  percentage: number
+  engine: string;
+  count: number;
+  percentage: number;
 }
 
 interface LandingPageStats {
-  path: string
-  count: number
-  percentage: number
+  path: string;
+  count: number;
+  percentage: number;
 }
 
 interface SeoOpportunity {
-  path: string
-  count: number
-  percentage: number
-  priority: "High" | "Medium" | "Watch"
-  action: string
+  path: string;
+  count: number;
+  percentage: number;
+  priority: "High" | "Medium" | "Watch";
+  action: string;
 }
 
 interface ScriptConfig {
-  id: string
-  name: string
-  script: string
-  enabled: boolean
+  id: string;
+  name: string;
+  script: string;
+  enabled: boolean;
 }
 
 export default function EnhancedAdminDashboard() {
-  const [stats, setStats] = useState<DashboardStats | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [lastUpdated, setLastUpdated] = useState<Date>(new Date())
-  const [gaConnected, setGaConnected] = useState(false)
-  const [activeTab, setActiveTab] = useState("overview")
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
+  const [gaConnected, setGaConnected] = useState(false);
+  const [activeTab, setActiveTab] = useState("overview");
 
   // 상세 통계 데이터
-  const [deviceStats, setDeviceStats] = useState<DeviceStats[]>([])
-  const [browserStats, setBrowserStats] = useState<BrowserStats[]>([])
-  const [keywordStats, setKeywordStats] = useState<KeywordStats[]>([])
-  const [osStats, setOsStats] = useState<OsStats[]>([])
-  const [searchEngineStats, setSearchEngineStats] = useState<SearchEngineStats[]>([])
-  const [searchLandingPages, setSearchLandingPages] = useState<LandingPageStats[]>([])
+  const [deviceStats, setDeviceStats] = useState<DeviceStats[]>([]);
+  const [browserStats, setBrowserStats] = useState<BrowserStats[]>([]);
+  const [keywordStats, setKeywordStats] = useState<KeywordStats[]>([]);
+  const [osStats, setOsStats] = useState<OsStats[]>([]);
+  const [searchEngineStats, setSearchEngineStats] = useState<
+    SearchEngineStats[]
+  >([]);
+  const [searchLandingPages, setSearchLandingPages] = useState<
+    LandingPageStats[]
+  >([]);
 
   // Head 스크립트 관리
-  const [scripts, setScripts] = useState<ScriptConfig[]>([])
-  const [editingScript, setEditingScript] = useState<ScriptConfig | null>(null)
-  const [scriptName, setScriptName] = useState("")
-  const [scriptContent, setScriptContent] = useState("")
+  const [scripts, setScripts] = useState<ScriptConfig[]>([]);
+  const [editingScript, setEditingScript] = useState<ScriptConfig | null>(null);
+  const [scriptName, setScriptName] = useState("");
+  const [scriptContent, setScriptContent] = useState("");
 
   // 퀴즈 공장 상태
-  const [queueTopics, setQueueTopics] = useState("")
-  const [isSubmittingQueue, setIsSubmittingQueue] = useState(false)
-  const [queueItems, setQueueItems] = useState<any[]>([])
-  const [queueStats, setQueueStats] = useState<any[]>([])
+  const [queueTopics, setQueueTopics] = useState("");
+  const [isSubmittingQueue, setIsSubmittingQueue] = useState(false);
+  const [queueItems, setQueueItems] = useState<any[]>([]);
+  const [queueStats, setQueueStats] = useState<any[]>([]);
 
-  const seoOpportunities: SeoOpportunity[] = searchLandingPages.slice(0, 5).map((item) => {
-    const normalizedPath = item.path.toLowerCase()
-    let action = "Expand intro answer blocks, strengthen result-page guidance, and add tighter related-quiz links."
-    if (normalizedPath.includes("kdrama") || normalizedPath.includes("idol")) {
-      action = "Broaden entertainment-intent copy, strengthen comparison hooks, and add more share-focused result CTAs."
-    } else if (normalizedPath.includes("study") || normalizedPath.includes("alarm") || normalizedPath.includes("phone")) {
-      action = "Add practical action steps, outcome-focused snippets, and stronger problem-solving language."
-    } else if (normalizedPath.includes("pet") || normalizedPath.includes("ramen") || normalizedPath.includes("food")) {
-      action = "Thicken AEO copy, expand FAQ contrast points, and improve next-click depth into related lifestyle quizzes."
-    } else if (normalizedPath === "/tests") {
-      action = "Curate category blocks, surface top search winners, and tighten collection-page internal links."
-    }
+  const seoOpportunities: SeoOpportunity[] = searchLandingPages
+    .slice(0, 5)
+    .map((item) => {
+      const normalizedPath = item.path.toLowerCase();
+      let action =
+        "Expand intro answer blocks, strengthen result-page guidance, and add tighter related-quiz links.";
+      if (
+        normalizedPath.includes("kdrama") ||
+        normalizedPath.includes("idol")
+      ) {
+        action =
+          "Broaden entertainment-intent copy, strengthen comparison hooks, and add more share-focused result CTAs.";
+      } else if (
+        normalizedPath.includes("study") ||
+        normalizedPath.includes("alarm") ||
+        normalizedPath.includes("phone")
+      ) {
+        action =
+          "Add practical action steps, outcome-focused snippets, and stronger problem-solving language.";
+      } else if (
+        normalizedPath.includes("pet") ||
+        normalizedPath.includes("ramen") ||
+        normalizedPath.includes("food")
+      ) {
+        action =
+          "Thicken AEO copy, expand FAQ contrast points, and improve next-click depth into related lifestyle quizzes.";
+      } else if (normalizedPath === "/tests") {
+        action =
+          "Curate category blocks, surface top search winners, and tighten collection-page internal links.";
+      }
 
-    const priority: SeoOpportunity["priority"] =
-      item.percentage >= 7 ? "High" : item.percentage >= 4 ? "Medium" : "Watch"
+      const priority: SeoOpportunity["priority"] =
+        item.percentage >= 7
+          ? "High"
+          : item.percentage >= 4
+            ? "Medium"
+            : "Watch";
 
-    return {
-      path: item.path,
-      count: item.count,
-      percentage: item.percentage,
-      priority,
-      action,
-    }
-  })
+      return {
+        path: item.path,
+        count: item.count,
+        percentage: item.percentage,
+        priority,
+        action,
+      };
+    });
 
-  const testIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  const testIcons: Record<
+    string,
+    React.ComponentType<{ className?: string }>
+  > = {
     "커피 MBTI": Coffee,
     "라면 MBTI": Utensils,
     "반려동물 MBTI": Heart,
     "공부 MBTI": BookOpen,
     "알람 습관": AlarmClock,
     "NTRP 테스트": Trophy,
-  }
+  };
 
   const loadMockDetailedStats = useCallback(() => {
     // 모의 데이터 (실제로는 API에서 가져옴)
@@ -169,144 +215,156 @@ export default function EnhancedAdminDashboard() {
       { device: "Desktop", count: 4500, percentage: 65 },
       { device: "Mobile", count: 2200, percentage: 32 },
       { device: "Tablet", count: 250, percentage: 3 },
-    ])
+    ]);
     setBrowserStats([
       { browser: "Chrome", version: "120+", count: 4200, percentage: 61 },
       { browser: "Safari", version: "17+", count: 1800, percentage: 26 },
       { browser: "Edge", version: "120+", count: 650, percentage: 9 },
       { browser: "Firefox", version: "121+", count: 300, percentage: 4 },
-    ])
+    ]);
     setKeywordStats([
       { keyword: "mbti 테스트", count: 1200, percentage: 17 },
       { keyword: "커피 mbti", count: 850, percentage: 12 },
       { keyword: "성격 테스트", count: 720, percentage: 10 },
       { keyword: "라면 mbti", count: 580, percentage: 8 },
       { keyword: "무료 mbti", count: 450, percentage: 7 },
-    ])
+    ]);
     setOsStats([
       { os: "Windows", count: 3800, percentage: 55 },
       { os: "iOS", count: 1800, percentage: 26 },
       { os: "Android", count: 900, percentage: 13 },
       { os: "macOS", count: 450, percentage: 6 },
-    ])
+    ]);
     setSearchEngineStats([
       { engine: "Google", count: 2400, percentage: 34 },
       { engine: "Naver", count: 1500, percentage: 21 },
       { engine: "Daum", count: 220, percentage: 3 },
       { engine: "Direct", count: 1800, percentage: 26 },
-    ])
+    ]);
     setSearchLandingPages([
       { path: "/tests", count: 820, percentage: 12 },
       { path: "/tests/kdrama-mbti", count: 510, percentage: 7 },
       { path: "/tests/kpop-idol", count: 430, percentage: 6 },
       { path: "/tests/pet-mbti", count: 360, percentage: 5 },
       { path: "/tests/ramen-mbti", count: 310, percentage: 4 },
-    ])
-  }, [])
+    ]);
+  }, []);
 
   const loadDetailedStats = useCallback(async () => {
     try {
-      const response = await fetch('/api/admin/stats/detailed')
+      const response = await fetch("/api/admin/stats/detailed");
       if (response.ok) {
-        const data = await response.json()
-        setDeviceStats(data.devices || [])
-        setBrowserStats(data.browsers || [])
-        setKeywordStats(data.keywords || [])
-        setOsStats(data.os || [])
-        setSearchEngineStats(data.searchEngines || [])
-        setSearchLandingPages(data.searchLandingPages || [])
+        const data = (await response.json()) as {
+          devices?: DeviceStats[];
+          browsers?: BrowserStats[];
+          keywords?: KeywordStats[];
+          os?: OsStats[];
+          searchEngines?: SearchEngineStats[];
+          searchLandingPages?: LandingPageStats[];
+        };
+        setDeviceStats(data.devices || []);
+        setBrowserStats(data.browsers || []);
+        setKeywordStats(data.keywords || []);
+        setOsStats(data.os || []);
+        setSearchEngineStats(data.searchEngines || []);
+        setSearchLandingPages(data.searchLandingPages || []);
       } else {
-        loadMockDetailedStats()
+        loadMockDetailedStats();
       }
     } catch (error) {
-      console.error("상세 통계 로딩 실패:", error)
-      loadMockDetailedStats()
+      console.error("상세 통계 로딩 실패:", error);
+      loadMockDetailedStats();
     }
-  }, [loadMockDetailedStats])
+  }, [loadMockDetailedStats]);
 
   const loadStats = useCallback(async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      const response = await fetch('/api/dashboard')
+      const response = await fetch("/api/dashboard");
       if (response.ok) {
-        const data = await response.json() as DashboardStats
-        setStats(data)
-        loadDetailedStats()
+        const data = (await response.json()) as DashboardStats;
+        setStats(data);
+        loadDetailedStats();
       } else {
         // Fallback or error handling
-        console.error("Dashboard API returned error")
+        console.error("Dashboard API returned error");
       }
-      setLastUpdated(new Date())
-      setGaConnected(checkGAConnection())
+      setLastUpdated(new Date());
+      setGaConnected(checkGAConnection());
     } catch (error) {
-      console.error("통계 로딩 실패:", error)
+      console.error("통계 로딩 실패:", error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [loadDetailedStats])
+  }, [loadDetailedStats]);
 
   const loadScripts = () => {
     try {
-      const saved = localStorage.getItem('admin_head_scripts')
+      const saved = localStorage.getItem("admin_head_scripts");
       if (saved) {
-        setScripts(JSON.parse(saved))
+        setScripts(JSON.parse(saved));
       }
     } catch (error) {
-      console.error("스크립트 로딩 실패:", error)
+      console.error("스크립트 로딩 실패:", error);
     }
-  }
+  };
 
   const fetchQueue = async () => {
     try {
-      const res = await fetch('/api/admin/queue')
-      const data = await res.json()
-      if (data.recentItems) setQueueItems(data.recentItems)
-      if (data.stats) setQueueStats(data.stats)
+      const res = await fetch("/api/admin/queue");
+      const data = (await res.json()) as {
+        recentItems?: unknown[];
+        stats?: unknown[];
+      };
+      if (data.recentItems) setQueueItems(data.recentItems as any[]);
+      if (data.stats) setQueueStats(data.stats as any[]);
     } catch (error) {
-      console.error("Failed to fetch queue", error)
+      console.error("Failed to fetch queue", error);
     }
-  }
+  };
 
   const handleQueueSubmit = async () => {
-    if (!queueTopics.trim()) return
-    setIsSubmittingQueue(true)
+    if (!queueTopics.trim()) return;
+    setIsSubmittingQueue(true);
     try {
-      const topicList = queueTopics.split('\n').filter(t => t.trim().length > 0)
-      const res = await fetch('/api/admin/queue', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const topicList = queueTopics
+        .split("\n")
+        .filter((t) => t.trim().length > 0);
+      const res = await fetch("/api/admin/queue", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ topics: topicList }),
-      })
+      });
       if (res.ok) {
-        const data = await res.json()
-        toast.success(`${data.count}개 주제가 대기열에 추가되었습니다.`)
-        setQueueTopics("")
-        fetchQueue()
+        const data = (await res.json()) as { count?: number };
+        toast.success(`${data.count}개 주제가 대기열에 추가되었습니다.`);
+        setQueueTopics("");
+        fetchQueue();
       } else {
-        toast.error("추가에 실패했습니다.")
+        toast.error("추가에 실패했습니다.");
       }
     } catch (error) {
-      toast.error("오류가 발생했습니다.")
+      toast.error("오류가 발생했습니다.");
     } finally {
-      setIsSubmittingQueue(false)
+      setIsSubmittingQueue(false);
     }
-  }
+  };
 
   const saveScripts = (newScripts: ScriptConfig[]) => {
     try {
-      localStorage.setItem('admin_head_scripts', JSON.stringify(newScripts))
-      setScripts(newScripts)
-      alert("스크립트가 저장되었습니다. 페이지를 새로고침하면 적용됩니다.")
+      localStorage.setItem("admin_head_scripts", JSON.stringify(newScripts));
+      setScripts(newScripts);
+      alert("스크립트가 저장되었습니다. 페이지를 새로고침하면 적용됩니다.");
     } catch (error) {
-      console.error("스크립트 저장 실패:", error)
-      alert("스크립트 저장에 실패했습니다.")
+      console.error("스크립트 저장 실패:", error);
+      alert("스크립트 저장에 실패했습니다.");
     }
-  }
+  };
 
   const handleSaveScript = () => {
     if (!scriptName.trim() || !scriptContent.trim()) {
-      alert("이름과 스크립트 내용을 입력해주세요.")
-      return
+      alert("이름과 스크립트 내용을 입력해주세요.");
+      return;
     }
 
     const newScript: ScriptConfig = {
@@ -314,42 +372,44 @@ export default function EnhancedAdminDashboard() {
       name: scriptName,
       script: scriptContent,
       enabled: editingScript?.enabled ?? true,
-    }
+    };
 
     if (editingScript) {
-      const updated = scripts.map(s => s.id === editingScript.id ? newScript : s)
-      saveScripts(updated)
+      const updated = scripts.map((s) =>
+        s.id === editingScript.id ? newScript : s,
+      );
+      saveScripts(updated);
     } else {
-      saveScripts([...scripts, newScript])
+      saveScripts([...scripts, newScript]);
     }
 
-    setEditingScript(null)
-    setScriptName("")
-    setScriptContent("")
-  }
+    setEditingScript(null);
+    setScriptName("");
+    setScriptContent("");
+  };
 
   const handleDeleteScript = (id: string) => {
     if (confirm("정말 삭제하시겠습니까?")) {
-      saveScripts(scripts.filter(s => s.id !== id))
+      saveScripts(scripts.filter((s) => s.id !== id));
     }
-  }
+  };
 
   const handleEditScript = (script: ScriptConfig) => {
-    setEditingScript(script)
-    setScriptName(script.name)
-    setScriptContent(script.script)
-  }
+    setEditingScript(script);
+    setScriptName(script.name);
+    setScriptContent(script.script);
+  };
 
   useEffect(() => {
-    loadStats()
-    loadScripts()
-    if (activeTab === 'queue') fetchQueue()
-    const interval = setInterval(loadStats, 30000)
-    return () => clearInterval(interval)
-  }, [loadStats, activeTab])
+    loadStats();
+    loadScripts();
+    if (activeTab === "queue") fetchQueue();
+    const interval = setInterval(loadStats, 30000);
+    return () => clearInterval(interval);
+  }, [loadStats, activeTab]);
 
   if (isLoading && !stats) {
-    return <div className="p-8 text-center">로딩 중...</div>
+    return <div className="p-8 text-center">로딩 중...</div>;
   }
 
   // Handle case where stats failed to load
@@ -361,31 +421,47 @@ export default function EnhancedAdminDashboard() {
           다시 시도
         </Button>
       </div>
-    )
+    );
   }
 
   const completionRate =
-    stats.totalTestsStarted > 0 ? Math.round((stats.totalTestsCompleted / stats.totalTestsStarted) * 100) : 0
+    stats.totalTestsStarted > 0
+      ? Math.round((stats.totalTestsCompleted / stats.totalTestsStarted) * 100)
+      : 0;
 
   return (
     <div className="space-y-6">
       {/* 헤더 */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">📊 관리자 대시보드</h1>
+          <h1 className="text-3xl font-bold tracking-tight">
+            📊 관리자 대시보드
+          </h1>
           <p className="text-muted-foreground mt-1">
-            테몬 MBTI 플랫폼 분석 | 마지막 업데이트: {lastUpdated.toLocaleTimeString("ko-KR")}
+            테몬 MBTI 플랫폼 분석 | 마지막 업데이트:{" "}
+            {lastUpdated.toLocaleTimeString("ko-KR")}
           </p>
         </div>
         <div className="flex items-center space-x-2">
           <Badge variant={gaConnected ? "default" : "destructive"}>
             {gaConnected ? "✅ GA 연결됨" : "❌ GA 연결 안됨"}
           </Badge>
-          <Button onClick={() => sendTestEvent() && alert("테스트 이벤트 전송됨")} variant="outline" size="sm">
+          <Button
+            onClick={() => sendTestEvent() && alert("테스트 이벤트 전송됨")}
+            variant="outline"
+            size="sm"
+          >
             🧪 GA 테스트
           </Button>
-          <Button onClick={loadStats} disabled={isLoading} variant="outline" size="sm">
-            <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? "animate-spin" : ""}`} />
+          <Button
+            onClick={loadStats}
+            disabled={isLoading}
+            variant="outline"
+            size="sm"
+          >
+            <RefreshCw
+              className={`h-4 w-4 mr-2 ${isLoading ? "animate-spin" : ""}`}
+            />
             새로고침
           </Button>
         </div>
@@ -412,29 +488,41 @@ export default function EnhancedAdminDashboard() {
                 <Users className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{stats.totalVisits.toLocaleString()}</div>
-                <p className="text-xs text-muted-foreground">누적 페이지 방문</p>
+                <div className="text-2xl font-bold">
+                  {stats.totalVisits.toLocaleString()}
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  누적 페이지 방문
+                </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">테스트 시작</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  테스트 시작
+                </CardTitle>
                 <TrendingUp className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{stats.totalTestsStarted.toLocaleString()}</div>
+                <div className="text-2xl font-bold">
+                  {stats.totalTestsStarted.toLocaleString()}
+                </div>
                 <p className="text-xs text-muted-foreground">총 시작 횟수</p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">테스트 완료</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  테스트 완료
+                </CardTitle>
                 <CheckCircle className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{stats.totalTestsCompleted.toLocaleString()}</div>
+                <div className="text-2xl font-bold">
+                  {stats.totalTestsCompleted.toLocaleString()}
+                </div>
                 <p className="text-xs text-muted-foreground">총 완료 횟수</p>
               </CardContent>
             </Card>
@@ -445,7 +533,9 @@ export default function EnhancedAdminDashboard() {
                 <Activity className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-blue-600">{completionRate}%</div>
+                <div className="text-2xl font-bold text-blue-600">
+                  {completionRate}%
+                </div>
                 <p className="text-xs text-muted-foreground">평균 완료율</p>
               </CardContent>
             </Card>
@@ -462,27 +552,43 @@ export default function EnhancedAdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {stats.testStats && Object.entries(stats.testStats).map(([testName, data]) => {
-                  const Icon = testIcons[testName] || Activity
-                  const rate = data.started > 0 ? Math.round((data.completed / data.started) * 100) : 0
+                {stats.testStats &&
+                  Object.entries(stats.testStats).map(([testName, data]) => {
+                    const Icon = testIcons[testName] || Activity;
+                    const rate =
+                      data.started > 0
+                        ? Math.round((data.completed / data.started) * 100)
+                        : 0;
 
-                  return (
-                    <div key={testName} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                      <div className="flex items-center space-x-3">
-                        <Icon className="h-5 w-5 text-muted-foreground" />
-                        <div>
-                          <h4 className="font-medium">{testName}</h4>
-                          <p className="text-sm text-muted-foreground">
-                            시작: {data.started.toLocaleString()} | 완료: {data.completed.toLocaleString()}
-                          </p>
+                    return (
+                      <div
+                        key={testName}
+                        className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
+                      >
+                        <div className="flex items-center space-x-3">
+                          <Icon className="h-5 w-5 text-muted-foreground" />
+                          <div>
+                            <h4 className="font-medium">{testName}</h4>
+                            <p className="text-sm text-muted-foreground">
+                              시작: {data.started.toLocaleString()} | 완료:{" "}
+                              {data.completed.toLocaleString()}
+                            </p>
+                          </div>
                         </div>
+                        <Badge
+                          variant={
+                            rate >= 70
+                              ? "default"
+                              : rate >= 50
+                                ? "secondary"
+                                : "outline"
+                          }
+                        >
+                          {rate}%
+                        </Badge>
                       </div>
-                      <Badge variant={rate >= 70 ? "default" : rate >= 50 ? "secondary" : "outline"}>
-                        {rate}%
-                      </Badge>
-                    </div>
-                  )
-                })}
+                    );
+                  })}
               </div>
             </CardContent>
           </Card>
@@ -492,7 +598,9 @@ export default function EnhancedAdminDashboard() {
                 <Globe className="h-5 w-5" />
                 상위 검색 랜딩 페이지
               </CardTitle>
-              <CardDescription>검색엔진 유입이 처음 닿는 페이지 상위 15개</CardDescription>
+              <CardDescription>
+                검색엔진 유입이 처음 닿는 페이지 상위 15개
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
@@ -506,9 +614,15 @@ export default function EnhancedAdminDashboard() {
                 <TableBody>
                   {searchLandingPages.map((item, index) => (
                     <TableRow key={`${item.path}-${index}`}>
-                      <TableCell className="max-w-[320px] truncate font-medium">{item.path}</TableCell>
-                      <TableCell className="text-right">{item.count.toLocaleString()}</TableCell>
-                      <TableCell className="text-right">{item.percentage}%</TableCell>
+                      <TableCell className="max-w-[320px] truncate font-medium">
+                        {item.path}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {item.count.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {item.percentage}%
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -521,23 +635,39 @@ export default function EnhancedAdminDashboard() {
                 <Zap className="h-5 w-5" />
                 SEO Action Queue
               </CardTitle>
-              <CardDescription>검색 랜딩 페이지 기준으로 우선 손볼 후보와 권장 작업</CardDescription>
+              <CardDescription>
+                검색 랜딩 페이지 기준으로 우선 손볼 후보와 권장 작업
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 {seoOpportunities.map((item) => (
-                  <div key={`seo-opportunity-${item.path}`} className="rounded-xl border p-4">
+                  <div
+                    key={`seo-opportunity-${item.path}`}
+                    className="rounded-xl border p-4"
+                  >
                     <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                       <div className="space-y-2">
                         <div className="flex items-center gap-2">
                           <p className="font-semibold">{item.path}</p>
-                          <Badge variant={item.priority === "High" ? "default" : item.priority === "Medium" ? "secondary" : "outline"}>
+                          <Badge
+                            variant={
+                              item.priority === "High"
+                                ? "default"
+                                : item.priority === "Medium"
+                                  ? "secondary"
+                                  : "outline"
+                            }
+                          >
                             {item.priority}
                           </Badge>
                         </div>
-                        <p className="text-sm text-muted-foreground">{item.action}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {item.action}
+                        </p>
                         <p className="text-xs text-muted-foreground">
-                          {item.count.toLocaleString()} search landings, {item.percentage}% of tracked visits
+                          {item.count.toLocaleString()} search landings,{" "}
+                          {item.percentage}% of tracked visits
                         </p>
                       </div>
                       <Button variant="outline" size="sm" asChild>
@@ -558,23 +688,39 @@ export default function EnhancedAdminDashboard() {
                 <Zap className="h-5 w-5" />
                 SEO Action Queue
               </CardTitle>
-              <CardDescription>검색 랜딩 페이지 기준으로 우선 손볼 후보와 권장 작업</CardDescription>
+              <CardDescription>
+                검색 랜딩 페이지 기준으로 우선 손볼 후보와 권장 작업
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 {seoOpportunities.map((item) => (
-                  <div key={`seo-opportunity-keywords-${item.path}`} className="rounded-xl border p-4">
+                  <div
+                    key={`seo-opportunity-keywords-${item.path}`}
+                    className="rounded-xl border p-4"
+                  >
                     <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                       <div className="space-y-2">
                         <div className="flex items-center gap-2">
                           <p className="font-semibold">{item.path}</p>
-                          <Badge variant={item.priority === "High" ? "default" : item.priority === "Medium" ? "secondary" : "outline"}>
+                          <Badge
+                            variant={
+                              item.priority === "High"
+                                ? "default"
+                                : item.priority === "Medium"
+                                  ? "secondary"
+                                  : "outline"
+                            }
+                          >
                             {item.priority}
                           </Badge>
                         </div>
-                        <p className="text-sm text-muted-foreground">{item.action}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {item.action}
+                        </p>
                         <p className="text-xs text-muted-foreground">
-                          {item.count.toLocaleString()} search landings, {item.percentage}% of tracked visits
+                          {item.count.toLocaleString()} search landings,{" "}
+                          {item.percentage}% of tracked visits
                         </p>
                       </div>
                       <Button variant="outline" size="sm" asChild>
@@ -612,14 +758,24 @@ export default function EnhancedAdminDashboard() {
                     <TableRow key={index}>
                       <TableCell>
                         <div className="flex items-center gap-2">
-                          {item.device === "Mobile" && <Smartphone className="h-4 w-4" />}
-                          {item.device === "Tablet" && <Tablet className="h-4 w-4" />}
-                          {item.device === "Desktop" && <Monitor className="h-4 w-4" />}
+                          {item.device === "Mobile" && (
+                            <Smartphone className="h-4 w-4" />
+                          )}
+                          {item.device === "Tablet" && (
+                            <Tablet className="h-4 w-4" />
+                          )}
+                          {item.device === "Desktop" && (
+                            <Monitor className="h-4 w-4" />
+                          )}
                           {item.device}
                         </div>
                       </TableCell>
-                      <TableCell className="text-right">{item.count.toLocaleString()}</TableCell>
-                      <TableCell className="text-right">{item.percentage}%</TableCell>
+                      <TableCell className="text-right">
+                        {item.count.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {item.percentage}%
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -645,8 +801,12 @@ export default function EnhancedAdminDashboard() {
                   {osStats.map((item, index) => (
                     <TableRow key={index}>
                       <TableCell>{item.os}</TableCell>
-                      <TableCell className="text-right">{item.count.toLocaleString()}</TableCell>
-                      <TableCell className="text-right">{item.percentage}%</TableCell>
+                      <TableCell className="text-right">
+                        {item.count.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {item.percentage}%
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -663,15 +823,22 @@ export default function EnhancedAdminDashboard() {
                 <Search className="h-5 w-5" />
                 검색엔진 유입 비중
               </CardTitle>
-              <CardDescription>구글, 네이버, 다음 등 검색엔진별 방문 분포</CardDescription>
+              <CardDescription>
+                구글, 네이버, 다음 등 검색엔진별 방문 분포
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 {searchEngineStats.map((item, index) => (
-                  <div key={`${item.engine}-${index}`} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div
+                    key={`${item.engine}-${index}`}
+                    className="flex items-center justify-between p-4 border rounded-lg"
+                  >
                     <div>
                       <p className="font-medium">{item.engine}</p>
-                      <p className="text-sm text-muted-foreground">{item.count.toLocaleString()}회 유입</p>
+                      <p className="text-sm text-muted-foreground">
+                        {item.count.toLocaleString()}회 유입
+                      </p>
                     </div>
                     <Badge>{item.percentage}%</Badge>
                   </div>
@@ -685,7 +852,9 @@ export default function EnhancedAdminDashboard() {
                 <Globe className="h-5 w-5" />
                 상위 검색 랜딩 페이지
               </CardTitle>
-              <CardDescription>검색엔진 유입이 처음 닿는 페이지 상위 15개</CardDescription>
+              <CardDescription>
+                검색엔진 유입이 처음 닿는 페이지 상위 15개
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
@@ -699,9 +868,15 @@ export default function EnhancedAdminDashboard() {
                 <TableBody>
                   {searchLandingPages.map((item, index) => (
                     <TableRow key={`keywords-${item.path}-${index}`}>
-                      <TableCell className="max-w-[320px] truncate font-medium">{item.path}</TableCell>
-                      <TableCell className="text-right">{item.count.toLocaleString()}</TableCell>
-                      <TableCell className="text-right">{item.percentage}%</TableCell>
+                      <TableCell className="max-w-[320px] truncate font-medium">
+                        {item.path}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {item.count.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {item.percentage}%
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -719,14 +894,22 @@ export default function EnhancedAdminDashboard() {
             <CardContent>
               <div className="space-y-4">
                 {keywordStats.map((item, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between p-4 border rounded-lg"
+                  >
                     <div className="flex items-center gap-3">
-                      <Badge variant="outline" className="w-8 h-8 flex items-center justify-center">
+                      <Badge
+                        variant="outline"
+                        className="w-8 h-8 flex items-center justify-center"
+                      >
                         {index + 1}
                       </Badge>
                       <div>
                         <p className="font-medium">{item.keyword}</p>
-                        <p className="text-sm text-muted-foreground">{item.count.toLocaleString()}회 검색</p>
+                        <p className="text-sm text-muted-foreground">
+                          {item.count.toLocaleString()}회 검색
+                        </p>
                       </div>
                     </div>
                     <Badge>{item.percentage}%</Badge>
@@ -762,8 +945,12 @@ export default function EnhancedAdminDashboard() {
                     <TableRow key={index}>
                       <TableCell>{item.browser}</TableCell>
                       <TableCell>{item.version}</TableCell>
-                      <TableCell className="text-right">{item.count.toLocaleString()}</TableCell>
-                      <TableCell className="text-right">{item.percentage}%</TableCell>
+                      <TableCell className="text-right">
+                        {item.count.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {item.percentage}%
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -782,7 +969,9 @@ export default function EnhancedAdminDashboard() {
                   주제 대량 입력
                 </CardTitle>
                 <CardDescription className="flex items-center justify-between">
-                  <span>새로운 퀴즈 주제를 입력하면 AI가 자동으로 생성합니다.</span>
+                  <span>
+                    새로운 퀴즈 주제를 입력하면 AI가 자동으로 생성합니다.
+                  </span>
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="text-xs">
                       <AlarmClock className="mr-1 h-3 w-3" />
@@ -793,19 +982,22 @@ export default function EnhancedAdminDashboard() {
                       size="sm"
                       onClick={async () => {
                         try {
-                          setIsSubmittingQueue(true)
-                          const res = await fetch('/api/cron/generate')
-                          const data = await res.json()
+                          setIsSubmittingQueue(true);
+                          const res = await fetch("/api/cron/generate");
+                          const data = (await res.json()) as {
+                            success?: boolean;
+                            message?: string;
+                          };
                           if (data.success) {
-                            toast.success("즉시 생성이 시작되었습니다!")
-                            fetchQueue() // 데이터 갱신
+                            toast.success("즉시 생성이 시작되었습니다!");
+                            fetchQueue(); // 데이터 갱신
                           } else {
-                            toast.error(data.message || "생성 실패")
+                            toast.error(data.message || "생성 실패");
                           }
                         } catch (e) {
-                          toast.error("요청 중 오류 발생")
+                          toast.error("요청 중 오류 발생");
                         } finally {
-                          setIsSubmittingQueue(false)
+                          setIsSubmittingQueue(false);
                         }
                       }}
                       disabled={isSubmittingQueue}
@@ -829,10 +1021,16 @@ export default function EnhancedAdminDashboard() {
                 />
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-muted-foreground">
-                    {queueTopics.split('\n').filter(t => t.trim()).length}개 감지됨
+                    {queueTopics.split("\n").filter((t) => t.trim()).length}개
+                    감지됨
                   </span>
-                  <Button onClick={handleQueueSubmit} disabled={isSubmittingQueue || !queueTopics.trim()}>
-                    {isSubmittingQueue && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  <Button
+                    onClick={handleQueueSubmit}
+                    disabled={isSubmittingQueue || !queueTopics.trim()}
+                  >
+                    {isSubmittingQueue && (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    )}
                     대기열 추가
                   </Button>
                 </div>
@@ -843,25 +1041,34 @@ export default function EnhancedAdminDashboard() {
               <div className="grid grid-cols-3 gap-4">
                 <Card>
                   <CardHeader className="py-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">대기중</CardTitle>
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                      대기중
+                    </CardTitle>
                     <div className="text-2xl font-bold mt-2">
-                      {queueStats.find(s => s.status === 'pending')?.count || 0}
+                      {queueStats.find((s) => s.status === "pending")?.count ||
+                        0}
                     </div>
                   </CardHeader>
                 </Card>
                 <Card>
                   <CardHeader className="py-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">완료</CardTitle>
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                      완료
+                    </CardTitle>
                     <div className="text-2xl font-bold mt-2 text-green-600">
-                      {queueStats.find(s => s.status === 'completed')?.count || 0}
+                      {queueStats.find((s) => s.status === "completed")
+                        ?.count || 0}
                     </div>
                   </CardHeader>
                 </Card>
                 <Card>
                   <CardHeader className="py-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">실패</CardTitle>
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                      실패
+                    </CardTitle>
                     <div className="text-2xl font-bold mt-2 text-red-600">
-                      {queueStats.find(s => s.status === 'failed')?.count || 0}
+                      {queueStats.find((s) => s.status === "failed")?.count ||
+                        0}
                     </div>
                   </CardHeader>
                 </Card>
@@ -886,15 +1093,29 @@ export default function EnhancedAdminDashboard() {
                     </TableHeader>
                     <TableBody>
                       {queueItems.map((item) => {
-                        const testId = item.status === 'completed' && item.logs?.startsWith('Generated: ')
-                          ? item.logs.split('Generated: ')[1]
-                          : null;
+                        const testId =
+                          item.status === "completed" &&
+                          item.logs?.startsWith("Generated: ")
+                            ? item.logs.split("Generated: ")[1]
+                            : null;
 
                         return (
                           <TableRow key={item.id}>
                             <TableCell>
-                              <Badge variant={item.status === 'completed' ? 'default' : item.status === 'failed' ? 'destructive' : 'outline'}>
-                                {item.status === 'pending' ? '대기중' : item.status === 'completed' ? '완료' : '실패'}
+                              <Badge
+                                variant={
+                                  item.status === "completed"
+                                    ? "default"
+                                    : item.status === "failed"
+                                      ? "destructive"
+                                      : "outline"
+                                }
+                              >
+                                {item.status === "pending"
+                                  ? "대기중"
+                                  : item.status === "completed"
+                                    ? "완료"
+                                    : "실패"}
                               </Badge>
                             </TableCell>
                             <TableCell className="font-medium">
@@ -917,7 +1138,10 @@ export default function EnhancedAdminDashboard() {
                       })}
                       {queueItems.length === 0 && (
                         <TableRow>
-                          <TableCell colSpan={2} className="text-center py-8 text-muted-foreground">
+                          <TableCell
+                            colSpan={2}
+                            className="text-center py-8 text-muted-foreground"
+                          >
                             대기열이 비어있습니다.
                           </TableCell>
                         </TableRow>
@@ -938,16 +1162,23 @@ export default function EnhancedAdminDashboard() {
                 <Code className="h-5 w-5" />
                 Head 스크립트 관리
               </CardTitle>
-              <CardDescription>페이지 head에 삽입할 스크립트를 관리합니다</CardDescription>
+              <CardDescription>
+                페이지 head에 삽입할 스크립트를 관리합니다
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {/* 스크립트 목록 */}
               <div className="space-y-2">
                 {scripts.map((script) => (
-                  <div key={script.id} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div
+                    key={script.id}
+                    className="flex items-center justify-between p-4 border rounded-lg"
+                  >
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <Badge variant={script.enabled ? "default" : "secondary"}>
+                        <Badge
+                          variant={script.enabled ? "default" : "secondary"}
+                        >
                           {script.enabled ? "활성" : "비활성"}
                         </Badge>
                         <p className="font-medium">{script.name}</p>
@@ -957,10 +1188,18 @@ export default function EnhancedAdminDashboard() {
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm" onClick={() => handleEditScript(script)}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleEditScript(script)}
+                      >
                         수정
                       </Button>
-                      <Button variant="outline" size="sm" onClick={() => handleDeleteScript(script.id)}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleDeleteScript(script.id)}
+                      >
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
@@ -998,11 +1237,14 @@ export default function EnhancedAdminDashboard() {
                       저장
                     </Button>
                     {editingScript && (
-                      <Button variant="outline" onClick={() => {
-                        setEditingScript(null)
-                        setScriptName("")
-                        setScriptContent("")
-                      }}>
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          setEditingScript(null);
+                          setScriptName("");
+                          setScriptContent("");
+                        }}
+                      >
                         취소
                       </Button>
                     )}
@@ -1012,8 +1254,9 @@ export default function EnhancedAdminDashboard() {
 
               <div className="bg-muted p-4 rounded-lg">
                 <p className="text-sm text-muted-foreground">
-                  💡 <strong>주의사항:</strong> 스크립트는 localStorage에 저장되며, 실제 적용을 위해서는
-                  layout.tsx에서 이 데이터를 읽어와 head에 삽입해야 합니다.
+                  💡 <strong>주의사항:</strong> 스크립트는 localStorage에
+                  저장되며, 실제 적용을 위해서는 layout.tsx에서 이 데이터를
+                  읽어와 head에 삽입해야 합니다.
                 </p>
               </div>
             </CardContent>
@@ -1021,5 +1264,5 @@ export default function EnhancedAdminDashboard() {
         </TabsContent>
       </Tabs>
     </div>
-  )
+  );
 }

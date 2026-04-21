@@ -1,7 +1,17 @@
 {
-  "agents": [],
-  "total_spawned": 0,
-  "total_completed": 0,
+  "agents": [
+    {
+      "agent_id": "ae002de018311c77e",
+      "agent_type": "bkit:cto-lead",
+      "started_at": "2026-04-21T19:10:57.438Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-21T19:11:49.243Z",
+      "duration_ms": 51805
+    }
+  ],
+  "total_spawned": 1,
+  "total_completed": 1,
   "total_failed": 0,
-  "last_updated": "2026-04-16T04:26:13.318Z"
+  "last_updated": "2026-04-21T19:52:22.700Z"
 }

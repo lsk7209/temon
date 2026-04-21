@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"python3 -c \\\"\\nimport json\\nwith open('D:/tools/gsc/data.json') as f:\\n    d = json.load(f)\\nprint('사이트 목록:', list(d.keys()))\\nif 'https://www.temon.kr/' in d:\\n    t = d['https://www.temo...",
-  "error": "Exit code 49\nPython was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.",
-  "timestamp": "2026-04-16T02:30:57.090Z",
+  "tool_input_preview": "{\"command\":\"cd D:/web/temon && rtk npm run build 2>&1\",\"timeout\":120000,\"description\":\"Run build to verify all errors fixed\"}",
+  "error": "Exit code 1\n[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n> next build\n  ▲ Next.js 14.2.35\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n./scripts/create-favicon-ico.ts:6:22\nType error: Cannot find module 'png-to-ico' or its corresponding type declarations.\n\u001b[0m \u001b[90m 4 |\u001b[39m \u001b[90m */\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 6 |\u001b[39m \u001b[36mimport\u001b[39m pngT...",
+  "timestamp": "2026-04-21T20:14:42.234Z",
   "retry_count": 1
 }

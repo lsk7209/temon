@@ -1,14 +1,14 @@
-# Status | 마지막: 2026-04-16
+# Status | 마지막: 2026-04-22
 
 ## 현재 작업
-GSC 연동 + 한국어 SEO 최적화 완료
+GitHub 브랜치 머지 + TypeScript 빌드 에러 수정 완료
 
 ## 최근 변경 (최근 5개)
-- 04-16: 전체 영어 UI 한국어화 (AnswerEngineSection, LandingConversionSection, tests/page 메타데이터·본문)
-- 04-16: RelatedTestsSection 영어 title prop 225개 제거 (기본값 한국어 사용)
-- 04-16: tsconfig.json _archive 제외, faqSchema 중복 Script 블록 4개 파일 제거
-- 04-16: .gsc-domain www→non-www 수정 (canonical 통일), og-tests.png→동적OG 교체
-- 04-16: SEO/GEO 최적화 (robots.txt AI 크롤러, llms.txt/full/ai-index.json 생성)
+- 04-22: Next.js 14.2.35 CVE 보안 패치 머지 (14.2.16→14.2.35)
+- 04-22: tests/[testId]/test/result 결과 진입 라우트 추가 (404 방지)
+- 04-22: next.config.mjs 성능 개선 (compress, DNS prefetch, OG 캐시)
+- 04-22: TypeScript strict 모드 json() 타입 에러 수정 (7개 파일)
+- 04-22: lib/db/schema.ts drizzle-orm 0.29.x 인덱스 문법 수정, scripts/ tsconfig 제외
 
 ## TODO
 - [ ] GSC 서비스 계정 temon.kr 등록: id-ai-179@cursorai-451704.iam.gserviceaccount.com 소유자 추가
