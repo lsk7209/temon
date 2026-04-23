@@ -81,6 +81,13 @@ export interface Test {
   tags: string[];
   popular?: boolean;
   new?: boolean;
+  /**
+   * ISO 8601 날짜 문자열 (예: "2026-05-01T00:00:00Z").
+   * 이 시점 이전 접속은 lib/visible-tests.ts 필터에서 제외되어
+   * 홈/테스트 인덱스/사이트맵에 노출되지 않음. 드립 공개용.
+   * 미지정 시 즉시 공개.
+   */
+  publishAt?: string;
 }
 
 export const ALL_TESTS: Test[] = [
@@ -2844,10 +2851,14 @@ export const CATEGORIES = [
   ...Array.from(new Set(ALL_TESTS.map((test) => test.category))),
 ];
 
-// Get tests for homepage (first 9, 중복 제거 후)
+// Get tests for homepage (first 9, 공개된 테스트 중에서 중복 제거)
+// publishAt 미도달 테스트는 숨김 — 드립 공개 대기
 export const getHomePageTests = () => {
-  const uniqueTests = getAllTests();
-  return uniqueTests.slice(0, 9);
+  const now = new Date();
+  const published = getAllTests().filter(
+    (t) => !t.publishAt || new Date(t.publishAt) <= now,
+  );
+  return published.slice(0, 9);
 };
 
 // Get all tests (중복 제거 및 정렬)
