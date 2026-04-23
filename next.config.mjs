@@ -28,11 +28,28 @@ const nextConfig = {
       'snowwhite-mbti',
       'study-mbti',
     ]
+    // 중복/유사 테스트 통합 매핑 — canonical 쪽으로 308 permanent
+    const duplicateTestMerges = [
+      // food-temperature-preference는 food-temperature의 동어반복 (세밀 선호도 = 선호도)
+      { from: "food-temperature-preference", to: "food-temperature" },
+    ]
+
     return [
       // 구 경로 → 신 경로
       ...legacyTests.map((slug) => ({
         source: `/${slug}/:path*`,
         destination: `/tests/${slug}/:path*`,
+        permanent: true,
+      })),
+      // 중복 테스트 → canonical 테스트로 통합
+      ...duplicateTestMerges.map(({ from, to }) => ({
+        source: `/tests/${from}/:path*`,
+        destination: `/tests/${to}/:path*`,
+        permanent: true,
+      })),
+      ...duplicateTestMerges.map(({ from, to }) => ({
+        source: `/tests/${from}`,
+        destination: `/tests/${to}`,
         permanent: true,
       })),
     ]

@@ -1,19 +1,86 @@
-import { Coffee, Soup, Heart, BookOpen, AlarmClock, Trophy, Clapperboard, ChefHat, Music, Plane, Smartphone, UtensilsCrossed, ShoppingBag, Cake, Sparkles, Moon, MessageSquare, Drumstick, Store, Play, Camera, Droplets, Gift, Salad, Bed, DoorOpen, Shirt, Thermometer, Cookie, Palette, Timer, Recycle, AlertTriangle, Flame, Candy, FileText, Snowflake, Sprout, Star, Layers, Clock, ArrowUpDown, Scale, Calendar, HandHeart, FlaskConical, PencilRuler, Wand2, Share2, ShoppingCart, Building2, Laptop, DollarSign, Wallet, Tag, Users, Sun, User, Bell, Zap, HardDrive, Grid, Search, CreditCard, Cloud, type LucideIcon } from "lucide-react"
+import {
+  Coffee,
+  Soup,
+  Heart,
+  BookOpen,
+  AlarmClock,
+  Trophy,
+  Clapperboard,
+  ChefHat,
+  Music,
+  Plane,
+  Smartphone,
+  UtensilsCrossed,
+  ShoppingBag,
+  Cake,
+  Sparkles,
+  Moon,
+  MessageSquare,
+  Drumstick,
+  Store,
+  Play,
+  Camera,
+  Droplets,
+  Gift,
+  Salad,
+  Bed,
+  DoorOpen,
+  Shirt,
+  Thermometer,
+  Cookie,
+  Palette,
+  Timer,
+  Recycle,
+  AlertTriangle,
+  Flame,
+  Candy,
+  FileText,
+  Snowflake,
+  Sprout,
+  Star,
+  Layers,
+  Clock,
+  ArrowUpDown,
+  Scale,
+  Calendar,
+  HandHeart,
+  FlaskConical,
+  PencilRuler,
+  Wand2,
+  Share2,
+  ShoppingCart,
+  Building2,
+  Laptop,
+  DollarSign,
+  Wallet,
+  Tag,
+  Users,
+  Sun,
+  User,
+  Bell,
+  Zap,
+  HardDrive,
+  Grid,
+  Search,
+  CreditCard,
+  Cloud,
+  type LucideIcon,
+} from "lucide-react";
 
 export interface Test {
-  id: string
-  title: string
-  description: string
-  icon: LucideIcon
-  href: string
-  color: string
-  participants: string
-  rating: number
-  badge?: string
-  category: string
-  tags: string[]
-  popular?: boolean
-  new?: boolean
+  id: string;
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  href: string;
+  color: string;
+  participants: string;
+  rating: number;
+  badge?: string;
+  category: string;
+  tags: string[];
+  popular?: boolean;
+  new?: boolean;
 }
 
 export const ALL_TESTS: Test[] = [
@@ -291,7 +358,8 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-usage",
     title: "📱 스마트폰 사용 스타일",
-    description: "알림, 앱 정리, 집중, 커뮤니케이션 습관으로 알아보는 나의 성향",
+    description:
+      "알림, 앱 정리, 집중, 커뮤니케이션 습관으로 알아보는 나의 성향",
     icon: Smartphone,
     href: "/tests/phone-usage",
     color: "from-blue-500 to-indigo-600",
@@ -361,7 +429,8 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-routine",
     title: "🌙 퇴근 후 루틴 테스트",
-    description: "퇴근하고 집에 와서 하는 '그 행동들'에 당신의 성격이 숨어있습니다.",
+    description:
+      "퇴근하고 집에 와서 하는 '그 행동들'에 당신의 성격이 숨어있습니다.",
     icon: Moon,
     href: "/tests/evening-routine",
     color: "from-purple-500 to-pink-600",
@@ -369,7 +438,14 @@ export const ALL_TESTS: Test[] = [
     rating: 5.0,
     badge: "NEW",
     category: "생활",
-    tags: ["퇴근 루틴", "저녁 루틴", "퇴근 후 뭐하지", "야근 후 회복", "저녁 습관", "성격"],
+    tags: [
+      "퇴근 루틴",
+      "저녁 루틴",
+      "퇴근 후 뭐하지",
+      "야근 후 회복",
+      "저녁 습관",
+      "성격",
+    ],
     new: true,
   },
   {
@@ -509,7 +585,15 @@ export const ALL_TESTS: Test[] = [
     rating: 5.0,
     badge: "NEW",
     category: "생활",
-    tags: ["회사 점심", "점심 메뉴", "직장인", "점심 결정", "팀밥", "혼밥", "성격"],
+    tags: [
+      "회사 점심",
+      "점심 메뉴",
+      "직장인",
+      "점심 결정",
+      "팀밥",
+      "혼밥",
+      "성격",
+    ],
     new: true,
   },
   {
@@ -523,7 +607,14 @@ export const ALL_TESTS: Test[] = [
     rating: 5.0,
     badge: "NEW",
     category: "엔터테인먼트",
-    tags: ["유튜브", "시청 습관", "영상 배속", "플레이리스트", "유튜브 유형", "성격"],
+    tags: [
+      "유튜브",
+      "시청 습관",
+      "영상 배속",
+      "플레이리스트",
+      "유튜브 유형",
+      "성격",
+    ],
     new: true,
   },
   {
@@ -543,7 +634,8 @@ export const ALL_TESTS: Test[] = [
   {
     id: "ott-habits",
     title: "📺 OTT 시청 습관 테스트",
-    description: "정주행 방식, 추천 활용, 스포 대처, 감상 기록 습관으로 16유형 분석",
+    description:
+      "정주행 방식, 추천 활용, 스포 대처, 감상 기록 습관으로 16유형 분석",
     icon: Play,
     href: "/tests/ott-habits",
     color: "from-purple-500 to-indigo-600",
@@ -565,7 +657,14 @@ export const ALL_TESTS: Test[] = [
     rating: 5.0,
     badge: "NEW",
     category: "음식",
-    tags: ["붕어빵", "겨울 간식", "팥 슈크림", "길거리 간식", "성향 테스트", "성격"],
+    tags: [
+      "붕어빵",
+      "겨울 간식",
+      "팥 슈크림",
+      "길거리 간식",
+      "성향 테스트",
+      "성격",
+    ],
     new: true,
   },
   {
@@ -579,7 +678,13 @@ export const ALL_TESTS: Test[] = [
     rating: 5.0,
     badge: "NEW",
     category: "엔터테인먼트",
-    tags: ["K드라마", "캐릭터 테스트", "인물 매칭", "드라마 캐릭터", "성격 테스트"],
+    tags: [
+      "K드라마",
+      "캐릭터 테스트",
+      "인물 매칭",
+      "드라마 캐릭터",
+      "성격 테스트",
+    ],
     new: true,
   },
   {
@@ -1282,20 +1387,8 @@ export const ALL_TESTS: Test[] = [
     tags: ["음식 향", "선호도", "음식 취향"],
     new: true,
   },
-  {
-    id: "food-temperature-preference",
-    title: "🌡️ 음식 온도 세밀 선호도 테스트",
-    description: "음식 온도를 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
-    icon: Thermometer,
-    href: "/tests/food-temperature-preference",
-    color: "from-red-500 via-orange-500 to-yellow-500",
-    participants: "0",
-    rating: 5.0,
-    badge: "NEW",
-    category: "음식",
-    tags: ["음식 온도", "선호도", "음식 취향"],
-    new: true,
-  },
+  // food-temperature-preference 는 food-temperature 의 중복이므로 ALL_TESTS에서 제거 (2026-04-23).
+  // next.config.mjs redirects가 /tests/food-temperature-preference 를 308 permanent redirect 처리.
   {
     id: "food-mixing",
     title: "🍽️ 음식 섞어 먹기 스타일 테스트",
@@ -2181,7 +2274,8 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-new",
     title: "✨ 신상품 시도 스타일 테스트",
-    description: "새로운 음식 상품을 발견했을 때의 반응과 선택 방식으로 알아보는 나의 성격 유형",
+    description:
+      "새로운 음식 상품을 발견했을 때의 반응과 선택 방식으로 알아보는 나의 성격 유형",
     icon: Sparkles,
     href: "/tests/food-new",
     color: "from-purple-500 via-pink-500 to-rose-500",
@@ -2601,7 +2695,8 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-balance",
     title: "⚖️ 주말 균형잡기",
-    description: "주말에 할 일과 쉬는 일을 균형잡는 방식으로 알아보는 나의 성격 유형",
+    description:
+      "주말에 할 일과 쉬는 일을 균형잡는 방식으로 알아보는 나의 성격 유형",
     icon: Scale,
     href: "/tests/weekend-balance",
     color: "from-emerald-500 to-teal-500",
@@ -2643,7 +2738,8 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-storage",
     title: "💾 저장공간 관리",
-    description: "스마트폰 저장공간을 관리하는 방식으로 알아보는 나의 성격 유형",
+    description:
+      "스마트폰 저장공간을 관리하는 방식으로 알아보는 나의 성격 유형",
     icon: HardDrive,
     href: "/tests/phone-storage",
     color: "from-green-500 to-emerald-500",
@@ -2752,30 +2848,33 @@ export const ALL_TESTS: Test[] = [
     tags: ["스마트폰", "백업", "관리"],
     new: true,
   },
-]
+];
 
 // Get all unique categories
-export const CATEGORIES = ["전체", ...Array.from(new Set(ALL_TESTS.map((test) => test.category)))]
+export const CATEGORIES = [
+  "전체",
+  ...Array.from(new Set(ALL_TESTS.map((test) => test.category))),
+];
 
 // Get tests for homepage (first 9, 중복 제거 후)
 export const getHomePageTests = () => {
-  const uniqueTests = getAllTests()
-  return uniqueTests.slice(0, 9)
-}
+  const uniqueTests = getAllTests();
+  return uniqueTests.slice(0, 9);
+};
 
 // Get all tests (중복 제거 및 정렬)
 export const getAllTests = () => {
   // id 기준으로 중복 제거 (나중에 나온 항목 유지)
-  const uniqueTests = new Map<string, Test>()
+  const uniqueTests = new Map<string, Test>();
   for (const test of ALL_TESTS) {
-    uniqueTests.set(test.id, test)
+    uniqueTests.set(test.id, test);
   }
 
   // id 기준으로 정렬하여 일관성 유지
   return Array.from(uniqueTests.values()).sort((a, b) => {
     // 먼저 id로 정렬
-    if (a.id < b.id) return -1
-    if (a.id > b.id) return 1
-    return 0
-  })
-}
+    if (a.id < b.id) return -1;
+    if (a.id > b.id) return 1;
+    return 0;
+  });
+};
