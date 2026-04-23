@@ -64,6 +64,7 @@ import {
   Search,
   CreditCard,
   Cloud,
+  Train,
   type LucideIcon,
 } from "lucide-react";
 
@@ -91,6 +92,21 @@ export interface Test {
 }
 
 export const ALL_TESTS: Test[] = [
+  {
+    id: "commute-style",
+    title: "🚇 출퇴근 스타일 테스트",
+    description: "출퇴근길 선택으로 알아보는 16가지 통근 캐릭터",
+    icon: Train,
+    href: "/tests/commute-style",
+    color: "from-sky-500 via-indigo-500 to-violet-500",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "직장",
+    tags: ["직장", "출퇴근", "통근", "MBTI"],
+    new: true,
+    // publishAt 미지정 = 즉시 공개 (오늘)
+  },
   {
     id: "meeting-villain",
     title: "😈 회의 빌런 테스트",
