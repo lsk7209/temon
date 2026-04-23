@@ -2,31 +2,31 @@
  * SEO, AEO, GEO 최적화 유틸리티 함수
  */
 
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 export interface SEOConfig {
-  title: string
-  description: string
-  keywords?: string
-  canonical?: string
-  ogImage?: string
-  type?: "website" | "article"
-  publishedTime?: string
-  modifiedTime?: string
+  title: string;
+  description: string;
+  keywords?: string;
+  canonical?: string;
+  ogImage?: string;
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 export interface FAQItem {
-  question: string
-  answer: string
+  question: string;
+  answer: string;
 }
 
 /**
  * 기본 메타데이터 생성
  */
 export function generateMetadata(config: SEOConfig): Metadata {
-  const baseUrl = "https://temon.kr"
-  const canonical = config.canonical || "/"
-  const fullUrl = `${baseUrl}${canonical}`
+  const baseUrl = "https://temon.kr";
+  const canonical = config.canonical || "/";
+  const fullUrl = `${baseUrl}${canonical}`;
 
   return {
     title: config.title,
@@ -44,27 +44,29 @@ export function generateMetadata(config: SEOConfig): Metadata {
       locale: "ko_KR",
       images: config.ogImage
         ? [
-          {
-            url: config.ogImage,
-            width: 1200,
-            height: 630,
-            alt: config.title,
-          },
-        ]
+            {
+              url: config.ogImage,
+              width: 1200,
+              height: 630,
+              alt: config.title,
+            },
+          ]
         : [
-          {
-            url: `${baseUrl}/api/og?title=${encodeURIComponent(config.title)}`,
-            width: 1200,
-            height: 630,
-            alt: config.title,
-          },
-        ],
+            {
+              url: `${baseUrl}/api/og?title=${encodeURIComponent(config.title)}`,
+              width: 1200,
+              height: 630,
+              alt: config.title,
+            },
+          ],
     },
     twitter: {
       card: "summary_large_image",
       title: config.title,
       description: config.description,
-      images: config.ogImage ? [config.ogImage] : [`${baseUrl}/api/og?title=${encodeURIComponent(config.title)}`],
+      images: config.ogImage
+        ? [config.ogImage]
+        : [`${baseUrl}/api/og?title=${encodeURIComponent(config.title)}`],
     },
     robots: {
       index: true,
@@ -80,16 +82,20 @@ export function generateMetadata(config: SEOConfig): Metadata {
     other: {
       "naver-site-verification": process.env.NAVER_SITE_VERIFICATION || "",
     },
-  }
+  };
 }
 
 /**
  * 테스트 페이지 메타데이터 생성
  */
-export function generateTestMetadata(testId: string, testTitle: string, testDescription: string): Metadata {
-  const baseUrl = "https://temon.kr"
-  const canonical = `/tests/${testId}`
-  const fullUrl = `${baseUrl}${canonical}`
+export function generateTestMetadata(
+  testId: string,
+  testTitle: string,
+  testDescription: string,
+): Metadata {
+  const baseUrl = "https://temon.kr";
+  const canonical = `/tests/${testId}`;
+  const fullUrl = `${baseUrl}${canonical}`;
 
   return {
     title: `${testTitle} | 무료 성격 테스트 | 테몬`,
@@ -118,7 +124,9 @@ export function generateTestMetadata(testId: string, testTitle: string, testDesc
       card: "summary_large_image",
       title: `${testTitle} | 무료 성격 테스트`,
       description: testDescription,
-      images: [`${baseUrl}/api/og?title=${encodeURIComponent(testTitle)}&desc=${encodeURIComponent(testDescription)}`],
+      images: [
+        `${baseUrl}/api/og?title=${encodeURIComponent(testTitle)}&desc=${encodeURIComponent(testDescription)}`,
+      ],
     },
     robots: {
       index: true,
@@ -131,7 +139,7 @@ export function generateTestMetadata(testId: string, testTitle: string, testDesc
         "max-snippet": -1,
       },
     },
-  }
+  };
 }
 
 /**
@@ -149,18 +157,18 @@ export function generateFAQSchema(faqs: FAQItem[]): string {
         text: faq.answer,
       },
     })),
-  })
+  });
 }
 
 /**
  * Quiz 스키마 생성 (SEO 최적화)
  */
 export function generateQuizSchema(config: {
-  name: string
-  description: string
-  url: string
-  questionCount?: number
-  duration?: string
+  name: string;
+  description: string;
+  url: string;
+  questionCount?: number;
+  duration?: string;
 }): string {
   return JSON.stringify({
     "@context": "https://schema.org",
@@ -176,13 +184,15 @@ export function generateQuizSchema(config: {
     },
     ...(config.questionCount && { numberOfQuestions: config.questionCount }),
     ...(config.duration && { timeRequired: config.duration }),
-  })
+  });
 }
 
 /**
  * Breadcrumb 스키마 생성 (SEO 최적화)
  */
-export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>): string {
+export function generateBreadcrumbSchema(
+  items: Array<{ name: string; url: string }>,
+): string {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -192,14 +202,17 @@ export function generateBreadcrumbSchema(items: Array<{ name: string; url: strin
       name: item.name,
       item: item.url,
     })),
-  })
+  });
 }
 
 /**
  * WebSite 스키마 생성 (검색 엔진 최적화)
  * Google, Naver, Daum 검색 최적화
  */
-export function generateWebSiteSchema(searchAction?: { target: string; queryInput: string }): Record<string, unknown> {
+export function generateWebSiteSchema(searchAction?: {
+  target: string;
+  queryInput: string;
+}): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -220,7 +233,7 @@ export function generateWebSiteSchema(searchAction?: { target: string; queryInpu
         "query-input": searchAction.queryInput,
       },
     }),
-  }
+  };
 }
 
 /**
@@ -232,6 +245,7 @@ export function generateOrganizationSchema(): Record<string, unknown> {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "테몬",
+    alternateName: "테몬 MBTI",
     url: "https://temon.kr",
     logo: {
       "@type": "ImageObject",
@@ -239,33 +253,41 @@ export function generateOrganizationSchema(): Record<string, unknown> {
       width: 180,
       height: 180,
     },
-    description: "무료 성격 테스트 및 MBTI 테스트 플랫폼",
+    description: "일상 속 취향으로 알아보는 무료 MBTI 성격 테스트 플랫폼",
     inLanguage: "ko",
+    foundingDate: "2024-01-01",
+    founder: {
+      "@type": "Person",
+      name: "테몬 운영팀",
+    },
     areaServed: {
       "@type": "Country",
       name: "KR",
     },
     sameAs: [],
+    email: "contact@temon.kr",
     contactPoint: {
       "@type": "ContactPoint",
-      email: "admin@temon.kr",
+      email: "contact@temon.kr",
       contactType: "customer service",
       areaServed: "KR",
       availableLanguage: "ko",
     },
-  }
+  };
 }
 
 /**
  * ItemList 스키마 생성 (테스트 목록 페이지 최적화)
  * Google, Naver 검색 최적화
  */
-export function generateItemListSchema(items: Array<{
-  name: string
-  description: string
-  url: string
-  image?: string
-}>): string {
+export function generateItemListSchema(
+  items: Array<{
+    name: string;
+    description: string;
+    url: string;
+    image?: string;
+  }>,
+): string {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -288,26 +310,26 @@ export function generateItemListSchema(items: Array<{
         }),
       },
     })),
-  })
+  });
 }
 
 /**
  * 테스트 페이지용 통합 스키마 생성 (SEO + AEO + GEO)
  */
 export function generateTestPageSchemas(config: {
-  testId: string
-  testTitle: string
-  testDescription: string
-  questionCount: number
-  duration: string
-  faqs: FAQItem[]
+  testId: string;
+  testTitle: string;
+  testDescription: string;
+  questionCount: number;
+  duration: string;
+  faqs: FAQItem[];
 }): {
-  quiz: string
-  faq: string
-  breadcrumb: string
+  quiz: string;
+  faq: string;
+  breadcrumb: string;
 } {
-  const baseUrl = "https://temon.kr"
-  const testUrl = `${baseUrl}/tests/${config.testId}`
+  const baseUrl = "https://temon.kr";
+  const testUrl = `${baseUrl}/tests/${config.testId}`;
 
   return {
     quiz: generateQuizSchema({
@@ -323,5 +345,5 @@ export function generateTestPageSchemas(config: {
       { name: "테스트 모음", url: `${baseUrl}/tests` },
       { name: config.testTitle, url: testUrl },
     ]),
-  }
+  };
 }

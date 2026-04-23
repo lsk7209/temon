@@ -1,33 +1,35 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState } from "react"
-import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Home, TestTube, ArrowLeft } from "lucide-react"
-import { trackClick } from "@/lib/analytics"
+import Link from "next/link";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, Home, TestTube, ArrowLeft, Info, Mail } from "lucide-react";
+import { trackClick } from "@/lib/analytics";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  const shouldShowBackButton = pathname?.includes("/test") || false
-  const backHref = shouldShowBackButton 
-    ? (pathname?.includes("/tests/") 
-        ? pathname?.split("/test")[0] || "/tests" 
-        : pathname?.split("/test")[0] || "/")
-    : "/"
+  const shouldShowBackButton = pathname?.includes("/test") || false;
+  const backHref = shouldShowBackButton
+    ? pathname?.includes("/tests/")
+      ? pathname?.split("/test")[0] || "/tests"
+      : pathname?.split("/test")[0] || "/"
+    : "/";
 
   const handleNavClick = (item: string) => {
-    trackClick(`nav_${item}`, pathname || "")
-    setIsOpen(false)
-  }
+    trackClick(`nav_${item}`, pathname || "");
+    setIsOpen(false);
+  };
 
   const navItems = [
     { href: "/", label: "홈", icon: Home },
     { href: "/tests", label: "테스트", icon: TestTube },
-  ]
+    { href: "/about", label: "소개", icon: Info },
+    { href: "/contact", label: "문의", icon: Mail },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -43,17 +45,23 @@ export default function Header() {
         )}
 
         <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => handleNavClick("logo")}>
+          <Link
+            href="/"
+            className="mr-6 flex items-center space-x-2"
+            onClick={() => handleNavClick("logo")}
+          >
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">T</span>
               </div>
-              <span className="hidden font-bold sm:inline-block">테몬 MBTI</span>
+              <span className="hidden font-bold sm:inline-block">
+                테몬 MBTI
+              </span>
             </div>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {navItems.map((item) => {
-              const Icon = item.icon
+              const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
@@ -64,7 +72,7 @@ export default function Header() {
                   <Icon className="h-4 w-4" />
                   <span>{item.label}</span>
                 </Link>
-              )
+              );
             })}
           </nav>
         </div>
@@ -79,7 +87,11 @@ export default function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="pr-0">
-            <Link href="/" className="flex items-center space-x-2" onClick={() => handleNavClick("mobile_logo")}>
+            <Link
+              href="/"
+              className="flex items-center space-x-2"
+              onClick={() => handleNavClick("mobile_logo")}
+            >
               <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">T</span>
               </div>
@@ -88,18 +100,20 @@ export default function Header() {
             <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
               <div className="flex flex-col space-y-3">
                 {navItems.map((item) => {
-                  const Icon = item.icon
+                  const Icon = item.icon;
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
                       className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80 text-foreground/60"
-                      onClick={() => handleNavClick(`mobile_${item.label.toLowerCase()}`)}
+                      onClick={() =>
+                        handleNavClick(`mobile_${item.label.toLowerCase()}`)
+                      }
                     >
                       <Icon className="h-4 w-4" />
                       <span>{item.label}</span>
                     </Link>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -121,5 +135,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
