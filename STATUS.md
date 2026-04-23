@@ -1,20 +1,22 @@
 # Status | 마지막: 2026-04-23
 
 ## 현재 작업
-애드센스 심사 최적화 1차 적용 완료 → 재심사 전 30일 대기 + 인기 테스트 본문 확장 남음
+5인 팀 감사 + Tier 0 보안/PIPA 수정 + 211개 콘텐츠 전수조사 + noindex/301 적용 완료 → 배포 대기
 
 ## 최근 변경 (최근 5개)
-- 04-23: GSC/GA4 최적화 — Web Vitals→GA4 전송, IndexNow 자동 제출 API, sitemap에 about/contact 추가, test_progress 마일스톤화
+- 04-23: meal-* 17개 noindex 중앙관리(lib/noindex-tests.ts) + cooking-shared→cooking-share 308
+- 04-23: 211개 테스트 전수조사 + food-temperature-preference→food-temperature 308, CONTENT_AUDIT.md·CONTENT_KILL_PAIRS.md 생성
+- 04-23: Tier 0 보안 — admin "1234" 제거 + httpOnly 쿠키, IP 해시 저장, 쿠키 배너 PIPA 준수, "1.5만+" 과장 제거
+- 04-23: sitemap.xml fs 스캔 제거(Vercel fallback 버그 수정), GSC/GA4 최적화 — Web Vitals→GA4, IndexNow API, test_progress 마일스톤화
 - 04-23: 애드센스 최적화 — About/Contact 페이지, Organization founder 스키마, 쿠키 동의 배너, robots 단일화
-- 04-22: 테스트 인트로 영어→한국어 전환 + '검색 의도 매칭' 내부 섹션 제거
-- 04-22: Next.js 14.2.35 CVE 보안 패치 머지 (14.2.16→14.2.35)
-- 04-22: tests/[testId]/test/result 결과 진입 라우트 추가 (404 방지)
 
-## TODO
-- [ ] 인기 테스트 상위 20개 랜딩 본문 800~1200자로 확장 (Scaled Abuse 회피 위해 전체 동시 확장 금지)
-- [ ] GSC `site:temon.kr` 색인 현황 확인 + 주요 URL 수동 색인 요청
-- [ ] PageSpeed Insights 모바일 측정 (LCP/INP/CLS)
-- [ ] AdSense 재신청: 30일 대기 후 위 작업 완료 시 진행
+## TODO (배포 직후 사용자 수동 작업)
+- [ ] **Vercel Env 추가**: ADMIN_PASSWORD, IP_HASH_SALT, CRON_SECRET, GOOGLE/NAVER_SITE_VERIFICATION 값 기입 후 Redeploy
+- [ ] **Vercel 도메인**: temon.kr Primary 전환 (현재 www 쪽으로 307 redirect 중, 코드 baseUrl과 불일치)
+- [ ] **GSC**: sitemap-index.xml 재제출 + About/Contact 수동 색인 요청
+- [ ] **재심사 전 6~8주 대기** + Save List 15개 본문 확장 (300자+ 추가)
+- [ ] 132개 <300자 페이지 점진 확장 (주 10~20개, Scaled Abuse 회피)
+- [ ] Naver Search Advisor + Daum 웹마스터 등록
 - [ ] dayjs vs date-fns 중복 라이브러리 통일 (선택)
 
 ## 결정사항
@@ -27,5 +29,7 @@
 - og/route.tsx는 edge runtime 유지 (ImageResponse 전용, 정상)
 - calendar 컴포넌트는 react-day-picker 의존, 유지
 - robots 단일 소스: `app/robots.ts` (public/robots.txt 삭제됨, 04-23)
-- GSC 파이프라인: Anthropic API 크레딧 필요 (부족 시 개선안 생성 불가)
-- 애드센스: 213개 대량 pSEO → Scaled Abuse 시그널 강함, 재심사 전 30일 대기 필수
+- noindex 테스트는 lib/noindex-tests.ts 한 곳에서 중앙 관리 (ALL_TESTS 그대로, robots+sitemap만 제외)
+- admin 인증: httpOnly 쿠키 `admin_session` + Bearer 헤더 병행 (lib/admin-auth.ts)
+- 애드센스: 132개 본문 <300자 → Scaled Abuse 시그널, 재심사 전 6~8주 + Save List 확장 필수
+- 콘텐츠 점검 재실행: `node scripts/content-audit.js` → CONTENT_AUDIT.md 갱신
