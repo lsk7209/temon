@@ -9,6 +9,7 @@ import {
   createBreadcrumbSchema,
   createFAQSchema,
 } from "@/components/json-ld";
+import { isNoindexTest } from "@/lib/noindex-tests";
 
 const baseUrl = "https://temon.kr";
 
@@ -33,6 +34,9 @@ export function generateQuizMetadata(config: QuizSEOConfig): Metadata {
   const ogImage =
     config.image ||
     `${baseUrl}/api/og?title=${encodeURIComponent(config.title)}&desc=${encodeURIComponent(config.shortDescription)}`;
+
+  // lib/noindex-tests.ts 의 NOINDEX_TEST_IDS 에 포함된 테스트는 색인 제외
+  const noindex = isNoindexTest(config.quizId);
 
   return {
     title: `${config.title} | 무료 성격 테스트 | 테몬`,
@@ -65,10 +69,10 @@ export function generateQuizMetadata(config: QuizSEOConfig): Metadata {
       images: [ogImage],
     },
     robots: {
-      index: true,
+      index: !noindex,
       follow: true,
       googleBot: {
-        index: true,
+        index: !noindex,
         follow: true,
         "max-video-preview": -1,
         "max-image-preview": "large",

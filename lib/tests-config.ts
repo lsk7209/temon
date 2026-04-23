@@ -1963,20 +1963,8 @@ export const ALL_TESTS: Test[] = [
     tags: ["정리", "청소", "요리 습관"],
     new: true,
   },
-  {
-    id: "cooking-shared",
-    title: "👥 공동 요리 스타일 테스트",
-    description: "공동 요리 스타일로 알아보는 나의 성격 유형",
-    icon: Users,
-    href: "/tests/cooking-shared",
-    color: "from-blue-500 via-indigo-500 to-purple-500",
-    participants: "0",
-    rating: 5.0,
-    badge: "NEW",
-    category: "요리",
-    tags: ["공동 요리", "협력", "요리 스타일"],
-    new: true,
-  },
+  // cooking-shared 는 cooking-share 와 의미 중첩 (공동/공유) → ALL_TESTS에서 제거 (2026-04-23).
+  // next.config.mjs redirects가 /tests/cooking-shared 를 cooking-share 로 308 permanent redirect.
   {
     id: "cooking-solo",
     title: "🧑‍🍳 혼자 요리 스타일 테스트",

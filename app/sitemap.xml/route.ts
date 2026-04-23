@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { ALL_TESTS } from "@/lib/tests-config";
 import { getStaticRoutes } from "@/lib/sitemap-utils";
+import { NOINDEX_TEST_IDS } from "@/lib/noindex-tests";
 
 /**
  * Sitemap.xml 동적 생성 (Route Handler)
@@ -62,13 +63,14 @@ export async function GET() {
       priority: r.priority ?? 0.5,
     }));
 
-    // ALL_TESTS에서 테스트 ID 추출 → 인트로 페이지만 sitemap에 포함
+    // ALL_TESTS에서 테스트 ID 추출 → 인트로 페이지만 sitemap에 포함.
+    // noindex 테스트(lib/noindex-tests.ts)는 검색엔진 혼선 방지를 위해 sitemap에서도 제외.
     const testIds = Array.from(
       new Set(
         ALL_TESTS.map((t) => {
           const m = t.href.match(/^\/tests\/([^/]+)/);
           return m?.[1] ?? null;
-        }).filter((id): id is string => !!id),
+        }).filter((id): id is string => !!id && !NOINDEX_TEST_IDS.has(id)),
       ),
     );
 

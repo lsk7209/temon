@@ -32,6 +32,8 @@ const nextConfig = {
     const duplicateTestMerges = [
       // food-temperature-preference는 food-temperature의 동어반복 (세밀 선호도 = 선호도)
       { from: "food-temperature-preference", to: "food-temperature" },
+      // cooking-shared("공동 요리")는 cooking-share("요리 공유")와 의미 중첩 → share로 통합
+      { from: "cooking-shared", to: "cooking-share" },
     ]
 
     return [
