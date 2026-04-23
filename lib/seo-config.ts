@@ -5,30 +5,30 @@
 
 export const SEO_CONFIG = {
   // 기본 도메인 (www 없음으로 통일)
-  baseUrl: 'https://temon.kr',
-  
+  baseUrl: "https://temon.kr",
+
   // 사이트 정보
-  siteName: '테몬',
-  siteDescription: '무료 성격 테스트 및 MBTI 테스트 플랫폼',
-  
+  siteName: "테몬",
+  siteDescription: "무료 성격 테스트 및 MBTI 테스트 플랫폼",
+
   // 검색 엔진별 설정
   searchEngines: {
     google: {
-      siteVerification: process.env.GOOGLE_SITE_VERIFICATION || '',
-      analyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '',
+      siteVerification: process.env.GOOGLE_SITE_VERIFICATION || "",
+      analyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "",
     },
     naver: {
-      siteVerification: process.env.NAVER_SITE_VERIFICATION || '',
+      siteVerification: process.env.NAVER_SITE_VERIFICATION || "",
       // 네이버 검색 최적화 설정
       mobileOptimized: true,
-      contentLanguage: 'ko-KR',
+      contentLanguage: "ko-KR",
     },
     daum: {
       // 다음 검색 최적화 설정
-      webmasterTool: process.env.DAUM_SITE_VERIFICATION || '',
+      webmasterTool: process.env.DAUM_SITE_VERIFICATION || "",
     },
   },
-  
+
   // 크롤링 최적화
   crawling: {
     // Google 크롤링 지연 (0 = 최대 속도)
@@ -38,7 +38,7 @@ export const SEO_CONFIG = {
     // 일반 크롤링 지연
     defaultCrawlDelay: 1,
   },
-  
+
   // 사이트맵 설정
   sitemap: {
     // 재생성 주기 (초)
@@ -55,14 +55,14 @@ export const SEO_CONFIG = {
     },
     // 변경 빈도
     changeFrequency: {
-      home: 'daily',
-      testsList: 'daily',
-      testIntro: 'weekly',
-      testPage: 'weekly',
-      other: 'monthly',
+      home: "daily",
+      testsList: "daily",
+      testIntro: "weekly",
+      testPage: "weekly",
+      other: "monthly",
     },
   },
-  
+
   // RSS/Feed 설정
   feeds: {
     // 최대 아이템 수
@@ -70,18 +70,18 @@ export const SEO_CONFIG = {
     // 재생성 주기 (초)
     revalidate: 3600,
   },
-  
+
   // 구조화 데이터 설정
   structuredData: {
     // Organization 정보
     organization: {
-      name: '테몬',
-      email: 'admin@temon.kr',
-      areaServed: 'KR',
-      language: 'ko',
+      name: "테몬",
+      email: "contact@temon.kr",
+      areaServed: "KR",
+      language: "ko",
     },
   },
-} as const
+} as const;
 
 /**
  * 환경 변수 기반 설정 가져오기
@@ -90,6 +90,5 @@ export function getSEOConfig() {
   return {
     ...SEO_CONFIG,
     baseUrl: process.env.NEXT_PUBLIC_APP_URL || SEO_CONFIG.baseUrl,
-  }
+  };
 }
-

@@ -10,6 +10,7 @@ import { Suspense } from "react";
 import AdminHeadScripts from "@/components/admin-head-scripts";
 import AdSenseScript from "@/components/adsense-script";
 import CookieConsent from "@/components/cookie-consent";
+import WebVitals from "@/components/web-vitals";
 import {
   generateOrganizationSchema,
   generateWebSiteSchema,
@@ -197,6 +198,8 @@ export default function RootLayout({
         {/* Vercel Analytics & Speed Insights */}
         <Analytics />
         <SpeedInsights />
+        {/* Core Web Vitals → GA4 전송 (RUM) */}
+        <WebVitals />
       </body>
     </html>
   );

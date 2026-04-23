@@ -4,11 +4,11 @@
 애드센스 심사 최적화 1차 적용 완료 → 재심사 전 30일 대기 + 인기 테스트 본문 확장 남음
 
 ## 최근 변경 (최근 5개)
+- 04-23: GSC/GA4 최적화 — Web Vitals→GA4 전송, IndexNow 자동 제출 API, sitemap에 about/contact 추가, test_progress 마일스톤화
 - 04-23: 애드센스 최적화 — About/Contact 페이지, Organization founder 스키마, 쿠키 동의 배너, robots 단일화
 - 04-22: 테스트 인트로 영어→한국어 전환 + '검색 의도 매칭' 내부 섹션 제거
 - 04-22: Next.js 14.2.35 CVE 보안 패치 머지 (14.2.16→14.2.35)
 - 04-22: tests/[testId]/test/result 결과 진입 라우트 추가 (404 방지)
-- 04-22: next.config.mjs 성능 개선 (compress, DNS prefetch, OG 캐시)
 
 ## TODO
 - [ ] 인기 테스트 상위 20개 랜딩 본문 800~1200자로 확장 (Scaled Abuse 회피 위해 전체 동시 확장 금지)
