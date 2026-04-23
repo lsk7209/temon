@@ -13,9 +13,12 @@ export default function CookieConsent() {
   useEffect(() => {
     try {
       const consent = localStorage.getItem(STORAGE_KEY);
-      if (!consent) setVisible(true);
+      const sessionDismissed = sessionStorage.getItem(
+        `${STORAGE_KEY}_dismissed_session`,
+      );
+      if (!consent && !sessionDismissed) setVisible(true);
     } catch {
-      // localStorage 접근 실패 (SSR/사파리 프라이빗 등) → 노출 생략
+      // localStorage/sessionStorage 접근 실패 (SSR/사파리 프라이빗 등) → 노출 생략
     }
   }, []);
 
@@ -30,12 +33,10 @@ export default function CookieConsent() {
   };
 
   const handleDismiss = () => {
-    // 닫기만 해도 7일 유예 — 다시 표시하지 않음
+    // PIPA/GDPR 준수: X 버튼은 "동의하지 않음"으로 저장하지 않음.
+    // 이번 세션에서만 숨기고, 다음 방문/새 세션에서 다시 노출 (sessionStorage).
     try {
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({ accepted: false, at: Date.now() }),
-      );
+      sessionStorage.setItem(`${STORAGE_KEY}_dismissed_session`, "1");
     } catch {}
     setVisible(false);
   };
