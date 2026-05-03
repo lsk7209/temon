@@ -31,10 +31,10 @@ const NEW_QUIZ_DRAFTS = [
   // { slug: "parent-comm-style", title: "부모와 소통 방식" }, // ✅ published 2026-05-17
   // { slug: "breakup-recovery-speed", title: "이별 회복 속도" }, // ✅ published 2026-05-19
   // 자기계발/학습 (4)
-  { slug: "goal-persistence", title: "목표 지속력 테스트" },
-  { slug: "reading-focus", title: "독서 집중도 유형" },
-  { slug: "course-completion", title: "온라인 강의 완주율" },
-  { slug: "language-learner-type", title: "외국어 학습 스타일" },
+  // { slug: "goal-persistence", title: "목표 지속력 테스트" }, // ✅ published 2026-05-21
+  // { slug: "reading-focus", title: "독서 집중도 유형" }, // ✅ published 2026-05-23
+  // { slug: "course-completion", title: "온라인 강의 완주율" }, // ✅ published 2026-05-25
+  // { slug: "language-learner-type", title: "외국어 학습 스타일" }, // ✅ published 2026-05-27
   // 여행/외출 (4)
   { slug: "packing-style", title: "여행 짐 싸기 스타일" },
   { slug: "airport-wait-type", title: "공항 대기 유형" },
