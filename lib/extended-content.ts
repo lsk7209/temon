@@ -25,6 +25,8 @@ export interface ExtendedContent {
   limitations?: string;
   /** 추가 FAQ (getTopicQuizFAQs 외에 test-specific 2~3개) */
   extraFaqs?: Array<{ question: string; answer: string }>;
+  /** 최초 발행일 (YYYY-MM-DD) — 미지정 시 lastUpdated와 동일하게 사용 */
+  datePublished?: string;
   /** 마지막 업데이트 일자 (YYYY-MM-DD) — 갱신 시 수정 → Google 재크롤 트리거 */
   lastUpdated: string;
 }

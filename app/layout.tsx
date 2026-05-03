@@ -111,6 +111,13 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        {/* Resource hints — Google Fonts/Analytics/AdSense 도메인 사전 연결로 LCP 단축 */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
         {/* SEO, AEO, GEO 최적화를 위한 구조화된 데이터 */}
         <JsonLd id="organization-schema" data={organizationSchema} />
         <JsonLd id="website-schema" data={websiteSchema} />

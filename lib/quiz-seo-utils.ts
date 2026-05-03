@@ -92,13 +92,18 @@ export function generateQuizSchemas(config: QuizSEOConfig): {
 } {
   const fullUrl = `${baseUrl}${config.canonical}`;
 
+  // 정적 og-tests/*.png 파일 부재 — 항상 동적 /api/og 사용 (404 회피)
+  const ogImage =
+    config.image ||
+    `${baseUrl}/api/og?title=${encodeURIComponent(config.title)}&desc=${encodeURIComponent(config.shortDescription)}`;
+
   const quizSchema = createQuizSchema({
     name: config.title,
     description: config.fullDescription,
     url: fullUrl,
     questionCount: config.questionCount,
     duration: config.duration || "PT3M",
-    image: config.image || `${baseUrl}/og-tests/${config.quizId}.png`,
+    image: ogImage,
   });
 
   const breadcrumbSchema = createBreadcrumbSchema([

@@ -28,19 +28,29 @@ export function TestExpandedIntro({ testId }: Props) {
     "@type": "Article",
     headline: `${testId} 테스트 심층 가이드`,
     description: ext.intro.slice(0, 160),
-    datePublished: ext.lastUpdated,
+    datePublished: ext.datePublished || ext.lastUpdated,
     dateModified: ext.lastUpdated,
+    inLanguage: "ko",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://temon.kr/tests/${testId}`,
+    },
+    // E-E-A-T: 작성자(Person) + 발행자(Organization) 명시
     author: {
       "@type": "Organization",
-      name: "테몬 운영팀",
+      name: "테몬 콘텐츠팀",
       url: "https://temon.kr/about",
+      sameAs: ["https://temon.kr/about"],
     },
     publisher: {
       "@type": "Organization",
       name: "테몬",
+      url: "https://temon.kr",
       logo: {
         "@type": "ImageObject",
         url: "https://temon.kr/apple-touch-icon.png",
+        width: 180,
+        height: 180,
       },
     },
   };
