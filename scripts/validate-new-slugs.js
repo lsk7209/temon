@@ -26,10 +26,10 @@ const NEW_QUIZ_DRAFTS = [
   // { slug: "wfh-focus-type", title: "재택근무 집중 유형" }, // ✅ published 2026-05-11
   // 연애/관계 (5)
   // { slug: "first-date-nerves", title: "첫 데이트 긴장도" }, // ✅ published 2026-05-06
-  { slug: "friend-distance", title: "친구 간 거리 조절 스타일" },
-  { slug: "sns-reaction-style", title: "SNS 반응 스타일" },
-  { slug: "parent-comm-style", title: "부모와 소통 방식" },
-  { slug: "breakup-recovery-speed", title: "이별 회복 속도" },
+  // { slug: "friend-distance", title: "친구 간 거리 조절 스타일" }, // ✅ published 2026-05-13
+  // { slug: "sns-reaction-style", title: "SNS 반응 스타일" }, // ✅ published 2026-05-15
+  // { slug: "parent-comm-style", title: "부모와 소통 방식" }, // ✅ published 2026-05-17
+  // { slug: "breakup-recovery-speed", title: "이별 회복 속도" }, // ✅ published 2026-05-19
   // 자기계발/학습 (4)
   { slug: "goal-persistence", title: "목표 지속력 테스트" },
   { slug: "reading-focus", title: "독서 집중도 유형" },
