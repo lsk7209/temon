@@ -1,7 +1,8 @@
 "use client"
 
-import { useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
+import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -19,20 +20,21 @@ import {
   equipment,
   injuryRisks,
   commonMistakes,
-  type LevelBand,
-  type Persona,
 } from "@/lib/ntrpResultConfig"
 import { getNTRPLevel, mapScoreToLevelBand, mapLevelToBaseProfile } from "@/lib/ntrpMath"
 import { NTRPResultCard } from "@/components/ntrp-result-card"
 import { ShareButtons } from "@/components/share-buttons"
 import { trackTestComplete, trackShare } from "@/lib/analytics"
-import { toPng } from "html-to-image"
-import { PDFDocument, rgb } from "pdf-lib"
-import dayjs from "dayjs"
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Tooltip } from "recharts"
-import { Download, Share2, RotateCcw, Copy, CheckCircle2 } from "lucide-react"
+import { Download, RotateCcw, Copy, CheckCircle2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { useEffect } from "react"
+
+const NTRPRadarChart = dynamic(
+  () => import("@/components/ntrp-radar-chart").then((mod) => mod.NTRPRadarChart),
+  {
+    ssr: false,
+    loading: () => <div className="h-[400px] animate-pulse rounded-lg bg-muted" />,
+  },
+)
 
 export default function NTRPTestResult() {
   const searchParams = useSearchParams()
@@ -72,6 +74,10 @@ export default function NTRPTestResult() {
     if (!cardRef.current) return
 
     try {
+      const [{ toPng }, { default: dayjs }] = await Promise.all([
+        import("html-to-image"),
+        import("dayjs"),
+      ])
       const dataUrl = await toPng(cardRef.current, {
         quality: 1.0,
         pixelRatio: 2,
@@ -101,6 +107,12 @@ export default function NTRPTestResult() {
     if (!cardRef.current) return
 
     try {
+      const [{ toPng }, { PDFDocument, rgb }, { default: dayjs }] =
+        await Promise.all([
+          import("html-to-image"),
+          import("pdf-lib"),
+          import("dayjs"),
+        ])
       const dataUrl = await toPng(cardRef.current, {
         quality: 1.0,
         pixelRatio: 2,
@@ -292,21 +304,7 @@ export default function NTRPTestResult() {
             <CardDescription>당신의 테니스 능력 프로필</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={400}>
-              <RadarChart data={radarData}>
-                <PolarGrid />
-                <PolarAngleAxis dataKey="key" />
-                <PolarRadiusAxis angle={90} domain={[0, 100]} />
-                <Radar
-                  name="능력"
-                  dataKey="value"
-                  stroke={themeColor}
-                  fill={themeColor}
-                  fillOpacity={0.6}
-                />
-                <Tooltip />
-              </RadarChart>
-            </ResponsiveContainer>
+            <NTRPRadarChart data={radarData} color={themeColor} />
           </CardContent>
         </Card>
 

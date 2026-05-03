@@ -70,8 +70,13 @@ export async function POST(request: NextRequest) {
     }
     const { type, payload } = parsed.data as {
       type: string;
-      payload: Record<string, any>;
+      payload: Record<string, unknown>;
     };
+
+    if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
+      return NextResponse.json({ success: true, skipped: "db_not_configured" });
+    }
+
     const userAgent = request.headers.get("user-agent") || "";
     const ipRaw = request.headers.get("x-forwarded-for") || "unknown";
     const ip = hashIp(ipRaw); // 해시된 식별자만 DB에 저장 (PIPA 최소수집)
@@ -80,12 +85,18 @@ export async function POST(request: NextRequest) {
     const db = getDb();
 
     if (type === "page_view") {
-      const { path, referrer, searchKeyword } = payload;
+      const path = typeof payload.path === "string" ? payload.path : "/";
+      const referrer =
+        typeof payload.referrer === "string" ? payload.referrer : null;
+      const searchKeyword =
+        typeof payload.searchKeyword === "string"
+          ? payload.searchKeyword
+          : null;
       await db.insert(pageVisits).values({
         id: crypto.randomUUID(),
-        path: path || "/",
-        referrer: referrer || null,
-        searchKeyword: searchKeyword || null,
+        path,
+        referrer,
+        searchKeyword,
         ipAddress: ip,
         userAgent: userAgent,
         deviceType: device,
@@ -94,7 +105,7 @@ export async function POST(request: NextRequest) {
         createdAt: new Date(),
       });
     } else if (type === "test_start") {
-      const { testId } = payload;
+      const testId = typeof payload.testId === "string" ? payload.testId : "";
       await db.insert(testStarts).values({
         id: crypto.randomUUID(),
         testId: testId,

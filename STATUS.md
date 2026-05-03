@@ -1,35 +1,21 @@
-# Status | 마지막: 2026-04-23
-
+# Status | 마지막: 2026-05-03
 ## 현재 작업
-5인 팀 감사 + Tier 0 보안/PIPA 수정 + 211개 콘텐츠 전수조사 + noindex/301 적용 완료 → 배포 대기
-
-## 최근 변경 (최근 5개)
-- 04-23: meal-* 17개 noindex 중앙관리(lib/noindex-tests.ts) + cooking-shared→cooking-share 308
-- 04-23: 211개 테스트 전수조사 + food-temperature-preference→food-temperature 308, CONTENT_AUDIT.md·CONTENT_KILL_PAIRS.md 생성
-- 04-23: Tier 0 보안 — admin "1234" 제거 + httpOnly 쿠키, IP 해시 저장, 쿠키 배너 PIPA 준수, "1.5만+" 과장 제거
-- 04-23: sitemap.xml fs 스캔 제거(Vercel fallback 버그 수정), GSC/GA4 최적화 — Web Vitals→GA4, IndexNow API, test_progress 마일스톤화
-- 04-23: 애드센스 최적화 — About/Contact 페이지, Organization founder 스키마, 쿠키 동의 배너, robots 단일화
-
-## TODO (배포 직후 사용자 수동 작업)
-- [ ] **Vercel Env 추가**: ADMIN_PASSWORD, IP_HASH_SALT, CRON_SECRET, GOOGLE/NAVER_SITE_VERIFICATION 값 기입 후 Redeploy
-- [ ] **Vercel 도메인**: temon.kr Primary 전환 (현재 www 쪽으로 307 redirect 중, 코드 baseUrl과 불일치)
-- [ ] **GSC**: sitemap-index.xml 재제출 + About/Contact 수동 색인 요청
-- [ ] **재심사 전 6~8주 대기** + Save List 15개 본문 확장 (300자+ 추가)
-- [ ] 132개 <300자 페이지 점진 확장 (주 10~20개, Scaled Abuse 회피)
-- [ ] Naver Search Advisor + Daum 웹마스터 등록
-- [ ] dayjs vs date-fns 중복 라이브러리 통일 (선택)
-
+콘텐츠 최적화 1차 완료, 검증 완료
+## 최근 변경 (최근 5개만)
+- 05-03: meal-frequency/pacing/order/balance/duration 랜딩에 심층 본문 섹션 추가
+- 05-03: lib/extended-content에 식사 습관 5개 테스트 고유 본문/FAQ/한계 문구 추가
+- 05-03: GA4 측정 ID G-L167CCPS8E 확인 및 관리자 표시값 갱신
+- 05-03: 홈 메타 title/description을 GSC 키워드 중심으로 정리
+- 05-03: NTRP 결과 페이지 Recharts/PDF/이미지 저장 라이브러리 지연 로딩 적용
+## TODO
+- [ ] Vercel Env에 TURSO_DATABASE_URL, TURSO_AUTH_TOKEN 등 DB env 누락 여부 확인
+- [ ] GSC에서 `mbti 테스트 모음`, `무료 mbti 테스트` CTR 변화를 2~4주 후 확인
+- [ ] 남은 얇은 콘텐츠 페이지를 CONTENT_AUDIT.md 기준으로 순차 보강
 ## 결정사항
-- robots.ts: AI 크롤러(GPTBot, PerplexityBot, ClaudeBot 등) 명시 허용
-- public/robots.txt: 정적 파일 우선 적용됨 → robots.ts와 동일하게 유지
-- lib/drizzle: Cloudflare D1 레거시 → _archive/ (현재 Vercel + Turso 사용)
-- 구 라우트(/coffee-mbti 등): 삭제 대신 next.config.mjs에 308 리다이렉트
-
+- AdSense: Next Script 대신 직접 script 삽입으로 경고 제거
+- NTRP 결과: 차트/내보내기 라이브러리는 첫 로드가 아닌 사용 시점에 로드
+- Analytics: GA4/WebVitals는 유지, Cloudflare 전용 `/analytics.js` 호출은 제거
+- 콘텐츠: 얇은 페이지는 공통 템플릿 반복보다 slug별 고유 본문을 우선 추가
 ## 주의
-- og/route.tsx는 edge runtime 유지 (ImageResponse 전용, 정상)
-- calendar 컴포넌트는 react-day-picker 의존, 유지
-- robots 단일 소스: `app/robots.ts` (public/robots.txt 삭제됨, 04-23)
-- noindex 테스트는 lib/noindex-tests.ts 한 곳에서 중앙 관리 (ALL_TESTS 그대로, robots+sitemap만 제외)
-- admin 인증: httpOnly 쿠키 `admin_session` + Bearer 헤더 병행 (lib/admin-auth.ts)
-- 애드센스: 132개 본문 <300자 → Scaled Abuse 시그널, 재심사 전 6~8주 + Save List 확장 필수
-- 콘텐츠 점검 재실행: `node scripts/content-audit.js` → CONTENT_AUDIT.md 갱신
+- build 시 TURSO_DATABASE_URL 미설정 경고가 남음. 런타임 DB 기능에는 env 필요
+- 작업 전부터 존재한 미완료 변경 파일은 되돌리지 않음

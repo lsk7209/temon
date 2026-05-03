@@ -42,7 +42,7 @@ declare global {
 }
 
 // 서버 트래킹 전송
-async function sendTrackingEvent(type: string, payload: any) {
+async function sendTrackingEvent(type: string, payload: Record<string, unknown>) {
   try {
     if (typeof window === "undefined") return;
 
@@ -77,7 +77,6 @@ export function trackVisit() {
       referrer: document.referrer,
       searchKeyword: new URLSearchParams(window.location.search).get("q"),
     });
-    console.log("📊 방문 추적 완료");
   } catch (error) {
     console.error("방문 추적 오류:", error);
   }
@@ -101,7 +100,6 @@ export function trackPageVisit(pathname: string) {
       referrer: document.referrer,
       searchKeyword: new URLSearchParams(window.location.search).get("q"),
     });
-    console.log(`📊 페이지 방문 추적: ${pathname}`);
   } catch (error) {
     console.error("페이지 방문 추적 오류:", error);
   }
@@ -120,7 +118,6 @@ export function trackTestStart(testId: string) {
     }
     // 서버 트래킹
     sendTrackingEvent("test_start", { testId });
-    console.log(`📊 테스트 시작 추적: ${testId}`);
   } catch (error) {
     console.error("테스트 시작 추적 오류:", error);
   }
@@ -161,7 +158,6 @@ export function trackTestProgress(
       });
     }
 
-    console.log(`📊 테스트 진행 마일스톤: ${testId} - ${hitMilestone}%`);
   } catch (error) {
     console.error("테스트 진행 추적 오류:", error);
   }
@@ -179,7 +175,6 @@ export function trackTestComplete(testId: string, result?: string) {
         event_category: "conversion",
       });
     }
-    console.log(`📊 테스트 완료 추적: ${testId} - 결과: ${result}`);
   } catch (error) {
     console.error("테스트 완료 추적 오류:", error);
   }
@@ -198,7 +193,6 @@ export function trackShare(testId: string, platform: string) {
         event_category: "social",
       });
     }
-    console.log(`📊 공유 추적: ${testId} - ${platform}`);
   } catch (error) {
     console.error("공유 추적 오류:", error);
   }
@@ -216,7 +210,6 @@ export function trackClick(elementName: string, location: string) {
         event_category: "engagement",
       });
     }
-    console.log(`📊 클릭 추적: ${elementName} - ${location}`);
   } catch (error) {
     console.error("클릭 추적 오류:", error);
   }
@@ -233,7 +226,6 @@ export function trackSearch(searchTerm: string) {
         event_category: "engagement",
       });
     }
-    console.log(`📊 검색 추적: ${searchTerm}`);
   } catch (error) {
     console.error("검색 추적 오류:", error);
   }
@@ -251,7 +243,6 @@ export function trackEngagement(action: string, value?: number) {
         event_category: "engagement",
       });
     }
-    console.log(`📊 참여도 추적: ${action} - ${value}`);
   } catch (error) {
     console.error("참여도 추적 오류:", error);
   }
@@ -273,9 +264,6 @@ export function trackQuestionAnswer(
         custom_parameter_1: answer,
       });
     }
-    console.log(
-      `📊 질문 답변 추적: ${testName} Q${questionNumber} - ${answer}`,
-    );
   } catch (error) {
     console.error("질문 답변 추적 오류:", error);
   }
@@ -293,7 +281,6 @@ export function trackError(error: string, location: string) {
         value: 1,
       });
     }
-    console.log(`📊 에러 추적: ${location} - ${error}`);
   } catch (error) {
     console.error("에러 추적 오류:", error);
   }
@@ -311,7 +298,6 @@ export function trackAdminLogin() {
         value: 1,
       });
     }
-    console.log("📊 관리자 로그인 추적 완료");
   } catch (error) {
     console.error("관리자 로그인 추적 오류:", error);
   }
@@ -329,7 +315,6 @@ export function trackResultView(testId: string, resultType: string) {
         event_category: "engagement",
       });
     }
-    console.log(`📊 결과 조회 추적: ${testId} - ${resultType}`);
   } catch (error) {
     console.error("결과 조회 추적 오류:", error);
   }
@@ -347,7 +332,6 @@ export function trackCTAClick(ctaName: string, location: string) {
         event_category: "conversion",
       });
     }
-    console.log(`📊 CTA 클릭 추적: ${ctaName} - ${location}`);
   } catch (error) {
     console.error("CTA 클릭 추적 오류:", error);
   }
@@ -439,7 +423,6 @@ export function sendTestEvent() {
         value: 1,
       });
     }
-    console.log("📊 테스트 이벤트 전송 완료");
     return true;
   } catch (error) {
     console.error("테스트 이벤트 전송 오류:", error);

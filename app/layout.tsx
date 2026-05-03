@@ -102,6 +102,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const baseUrl = "https://temon.kr";
+  const isVercel = process.env.VERCEL === "1";
   const organizationSchema = generateOrganizationSchema();
   const websiteSchema = generateWebSiteSchema({
     target: `${baseUrl}/tests?q={search_term_string}`,
@@ -145,8 +146,6 @@ export default function RootLayout({
             `}
           </Script>
         )}
-        <AdSenseScript />
-        <Script src="/analytics.js" strategy="lazyOnload" />
         {/* 네이버 검색 최적화 - 모바일 최적화 */}
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
@@ -186,6 +185,7 @@ export default function RootLayout({
         </a>
         <Suspense fallback={null}>
           <AnalyticsProvider>
+            <AdSenseScript />
             <AdminHeadScripts />
             <Header />
             <main id="main-content" className="min-h-screen">
@@ -196,8 +196,8 @@ export default function RootLayout({
           </AnalyticsProvider>
         </Suspense>
         {/* Vercel Analytics & Speed Insights */}
-        <Analytics />
-        <SpeedInsights />
+        {isVercel && <Analytics />}
+        {isVercel && <SpeedInsights />}
         {/* Core Web Vitals → GA4 전송 (RUM) */}
         <WebVitals />
       </body>

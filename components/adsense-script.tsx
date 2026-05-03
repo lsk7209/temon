@@ -1,35 +1,31 @@
-/**
- * AdSense 스크립트 컴포넌트
- * 관리자 페이지에서는 로드하지 않음
- */
-
 "use client"
 
-import Script from "next/script"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+
+const ADSENSE_CLIENT_ID =
+  process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ||
+  process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID
+const ADSENSE_SCRIPT_ID = "adsense-loader"
 
 export default function AdSenseScript() {
   const pathname = usePathname()
-  const [shouldLoad, setShouldLoad] = useState(false)
 
   useEffect(() => {
-    // 관리자 페이지 경로 체크
-    const isAdminPage = pathname?.startsWith("/admin") || pathname?.startsWith("/dashboard")
-    setShouldLoad(!isAdminPage)
+    if (!ADSENSE_CLIENT_ID) return
+
+    const isAdminPage =
+      pathname?.startsWith("/admin") || pathname?.startsWith("/dashboard")
+    if (isAdminPage) return
+    if (document.getElementById(ADSENSE_SCRIPT_ID)) return
+
+    const script = document.createElement("script")
+    script.id = ADSENSE_SCRIPT_ID
+    script.async = true
+    script.crossOrigin = "anonymous"
+    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`
+    document.head.appendChild(script)
   }, [pathname])
 
-  if (!shouldLoad) {
-    return null
-  }
-
-  return (
-    <Script
-      async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`}
-      crossOrigin="anonymous"
-      strategy="afterInteractive"
-    />
-  )
+  return null
 }
-

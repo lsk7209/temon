@@ -178,7 +178,7 @@ export default function AnalyticsDashboard() {
             </Badge>
           </div>
           {gaConnected && (
-            <p className="text-sm text-muted-foreground mt-2">추적 ID: G-2TLW7Z2VQW | 실시간 데이터 수집 중</p>
+            <p className="text-sm text-muted-foreground mt-2">추적 ID: G-L167CCPS8E | 실시간 데이터 수집 중</p>
           )}
         </CardContent>
       </Card>
