@@ -1,0 +1,802 @@
+[
+  {
+    "title": "이메일 처리 성향 테스트",
+    "slug": "email-handling-style",
+    "mainKeyword": "이메일 처리 성향",
+    "expandedKeywords": ["메일 답장 스타일", "업무 메일 습관", "메일함 정리", "읽씹 업무 성향", "직장 커뮤니케이션", "답장 속도 테스트"],
+    "category": "직장",
+    "intentNote": "메일 확인, 답장, 보관 습관으로 업무 성향을 가볍게 진단"
+  },
+  {
+    "title": "업무 우선순위 결정 테스트",
+    "slug": "work-priority-style",
+    "mainKeyword": "업무 우선순위",
+    "expandedKeywords": ["할 일 정리", "업무 순서", "마감 관리", "급한 일 대응", "직장 성향 테스트", "일 처리 방식"],
+    "category": "직장",
+    "intentNote": "밀린 업무를 어떤 기준으로 처리하는지로 계획형, 대응형, 완성형 성향 구분"
+  },
+  {
+    "title": "보고서 작성 스타일 테스트",
+    "slug": "report-writing-style",
+    "mainKeyword": "보고서 작성 스타일",
+    "expandedKeywords": ["문서 작성 성향", "자료 정리 습관", "요약 능력", "기획서 스타일", "직장 문서 테스트", "보고 방식"],
+    "category": "직장",
+    "intentNote": "자료 수집, 목차 구성, 문장 다듬기 방식으로 업무 문서 성향 진단"
+  },
+  {
+    "title": "업무 인수인계 방식 테스트",
+    "slug": "handover-briefing-style",
+    "mainKeyword": "업무 인수인계 방식",
+    "expandedKeywords": ["인수인계 문서", "업무 공유", "퇴사 준비", "협업 정리", "업무 전달", "직장 커뮤니케이션"],
+    "category": "직장",
+    "intentNote": "업무를 넘겨줄 때 세부 설명과 맥락 전달을 얼마나 챙기는지 진단"
+  },
+  {
+    "title": "업무 피드백 수용 테스트",
+    "slug": "feedback-response-style",
+    "mainKeyword": "피드백 수용 성향",
+    "expandedKeywords": ["상사 피드백", "수정 요청 대응", "업무 개선", "직장 소통", "평가 대응", "멘탈 관리"],
+    "category": "직장",
+    "intentNote": "수정 요청을 받았을 때 감정, 행동, 재작업 방식으로 성장 성향 진단"
+  },
+  {
+    "title": "업무 메모 습관 테스트",
+    "slug": "work-note-style",
+    "mainKeyword": "업무 메모 습관",
+    "expandedKeywords": ["메모 정리", "체크리스트", "업무 기록", "노트 활용", "할 일 관리", "직장 루틴"],
+    "category": "직장",
+    "intentNote": "메모 도구와 기록 방식을 통해 실무형, 즉흥형, 구조형 성향 구분"
+  },
+  {
+    "title": "업무 요청 전달 방식 테스트",
+    "slug": "work-request-style",
+    "mainKeyword": "업무 요청 방식",
+    "expandedKeywords": ["협업 요청", "업무 전달", "동료 소통", "요청 문장", "직장 커뮤니케이션", "협업 성향"],
+    "category": "직장",
+    "intentNote": "누군가에게 일을 부탁할 때의 말투와 범위 설정 방식으로 협업 성향 분석"
+  },
+  {
+    "title": "업무 거절 방식 테스트",
+    "slug": "work-refusal-style",
+    "mainKeyword": "업무 거절 방식",
+    "expandedKeywords": ["거절 멘트", "업무 부담", "직장 관계", "선 긋기", "협업 스트레스", "요청 대응"],
+    "category": "직장",
+    "intentNote": "무리한 요청을 받았을 때의 대응으로 관계형, 원칙형, 회피형 성향 구분"
+  },
+  {
+    "title": "파일명 정리 성향 테스트",
+    "slug": "file-naming-style",
+    "mainKeyword": "파일명 정리 성향",
+    "expandedKeywords": ["문서 정리", "파일 관리", "버전 관리", "폴더 정리", "업무 습관", "자료 보관"],
+    "category": "직장",
+    "intentNote": "공유 문서와 파일명을 다루는 습관으로 꼼꼼함과 협업 배려도 진단"
+  },
+  {
+    "title": "연차 인수인계 준비 테스트",
+    "slug": "annual-leave-handoff",
+    "mainKeyword": "연차 인수인계",
+    "expandedKeywords": ["연차 준비", "휴가 전 업무", "인수인계 체크", "직장인 휴식", "업무 공백", "팀 협업"],
+    "category": "직장",
+    "intentNote": "쉬기 전 업무 공백을 어떻게 줄이는지로 책임감과 회복 균형 진단"
+  },
+  {
+    "title": "과제 시작 방식 테스트",
+    "slug": "assignment-start-style",
+    "mainKeyword": "과제 시작 방식",
+    "expandedKeywords": ["과제 미루기", "학교 과제", "대학생 테스트", "마감 관리", "자료 조사", "학습 성향"],
+    "category": "학교",
+    "intentNote": "과제를 언제 어떻게 시작하는지로 학습 실행 패턴 진단"
+  },
+  {
+    "title": "교수님 상담 준비 테스트",
+    "slug": "professor-office-hour-style",
+    "mainKeyword": "교수님 상담 준비",
+    "expandedKeywords": ["교수님 면담", "상담 질문", "진로 상담", "학교 생활", "대학생 성향", "질문 준비"],
+    "category": "학교",
+    "intentNote": "상담 전 질문과 자료를 어떻게 준비하는지로 학업 커뮤니케이션 성향 분석"
+  },
+  {
+    "title": "실습 참여 태도 테스트",
+    "slug": "lab-practice-participation",
+    "mainKeyword": "실습 참여 태도",
+    "expandedKeywords": ["실습 수업", "팀 실습", "현장 학습", "학교 참여", "관찰형 학습", "체험형 학습"],
+    "category": "학교",
+    "intentNote": "실습형 수업에서 먼저 시도하는지 관찰 후 움직이는지 진단"
+  },
+  {
+    "title": "과제 제출 포맷 테스트",
+    "slug": "assignment-format-style",
+    "mainKeyword": "과제 제출 포맷",
+    "expandedKeywords": ["과제 양식", "제출 파일", "문서 형식", "학교 과제", "자료 정리", "마감 전 확인"],
+    "category": "학교",
+    "intentNote": "제출물 형식과 검토 습관으로 디테일 관리 성향 분석"
+  },
+  {
+    "title": "도서관 자리 선택 테스트",
+    "slug": "library-seat-style",
+    "mainKeyword": "도서관 자리 선택",
+    "expandedKeywords": ["공부 자리", "도서관 성향", "집중 환경", "학생 루틴", "좌석 선택", "학습 공간"],
+    "category": "학교",
+    "intentNote": "어떤 좌석을 선호하는지로 집중형, 관찰형, 안정형 성향 분류"
+  },
+  {
+    "title": "장학금 지원 준비 테스트",
+    "slug": "scholarship-application-style",
+    "mainKeyword": "장학금 지원 준비",
+    "expandedKeywords": ["장학금 신청", "자기소개서", "서류 준비", "학교 생활", "지원 전략", "마감 관리"],
+    "category": "학교",
+    "intentNote": "지원 서류를 챙기는 방식으로 기회 탐색과 준비성 진단"
+  },
+  {
+    "title": "수업 질문 성향 테스트",
+    "slug": "class-question-style",
+    "mainKeyword": "수업 질문 성향",
+    "expandedKeywords": ["수업 참여", "질문 습관", "학생 성향", "궁금증 해결", "강의 태도", "학습 커뮤니케이션"],
+    "category": "학교",
+    "intentNote": "질문을 바로 하는지 따로 찾아보는지에 따라 탐구형과 신중형 구분"
+  },
+  {
+    "title": "시간표 짜기 성향 테스트",
+    "slug": "timetable-planning-style",
+    "mainKeyword": "시간표 짜기 성향",
+    "expandedKeywords": ["수강신청", "공강 배치", "강의 선택", "대학생 루틴", "학교 일정", "계획 성향"],
+    "category": "학교",
+    "intentNote": "수업 배치와 공강 선호로 생활 리듬과 선택 기준 진단"
+  },
+  {
+    "title": "복습 루틴 테스트",
+    "slug": "review-routine-style",
+    "mainKeyword": "복습 루틴",
+    "expandedKeywords": ["공부 루틴", "복습 습관", "오답 정리", "학습 지속력", "학교 공부법", "기억 관리"],
+    "category": "학교",
+    "intentNote": "수업 후 복습 타이밍과 방식으로 꾸준함, 몰입형, 압축형 학습 성향 분석"
+  },
+  {
+    "title": "동아리 참여 성향 테스트",
+    "slug": "club-activity-style",
+    "mainKeyword": "동아리 참여 성향",
+    "expandedKeywords": ["학교 동아리", "모임 참여", "친목 성향", "역할 선택", "학생 관계", "활동 스타일"],
+    "category": "학교",
+    "intentNote": "동아리에서의 참여 깊이와 역할 선택으로 사회성 기반 학생 콘텐츠 구성"
+  },
+  {
+    "title": "약속 잡는 방식 테스트",
+    "slug": "appointment-planning-style",
+    "mainKeyword": "약속 잡는 방식",
+    "expandedKeywords": ["친구 약속", "일정 조율", "만남 성향", "관계 테스트", "시간 약속", "계획형 성향"],
+    "category": "관계",
+    "intentNote": "친구와 일정을 맞출 때의 주도성, 배려, 즉흥성을 관계 성향으로 연결"
+  },
+  {
+    "title": "사과 표현 방식 테스트",
+    "slug": "apology-style",
+    "mainKeyword": "사과 표현 방식",
+    "expandedKeywords": ["미안함 표현", "관계 회복", "갈등 해결", "화해 방식", "감정 표현", "대화 성향"],
+    "category": "관계",
+    "intentNote": "갈등 후 사과하는 말과 행동으로 관계 회복 타입 진단"
+  },
+  {
+    "title": "친구 고민 상담 스타일 테스트",
+    "slug": "friend-advice-style",
+    "mainKeyword": "고민 상담 스타일",
+    "expandedKeywords": ["친구 상담", "공감 방식", "조언 성향", "관계 심리", "위로 방식", "대화 타입"],
+    "category": "관계",
+    "intentNote": "친구가 고민을 말했을 때 공감, 해결, 전환 중 어떤 반응을 보이는지 분석"
+  },
+  {
+    "title": "친해지는 속도 테스트",
+    "slug": "friendship-pace-style",
+    "mainKeyword": "친해지는 속도",
+    "expandedKeywords": ["친밀감 형성", "첫 만남", "관계 속도", "사회성 테스트", "거리감", "친구 관계"],
+    "category": "관계",
+    "intentNote": "새로운 사람과 가까워지는 속도와 경계 설정으로 관계 진입 성향 진단"
+  },
+  {
+    "title": "약속 취소 대응 테스트",
+    "slug": "canceled-plan-response",
+    "mainKeyword": "약속 취소 대응",
+    "expandedKeywords": ["친구 약속 취소", "관계 반응", "서운함 표현", "일정 변경", "감정 관리", "대인관계"],
+    "category": "관계",
+    "intentNote": "갑작스러운 취소 상황에서 감정 표현과 대안 제시 방식 분석"
+  },
+  {
+    "title": "부탁 거절 성향 테스트",
+    "slug": "favor-refusal-style",
+    "mainKeyword": "부탁 거절 성향",
+    "expandedKeywords": ["거절 못하는 성격", "관계 경계", "부탁 대응", "착한 사람 증후군", "인간관계", "선 긋기"],
+    "category": "관계",
+    "intentNote": "부탁을 거절하는 방식으로 관계 경계와 부담 패턴 진단"
+  },
+  {
+    "title": "첫인상 관리 테스트",
+    "slug": "first-impression-style",
+    "mainKeyword": "첫인상 관리",
+    "expandedKeywords": ["첫 만남", "이미지 관리", "대화 시작", "관계 성향", "사회생활", "호감 표현"],
+    "category": "관계",
+    "intentNote": "처음 만난 사람 앞에서의 말투, 표정, 거리감으로 관계 전략 분류"
+  },
+  {
+    "title": "가족 갈등 대응 테스트",
+    "slug": "family-conflict-style",
+    "mainKeyword": "가족 갈등 대응",
+    "expandedKeywords": ["가족 대화", "갈등 해결", "집안 분위기", "감정 표현", "관계 회복", "생활 심리"],
+    "category": "관계",
+    "intentNote": "가족과 의견이 부딪힐 때의 회피, 설득, 중재 방식 진단"
+  },
+  {
+    "title": "생일 챙김 방식 테스트",
+    "slug": "birthday-care-style",
+    "mainKeyword": "생일 챙김 방식",
+    "expandedKeywords": ["친구 생일", "기념일 성향", "축하 방식", "관계 표현", "서프라이즈", "마음 표현"],
+    "category": "관계",
+    "intentNote": "축하 메시지, 준비 범위, 기억 방식으로 관계 표현 성향 진단"
+  },
+  {
+    "title": "이웃 스몰토크 성향 테스트",
+    "slug": "neighbor-smalltalk-style",
+    "mainKeyword": "이웃 스몰토크 성향",
+    "expandedKeywords": ["이웃 대화", "공동주택 관계", "가벼운 대화", "생활 관계", "사회성", "거리감 조절"],
+    "category": "관계",
+    "intentNote": "엘리베이터나 복도에서의 짧은 대화 반응으로 생활 관계 성향 진단"
+  },
+  {
+    "title": "장바구니 보류 습관 테스트",
+    "slug": "cart-hold-style",
+    "mainKeyword": "장바구니 보류 습관",
+    "expandedKeywords": ["장바구니 심리", "구매 결정", "온라인 쇼핑", "소비 성향", "충동구매 방지", "비교 구매"],
+    "category": "소비",
+    "intentNote": "바로 구매하지 않고 담아두는 행동으로 신중형, 탐색형, 즉흥형 소비 진단"
+  },
+  {
+    "title": "보험 약관 확인 테스트",
+    "slug": "insurance-clause-check",
+    "mainKeyword": "보험 약관 확인",
+    "expandedKeywords": ["보험 가입", "약관 확인", "보장 범위", "금융 소비", "위험 대비", "계약 확인"],
+    "category": "소비",
+    "intentNote": "계약 전 세부 조건을 얼마나 확인하는지로 위험 대비와 신뢰 기준 진단"
+  },
+  {
+    "title": "할인 쿠폰 판단 테스트",
+    "slug": "coupon-decision-style",
+    "mainKeyword": "할인 쿠폰 판단",
+    "expandedKeywords": ["쿠폰 사용", "할인 심리", "소비 결정", "가격 비교", "혜택 챙기기", "구매 타이밍"],
+    "category": "소비",
+    "intentNote": "쿠폰과 할인 조건을 보고 구매 여부를 정하는 기준 콘텐츠화"
+  },
+  {
+    "title": "가전 A/S 대응 테스트",
+    "slug": "warranty-repair-response",
+    "mainKeyword": "가전 A/S 대응",
+    "expandedKeywords": ["A/S 신청", "보증기간", "고객센터", "수리 판단", "생활 소비", "제품 관리"],
+    "category": "소비",
+    "intentNote": "제품 문제가 생겼을 때 바로 문의하는지 직접 해결하는지 진단"
+  },
+  {
+    "title": "상품 리뷰 읽기 테스트",
+    "slug": "product-review-reading-style",
+    "mainKeyword": "상품 리뷰 읽기",
+    "expandedKeywords": ["리뷰 확인", "구매 전 비교", "별점 신뢰", "소비 판단", "온라인 구매", "후기 분석"],
+    "category": "소비",
+    "intentNote": "후기와 별점을 어떻게 해석하는지로 정보 탐색형 소비 성향 분류"
+  },
+  {
+    "title": "환불 교환 대응 테스트",
+    "slug": "refund-exchange-style",
+    "mainKeyword": "환불 교환 대응",
+    "expandedKeywords": ["환불 요청", "교환 기준", "고객센터 대화", "소비자 성향", "구매 후 대응", "불량 상품"],
+    "category": "소비",
+    "intentNote": "문제 상품을 받았을 때의 대응 방식으로 권리 주장과 피로 회피 성향 진단"
+  },
+  {
+    "title": "가격 알림 대기 테스트",
+    "slug": "price-alert-waiting",
+    "mainKeyword": "가격 알림 대기",
+    "expandedKeywords": ["가격 추적", "최저가 알림", "쇼핑 타이밍", "구매 대기", "가격 비교", "소비 전략"],
+    "category": "소비",
+    "intentNote": "가격 변동을 기다리는 방식으로 계획형 소비와 즉시 구매 성향 비교"
+  },
+  {
+    "title": "큰돈 쓰기 전 고민 테스트",
+    "slug": "big-purchase-decision-style",
+    "mainKeyword": "큰돈 구매 결정",
+    "expandedKeywords": ["고가 구매", "구매 고민", "비교 분석", "소비 심리", "예산 계획", "후회 방지"],
+    "category": "소비",
+    "intentNote": "고가 제품 구매 전 정보 탐색과 결정 속도로 소비 리스크 성향 진단"
+  },
+  {
+    "title": "무료체험 해지 판단 테스트",
+    "slug": "free-trial-cancel-style",
+    "mainKeyword": "무료체험 해지 판단",
+    "expandedKeywords": ["무료체험", "정기결제 전환", "서비스 해지", "구독 관리", "소비 습관", "결제 알림"],
+    "category": "소비",
+    "intentNote": "무료 체험을 계속 쓸지 해지할지 결정하는 기준 진단"
+  },
+  {
+    "title": "배송 기다림 성향 테스트",
+    "slug": "delivery-waiting-style",
+    "mainKeyword": "배송 기다림 성향",
+    "expandedKeywords": ["배송 조회", "택배 기다림", "구매 후 심리", "온라인 소비", "기대감", "소비 성향"],
+    "category": "소비",
+    "intentNote": "구매 후 배송을 기다리는 태도로 기대형, 확인형, 무심형 소비 반응 진단"
+  },
+  {
+    "title": "우산 챙김 성향 테스트",
+    "slug": "umbrella-prep-style",
+    "mainKeyword": "우산 챙김 성향",
+    "expandedKeywords": ["날씨 확인", "외출 준비", "비 오는 날", "생활 습관", "준비성 테스트", "위험 회피"],
+    "category": "생활",
+    "intentNote": "날씨 예보와 외출 준비 행동으로 준비성, 낙관성, 즉흥성 분석"
+  },
+  {
+    "title": "분리수거 성향 테스트",
+    "slug": "recycling-style",
+    "mainKeyword": "분리수거 성향",
+    "expandedKeywords": ["재활용 습관", "생활 정리", "환경 실천", "분리배출", "집안 관리", "생활 루틴"],
+    "category": "생활",
+    "intentNote": "분리배출 기준을 챙기는 정도로 꼼꼼함과 실천형 생활 성향 진단"
+  },
+  {
+    "title": "공과금 관리 테스트",
+    "slug": "utility-bill-style",
+    "mainKeyword": "공과금 관리",
+    "expandedKeywords": ["생활비 관리", "고지서 확인", "자동이체", "전기요금", "관리비", "고정지출"],
+    "category": "생활",
+    "intentNote": "고지서 확인과 납부 방식을 통해 생활 관리형, 자동화형, 임박형 성향 진단"
+  },
+  {
+    "title": "물건 잃어버림 대응 테스트",
+    "slug": "lost-item-response-style",
+    "mainKeyword": "물건 잃어버림 대응",
+    "expandedKeywords": ["분실 대응", "생활 습관", "소지품 관리", "찾기 방식", "당황 대응", "정리 성향"],
+    "category": "생활",
+    "intentNote": "물건을 잃어버렸을 때 찾는 순서와 감정 반응으로 생활 패턴 분석"
+  },
+  {
+    "title": "엘리베이터 매너 테스트",
+    "slug": "elevator-manner-style",
+    "mainKeyword": "엘리베이터 매너",
+    "expandedKeywords": ["공동생활 매너", "생활 예절", "이웃 관계", "공간 배려", "사회성 테스트", "일상 행동"],
+    "category": "생활",
+    "intentNote": "좁은 공용 공간에서의 행동으로 배려형, 효율형, 관찰형 성향 진단"
+  },
+  {
+    "title": "비상금 관리 테스트",
+    "slug": "emergency-fund-style",
+    "mainKeyword": "비상금 관리",
+    "expandedKeywords": ["생활비 대비", "예비비", "돈 관리", "위기 대응", "소비 습관", "재정 안정"],
+    "category": "생활",
+    "intentNote": "예상 못 한 지출에 대비하는 방식으로 안정 추구와 현재 중심 성향 진단"
+  },
+  {
+    "title": "외출 전 확인 루틴 테스트",
+    "slug": "leaving-check-style",
+    "mainKeyword": "외출 전 확인 루틴",
+    "expandedKeywords": ["문단속 확인", "소지품 체크", "외출 준비", "생활 습관", "체크리스트", "준비성"],
+    "category": "생활",
+    "intentNote": "외출 직전 확인 행동으로 꼼꼼형, 감각형, 반복확인형 생활 성향 구분"
+  },
+  {
+    "title": "공유공간 사용 성향 테스트",
+    "slug": "shared-space-style",
+    "mainKeyword": "공유공간 사용 성향",
+    "expandedKeywords": ["공동생활", "쉐어하우스", "공간 매너", "생활 규칙", "정리 기준", "배려 성향"],
+    "category": "생활",
+    "intentNote": "공용 냉장고, 욕실, 거실 같은 공유공간 사용 기준으로 생활 배려도 진단"
+  },
+  {
+    "title": "층간소음 경계선 테스트",
+    "slug": "home-noise-boundary",
+    "mainKeyword": "층간소음 경계선",
+    "expandedKeywords": ["공동주택 소음", "생활 매너", "이웃 배려", "소음 민감도", "집 생활", "갈등 예방"],
+    "category": "생활",
+    "intentNote": "생활 소음에 대한 기준과 대응 방식으로 공동생활 성향 분석"
+  },
+  {
+    "title": "가전 설명서 보관 테스트",
+    "slug": "appliance-manual-keeping",
+    "mainKeyword": "가전 설명서 보관",
+    "expandedKeywords": ["설명서 정리", "제품 보증서", "생활 정리", "가전 관리", "문서 보관", "집안 관리"],
+    "category": "생활",
+    "intentNote": "제품 문서와 보증 정보를 어떻게 보관하는지로 관리 성향 진단"
+  },
+  {
+    "title": "스포일러 경계선 테스트",
+    "slug": "spoiler-boundary",
+    "mainKeyword": "스포일러 민감도",
+    "expandedKeywords": ["스포 방지", "드라마 스포", "영화 스포", "콘텐츠 몰입", "결말 민감도", "감상 스타일"],
+    "category": "엔터테인먼트",
+    "intentNote": "콘텐츠를 보기 전 정보 노출에 얼마나 예민한지 확인"
+  },
+  {
+    "title": "팬덤 활동 온도 테스트",
+    "slug": "fandom-temperature",
+    "mainKeyword": "팬덤 성향",
+    "expandedKeywords": ["덕질 유형", "팬 활동", "최애 응원", "굿즈 구매", "팬 커뮤니티", "입덕 테스트"],
+    "category": "엔터테인먼트",
+    "intentNote": "가볍게 즐기는 팬인지 깊게 파고드는 팬인지 확인"
+  },
+  {
+    "title": "예고편 신뢰도 테스트",
+    "slug": "trailer-trust-type",
+    "mainKeyword": "예고편 반응",
+    "expandedKeywords": ["영화 예고편", "드라마 티저", "콘텐츠 기대감", "티저 분석", "관람 결정", "기대 관리"],
+    "category": "엔터테인먼트",
+    "intentNote": "예고편만 보고 콘텐츠를 결정하는 편인지 확인"
+  },
+  {
+    "title": "엔딩 해석 스타일 테스트",
+    "slug": "ending-interpretation",
+    "mainKeyword": "엔딩 해석",
+    "expandedKeywords": ["열린 결말", "결말 해석", "작품 분석", "감상 후기", "복선 찾기", "몰입형 관람"],
+    "category": "엔터테인먼트",
+    "intentNote": "작품 결말을 감정적으로 받아들이는지 논리적으로 해석하는지 진단"
+  },
+  {
+    "title": "캐릭터 몰입 유형 테스트",
+    "slug": "character-immersion",
+    "mainKeyword": "캐릭터 몰입",
+    "expandedKeywords": ["최애 캐릭터", "서사 몰입", "캐릭터 분석", "작품 취향", "공감 능력", "덕질 심리"],
+    "category": "엔터테인먼트",
+    "intentNote": "캐릭터를 좋아하는 방식과 몰입 포인트 분석"
+  },
+  {
+    "title": "굿즈 보관 성향 테스트",
+    "slug": "goods-keeping-type",
+    "mainKeyword": "굿즈 보관",
+    "expandedKeywords": ["덕질 굿즈", "포카 보관", "앨범 정리", "소장 습관", "팬 아이템", "취미 수집"],
+    "category": "취미",
+    "intentNote": "굿즈를 실사용, 전시, 밀봉, 교환 중 어떻게 다루는지 확인"
+  },
+  {
+    "title": "시리즈 재시청 트리거 테스트",
+    "slug": "series-rewatch-trigger",
+    "mainKeyword": "시리즈 재시청 트리거",
+    "expandedKeywords": ["드라마 재시청", "정주행 심리", "명장면 반복", "콘텐츠 취향", "추억 콘텐츠", "몰입 습관"],
+    "category": "엔터테인먼트",
+    "intentNote": "다시 보는 콘텐츠를 고르는 감정적, 분석적 기준 진단"
+  },
+  {
+    "title": "회차 건너뛰기 기준 테스트",
+    "slug": "episode-skip-threshold",
+    "mainKeyword": "회차 건너뛰기 기준",
+    "expandedKeywords": ["정주행 습관", "콘텐츠 몰입", "중도 하차", "스토리 전개", "시청 성향", "감상 방식"],
+    "category": "엔터테인먼트",
+    "intentNote": "느린 전개를 참는지 핵심만 보는지로 시청 인내도 진단"
+  },
+  {
+    "title": "영화 엔딩크레딧 인내심 테스트",
+    "slug": "movie-credit-patience",
+    "mainKeyword": "엔딩크레딧 인내심",
+    "expandedKeywords": ["쿠키영상 대기", "영화 관람", "엔딩크레딧", "극장 성향", "관람 매너", "콘텐츠 기대"],
+    "category": "엔터테인먼트",
+    "intentNote": "영화가 끝난 뒤에도 기다리는 방식으로 기대 관리와 몰입 성향 진단"
+  },
+  {
+    "title": "취미 장비 업그레이드 테스트",
+    "slug": "hobby-tool-upgrade",
+    "mainKeyword": "취미 장비 업그레이드",
+    "expandedKeywords": ["취미 장비", "장비병", "입문 장비", "취미 투자", "도구 선택", "몰입 성향"],
+    "category": "취미",
+    "intentNote": "취미 도구를 언제 바꾸고 얼마나 투자하는지 분석"
+  },
+  {
+    "title": "SNS 프로필 분위기 테스트",
+    "slug": "sns-profile-vibe",
+    "mainKeyword": "SNS 프로필 유형",
+    "expandedKeywords": ["프로필 사진", "소개글 성향", "계정 분위기", "온라인 이미지", "자기표현", "SNS 성격"],
+    "category": "SNS",
+    "intentNote": "SNS 첫인상이 어떤 분위기로 보이는지 진단"
+  },
+  {
+    "title": "피드 업로드 기준 테스트",
+    "slug": "feed-upload-standard",
+    "mainKeyword": "피드 업로드 성향",
+    "expandedKeywords": ["SNS 피드", "사진 업로드", "게시물 기준", "일상 공유", "계정 관리", "콘텐츠 선택"],
+    "category": "SNS",
+    "intentNote": "사진을 올리기 전 고르는 기준과 공유 성향 확인"
+  },
+  {
+    "title": "DM 거리감 테스트",
+    "slug": "dm-boundary-type",
+    "mainKeyword": "DM 성향",
+    "expandedKeywords": ["DM 답장", "SNS 메시지", "온라인 거리감", "사적 연락", "대화 부담", "소통 방식"],
+    "category": "SNS",
+    "intentNote": "DM을 편하게 여기는지 부담스럽게 여기는지 확인"
+  },
+  {
+    "title": "릴스 저장함 성격 테스트",
+    "slug": "reels-save-type",
+    "mainKeyword": "릴스 저장 성향",
+    "expandedKeywords": ["릴스 저장", "숏폼 취향", "영상 저장함", "SNS 알고리즘", "콘텐츠 소비", "짧은 영상"],
+    "category": "SNS",
+    "intentNote": "짧은 영상을 저장하는 패턴으로 관심사와 행동 성향 분석"
+  },
+  {
+    "title": "스토리 하이라이트 정리 테스트",
+    "slug": "story-highlight-curation",
+    "mainKeyword": "스토리 하이라이트",
+    "expandedKeywords": ["하이라이트 정리", "SNS 기록", "스토리 보관", "계정 꾸미기", "일상 아카이브", "자기표현"],
+    "category": "SNS",
+    "intentNote": "SNS 기록을 어떻게 남기고 보여주는지 확인"
+  },
+  {
+    "title": "온라인 닉네임 선택 유형 테스트",
+    "slug": "nickname-choice-type",
+    "mainKeyword": "닉네임 성향",
+    "expandedKeywords": ["닉네임 추천", "온라인 이름", "계정 이름", "자기표현", "인터넷 정체성", "프로필 꾸미기"],
+    "category": "디지털",
+    "intentNote": "닉네임을 감성, 실용, 익명, 캐릭터형 중 어떻게 고르는지 진단"
+  },
+  {
+    "title": "브라우저 탭 정리력 테스트",
+    "slug": "browser-tab-control",
+    "mainKeyword": "브라우저 탭 정리",
+    "expandedKeywords": ["탭 관리", "디지털 정리", "업무 집중", "인터넷 습관", "멀티태스킹", "정보 탐색"],
+    "category": "디지털",
+    "intentNote": "열린 탭을 쌓아두는지 바로 정리하는지 확인"
+  },
+  {
+    "title": "북마크 저장 성향 테스트",
+    "slug": "bookmark-save-type",
+    "mainKeyword": "북마크 성향",
+    "expandedKeywords": ["북마크 정리", "즐겨찾기", "자료 저장", "디지털 아카이브", "정보 관리", "웹 습관"],
+    "category": "디지털",
+    "intentNote": "좋은 정보를 발견했을 때 저장하고 다시 보는 패턴 진단"
+  },
+  {
+    "title": "비밀번호 관리 성향 테스트",
+    "slug": "password-care-type",
+    "mainKeyword": "비밀번호 관리",
+    "expandedKeywords": ["계정 보안", "비밀번호 습관", "보안 성향", "로그인 관리", "디지털 안전", "계정 관리"],
+    "category": "디지털",
+    "intentNote": "계정 보안에 꼼꼼한 편인지 편의성을 우선하는지 확인"
+  },
+  {
+    "title": "클라우드 파일 정리 테스트",
+    "slug": "cloud-file-organization",
+    "mainKeyword": "클라우드 정리",
+    "expandedKeywords": ["구글드라이브 정리", "파일 관리", "폴더 정리", "디지털 저장", "자료 분류", "클라우드 습관"],
+    "category": "디지털",
+    "intentNote": "온라인 파일을 체계적으로 관리하는지 쌓아두는지 확인"
+  },
+  {
+    "title": "AI 프롬프트 구체화 테스트",
+    "slug": "ai-prompt-detail-style",
+    "mainKeyword": "AI 프롬프트 구체화",
+    "expandedKeywords": ["AI 활용", "프롬프트 작성", "챗봇 질문", "생성형 AI", "업무 도구", "질문 방식"],
+    "category": "디지털",
+    "intentNote": "AI에게 요구사항을 얼마나 구체적으로 전달하는지 진단"
+  },
+  {
+    "title": "캘린더 색상 분류 테스트",
+    "slug": "calendar-color-type",
+    "mainKeyword": "캘린더 정리",
+    "expandedKeywords": ["일정 색상", "캘린더 관리", "시간 관리", "디지털 플래너", "일정 분류", "계획 성향"],
+    "category": "디지털",
+    "intentNote": "일정을 색상과 카테고리로 나누는 방식에서 성향 분석"
+  },
+  {
+    "title": "검색어 입력 방식 테스트",
+    "slug": "search-query-style",
+    "mainKeyword": "검색어 입력 방식",
+    "expandedKeywords": ["검색 습관", "정보 탐색", "검색 키워드", "문제 해결", "디지털 리터러시", "인터넷 사용"],
+    "category": "디지털",
+    "intentNote": "궁금한 것을 검색할 때 단어형, 문장형, 비교형 중 어떤 방식인지 진단"
+  },
+  {
+    "title": "앱 권한 확인 성향 테스트",
+    "slug": "app-permission-check-style",
+    "mainKeyword": "앱 권한 확인 성향",
+    "expandedKeywords": ["앱 권한", "개인정보 보호", "디지털 보안", "설정 확인", "앱 설치", "보안 습관"],
+    "category": "디지털",
+    "intentNote": "앱 설치 시 권한과 개인정보를 얼마나 확인하는지 진단"
+  },
+  {
+    "title": "봄맞이 변화 욕구 테스트",
+    "slug": "spring-change-drive",
+    "mainKeyword": "봄 변화 성향",
+    "expandedKeywords": ["봄 심리", "새출발", "계절 변화", "기분 전환", "변화 욕구", "봄맞이"],
+    "category": "계절",
+    "intentNote": "봄이 되면 새로 시작하고 싶어지는 방식 분석"
+  },
+  {
+    "title": "미세먼지 일정 변경 테스트",
+    "slug": "fine-dust-plan-change",
+    "mainKeyword": "미세먼지 일정 변경",
+    "expandedKeywords": ["미세먼지 대처", "외출 계획", "날씨 민감도", "건강 관리", "실내 활동", "계절 생활"],
+    "category": "계절",
+    "intentNote": "공기질에 따라 일정을 얼마나 바꾸는지로 위험 회피와 실용성 진단"
+  },
+  {
+    "title": "장마철 실내 계획 테스트",
+    "slug": "monsoon-indoor-plan",
+    "mainKeyword": "장마철 실내 계획",
+    "expandedKeywords": ["장마 생활", "실내 활동", "비 오는 계절", "계절 루틴", "습한 날", "기분 관리"],
+    "category": "계절",
+    "intentNote": "장마철에 계획을 바꾸고 에너지를 관리하는 방식 분석"
+  },
+  {
+    "title": "폭염 약속 경계선 테스트",
+    "slug": "heatwave-appointment-boundary",
+    "mainKeyword": "폭염 약속 경계선",
+    "expandedKeywords": ["폭염 대처", "더운 날 약속", "여름 생활", "체력 관리", "외출 기준", "계절 성향"],
+    "category": "계절",
+    "intentNote": "더운 날 외출 약속을 유지할지 조정할지 판단하는 기준 진단"
+  },
+  {
+    "title": "가을 감성 반응 테스트",
+    "slug": "autumn-sentiment-type",
+    "mainKeyword": "가을 감성",
+    "expandedKeywords": ["가을 심리", "감성 테스트", "계절 감정", "쓸쓸함", "추억 회상", "분위기 취향"],
+    "category": "계절",
+    "intentNote": "가을에 감정이 깊어지는 방식과 분위기 취향 확인"
+  },
+  {
+    "title": "겨울 겹쳐입기 성향 테스트",
+    "slug": "winter-layering-style",
+    "mainKeyword": "겨울 겹쳐입기 성향",
+    "expandedKeywords": ["겨울 옷차림", "추위 대처", "보온 스타일", "계절 준비", "외출 준비", "생활 성향"],
+    "category": "계절",
+    "intentNote": "겨울 외출 준비에서 실용성과 감각 중 무엇을 우선하는지 진단"
+  },
+  {
+    "title": "연말 회고 방식 테스트",
+    "slug": "year-end-reflection",
+    "mainKeyword": "연말 회고",
+    "expandedKeywords": ["한 해 정리", "연말 심리", "목표 회고", "자기 점검", "새해 준비", "감정 정리"],
+    "category": "계절",
+    "intentNote": "연말에 성취, 감정, 관계 중 무엇을 중심으로 돌아보는지 확인"
+  },
+  {
+    "title": "새해 목표 유지력 테스트",
+    "slug": "newyear-goal-stamina",
+    "mainKeyword": "새해 목표 유지",
+    "expandedKeywords": ["새해 계획", "목표 달성", "습관 만들기", "자기계발", "계획 지속", "실천력"],
+    "category": "계절",
+    "intentNote": "새해 목표를 세운 뒤 어떤 지점에서 흔들리는지 진단"
+  },
+  {
+    "title": "휴가 후유증 회복 테스트",
+    "slug": "vacation-afterglow",
+    "mainKeyword": "휴가 후유증",
+    "expandedKeywords": ["휴가 복귀", "여행 후 기분", "일상 복귀", "기분 회복", "계절 휴식", "회복 루틴"],
+    "category": "계절",
+    "intentNote": "휴식 이후 일상으로 돌아오는 방식과 회복 속도 확인"
+  },
+  {
+    "title": "명절 가족 에너지 테스트",
+    "slug": "holiday-family-energy",
+    "mainKeyword": "명절 가족 에너지",
+    "expandedKeywords": ["명절 스트레스", "가족 모임", "친척 대화", "명절 심리", "관계 에너지", "회복 방식"],
+    "category": "계절",
+    "intentNote": "명절 가족 모임에서 충전되는지 소모되는지 분석"
+  },
+  {
+    "title": "거절 후 마음정리 테스트",
+    "slug": "rejection-recovery-type",
+    "mainKeyword": "거절 회복",
+    "expandedKeywords": ["거절 심리", "마음정리", "상처 회복", "자존감 관리", "관계 스트레스", "감정 회복"],
+    "category": "심리",
+    "intentNote": "거절을 경험했을 때 생각과 감정을 어떻게 처리하는지 확인"
+  },
+  {
+    "title": "선택 피로도 테스트",
+    "slug": "choice-fatigue-type",
+    "mainKeyword": "선택 피로",
+    "expandedKeywords": ["결정 피로", "선택 장애", "우선순위", "심리 테스트", "결정 스트레스", "일상 선택"],
+    "category": "심리",
+    "intentNote": "선택지가 많을 때 빨리 정하는지 지치는지 진단"
+  },
+  {
+    "title": "혼자 있는 시간 충전 테스트",
+    "slug": "solo-time-recharge",
+    "mainKeyword": "혼자 있는 시간",
+    "expandedKeywords": ["혼자 시간", "에너지 충전", "내향 외향", "심리 성향", "휴식 방식", "감정 회복"],
+    "category": "심리",
+    "intentNote": "혼자 있는 시간이 회복인지 고립인지 느끼는 방식 확인"
+  },
+  {
+    "title": "기대 실망 관리 테스트",
+    "slug": "expectation-disappointment",
+    "mainKeyword": "실망 관리",
+    "expandedKeywords": ["기대 심리", "실망 대처", "감정 조절", "관계 기대", "마음 관리", "회복력"],
+    "category": "심리",
+    "intentNote": "기대가 어긋났을 때 감정을 다루는 패턴 진단"
+  },
+  {
+    "title": "미루기 합리화 유형 테스트",
+    "slug": "procrastination-excuse",
+    "mainKeyword": "미루기 유형",
+    "expandedKeywords": ["미루는 습관", "합리화", "실행력", "자기관리", "심리 패턴", "동기 부족"],
+    "category": "심리",
+    "intentNote": "해야 할 일을 미룰 때 어떤 이유를 만드는지 확인"
+  },
+  {
+    "title": "완벽주의 균형감 테스트",
+    "slug": "perfection-balance",
+    "mainKeyword": "완벽주의 성향",
+    "expandedKeywords": ["완벽주의", "자기검열", "실행 부담", "성과 압박", "심리 테스트", "기준 관리"],
+    "category": "심리",
+    "intentNote": "완성도 추구가 동력인지 부담인지 진단"
+  },
+  {
+    "title": "감정 숨김 습관 테스트",
+    "slug": "emotion-hiding-type",
+    "mainKeyword": "감정 숨김",
+    "expandedKeywords": ["감정 표현", "속마음", "심리 방어", "대인관계", "표현 습관", "마음 읽기"],
+    "category": "심리",
+    "intentNote": "힘든 감정을 드러내는지 숨기는지 확인"
+  },
+  {
+    "title": "팝업스토어 반응 유형 테스트",
+    "slug": "popup-store-reaction",
+    "mainKeyword": "팝업스토어 성향",
+    "expandedKeywords": ["팝업스토어", "트렌드 소비", "체험 공간", "브랜드 경험", "인증샷", "한정판"],
+    "category": "트렌드",
+    "intentNote": "유행 공간을 보면 바로 가는지 관찰만 하는지 확인"
+  },
+  {
+    "title": "유행어 흡수력 테스트",
+    "slug": "slang-adoption-type",
+    "mainKeyword": "유행어 성향",
+    "expandedKeywords": ["신조어", "유행어", "말투 변화", "인터넷 언어", "트렌드 감각", "밈 언어"],
+    "category": "트렌드",
+    "intentNote": "새로운 표현을 빨리 쓰는지 거리를 두는지 확인"
+  },
+  {
+    "title": "한정판 대기열 성향 테스트",
+    "slug": "limited-drop-queue",
+    "mainKeyword": "한정판 구매 성향",
+    "expandedKeywords": ["드롭 문화", "한정판", "대기열", "굿즈 발매", "트렌드 소비", "희소성"],
+    "category": "트렌드",
+    "intentNote": "희소한 제품이나 콘텐츠가 나왔을 때 대기할 만큼 몰입하는지 확인"
+  },
+  {
+    "title": "뉴스레터 구독 취향 테스트",
+    "slug": "newsletter-curation-type",
+    "mainKeyword": "뉴스레터 취향",
+    "expandedKeywords": ["이메일 뉴스레터", "정보 큐레이션", "트렌드 구독", "콘텐츠 소비", "지식 습관", "메일 관리"],
+    "category": "트렌드",
+    "intentNote": "정보를 넓게 훑는지 깊게 구독하는지 확인"
+  },
+  {
+    "title": "다꾸 몰입 유형 테스트",
+    "slug": "diary-decoration-type",
+    "mainKeyword": "다꾸 성향",
+    "expandedKeywords": ["다이어리 꾸미기", "스티커 취향", "문구 덕후", "기록 습관", "취미 테스트", "감성 기록"],
+    "category": "취미",
+    "intentNote": "다이어리를 실용적으로 쓰는지 꾸미는 재미로 쓰는지 확인"
+  },
+  {
+    "title": "필사 지속력 테스트",
+    "slug": "copywriting-practice-type",
+    "mainKeyword": "필사 성향",
+    "expandedKeywords": ["필사 습관", "글쓰기 취미", "문장 수집", "집중력", "기록 취미", "손글씨"],
+    "category": "취미",
+    "intentNote": "문장을 옮겨 적는 취미에서 꾸준함과 감상 방식 확인"
+  },
+  {
+    "title": "식물 돌봄 성향 테스트",
+    "slug": "plant-care-style",
+    "mainKeyword": "식물 돌봄 성향",
+    "expandedKeywords": ["반려식물", "식물 키우기", "물주기 습관", "홈가드닝", "식집사", "취미 생활"],
+    "category": "취미",
+    "intentNote": "식물을 꼼꼼히 돌보는지 자연스럽게 키우는지 확인"
+  },
+  {
+    "title": "퍼즐 해결 방식 테스트",
+    "slug": "puzzle-solving-style",
+    "mainKeyword": "퍼즐 성향",
+    "expandedKeywords": ["퍼즐 취미", "문제 해결", "집중 취미", "논리력", "관찰력", "두뇌 게임"],
+    "category": "취미",
+    "intentNote": "퍼즐을 풀 때 직관형인지 분석형인지 확인"
+  },
+  {
+    "title": "향 취향으로 보는 휴식 테스트",
+    "slug": "scent-rest-type",
+    "mainKeyword": "향 취향",
+    "expandedKeywords": ["향수 취향", "디퓨저", "아로마", "휴식 방식", "감각 취향", "분위기 만들기"],
+    "category": "취미",
+    "intentNote": "좋아하는 향과 공간 분위기로 휴식 성향 분석"
+  }
+]

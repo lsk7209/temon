@@ -1,21 +1,19 @@
-# Status | 마지막: 2026-05-03
+# Status | 마지막: 2026-05-04
 ## 현재 작업
-콘텐츠 최적화 1차 완료, 검증 완료
+신규 퀴즈 100개 DB draft 생성 완료, 품질 검증 통과
 ## 최근 변경 (최근 5개만)
-- 05-03: meal-frequency/pacing/order/balance/duration 랜딩에 심층 본문 섹션 추가
-- 05-03: lib/extended-content에 식사 습관 5개 테스트 고유 본문/FAQ/한계 문구 추가
-- 05-03: GA4 측정 ID G-L167CCPS8E 확인 및 관리자 표시값 갱신
-- 05-03: 홈 메타 title/description을 GSC 키워드 중심으로 정리
-- 05-03: NTRP 결과 페이지 Recharts/PDF/이미지 저장 라이브러리 지연 로딩 적용
+- 05-04: 신규 퀴즈 주제 100개를 `test_queue`에 중복 없이 등록
+- 05-04: `process-queue`에 Gemini env fallback, 503 재시도, draft 기본 저장 적용
+- 05-04: 퀴즈 품질 게이트 추가: 12문항, 16결과, MBTI 축 3:3:3:3 검증
+- 05-04: 품질 실패 큐 자동 복구 후 100개 전부 draft 재생성
+- 05-04: 초기에 published된 품질 미달 이메일 테스트 삭제 후 품질 게이트로 재생성
 ## TODO
-- [ ] Vercel Env에 TURSO_DATABASE_URL, TURSO_AUTH_TOKEN 등 DB env 누락 여부 확인
-- [ ] GSC에서 `mbti 테스트 모음`, `무료 mbti 테스트` CTR 변화를 2~4주 후 확인
-- [ ] 남은 얇은 콘텐츠 페이지를 CONTENT_AUDIT.md 기준으로 순차 보강
+- [ ] 100개 draft 중 선별 공개 또는 일괄 publish 정책 결정
+- [ ] GSC에서 신규 공개 후 2~4주 CTR/노출 변화 확인
+- [ ] 기존 상위 퀴즈 콘텐츠를 `CONTENT_AUDIT.md` 기준으로 보강
 ## 결정사항
-- AdSense: Next Script 대신 직접 script 삽입으로 경고 제거
-- NTRP 결과: 차트/내보내기 라이브러리는 첫 로드가 아닌 사용 시점에 로드
-- Analytics: GA4/WebVitals는 유지, Cloudflare 전용 `/analytics.js` 호출은 제거
-- 콘텐츠: 얇은 페이지는 공통 템플릿 반복보다 slug별 고유 본문을 우선 추가
+- 신규 퀴즈: 대량 생성 결과는 기본 draft 저장, 검증 후 공개
+- 품질 기준: slug/가벼운 표기 오류는 자동 보정, 축 불균형/결과 누락은 저장 차단
 ## 주의
-- build 시 TURSO_DATABASE_URL 미설정 경고가 남음. 런타임 DB 기능에는 env 필요
-- 작업 전부터 존재한 미완료 변경 파일은 되돌리지 않음
+- 기존 미완료 변경 파일은 되돌리지 않음
+- PowerShell 빈 TURSO env 방지를 위해 dotenv override 유지
