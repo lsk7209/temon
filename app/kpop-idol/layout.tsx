@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "K-팝 아이돌 포지션 테스트 - 아이돌 그룹에서 내 포지션은?",
     description: "카리스마 리더부터 4차원 막내까지, 8개의 아이돌 상황에서 당신의 선택으로 포지션을 찾아보세요.",
     type: "website",
-    url: "https://www.temon.kr/kpop-idol",
+    url: "https://temon.kr/kpop-idol",
   },
 }
 

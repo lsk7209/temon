@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "피부 루틴 성향 테스트 결과 | 나의 스킨케어 유형 확인",
     description: "당신의 피부 루틴 성향을 확인하고, 맞춤형 스킨케어 가이드를 받아보세요.",
     type: "website",
-    url: "https://www.temon.kr/tests/skin-routine/test/result",
+    url: "https://temon.kr/tests/skin-routine/test/result",
   },
 }
 

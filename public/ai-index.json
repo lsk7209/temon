@@ -2,48 +2,1317 @@
   "site": {
     "name": "테몬 MBTI",
     "url": "https://temon.kr",
-    "description": "한국 최대 무료 MBTI 성격 테스트 플랫폼. 200개 이상의 다양한 주제 테스트 제공",
+    "description": "한국 무료 MBTI 성격 테스트 플랫폼. 200개 이상의 다양한 주제 테스트 제공",
     "language": "ko",
-    "lastUpdated": "2026-04-16"
+    "lastUpdated": "2026-05-03"
   },
   "pages": [
-    { "url": "/", "title": "테몬 MBTI - 무료 성격 테스트 모음", "type": "home" },
-    { "url": "/tests", "title": "전체 테스트 목록", "type": "listing" },
-    { "url": "/privacy", "title": "개인정보처리방침", "type": "legal" },
-    { "url": "/terms", "title": "이용약관", "type": "legal" }
+    {
+      "url": "/",
+      "title": "테몬 MBTI - 무료 성격 테스트 모음",
+      "type": "home"
+    },
+    {
+      "url": "/tests",
+      "title": "전체 테스트 목록",
+      "type": "listing"
+    },
+    {
+      "url": "/about",
+      "title": "테몬 소개",
+      "type": "page"
+    },
+    {
+      "url": "/contact",
+      "title": "연락처",
+      "type": "page"
+    },
+    {
+      "url": "/privacy",
+      "title": "개인정보처리방침",
+      "type": "legal"
+    },
+    {
+      "url": "/terms",
+      "title": "이용약관",
+      "type": "legal"
+    }
   ],
   "tests": [
-    { "id": "coffee-mbti", "title": "커피 MBTI", "description": "커피 취향으로 알아보는 성격 유형", "category": "음식", "url": "/tests/coffee-mbti" },
-    { "id": "ramen-mbti", "title": "라면 MBTI", "description": "라면 취향으로 알아보는 나의 성격", "category": "음식", "url": "/tests/ramen-mbti" },
-    { "id": "pet-mbti", "title": "반려동물 MBTI", "description": "반려동물 성향으로 알아보는 성격 테스트", "category": "라이프", "url": "/tests/pet-mbti" },
-    { "id": "alarm-habit", "title": "알람 습관 MBTI", "description": "아침 알람으로 보는 성격 유형", "category": "라이프", "url": "/tests/alarm-habit" },
-    { "id": "study-mbti", "title": "공부 MBTI", "description": "나만의 공부 스타일 찾기", "category": "라이프", "url": "/tests/study-mbti" },
-    { "id": "meeting-villain", "title": "회의 빌런 테스트", "description": "회의 시간, 당신의 역할과 행동 패턴으로 알아보는 16가지 유형", "category": "직장", "url": "/tests/meeting-villain" },
-    { "id": "breakup-style", "title": "이별 후유증 유형", "description": "이별 후 나의 행동과 감정 처리를 통해 알아보는 극복 스타일", "category": "연애", "url": "/tests/breakup-style" },
-    { "id": "hotel-breakfast", "title": "호텔 조식 공략법", "description": "뷔페에서 음식을 담고 먹는 스타일로 알아보는 여행 성향", "category": "여행", "url": "/tests/hotel-breakfast" },
-    { "id": "investment-style", "title": "주식 투자 스타일", "description": "나는 야수의 심장일까, 소심한 개미일까? 투자 성향 분석", "category": "재테크", "url": "/tests/investment-style" },
-    { "id": "zombie-survival", "title": "좀비 아포칼립스 생존", "description": "좀비 사태 발생 시 나의 생존 확률과 역할 분석", "category": "상상", "url": "/tests/zombie-survival" },
-    { "id": "kdrama-mbti", "title": "K-드라마 클리셰 테스트", "description": "드라마 속 당신은 어떤 캐릭터?", "category": "엔터", "url": "/tests/kdrama-mbti" },
-    { "id": "kdrama-character", "title": "K-드라마 캐릭터 유형", "description": "내가 드라마에 나온다면 어떤 캐릭터?", "category": "엔터", "url": "/tests/kdrama-character" },
-    { "id": "kpop-idol", "title": "K-팝 아이돌 포지션", "description": "아이돌 그룹에서 내 포지션은?", "category": "엔터", "url": "/tests/kpop-idol" },
-    { "id": "snowwhite-mbti", "title": "백설공주 에겐테토", "description": "백설공주로 알아보는 에겐 vs 테토 성향", "category": "상상", "url": "/tests/snowwhite-mbti" },
-    { "id": "ntrp-test", "title": "NTRP 테스트", "description": "테니스 실력 레벨 측정", "category": "스포츠", "url": "/tests/ntrp-test" },
-    { "id": "spending-style", "title": "소비 성향 테스트", "description": "내 돈 쓰는 스타일 분석", "category": "재테크", "url": "/tests/spending-style" },
-    { "id": "sleep-chronotype", "title": "수면 크로노타입", "description": "아침형 vs 저녁형 수면 유형 분석", "category": "라이프", "url": "/tests/sleep-chronotype" },
-    { "id": "skin-routine", "title": "피부 루틴 성향", "description": "스킨케어 루틴으로 알아보는 성향", "category": "라이프", "url": "/tests/skin-routine" },
-    { "id": "spice-tolerance", "title": "맵기 내성 테스트", "description": "나의 매운 음식 내성 레벨은?", "category": "음식", "url": "/tests/spice-tolerance" },
-    { "id": "phone-style", "title": "스마트폰 사용 스타일", "description": "폰 사용 패턴으로 알아보는 성격", "category": "라이프", "url": "/tests/phone-style" },
-    { "id": "phone-usage", "title": "스마트폰 사용 습관", "description": "스마트폰 습관으로 보는 성격 유형", "category": "라이프", "url": "/tests/phone-usage" },
-    { "id": "travel-style", "title": "여행 스타일 테스트", "description": "여행 짐 싸는 스타일로 보는 성격", "category": "여행", "url": "/tests/travel-style" },
-    { "id": "shopping-style", "title": "쇼핑 스타일 테스트", "description": "쇼핑 패턴으로 알아보는 성격 유형", "category": "라이프", "url": "/tests/shopping-style" },
-    { "id": "cafe-style", "title": "카페 스타일 성격 테스트", "description": "카페에서의 행동으로 보는 성격", "category": "음식", "url": "/tests/cafe-style" },
-    { "id": "clean-style", "title": "방 청소 스타일 테스트", "description": "청소 스타일로 알아보는 성격 유형", "category": "라이프", "url": "/tests/clean-style" },
-    { "id": "music-taste", "title": "음악 취향 성격 테스트", "description": "음악 취향으로 알아보는 성격", "category": "엔터", "url": "/tests/music-taste" },
-    { "id": "food-delivery", "title": "배달 음식 선택 테스트", "description": "배달 앱 사용 패턴으로 보는 성격", "category": "음식", "url": "/tests/food-delivery" },
-    { "id": "dessert-style", "title": "디저트 취향 성격 테스트", "description": "디저트 선택으로 알아보는 성격", "category": "음식", "url": "/tests/dessert-style" },
-    { "id": "kakao-reply-style", "title": "카카오 답장 스타일", "description": "카톡 답장 패턴으로 보는 성격 유형", "category": "연애", "url": "/tests/kakao-reply-style" },
-    { "id": "game-play-style", "title": "게임 플레이 스타일", "description": "게임하는 방식으로 알아보는 성격", "category": "엔터", "url": "/tests/game-play-style" }
+    {
+      "id": "commute-style",
+      "title": "🚇 출퇴근 스타일 테스트",
+      "description": "출퇴근길 선택으로 알아보는 16가지 통근 캐릭터",
+      "category": "직장",
+      "url": "/tests/commute-style"
+    },
+    {
+      "id": "meeting-villain",
+      "title": "😈 회의 빌런 테스트",
+      "description": "회의 시간, 당신의 역할과 행동 패턴으로 알아보는 16가지 유형",
+      "category": "직장",
+      "url": "/tests/meeting-villain"
+    },
+    {
+      "id": "breakup-style",
+      "title": "💔 이별 후유증 유형",
+      "description": "이별 후 나의 행동과 감정 처리를 통해 알아보는 극복 스타일",
+      "category": "연애",
+      "url": "/tests/breakup-style"
+    },
+    {
+      "id": "hotel-breakfast",
+      "title": "🥞 호텔 조식 공략법",
+      "description": "뷔페에서 음식을 담고 먹는 스타일로 알아보는 여행 성향",
+      "category": "여행",
+      "url": "/tests/hotel-breakfast"
+    },
+    {
+      "id": "investment-style",
+      "title": "📈 주식 투자 스타일",
+      "description": "나는 야수의 심장일까, 소심한 개미일까? 투자 성향 분석",
+      "category": "재테크",
+      "url": "/tests/investment-style"
+    },
+    {
+      "id": "zombie-survival",
+      "title": "🧟‍♂️ 좀비 아포칼립스 생존",
+      "description": "좀비 사태 발생 시 나의 생존 확률과 역할 분석",
+      "category": "상상",
+      "url": "/tests/zombie-survival"
+    },
+    {
+      "id": "coffee-mbti",
+      "title": "☕ 커피 MBTI",
+      "description": "당신의 커피 취향으로 알아보는 성격 유형",
+      "category": "음식",
+      "url": "/tests/coffee-mbti"
+    },
+    {
+      "id": "kdrama-mbti",
+      "title": "🎬 K-드라마 클리셰",
+      "description": "드라마 속 당신은 어떤 캐릭터?",
+      "category": "엔터테인먼트",
+      "url": "/tests/kdrama-mbti"
+    },
+    {
+      "id": "snowwhite-mbti",
+      "title": "🍎 백설공주 에겐테토",
+      "description": "백설공주로 알아보는 에겐 vs 테토 성향",
+      "category": "동화",
+      "url": "/tests/snowwhite-mbti"
+    },
+    {
+      "id": "ramen-mbti",
+      "title": "🍜 라면 MBTI",
+      "description": "라면 취향으로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/ramen-mbti"
+    },
+    {
+      "id": "pet-mbti",
+      "title": "🐾 반려동물 MBTI",
+      "description": "반려동물 성향으로 알아보는 성격 테스트",
+      "category": "관계",
+      "url": "/tests/pet-mbti"
+    },
+    {
+      "id": "study-mbti",
+      "title": "📚 공부 MBTI",
+      "description": "나만의 공부 스타일 찾기",
+      "category": "학습",
+      "url": "/tests/study-mbti"
+    },
+    {
+      "id": "alarm-habit",
+      "title": "⏰ 알람 습관",
+      "description": "아침 알람으로 보는 성격 유형",
+      "category": "생활",
+      "url": "/tests/alarm-habit"
+    },
+    {
+      "id": "ntrp-test",
+      "title": "🎾 NTRP 테스트",
+      "description": "테니스 실력 레벨 측정",
+      "category": "스포츠",
+      "url": "/tests/ntrp-test"
+    },
+    {
+      "id": "kpop-idol",
+      "title": "🎤 K-팝 아이돌 포지션",
+      "description": "아이돌 그룹에서 내 포지션은?",
+      "category": "엔터테인먼트",
+      "url": "/tests/kpop-idol"
+    },
+    {
+      "id": "movie-theater-style",
+      "title": "🎬 영화관 관람 스타일",
+      "description": "영화관에서도 성격이 보인다고?",
+      "category": "엔터테인먼트",
+      "url": "/tests/movie-theater-style"
+    },
+    {
+      "id": "jachui",
+      "title": "🍳 자취 밥상 스타일",
+      "description": "오늘도 자취생의 밥상은 드라마다",
+      "category": "생활",
+      "url": "/tests/jachui"
+    },
+    {
+      "id": "music-taste",
+      "title": "🎧 음악 취향 성격 테스트",
+      "description": "내 플레이리스트 속 성격, 당신은 어떤 음악 타입?",
+      "category": "엔터테인먼트",
+      "url": "/tests/music-taste"
+    },
+    {
+      "id": "cafe-style",
+      "title": "☕ 카페 스타일 성격 테스트",
+      "description": "카페에 가면 드러나는 당신의 성격",
+      "category": "생활",
+      "url": "/tests/cafe-style"
+    },
+    {
+      "id": "travel-style",
+      "title": "🧳 여행 짐 스타일 테스트",
+      "description": "여행 떠나기 전, 당신은 어떤 짐꾼인가요?",
+      "category": "생활",
+      "url": "/tests/travel-style"
+    },
+    {
+      "id": "phone-style",
+      "title": "📱 스마트폰 사용 습관 테스트",
+      "description": "스마트폰 사용 습관으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/phone-style"
+    },
+    {
+      "id": "phone-usage",
+      "title": "📱 스마트폰 사용 스타일",
+      "description": "알림, 앱 정리, 집중, 커뮤니케이션 습관으로 알아보는 나의 성향",
+      "category": "생활",
+      "url": "/tests/phone-usage"
+    },
+    {
+      "id": "food-delivery",
+      "title": "🍕 배달 음식 선택 테스트",
+      "description": "배달 앱을 켜는 순간, 당신의 성격이 드러난다",
+      "category": "생활",
+      "url": "/tests/food-delivery"
+    },
+    {
+      "id": "shopping-style",
+      "title": "🛍️ 쇼핑 스타일 성격 테스트",
+      "description": "쇼핑할 때마다 드러나는 진짜 나의 성격",
+      "category": "생활",
+      "url": "/tests/shopping-style"
+    },
+    {
+      "id": "dessert-style",
+      "title": "🍰 디저트 취향 성격 테스트",
+      "description": "디저트를 고르는 순간, 당신의 성격이 드러난다",
+      "category": "음식",
+      "url": "/tests/dessert-style"
+    },
+    {
+      "id": "clean-style",
+      "title": "🧹 방 청소 스타일 테스트",
+      "description": "청소하는 모습으로 알아보는 나의 성격!",
+      "category": "생활",
+      "url": "/tests/clean-style"
+    },
+    {
+      "id": "evening-routine",
+      "title": "🌙 퇴근 후 루틴 테스트",
+      "description": "퇴근하고 집에 와서 하는 ",
+      "category": "생활",
+      "url": "/tests/evening-routine"
+    },
+    {
+      "id": "skin-routine",
+      "title": "✨ 피부 루틴 성향",
+      "description": "당신의 스킨케어 습관으로 알아보는 성향",
+      "category": "뷰티",
+      "url": "/tests/skin-routine"
+    },
+    {
+      "id": "spending-style",
+      "title": "💰 소비 성향 테스트",
+      "description": "계획성, 즉흥성, 비교 습관으로 알아보는 나의 소비 패턴",
+      "category": "생활",
+      "url": "/tests/spending-style"
+    },
+    {
+      "id": "sleep-chronotype",
+      "title": "🌙 수면 크로노타입",
+      "description": "당신의 수면 리듬으로 알아보는 성향",
+      "category": "생활",
+      "url": "/tests/sleep-chronotype"
+    },
+    {
+      "id": "chicken-style",
+      "title": "🍗 치킨 주문 스타일 테스트",
+      "description": "치킨 주문 습관으로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/chicken-style"
+    },
+    {
+      "id": "convenience-snack",
+      "title": "🏪 편의점 간식 루틴 테스트",
+      "description": "편의점 간식 선택 루틴으로 성향을 분석합니다",
+      "category": "생활",
+      "url": "/tests/convenience-snack"
+    },
+    {
+      "id": "cstore-routine",
+      "title": "🏬 편의점 루틴 테스트",
+      "description": "편의점 선택 습관으로 보는 16유형",
+      "category": "생활",
+      "url": "/tests/cstore-routine"
+    },
+    {
+      "id": "cvs-combo",
+      "title": "🛒 편의점 조합 스타일 테스트",
+      "description": "편의점 선택 습관으로 16유형 성향을 분석합니다",
+      "category": "생활",
+      "url": "/tests/cvs-combo"
+    },
+    {
+      "id": "kakao-reply-style",
+      "title": "💬 카톡 답장 스타일 테스트",
+      "description": "답장 속도·말투·읽씹 습관으로 보는 소통 성향",
+      "category": "생활",
+      "url": "/tests/kakao-reply-style"
+    },
+    {
+      "id": "love-texting-style",
+      "title": "💕 연애 연락 텐션 테스트",
+      "description": "연락 속도·길이·톤으로 보는 연애 커뮤니케이션 유형",
+      "category": "관계",
+      "url": "/tests/love-texting-style"
+    },
+    {
+      "id": "lunch-decider",
+      "title": "🍱 회사 점심 뭐 먹지 테스트",
+      "description": "직장인 점심 의사결정 스타일을 분석합니다",
+      "category": "생활",
+      "url": "/tests/lunch-decider"
+    },
+    {
+      "id": "youtube-habit",
+      "title": "📺 유튜브 시청 습관 테스트",
+      "description": "유튜브 시청 습관으로 16유형 성향을 분석합니다",
+      "category": "엔터테인먼트",
+      "url": "/tests/youtube-habit"
+    },
+    {
+      "id": "love-reaction",
+      "title": "💕 연애 상황 반응 테스트",
+      "description": "연락 습관, 갈등 해결, 데이트 운영, 감정 표현으로 16유형 분석",
+      "category": "관계",
+      "url": "/tests/love-reaction"
+    },
+    {
+      "id": "ott-habits",
+      "title": "📺 OTT 시청 습관 테스트",
+      "description": "정주행 방식, 추천 활용, 스포 대처, 감상 기록 습관으로 16유형 분석",
+      "category": "엔터테인먼트",
+      "url": "/tests/ott-habits"
+    },
+    {
+      "id": "bungeoppang",
+      "title": "🐟 붕어빵 취향 테스트",
+      "description": "맛 선택, 구매 방식, 먹는 습관으로 16유형 분석",
+      "category": "음식",
+      "url": "/tests/bungeoppang"
+    },
+    {
+      "id": "kdrama-character",
+      "title": "🎬 K-드라마 인물 매칭 테스트",
+      "description": "드라마 속 상황 선택으로 내 캐릭터 유형 찾기",
+      "category": "엔터테인먼트",
+      "url": "/tests/kdrama-character"
+    },
+    {
+      "id": "hamburger-combo",
+      "title": "🍔 햄버거 조합 스타일 테스트",
+      "description": "패티, 빵, 야채, 소스 선택으로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/hamburger-combo"
+    },
+    {
+      "id": "pizza-topping",
+      "title": "🍕 피자 토핑 선택 테스트",
+      "description": "토핑 선택 습관으로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/pizza-topping"
+    },
+    {
+      "id": "instagram-story",
+      "title": "📸 인스타그램 스토리 스타일 테스트",
+      "description": "스토리 올리는 방식으로 알아보는 나의 성격",
+      "category": "엔터테인먼트",
+      "url": "/tests/instagram-story"
+    },
+    {
+      "id": "shower-habit",
+      "title": "🚿 샤워 습관 테스트",
+      "description": "샤워 시간, 순서, 온도로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/shower-habit"
+    },
+    {
+      "id": "gift-wrapping",
+      "title": "🎁 포장지 뜯는 스타일 테스트",
+      "description": "포장지 뜯는 방식으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/gift-wrapping"
+    },
+    {
+      "id": "karaoke-song",
+      "title": "🎤 노래방 곡 선택 테스트",
+      "description": "노래방 곡 선택 방식으로 알아보는 나의 성격",
+      "category": "엔터테인먼트",
+      "url": "/tests/karaoke-song"
+    },
+    {
+      "id": "soup-vs-bibim",
+      "title": "🍜 국물 vs 비빔 스타일 테스트",
+      "description": "국물파 vs 비빔파로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/soup-vs-bibim"
+    },
+    {
+      "id": "lunchbox-style",
+      "title": "🍱 도시락 싸는 스타일 테스트",
+      "description": "도시락 구성, 포장으로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/lunchbox-style"
+    },
+    {
+      "id": "game-play-style",
+      "title": "🎮 게임 플레이 스타일 테스트",
+      "description": "게임 플레이 방식으로 알아보는 나의 성격",
+      "category": "엔터테인먼트",
+      "url": "/tests/game-play-style"
+    },
+    {
+      "id": "gift-choosing",
+      "title": "💝 선물 고르는 스타일 테스트",
+      "description": "선물 선택 기준, 포장 방식으로 알아보는 나의 성격",
+      "category": "관계",
+      "url": "/tests/gift-choosing"
+    },
+    {
+      "id": "chicken-vs-jjimdak",
+      "title": "🍗 찜닭 vs 치킨 선택 테스트",
+      "description": "찜닭파 vs 치킨파로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/chicken-vs-jjimdak"
+    },
+    {
+      "id": "cake-cutting",
+      "title": "🍰 케이크 자르는 스타일 테스트",
+      "description": "케이크 자르는 방식, 조각 선택으로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/cake-cutting"
+    },
+    {
+      "id": "kimbap-ingredient",
+      "title": "🍙 김밥 재료 선택 테스트",
+      "description": "김밥 재료 선택으로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/kimbap-ingredient"
+    },
+    {
+      "id": "stew-vs-soup",
+      "title": "🍲 찌개 vs 국물 스타일 테스트",
+      "description": "찌개 종류 선택, 국물 마시는 습관으로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/stew-vs-soup"
+    },
+    {
+      "id": "salad-dressing",
+      "title": "🥗 샐러드 드레싱 선택 테스트",
+      "description": "샐러드 드레싱 선택으로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/salad-dressing"
+    },
+    {
+      "id": "meat-grilling",
+      "title": "🍖 고기 굽는 스타일 테스트",
+      "description": "고기 굽는 방식, 익힘 정도 선호로 알아보는 나의 성격",
+      "category": "음식",
+      "url": "/tests/meat-grilling"
+    },
+    {
+      "id": "bed-making",
+      "title": "🛏️ 침대 정리 스타일 테스트",
+      "description": "침대 정리 습관, 베개 배치로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/bed-making"
+    },
+    {
+      "id": "door-closing",
+      "title": "🚪 문 닫는 스타일 테스트",
+      "description": "문 닫는 방식, 잠금 습관으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/door-closing"
+    },
+    {
+      "id": "bathroom-habit",
+      "title": "🚿 화장실 사용 습관 테스트",
+      "description": "화장실 사용 패턴, 정리 습관으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/bathroom-habit"
+    },
+    {
+      "id": "sock-wearing",
+      "title": "🧦 양말 신는 스타일 테스트",
+      "description": "양말 선택, 신는 방식으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/sock-wearing"
+    },
+    {
+      "id": "clothing-order",
+      "title": "👔 옷 입는 순서 테스트",
+      "description": "옷 입는 순서, 스타일로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/clothing-order"
+    },
+    {
+      "id": "subway-vs-bus",
+      "title": "🚇 지하철 vs 버스 선택 테스트",
+      "description": "지하철 vs 버스 선택 기준으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/subway-vs-bus"
+    },
+    {
+      "id": "bag-organizing",
+      "title": "🎒 가방 정리 스타일 테스트",
+      "description": "가방 정리 방식, 스타일로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/bag-organizing"
+    },
+    {
+      "id": "laundry-habit",
+      "title": "🧺 세탁 습관 테스트",
+      "description": "세탁 방식, 습관으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/laundry-habit"
+    },
+    {
+      "id": "chair-sitting",
+      "title": "🪑 의자 앉는 스타일 테스트",
+      "description": "의자 앉는 방식, 스타일로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/chair-sitting"
+    },
+    {
+      "id": "water-drinking",
+      "title": "💧 물 마시는 습관 테스트",
+      "description": "물 마시는 방식, 습관으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/water-drinking"
+    },
+    {
+      "id": "mirror-habit",
+      "title": "🪞 거울 보는 습관 테스트",
+      "description": "거울 보는 방식, 습관으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/mirror-habit"
+    },
+    {
+      "id": "book-reading",
+      "title": "📚 책 읽는 습관 테스트",
+      "description": "책 읽는 방식, 습관으로 알아보는 나의 성격",
+      "category": "생활",
+      "url": "/tests/book-reading"
+    },
+    {
+      "id": "food-temperature",
+      "title": "🌡️ 음식 온도 선호도 테스트",
+      "description": "뜨거운 음식 vs 차가운 음식 선호로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-temperature"
+    },
+    {
+      "id": "food-texture",
+      "title": "🍮 음식 질감 선호도 테스트",
+      "description": "부드러운 vs 쫄깃한 질감 선호로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-texture"
+    },
+    {
+      "id": "food-presentation",
+      "title": "🎨 음식 플레이팅 선호도 테스트",
+      "description": "음식 모양과 배치 선호로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-presentation"
+    },
+    {
+      "id": "food-combination",
+      "title": "🍱 음식 조합 스타일 테스트",
+      "description": "음식 섞어 먹기 vs 따로 먹기로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-combination"
+    },
+    {
+      "id": "food-timing",
+      "title": "⏰ 식사 시간대 테스트",
+      "description": "식사 시간대와 규칙성으로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-timing"
+    },
+    {
+      "id": "food-waste",
+      "title": "♻️ 음식 낭비 대처 테스트",
+      "description": "음식 남기고 버리는 방식으로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-waste"
+    },
+    {
+      "id": "food-allergy",
+      "title": "⚠️ 알레르기 대처 스타일 테스트",
+      "description": "알레르기 음식 피하는 방식으로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-allergy"
+    },
+    {
+      "id": "food-spiciness",
+      "title": "🌶️ 매운맛 선호도 테스트",
+      "description": "매운맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-spiciness"
+    },
+    {
+      "id": "food-sweetness",
+      "title": "🍬 단맛 선호도 테스트",
+      "description": "단맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-sweetness"
+    },
+    {
+      "id": "food-sourness",
+      "title": "🍋 신맛 선호도 테스트",
+      "description": "신맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-sourness"
+    },
+    {
+      "id": "food-saltiness",
+      "title": "🧂 짠맛 선호도 테스트",
+      "description": "짠맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-saltiness"
+    },
+    {
+      "id": "food-bitterness",
+      "title": "☕ 쓴맛 선호도 테스트",
+      "description": "쓴맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-bitterness"
+    },
+    {
+      "id": "food-umami",
+      "title": "🍖 감칠맛 선호도 테스트",
+      "description": "감칠맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-umami"
+    },
+    {
+      "id": "food-crispy",
+      "title": "🍪 바삭함 선호도 테스트",
+      "description": "바삭함을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-crispy"
+    },
+    {
+      "id": "food-chewy",
+      "title": "💗 쫄깃함 선호도 테스트",
+      "description": "쫄깃함을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-chewy"
+    },
+    {
+      "id": "food-creamy",
+      "title": "🍰 부드러움 선호도 테스트",
+      "description": "부드러움을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-creamy"
+    },
+    {
+      "id": "food-crunchy",
+      "title": "🥗 아삭함 선호도 테스트",
+      "description": "아삭함을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-crunchy"
+    },
+    {
+      "id": "food-portion",
+      "title": "🍽️ 음식 양 선호도 테스트",
+      "description": "음식 양을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-portion"
+    },
+    {
+      "id": "food-plating",
+      "title": "🎨 음식 접시 배치 스타일 테스트",
+      "description": "음식 접시 배치 방식을 통해 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-plating"
+    },
+    {
+      "id": "food-garnishing-style",
+      "title": "🌿 음식 장식 선호도 테스트",
+      "description": "음식 장식을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-garnishing-style"
+    },
+    {
+      "id": "food-color-preference",
+      "title": "🌈 음식 색상 선호도 테스트",
+      "description": "음식 색상을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-color-preference"
+    },
+    {
+      "id": "food-aroma",
+      "title": "🌸 음식 향 선호도 테스트",
+      "description": "음식 향을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-aroma"
+    },
+    {
+      "id": "food-mixing",
+      "title": "🍽️ 음식 섞어 먹기 스타일 테스트",
+      "description": "음식을 섞어 먹는 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-mixing"
+    },
+    {
+      "id": "food-layering",
+      "title": "📚 음식 층별 먹기 스타일 테스트",
+      "description": "음식을 층별로 먹는 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-layering"
+    },
+    {
+      "id": "food-dipping",
+      "title": "💧 찍어 먹기 스타일 테스트",
+      "description": "음식을 찍어 먹는 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-dipping"
+    },
+    {
+      "id": "breakfast-preference",
+      "title": "🌅 아침 식사 선호도 테스트",
+      "description": "아침 식사 선호도로 알아보는 나의 성격 유형",
+      "category": "식사 습관",
+      "url": "/tests/breakfast-preference"
+    },
+    {
+      "id": "lunch-preference",
+      "title": "🍱 점심 식사 선호도 테스트",
+      "description": "점심 식사 선호도로 알아보는 나의 성격 유형",
+      "category": "식사 습관",
+      "url": "/tests/lunch-preference"
+    },
+    {
+      "id": "dinner-preference",
+      "title": "🌙 저녁 식사 선호도 테스트",
+      "description": "저녁 식사 선호도로 알아보는 나의 성격 유형",
+      "category": "식사 습관",
+      "url": "/tests/dinner-preference"
+    },
+    {
+      "id": "snack-preference",
+      "title": "🍬 간식 선호도 테스트",
+      "description": "간식 선호도로 알아보는 나의 성격 유형",
+      "category": "식사 습관",
+      "url": "/tests/snack-preference"
+    },
+    {
+      "id": "midnight-snack",
+      "title": "🌙 야식 선호도 테스트",
+      "description": "야식 선호도로 알아보는 나의 성격 유형",
+      "category": "식사 습관",
+      "url": "/tests/midnight-snack"
+    },
+    {
+      "id": "cooking-method",
+      "title": "👨‍🍳 조리 방법 선호도 테스트",
+      "description": "조리 방법 선호도로 알아보는 나의 성격 유형",
+      "category": "요리 및 조리",
+      "url": "/tests/cooking-method"
+    },
+    {
+      "id": "cooking-time",
+      "title": "⏱️ 조리 시간 선호도 테스트",
+      "description": "조리 시간 선호도로 알아보는 나의 성격 유형",
+      "category": "요리 및 조리",
+      "url": "/tests/cooking-time"
+    },
+    {
+      "id": "cooking-complexity",
+      "title": "🎯 요리 복잡도 선호도 테스트",
+      "description": "요리 복잡도 선호도로 알아보는 나의 성격 유형",
+      "category": "요리 및 조리",
+      "url": "/tests/cooking-complexity"
+    },
+    {
+      "id": "cooking-experiment",
+      "title": "🧪 요리 실험 스타일 테스트",
+      "description": "요리 실험 스타일로 알아보는 나의 성격 유형",
+      "category": "요리 및 조리",
+      "url": "/tests/cooking-experiment"
+    },
+    {
+      "id": "cooking-recipe",
+      "title": "📖 레시피 사용 스타일 테스트",
+      "description": "레시피 사용 스타일로 알아보는 나의 성격 유형",
+      "category": "요리 및 조리",
+      "url": "/tests/cooking-recipe"
+    },
+    {
+      "id": "cooking-measurement",
+      "title": "⚖️ 계량 스타일 테스트",
+      "description": "계량 스타일로 알아보는 나의 성격 유형",
+      "category": "요리 및 조리",
+      "url": "/tests/cooking-measurement"
+    },
+    {
+      "id": "food-label",
+      "title": "🏷️ 식품 라벨 확인 스타일 테스트",
+      "description": "식품 라벨 읽는 습관으로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-label"
+    },
+    {
+      "id": "food-storage",
+      "title": "❄️ 음식 보관 스타일 테스트",
+      "description": "냉장고 정리와 보관 방식으로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-storage"
+    },
+    {
+      "id": "food-reheating",
+      "title": "🔥 음식 재가열 스타일 테스트",
+      "description": "남은 음식 데우는 방식으로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-reheating"
+    },
+    {
+      "id": "food-seasoning",
+      "title": "🧂 양념 사용 스타일 테스트",
+      "description": "양념 사용량과 방식으로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-seasoning"
+    },
+    {
+      "id": "food-garnishing",
+      "title": "🌿 음식 장식 스타일 테스트",
+      "description": "음식 꾸미기와 장식 선호로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-garnishing"
+    },
+    {
+      "id": "food-ordering",
+      "title": "📱 주문 방식 테스트",
+      "description": "직접 주문 vs 앱 주문 선호로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-ordering"
+    },
+    {
+      "id": "food-review",
+      "title": "⭐ 음식 리뷰 작성 스타일 테스트",
+      "description": "음식 리뷰 쓰는 방식으로 16유형 성향을 분석합니다",
+      "category": "음식",
+      "url": "/tests/food-review"
+    },
+    {
+      "id": "cooking-seasoning",
+      "title": "🌶️ 양념 사용 스타일 테스트",
+      "description": "양념 사용 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-seasoning"
+    },
+    {
+      "id": "cooking-garnishing",
+      "title": "✨ 음식 장식 스타일 테스트",
+      "description": "음식 장식 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-garnishing"
+    },
+    {
+      "id": "cooking-presentation",
+      "title": "🎨 플레이팅 스타일 테스트",
+      "description": "플레이팅 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-presentation"
+    },
+    {
+      "id": "cooking-cleanup",
+      "title": "🧹 요리 후 정리 스타일 테스트",
+      "description": "요리 후 정리 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-cleanup"
+    },
+    {
+      "id": "cooking-solo",
+      "title": "🧑‍🍳 혼자 요리 스타일 테스트",
+      "description": "혼자 요리 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-solo"
+    },
+    {
+      "id": "cooking-music",
+      "title": "🎵 요리할 때 음악 스타일 테스트",
+      "description": "요리할 때 음악 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-music"
+    },
+    {
+      "id": "cooking-timing",
+      "title": "⏰ 요리 타이밍 스타일 테스트",
+      "description": "요리 타이밍 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-timing"
+    },
+    {
+      "id": "cooking-multitask",
+      "title": "🔄 요리 멀티태스킹 스타일 테스트",
+      "description": "요리 멀티태스킹 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-multitask"
+    },
+    {
+      "id": "cooking-improvise",
+      "title": "✨ 즉흥 요리 스타일 테스트",
+      "description": "즉흥 요리 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-improvise"
+    },
+    {
+      "id": "cooking-follow",
+      "title": "📖 레시피 따르기 스타일 테스트",
+      "description": "레시피 따르기 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-follow"
+    },
+    {
+      "id": "cooking-modify",
+      "title": "✏️ 레시피 수정 스타일 테스트",
+      "description": "레시피 수정 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-modify"
+    },
+    {
+      "id": "cooking-create",
+      "title": "🧪 레시피 창조 스타일 테스트",
+      "description": "레시피 창조 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-create"
+    },
+    {
+      "id": "cooking-share",
+      "title": "📤 요리 공유 스타일 테스트",
+      "description": "요리 공유 스타일로 알아보는 나의 성격 유형",
+      "category": "요리",
+      "url": "/tests/cooking-share"
+    },
+    {
+      "id": "grocery-shopping",
+      "title": "🛒 장보기 스타일 테스트",
+      "description": "장보기 스타일로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/grocery-shopping"
+    },
+    {
+      "id": "market-choice",
+      "title": "🏪 시장 선택 스타일 테스트",
+      "description": "시장 선택 스타일로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/market-choice"
+    },
+    {
+      "id": "store-choice",
+      "title": "🏬 매장 선택 스타일 테스트",
+      "description": "매장 선택 스타일로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/store-choice"
+    },
+    {
+      "id": "online-food",
+      "title": "💻 온라인 음식 주문 스타일 테스트",
+      "description": "온라인 음식 주문 스타일로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/online-food"
+    },
+    {
+      "id": "food-delivery-app",
+      "title": "📱 배달 앱 사용 스타일 테스트",
+      "description": "배달 앱 사용 스타일로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-delivery-app"
+    },
+    {
+      "id": "restaurant-reservation",
+      "title": "📅 식당 예약 스타일 테스트",
+      "description": "식당 예약 스타일로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/restaurant-reservation"
+    },
+    {
+      "id": "restaurant-menu",
+      "title": "📋 메뉴 선택 스타일 테스트",
+      "description": "메뉴 선택 스타일로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/restaurant-menu"
+    },
+    {
+      "id": "restaurant-service",
+      "title": "🤝 서비스 선호도 테스트",
+      "description": "서비스 선호도로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/restaurant-service"
+    },
+    {
+      "id": "restaurant-ambiance",
+      "title": "✨ 분위기 선호도 테스트",
+      "description": "분위기 선호도로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/restaurant-ambiance"
+    },
+    {
+      "id": "restaurant-price",
+      "title": "💰 가격대 선호도 테스트",
+      "description": "가격대 선호도로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/restaurant-price"
+    },
+    {
+      "id": "food-budget",
+      "title": "💳 음식 예산 관리 스타일 테스트",
+      "description": "음식 예산 관리 스타일로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-budget"
+    },
+    {
+      "id": "food-sale",
+      "title": "🏷️ 할인 상품 선택 스타일 테스트",
+      "description": "할인 상품 선택 스타일로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-sale"
+    },
+    {
+      "id": "food-new",
+      "title": "✨ 신상품 시도 스타일 테스트",
+      "description": "새로운 음식 상품을 발견했을 때의 반응과 선택 방식으로 알아보는 나의 성격 유형",
+      "category": "음식",
+      "url": "/tests/food-new"
+    },
+    {
+      "id": "morning-alarm",
+      "title": "⏰ 아침 알람 대하는 방식",
+      "description": "아침 알람을 대하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-alarm"
+    },
+    {
+      "id": "morning-coffee",
+      "title": "☕ 아침 커피 마시는 방식",
+      "description": "아침에 커피를 마시는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-coffee"
+    },
+    {
+      "id": "morning-shower",
+      "title": "🚿 아침 샤워 습관",
+      "description": "아침에 샤워하는 습관으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-shower"
+    },
+    {
+      "id": "morning-outfit",
+      "title": "👔 아침 옷 고르기",
+      "description": "아침에 옷을 고르는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-outfit"
+    },
+    {
+      "id": "morning-breakfast",
+      "title": "🍳 아침 식사 스타일",
+      "description": "아침에 식사하는 스타일로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-breakfast"
+    },
+    {
+      "id": "morning-commute",
+      "title": "🚇 출근길 습관",
+      "description": "출근길 습관으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-commute"
+    },
+    {
+      "id": "morning-phone",
+      "title": "📱 아침 핸드폰 체크",
+      "description": "아침에 핸드폰을 체크하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-phone"
+    },
+    {
+      "id": "morning-energy",
+      "title": "⚡ 아침 에너지 관리",
+      "description": "아침에 에너지를 관리하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-energy"
+    },
+    {
+      "id": "morning-rush",
+      "title": "⏰ 아침 바쁠 때 대처",
+      "description": "아침에 바쁠 때 대처하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-rush"
+    },
+    {
+      "id": "morning-mood",
+      "title": "😊 아침 기분 관리",
+      "description": "아침에 기분을 관리하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/morning-mood"
+    },
+    {
+      "id": "evening-wind-down",
+      "title": "🌙 저녁 휴식 방식",
+      "description": "저녁에 휴식하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-wind-down"
+    },
+    {
+      "id": "evening-meal",
+      "title": "🍽️ 저녁 식사 스타일",
+      "description": "저녁에 식사하는 스타일로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-meal"
+    },
+    {
+      "id": "evening-entertainment",
+      "title": "📺 저녁 오락 선택",
+      "description": "저녁에 오락을 선택하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-entertainment"
+    },
+    {
+      "id": "evening-social",
+      "title": "💬 저녁 약속 대하는 방식",
+      "description": "저녁 약속을 대하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-social"
+    },
+    {
+      "id": "evening-work",
+      "title": "💼 저녁 업무 처리",
+      "description": "저녁에 업무를 처리하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-work"
+    },
+    {
+      "id": "evening-exercise",
+      "title": "💪 저녁 운동 습관",
+      "description": "저녁에 운동하는 습관으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-exercise"
+    },
+    {
+      "id": "evening-snack",
+      "title": "🍪 저녁 간식 선택",
+      "description": "저녁에 간식을 선택하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-snack"
+    },
+    {
+      "id": "evening-cleaning",
+      "title": "🧹 저녁 정리 습관",
+      "description": "저녁에 정리하는 습관으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-cleaning"
+    },
+    {
+      "id": "evening-sleep-prep",
+      "title": "🌙 잠들기 전 준비",
+      "description": "잠들기 전 준비하는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-sleep-prep"
+    },
+    {
+      "id": "evening-reflection",
+      "title": "📖 저녁 하루 돌아보기",
+      "description": "저녁에 하루를 돌아보는 방식으로 알아보는 나의 성격 유형",
+      "category": "일상",
+      "url": "/tests/evening-reflection"
+    },
+    {
+      "id": "weekend-planning",
+      "title": "📅 주말 계획 세우기",
+      "description": "주말에 계획을 세우는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-planning"
+    },
+    {
+      "id": "weekend-lazy",
+      "title": "😴 주말 게으름 피우기",
+      "description": "주말에 게으름 피우는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-lazy"
+    },
+    {
+      "id": "weekend-social",
+      "title": "👥 주말 모임 스타일",
+      "description": "주말에 모임에 가는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-social"
+    },
+    {
+      "id": "weekend-chore",
+      "title": "🧹 주말 집안일",
+      "description": "주말에 집안일을 하는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-chore"
+    },
+    {
+      "id": "weekend-hobby",
+      "title": "🎨 주말 취미 활동",
+      "description": "주말에 취미 활동을 하는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-hobby"
+    },
+    {
+      "id": "weekend-shopping",
+      "title": "🛍️ 주말 쇼핑 스타일",
+      "description": "주말에 쇼핑을 하는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-shopping"
+    },
+    {
+      "id": "weekend-food",
+      "title": "🍕 주말 음식 선택",
+      "description": "주말에 음식을 선택하는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-food"
+    },
+    {
+      "id": "weekend-travel",
+      "title": "✈️ 주말 여행 스타일",
+      "description": "주말에 여행을 하는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-travel"
+    },
+    {
+      "id": "weekend-rest",
+      "title": "🌙 주말 충전 방식",
+      "description": "주말에 에너지를 충전하는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-rest"
+    },
+    {
+      "id": "weekend-balance",
+      "title": "⚖️ 주말 균형잡기",
+      "description": "주말에 할 일과 쉬는 일을 균형잡는 방식으로 알아보는 나의 성격 유형",
+      "category": "주말",
+      "url": "/tests/weekend-balance"
+    },
+    {
+      "id": "phone-notification",
+      "title": "🔔 알림 대하는 방식",
+      "description": "스마트폰 알림을 대하는 방식으로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-notification"
+    },
+    {
+      "id": "phone-battery",
+      "title": "🔋 배터리 관리",
+      "description": "스마트폰 배터리를 관리하는 방식으로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-battery"
+    },
+    {
+      "id": "phone-storage",
+      "title": "💾 저장공간 관리",
+      "description": "스마트폰 저장공간을 관리하는 방식으로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-storage"
+    },
+    {
+      "id": "phone-app-organization",
+      "title": "📱 앱 정리 방식",
+      "description": "스마트폰 앱을 정리하는 방식으로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-app-organization"
+    },
+    {
+      "id": "phone-photo",
+      "title": "📸 사진 찍는 습관",
+      "description": "스마트폰으로 사진을 찍는 습관으로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-photo"
+    },
+    {
+      "id": "phone-social-media",
+      "title": "📱 SNS 사용 습관",
+      "description": "SNS를 사용하는 습관으로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-social-media"
+    },
+    {
+      "id": "phone-message",
+      "title": "💬 메시지 답장 스타일",
+      "description": "메시지를 답장하는 스타일로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-message"
+    },
+    {
+      "id": "phone-search",
+      "title": "🔍 검색 습관",
+      "description": "스마트폰으로 검색하는 습관으로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-search"
+    },
+    {
+      "id": "phone-payment",
+      "title": "💳 모바일 결제 스타일",
+      "description": "모바일로 결제하는 스타일로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-payment"
+    },
+    {
+      "id": "phone-backup",
+      "title": "☁️ 백업 습관",
+      "description": "스마트폰 데이터를 백업하는 습관으로 알아보는 나의 성격 유형",
+      "category": "디지털",
+      "url": "/tests/phone-backup"
+    }
   ],
-  "totalTests": 200,
-  "categories": ["음식", "연애", "라이프", "직장", "재테크", "엔터", "여행", "상상", "스포츠"]
+  "totalTests": 179,
+  "categories": [
+    "직장",
+    "연애",
+    "여행",
+    "재테크",
+    "상상",
+    "음식",
+    "엔터테인먼트",
+    "동화",
+    "관계",
+    "학습",
+    "생활",
+    "스포츠",
+    "뷰티",
+    "식사 습관",
+    "요리 및 조리",
+    "요리",
+    "일상",
+    "주말",
+    "디지털"
+  ]
 }

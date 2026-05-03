@@ -146,27 +146,8 @@ export default function RootLayout({
           </Script>
         )}
         <AdSenseScript />
-        <Script src="/analytics.js" strategy="lazyOnload" />
-        {/* 네이버 검색 최적화 - 모바일 최적화 */}
-        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
-        {/* 네이버 검색 최적화 - 콘텐츠 타입 */}
-        <meta name="naver" content="index,follow" />
-        {/* 네이버 봇 최적화 */}
-        <meta name="naverbot" content="index,follow" />
-        {/* 다음(Daum) 검색 최적화 */}
-        <meta name="daum" content="index,follow" />
-        {/* 다음 봇 최적화 */}
-        <meta name="daumbot" content="index,follow" />
-        {/* 검색 엔진 최적화 - 언어 및 지역 */}
         <meta httpEquiv="content-language" content="ko-KR" />
-        <meta name="geo.region" content="KR" />
-        <meta name="geo.placename" content="대한민국" />
-        {/* 검색 엔진 크롤링 최적화 */}
-        <meta name="revisit-after" content="1 days" />
-        <meta name="distribution" content="global" />
-        <meta name="rating" content="general" />
-        {/* 모바일 최적화 */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
