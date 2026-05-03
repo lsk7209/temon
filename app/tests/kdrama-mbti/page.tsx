@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/faq-section";
 import { AnswerEngineSection } from "@/components/answer-engine-section";
 import { LandingConversionSection } from "@/components/landing-conversion-section";
 import { RelatedTestsSection } from "@/components/related-tests-section";
+import { TestExpandedIntro } from "@/components/test-expanded-intro";
 import {
   generateQuizMetadata,
   generateQuizSchemas,
@@ -290,6 +291,8 @@ export default function KDramaMBTIIntro() {
                 </CardContent>
               </Card>
             </div>
+
+            <TestExpandedIntro testId="kdrama-mbti" />
 
             <div className="mt-12">
               <AnswerEngineSection quizTitle="Kdrama Mbti Test" />

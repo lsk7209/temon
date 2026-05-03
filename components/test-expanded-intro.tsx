@@ -78,52 +78,58 @@ export function TestExpandedIntro({ testId }: Props) {
       </Card>
 
       {/* Why it matters */}
-      <Card className="border-0 shadow-md bg-white/90 backdrop-blur">
-        <CardContent className="p-6 md:p-8 space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center">
-              <Target className="w-5 h-5 text-pink-600" />
+      {ext.whyItMatters && (
+        <Card className="border-0 shadow-md bg-white/90 backdrop-blur">
+          <CardContent className="p-6 md:p-8 space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center">
+                <Target className="w-5 h-5 text-pink-600" />
+              </div>
+              <h3 className="text-xl font-semibold">왜 의미 있는 신호인가요?</h3>
             </div>
-            <h3 className="text-xl font-semibold">왜 의미 있는 신호인가요?</h3>
-          </div>
-          <p className="text-gray-700 leading-relaxed">{ext.whyItMatters}</p>
-        </CardContent>
-      </Card>
+            <p className="text-gray-700 leading-relaxed">{ext.whyItMatters}</p>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Use cases */}
-      <Card className="border-0 shadow-md bg-white/90 backdrop-blur">
-        <CardContent className="p-6 md:p-8 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center">
-              <Lightbulb className="w-5 h-5 text-cyan-600" />
+      {ext.useCases && ext.useCases.length > 0 && (
+        <Card className="border-0 shadow-md bg-white/90 backdrop-blur">
+          <CardContent className="p-6 md:p-8 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center">
+                <Lightbulb className="w-5 h-5 text-cyan-600" />
+              </div>
+              <h3 className="text-xl font-semibold">이럴 때 활용하기 좋아요</h3>
             </div>
-            <h3 className="text-xl font-semibold">이럴 때 활용하기 좋아요</h3>
-          </div>
-          <ul className="space-y-2 text-gray-700">
-            {ext.useCases.map((u, i) => (
-              <li key={i} className="flex gap-3">
-                <span className="font-bold text-violet-600 shrink-0">
-                  {i + 1}.
-                </span>
-                <span className="leading-relaxed">{u}</span>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+            <ul className="space-y-2 text-gray-700">
+              {ext.useCases.map((u, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="font-bold text-violet-600 shrink-0">
+                    {i + 1}.
+                  </span>
+                  <span className="leading-relaxed">{u}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Limitations — AdSense 투명성 신호 */}
-      <Card className="border-0 shadow-md bg-amber-50/90 backdrop-blur">
-        <CardContent className="p-6 md:p-8 space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
-              <AlertCircle className="w-5 h-5 text-amber-700" />
+      {ext.limitations && (
+        <Card className="border-0 shadow-md bg-amber-50/90 backdrop-blur">
+          <CardContent className="p-6 md:p-8 space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
+                <AlertCircle className="w-5 h-5 text-amber-700" />
+              </div>
+              <h3 className="text-xl font-semibold">결과 해석의 한계</h3>
             </div>
-            <h3 className="text-xl font-semibold">결과 해석의 한계</h3>
-          </div>
-          <p className="text-gray-800 leading-relaxed">{ext.limitations}</p>
-        </CardContent>
-      </Card>
+            <p className="text-gray-800 leading-relaxed">{ext.limitations}</p>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Extra FAQs */}
       {ext.extraFaqs && ext.extraFaqs.length > 0 && (

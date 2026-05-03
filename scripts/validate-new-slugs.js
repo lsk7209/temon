@@ -21,9 +21,9 @@ const NEW_QUIZ_DRAFTS = [
   // 직장/커리어 (5)
   // { slug: "commute-style", title: "출퇴근 스타일 테스트" }, // ✅ published 2026-04-24
   // { slug: "workday-energy", title: "근무 중 에너지 패턴" }, // ✅ published 2026-05-04
-  { slug: "worknight-recovery", title: "퇴근 후 회복 방식" },
-  { slug: "office-snack-habit", title: "사무실 간식 습관" },
-  { slug: "wfh-focus-type", title: "재택근무 집중 유형" },
+  // { slug: "worknight-recovery", title: "퇴근 후 회복 방식" }, // ✅ published 2026-05-07
+  // { slug: "office-snack-habit", title: "사무실 간식 습관" }, // ✅ published 2026-05-09
+  // { slug: "wfh-focus-type", title: "재택근무 집중 유형" }, // ✅ published 2026-05-11
   // 연애/관계 (5)
   // { slug: "first-date-nerves", title: "첫 데이트 긴장도" }, // ✅ published 2026-05-06
   { slug: "friend-distance", title: "친구 간 거리 조절 스타일" },
