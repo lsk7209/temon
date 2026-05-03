@@ -8,6 +8,9 @@ import { getDb, isDbAvailable } from "@/lib/db/client"
 import { tests } from "@/lib/db/schema"
 import { eq, or } from "drizzle-orm"
 
+// ISR — DB-fallback 테스트 랜딩은 24h마다 재생성 (TTFB 안정화)
+export const revalidate = 86400
+
 interface Props {
   params: { testId: string }
 }

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "피부 루틴 성향 테스트 | 12문항으로 보는 나의 스킨케어 유형",
     description: "세안, 토너, 보습, 선크림 습관으로 성향을 16유형으로 분석합니다. 2분 완성.",
     type: "website",
-    url: "https://www.temon.kr/tests/skin-routine/test",
+    url: "https://temon.kr/tests/skin-routine/test",
   },
 }
 

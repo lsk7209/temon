@@ -16,24 +16,25 @@ const ROOT = path.resolve(__dirname, "..");
 const TESTS_DIR = path.join(ROOT, "app", "tests");
 
 // 신규 30개 초안 slug + 제목 (기획 단계)
+// 발행된 항목은 주석 처리하여 self-duplicate 경고 방지
 const NEW_QUIZ_DRAFTS = [
   // 직장/커리어 (5)
-  { slug: "commute-style", title: "출퇴근 스타일 테스트" },
-  { slug: "workday-energy", title: "근무 중 에너지 패턴" },
-  { slug: "worknight-recovery", title: "퇴근 후 회복 방식" },
-  { slug: "office-snack-habit", title: "사무실 간식 습관" },
-  { slug: "wfh-focus-type", title: "재택근무 집중 유형" },
+  // { slug: "commute-style", title: "출퇴근 스타일 테스트" }, // ✅ published 2026-04-24
+  // { slug: "workday-energy", title: "근무 중 에너지 패턴" }, // ✅ published 2026-05-04
+  // { slug: "worknight-recovery", title: "퇴근 후 회복 방식" }, // ✅ published 2026-05-07
+  // { slug: "office-snack-habit", title: "사무실 간식 습관" }, // ✅ published 2026-05-09
+  // { slug: "wfh-focus-type", title: "재택근무 집중 유형" }, // ✅ published 2026-05-11
   // 연애/관계 (5)
-  { slug: "first-date-nerves", title: "첫 데이트 긴장도" },
-  { slug: "friend-distance", title: "친구 간 거리 조절 스타일" },
-  { slug: "sns-reaction-style", title: "SNS 반응 스타일" },
-  { slug: "parent-comm-style", title: "부모와 소통 방식" },
-  { slug: "breakup-recovery-speed", title: "이별 회복 속도" },
+  // { slug: "first-date-nerves", title: "첫 데이트 긴장도" }, // ✅ published 2026-05-06
+  // { slug: "friend-distance", title: "친구 간 거리 조절 스타일" }, // ✅ published 2026-05-13
+  // { slug: "sns-reaction-style", title: "SNS 반응 스타일" }, // ✅ published 2026-05-15
+  // { slug: "parent-comm-style", title: "부모와 소통 방식" }, // ✅ published 2026-05-17
+  // { slug: "breakup-recovery-speed", title: "이별 회복 속도" }, // ✅ published 2026-05-19
   // 자기계발/학습 (4)
-  { slug: "goal-persistence", title: "목표 지속력 테스트" },
-  { slug: "reading-focus", title: "독서 집중도 유형" },
-  { slug: "course-completion", title: "온라인 강의 완주율" },
-  { slug: "language-learner-type", title: "외국어 학습 스타일" },
+  // { slug: "goal-persistence", title: "목표 지속력 테스트" }, // ✅ published 2026-05-21
+  // { slug: "reading-focus", title: "독서 집중도 유형" }, // ✅ published 2026-05-23
+  // { slug: "course-completion", title: "온라인 강의 완주율" }, // ✅ published 2026-05-25
+  // { slug: "language-learner-type", title: "외국어 학습 스타일" }, // ✅ published 2026-05-27
   // 여행/외출 (4)
   { slug: "packing-style", title: "여행 짐 싸기 스타일" },
   { slug: "airport-wait-type", title: "공항 대기 유형" },

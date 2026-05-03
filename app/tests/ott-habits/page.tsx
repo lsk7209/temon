@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { TestExpandedIntro } from "@/components/test-expanded-intro"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
@@ -243,6 +244,8 @@ export default function OTTHabitsIntro() {
           </Card>
         </div>
       
+        <TestExpandedIntro testId="ott-habits" />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Ott Habits Test" />
         </div>

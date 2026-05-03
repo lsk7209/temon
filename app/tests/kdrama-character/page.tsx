@@ -15,6 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Users, Clapperboard, Sparkles } from "lucide-react";
 import Script from "next/script";
+import { TestExpandedIntro } from "@/components/test-expanded-intro";
 
 // Naver-optimized description (under 80 chars)
 const shortDescription =
@@ -332,6 +333,8 @@ export default function KdramaCharacterIntro() {
                 </CardContent>
               </Card>
             </div>
+
+            <TestExpandedIntro testId="kdrama-character" />
 
             <div className="mt-12">
               <AnswerEngineSection quizTitle="Kdrama Character Test" />

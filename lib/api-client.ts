@@ -142,7 +142,7 @@ export async function getTestStats(
 export function createShareLink(testPath: string, resultType: string, resultId?: string): string {
   const baseUrl = typeof window !== 'undefined' 
     ? window.location.origin 
-    : process.env.NEXT_PUBLIC_APP_URL || 'https://www.temon.kr'
+    : process.env.NEXT_PUBLIC_APP_URL || 'https://temon.kr'
   
   const url = new URL(`${testPath}/result`, baseUrl)
   url.searchParams.set('type', resultType)

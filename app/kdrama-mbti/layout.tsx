@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "K-드라마 클리셰 테스트 - 나는 어떤 드라마 캐릭터?",
     description: "재벌남/여부터 국밥 조연까지, 10개의 드라마 클리셰 상황에서 당신의 선택은?",
     type: "website",
-    url: "https://www.temon.kr/kdrama-mbti",
+    url: "https://temon.kr/kdrama-mbti",
   },
 }
 

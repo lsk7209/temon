@@ -29,7 +29,7 @@ while ((match = testPattern.exec(testsConfigContent)) !== null) {
   })
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.temon.kr'
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://temon.kr'
 const currentDate = new Date().toUTCString()
 const currentDateISO = new Date().toISOString()
 

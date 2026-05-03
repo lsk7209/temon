@@ -1,5 +1,7 @@
 https://temon.kr
 https://temon.kr/tests
+https://temon.kr/tests/[testId]
+https://temon.kr/tests/[testId]/test
 https://temon.kr/tests/alarm-habit
 https://temon.kr/tests/alarm-habit/test
 https://temon.kr/tests/bag-organizing
@@ -14,6 +16,8 @@ https://temon.kr/tests/breakfast-preference
 https://temon.kr/tests/breakfast-preference/test
 https://temon.kr/tests/breakfast-style
 https://temon.kr/tests/breakfast-style/test
+https://temon.kr/tests/breakup-style
+https://temon.kr/tests/breakup-style/test
 https://temon.kr/tests/bungeoppang
 https://temon.kr/tests/bungeoppang/test
 https://temon.kr/tests/cafe-style
@@ -32,6 +36,8 @@ https://temon.kr/tests/clothing-order
 https://temon.kr/tests/clothing-order/test
 https://temon.kr/tests/coffee-mbti
 https://temon.kr/tests/coffee-mbti/test
+https://temon.kr/tests/commute-style
+https://temon.kr/tests/commute-style/test
 https://temon.kr/tests/convenience-snack
 https://temon.kr/tests/convenience-snack/test
 https://temon.kr/tests/cooking-cleanup
@@ -110,6 +116,8 @@ https://temon.kr/tests/evening-wind-down
 https://temon.kr/tests/evening-wind-down/test
 https://temon.kr/tests/evening-work
 https://temon.kr/tests/evening-work/test
+https://temon.kr/tests/first-date-nerves
+https://temon.kr/tests/first-date-nerves/test
 https://temon.kr/tests/food-allergy
 https://temon.kr/tests/food-allergy/test
 https://temon.kr/tests/food-aroma
@@ -204,8 +212,12 @@ https://temon.kr/tests/grocery-shopping
 https://temon.kr/tests/grocery-shopping/test
 https://temon.kr/tests/hamburger-combo
 https://temon.kr/tests/hamburger-combo/test
+https://temon.kr/tests/hotel-breakfast
+https://temon.kr/tests/hotel-breakfast/test
 https://temon.kr/tests/instagram-story
 https://temon.kr/tests/instagram-story/test
+https://temon.kr/tests/investment-style
+https://temon.kr/tests/investment-style/test
 https://temon.kr/tests/jachui
 https://temon.kr/tests/jachui/test
 https://temon.kr/tests/kakao-reply-style
@@ -270,6 +282,8 @@ https://temon.kr/tests/meal-solo
 https://temon.kr/tests/meal-solo/test
 https://temon.kr/tests/meat-grilling
 https://temon.kr/tests/meat-grilling/test
+https://temon.kr/tests/meeting-villain
+https://temon.kr/tests/meeting-villain/test
 https://temon.kr/tests/midnight-snack
 https://temon.kr/tests/midnight-snack/test
 https://temon.kr/tests/mirror-habit
@@ -375,6 +389,7 @@ https://temon.kr/tests/soup-vs-bibim/test
 https://temon.kr/tests/spending-style
 https://temon.kr/tests/spending-style/test
 https://temon.kr/tests/spice-tolerance
+https://temon.kr/tests/spice-tolerance/test
 https://temon.kr/tests/stew-vs-soup
 https://temon.kr/tests/stew-vs-soup/test
 https://temon.kr/tests/store-choice
@@ -409,5 +424,9 @@ https://temon.kr/tests/weekend-social
 https://temon.kr/tests/weekend-social/test
 https://temon.kr/tests/weekend-travel
 https://temon.kr/tests/weekend-travel/test
+https://temon.kr/tests/workday-energy
+https://temon.kr/tests/workday-energy/test
 https://temon.kr/tests/youtube-habit
 https://temon.kr/tests/youtube-habit/test
+https://temon.kr/tests/zombie-survival
+https://temon.kr/tests/zombie-survival/test

@@ -168,6 +168,8 @@ export function trackTestProgress(
 }
 
 // 테스트 완료 추적
+// GA4 conversion mapping: send_to + value/currency 추가로 GA4 자동 전환 인식
+// GA4 admin → Events → "test_complete" 를 conversion으로 표시 후 유효
 export function trackTestComplete(testId: string, result?: string) {
   if (typeof window === "undefined") return;
 
@@ -177,6 +179,11 @@ export function trackTestComplete(testId: string, result?: string) {
         test_name: testId,
         test_result: result,
         event_category: "conversion",
+        event_label: testId,
+        value: 1,
+        currency: "KRW",
+        // GA4 권장 표준 파라미터 — engagement 자동 매핑
+        engagement_time_msec: 1,
       });
     }
     console.log(`📊 테스트 완료 추적: ${testId} - 결과: ${result}`);
