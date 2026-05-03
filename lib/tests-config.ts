@@ -93,6 +93,38 @@ export interface Test {
 
 export const ALL_TESTS: Test[] = [
   {
+    id: "workday-energy",
+    title: "💼 업무 에너지 테스트",
+    description: "회의·집중·동료 상호작용에서 에너지를 어떻게 쓰는지로 알아보는 직장 유형",
+    icon: Zap,
+    href: "/tests/workday-energy",
+    color: "from-amber-500 via-orange-500 to-rose-500",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "직장",
+    tags: ["직장", "업무", "에너지", "MBTI"],
+    new: true,
+    // 2026-05-04 KST 자정 (UTC 15:00) 드립 공개
+    publishAt: "2026-05-03T15:00:00Z",
+  },
+  {
+    id: "first-date-nerves",
+    title: "💗 첫 데이트 긴장 테스트",
+    description: "첫 데이트의 긴장과 설렘을 다루는 방식으로 알아보는 16가지 연애 유형",
+    icon: Heart,
+    href: "/tests/first-date-nerves",
+    color: "from-pink-500 via-rose-500 to-red-500",
+    participants: "0",
+    rating: 5.0,
+    badge: "NEW",
+    category: "연애",
+    tags: ["연애", "첫 데이트", "긴장", "MBTI"],
+    new: true,
+    // 2026-05-06 KST 자정 (UTC 15:00) 드립 공개
+    publishAt: "2026-05-05T15:00:00Z",
+  },
+  {
     id: "commute-style",
     title: "🚇 출퇴근 스타일 테스트",
     description: "출퇴근길 선택으로 알아보는 16가지 통근 캐릭터",

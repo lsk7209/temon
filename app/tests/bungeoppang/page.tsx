@@ -10,6 +10,7 @@ import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
+import { TestExpandedIntro } from "@/components/test-expanded-intro"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "붕어빵 취향 테스트. 맛 선택·구매 방식·먹는 습관 16유형 분석!"
@@ -249,6 +250,8 @@ export default function BungeoppangIntro() {
             </CardContent>
           </Card>
         </div>
+
+        <TestExpandedIntro testId="bungeoppang" />
 
         <AnswerEngineSection quizTitle="Bungeoppang Style Test" />
 

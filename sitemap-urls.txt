@@ -116,6 +116,8 @@ https://temon.kr/tests/evening-wind-down
 https://temon.kr/tests/evening-wind-down/test
 https://temon.kr/tests/evening-work
 https://temon.kr/tests/evening-work/test
+https://temon.kr/tests/first-date-nerves
+https://temon.kr/tests/first-date-nerves/test
 https://temon.kr/tests/food-allergy
 https://temon.kr/tests/food-allergy/test
 https://temon.kr/tests/food-aroma
@@ -422,6 +424,8 @@ https://temon.kr/tests/weekend-social
 https://temon.kr/tests/weekend-social/test
 https://temon.kr/tests/weekend-travel
 https://temon.kr/tests/weekend-travel/test
+https://temon.kr/tests/workday-energy
+https://temon.kr/tests/workday-energy/test
 https://temon.kr/tests/youtube-habit
 https://temon.kr/tests/youtube-habit/test
 https://temon.kr/tests/zombie-survival

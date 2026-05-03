@@ -16,15 +16,16 @@ const ROOT = path.resolve(__dirname, "..");
 const TESTS_DIR = path.join(ROOT, "app", "tests");
 
 // 신규 30개 초안 slug + 제목 (기획 단계)
+// 발행된 항목은 주석 처리하여 self-duplicate 경고 방지
 const NEW_QUIZ_DRAFTS = [
   // 직장/커리어 (5)
-  { slug: "commute-style", title: "출퇴근 스타일 테스트" },
-  { slug: "workday-energy", title: "근무 중 에너지 패턴" },
+  // { slug: "commute-style", title: "출퇴근 스타일 테스트" }, // ✅ published 2026-04-24
+  // { slug: "workday-energy", title: "근무 중 에너지 패턴" }, // ✅ published 2026-05-04
   { slug: "worknight-recovery", title: "퇴근 후 회복 방식" },
   { slug: "office-snack-habit", title: "사무실 간식 습관" },
   { slug: "wfh-focus-type", title: "재택근무 집중 유형" },
   // 연애/관계 (5)
-  { slug: "first-date-nerves", title: "첫 데이트 긴장도" },
+  // { slug: "first-date-nerves", title: "첫 데이트 긴장도" }, // ✅ published 2026-05-06
   { slug: "friend-distance", title: "친구 간 거리 조절 스타일" },
   { slug: "sns-reaction-style", title: "SNS 반응 스타일" },
   { slug: "parent-comm-style", title: "부모와 소통 방식" },
