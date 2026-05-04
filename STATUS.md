@@ -1,21 +1,18 @@
 # Status | 마지막: 2026-05-04
 ## 현재 작업
-신규 퀴즈 100개 품질 보강 완료, 재채점 100점 확인
+GA4 운영 미노출 원인 수정 중: 운영 사이트에 gtag 미삽입 확인, env 누락 대비 fallback 적용
 ## 최근 변경 (최근 5개만)
-- 05-04: 품질 실패 큐 자동 복구 후 100개 전부 draft 재생성
-- 05-04: 초기에 published된 품질 미달 이메일 테스트 삭제 후 품질 게이트로 재생성
-- 05-04: 100개 draft description을 카테고리별 고유 설명으로 polish
-- 05-04: 100개 신규 퀴즈를 published로 전환하고 샘플 URL 브라우저 검증
-- 05-04: 26개 약점 퀴즈 문항 재작성, 100개 결과 tips 1600개 보강
+- 05-04: 100개 신규 퀴즈 published 전환 및 샘플 URL 브라우저 검증
+- 05-04: 26개 약점 퀴즈 문항 재작성, 결과 tips 1600개 보강
+- 05-04: GA4 스크립트를 afterInteractive로 변경하고 G-L167CCPS8E fallback 추가
+- 05-04: ads.txt 운영 URL 200 및 AdSense 코드 일치 확인
 ## TODO
+- [ ] GA4 수정 커밋/푸시 후 https://temon.kr에서 gtag/collect 재확인
 - [ ] GSC에서 신규 공개 후 2~4주 CTR/노출 변화 확인
-- [ ] 기존 상위 퀴즈 콘텐츠를 `CONTENT_AUDIT.md` 기준으로 보강
 - [ ] 신규 공개 URL 사이트맵/색인 제출 자동화 확인
 ## 결정사항
-- 신규 퀴즈: 품질 검증 통과 후 100개 일괄 published 전환
-- 품질 기준: slug/가벼운 표기 오류는 자동 보정, 축 불균형/결과 누락은 저장 차단
-- 설명문: 생성 모델 보정 문구 대신 주제 계획의 메인/확장 키워드 기반 문장 사용
-- 결과 UX: `result_types.tips`는 결과별 3개 이상 채워 공개
+- GA4: 공개 Measurement ID는 비밀값이 아니므로 env 누락 대비 코드 fallback 허용
+- ads.txt: public/ads.txt와 운영 URL이 이미 정상이라 재크롤링 대기
 ## 주의
 - 기존 미완료 변경 파일은 되돌리지 않음
-- PowerShell 빈 TURSO env 방지를 위해 dotenv override 유지
+- npm run build가 Next 시작 단계에서 장시간 멈춰 lint/tsc와 운영 브라우저 검증을 우선 사용

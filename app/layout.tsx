@@ -20,6 +20,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { JsonLd } from "@/components/json-ld";
 
 const inter = Inter({ subsets: ["latin"] });
+const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-L167CCPS8E";
 
 export const metadata: Metadata = {
   title: "MBTI 테스트 - 무료 성격 테스트 모음 | 테몬",
@@ -115,25 +117,23 @@ export default function RootLayout({
         {/* SEO, AEO, GEO 최적화를 위한 구조화된 데이터 */}
         <JsonLd id="organization-schema" data={organizationSchema} />
         <JsonLd id="website-schema" data={websiteSchema} />
-        {/* Google tag (gtag.js) - 지연 로딩으로 페이지 속도 최적화 */}
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-            strategy="lazyOnload"
-          />
-        )}
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <Script id="google-tag" strategy="lazyOnload">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
-                page_path: window.location.pathname,
-              });
-            `}
-          </Script>
-        )}
+        {/* Google tag (gtag.js) - GA4 실시간 노출 안정화 */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag(){window.dataLayer.push(arguments);}
+            window.gtag('js', new Date());
+            window.gtag('config', '${GA_MEASUREMENT_ID}', {
+              page_path: window.location.pathname,
+              page_location: window.location.href,
+              send_page_view: true
+            });
+          `}
+        </Script>
         {/* Microsoft Clarity - 지연 로딩 */}
         {process.env.NEXT_PUBLIC_CLARITY_ID && (
           <Script id="microsoft-clarity" strategy="lazyOnload">

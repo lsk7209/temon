@@ -4,6 +4,7 @@ declare namespace NodeJS {
   interface ProcessEnv {
     // Google Analytics
     readonly NEXT_PUBLIC_GA_ID: string
+    readonly NEXT_PUBLIC_GA_MEASUREMENT_ID?: string
     // Google AdSense
     readonly NEXT_PUBLIC_ADSENSE_CLIENT_ID: string
     // Database
