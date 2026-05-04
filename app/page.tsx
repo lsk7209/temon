@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import {
   JsonLd,
   createBreadcrumbSchema,
+  createFAQSchema,
   createItemListSchema,
 } from "@/components/json-ld"
 import { getHomePageTests } from "@/lib/tests-config"
@@ -15,6 +16,28 @@ const description =
 const ogImage = `${baseUrl}/api/og?title=${encodeURIComponent(
   "테몬 MBTI 테스트 모음",
 )}&desc=${encodeURIComponent("무료 성격 테스트와 취향 테스트 모음")}`
+const homeFaqs = [
+  {
+    question: "테몬 MBTI 테스트 모음은 무료인가요?",
+    answer:
+      "네. 테몬의 MBTI 테스트와 성격 테스트 모음은 가입이나 결제 없이 무료로 이용할 수 있습니다.",
+  },
+  {
+    question: "어떤 성격 테스트를 고르면 좋나요?",
+    answer:
+      "처음 방문했다면 전체 테스트 목록에서 음식, 연애, 생활, 디지털, 직장 등 관심 있는 카테고리를 먼저 고르는 것이 좋습니다.",
+  },
+  {
+    question: "테스트 결과는 정확한 진단인가요?",
+    answer:
+      "테몬의 결과는 가볍게 즐기는 성향 분석 콘텐츠입니다. 심리 진단이나 의학적 판단이 아니라 자기 이해와 대화 소재로 활용하는 것을 권장합니다.",
+  },
+  {
+    question: "친구와 결과를 공유해도 되나요?",
+    answer:
+      "네. 각 테스트 결과는 친구와 비교하고 공유하기 좋도록 구성되어 있습니다. 같은 테스트를 함께 해보면 서로의 선택 차이를 쉽게 볼 수 있습니다.",
+  },
+]
 
 export const metadata: Metadata = {
   title,
@@ -75,11 +98,13 @@ export default function HomePage() {
       )}&desc=${encodeURIComponent(test.description)}`,
     })),
   )
+  const faqSchema = createFAQSchema(homeFaqs)
 
   return (
     <>
       <JsonLd id="home-breadcrumb-schema" data={breadcrumbSchema} />
       <JsonLd id="home-itemlist-schema" data={itemListSchema} />
+      <JsonLd id="home-faq-schema" data={faqSchema} />
       <HomeClient />
     </>
   )

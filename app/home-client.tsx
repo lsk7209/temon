@@ -266,6 +266,92 @@ export default function HomeClient() {
         </div>
       </section>
 
+      <section className="py-16 px-4 bg-white/70">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              MBTI 테스트 모음, 이렇게 고르면 좋아요
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              테몬은 짧게 끝나는 무료 성격 테스트를 주제별로 모아 둔
+              테스트 모음 사이트입니다. 오늘의 기분, 친구와의 대화 주제,
+              최근 관심사에 맞춰 가볍게 시작하면 결과를 더 재미있게 볼 수
+              있습니다.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            <div className="rounded-2xl border border-violet-100 bg-white p-6 shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                처음이라면 인기 테스트
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                MBTI 테스트 모음이 처음이라면 참여자가 많고 공유하기 쉬운
+                인기 테스트부터 시작하세요. 결과 유형이 명확해 친구와
+                비교하기 좋습니다.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-pink-100 bg-white p-6 shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                검색 목적이 있다면 카테고리
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                연애, 음식, 생활 습관, 직장, 디지털처럼 관심사가 뚜렷하다면
+                카테고리에서 고르세요. 비슷한 주제의 성격 테스트를 이어서
+                보기 쉽습니다.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-cyan-100 bg-white p-6 shadow-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                대화 소재가 필요하면 최신 퀴즈
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                새로 추가된 재밌는 테스트는 요즘 대화 주제와 잘 맞습니다.
+                짧은 문항으로 빠르게 끝나고 결과 공유까지 자연스럽게 이어집니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-8 text-center">
+            자주 묻는 질문
+          </h2>
+          <div className="space-y-4">
+            {[
+              {
+                q: "테몬 MBTI 테스트 모음은 무료인가요?",
+                a: "네. 가입이나 결제 없이 무료로 이용할 수 있습니다.",
+              },
+              {
+                q: "어떤 성격 테스트부터 하면 좋나요?",
+                a: "처음이라면 인기 테스트나 최신 퀴즈를 추천합니다. 목적이 뚜렷하면 음식, 연애, 생활, 직장 등 카테고리에서 고르세요.",
+              },
+              {
+                q: "결과를 진지하게 믿어도 되나요?",
+                a: "테몬의 결과는 가볍게 즐기는 성향 분석 콘텐츠입니다. 전문 진단보다 자기 이해와 친구와의 대화 소재로 활용하는 것이 좋습니다.",
+              },
+              {
+                q: "결과 공유가 가능한가요?",
+                a: "네. 테스트 결과는 친구와 비교하고 공유하기 좋게 구성되어 있습니다.",
+              },
+            ].map((faq) => (
+              <details
+                key={faq.q}
+                className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm"
+              >
+                <summary className="cursor-pointer text-lg font-bold text-gray-900">
+                  {faq.q}
+                </summary>
+                <p className="mt-3 text-gray-600 leading-relaxed">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-600 rounded-3xl p-12 shadow-2xl text-white">
