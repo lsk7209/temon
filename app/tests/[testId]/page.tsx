@@ -46,9 +46,9 @@ export async function generateMetadata(
 
   return generateUniqueTestMetadata({
     testName: test.title,
-    testCategory: "personality",
+    testCategory: test.category || "성격",
     testDescription: test.description || "",
-    keywords: `${test.title}, personality quiz, free quiz, temon`,
+    keywords: `${test.title}, 무료 성격 테스트, MBTI 테스트, 심리테스트, 테몬`,
     canonical: `/tests/${params.testId}`,
   })
 }
@@ -67,7 +67,7 @@ export default async function DynamicTestPage({ params }: Props) {
     title: test.title,
     shortDescription: fullDescription.slice(0, 80),
     fullDescription,
-    keywords: `${test.title}, personality quiz, free quiz, temon`,
+    keywords: `${test.title}, 무료 성격 테스트, MBTI 테스트, 심리테스트, 테몬`,
     canonical: `/tests/${params.testId}`,
     questionCount: test.questionCount,
     duration: `PT${test.avgMinutes || 3}M`,

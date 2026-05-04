@@ -514,8 +514,8 @@ export function generateUniqueTestMetadata(config: {
   const baseUrl = "https://temon.kr";
   const fullUrl = `${baseUrl}${config.canonical}`;
 
-  // 고유한 제목 생성 (40-60자 최적화)
-  const uniqueTitle = `${config.testName} - ${config.testCategory}으로 알아보는 성격 유형 | 테몬`;
+  // 고유한 제목 생성 (네이버 40자 기준 우선)
+  const uniqueTitle = `${config.testName} | 무료 성격 테스트 | 테몬`;
 
   // Naver 최적화: 80자 이하 설명
   let shortDescription = config.testDescription;

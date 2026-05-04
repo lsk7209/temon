@@ -1,12 +1,13 @@
 # Status | 마지막: 2026-05-04
 ## 현재 작업
-콘텐츠 보강 2차 완료: /tests 목록 페이지 운영 반영 및 FAQPage 검증 완료
+추가 개선 검토: 동적 퀴즈 메타와 AI 인덱스 최신화 보강 중
 ## 최근 변경 (최근 5개만)
 - 05-04: sitemap 날짜 최신 확인, DB published 퀴즈 누락 발견 후 포함 로직 보강
 - 05-04: AdSense API에서 temon.kr READY/Auto ads true/URL channel 확인
 - 05-04: GSC에 sitemap.xml/sitemap-index.xml 제출, IndexNow로 sitemap 전체 306개 URL 제출
 - 05-04: 홈 콘텐츠 보강 섹션과 FAQ/FAQPage JSON-LD 추가
 - 05-04: /tests 목록 페이지 메타·히어로·활용법·FAQ 한국어 보강
+- 05-04: 동적 퀴즈 메타 영어 노출 제거, ai-index/llms 동적 최신화 적용
 ## TODO
 - [ ] GSC에서 신규 공개 후 2~4주 CTR/노출 변화 확인
 - [ ] AdSense 리포트에 temon.kr 페이지뷰/노출이 잡히는지 24시간 후 재확인
