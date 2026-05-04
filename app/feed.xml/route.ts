@@ -18,6 +18,7 @@ type FeedItem = {
 
 const BASE_URL = "https://temon.kr";
 const FEED_LIMIT = 30;
+const STATIC_FALLBACK_DATE = new Date("2025-01-01T00:00:00.000Z");
 
 function escapeXml(value: string): string {
   return value
@@ -84,7 +85,9 @@ async function getPublishedDbFeedItems(now: Date): Promise<FeedItem[]> {
 
 function getStaticFeedItems(now: Date): FeedItem[] {
   return getVisibleTests(now).map((test) => {
-    const publishedAt = test.publishAt ? toValidDate(test.publishAt, now) : now;
+    const publishedAt = test.publishAt
+      ? toValidDate(test.publishAt, STATIC_FALLBACK_DATE)
+      : STATIC_FALLBACK_DATE;
     return {
       id: test.id,
       title: test.title,
