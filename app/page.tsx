@@ -9,11 +9,11 @@ import HomeClient from "./home-client"
 
 const baseUrl = "https://temon.kr"
 const canonical = "/"
-const title = "MBTI 테스트 모음 | 무료 성격 테스트 - 테몽"
+const title = "MBTI 테스트 모음 | 무료 성격 테스트 - 테몬"
 const description =
-  "무료 MBTI 테스트 모음 사이트 테몽입니다. 성격 유형, 취향, 연애, 음식 테스트를 2분 안에 즐기고 결과를 공유하세요."
+  "무료 MBTI 테스트 모음 사이트 테몬입니다. 성격 유형, 취향, 연애, 음식 테스트를 2분 안에 즐기고 결과를 공유하세요."
 const ogImage = `${baseUrl}/api/og?title=${encodeURIComponent(
-  "테몽 MBTI 테스트 모음",
+  "테몬 MBTI 테스트 모음",
 )}&desc=${encodeURIComponent("무료 성격 테스트와 취향 테스트 모음")}`
 
 export const metadata: Metadata = {
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     description,
     type: "website",
     url: baseUrl,
-    siteName: "테몽",
+    siteName: "테몬",
     locale: "ko_KR",
     images: [
       {
         url: ogImage,
         width: 1200,
         height: 630,
-        alt: "테몽 MBTI 테스트 모음",
+        alt: "테몬 MBTI 테스트 모음",
       },
     ],
   },

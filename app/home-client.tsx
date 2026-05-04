@@ -61,13 +61,13 @@ export default function HomeClient() {
           </Badge>
 
           <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-600 bg-clip-text text-transparent leading-tight">
-            나를 찾는
+            무료 MBTI 테스트
             <br />
-            재밌는 테스트 🎯
+            성격 테스트 모음 🎯
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto font-medium">
-            커피, 라면, 반려동물... 일상 속 선택으로 알아보는 나의 진짜 성격! 💜
+            테몬에서 커피, 라면, 반려동물... 일상 속 선택으로 알아보는 나의 진짜 성격! 💜
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center mb-12">
@@ -76,7 +76,7 @@ export default function HomeClient() {
               className="bg-gradient-to-r from-violet-500 to-pink-500 hover:from-violet-600 hover:to-pink-600 text-white text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
               asChild
             >
-              <Link href="/tests">테스트 시작하기 🚀</Link>
+              <Link href="/tests">무료 MBTI 테스트 시작하기 🚀</Link>
             </Button>
             <Button
               size="lg"

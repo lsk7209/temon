@@ -1,5 +1,5 @@
 import type React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
@@ -22,6 +22,13 @@ import { JsonLd } from "@/components/json-ld";
 const inter = Inter({ subsets: ["latin"] });
 const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-L167CCPS8E";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
 
 export const metadata: Metadata = {
   title: "MBTI 테스트 - 무료 성격 테스트 모음 | 테몬",
@@ -165,11 +172,6 @@ export default function RootLayout({
         <meta name="revisit-after" content="1 days" />
         <meta name="distribution" content="global" />
         <meta name="rating" content="general" />
-        {/* 모바일 최적화 */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
-        />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
           name="apple-mobile-web-app-status-bar-style"
