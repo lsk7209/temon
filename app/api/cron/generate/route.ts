@@ -9,7 +9,9 @@ import { z } from "zod";
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || "");
+const genAI = new GoogleGenerativeAI(
+  process.env.GOOGLE_API_KEY || process.env.GOOGLE_GENERATIVE_AI_KEY || "",
+);
 
 // MBTI 타입 코드 (16개)
 const MBTI_TYPES = [
