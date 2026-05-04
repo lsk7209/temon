@@ -226,19 +226,24 @@ export function getIntroLandingParagraphs(quizTitle: string): string[] {
 export function getListingFAQs(): Array<{ question: string; answer: string }> {
   return [
     {
-      question: "Which quiz topics perform best on Temon?",
+      question: "테몬의 MBTI 테스트 모음은 무료인가요?",
       answer:
-        "Short quizzes with strong daily-life topics such as food, habits, sleep, study, and relationships usually perform best for both search entry and social sharing.",
+        "네. 테몬의 MBTI 테스트 모음과 성격 테스트 모음은 가입이나 결제 없이 무료로 이용할 수 있습니다. 대부분 짧은 문항으로 구성되어 바로 시작하기 좋습니다.",
     },
     {
-      question: "Are the quizzes on the tests page free?",
+      question: "처음 방문하면 어떤 테스트부터 하면 좋나요?",
       answer:
-        "Yes. The quiz collection can be browsed and started immediately without payment, and most quizzes are designed to finish within a few minutes.",
+        "처음이라면 인기 테스트나 최신 테스트를 먼저 추천합니다. 관심사가 뚜렷하다면 음식, 연애, 생활 습관, 직장, 디지털처럼 가까운 카테고리에서 고르세요.",
     },
     {
-      question: "How should I choose my first quiz?",
+      question: "테스트 결과는 전문 심리 진단인가요?",
       answer:
-        "Start from a topic you already care about. Strong topic relevance usually improves completion rate, result sharing, and repeat visits.",
+        "아니요. 테몬의 테스트 결과는 가볍게 즐기는 성향 분석 콘텐츠입니다. 자기 이해와 친구와의 대화 소재로 활용하는 것이 좋습니다.",
+    },
+    {
+      question: "친구와 함께 하기 좋은 재밌는 테스트는 어디서 찾나요?",
+      answer:
+        "전체 테스트 목록에서 최신순으로 추가된 퀴즈와 관심 카테고리를 확인하세요. 결과 유형이 명확한 테스트일수록 친구와 비교하고 공유하기 쉽습니다.",
     },
   ];
 }

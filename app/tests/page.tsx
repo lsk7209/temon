@@ -16,12 +16,12 @@ import { getListingFAQs } from "@/lib/quiz-seo-utils";
 const baseUrl = "https://temon.kr";
 
 const shortDescription =
-  "무료 MBTI 성격 테스트 모음. 음식, 습관, 수면, 공부, 관계 등 다양한 주제로 알아보는 나의 성격!";
+  "무료 MBTI 테스트 모음. 성격 테스트와 재밌는 심리테스트를 주제별로 바로 시작하세요.";
 const fullDescription =
-  "테몬의 무료 MBTI 테스트 모음에서 내 성격 유형을 찾아보세요. 커피, 라면, 반려동물, 공부 습관 등 일상 속 주제로 2분 만에 완료되는 재미있는 심리테스트. 친구들과 결과를 공유해보세요.";
+  "테몬의 무료 MBTI 테스트 모음에서 성격 유형과 취향을 찾아보세요. 음식, 연애, 생활 습관, 직장, 디지털 등 일상 주제로 짧게 끝나는 재밌는 심리테스트를 모았습니다.";
 
 export const metadata: Metadata = {
-  title: "MBTI 테스트 전체 모음 - 무료 심리테스트 | 테몬",
+  title: "MBTI 테스트 모음 | 무료 성격 테스트 - 테몬",
   description: shortDescription,
   keywords: "MBTI 테스트 모음, 무료 심리테스트, 성격테스트, MBTI 퀴즈, 테몬",
   metadataBase: new URL(baseUrl),
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     canonical: "/tests",
   },
   openGraph: {
-    title: "MBTI 테스트 전체 모음 - 무료 심리테스트 | 테몬",
+    title: "MBTI 테스트 모음 | 무료 성격 테스트 - 테몬",
     description: fullDescription,
     type: "website",
     url: `${baseUrl}/tests`,
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MBTI 테스트 전체 모음 - 무료 심리테스트 | 테몬",
+    title: "MBTI 테스트 모음 | 무료 성격 테스트 - 테몬",
     description: fullDescription,
     images: [
       `${baseUrl}/api/og?title=테몬%20MBTI%20테스트%20모음&desc=무료%20심리테스트`,
@@ -137,36 +137,37 @@ export default async function TestsPage() {
       />
 
       <section className="container max-w-4xl mx-auto px-4 pb-16">
-        <div className="rounded-3xl bg-white/80 p-8 shadow-lg backdrop-blur-sm">
+        <div className="rounded-lg bg-white/80 p-8 shadow-lg backdrop-blur-sm">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            테몬 MBTI 테스트 활용법
+            무료 성격 테스트 모음, 이렇게 고르면 좋아요
           </h2>
           <p className="text-gray-700 leading-relaxed mb-6">
-            관심 있는 주제의 테스트부터 시작해보세요. 짧고 명확한 테스트일수록
-            완료율이 높고 친구들과 공유하기도 좋습니다.
+            검색으로 들어왔다면 먼저 지금 궁금한 주제를 고르세요. 테몬은
+            MBTI 테스트 모음, 성격 테스트 모음, 재밌는 테스트를 한 페이지에서
+            탐색할 수 있도록 구성했습니다.
           </p>
           <div className="grid gap-4 md:grid-cols-3 mb-8">
-            <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+            <div className="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
               <h3 className="font-semibold text-gray-900 mb-2">
-                검색으로 찾기
+                주제별로 고르기
               </h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                커피, 라면, 반려동물 등 주제별 테스트 페이지에서 내 성격 유형을
-                정확히 알아볼 수 있어요.
+                음식, 연애, 생활 습관, 직장, 디지털처럼 관심사가 뚜렷하면
+                카테고리 필터로 비슷한 테스트를 이어서 볼 수 있습니다.
               </p>
             </div>
-            <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">빠른 완료</h3>
+            <div className="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
+              <h3 className="font-semibold text-gray-900 mb-2">처음이면 인기 테스트</h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                대부분 2분 이내에 완료돼요. 이동 중에도 가볍게 테스트하고 결과를
-                바로 공유하세요.
+                처음 방문했다면 참여자가 많고 결과 유형이 쉬운 인기 테스트부터
+                시작하세요. 결과를 친구와 비교하기 좋습니다.
               </p>
             </div>
-            <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">연속 테스트</h3>
+            <div className="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
+              <h3 className="font-semibold text-gray-900 mb-2">최신 퀴즈로 대화 만들기</h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                음식, 습관, 공부, 관계 등 테마별로 연결된 테스트를 이어서
-                즐겨보세요.
+                새로 추가된 재밌는 테스트는 최근 관심사와 잘 맞습니다. 짧게
+                끝내고 결과 공유까지 자연스럽게 이어집니다.
               </p>
             </div>
           </div>

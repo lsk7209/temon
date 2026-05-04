@@ -106,7 +106,9 @@ export default function TestsPageClient({ dynamicTests = [] }: TestsPageClientPr
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto font-medium">
-            나를 찾는 재밌는 테스트들을 만나보세요! 💜
+            무료 성격 테스트, 취향 테스트, 재밌는 심리테스트를 한곳에서
+            골라보세요. 관심 주제별로 빠르게 찾고 결과를 친구와 공유할 수
+            있습니다.
           </p>
         </div>
       </section>
@@ -286,4 +288,3 @@ export default function TestsPageClient({ dynamicTests = [] }: TestsPageClientPr
     </div>
   )
 }
-
