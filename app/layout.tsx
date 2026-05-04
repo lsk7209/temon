@@ -137,7 +137,7 @@ export default function RootLayout({
             window.gtag('config', '${GA_MEASUREMENT_ID}', {
               page_path: window.location.pathname,
               page_location: window.location.href,
-              send_page_view: true
+              send_page_view: false
             });
           `}
         </Script>
