@@ -8,10 +8,12 @@
 - 05-04: ads.txt 운영 URL 200 및 AdSense 코드 일치 확인
 - 05-04: temon.kr 운영 배포 후 gtag/GA4 collect 204 브라우저 검증
 - 05-04: AdSense env fallback, 중복 viewport 제거, 홈 H1/브랜드 SEO 보강
+- 05-04: sitemap 날짜 최신 확인, DB published 퀴즈 누락 발견 후 포함 로직 보강
 ## TODO
 - [ ] GSC에서 신규 공개 후 2~4주 CTR/노출 변화 확인
 - [ ] 신규 공개 URL 사이트맵/색인 제출 자동화 확인
 - [ ] 운영 배포 후 AdSense 스크립트 삽입 및 홈 메타/H1 재확인
+- [ ] 운영 배포 후 sitemap.xml URL 수와 신규 DB 퀴즈 포함 여부 재확인
 ## 결정사항
 - GA4: 공개 Measurement ID는 비밀값이 아니므로 env 누락 대비 코드 fallback 허용
 - ads.txt: public/ads.txt와 운영 URL이 이미 정상이라 재크롤링 대기

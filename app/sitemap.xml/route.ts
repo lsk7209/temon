@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { getStaticRoutes } from "@/lib/sitemap-utils";
 import { getIndexableTests } from "@/lib/visible-tests";
+import { getDb, isDbAvailable } from "@/lib/db/client";
+import { tests } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 
 /**
  * Sitemap.xml 동적 생성 (Route Handler)
@@ -49,6 +52,59 @@ ${routes
 </urlset>`;
 }
 
+function toValidDate(value: unknown, fallback: Date): Date {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+
+  if (typeof value === "number") {
+    const timestamp = value < 1_000_000_000_000 ? value * 1000 : value;
+    const date = new Date(timestamp);
+    if (!Number.isNaN(date.getTime())) return date;
+  }
+
+  if (typeof value === "string") {
+    const date = new Date(value);
+    if (!Number.isNaN(date.getTime())) return date;
+  }
+
+  return fallback;
+}
+
+async function getPublishedDbTestRoutes(
+  baseUrl: string,
+  fallbackDate: Date,
+): Promise<RouteEntry[]> {
+  if (!isDbAvailable()) return [];
+
+  try {
+    const db = getDb();
+    const rows = await db
+      .select({
+        slug: tests.slug,
+        publishedAt: tests.publishedAt,
+        createdAt: tests.createdAt,
+        updatedAt: tests.updatedAt,
+      })
+      .from(tests)
+      .where(eq(tests.status, "published"))
+      .all();
+
+    return rows
+      .filter((test) => test.slug)
+      .map((test) => ({
+        url: `${baseUrl}/tests/${test.slug}`,
+        lastModified: toValidDate(
+          test.updatedAt || test.publishedAt || test.createdAt,
+          fallbackDate,
+        ),
+        changeFrequency: "weekly",
+        priority: 0.8,
+      }));
+  } catch (error) {
+    console.error("DB sitemap route generation error:", error);
+    return [];
+  }
+}
+
 export async function GET() {
   const baseUrl = "https://temon.kr";
   const now = new Date();
@@ -61,6 +117,7 @@ export async function GET() {
       changeFrequency: r.changeFrequency || "weekly",
       priority: r.priority ?? 0.5,
     }));
+    const dbTestRoutes = await getPublishedDbTestRoutes(baseUrl, now);
 
     // getIndexableTests() = publishAt 도달 AND noindex 아닌 테스트만.
     // 드립 공개 대기 중인 테스트는 자동으로 sitemap에서 제외됨.
@@ -84,7 +141,7 @@ export async function GET() {
 
     // 중복 URL 제거 (staticRoutes에 /tests가 이미 포함되므로)
     const merged = new Map<string, RouteEntry>();
-    for (const r of [...staticRoutes, ...testRoutes]) {
+    for (const r of [...staticRoutes, ...testRoutes, ...dbTestRoutes]) {
       merged.set(r.url, r);
     }
     const allRoutes = Array.from(merged.values());
