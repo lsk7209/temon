@@ -215,11 +215,10 @@ export default function HomeClient() {
                           </Badge>
                         )}
                       </div>
-                      <CardTitle className="text-2xl font-bold group-hover:text-violet-600 transition-colors">
-                        {test.title}
+                      <CardTitle className="group-hover:text-violet-600 transition-colors">
+                        <h3 className="text-2xl font-bold">{test.title}</h3>
                       </CardTitle>
                       <CardDescription className="text-base text-gray-600">
-                        <h3 className="sr-only">{test.title} 테스트 설명</h3>
                         {test.description}
                       </CardDescription>
                     </CardHeader>
@@ -281,7 +280,7 @@ export default function HomeClient() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-3">
-            <div className="rounded-2xl border border-violet-100 bg-white p-6 shadow-sm">
+            <div className="rounded-lg border border-violet-100 bg-white p-6 shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 처음이라면 인기 테스트
               </h3>
@@ -291,7 +290,7 @@ export default function HomeClient() {
                 비교하기 좋습니다.
               </p>
             </div>
-            <div className="rounded-2xl border border-pink-100 bg-white p-6 shadow-sm">
+            <div className="rounded-lg border border-pink-100 bg-white p-6 shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 검색 목적이 있다면 카테고리
               </h3>
@@ -301,7 +300,7 @@ export default function HomeClient() {
                 보기 쉽습니다.
               </p>
             </div>
-            <div className="rounded-2xl border border-cyan-100 bg-white p-6 shadow-sm">
+            <div className="rounded-lg border border-cyan-100 bg-white p-6 shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 대화 소재가 필요하면 최신 퀴즈
               </h3>
@@ -340,7 +339,7 @@ export default function HomeClient() {
             ].map((faq) => (
               <details
                 key={faq.q}
-                className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm"
+                className="rounded-lg border border-gray-100 bg-white p-5 shadow-sm"
               >
                 <summary className="cursor-pointer text-lg font-bold text-gray-900">
                   {faq.q}
