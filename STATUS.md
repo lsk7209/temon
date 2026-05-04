@@ -1,6 +1,6 @@
 # Status | 마지막: 2026-05-04
 ## 현재 작업
-추가 개선 검토: 동적 퀴즈 메타와 AI 인덱스 최신화 보강 중
+추가 개선 검토 완료: 동적 퀴즈 메타와 AI 인덱스 운영 검증 완료
 ## 최근 변경 (최근 5개만)
 - 05-04: sitemap 날짜 최신 확인, DB published 퀴즈 누락 발견 후 포함 로직 보강
 - 05-04: AdSense API에서 temon.kr READY/Auto ads true/URL channel 확인
