@@ -10,9 +10,9 @@
 - 05-04: AdSense env fallback, 중복 viewport 제거, 홈 H1/브랜드 SEO 보강
 - 05-04: sitemap 날짜 최신 확인, DB published 퀴즈 누락 발견 후 포함 로직 보강
 - 05-04: AdSense API에서 temon.kr READY/Auto ads true/URL channel 확인
+- 05-04: GSC에 sitemap.xml/sitemap-index.xml 제출, IndexNow로 sitemap 전체 306개 URL 제출
 ## TODO
 - [ ] GSC에서 신규 공개 후 2~4주 CTR/노출 변화 확인
-- [ ] 신규 공개 URL 사이트맵/색인 제출 자동화 확인
 - [ ] AdSense 리포트에 temon.kr 페이지뷰/노출이 잡히는지 24시간 후 재확인
 ## 결정사항
 - GA4: 공개 Measurement ID는 비밀값이 아니므로 env 누락 대비 코드 fallback 허용
