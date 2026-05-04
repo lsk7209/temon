@@ -87,7 +87,7 @@ export default async function TestsPage() {
         })
         .from(tests)
         .where(eq(tests.status, "published"))
-        .orderBy(desc(tests.createdAt))
+        .orderBy(desc(tests.publishedAt), desc(tests.createdAt))
         .all();
 
       dynamicTests = dbTestsData;

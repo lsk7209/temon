@@ -76,12 +76,6 @@ export default function TestsPageClient({ dynamicTests = [] }: TestsPageClientPr
       const matchesCategory = selectedCategory === "전체" || test.category === selectedCategory
       return matchesSearch && matchesCategory
     })
-    // id 기준으로 정렬하여 일관성 유지 (중복 방지)
-    .sort((a, b) => {
-      if (a.id < b.id) return -1
-      if (a.id > b.id) return 1
-      return 0
-    })
     // href 기준으로도 중복 제거 (혹시 모를 href 중복 방지)
     .filter((test, index, self) =>
       index === self.findIndex(t => t.href === test.href)

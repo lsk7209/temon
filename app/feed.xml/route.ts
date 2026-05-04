@@ -1,66 +1,161 @@
-import { NextResponse } from 'next/server'
-import { ALL_TESTS } from '@/lib/tests-config'
+import { NextResponse } from "next/server";
+import { desc, eq } from "drizzle-orm";
+import { getDb, isDbAvailable } from "@/lib/db/client";
+import { tests } from "@/lib/db/schema";
+import { getVisibleTests } from "@/lib/visible-tests";
 
-// export const dynamic = 'force-dynamic' // output: 'export'와 호환되지 않음
-// export const revalidate = 3600 // 1시간마다 재생성
+export const revalidate = 3600;
 
-export async function GET() {
-  // 등록한 사이트 주소와 일치하도록 명시적으로 설정 (www 없음)
-  const baseUrl = 'https://temon.kr'
-  const currentDate = new Date().toISOString()
+type FeedItem = {
+  id: string;
+  title: string;
+  url: string;
+  description: string;
+  category: string;
+  updatedAt: Date;
+  publishedAt: Date;
+};
 
-  // 최신 테스트 선택
-  const recentTests = ALL_TESTS.slice(0, 20)
+const BASE_URL = "https://temon.kr";
+const FEED_LIMIT = 30;
 
-  const feedItems = recentTests.map((test) => {
-    const testUrl = `${baseUrl}${test.href}`
-    // 설명 중복 제거 및 개선
-    const description = test.description.includes('무료 테스트') 
-      ? `${test.description}` 
-      : `${test.description} - ${test.title}`
-    
-    // 카테고리와 태그 중복 제거
-    const uniqueTags = test.tags.filter(tag => tag !== test.category)
-    
-    return `    <entry>
-      <id>${testUrl}</id>
-      <title><![CDATA[${test.title}]]></title>
-      <link href="${testUrl}" rel="alternate"/>
-      <updated>${currentDate}</updated>
-      <published>${currentDate}</published>
+function escapeXml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+function toValidDate(value: unknown, fallback: Date): Date {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+  if (typeof value === "number") {
+    const timestamp = value < 1_000_000_000_000 ? value * 1000 : value;
+    const date = new Date(timestamp);
+    if (!Number.isNaN(date.getTime())) return date;
+  }
+  if (typeof value === "string") {
+    const date = new Date(value);
+    if (!Number.isNaN(date.getTime())) return date;
+  }
+  return fallback;
+}
+
+async function getPublishedDbFeedItems(now: Date): Promise<FeedItem[]> {
+  if (!isDbAvailable()) return [];
+
+  try {
+    const db = getDb();
+    const rows = await db
+      .select({
+        id: tests.id,
+        slug: tests.slug,
+        title: tests.title,
+        description: tests.description,
+        category: tests.category,
+        publishedAt: tests.publishedAt,
+        updatedAt: tests.updatedAt,
+        createdAt: tests.createdAt,
+      })
+      .from(tests)
+      .where(eq(tests.status, "published"))
+      .orderBy(desc(tests.publishedAt), desc(tests.createdAt))
+      .limit(FEED_LIMIT)
+      .all();
+
+    return rows.map((test) => {
+      const publishedAt = toValidDate(test.publishedAt || test.createdAt, now);
+      return {
+        id: test.id,
+        title: test.title,
+        url: `${BASE_URL}/tests/${test.slug}`,
+        description: test.description || `${test.title} 테스트를 시작해보세요.`,
+        category: test.category || "quiz",
+        publishedAt,
+        updatedAt: toValidDate(test.updatedAt || test.publishedAt || test.createdAt, publishedAt),
+      };
+    });
+  } catch (error) {
+    console.error("Failed to build DB feed items:", error);
+    return [];
+  }
+}
+
+function getStaticFeedItems(now: Date): FeedItem[] {
+  return getVisibleTests(now).map((test) => {
+    const publishedAt = test.publishAt ? toValidDate(test.publishAt, now) : now;
+    return {
+      id: test.id,
+      title: test.title,
+      url: `${BASE_URL}${test.href}`,
+      description: test.description || `${test.title} 테스트를 시작해보세요.`,
+      category: test.category,
+      publishedAt,
+      updatedAt: publishedAt,
+    };
+  });
+}
+
+function mergeFeedItems(items: FeedItem[]): FeedItem[] {
+  const byUrl = new Map<string, FeedItem>();
+  for (const item of items) {
+    if (!byUrl.has(item.url)) byUrl.set(item.url, item);
+  }
+  return Array.from(byUrl.values())
+    .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+    .slice(0, FEED_LIMIT);
+}
+
+function buildEntry(item: FeedItem): string {
+  const title = escapeXml(item.title);
+  const description = escapeXml(item.description);
+  const url = escapeXml(item.url);
+  const category = escapeXml(item.category);
+
+  return `    <entry>
+      <id>${url}</id>
+      <title>${title}</title>
+      <link href="${url}" rel="alternate"/>
+      <updated>${item.updatedAt.toISOString()}</updated>
+      <published>${item.publishedAt.toISOString()}</published>
       <author>
         <name>테몬</name>
       </author>
-      <summary type="html"><![CDATA[${description}]]></summary>
-      <content type="html"><![CDATA[<p>${description}</p><p><a href="${testUrl}">테스트 시작하기 →</a></p>]]></content>
-      <category term="${test.category}"/>
-      ${uniqueTags.map(tag => `<category term="${tag}"/>`).join('\n      ')}
-    </entry>`
-  }).join('\n')
+      <summary type="html">${description}</summary>
+      <content type="html">&lt;p&gt;${description}&lt;/p&gt;&lt;p&gt;&lt;a href="${url}"&gt;테스트 시작하기&lt;/a&gt;&lt;/p&gt;</content>
+      <category term="${category}"/>
+    </entry>`;
+}
+
+export async function GET() {
+  const now = new Date();
+  const dbItems = await getPublishedDbFeedItems(now);
+  const staticItems = getStaticFeedItems(now);
+  const feedItems = mergeFeedItems([...dbItems, ...staticItems]);
 
   const atomFeed = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR">
-  <id>${baseUrl}/feed.xml</id>
-  <title>테몬 MBTI - 무료 성격 테스트 모음</title>
-  <subtitle>MBTI 테스트로 알아보는 나만의 성격 유형! 커피, 라면, 반려동물, 공부 습관 등 다양한 주제로 재미있는 MBTI 테스트를 무료로 시작해보세요.</subtitle>
-  <link href="${baseUrl}" rel="alternate"/>
-  <link href="${baseUrl}/feed.xml" rel="self"/>
-  <updated>${currentDate}</updated>
+  <id>${BASE_URL}/feed.xml</id>
+  <title>테몬 MBTI 테스트 모음</title>
+  <subtitle>무료 성격 테스트와 취향 테스트를 최신 공개 순서로 제공합니다.</subtitle>
+  <link href="${BASE_URL}" rel="alternate"/>
+  <link href="${BASE_URL}/feed.xml" rel="self"/>
+  <updated>${now.toISOString()}</updated>
   <author>
     <name>테몬</name>
     <email>admin@temon.kr</email>
   </author>
-  <rights>Copyright ${new Date().getFullYear()} 테몬. All rights reserved.</rights>
-  <icon>${baseUrl}/favicon-32x32.png</icon>
-  <logo>${baseUrl}/favicon-32x32.png</logo>
-${feedItems}
-</feed>`
+  <rights>Copyright ${now.getFullYear()} 테몬. All rights reserved.</rights>
+  <icon>${BASE_URL}/favicon-32x32.png</icon>
+  <logo>${BASE_URL}/favicon-32x32.png</logo>
+${feedItems.map(buildEntry).join("\n")}
+</feed>`;
 
   return new NextResponse(atomFeed, {
     headers: {
-      'Content-Type': 'application/atom+xml; charset=utf-8',
-      'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      "Content-Type": "application/atom+xml; charset=utf-8",
+      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
     },
-  })
+  });
 }
-
