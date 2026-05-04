@@ -87,6 +87,12 @@ function getQueueMetadata(queueItem) {
     }
 }
 
+function parseScheduledAt(value) {
+    if (typeof value !== 'string' || value.trim() === '') return null;
+    const time = Date.parse(value);
+    return Number.isNaN(time) ? null : Math.floor(time / 1000);
+}
+
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -421,22 +427,28 @@ async function main() {
             // 4. Save to DB
             const testId = generateId();
             const now = Math.floor(Date.now() / 1000);
+            const scheduledAt = parseScheduledAt(queueMetadata.scheduledAt);
 
             await client.execute({
-                sql: `INSERT INTO tests (id, slug, title, description, category, status, question_count, result_type_count, created_at, updated_at, published_at) 
-                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                sql: `INSERT INTO tests (id, slug, title, description, category, status, question_count, result_type_count, metadata, created_at, updated_at, published_at)
+                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                 args: [
                     testId,
                     `${quizData.slug}-${generateId(4)}`,
                     quizData.title,
                     quizData.description,
-                    'ai-generated',
+                    queueMetadata.category || 'ai-generated',
                     publishImmediately ? 'published' : 'draft',
                     quizData.questions.length,
                     quizData.results.length,
+                    JSON.stringify({
+                        source: 'test_queue',
+                        scheduledAt: queueMetadata.scheduledAt ?? null,
+                        wave: queueMetadata.wave ?? null,
+                    }),
                     now,
                     now,
-                    publishImmediately ? now : null
+                    publishImmediately ? now : scheduledAt
                 ]
             });
 

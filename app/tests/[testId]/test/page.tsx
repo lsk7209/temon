@@ -1,7 +1,7 @@
 
 import { getDb, isDbAvailable } from "@/lib/db/client"
 import { questions, tests } from "@/lib/db/schema"
-import { eq, or, asc } from "drizzle-orm"
+import { and, asc, eq, or } from "drizzle-orm"
 import { notFound } from "next/navigation"
 import ClientRunner from "./client-runner"
 
@@ -20,7 +20,10 @@ async function getQuizData(slugOrId: string) {
     // Use proper type assertion or ensure schema match. 
     // Using db.query to match working Intro page pattern
     const test = await db.query.tests.findFirst({
-        where: or(eq(tests.slug, slugOrId), eq(tests.id, slugOrId))
+        where: and(
+            or(eq(tests.slug, slugOrId), eq(tests.id, slugOrId)),
+            eq(tests.status, "published"),
+        )
     })
 
     if (!test) return null

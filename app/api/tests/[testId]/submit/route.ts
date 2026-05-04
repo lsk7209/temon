@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/db/client";
 import { tests, questions, resultTypes, testResults } from "@/lib/db/schema";
-import { eq, sql } from "drizzle-orm";
+import { and, eq, or, sql } from "drizzle-orm";
 import { nanoid } from "nanoid";
 
 export const dynamic = "force-dynamic";
@@ -13,14 +13,33 @@ export async function POST(
   try {
     const { answers } = (await req.json()) as {
       answers: Record<string, number>;
-    }; // { questionId: "choice1" | "choice2" }
+    };
+
+    const db = getDb();
+
+    // 0. Resolve slug or id → actual tests.id (AI-generated tests use nanoid id, not slug)
+    const test = await db
+      .select()
+      .from(tests)
+      .where(
+        and(
+          or(eq(tests.id, params.testId), eq(tests.slug, params.testId)),
+          eq(tests.status, "published"),
+        ),
+      )
+      .get();
+
+    if (!test) {
+      return NextResponse.json({ error: "Test not found" }, { status: 404 });
+    }
+
+    const resolvedTestId = test.id;
 
     // 1. Fetch all questions for this test to calculate scores
-    const db = getDb();
     const allQuestions = await db
       .select()
       .from(questions)
-      .where(eq(questions.testId, params.testId))
+      .where(eq(questions.testId, resolvedTestId))
       .all();
 
     // 2. Calculate MBTI Scores
@@ -60,21 +79,18 @@ export async function POST(
       .select()
       .from(resultTypes)
       .where(
-        sql`${resultTypes.testId} = ${params.testId} AND ${resultTypes.typeCode} = ${mbti}`,
+        sql`${resultTypes.testId} = ${resolvedTestId} AND ${resultTypes.typeCode} = ${mbti}`,
       )
       .limit(1)
       .get();
 
-    // If exact match missing (e.g. 4-type test), fallback logic needed.
-    // For now, assuming 16-type generation. If missing, maybe random or default?
     let finalResultId = resultType?.id;
 
     if (!finalResultId) {
-      // Fallback: Pick first result
       const firstResult = await db
         .select()
         .from(resultTypes)
-        .where(eq(resultTypes.testId, params.testId))
+        .where(eq(resultTypes.testId, resolvedTestId))
         .limit(1)
         .get();
       finalResultId = firstResult?.id;
@@ -91,10 +107,10 @@ export async function POST(
     const newResultId = nanoid();
     await db.insert(testResults).values({
       id: newResultId,
-      testId: params.testId,
+      testId: resolvedTestId,
       resultType: mbti,
       answers: JSON.stringify(answers),
-      userIp: "anonymous", // Privacy
+      userIp: "anonymous",
       userAgent: req.headers.get("user-agent"),
     });
 

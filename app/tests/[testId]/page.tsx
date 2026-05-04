@@ -6,7 +6,7 @@ import { generateQuizSchemas, generateUniqueTestMetadata } from "@/lib/quiz-seo-
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { getDb, isDbAvailable } from "@/lib/db/client"
 import { tests } from "@/lib/db/schema"
-import { eq, or } from "drizzle-orm"
+import { and, eq, or } from "drizzle-orm"
 
 interface Props {
   params: { testId: string }
@@ -22,7 +22,12 @@ async function getTest(slugOrId: string) {
     const test = await db
       .select()
       .from(tests)
-      .where(or(eq(tests.slug, slugOrId), eq(tests.id, slugOrId)))
+      .where(
+        and(
+          or(eq(tests.slug, slugOrId), eq(tests.id, slugOrId)),
+          eq(tests.status, "published"),
+        ),
+      )
       .limit(1)
       .get()
     return test
