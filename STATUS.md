@@ -1,6 +1,6 @@
 # Status | 마지막: 2026-05-04
 ## 현재 작업
-콘텐츠 보강 2차: /tests 목록 페이지 SEO 본문·FAQ 개선 중
+콘텐츠 보강 2차 완료: /tests 목록 페이지 운영 반영 및 FAQPage 검증 완료
 ## 최근 변경 (최근 5개만)
 - 05-04: sitemap 날짜 최신 확인, DB published 퀴즈 누락 발견 후 포함 로직 보강
 - 05-04: AdSense API에서 temon.kr READY/Auto ads true/URL channel 확인
