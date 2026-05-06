@@ -1,88 +1,93 @@
-import { ImageResponse } from 'next/og'
-import { NextRequest } from 'next/server'
+import { ImageResponse } from "next/og";
+import { NextRequest } from "next/server";
 
-export const runtime = 'edge'
+export const runtime = "edge";
+
+const DEFAULT_TITLE = "테몬 성향 테스트";
+const DEFAULT_DESCRIPTION = "나의 선택 기준과 생활 성향을 가볍게 확인해보세요";
+const SITE_NAME = "테몬";
+
+function clampText(value: string, maxLength: number) {
+  const trimmed = value.trim().replace(/\s+/g, " ");
+  return trimmed.length > maxLength ? `${trimmed.slice(0, maxLength - 1)}…` : trimmed;
+}
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url)
-    const title = searchParams.get('title') || '테몬 MBTI'
-    const description = searchParams.get('desc') || '나의 성향을 알아보세요!'
+    const { searchParams } = new URL(request.url);
+    const title = clampText(searchParams.get("title") || DEFAULT_TITLE, 42);
+    const description = clampText(
+      searchParams.get("desc") || DEFAULT_DESCRIPTION,
+      58,
+    );
 
     return new ImageResponse(
       (
         <div
           style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundImage: 'linear-gradient(to bottom right, #4F46E5, #9333EA)',
-            padding: '40px 80px',
-            textAlign: 'center',
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#111827",
+            backgroundImage:
+              "linear-gradient(135deg, #111827 0%, #312e81 52%, #be123c 100%)",
+            padding: "52px 76px",
+            textAlign: "center",
           }}
         >
-          {/* Branding Badge */}
           <div
             style={{
-              position: 'absolute',
-              top: 40,
-              left: 40,
-              display: 'flex',
-              alignItems: 'center',
+              position: "absolute",
+              top: 42,
+              left: 52,
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+              color: "white",
+              fontSize: 28,
+              fontWeight: 800,
             }}
           >
             <div
               style={{
-                width: 40,
-                height: 40,
-                borderRadius: '50%',
-                backgroundColor: '#fff',
-                marginRight: 10,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 20,
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                backgroundColor: "white",
+                color: "#312e81",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 26,
+                fontWeight: 900,
               }}
             >
-              🧪
+              T
             </div>
-            <span
-              style={{
-                fontSize: 24,
-                fontWeight: 'bold',
-                color: 'white',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              테몬 MBTI
-            </span>
+            {SITE_NAME}
           </div>
 
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              borderRadius: 20,
-              padding: '40px 60px',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              maxWidth: 980,
             }}
           >
             <div
               style={{
-                fontSize: 60,
+                fontSize: title.length > 28 ? 56 : 64,
                 fontWeight: 900,
-                color: 'white',
-                lineHeight: 1.2,
-                marginBottom: 20,
-                textShadow: '0 2px 10px rgba(0,0,0,0.2)',
-                wordBreak: 'keep-all',
+                color: "white",
+                lineHeight: 1.18,
+                marginBottom: 26,
+                wordBreak: "keep-all",
               }}
             >
               {title}
@@ -91,9 +96,10 @@ export async function GET(request: NextRequest) {
             <div
               style={{
                 fontSize: 30,
-                color: '#E9D5FF',
-                lineHeight: 1.5,
-                fontWeight: 500,
+                color: "#fde68a",
+                lineHeight: 1.45,
+                fontWeight: 700,
+                wordBreak: "keep-all",
               }}
             >
               {description}
@@ -102,25 +108,27 @@ export async function GET(request: NextRequest) {
 
           <div
             style={{
-              position: 'absolute',
-              bottom: 40,
-              fontSize: 20,
-              color: 'rgba(255, 255, 255, 0.6)',
+              position: "absolute",
+              right: 56,
+              bottom: 42,
+              fontSize: 24,
+              color: "rgba(255, 255, 255, 0.72)",
+              fontWeight: 700,
             }}
           >
-            지금 바로 무료로 테스트해보세요! 👉
+            무료 성향 테스트
           </div>
         </div>
       ),
       {
         width: 1200,
         height: 630,
-      }
-    )
-  } catch (e: any) {
-    console.log(`${e.message}`)
-    return new Response(`Failed to generate the image`, {
+      },
+    );
+  } catch (error: unknown) {
+    console.error(error instanceof Error ? error.message : error);
+    return new Response("Failed to generate the image", {
       status: 500,
-    })
+    });
   }
 }

@@ -5,6 +5,33 @@ import { tests } from "@/lib/db/schema";
 import { submitUrlsToIndexNow } from "@/lib/indexnow";
 
 export const dynamic = "force-dynamic";
+const WAVE3_MIN_PUBLISH_SCORE = 90;
+
+function parseMetadata(value: unknown) {
+  if (!value) return {};
+  if (typeof value === "object") return value as Record<string, unknown>;
+  if (typeof value !== "string") return {};
+
+  try {
+    return JSON.parse(value) as Record<string, unknown>;
+  } catch {
+    return {};
+  }
+}
+
+function getQualityScore(metadata: Record<string, unknown>) {
+  const quality = metadata.quality;
+  if (!quality || typeof quality !== "object") return null;
+
+  const score = (quality as { score?: unknown }).score;
+  return typeof score === "number" ? score : null;
+}
+
+function isPublishableByQuality(metadata: Record<string, unknown>) {
+  if (metadata.wave !== "wave3") return true;
+  const score = getQualityScore(metadata);
+  return typeof score === "number" && score >= WAVE3_MIN_PUBLISH_SCORE;
+}
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
@@ -30,6 +57,21 @@ export async function GET(request: Request) {
 
     if (!draftTest) {
       return NextResponse.json({ message: "No due draft tests available" });
+    }
+
+    const metadata = parseMetadata(draftTest.metadata);
+    if (!isPublishableByQuality(metadata)) {
+      return NextResponse.json({
+        success: false,
+        message: "Due draft blocked by quality gate",
+        blockedTest: {
+          id: draftTest.id,
+          slug: draftTest.slug,
+          title: draftTest.title,
+          qualityScore: getQualityScore(metadata),
+          requiredScore: WAVE3_MIN_PUBLISH_SCORE,
+        },
+      });
     }
 
     const result = await db
