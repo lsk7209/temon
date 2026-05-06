@@ -2,47 +2,82 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, TrendingUp, Users, Sparkles, ArrowRight } from "lucide-react";
+import {
+  Star,
+  Clock3,
+  ShieldCheck,
+  Sparkles,
+  ArrowRight,
+  Users,
+} from "lucide-react";
 import {
   shouldShowParticipants,
   formatParticipants,
 } from "@/lib/format-participants";
 import type { LucideIcon } from "lucide-react";
 import { getHomePageTests, ALL_TESTS } from "@/lib/tests-config";
+import AdReserve from "@/components/ad-reserve";
 
 interface Feature {
   icon: LucideIcon;
   title: string;
   description: string;
-  color: string;
 }
 
 const features: Feature[] = [
   {
-    icon: TrendingUp,
-    title: "MBTI 기반 설계",
-    description: "성격 유형 이론을 재미있게 응용",
-    color: "text-violet-500",
+    icon: Clock3,
+    title: "2~3분 완료",
+    description: "짧은 문항으로 바로 결과 확인",
   },
   {
-    icon: Users,
-    title: "2~3분이면 끝",
-    description: "부담 없이 짧게 즐기는 테스트",
-    color: "text-pink-500",
+    icon: ShieldCheck,
+    title: "가입 없이 무료",
+    description: "개인정보 입력 없이 테스트 진행",
   },
   {
     icon: Sparkles,
-    title: "완전 무료",
-    description: "가입·결제 없이 바로 이용",
-    color: "text-cyan-500",
+    title: "주제별 모음",
+    description: "음식, 연애, 생활, 디지털까지 탐색",
+  },
+];
+
+const guides = [
+  {
+    title: "처음 방문했다면",
+    description:
+      "참여자가 많고 결과 공유가 쉬운 인기 테스트부터 시작하세요.",
+  },
+  {
+    title: "검색 목적이 있다면",
+    description:
+      "음식, 연애, 생활, 직장, 디지털처럼 관심사와 맞는 카테고리를 고르세요.",
+  },
+  {
+    title: "대화 소재가 필요하다면",
+    description:
+      "최근 추가된 테스트를 골라 친구와 같은 문항을 비교해보세요.",
+  },
+];
+
+const faqs = [
+  {
+    q: "테몬 MBTI 테스트 모음은 무료인가요?",
+    a: "네. 가입이나 결제 없이 무료로 이용할 수 있습니다.",
+  },
+  {
+    q: "테스트 결과는 공식 진단인가요?",
+    a: "아닙니다. 테몬의 결과는 오락과 자기 이해를 위한 성향 분석 콘텐츠입니다.",
+  },
+  {
+    q: "어떤 테스트부터 하면 좋나요?",
+    a: "처음이라면 인기 테스트를, 관심사가 뚜렷하다면 카테고리별 테스트를 추천합니다.",
+  },
+  {
+    q: "결과를 공유할 수 있나요?",
+    a: "네. 결과 페이지는 친구와 비교하고 공유하기 좋게 구성되어 있습니다.",
   },
 ];
 
@@ -52,83 +87,77 @@ export default function HomeClient() {
   const hasMoreTests = ALL_TESTS.length > 9;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-pink-50 to-cyan-50">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-16 px-4">
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <Badge className="mb-6 bg-gradient-to-r from-violet-500 to-pink-500 text-white border-0 px-6 py-2 text-lg">
-            ✨ MZ세대 맞춤 성격 테스트
-          </Badge>
-
-          <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-600 bg-clip-text text-transparent leading-tight">
-            무료 MBTI 테스트
-            <br />
-            성격 테스트 모음 🎯
-          </h1>
-
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto font-medium">
-            테몬에서 커피, 라면, 반려동물... 일상 속 선택으로 알아보는 나의 진짜 성격! 💜
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-violet-500 to-pink-500 hover:from-violet-600 hover:to-pink-600 text-white text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
-              asChild
-            >
-              <Link href="/tests">무료 MBTI 테스트 시작하기 🚀</Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-violet-500 text-violet-600 hover:bg-violet-50 text-lg px-8 py-6 rounded-full bg-transparent"
-              asChild
-            >
-              <Link href="/tests">전체 테스트 보기</Link>
-            </Button>
+    <div className="min-h-screen bg-slate-50 text-slate-950">
+      <section className="px-4 py-12 md:py-16">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <Badge className="mb-5 border-0 bg-cyan-100 px-4 py-2 text-cyan-800">
+              무료 성격 테스트 플랫폼
+            </Badge>
+            <h1 className="text-4xl font-black leading-tight text-slate-950 md:text-6xl">
+              무료 MBTI 테스트 모음
+            </h1>
+            <p className="article-summary key-takeaways mt-5 max-w-2xl text-lg leading-8 text-slate-700">
+              테몬은 가입 없이 2~3분 안에 끝나는 무료 MBTI 테스트와 성격
+              테스트를 모아 둔 한국어 테스트 플랫폼입니다. 음식, 연애, 생활,
+              디지털 등 일상 주제로 결과를 확인하고 친구와 비교할 수 있습니다.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button size="lg" asChild>
+                <Link href="/tests">전체 테스트 보기</Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="#new-tests">새로운 테스트 보기</Link>
+              </Button>
+            </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            {features.map((feature) => {
-              const FeatureIcon = feature.icon;
-              return (
-                <div
-                  key={feature.title}
-                  className="bg-background/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg"
-                >
-                  <FeatureIcon
-                    className={`w-8 h-8 mx-auto mb-2 ${feature.color}`}
-                  />
-                  <h3 className="font-bold text-gray-900">{feature.title}</h3>
-                  <p className="text-sm text-gray-600">{feature.description}</p>
-                </div>
-              );
-            })}
+          <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              {features.map((feature) => {
+                const FeatureIcon = feature.icon;
+                return (
+                  <div key={feature.title} className="flex gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-100 text-rose-700">
+                      <FeatureIcon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h2 className="text-base font-bold text-slate-950">
+                        {feature.title}
+                      </h2>
+                      <p className="mt-1 text-sm leading-6 text-slate-600">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
+      <div className="mx-auto max-w-7xl px-4">
+        <AdReserve />
+      </div>
+
       {newTests.length > 0 && (
-        <section className="px-4 pb-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-8 flex items-end justify-between gap-4">
+        <section id="new-tests" className="content-visibility-auto px-4 py-12">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-6 flex items-end justify-between gap-4">
               <div>
-                <h2 className="text-3xl md:text-4xl font-black mb-2 bg-gradient-to-r from-pink-600 to-violet-600 bg-clip-text text-transparent">
+                <h2 className="text-3xl font-black text-slate-950">
                   새로운 퀴즈
                 </h2>
-                <p className="text-lg text-gray-600">
+                <p className="mt-2 text-slate-600">
                   최근 추가된 퀴즈를 먼저 확인해보세요.
                 </p>
               </div>
-              <Link href="/tests">
-                <Button
-                  variant="outline"
-                  className="hidden sm:inline-flex border-2 border-pink-400 text-pink-600 hover:bg-pink-50 bg-white/80"
-                >
+              <Button variant="outline" className="hidden sm:inline-flex" asChild>
+                <Link href="/tests">
                   전체 보기
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
@@ -137,29 +166,29 @@ export default function HomeClient() {
 
                 return (
                   <Link key={test.href} href={test.href}>
-                    <Card className="group h-full bg-white/90 backdrop-blur-sm border border-pink-100 hover:border-pink-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <Card className="group h-full border-slate-200 bg-white transition hover:-translate-y-1 hover:border-cyan-300 hover:shadow-lg">
                       <CardHeader className="space-y-4">
                         <div className="flex items-start justify-between gap-3">
                           <div
-                            className={`p-3 rounded-2xl bg-gradient-to-br ${test.color} shadow-lg`}
+                            className={`rounded-lg bg-gradient-to-br p-3 ${test.color}`}
                           >
                             <TestIcon className="w-6 h-6 text-white" />
                           </div>
-                          <Badge className="bg-gradient-to-r from-pink-500 to-violet-500 text-white border-0">
+                          <Badge className="border-0 bg-rose-100 text-rose-700">
                             NEW
                           </Badge>
                         </div>
                         <div className="space-y-2">
-                          <CardTitle className="text-xl font-bold leading-snug group-hover:text-pink-600 transition-colors">
+                          <CardTitle className="text-xl font-bold leading-snug group-hover:text-cyan-700">
                             {test.title}
                           </CardTitle>
-                          <CardDescription className="text-sm leading-relaxed text-gray-600">
+                          <p className="text-sm leading-relaxed text-slate-600">
                             {test.description}
-                          </CardDescription>
+                          </p>
                         </div>
                       </CardHeader>
                       <CardFooter className="flex items-center justify-between border-t pt-4">
-                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                        <div className="flex items-center gap-3 text-sm text-slate-600">
                           <div className="flex items-center gap-1">
                             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                             <span className="font-semibold">{test.rating}</span>
@@ -173,7 +202,7 @@ export default function HomeClient() {
                             </div>
                           )}
                         </div>
-                        <span className="text-sm font-semibold text-pink-600">
+                        <span className="text-sm font-semibold text-cyan-700">
                           바로가기
                         </span>
                       </CardFooter>
@@ -186,14 +215,15 @@ export default function HomeClient() {
         </section>
       )}
 
-      {/* Popular Tests */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text text-transparent">
-              다들 이거 하던데요? 🔥
+      <section className="content-visibility-auto px-4 py-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-black text-slate-950">
+              인기 성격 테스트
             </h2>
-            <p className="text-xl text-gray-600">지금 가장 핫한 테스트들</p>
+            <p className="mt-2 text-slate-600">
+              많이 찾는 테스트를 먼저 모았습니다.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -201,26 +231,26 @@ export default function HomeClient() {
               const TestIcon = test.icon;
               return (
                 <Link key={test.href} href={test.href}>
-                  <Card className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer bg-white/90 backdrop-blur-sm border-2 border-transparent hover:border-violet-500 overflow-hidden">
+                  <Card className="group h-full cursor-pointer overflow-hidden border-slate-200 bg-white transition hover:-translate-y-1 hover:border-rose-300 hover:shadow-lg">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-4">
                         <div
-                          className={`p-3 rounded-2xl bg-gradient-to-br ${test.color} shadow-lg`}
+                          className={`rounded-lg bg-gradient-to-br p-3 ${test.color}`}
                         >
                           <TestIcon className="w-8 h-8 text-white" />
                         </div>
                         {test.badge && (
-                          <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 font-bold">
+                          <Badge className="border-0 bg-amber-100 font-bold text-amber-800">
                             {test.badge}
                           </Badge>
                         )}
                       </div>
-                      <CardTitle className="group-hover:text-violet-600 transition-colors">
-                        <h3 className="text-2xl font-bold">{test.title}</h3>
+                      <CardTitle className="text-2xl font-bold group-hover:text-rose-700">
+                        {test.title}
                       </CardTitle>
-                      <CardDescription className="text-base text-gray-600">
+                      <p className="text-base text-slate-600">
                         {test.description}
-                      </CardDescription>
+                      </p>
                     </CardHeader>
                     <CardFooter className="flex items-center justify-between pt-4 border-t">
                       <div className="flex items-center gap-4">
@@ -229,17 +259,16 @@ export default function HomeClient() {
                           <span className="font-semibold">{test.rating}</span>
                         </div>
                         {shouldShowParticipants(test.participants) && (
-                          <div className="flex items-center gap-1 text-gray-600">
-                            <Users className="w-4 h-4" />
-                            <span className="text-sm">{test.participants}</span>
+                          <div className="text-sm text-slate-600">
+                            {formatParticipants(test.participants)}
                           </div>
                         )}
                       </div>
                       <Button
                         size="sm"
-                        className="bg-gradient-to-r from-violet-500 to-pink-500 hover:from-violet-600 hover:to-pink-600 text-white rounded-full"
+                        className="rounded-full"
                       >
-                        시작하기 →
+                        시작하기
                       </Button>
                     </CardFooter>
                   </Card>
@@ -250,122 +279,78 @@ export default function HomeClient() {
 
           {hasMoreTests && (
             <div className="text-center mt-12">
-              <Link href="/tests">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-violet-500 text-violet-600 hover:bg-violet-50 text-lg px-8 py-4 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all group"
-                >
+              <Button size="lg" variant="outline" className="group" asChild>
+                <Link href="/tests">
                   더 많은 테스트 보기
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           )}
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-white/70">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+      <div className="mx-auto max-w-7xl px-4">
+        <AdReserve className="min-h-[280px]" />
+      </div>
+
+      <section className="content-visibility-auto bg-white px-4 py-14">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-black text-slate-950">
               MBTI 테스트 모음, 이렇게 고르면 좋아요
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              테몬은 짧게 끝나는 무료 성격 테스트를 주제별로 모아 둔
-              테스트 모음 사이트입니다. 오늘의 기분, 친구와의 대화 주제,
-              최근 관심사에 맞춰 가볍게 시작하면 결과를 더 재미있게 볼 수
-              있습니다.
-            </p>
           </div>
 
           <div className="grid gap-5 md:grid-cols-3">
-            <div className="rounded-lg border border-violet-100 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                처음이라면 인기 테스트
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                MBTI 테스트 모음이 처음이라면 참여자가 많고 공유하기 쉬운
-                인기 테스트부터 시작하세요. 결과 유형이 명확해 친구와
-                비교하기 좋습니다.
-              </p>
-            </div>
-            <div className="rounded-lg border border-pink-100 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                검색 목적이 있다면 카테고리
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                연애, 음식, 생활 습관, 직장, 디지털처럼 관심사가 뚜렷하다면
-                카테고리에서 고르세요. 비슷한 주제의 성격 테스트를 이어서
-                보기 쉽습니다.
-              </p>
-            </div>
-            <div className="rounded-lg border border-cyan-100 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                대화 소재가 필요하면 최신 퀴즈
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                새로 추가된 재밌는 테스트는 요즘 대화 주제와 잘 맞습니다.
-                짧은 문항으로 빠르게 끝나고 결과 공유까지 자연스럽게 이어집니다.
-              </p>
-            </div>
+            {guides.map((guide) => (
+              <div
+                key={guide.title}
+                className="rounded-lg border border-slate-200 bg-slate-50 p-6"
+              >
+                <h3 className="mb-3 text-xl font-bold text-slate-950">
+                  {guide.title}
+                </h3>
+                <p className="leading-7 text-slate-600">
+                  {guide.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-8 text-center">
+      <section className="content-visibility-auto px-4 py-14">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-8 text-center text-3xl font-black text-slate-950">
             자주 묻는 질문
           </h2>
           <div className="space-y-4">
-            {[
-              {
-                q: "테몬 MBTI 테스트 모음은 무료인가요?",
-                a: "네. 가입이나 결제 없이 무료로 이용할 수 있습니다.",
-              },
-              {
-                q: "어떤 성격 테스트부터 하면 좋나요?",
-                a: "처음이라면 인기 테스트나 최신 퀴즈를 추천합니다. 목적이 뚜렷하면 음식, 연애, 생활, 직장 등 카테고리에서 고르세요.",
-              },
-              {
-                q: "결과를 진지하게 믿어도 되나요?",
-                a: "테몬의 결과는 가볍게 즐기는 성향 분석 콘텐츠입니다. 전문 진단보다 자기 이해와 친구와의 대화 소재로 활용하는 것이 좋습니다.",
-              },
-              {
-                q: "결과 공유가 가능한가요?",
-                a: "네. 테스트 결과는 친구와 비교하고 공유하기 좋게 구성되어 있습니다.",
-              },
-            ].map((faq) => (
+            {faqs.map((faq) => (
               <details
                 key={faq.q}
-                className="rounded-lg border border-gray-100 bg-white p-5 shadow-sm"
+                className="rounded-lg border border-slate-200 bg-white p-5"
               >
-                <summary className="cursor-pointer text-lg font-bold text-gray-900">
+                <summary className="cursor-pointer text-lg font-bold text-slate-950">
                   {faq.q}
                 </summary>
-                <p className="mt-3 text-gray-600 leading-relaxed">{faq.a}</p>
+                <p className="mt-3 leading-7 text-slate-600">{faq.a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-600 rounded-3xl p-12 shadow-2xl text-white">
-          <h2 className="text-4xl md:text-5xl font-black mb-6">
-            지금 바로 시작해보세요! 🎉
+      <section className="px-4 pb-16">
+        <div className="mx-auto max-w-4xl rounded-lg bg-slate-950 p-8 text-center text-white md:p-10">
+          <h2 className="mb-4 text-3xl font-black">
+            관심 있는 테스트를 바로 시작하세요
           </h2>
-          <p className="text-xl mb-8 opacity-90">
-            2분이면 끝! 나를 더 잘 알 수 있는 시간 ✨
+          <p className="mb-6 text-slate-200">
+            전체 목록에서 주제를 고르고 결과를 친구와 비교해보세요.
           </p>
-          <Button
-            size="lg"
-            className="bg-background text-violet-600 hover:bg-muted text-lg px-12 py-6 rounded-full font-bold shadow-xl"
-            asChild
-          >
-            <Link href="/tests">무료로 시작하기 →</Link>
+          <Button size="lg" variant="secondary" asChild>
+            <Link href="/tests">무료 테스트 시작하기</Link>
           </Button>
         </div>
       </section>

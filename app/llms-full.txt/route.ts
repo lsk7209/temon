@@ -26,6 +26,9 @@ export async function GET() {
 - 테스트 목록: https://temon.kr/tests
 - 사이트맵: https://temon.kr/sitemap.xml
 - AI 인덱스 JSON: https://temon.kr/ai-index.json
+- 개인정보처리방침: https://temon.kr/privacy
+- 이용약관: https://temon.kr/terms
+- 면책조항: https://temon.kr/disclaimer
 - 생성 시각: ${new Date().toISOString()}
 
 ## 콘텐츠 원칙
@@ -67,4 +70,3 @@ A. 네. 결과 페이지는 친구와 비교하고 공유하기 좋게 구성되
     },
   });
 }
-

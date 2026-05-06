@@ -45,6 +45,8 @@ ${featuredTests
 - 사이트: https://temon.kr
 - 문의: https://temon.kr/contact
 - 개인정보처리방침: https://temon.kr/privacy
+- 이용약관: https://temon.kr/terms
+- 면책조항: https://temon.kr/disclaimer
 `;
 
   return new NextResponse(body, {
@@ -54,4 +56,3 @@ ${featuredTests
     },
   });
 }
-

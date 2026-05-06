@@ -74,6 +74,22 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/disclaimer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  면책조항
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/llms.txt"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  AI 검색 안내
+                </Link>
+              </li>
+              <li>
                 <a
                   href="mailto:contact@temon.kr"
                   className="text-muted-foreground hover:text-foreground transition-colors"

@@ -63,9 +63,22 @@
   * {
     @apply border-border;
   }
-  body {
+body {
     @apply bg-background text-foreground;
   }
+}
+
+.ad-reserve {
+  min-height: 250px;
+  margin-block: 1.5rem;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(241, 245, 249, 0.9), rgba(248, 250, 252, 0.6));
+  contain: layout paint style;
+}
+
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 /* Custom scrollbar styles */

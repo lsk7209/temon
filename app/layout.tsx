@@ -22,6 +22,9 @@ import { JsonLd } from "@/components/json-ld";
 const inter = Inter({ subsets: ["latin"] });
 const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-L167CCPS8E";
+const NAVER_SITE_VERIFICATION =
+  process.env.NAVER_SITE_VERIFICATION ||
+  "a57f4e75c60c7b2f5117885c1ffcdf9c1b3ca4b4";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -99,9 +102,6 @@ export const metadata: Metadata = {
   generator: "Next.js",
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION,
-    other: {
-      "naver-site-verification": process.env.NAVER_SITE_VERIFICATION || "",
-    },
   },
 };
 
@@ -154,6 +154,7 @@ export default function RootLayout({
           </Script>
         )}
         {/* 네이버 검색 최적화 - 모바일 최적화 */}
+        <meta name="naver-site-verification" content={NAVER_SITE_VERIFICATION} />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
         {/* 네이버 검색 최적화 - 콘텐츠 타입 */}

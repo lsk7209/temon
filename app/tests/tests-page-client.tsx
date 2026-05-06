@@ -4,7 +4,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Input } from "@/components/ui/input"
 import { Search, Star, Users, ChevronLeft, ChevronRight, TestTube } from "lucide-react"
 import { useState, useEffect } from "react"
@@ -85,6 +84,12 @@ export default function TestsPageClient({ dynamicTests = [] }: TestsPageClientPr
   const totalPages = Math.ceil(filteredTests.length / TESTS_PER_PAGE)
   const startIndex = (currentPage - 1) * TESTS_PER_PAGE
   const paginatedTests = filteredTests.slice(startIndex, startIndex + TESTS_PER_PAGE)
+  const visiblePages = Array.from({ length: totalPages }, (_, i) => i + 1).filter(
+    (page) =>
+      page === 1 ||
+      page === totalPages ||
+      Math.abs(page - currentPage) <= 1,
+  )
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-50 via-pink-50 to-cyan-50">
@@ -132,8 +137,8 @@ export default function TestsPageClient({ dynamicTests = [] }: TestsPageClientPr
                     좌우로 스크롤하여 확인하세요
                   </span>
                 </div>
-                <ScrollArea className="w-full whitespace-nowrap rounded-lg">
-                  <div className="flex w-max space-x-2 p-1">
+                <div className="w-full overflow-x-auto rounded-lg pb-2">
+                  <div className="flex min-w-max space-x-2 p-1">
                     <Button
                       variant={selectedCategory === "전체" ? "default" : "outline"}
                       onClick={() => handleCategoryFilter("전체")}
@@ -158,8 +163,7 @@ export default function TestsPageClient({ dynamicTests = [] }: TestsPageClientPr
                       </Button>
                     ))}
                   </div>
-                  <ScrollBar orientation="horizontal" className="invisible sm:visible" />
-                </ScrollArea>
+                </div>
               </div>
             </div>
           </div>
@@ -241,7 +245,7 @@ export default function TestsPageClient({ dynamicTests = [] }: TestsPageClientPr
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex flex-wrap items-center justify-center gap-2">
                   <Button
                     variant="outline"
                     size="sm"
@@ -251,18 +255,28 @@ export default function TestsPageClient({ dynamicTests = [] }: TestsPageClientPr
                     <ChevronLeft className="w-4 h-4" />
                     이전
                   </Button>
-                  <div className="flex items-center gap-2">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                      <Button
-                        key={page}
-                        variant={currentPage === page ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => setCurrentPage(page)}
-                        className={currentPage === page ? "bg-gradient-to-r from-violet-500 to-pink-500" : ""}
-                      >
-                        {page}
-                      </Button>
-                    ))}
+                  <div className="flex flex-wrap items-center justify-center gap-2">
+                    {visiblePages.map((page, index) => {
+                      const previous = visiblePages[index - 1]
+                      const hasGap = previous && page - previous > 1
+                      return (
+                        <div key={page} className="flex items-center gap-2">
+                          {hasGap && (
+                            <span className="px-1 text-sm text-gray-400">
+                              ...
+                            </span>
+                          )}
+                          <Button
+                            variant={currentPage === page ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => setCurrentPage(page)}
+                            className={currentPage === page ? "bg-gradient-to-r from-violet-500 to-pink-500" : ""}
+                          >
+                            {page}
+                          </Button>
+                        </div>
+                      )
+                    })}
                   </div>
                   <Button
                     variant="outline"

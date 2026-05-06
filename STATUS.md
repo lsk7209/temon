@@ -1,18 +1,22 @@
-# Status | 마지막: 2026-05-04
+# Status | 마지막: 2026-05-06
 ## 현재 작업
-대기: wave2 퀴즈 100개 생성·예약·품질 보강·feed/list 반영 완료
+blog-optimizer 2차 완료: thin content 테스트 noindex/sitemap 제외 방어 적용 및 검증 완료.
 ## 최근 변경 (최근 5개만)
-- 05-04: GA4 운영 수집 확인, 자동 page_view를 꺼서 중복 page_view 방지
-- 05-04: feed 정적 항목 fallback 날짜를 과거로 고정해 DB 공개 글이 상단 노출되도록 보정
-- 05-04: feed.xml에 DB published 퀴즈 포함, /tests 목록을 공개 최신순으로 정렬
-- 05-04: wave2 결과 요약 1,600개 주제 밀착 보강, 유형 코드 노출 0개로 정리
-- 05-04: wave2 설명문 100개를 잘림 없는 2문장형으로 보강, metadata 키워드 복원
+- 05-06: 네이버 사이트 소유확인 메타 태그를 전역 head에 단일 출력.
+- 05-06: 홈을 블로그형 레이아웃으로 정리하고 광고 예약 공간/가독성 섹션 추가.
+- 05-06: 면책조항 페이지 생성, footer/sitemap/AI 인덱스/llms 문서 연결.
+- 05-06: /tests 모바일 카테고리/페이지네이션 가로 오버플로 수정.
+- 05-06: prose 150자 미만 테스트를 noindex 처리하고 sitemap에서 제외.
 ## TODO
-- [ ] 공개 시작 후 GA4/GSC에서 신규 퀴즈 노출·클릭 데이터 확인
-- [ ] AdSense 리포트에서 신규 퀴즈 페이지 RPM/노출 확인
+- [ ] 배포 후 Naver Search Advisor에서 소유확인 성공 여부 확인.
+- [ ] GA4/GSC에서 신규 구조 노출·클릭 데이터 확인.
+- [ ] AdSense 검수 전 thin content 300자 미만 페이지 보강 2차 진행.
+- [ ] 공개 후 sitemap 제출 및 IndexNow ping 실행.
 ## 결정사항
-- 예약 공개: published_at을 예약 시각으로 저장하고, publish cron이 due draft만 1개씩 공개
-- 퀴즈 접근: 공개 전 draft는 상세·응시·결과 페이지에서 404 처리
+- 1차 범위: AdSense 검수 기반 필수 페이지, 메타, AI 인덱스, 모바일 오류부터 처리.
+- 2차 범위: 본문 prose 150자 미만 테스트는 접근 유지, 색인/sitemap만 제외.
+- 네이버 인증: env 값이 있으면 env 우선, 없으면 요청받은 인증값 사용.
 ## 주의
-- 기존 미완료 변경 파일은 되돌리지 않음
-- npm run build는 과거 Next 시작 단계 장시간 멈춤 이슈가 있어 lint/tsc와 DB 전수 검증을 우선 사용
+- 기존 미완료 변경 파일은 되돌리지 않음.
+- 일반 next dev는 응답 지연 이슈가 있어 검증은 next dev --turbo 포트 3006으로 수행.
+- lint/tsc 통과, 브라우저에서 홈·/tests·thin/정상 테스트·sitemap 확인 완료.

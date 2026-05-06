@@ -33,8 +33,12 @@ export async function GET() {
           type: "listing",
         },
         { url: "/about", title: "테몬 소개", type: "about" },
+        { url: "/contact", title: "문의하기", type: "contact" },
         { url: "/privacy", title: "개인정보처리방침", type: "legal" },
         { url: "/terms", title: "이용약관", type: "legal" },
+        { url: "/disclaimer", title: "면책조항", type: "legal" },
+        { url: "/llms.txt", title: "AI 검색 안내", type: "ai-index" },
+        { url: "/llms-full.txt", title: "AI 전체 콘텐츠 인덱스", type: "ai-index" },
       ],
       tests: tests.map((test) => ({
         ...test,
@@ -46,9 +50,9 @@ export async function GET() {
     },
     {
       headers: {
+        "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "public, max-age=3600, s-maxage=3600",
       },
     },
   );
 }
-

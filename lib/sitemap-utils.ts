@@ -195,5 +195,11 @@ export function getStaticRoutes(baseUrl: string): RouteInfo[] {
       changeFrequency: "monthly",
       priority: 0.3,
     },
+    {
+      path: `${baseUrl}/disclaimer`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
   ];
 }
