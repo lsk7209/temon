@@ -218,7 +218,7 @@ function ResultContent() {
   const resultUseCases = getTopicResultUseCases("Study MBTI Test", character.name)
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>결과를 불러오는 중...</div>
   }
 
   const handleShare = async () => {
@@ -230,7 +230,7 @@ function ResultContent() {
           url: window.location.href,
         })
       } catch (err) {
-        console.log("Error sharing:", err)
+        void err
       }
     } else {
       // Fallback for browsers that don't support Web Share API
@@ -469,7 +469,7 @@ function ResultContent() {
 
 export default function StudyMBTIResult() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>결과를 불러오는 중...</div>}>
       <ResultContent />
     </Suspense>
   )

@@ -5,7 +5,7 @@ import { tests } from "@/lib/db/schema";
 import { submitUrlsToIndexNow } from "@/lib/indexnow";
 
 export const dynamic = "force-dynamic";
-const WAVE3_MIN_PUBLISH_SCORE = 90;
+const MIN_PUBLISH_QUALITY_SCORE = 90;
 
 function parseMetadata(value: unknown) {
   if (!value) return {};
@@ -28,9 +28,21 @@ function getQualityScore(metadata: Record<string, unknown>) {
 }
 
 function isPublishableByQuality(metadata: Record<string, unknown>) {
-  if (metadata.wave !== "wave3") return true;
   const score = getQualityScore(metadata);
-  return typeof score === "number" && score >= WAVE3_MIN_PUBLISH_SCORE;
+  return typeof score === "number" && score >= MIN_PUBLISH_QUALITY_SCORE;
+}
+
+function getBlockedDraftSummary(
+  draftTest: typeof tests.$inferSelect,
+  metadata: Record<string, unknown>,
+) {
+  return {
+    id: draftTest.id,
+    slug: draftTest.slug,
+    title: draftTest.title,
+    qualityScore: getQualityScore(metadata),
+    requiredScore: MIN_PUBLISH_QUALITY_SCORE,
+  };
 }
 
 export async function GET(request: Request) {
@@ -47,30 +59,33 @@ export async function GET(request: Request) {
       "",
     );
 
-    const draftTest = await db
+    const dueDrafts = await db
       .select()
       .from(tests)
       .where(and(eq(tests.status, "draft"), lte(tests.publishedAt, now)))
-      .orderBy(asc(tests.publishedAt), asc(tests.createdAt))
-      .limit(1)
-      .get();
+      .orderBy(asc(tests.publishedAt), asc(tests.createdAt));
 
-    if (!draftTest) {
+    if (dueDrafts.length === 0) {
       return NextResponse.json({ message: "No due draft tests available" });
     }
 
-    const metadata = parseMetadata(draftTest.metadata);
-    if (!isPublishableByQuality(metadata)) {
+    const blockedDrafts = [];
+    let draftTest: typeof tests.$inferSelect | null = null;
+
+    for (const candidate of dueDrafts) {
+      const metadata = parseMetadata(candidate.metadata);
+      if (isPublishableByQuality(metadata)) {
+        draftTest = candidate;
+        break;
+      }
+      blockedDrafts.push(getBlockedDraftSummary(candidate, metadata));
+    }
+
+    if (!draftTest) {
       return NextResponse.json({
         success: false,
-        message: "Due draft blocked by quality gate",
-        blockedTest: {
-          id: draftTest.id,
-          slug: draftTest.slug,
-          title: draftTest.title,
-          qualityScore: getQualityScore(metadata),
-          requiredScore: WAVE3_MIN_PUBLISH_SCORE,
-        },
+        message: "Due drafts blocked by quality gate",
+        blockedTests: blockedDrafts,
       });
     }
 
@@ -99,6 +114,7 @@ export async function GET(request: Request) {
         title: draftTest.title,
         scheduledAt: draftTest.publishedAt,
       },
+      skippedByQualityGate: blockedDrafts,
       indexNow,
     });
   } catch (error: unknown) {

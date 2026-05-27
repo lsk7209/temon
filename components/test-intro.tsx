@@ -15,6 +15,7 @@ import {
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy";
 import { RelatedTestsSection } from "@/components/related-tests-section";
 import { AnswerEngineSection } from "@/components/answer-engine-section";
+import { ContentToc } from "@/components/content-toc";
 
 interface TestIntroProps {
   id: string;
@@ -95,12 +96,20 @@ export function TestIntro({
   const highlights = getIntroHighlights(title);
   const landingParagraphs = getIntroLandingParagraphs(title);
   const useCases = getIntroUseCases(title);
+  const tocItems = [
+    { id: "test-start", label: "테스트 시작" },
+    { id: "test-overview", label: "알 수 있는 것" },
+    { id: "test-reason", label: "효과적인 이유" },
+    { id: "test-recommend", label: "추천 대상" },
+    { id: "test-guide", label: "테스트 안내" },
+    { id: "test-faq", label: "자주 묻는 질문" },
+  ];
 
   return (
     <div className={`min-h-screen ${t.bg}`}>
       <JsonLd id="quiz-schema" data={jsonLd} />
-      <main className="container max-w-4xl mx-auto px-4 py-12">
-        <div className="text-center space-y-10">
+      <article className="container mx-auto max-w-5xl px-4 py-8 sm:py-12">
+        <div id="test-start" className="scroll-mt-24 text-center space-y-10">
           {/* Animated Icon Area */}
           <div className="relative mx-auto w-32 h-32 mb-8 group cursor-pointer hover:scale-110 transition-transform">
             <div
@@ -168,8 +177,13 @@ export function TestIntro({
           </div>
         </div>
 
-        <div className="mt-20 space-y-12">
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
+        <ContentToc items={tocItems} className="mx-auto mt-12 max-w-3xl" />
+
+        <div className="article-content mt-16 space-y-10 sm:mt-20 sm:space-y-12">
+          <Card
+            id="test-overview"
+            className="scroll-mt-24 border-0 bg-white/80 shadow-xl backdrop-blur-sm"
+          >
             <CardContent className="p-8 md:p-12">
               <div className="text-center space-y-8">
                 <h2 className="text-2xl font-bold flex items-center justify-center space-x-2 text-gray-800">
@@ -204,7 +218,10 @@ export function TestIntro({
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
+          <Card
+            id="test-reason"
+            className="scroll-mt-24 border-0 bg-white/80 shadow-xl backdrop-blur-sm"
+          >
             <CardContent className="p-8 md:p-12">
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold text-gray-800">
@@ -234,7 +251,10 @@ export function TestIntro({
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
+          <Card
+            id="test-recommend"
+            className="scroll-mt-24 border-0 bg-white/80 shadow-xl backdrop-blur-sm"
+          >
             <CardContent className="p-8 md:p-12">
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold text-gray-800">
@@ -254,13 +274,17 @@ export function TestIntro({
             </CardContent>
           </Card>
 
-          <AnswerEngineSection quizTitle={title} />
+          <section id="test-guide" className="scroll-mt-24">
+            <AnswerEngineSection quizTitle={title} />
+          </section>
 
-          <FAQSection faqs={faqs} className="max-w-none" />
+          <section id="test-faq" className="scroll-mt-24">
+            <FAQSection faqs={faqs} className="max-w-none" />
+          </section>
 
           <RelatedTestsSection testId={id} title="추천 테스트" />
         </div>
-      </main>
+      </article>
     </div>
   );
 }

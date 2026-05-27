@@ -1,0 +1,8 @@
+.bkit/
+.omc/
+.omx/
+.site-optimizer/
+local.db
+reports/
+*.log
+*.tsbuildinfo

@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>팀 검토 v2 · 풀 플로우 리뷰</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+:root{
+  --bg:#F6F7F9; --elev:#fff; --line:#E6E8EC; --line-soft:#EEF0F4;
+  --ink-1:#0B1220; --ink-2:#2A3142; --ink-3:#5B6373; --ink-4:#8A93A4; --ink-5:#B7BDC8;
+  --theme-50:#ECFEFF; --theme-100:#CFFAFE; --theme-200:#A5F3FC;
+  --theme-600:#0891B2; --theme-700:#0E7490; --theme-ink:#0B3D49;
+  --hi:#DC2626; --hi-bg:#FEF2F2;
+  --md:#D97706; --md-bg:#FFFBEB;
+  --lo:#0891B2; --lo-bg:#ECFEFF;
+  --good:#059669; --good-bg:#ECFDF5;
+  --container:1180px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
+  background:var(--bg); color:var(--ink-2);
+  font-size:15px; line-height:1.6; letter-spacing:-0.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.container{max-width:var(--container); margin:0 auto; padding:0 24px}
+@media (min-width:768px){.container{padding:0 32px}}
+button{font-family:inherit; border:0; background:none; cursor:pointer; color:inherit; padding:0}
+a{color:inherit; text-decoration:none}
+
+/* doc head */
+.doc-head{padding:48px 0 32px; border-bottom:1px solid var(--line-soft)}
+.doc-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12px; font-weight:700; color:var(--theme-700);
+  letter-spacing:0.06em; text-transform:uppercase;
+  background:var(--theme-50); padding:6px 12px; border-radius:999px;
+  border:1px solid color-mix(in oklab, var(--theme-200) 60%, white);
+}
+.doc-title{
+  font-size:clamp(28px, 5vw, 44px); font-weight:800; letter-spacing:-0.028em;
+  color:var(--ink-1); margin:14px 0 8px; line-height:1.2; text-wrap:balance;
+}
+.doc-sub{font-size:16px; color:var(--ink-3); margin:0; max-width:680px}
+.doc-meta{
+  display:flex; gap:18px; flex-wrap:wrap; margin-top:18px;
+  font-size:12.5px; color:var(--ink-4);
+}
+.doc-meta b{color:var(--ink-2); font-weight:600}
+.doc-links{display:flex; gap:8px; margin-top:14px; flex-wrap:wrap}
+.doc-link-chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:8px;
+  background:#fff; border:1px solid var(--line);
+  font-size:12.5px; color:var(--ink-2); font-weight:600;
+  transition:border-color .15s ease;
+}
+.doc-link-chip:hover{border-color:var(--theme-600); color:var(--theme-700)}
+.doc-link-chip svg{flex:0 0 14px}
+
+/* section */
+.section{padding:48px 0; border-bottom:1px solid var(--line-soft)}
+@media (min-width:768px){.section{padding:72px 0}}
+.section-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11.5px; font-weight:700; letter-spacing:0.06em;
+  color:var(--theme-700); text-transform:uppercase;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+.section-eyebrow .num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:22px; height:22px; border-radius:6px;
+  background:var(--theme-600); color:#fff; font-size:11px;
+}
+.section-title{
+  font-size:24px; font-weight:800; letter-spacing:-0.024em;
+  color:var(--ink-1); margin:14px 0 6px; line-height:1.3; text-wrap:balance;
+}
+@media (min-width:768px){.section-title{font-size:30px}}
+.section-desc{font-size:15px; color:var(--ink-3); margin:0 0 24px; max-width:680px}
+
+/* avatars */
+.avatar{
+  width:36px; height:36px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:13px; color:#fff;
+  letter-spacing:-0.02em; flex:0 0 36px;
+}
+.avatar-a{background:linear-gradient(135deg,#0891B2,#0E7490)}
+.avatar-b{background:linear-gradient(135deg,#7C3AED,#5B21B6)}
+.avatar-c{background:linear-gradient(135deg,#EA580C,#C2410C)}
+
+/* review */
+.review-cols{
+  display:grid; grid-template-columns:1fr; gap:16px;
+}
+@media (min-width:1024px){.review-cols{grid-template-columns:repeat(3, 1fr); gap:20px}}
+.review-col{display:flex; flex-direction:column; gap:10px}
+.review-head{
+  display:flex; align-items:center; gap:10px;
+  padding:12px 14px;
+  background:#fff; border:1px solid var(--line); border-radius:12px;
+}
+.review-head-name{font-size:13.5px; font-weight:800; color:var(--ink-1)}
+.review-head-role{font-size:11.5px; color:var(--ink-4)}
+
+.comment{
+  background:#fff; border:1px solid var(--line); border-radius:12px;
+  padding:16px; display:flex; flex-direction:column; gap:8px;
+}
+.comment-top{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.sev{
+  font-size:10px; font-weight:800; letter-spacing:0.06em;
+  padding:3px 7px; border-radius:5px;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+.sev.hi{background:var(--hi-bg); color:var(--hi)}
+.sev.md{background:var(--md-bg); color:var(--md)}
+.sev.lo{background:var(--lo-bg); color:var(--lo)}
+.ref{
+  font-size:10.5px; color:var(--ink-5);
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+.comment-title{
+  font-size:14.5px; font-weight:800; color:var(--ink-1);
+  letter-spacing:-0.015em; line-height:1.4;
+}
+.comment-body{font-size:13px; color:var(--ink-2); line-height:1.65}
+.comment-fix{
+  margin-top:4px; padding-top:10px; border-top:1px dashed var(--line);
+  font-size:12.5px; color:var(--ink-3); line-height:1.6;
+  display:flex; gap:6px;
+}
+.comment-fix b{
+  color:var(--good); font-weight:700; flex:0 0 auto;
+}
+.comment-fix b::before{
+  content:''; display:inline-block; width:6px; height:6px; border-radius:50%;
+  background:var(--good); margin-right:6px; vertical-align:middle;
+}
+
+/* consensus */
+.consensus{
+  background:linear-gradient(180deg, #fff, var(--theme-50));
+  border:1px solid color-mix(in oklab, var(--theme-200) 60%, var(--line));
+  border-radius:18px; padding:22px;
+}
+@media (min-width:768px){.consensus{padding:28px 32px}}
+.consensus-h{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11.5px; font-weight:800; color:var(--theme-700);
+  letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px;
+}
+.consensus-title{font-size:18px; font-weight:800; color:var(--ink-1); letter-spacing:-0.018em; margin:0 0 14px}
+@media (min-width:768px){.consensus-title{font-size:21px}}
+.consensus-quote{
+  display:flex; gap:14px; padding:14px 0;
+  border-top:1px dashed color-mix(in oklab, var(--theme-200) 70%, white);
+}
+.consensus-quote:first-of-type{border-top:0; padding-top:4px}
+.consensus-quote-text{font-size:14px; color:var(--ink-2); line-height:1.65}
+.consensus-quote-text b{color:var(--ink-1); font-weight:700}
+.consensus-quote-who{font-size:11.5px; color:var(--ink-4); margin-top:4px}
+
+/* plan grid */
+.plan-grid{
+  display:grid; grid-template-columns:1fr; gap:14px;
+}
+@media (min-width:768px){.plan-grid{grid-template-columns:repeat(3, 1fr); gap:18px}}
+.plan-col{
+  background:#fff; border:1px solid var(--line); border-radius:16px;
+  padding:18px 20px;
+}
+.plan-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px}
+.plan-tag{
+  font-size:11px; font-weight:800; letter-spacing:0.06em;
+  padding:4px 10px; border-radius:6px;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+.plan-tag.p0{background:#FEF2F2; color:#DC2626}
+.plan-tag.p1{background:#FFFBEB; color:#D97706}
+.plan-tag.p2{background:#F1F3F7; color:#5B6373}
+.plan-time{font-size:11.5px; color:var(--ink-4); font-weight:600}
+.plan-title{font-size:13.5px; font-weight:800; color:var(--ink-1); margin-bottom:6px}
+.plan-list{margin:0; padding:0; list-style:none}
+.plan-list li{
+  padding:10px 0;
+  border-top:1px solid var(--line-soft);
+  font-size:13px; color:var(--ink-2); line-height:1.55;
+  display:flex; gap:10px; align-items:flex-start;
+}
+.plan-list li:first-child{border-top:0; padding-top:0}
+.plan-list li .ref{flex:0 0 auto; padding-top:1px}
+.plan-list b{color:var(--ink-1); font-weight:700}
+
+/* praise box */
+.praise{
+  background:#fff; border:1px solid var(--line);
+  border-radius:14px; padding:18px 22px;
+  display:grid; grid-template-columns:1fr; gap:8px;
+}
+@media (min-width:768px){.praise{grid-template-columns:repeat(3, 1fr); gap:18px}}
+.praise-item{display:flex; gap:10px; align-items:flex-start}
+.praise-item-ico{
+  width:28px; height:28px; border-radius:8px;
+  background:var(--good-bg); color:var(--good);
+  display:inline-flex; align-items:center; justify-content:center;
+  flex:0 0 28px;
+}
+.praise-item-text{font-size:13.5px; color:var(--ink-2); line-height:1.5}
+.praise-item-text b{color:var(--ink-1); font-weight:700}
+
+/* footer */
+.doc-foot{
+  padding:32px 0 56px;
+  font-size:13px; color:var(--ink-4);
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+}
+
+.section-sub-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:10.5px; font-weight:700; letter-spacing:0.06em;
+  color:var(--ink-4); text-transform:uppercase;
+  margin-bottom:6px; font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- doc header -->
+  <header class="doc-head">
+    <span class="doc-eyebrow">temon.kr · 내부 기획 문서 v0.2</span>
+    <h1 class="doc-title">풀 플로우 리뷰 (인트로 + 질문 + 결과 v2)</h1>
+    <p class="doc-sub">v0.1에서 합의한 인트로·질문·결과 v2가 빌드된 뒤, 같은 3인 팀이 다시 본 결과입니다. 잘 된 것보다 “여전히 손볼 곳”에 집중합니다.</p>
+    <div class="doc-meta">
+      <span><b>리뷰어</b> · 정수민 · 이도현 · 박지은</span>
+      <span><b>대상</b> · 풀 플로우 v0.5</span>
+      <span><b>리뷰일</b> · 2026. 05. 27</span>
+    </div>
+    <div class="doc-links">
+      <a class="doc-link-chip" href="퀴즈 플로우.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        풀 플로우 보기
+      </a>
+      <a class="doc-link-chip" href="팀 검토 + 퀴즈 플로우 기획.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        v0.1 리뷰 보기
+      </a>
+      <a class="doc-link-chip" href="결과 페이지.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+        결과 페이지 v1
+      </a>
+    </div>
+  </header>
+
+  <!-- 짧은 칭찬 -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">0</span> Working well</div>
+    <h2 class="section-title">이번에 잘 된 것</h2>
+    <p class="section-desc">개선 의견 전에 먼저 짚어둘 것. (재합의 가능한 결정사항이라는 뜻)</p>
+    <div class="praise">
+      <div class="praise-item">
+        <span class="praise-item-ico">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
+        </span>
+        <div class="praise-item-text"><b>결과 계산 중 인터스티셜</b> 도입은 옳음. 1.9초도 짧은 편이지만, “기대감 트리거”라는 행동 의도는 잘 살아남.</div>
+      </div>
+      <div class="praise-item">
+        <span class="praise-item-ico">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
+        </span>
+        <div class="praise-item-text"><b>nickname 별명</b>이 결과 페이지 + 공유 카드 양쪽에 안정적으로 노출. 후속 og:title 자동화에 그대로 활용 가능.</div>
+      </div>
+      <div class="praise-item">
+        <span class="praise-item-ico">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
+        </span>
+        <div class="praise-item-text"><b>shrinking share badge</b>는 데스크톱 우상단 / 모바일 하단으로 자연스럽게 동작. 본문 진입 후 공유 욕구 채널이 살아 있음.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 인트로 리뷰 -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">1</span> Intro Page</div>
+    <h2 class="section-title">인트로 페이지 리뷰</h2>
+    <p class="section-desc">미션 “스크롤 없이 시작 버튼 도달”이 빌드 후 깨졌습니다. 다시 회복하는 게 가장 큰 줄기.</p>
+
+    <div class="review-cols">
+
+      <!-- 정수민 -->
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-a">정수</div>
+          <div>
+            <div class="review-head-name">정수민</div>
+            <div class="review-head-role">UX Researcher</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">Referral card</span></div>
+          <div class="comment-title">친구 결과 카드 정보가 너무 적습니다</div>
+          <div class="comment-body">결과 코드(STB-04) + 결과명만 노출. 호기심이 “이게 뭐지?”보다 “별 거 없네”에 가깝습니다. 친구의 키워드 1줄이나 짧은 한 문장 요약이 들어가야 “나도 받아볼까?” 동기가 활성화돼요.</div>
+          <div class="comment-fix"><b>fix</b><span>referral 카드에 친구 키워드 3개 또는 “#기준이먼저 · #꾸준함 · #예측가능” 한 줄 추가</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">First fold</span></div>
+          <div class="comment-title">시작 버튼이 첫 화면을 넘어갔습니다</div>
+          <div class="comment-body">메타(12문항·2분·16결과)와 referral 카드가 같이 들어오면서, 모바일 360px 첫 화면에서 “시작하기” 버튼이 살짝 잘립니다. v0.1 미션 “스크롤 없이 시작”이 깨졌어요.</div>
+          <div class="comment-fix"><b>fix</b><span>모바일에서 메타 카드를 더 압축하거나 referral 카드 padding 축소. 시작 버튼은 first-fold 안에.</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev lo">LOW</span><span class="ref">Live counter</span></div>
+          <div class="comment-title">실시간 카운터는 “정지된 숫자”로 보입니다</div>
+          <div class="comment-body">1,243명이 고정으로 떠 있어서, 새로고침해도 같은 숫자면 신뢰가 떨어집니다. 5초에 한 번 ±10명 미세 변동만 줘도 “실시간이구나” 신호가 됩니다.</div>
+          <div class="comment-fix"><b>fix</b><span>setInterval로 ±5~10 random walk + ease 애니메이션</span></div>
+        </div>
+      </div>
+
+      <!-- 이도현 -->
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-b">이도</div>
+          <div>
+            <div class="review-head-name">이도현</div>
+            <div class="review-head-role">Product Designer</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">Title highlight</span></div>
+          <div class="comment-title">“선택 패턴” cyan underline 컨트라스트가 약합니다</div>
+          <div class="comment-body">옅은 cyan으로 강조선을 깔았는데, 흰 배경에서 거의 안 보입니다. 강조 의도와 반대로 “괜히 다른 색이 묻은” 느낌. 두께를 키우거나 색상을 한 단계 진하게.</div>
+          <div class="comment-fix"><b>fix</b><span>underline 색을 <code>--theme-300</code>으로 한 단계 올리고, 높이를 1.5em의 35%로 살짝 키움</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">코드 입력 box</span></div>
+          <div class="comment-title">친구 코드 입력 박스가 시작 버튼과 무게 경쟁</div>
+          <div class="comment-body">코드 입력이 한 페이지 안에 카드처럼 들어가서 “이게 더 중요한 행동인가?” 혼란을 줍니다. 인트로의 1순위는 시작이지, 코드 입력이 아니에요.</div>
+          <div class="comment-fix"><b>fix</b><span>코드 입력을 “받은 코드가 있나요?” 한 줄 링크 형태로 축소. 누르면 작은 모달로 입력</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">Meta 3-up</span></div>
+          <div class="comment-title">“2분” “16가지” 숫자가 너무 강조됩니다</div>
+          <div class="comment-body">cyan 22px bold 숫자 3개가 hero 아래에 나란히 있어서, 본문 hero보다 시각 무게가 더 큽니다. 사용자가 먼저 보는 게 “12 / 2분 / 16가지”라면 미션과 어긋나요.</div>
+          <div class="comment-fix"><b>fix</b><span>숫자 사이즈 16-18px로 다운, 색은 ink-1 (검은 톤). 가벼운 정보 라인으로</span></div>
+        </div>
+      </div>
+
+      <!-- 박지은 -->
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-c">박지</div>
+          <div>
+            <div class="review-head-name">박지은</div>
+            <div class="review-head-role">Growth & Content</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">SEO 본문</span></div>
+          <div class="comment-title">인트로에 검색 본문이 한 글자도 없습니다</div>
+          <div class="comment-body">인트로가 검색으로 들어오는 LP인데, “이 테스트는 어떤 사람에게 도움이 되는지”, “어떻게 답하면 좋은지” 같은 본문이 0줄입니다. AEO/SGE에 잘리고, 구글 메타 description은 hero sub 한 줄만 잡힙니다.</div>
+          <div class="comment-fix"><b>fix</b><span>관련 테스트 위에 “이 테스트는 누구에게 좋을까요?” FAQ-스타일 3문항 추가 (각 2-3문장)</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">Related cross-cat</span></div>
+          <div class="comment-title">인기 테스트가 전부 다른 카테고리</div>
+          <div class="comment-body">관련 테스트가 음식·연애·생활습관 등으로 분산돼서 “이 사용자가 다음에 할 가능성이 큰 테스트” 추천이 약합니다. 같은 카테고리(성향) 2개 + cross-cat 1개 비율이 그로스 관점에서 더 좋아요.</div>
+          <div class="comment-fix"><b>fix</b><span>data.related에 priority 필드 추가, 인트로/결과 페이지 별로 정렬 다르게</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev lo">LOW</span><span class="ref">og:image</span></div>
+          <div class="comment-title">인트로의 og:image 정의가 없습니다</div>
+          <div class="comment-body">결과 페이지는 nickname 별명 + 결과 카드가 og 이미지 후보지만, 인트로는 별도가 필요해요. 검색 결과에서 카드 미리보기 빠지면 CTR ↓.</div>
+          <div class="comment-fix"><b>fix</b><span>각 테스트마다 1200×630 정적 OG 이미지 1장씩. 디자인 시스템에 og 템플릿 추가</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 질문 페이지 리뷰 -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">2</span> Question Page</div>
+    <h2 class="section-title">질문 페이지 리뷰</h2>
+    <p class="section-desc">기능적으로는 잘 동작합니다. 시각 위계와 후반부 이탈 방지가 남은 과제.</p>
+
+    <div class="review-cols">
+
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-a">정수</div>
+          <div>
+            <div class="review-head-name">정수민</div>
+            <div class="review-head-role">UX Researcher</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">후반부 이탈</span></div>
+          <div class="comment-title">9-12번 문항에서 이탈이 가장 큽니다</div>
+          <div class="comment-body">한국 사용자는 결과를 빨리 보고 싶어 해서, 8문항을 넘기는 순간 “언제 끝나지” 피로가 누적돼요. 마이크로카피 한 줄로 “3문항 남았어요” 신호를 주는 게 효과적입니다.</div>
+          <div class="comment-fix"><b>fix</b><span>마지막 3문항에 진행도 바 아래 “3문항 남았어요 · 거의 다 왔어요” 한 줄</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">Axis 라벨</span></div>
+          <div class="comment-title">“선택 패턴” “시작 방식” 라벨이 모호함</div>
+          <div class="comment-body">사용자에게 분류 축을 보여주는 게 어떤 가치인지 명확하지 않아요. 안 보여줄지, 호버/탭하면 짧은 설명을 띄울지 결정 필요. 지금은 어중간한 상태.</div>
+          <div class="comment-fix"><b>fix</b><span>모바일은 라벨 숨김 (Q5만 표시), 데스크톱은 라벨 옆에 작은 ⓘ 아이콘 + 툴팁</span></div>
+        </div>
+      </div>
+
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-b">이도</div>
+          <div>
+            <div class="review-head-name">이도현</div>
+            <div class="review-head-role">Product Designer</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">Progress bar</span></div>
+          <div class="comment-title">진행도 바 6px은 모바일에서 거의 안 보입니다</div>
+          <div class="comment-body">밝은 배경 위에 얇은 cyan은 “있나 없나” 수준. 진행감 자체가 약해서 “끝이 보인다” 감각이 떨어져요. 두께를 8-10px로 올리고, 끝 부분만 그라데이션 처리로 광택을 줘도 좋습니다.</div>
+          <div class="comment-fix"><b>fix</b><span>height 8px + 진행 부분 끝에 반짝이는 highlight pseudo-element</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">Option dot</span></div>
+          <div class="comment-title">옵션 라디오 dot 22px이 라벨과 무게 경쟁</div>
+          <div class="comment-body">dot이 크면 “답변 자체”보다 “라디오 버튼”에 시선이 갑니다. 한 손 사용자는 라벨을 먼저 읽는데, 시각 무게가 반대로 가 있어요.</div>
+          <div class="comment-fix"><b>fix</b><span>dot 18px로 축소, 선택 시 카드 전체 배경 + 좌측 라인 강조로 위계 이동</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev lo">LOW</span><span class="ref">Shortcut hint</span></div>
+          <div class="comment-title">키보드 1-4 단축키를 아무도 모릅니다</div>
+          <div class="comment-body">데스크톱에서 옵션 우측에 1, 2, 3 번호가 떠 있지만, 단축키라는 신호가 부족해요. 첫 질문에만 “1-4 키로 빠르게 답할 수 있어요” 한 번 토스트.</div>
+          <div class="comment-fix"><b>fix</b><span>Q1에서만 3초 토스트. localStorage로 한 번 본 사용자에겐 안 띄움</span></div>
+        </div>
+      </div>
+
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-c">박지</div>
+          <div>
+            <div class="review-head-name">박지은</div>
+            <div class="review-head-role">Growth & Content</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">광고 인터스티셜</span></div>
+          <div class="comment-title">결과 계산 1.9초는 인터스티셜 광고 시간으로 짧음</div>
+          <div class="comment-body">자동광고가 인터스티셜로 들어오기엔 입찰·로딩 시간이 부족합니다. 3-4초로 늘리거나, 결과 페이지 hero 직후 광고 슬롯이 잘 들어오는지 모니터링 필요.</div>
+          <div class="comment-fix"><b>fix</b><span>로딩 카피를 4단계로 늘려서 자연스럽게 3.2초로 — “답변 모으기 → 패턴 추출 → 유형 매칭 → 결과 만들기”</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev lo">LOW</span><span class="ref">진행 상태 저장</span></div>
+          <div class="comment-title">중간 이탈 후 복귀 동선 표시 X</div>
+          <div class="comment-body">localStorage에 저장은 되는데, 재방문 시 “5/12에서 멈췄어요. 이어서 할까요?” 안내가 없어요. 그로스 측면에서 복귀 시 conversion ↑ 채널을 놓침.</div>
+          <div class="comment-fix"><b>fix</b><span>인트로 진입 시 저장된 답이 있으면 시작 버튼 위에 “이어서 하기” 보조 CTA</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 결과 v2 리뷰 -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">3</span> Result v2</div>
+    <h2 class="section-title">결과 페이지 v2 리뷰</h2>
+    <p class="section-desc">v1 → v2의 5가지 변경점은 잘 안착했지만, 새 변경점이 만든 새 이슈가 보입니다.</p>
+
+    <div class="review-cols">
+
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-a">정수</div>
+          <div>
+            <div class="review-head-name">정수민</div>
+            <div class="review-head-role">UX Researcher</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">Nickname 위치</span></div>
+          <div class="comment-title">“기준러”가 결과명 아래에 있어서 약합니다</div>
+          <div class="comment-body">한국 사용자에게 별명은 “캡처용 한 단어”입니다. 캡처할 때 별명이 위에 크게 떠 있으면 공유성 ↑. 지금은 결과명 16자가 먼저 보이고, 별명은 작은 pill로 묻혀요.</div>
+          <div class="comment-fix"><b>fix</b><span>Hero 위계: nickname 큰 글씨(36-44px) → 결과 풀네임 작은 글씨(18-20px) 보조 라인으로 역전</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">Disclaimer 톤</span></div>
+          <div class="comment-title">MBTI disclaimer 박스가 너무 눈에 띕니다</div>
+          <div class="comment-body">의도와 반대로 강조됨. ⓘ 아이콘 + 베이지 박스가 alert처럼 보여서 “이거 진짜 같지 않다”는 인상을 줄 수 있어요. 차분한 회색 텍스트 한 줄로 충분합니다.</div>
+          <div class="comment-fix"><b>fix</b><span>배경 제거. ink-4 색상의 12px 한 줄 텍스트로</span></div>
+        </div>
+      </div>
+
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-b">이도</div>
+          <div>
+            <div class="review-head-name">이도현</div>
+            <div class="review-head-role">Product Designer</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">Mini share + 광고</span></div>
+          <div class="comment-title">모바일 mini share badge 위치가 광고와 충돌 위험</div>
+          <div class="comment-body">하단 fixed로 두면 AdSense 자동광고의 하단 고정 슬롯과 겹칠 수 있어요. 광고가 우선되면 mini share가 가려지고, mini share가 우선되면 광고 수익이 줄어요.</div>
+          <div class="comment-fix"><b>fix</b><span>모바일에서 mini share를 “스크롤 다운 시에만 표시 / 스크롤 업 시 숨김” 동작으로. 광고가 들어올 자리 비워둠</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">Rarity pill</span></div>
+          <div class="comment-title">rarity pill 2단 정보가 빽빽함</div>
+          <div class="comment-body">“sparkle 아이콘 · 흔하지 않은 유형 · 응답자의 약 14%”로 4개의 시각 요소가 30px 높이 안에. 모바일 360px에서 좁아 보입니다.</div>
+          <div class="comment-fix"><b>fix</b><span>아이콘 제거 또는 sparkle만. 텍스트도 “흔하지 않은 유형 14%”로 더 짧게</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev lo">LOW</span><span class="ref">Share card 비율</span></div>
+          <div class="comment-title">캡처 비율 옵션이 아직 1종</div>
+          <div class="comment-body">v0.1 P1에 있던 9:16, 1.91:1 비율 다운로드 옵션이 아직 미구현. 인스타 스토리 공유율 미달 가능성.</div>
+          <div class="comment-fix"><b>fix</b><span>P1으로 다시 올림. 공유 시트에 “비율 선택” 3-up 추가</span></div>
+        </div>
+      </div>
+
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-c">박지</div>
+          <div>
+            <div class="review-head-name">박지은</div>
+            <div class="review-head-role">Growth & Content</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">친구 결과 비교</span></div>
+          <div class="comment-title">referral로 들어온 사용자에게 친구 결과와 비교 UI가 없음</div>
+          <div class="comment-body">“지수님이 받은 결과”를 보고 들어와서 본인도 받았는데, 자기 결과 페이지에서 그 친구를 다시 만나지 못해요. “지수님은 안정형, 당신은 즉흥형 — 잘 맞는 조합!” 카드 하나면 체류 + 공유 모두 ↑.</div>
+          <div class="comment-fix"><b>fix</b><span>referral 진입 시 결과 hero 아래에 “친구와 비교” 카드 노출. 호환성 데이터 재사용 가능</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">H1 + nickname</span></div>
+          <div class="comment-title">H1이 여전히 검색 키워드와 멀어요</div>
+          <div class="comment-body">nickname 필드가 추가됐지만 H1은 여전히 풀네임(“기준을 세우고 천천히 맞춰가는 안정형”). nickname을 H1 prefix로 넣어 “기준러: 기준을 세우고…”로 가면 검색 + 공유 둘 다 잡힙니다.</div>
+          <div class="comment-fix"><b>fix</b><span>H1을 두 줄 구조로. 1줄 = nickname (큰 글씨), 2줄 = 풀네임 (작은 글씨)</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">FAQ schema</span></div>
+          <div class="comment-title">FAQ에 schema.org 마크업 없음</div>
+          <div class="comment-body">결과 페이지 FAQ는 AEO/SGE에 노출되기 좋은 콘텐츠인데, JSON-LD 마크업이 없어서 SERP rich result로 잡히지 않아요.</div>
+          <div class="comment-fix"><b>fix</b><span>ResultFAQ 컴포넌트 마운트 시 <code>&lt;script type="application/ld+json"&gt;</code> 자동 주입</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- consensus -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">4</span> Consensus</div>
+    <h2 class="section-title">3인이 합의한 v0.6 변경점</h2>
+    <p class="section-desc">위 의견들 중 즉시 반영할 5가지. 나머지는 우선순위에 따라 P1/P2.</p>
+
+    <div class="consensus">
+      <div class="consensus-h">합의한 변경점 5가지</div>
+      <h3 class="consensus-title">“시각 위계”와 “행동 후크” 두 축을 다시 잡습니다</h3>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-a">정수</div>
+        <div>
+          <div class="consensus-quote-text"><b>① Nickname-first Hero.</b> 결과 페이지의 H1을 nickname(“기준러”)로 큰 글씨, 풀네임은 그 아래 보조 라인으로. 캡처할 때 한 단어로 정체성이 잡혀야 함.</div>
+          <div class="consensus-quote-who">정수민 (지지: 박지은)</div>
+        </div>
+      </div>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-a">정수</div>
+        <div>
+          <div class="consensus-quote-text"><b>② Referral 카드 정보 확장.</b> 친구의 키워드 1줄을 referral 카드 안에 노출. 호기심을 “이게 뭐지”에서 “나도 그럴까?”로 끌어올림.</div>
+          <div class="consensus-quote-who">정수민</div>
+        </div>
+      </div>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-b">이도</div>
+        <div>
+          <div class="consensus-quote-text"><b>③ 인트로 first-fold 재정렬.</b> 모바일에서 hero + 메타(축소) + 시작 버튼이 한 화면에 들어오게. 코드 입력은 “받은 코드 있나요?” 1줄 링크 + 모달.</div>
+          <div class="consensus-quote-who">이도현</div>
+        </div>
+      </div>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-b">이도</div>
+        <div>
+          <div class="consensus-quote-text"><b>④ 진행도 바 두께 + 옵션 dot 축소.</b> 진행감 ↑, 라벨 위계 ↑. 작은 디테일 두 개로 질문 페이지 전체가 좀 더 단단해 보임.</div>
+          <div class="consensus-quote-who">이도현</div>
+        </div>
+      </div>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-c">박지</div>
+        <div>
+          <div class="consensus-quote-text"><b>⑤ 친구 결과 비교 모듈.</b> referral로 들어온 사용자의 결과 페이지 hero 아래에 “지수님은 안정형, 당신은 ○○형” 비교 카드. 호환성 데이터 재사용.</div>
+          <div class="consensus-quote-who">박지은 (지지: 정수민)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- action plan -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">5</span> Action Plan</div>
+    <h2 class="section-title">다음 액션 · 우선순위</h2>
+    <p class="section-desc">v0.1 ActionPlan과 합쳐서 다시 추렸습니다. 중복은 제거, 우선순위는 v0.6 합의에 맞춰 재정렬.</p>
+
+    <div class="plan-grid">
+      <!-- P0 -->
+      <div class="plan-col">
+        <div class="plan-head">
+          <span class="plan-tag p0">P0</span>
+          <span class="plan-time">~1주</span>
+        </div>
+        <div class="plan-title">이번 스프린트 (v0.6)</div>
+        <ul class="plan-list">
+          <li><span class="ref">A1</span><span><b>Nickname-first Hero</b> · 결과 H1을 nickname 큰 글씨로</span></li>
+          <li><span class="ref">A2</span><span><b>Referral 카드 확장</b> · 친구 키워드 1줄 노출</span></li>
+          <li><span class="ref">A3</span><span><b>인트로 first-fold 재정렬</b> · 메타 축소, 코드 입력은 1줄 링크</span></li>
+          <li><span class="ref">A4</span><span><b>진행도 바 + 옵션 dot 시각 정리</b> · height 8px / dot 18px</span></li>
+          <li><span class="ref">A5</span><span><b>친구 결과 비교 모듈</b> · referral 시 결과 hero 아래 카드</span></li>
+          <li><span class="ref">A6</span><span><b>Disclaimer 톤다운</b> · 박스 제거 + 회색 텍스트</span></li>
+        </ul>
+      </div>
+
+      <!-- P1 -->
+      <div class="plan-col">
+        <div class="plan-head">
+          <span class="plan-tag p1">P1</span>
+          <span class="plan-time">~3주</span>
+        </div>
+        <div class="plan-title">다음 스프린트</div>
+        <ul class="plan-list">
+          <li><span class="ref">B1</span><span><b>인트로 SEO 본문</b> · “이 테스트는 누구에게?” FAQ 3문항</span></li>
+          <li><span class="ref">B2</span><span><b>이어서 하기 동선</b> · 인트로에서 저장된 답 감지 + 보조 CTA</span></li>
+          <li><span class="ref">B3</span><span><b>마지막 3문항 마이크로카피</b> · 진행도 바 아래</span></li>
+          <li><span class="ref">B4</span><span><b>공유 카드 비율 3종</b> · 1:1 / 9:16 / 1.91:1 다운로드</span></li>
+          <li><span class="ref">B5</span><span><b>FAQ schema.org</b> · JSON-LD 자동 주입</span></li>
+          <li><span class="ref">B6</span><span><b>og:image 템플릿</b> · 인트로용 / 결과용 분리</span></li>
+        </ul>
+      </div>
+
+      <!-- P2 -->
+      <div class="plan-col">
+        <div class="plan-head">
+          <span class="plan-tag p2">P2</span>
+          <span class="plan-time">백로그</span>
+        </div>
+        <div class="plan-title">실험적 / 백로그</div>
+        <ul class="plan-list">
+          <li><span class="ref">C1</span><span><b>실시간 카운터 미세 변동</b> · ±5~10 random walk</span></li>
+          <li><span class="ref">C2</span><span><b>광고 인터스티셜 실험</b> · 계산 중을 3-4초로</span></li>
+          <li><span class="ref">C3</span><span><b>키보드 단축키 onboarding</b> · Q1에만 토스트</span></li>
+          <li><span class="ref">C4</span><span><b>Axis 라벨 정책</b> · 모바일 숨김 / 데스크톱 툴팁</span></li>
+          <li><span class="ref">C5</span><span><b>광고 island 컨테이너</b> · 본문 자동광고 충돌 방지 (v0.1 P1 계승)</span></li>
+          <li><span class="ref">C6</span><span><b>같은 유형 한 줄 코멘트</b> · 결과 페이지 하단 (v0.1 백로그 유지)</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="doc-foot">
+    <span>© 테몬 · 내부 기획 문서 · 2026.05.27</span>
+    <span style="display:flex; gap:14px">
+      <a href="퀴즈 플로우.html" style="color:var(--ink-2); font-weight:600">→ 풀 플로우</a>
+      <a href="팀 검토 + 퀴즈 플로우 기획.html" style="color:var(--ink-2); font-weight:600">→ v0.1 리뷰</a>
+    </span>
+  </footer>
+
+</div>
+
+</body>
+</html>

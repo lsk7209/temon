@@ -1,0 +1,20 @@
+[
+  {
+    "run": 1,
+    "performance": 96,
+    "seo": 100,
+    "lcp": "0.5 s",
+    "tbt": "150 ms",
+    "cls": "0",
+    "fcp": "0.3 s"
+  },
+  {
+    "run": 2,
+    "performance": 96,
+    "seo": 100,
+    "lcp": "0.5 s",
+    "tbt": "150 ms",
+    "cls": "0",
+    "fcp": "0.3 s"
+  }
+]

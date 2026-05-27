@@ -9,7 +9,7 @@ import Script from "next/script";
 import { Suspense } from "react";
 import AdminHeadScripts from "@/components/admin-head-scripts";
 import AdSenseScript from "@/components/adsense-script";
-import CookieConsent from "@/components/cookie-consent";
+import AutoContentToc from "@/components/auto-content-toc";
 import WebVitals from "@/components/web-vitals";
 import {
   generateOrganizationSchema,
@@ -127,7 +127,7 @@ export default function RootLayout({
         {/* Google tag (gtag.js) - GA4 실시간 노출 안정화 */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script id="google-tag" strategy="afterInteractive">
           {`
@@ -192,10 +192,10 @@ export default function RootLayout({
             <AdminHeadScripts />
             <Header />
             <main id="main-content" className="min-h-screen">
+              <AutoContentToc />
               {children}
             </main>
             <Footer />
-            <CookieConsent />
           </AnalyticsProvider>
         </Suspense>
         {/* Vercel Analytics & Speed Insights */}

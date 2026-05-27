@@ -218,7 +218,7 @@ function ResultContent() {
   const resultUseCases = getTopicResultUseCases("K-Pop Idol Test", result.title)
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>결과를 불러오는 중...</div>
   }
 
   const handleShare = async () => {
@@ -230,7 +230,7 @@ function ResultContent() {
           url: window.location.href,
         })
       } catch (err) {
-        console.log("공유 취소됨")
+        void err
       }
     } else {
       alert("이 브라우저는 공유 기능을 지원하지 않습니다.")

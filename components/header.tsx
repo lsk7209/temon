@@ -5,7 +5,15 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Home, TestTube, ArrowLeft, Info, Mail } from "lucide-react";
+import {
+  Menu,
+  Home,
+  TestTube,
+  ArrowLeft,
+  Info,
+  Mail,
+  FileText,
+} from "lucide-react";
 import { trackClick } from "@/lib/analytics";
 
 export default function Header() {
@@ -27,6 +35,7 @@ export default function Header() {
   const navItems = [
     { href: "/", label: "홈", icon: Home },
     { href: "/tests", label: "테스트", icon: TestTube },
+    { href: "/blog", label: "블로그", icon: FileText },
     { href: "/about", label: "소개", icon: Info },
     { href: "/contact", label: "문의", icon: Mail },
   ];

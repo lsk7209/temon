@@ -252,18 +252,18 @@ export function getTopicResultFAQs(
   if (lowerTitle.includes("drama")) {
     return [
       {
-        question: `What does ${resultName} mean in ${quizTitle}?`,
-        answer: `${resultName} reflects the kind of role energy you project in conflict, affection, and group attention. It works best as a reading of behavior patterns, not as a literal fictional identity.`,
+        question: `${quizTitle}에서 ${resultName} 결과는 무슨 뜻인가요?`,
+        answer: `${resultName}은 갈등, 애정 표현, 모임 안에서 드러나는 역할 에너지를 요약한 결과입니다. 실제 인물 유형을 단정하기보다 반복되는 행동 패턴을 읽는 데 쓰는 해석입니다.`,
       },
       {
-        question: "Why does this drama-style result feel specific?",
+        question: "드라마형 결과가 왜 구체적으로 느껴지나요?",
         answer:
-          "Drama quizzes feel specific when the result connects your social pacing, emotional expression, and decision style into one recognizable archetype.",
+          "사회적 속도, 감정 표현, 선택 방식을 하나의 익숙한 캐릭터 흐름으로 묶기 때문에 자신의 반응과 비교하기 쉽습니다.",
       },
       {
-        question: "How should I use this result page?",
+        question: "이 결과 페이지는 어떻게 활용하면 좋나요?",
         answer:
-          "Use it to compare your real reactions in relationships, friend groups, and stressful scenes. That is where the role label becomes practical.",
+          "연애, 친구 관계, 스트레스 상황에서 실제 반응이 결과 설명과 어떻게 맞는지 비교해 보세요. 그때 역할 이름이 단순한 재미를 넘어 실용적인 힌트가 됩니다.",
       },
     ];
   }
@@ -271,18 +271,18 @@ export function getTopicResultFAQs(
   if (lowerTitle.includes("idol") || lowerTitle.includes("k-pop")) {
     return [
       {
-        question: `What does ${resultName} mean in ${quizTitle}?`,
-        answer: `${resultName} describes the role you most naturally occupy in a group setting, such as direction, energy, atmosphere, or coordination.`,
+        question: `${quizTitle}에서 ${resultName} 결과는 어떤 의미인가요?`,
+        answer: `${resultName}은 그룹 안에서 자연스럽게 맡는 방향 제시, 에너지, 분위기 조율, 정리 역할을 보여주는 결과입니다.`,
       },
       {
-        question: "Is this result about talent or personality?",
+        question: "이 결과는 재능보다 성격에 가까운가요?",
         answer:
-          "It is closer to personality in motion. The result focuses on how you behave in group dynamics rather than on performance skill alone.",
+          "퍼포먼스 능력보다 관계 안에서 움직이는 성향에 가깝습니다. 팀, 친구, 모임에서 어떤 방식으로 존재감을 만드는지 보는 결과입니다.",
       },
       {
-        question: "What is the best way to use this result?",
+        question: "결과를 가장 잘 활용하는 방법은 무엇인가요?",
         answer:
-          "Compare it with how you act in real teams, friendships, and social events. That makes the role label more useful and more shareable.",
+          "실제 팀 활동, 친구 관계, 모임에서의 내 행동과 비교해 보세요. 그렇게 읽을 때 결과명이 더 잘 이해되고 공유하기도 쉬워집니다.",
       },
     ];
   }
@@ -290,18 +290,18 @@ export function getTopicResultFAQs(
   if (lowerTitle.includes("pet")) {
     return [
       {
-        question: `How should I read ${resultName} in ${quizTitle}?`,
-        answer: `${resultName} is an animal-style summary of your attachment, comfort, stimulation, and routine pattern. The point is the lifestyle metaphor, not a literal animal match.`,
+        question: `${quizTitle}의 ${resultName} 결과는 어떻게 읽어야 하나요?`,
+        answer: `${resultName}은 애착 방식, 편안함을 느끼는 조건, 자극 선호, 루틴 패턴을 동물 이미지로 요약한 결과입니다. 실제 동물과 맞춘다는 뜻보다 생활 패턴을 비유로 읽는 데 초점이 있습니다.`,
       },
       {
-        question: "Why do pet-style results feel accurate?",
+        question: "반려동물형 결과가 왜 잘 맞는 것처럼 느껴지나요?",
         answer:
-          "They often feel accurate because animal metaphors make emotional style, sensitivity, and social energy easier to notice and compare.",
+          "동물 비유가 감정 표현, 예민함, 사회적 에너지 차이를 직관적으로 보여주기 때문에 자신의 성향과 비교하기 쉽습니다.",
       },
       {
-        question: "How can I use this result in daily life?",
+        question: "일상에서는 이 결과를 어떻게 활용하면 되나요?",
         answer:
-          "Use it as a quick check on your routine needs, interaction level, and recovery style. That is where the result becomes more than a fun label.",
+          "내가 필요로 하는 루틴, 사람과의 거리감, 회복 방식을 점검하는 힌트로 쓰면 좋습니다. 그러면 결과가 단순한 별명보다 유용해집니다.",
       },
     ];
   }
@@ -313,18 +313,18 @@ export function getTopicResultFAQs(
   ) {
     return [
       {
-        question: `What does ${resultName} mean in ${quizTitle}?`,
-        answer: `${resultName} translates your food choice pattern into a repeatable personality or habit signal. The useful part is the decision pattern behind the taste preference.`,
+        question: `${quizTitle}에서 ${resultName} 결과는 무슨 뜻인가요?`,
+        answer: `${resultName}은 음식 선택에서 드러나는 반복적인 취향과 습관 신호를 성격식으로 풀어낸 결과입니다. 맛 자체보다 선택 기준을 보는 것이 핵심입니다.`,
       },
       {
-        question: "Why do food results work so well?",
+        question: "음식 취향 테스트 결과가 왜 잘 맞게 느껴지나요?",
         answer:
-          "Food choices are familiar and low-friction, so visitors answer quickly. That often reveals real preference patterns without overthinking.",
+          "음식 선택은 익숙하고 부담이 적어서 깊게 고민하지 않고 답하게 됩니다. 그래서 평소 선호와 결정 습관이 비교적 자연스럽게 드러납니다.",
       },
       {
-        question: "What should I do after reading this result?",
+        question: "결과를 본 뒤 무엇을 하면 좋나요?",
         answer:
-          "Compare it with your ordering habits, comfort choices, and willingness to experiment. Then use the related quizzes to see whether the same pattern repeats in other topics.",
+          "평소 주문 습관, 익숙한 메뉴를 고르는 기준, 새로운 메뉴를 시도하는 정도와 비교해 보세요. 관련 테스트를 이어서 보면 같은 패턴이 다른 주제에서도 반복되는지 확인할 수 있습니다.",
       },
     ];
   }
@@ -332,18 +332,18 @@ export function getTopicResultFAQs(
   if (lowerTitle.includes("study")) {
     return [
       {
-        question: `What does ${resultName} mean in ${quizTitle}?`,
-        answer: `${resultName} describes the learning pattern that showed up most strongly in your answers, such as structure, immersion, flexibility, or pressure response.`,
+        question: `${quizTitle}에서 ${resultName} 결과는 어떤 학습 패턴인가요?`,
+        answer: `${resultName}은 구조화, 몰입, 유연성, 압박 대응처럼 답변에서 가장 강하게 드러난 학습 패턴을 요약한 결과입니다.`,
       },
       {
-        question: "Can I use this result to improve studying?",
+        question: "이 결과를 공부 방식 개선에 활용할 수 있나요?",
         answer:
-          "Yes. The result is most useful when you turn it into one or two concrete changes in revision rhythm, note-taking, break timing, or review strategy.",
+          "가능합니다. 복습 리듬, 필기 방식, 쉬는 타이밍, 점검 전략 중 한두 가지를 실제로 바꿔 볼 때 가장 유용합니다.",
       },
       {
-        question: "Why might this result change later?",
+        question: "나중에 결과가 달라질 수 있나요?",
         answer:
-          "Study behavior changes with stress, deadlines, and environment. That is useful information because it shows which parts of your method are stable and which are situational.",
+          "학습 행동은 스트레스, 마감, 환경에 따라 달라질 수 있습니다. 결과 변화는 어떤 습관이 안정적인지, 어떤 습관이 상황 영향을 받는지 알려주는 정보가 됩니다.",
       },
     ];
   }
@@ -351,36 +351,36 @@ export function getTopicResultFAQs(
   if (lowerTitle.includes("alarm") || lowerTitle.includes("phone")) {
     return [
       {
-        question: `What does ${resultName} mean in ${quizTitle}?`,
-        answer: `${resultName} points to the repeat pattern behind your daily habit loop. It highlights how you start, react, delay, or recover inside the same routine.`,
+        question: `${quizTitle}에서 ${resultName} 결과는 무슨 의미인가요?`,
+        answer: `${resultName}은 매일 반복되는 습관 루프 안에서 시작, 반응, 미루기, 회복 방식이 어떻게 나타나는지 보여주는 결과입니다.`,
       },
       {
-        question: "How can I make this result actionable?",
+        question: "이 결과를 바로 실행 가능한 팁으로 바꾸려면 어떻게 하나요?",
         answer:
-          "Pick the one repeated behavior described in the result that costs you the most time or energy. Change that first instead of trying to redesign everything at once.",
+          "결과 설명 중 시간이나 에너지를 가장 많이 쓰게 만드는 반복 행동 하나를 고르세요. 전체 루틴을 한 번에 바꾸기보다 그 행동부터 조정하는 편이 좋습니다.",
       },
       {
-        question: "Why are habit-based result pages useful?",
+        question: "습관 기반 결과 페이지가 왜 유용한가요?",
         answer:
-          "Habit topics work because visitors can immediately compare the result with something they do every day. That makes the interpretation easier to trust and apply.",
+          "매일 하는 행동과 바로 비교할 수 있어서 해석을 신뢰하고 적용하기 쉽습니다. 그래서 재미뿐 아니라 작은 행동 수정에도 도움이 됩니다.",
       },
     ];
   }
 
   return [
     {
-      question: `What does ${resultName} mean in ${quizTitle}?`,
-      answer: `${resultName} is the strongest preference pattern detected by the quiz. It should be used as a practical interpretation aid rather than a fixed identity label.`,
+      question: `${quizTitle}에서 ${resultName} 결과는 무슨 뜻인가요?`,
+      answer: `${resultName}은 답변에서 가장 강하게 드러난 선호 패턴을 요약한 결과입니다. 고정된 정체성이라기보다 내 선택 기준을 읽는 실용적인 해석으로 보는 것이 좋습니다.`,
     },
     {
-      question: "Can this result change later?",
+      question: "나중에 결과가 달라질 수 있나요?",
       answer:
-        "Yes. Changes in context, mood, or decision criteria can shift the result. That variation is useful because it shows how stable your pattern really is.",
+        "가능합니다. 상황, 기분, 판단 기준이 바뀌면 결과도 달라질 수 있습니다. 그 변화는 내 패턴이 얼마나 안정적인지 확인하는 데 도움이 됩니다.",
     },
     {
-      question: "How should I use this result page?",
+      question: "이 결과 페이지는 어떻게 활용하면 좋나요?",
       answer:
-        "Use the result as a quick reference for your strengths, blind spots, and repeat habits. The page becomes more useful when you compare it with real behavior over time.",
+        "강점, 놓치기 쉬운 부분, 반복 습관을 빠르게 점검하는 참고 자료로 활용하세요. 실제 행동과 비교할수록 결과 설명이 더 실용적으로 읽힙니다.",
     },
   ];
 }

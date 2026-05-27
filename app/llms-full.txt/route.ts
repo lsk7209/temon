@@ -24,6 +24,7 @@ export async function GET() {
 - 사이트: https://temon.kr
 - 전체 테스트 수: ${tests.length}개
 - 테스트 목록: https://temon.kr/tests
+- 글 목록: https://temon.kr/blog
 - 사이트맵: https://temon.kr/sitemap.xml
 - AI 인덱스 JSON: https://temon.kr/ai-index.json
 - 개인정보처리방침: https://temon.kr/privacy

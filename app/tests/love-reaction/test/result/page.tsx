@@ -172,7 +172,7 @@ function ResultContent() {
           setLoadedResult({ id: result.id, testId: result.testId })
         })
         .catch((error) => {
-          console.error("결과 로드 실패:", error)
+          void error
         })
     }
   }, [resultId])

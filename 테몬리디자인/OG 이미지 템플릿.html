@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>OG 이미지 템플릿 · 테몬</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+:root{
+  --bg:#F6F7F9; --line:#E6E8EC; --line-soft:#EEF0F4;
+  --ink-1:#0B1220; --ink-2:#2A3142; --ink-3:#5B6373; --ink-4:#8A93A4; --ink-5:#B7BDC8;
+  /* 안정형 (stable) */
+  --t50:#ECFEFF; --t100:#CFFAFE; --t200:#A5F3FC; --t300:#67E8F9;
+  --t500:#0EA5B7; --t600:#0891B2; --t700:#0E7490; --t-ink:#0B3D49;
+}
+*{box-sizing:border-box}
+html,body{margin:0; padding:0}
+body{
+  font-family:'Pretendard', sans-serif;
+  background:var(--bg); color:var(--ink-2);
+  font-size:14px; line-height:1.55; letter-spacing:-0.01em;
+}
+.container{max-width:1180px; margin:0 auto; padding:0 24px}
+@media (min-width:768px){.container{padding:0 32px}}
+
+.doc-head{padding:40px 0 28px; border-bottom:1px solid var(--line-soft)}
+.doc-eyebrow{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12px; font-weight:700; color:var(--t700);
+  letter-spacing:0.06em; text-transform:uppercase;
+  background:var(--t50); padding:6px 12px; border-radius:999px;
+  border:1px solid color-mix(in oklab, var(--t200) 60%, white);
+}
+.doc-title{
+  font-size:clamp(28px, 5vw, 38px); font-weight:800; letter-spacing:-0.028em;
+  color:var(--ink-1); margin:12px 0 6px; line-height:1.2;
+}
+.doc-sub{font-size:15px; color:var(--ink-3); margin:0; max-width:720px}
+.doc-meta{
+  display:flex; gap:16px; flex-wrap:wrap;
+  margin-top:14px; font-size:12px; color:var(--ink-4);
+}
+.doc-meta b{color:var(--ink-2); font-weight:600}
+
+.section{padding:48px 0; border-bottom:1px solid var(--line-soft)}
+.section-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11.5px; font-weight:700; letter-spacing:0.06em;
+  color:var(--t700); text-transform:uppercase;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+}
+.section-eyebrow .num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:22px; height:22px; border-radius:6px;
+  background:var(--t600); color:#fff; font-size:11px;
+}
+.section-title{
+  font-size:24px; font-weight:800; letter-spacing:-0.022em;
+  color:var(--ink-1); margin:14px 0 6px; line-height:1.3;
+}
+.section-desc{font-size:14.5px; color:var(--ink-3); margin:0 0 24px; max-width:680px}
+
+/* ── og template stage ───────────────────────────────── */
+.og-row{
+  display:grid; grid-template-columns:1fr; gap:20px;
+  align-items:start;
+}
+@media (min-width:960px){.og-row{grid-template-columns:1.4fr 1fr; gap:32px}}
+
+.og-stage{
+  background:repeating-linear-gradient(45deg, #EFF1F4 0 6px, #fff 6px 12px);
+  border:1px dashed var(--line);
+  border-radius:14px;
+  padding:18px;
+  position:relative;
+}
+.og-stage-label{
+  position:absolute; top:8px; right:12px;
+  font-size:10px; font-weight:700; color:var(--ink-4);
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  background:#fff; padding:3px 7px; border-radius:5px;
+  border:1px solid var(--line-soft);
+}
+
+/* og image at scale */
+.og-frame{
+  width:100%;
+  aspect-ratio:1200 / 630;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 24px 60px -28px rgba(11,18,32,0.35);
+  position:relative;
+  container-type:inline-size;
+}
+
+/* container-query-based scaling */
+.og-frame .og-content{
+  width:1200px; height:630px;
+  transform-origin:0 0;
+  position:absolute; left:0; top:0;
+}
+/* scale based on actual rendered width via JS-less trick: use CSS scale with --og-scale set in container */
+.og-frame{
+  --og-scale:1;
+}
+
+/* spec card */
+.og-spec{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px 22px;
+}
+.og-spec h3{
+  font-size:16px; font-weight:800; color:var(--ink-1);
+  letter-spacing:-0.018em; margin:0 0 10px;
+}
+.og-spec dl{
+  margin:0; padding:0;
+  display:grid; grid-template-columns:auto 1fr; gap:8px 14px;
+  font-size:13px;
+}
+.og-spec dt{
+  color:var(--ink-4); font-weight:600;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11.5px; letter-spacing:0.04em; text-transform:uppercase;
+  padding-top:1px;
+}
+.og-spec dd{
+  margin:0; color:var(--ink-1); font-weight:600;
+}
+.og-spec dd code{
+  background:var(--bg); padding:2px 6px; border-radius:4px;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:12px; color:var(--t700);
+}
+
+.og-meta-block{
+  margin-top:16px;
+  background:#0B1220;
+  color:#E6E8EC;
+  border-radius:10px;
+  padding:14px 16px;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11.5px; line-height:1.7;
+  overflow-x:auto;
+}
+.og-meta-block .tag{color:#67E8F9}
+.og-meta-block .attr{color:#A5F3FC}
+.og-meta-block .str{color:#FCD34D}
+.og-meta-block .var{color:#FDA4AF; font-style:italic}
+
+.og-platform{
+  display:flex; gap:6px; flex-wrap:wrap;
+  margin-top:10px;
+}
+.og-platform span{
+  font-size:11px; padding:3px 8px; border-radius:6px;
+  background:var(--t50); color:var(--t-ink);
+  border:1px solid color-mix(in oklab, var(--t200) 60%, white);
+  font-weight:600;
+}
+
+/* ── INTRO OG (1200x630) ─────────────────────────────── */
+.og-intro{
+  width:1200px; height:630px;
+  background:
+    radial-gradient(60% 70% at 85% 50%, color-mix(in oklab, var(--t100) 80%, white) 0%, transparent 70%),
+    linear-gradient(180deg, #fff, var(--t50));
+  position:relative;
+  display:flex;
+  padding:84px 90px;
+  font-family:'Pretendard', sans-serif;
+}
+.og-intro-left{
+  flex:1;
+  display:flex; flex-direction:column;
+  justify-content:space-between;
+  z-index:1;
+}
+.og-intro-cat{
+  display:inline-flex; align-items:center; gap:10px;
+  align-self:flex-start;
+  height:44px; padding:0 22px;
+  background:#fff;
+  border:1px solid color-mix(in oklab, var(--t200) 60%, var(--line));
+  border-radius:999px;
+  font-size:18px; font-weight:700;
+  color:var(--t-ink);
+  letter-spacing:-0.01em;
+}
+.og-intro-cat::before{
+  content:''; width:10px; height:10px; border-radius:50%;
+  background:var(--t600);
+}
+.og-intro-title{
+  margin:30px 0 0;
+  font-size:80px; font-weight:900;
+  color:var(--ink-1);
+  letter-spacing:-0.035em;
+  line-height:1.05;
+  text-wrap:balance;
+}
+.og-intro-title-em{
+  background:linear-gradient(180deg, transparent 70%, color-mix(in oklab, var(--t200) 90%, white) 70%);
+  padding:0 8px;
+}
+.og-intro-sub{
+  margin:24px 0 0;
+  font-size:26px; font-weight:500;
+  color:var(--ink-3);
+  letter-spacing:-0.01em;
+  line-height:1.5;
+  max-width:660px;
+}
+.og-intro-meta{
+  display:inline-flex; align-items:center; gap:20px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px 24px;
+  align-self:flex-start;
+}
+.og-intro-meta-cell{
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+}
+.og-intro-meta-num{font-size:28px; font-weight:800; color:var(--ink-1); letter-spacing:-0.02em; line-height:1.05}
+.og-intro-meta-lbl{font-size:13px; color:var(--ink-4); font-weight:600}
+.og-intro-meta-div{width:1px; height:38px; background:var(--line-soft)}
+
+.og-intro-brand{
+  position:absolute; right:90px; bottom:84px;
+  display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+}
+.og-intro-brand-mark{
+  width:88px; height:88px;
+  background:var(--t600); color:#fff;
+  border-radius:24px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:42px; font-weight:900; letter-spacing:-0.04em;
+  box-shadow:0 16px 32px -12px color-mix(in oklab, var(--t600) 60%, transparent);
+}
+.og-intro-brand-name{
+  font-size:18px; font-weight:700; color:var(--ink-3);
+  letter-spacing:-0.01em;
+}
+.og-intro-brand-url{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:13px; font-weight:700; color:var(--t700);
+  letter-spacing:0.04em;
+}
+
+/* deco: dots */
+.og-intro-dots{
+  position:absolute; right:200px; top:90px;
+  display:grid; grid-template-columns:repeat(6, 14px); gap:14px;
+  opacity:0.4;
+}
+.og-intro-dots span{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--t300);
+}
+
+/* ── RESULT OG (1200x630) ────────────────────────────── */
+.og-result{
+  width:1200px; height:630px;
+  background:#fff;
+  position:relative;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  font-family:'Pretendard', sans-serif;
+}
+.og-result-left{
+  padding:84px 0 84px 90px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  position:relative;
+  z-index:1;
+}
+.og-result-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:18px; color:var(--ink-3); font-weight:500;
+  margin-bottom:20px;
+}
+.og-result-eyebrow-code{
+  background:var(--t600); color:#fff;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:14px; font-weight:800; letter-spacing:0.06em;
+  padding:6px 12px; border-radius:8px;
+}
+.og-result-nick{
+  font-size:140px; font-weight:900;
+  color:var(--t700);
+  letter-spacing:-0.045em;
+  line-height:1;
+  margin:6px 0 0;
+  background:linear-gradient(180deg, transparent 75%, color-mix(in oklab, var(--t200) 90%, white) 75%);
+  display:inline-block;
+  padding:0 8px;
+  align-self:flex-start;
+}
+.og-result-full{
+  font-size:26px; font-weight:700;
+  color:var(--ink-1);
+  letter-spacing:-0.018em;
+  line-height:1.35;
+  margin:24px 0 0;
+  max-width:560px;
+  text-wrap:balance;
+}
+.og-result-keywords{
+  display:flex; gap:10px; flex-wrap:wrap;
+  margin-top:auto; padding-top:30px;
+}
+.og-result-kw{
+  font-size:18px; font-weight:700;
+  padding:8px 16px;
+  background:var(--t50);
+  border:1px solid color-mix(in oklab, var(--t200) 60%, white);
+  color:var(--t-ink);
+  border-radius:999px;
+}
+
+.og-result-right{
+  background:
+    radial-gradient(80% 80% at 50% 30%, color-mix(in oklab, var(--t100) 90%, white) 0%, transparent 70%),
+    linear-gradient(135deg, var(--t600), var(--t500));
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.og-result-card{
+  width:300px; min-height:380px;
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 30px 60px -20px rgba(11,18,32,0.35);
+  padding:0;
+  display:flex; flex-direction:column;
+  overflow:hidden;
+  transform:rotate(4deg);
+}
+.og-result-card-band{
+  height:60px;
+  background:linear-gradient(135deg, var(--t600), var(--t500));
+  position:relative;
+  display:flex; align-items:flex-end; justify-content:space-between;
+  padding:0 18px 10px;
+  color:#fff;
+}
+.og-result-card-cat{
+  font-size:11px; font-weight:600;
+}
+.og-result-card-code{
+  background:rgba(255,255,255,0.22);
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11px; font-weight:800;
+  padding:3px 8px; border-radius:6px;
+  letter-spacing:0.05em;
+}
+.og-result-card-body{
+  padding:18px 18px 20px;
+  flex:1;
+  display:flex; flex-direction:column;
+}
+.og-result-card-nick{
+  font-size:34px; font-weight:900;
+  color:var(--t700);
+  letter-spacing:-0.025em;
+  line-height:1.05;
+}
+.og-result-card-full{
+  font-size:13px; color:var(--ink-3);
+  margin-top:6px; line-height:1.4;
+}
+.og-result-card-kw{
+  display:flex; gap:4px; flex-wrap:wrap;
+  margin-top:14px;
+}
+.og-result-card-kw span{
+  font-size:10px; font-weight:600;
+  padding:3px 7px;
+  background:var(--t50); color:var(--t-ink);
+  border-radius:99px;
+}
+.og-result-card-foot{
+  margin-top:auto; padding-top:14px;
+  border-top:1px dashed var(--line);
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:10px; font-weight:700;
+  color:var(--t700); letter-spacing:0.04em;
+}
+
+.og-result-brand{
+  position:absolute; left:90px; bottom:64px;
+  display:flex; align-items:center; gap:12px;
+  z-index:1;
+}
+.og-result-brand-mark{
+  width:40px; height:40px;
+  background:var(--t600); color:#fff;
+  border-radius:11px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; font-weight:900;
+}
+.og-result-brand-text{
+  font-size:16px; color:var(--ink-3); font-weight:600;
+  display:flex; flex-direction:column; gap:2px;
+}
+.og-result-brand-text b{color:var(--ink-1); font-weight:800}
+.og-result-brand-text span{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:12px; color:var(--t700); letter-spacing:0.04em;
+}
+
+/* deco bg dots on right */
+.og-result-bg-dots{
+  position:absolute; right:30px; top:30px;
+  display:grid; grid-template-columns:repeat(8, 14px); gap:14px;
+  opacity:0.25;
+}
+.og-result-bg-dots span{
+  width:6px; height:6px; border-radius:50%;
+  background:#fff;
+}
+
+.og-result-bg-dots-bottom{
+  position:absolute; left:20px; bottom:20px;
+  display:grid; grid-template-columns:repeat(5, 12px); gap:12px;
+  opacity:0.2;
+}
+.og-result-bg-dots-bottom span{
+  width:5px; height:5px; border-radius:50%;
+  background:#fff;
+}
+
+/* ── theme variations row ──────────────────────────── */
+.theme-strip{
+  display:grid; grid-template-columns:repeat(2, 1fr); gap:14px;
+}
+@media (min-width:640px){.theme-strip{grid-template-columns:repeat(5, 1fr)}}
+.theme-mini{
+  background:#fff; border:1px solid var(--line); border-radius:10px;
+  padding:14px 12px;
+  display:flex; flex-direction:column; gap:6px;
+}
+.theme-mini-bar{
+  height:8px; border-radius:99px;
+  background:linear-gradient(90deg, var(--m-light), var(--m-dark));
+}
+.theme-mini-name{
+  font-size:13px; font-weight:800; color:var(--ink-1);
+  letter-spacing:-0.015em;
+}
+.theme-mini-use{font-size:11.5px; color:var(--ink-4)}
+
+.notes{
+  background:#fff; border:1px solid var(--line); border-radius:14px;
+  padding:18px 22px;
+}
+.notes h3{
+  font-size:14.5px; font-weight:800; color:var(--ink-1);
+  letter-spacing:-0.015em; margin:0 0 10px;
+  display:flex; align-items:center; gap:8px;
+}
+.notes h3::before{
+  content:''; width:8px; height:8px; border-radius:50%; background:var(--t600);
+}
+.notes ul{margin:0; padding:0 0 0 4px; list-style:none}
+.notes ul li{
+  padding:8px 0 8px 18px;
+  font-size:13.5px; color:var(--ink-2); line-height:1.6;
+  position:relative;
+}
+.notes ul li::before{
+  content:''; position:absolute; left:0; top:14px;
+  width:6px; height:6px; border-radius:50%; background:var(--line);
+}
+.notes ul li b{color:var(--ink-1); font-weight:700}
+
+.doc-foot{
+  padding:32px 0 56px;
+  font-size:13px; color:var(--ink-4);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+}
+.doc-foot a{color:var(--ink-2); font-weight:600; text-decoration:none}
+.doc-foot a:hover{color:var(--t700)}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="doc-head">
+    <span class="doc-eyebrow">temon.kr · OG \ud14c\ud50c\ub9bf v0.6 B6</span>
+    <h1 class="doc-title">OG \uc774\ubbf8\uc9c0 \ud15c\ud50c\ub9bf</h1>
+    <p class="doc-sub">\uc778\ud2b8\ub85c\uc6a9 / \uacb0\uacfc\uc6a9 \ub450 \uc885. 1200\u00d7630 \uace0\uc815 \uad6c\uc870. \uac01 \ud14c\ud301\ubcc4\ub85c \ud14c\ub9c8 \uceec\ub7ec\ub9cc \uc790\ub3d9 \uad50\uccb4\ub429\ub2c8\ub2e4.</p>
+    <div class="doc-meta">
+      <span><b>\uad6d\uaca9</b> \u00b7 1200 \u00d7 630 (OG \uad8c\uc7a5 \uba85\uc138)</span>
+      <span><b>\ud3f0\ud2b8</b> \u00b7 Pretendard 900/800/700/500</span>
+      <span><b>\ud3ec\ub9f7</b> \u00b7 PNG (\uc548\uc804) / JPG (\uc6a9\ub7c9 \ucd5c\uc801\ud654)</span>
+    </div>
+  </header>
+
+  <!-- ── INTRO OG ─────────────────────────────── -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">1</span> Intro · 1200\u00d7630</div>
+    <h2 class="section-title">\uc778\ud2b8\ub85c\uc6a9 OG \uc774\ubbf8\uc9c0</h2>
+    <p class="section-desc">\uac80\uc0c9 \uacb0\uacfc / \uacf5\uc720 \ub9c1\ud06c\uc758 \ucc98\uc74c \uc778\uc0c1. \uc81c\ubaa9 + \uc11c\ube0c\ud0c0\uc774\ud2c0 + \uba54\ud0c0 3-up\ub9cc \ub2f4\uc2b5\ub2c8\ub2e4.</p>
+
+    <div class="og-row">
+      <div class="og-stage">
+        <span class="og-stage-label">1200 \u00d7 630</span>
+        <div class="og-frame">
+          <div class="og-content" style="--og-scale: 1;">
+            <div class="og-intro">
+              <div class="og-intro-dots" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="og-intro-left">
+                <div class="og-intro-cat">\uc131\ud5a5 \ud14c\uc2a4\ud2b8</div>
+                <div>
+                  <h1 class="og-intro-title">\ub098\uc758 <span class="og-intro-title-em">\uc120\ud0dd \ud328\ud134</span>,<br/>2\ubd84 \ub9cc\uc5d0 \ud655\uc778\ud558\uae30</h1>
+                  <p class="og-intro-sub">\uacb0\uc815\ud560 \ub54c \ub098\ub3c4 \ubaa8\ub974\uac8c \uc790\uc8fc \uc4f0\ub294 \ubc29\uc2dd\uc744 12\ubb38\ud56d\uc73c\ub85c \uac00\ubcd9\uac8c \ud655\uc778\ud574\uc694.</p>
+                </div>
+                <div class="og-intro-meta">
+                  <div class="og-intro-meta-cell">
+                    <span class="og-intro-meta-num">12</span>
+                    <span class="og-intro-meta-lbl">\ubb38\ud56d</span>
+                  </div>
+                  <div class="og-intro-meta-div"></div>
+                  <div class="og-intro-meta-cell">
+                    <span class="og-intro-meta-num">2\ubd84</span>
+                    <span class="og-intro-meta-lbl">\uc608\uc0c1 \uc2dc\uac04</span>
+                  </div>
+                  <div class="og-intro-meta-div"></div>
+                  <div class="og-intro-meta-cell">
+                    <span class="og-intro-meta-num">16</span>
+                    <span class="og-intro-meta-lbl">\uacb0\uacfc \uc720\ud615</span>
+                  </div>
+                </div>
+              </div>
+              <div class="og-intro-brand">
+                <div class="og-intro-brand-mark">T</div>
+                <div class="og-intro-brand-name">\ud14c\ubaac</div>
+                <div class="og-intro-brand-url">temon.kr</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="og-spec">
+          <h3>\ud15c\ud50c\ub9bf \uc2a4\ud399</h3>
+          <dl>
+            <dt>title</dt>          <dd><code>{{test.name}}</code></dd>
+            <dt>title em</dt>       <dd><code>{{test.highlight}}</code> (\uc120\ud0dd \ud328\ud134)</dd>
+            <dt>sub</dt>            <dd><code>{{test.subtitle}}</code></dd>
+            <dt>cat pill</dt>       <dd><code>{{test.category}}</code> \ud14c\uc2a4\ud2b8</dd>
+            <dt>meta</dt>           <dd><code>{{test.questions}}\ubb38\ud56d</code> \u00b7 <code>{{test.duration}}</code> \u00b7 <code>{{test.resultCount}}</code></dd>
+            <dt>theme</dt>          <dd>\uce74\ud14c\uace0\ub9ac\ubcc4 \uceec\ub7ec (\uc544\ub798)</dd>
+          </dl>
+
+          <div class="og-platform">
+            <span>Open Graph</span><span>Twitter Card</span><span>\uce74\uce74\uc624\ud1a1 \ubbf8\ub9ac\ubcf4\uae30</span>
+          </div>
+
+          <div class="og-meta-block">
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:title"</span>           <span class="attr">content</span>=<span class="str">"<span class="var">{{test.name}}</span> · \ud14c\ubaac"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:description"</span>     <span class="attr">content</span>=<span class="str">"<span class="var">{{test.subtitle}}</span>"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:image"</span>           <span class="attr">content</span>=<span class="str">"<span class="var">{{baseUrl}}/og/intro/{{testSlug}}.png</span>"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:image:width"</span>     <span class="attr">content</span>=<span class="str">"1200"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:image:height"</span>    <span class="attr">content</span>=<span class="str">"630"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="str">"twitter:card"</span>          <span class="attr">content</span>=<span class="str">"summary_large_image"</span><span class="tag">&gt;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes" style="margin-top:18px">
+      <h3>\uc81c\uc791 \ub178\ud2b8</h3>
+      <ul>
+        <li><b>\uc81c\ubaa9 \uc790\ub3d9 \ucd95\uc18c</b> \u00b7 \uc81c\ubaa9\uc774 14\uc790\ub97c \ub118\uc73c\uba74 \ud3f0\ud2b8\ub97c 72px\ub85c \ub2e4\uc6b4. 20\uc790\ub97c \ub118\uc73c\uba74 64px.</li>
+        <li><b>\uceec\ub7ec\ub294 \uce74\ud14c\uace0\ub9ac\ubcc4\ub85c \uad50\uccb4</b> \u00b7 \uadf8\ub77c\ub514\uc5b4\ud2b8 \uc6b0\uce21 wash \uc0c9\ub9cc \ud14c\ub9c8\uc5d0 \ub530\ub77c \ubcc0\uacbd. \uadf8 \uc678 \uad6c\uc870 \ub3d9\uc77c.</li>
+        <li><b>Pretendard \uc11c\ube0c\uc14b \ud30c\uc6b0\ud2b8</b> \u00b7 SF Pro \/ Apple SD Gothic Neo \/ system-ui \uc21c\uc73c\ub85c. \uacb0\uacfc \ud0c0\uc774\ud3ec\uadf8\ub798\ud53c\uac00 \uc77c\uad00\ub418\uac8c.</li>
+        <li><b>\ub80c\ub354\ub9c1</b> \u00b7 Next.js \uc758 og-image \ub77c\uc6b0\ud2b8 \ub610\ub294 Puppeteer\ub85c \uc774 HTML\uc744 1200\u00d7630 \ucea1\ucc98. \ub808\uc774\uc544\uc6c3 \uace0\uc815\uc774 \ub9de\uc744 \uacbd\uc6b0 vector\ub85c svg \uc800\uc7a5\uacfc\uc758 \ud2b8\ub808\uc774\ub4dc\uc624\ud504 \uac80\ud1a0.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── RESULT OG ────────────────────────────── -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">2</span> Result \u00b7 1200\u00d7630</div>
+    <h2 class="section-title">\uacb0\uacfc\uc6a9 OG \uc774\ubbf8\uc9c0</h2>
+    <p class="section-desc">\uacb0\uacfc \uacf5\uc720 \ub9c1\ud06c\uc5d0\uc11c \ubcf4\uc774\ub294 \uce74\ub4dc. nickname \ud070 \uae00\uc528 + \ud480\ub124\uc784 + \ud0a4\uc6cc\ub4dc \u2014 \ub2e8\ub2e8\ud558\uace0 \ucea1\ucc98\uac10 \uc788\uac8c.</p>
+
+    <div class="og-row">
+      <div class="og-stage">
+        <span class="og-stage-label">1200 \u00d7 630</span>
+        <div class="og-frame">
+          <div class="og-content">
+            <div class="og-result">
+              <div class="og-result-left">
+                <div class="og-result-eyebrow">
+                  <span class="og-result-eyebrow-code">STB-04</span>
+                  \uc131\ud5a5 \ud14c\uc2a4\ud2b8 \u00b7 \ub098\uc758 \uc120\ud0dd \ud328\ud134
+                </div>
+                <div>
+                  <div class="og-result-nick">\uae30\uc900\ub7ec</div>
+                  <p class="og-result-full">\uae30\uc900\uc744 \uc138\uc6b0\uace0 \ucc9c\ucc9c\ud788 \ub9de\ucdb0\uac00\ub294 \uc548\uc815\ud615</p>
+                </div>
+                <div class="og-result-keywords">
+                  <span class="og-result-kw">#\uae30\uc900\uc774\uba3c\uc800</span>
+                  <span class="og-result-kw">#\uafb8\uc900\ud568</span>
+                  <span class="og-result-kw">#\uc608\uce21\uac00\ub2a5</span>
+                </div>
+              </div>
+
+              <div class="og-result-right">
+                <div class="og-result-bg-dots" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="og-result-bg-dots-bottom" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="og-result-card">
+                  <div class="og-result-card-band">
+                    <span class="og-result-card-cat">temon.kr \u00b7 \uc131\ud5a5</span>
+                    <span class="og-result-card-code">STB-04</span>
+                  </div>
+                  <div class="og-result-card-body">
+                    <div class="og-result-card-nick">\uae30\uc900\ub7ec</div>
+                    <div class="og-result-card-full">\uae30\uc900\uc744 \uc138\uc6b0\uace0 \ucc9c\ucc9c\ud788 \ub9de\ucdb0\uac00\ub294 \uc548\uc815\ud615</div>
+                    <div class="og-result-card-kw">
+                      <span>#\uae30\uc900\uc774\uba3c\uc800</span>
+                      <span>#\uafb8\uc900\ud568</span>
+                      <span>#\uc608\uce21\uac00\ub2a5</span>
+                    </div>
+                    <div class="og-result-card-foot">temon.kr/r/STB-04</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="og-result-brand">
+                <div class="og-result-brand-mark">T</div>
+                <div class="og-result-brand-text">
+                  <b>\ud14c\ubaac</b>
+                  <span>temon.kr/r/STB-04</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="og-spec">
+          <h3>\ud15c\ud50c\ub9bf \uc2a4\ud399</h3>
+          <dl>
+            <dt>nickname</dt> <dd><code>{{result.nickname}}</code> (\uac00\uc7a5 \ud070 \uae00\uc528)</dd>
+            <dt>full name</dt> <dd><code>{{result.name}}</code> (\ubcf4\uc870)</dd>
+            <dt>code</dt> <dd><code>{{result.code}}</code></dd>
+            <dt>keywords</dt> <dd><code>{{result.keywords[0..2]}}</code></dd>
+            <dt>card url</dt> <dd><code>{{result.shareUrl}}</code></dd>
+            <dt>theme</dt> <dd>\uacb0\uacfc \uce74\ud14c\uace0\ub9ac \ud14c\ub9c8 (\uc544\ub798)</dd>
+          </dl>
+
+          <div class="og-platform">
+            <span>Open Graph</span><span>Twitter Card</span><span>\uce74\uce74\uc624\ud1a1</span><span>\uc778\uc2a4\ud0c0 DM</span>
+          </div>
+
+          <div class="og-meta-block">
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:title"</span>           <span class="attr">content</span>=<span class="str">"<span class="var">{{result.nickname}}</span>: <span class="var">{{result.name}}</span> · \ud14c\ubaac"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:description"</span>     <span class="attr">content</span>=<span class="str">"<span class="var">{{result.summary}}</span>"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:image"</span>           <span class="attr">content</span>=<span class="str">"<span class="var">{{baseUrl}}/og/result/{{result.code}}.png</span>"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:image:alt"</span>       <span class="attr">content</span>=<span class="str">"<span class="var">{{result.nickname}}</span> \uacb0\uacfc \uce74\ub4dc"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="str">"og:url"</span>             <span class="attr">content</span>=<span class="str">"<span class="var">{{baseUrl}}/r/{{result.code}}</span>"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="str">"twitter:card"</span>          <span class="attr">content</span>=<span class="str">"summary_large_image"</span><span class="tag">&gt;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes" style="margin-top:18px">
+      <h3>\uc81c\uc791 \ub178\ud2b8</h3>
+      <ul>
+        <li><b>Nickname \uc790\ub3d9 \ud06c\uae30 \uc870\uc808</b> \u00b7 3\uc790 = 140px \/ 4\uc790 = 120px \/ 5\uc790 = 100px. 6\uc790 \uc774\uc0c1\uc740 \ubcc4\uba85 \uc548 \ubcf4\uc774\uace0 \ud480\ub124\uc784\ub9cc.</li>
+        <li><b>\uc6b0\uce21 \uce74\ub4dc \ud68c\uc804</b> \u00b7 4\ub3c4 \uae30\uc6b8\uc784. \uce74\ub4dc \ud14c\ub450\ub9ac\uc758 \ucea1\ucc98 \uac10\uc744 \uac15\uc870. \uc88c\uc6b0 \ucd95 \uc911 \uc88c\uce21\uc774 \uc8fc\uc81c, \uc6b0\uce21\uc740 \uc99d\uac70.</li>
+        <li><b>\ud0a4\uc6cc\ub4dc 4\uac1c \uc774\uc0c1\uc774\uba74 \ud328\uba38</b> \u00b7 OG\uc5d0\ub294 \ucd5c\ub300 3\uac1c\ub9cc. \ub098\uba38\uc9c0\ub294 \"+N\" \uce69\uc73c\ub85c.</li>
+        <li><b>\uc18c\uc15c \uc775\uc2a4\ud2b8\ub798\ud130 \ub514\ubc84\uae45</b> \u00b7 Facebook Sharing Debugger \/ Twitter Card Validator \/ \uce74\uce74\uc624\ud1a1 \ub514\ubc84\uac70\ub85c 3\ucc98 \ud14c\uc2a4\ud2b8 \ud544\uc218.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── theme variations ────────────────────── -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">3</span> Theme Variations</div>
+    <h2 class="section-title">\ud14c\ub9c8\ubcc4 \uceec\ub7ec \uad50\uccb4</h2>
+    <p class="section-desc">\ud14c\uc2a4\ud2b8 \uce74\ud14c\uace0\ub9ac\ubcc4\ub85c \uac19\uc740 \ud15c\ud50c\ub9bf\uc5d0 \uceec\ub7ec\ub9cc \uc790\ub3d9 \uad50\uccb4. 600 \/ 500 \/ 50 \uc138 \ud1a4\ub9cc \ubc14\uafb0\ub2c8\ub2e4.</p>
+
+    <div class="theme-strip">
+      <div class="theme-mini" style="--m-light:#67E8F9; --m-dark:#0E7490">
+        <div class="theme-mini-bar"></div>
+        <div class="theme-mini-name">\uc548\uc815\ud615 \u00b7 teal</div>
+        <div class="theme-mini-use">\uc131\ud5a5 \u00b7 \uc0dd\ud65c\uc2b5\uad00</div>
+      </div>
+      <div class="theme-mini" style="--m-light:#FDBA74; --m-dark:#C2410C">
+        <div class="theme-mini-bar"></div>
+        <div class="theme-mini-name">\ucf54\ub784 \u00b7 coral</div>
+        <div class="theme-mini-use">\uc74c\uc2dd</div>
+      </div>
+      <div class="theme-mini" style="--m-light:#FDA4AF; --m-dark:#BE123C">
+        <div class="theme-mini-bar"></div>
+        <div class="theme-mini-name">\ub85c\uc988 \u00b7 rose</div>
+        <div class="theme-mini-use">\uc5f0\uc560</div>
+      </div>
+      <div class="theme-mini" style="--m-light:#93C5FD; --m-dark:#1D4ED8">
+        <div class="theme-mini-bar"></div>
+        <div class="theme-mini-name">\ube14\ub8e8 \u00b7 blue</div>
+        <div class="theme-mini-use">\uc0dd\ud65c\uc2b5\uad00</div>
+      </div>
+      <div class="theme-mini" style="--m-light:#6EE7B7; --m-dark:#047857">
+        <div class="theme-mini-bar"></div>
+        <div class="theme-mini-name">\uc5d0\uba54\ub784\ub4dc \u00b7 green</div>
+        <div class="theme-mini-use">\uc6b4\ub3d9 \u00b7 \uac74\uac15</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-foot">
+    <span>\u00a9 \ud14c\ubaac \u00b7 OG \ud15c\ud50c\ub9bf v0.6 \u00b7 2026.05.27</span>
+    <span><a href="\ud034\uc988 \ud50c\ub85c\uc6b0.html">\u2192 \ud480 \ud50c\ub85c\uc6b0 \ubcf4\uae30</a></span>
+  </footer>
+
+</div>
+
+<script>
+  // \uace0\uc815 1200x630\uc744 \ud504\ub808\uc784 \ub108\ube44\uc5d0 \ub9de\uac8c \uc2a4\ucf00\uc77c
+  function scaleOgFrames() {
+    document.querySelectorAll('.og-frame').forEach(frame => {
+      const content = frame.querySelector('.og-content');
+      if (!content) return;
+      const w = frame.clientWidth;
+      const scale = w / 1200;
+      content.style.transform = `scale(${scale})`;
+      // frame height needs to match scaled content height
+      // aspect-ratio already does this — we just need to scale content
+    });
+  }
+  scaleOgFrames();
+  window.addEventListener('resize', scaleOgFrames);
+  // Also scale after fonts load (Pretendard webfont can shift)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(scaleOgFrames);
+  }
+</script>
+
+</body>
+</html>

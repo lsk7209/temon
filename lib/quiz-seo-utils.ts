@@ -13,6 +13,15 @@ import { isNoindexTest } from "@/lib/noindex-tests";
 
 const baseUrl = "https://temon.kr";
 
+const noindexFollowRobots = {
+  index: false,
+  follow: true,
+  googleBot: {
+    index: false,
+    follow: true,
+  },
+};
+
 export interface QuizSEOConfig {
   quizId: string;
   title: string;
@@ -231,6 +240,11 @@ export function getListingFAQs(): Array<{ question: string; answer: string }> {
         "네. 테몬의 MBTI 테스트 모음과 성격 테스트 모음은 가입이나 결제 없이 무료로 이용할 수 있습니다. 대부분 짧은 문항으로 구성되어 바로 시작하기 좋습니다.",
     },
     {
+      question: "테몬은 어떤 테스트 사이트인가요?",
+      answer:
+        "테몬은 무료 MBTI 테스트, 성격 테스트, 취향 테스트, 재밌는 심리테스트를 주제별로 모아 둔 한국어 테스트 사이트입니다.",
+    },
+    {
       question: "처음 방문하면 어떤 테스트부터 하면 좋나요?",
       answer:
         "처음이라면 인기 테스트나 최신 테스트를 먼저 추천합니다. 관심사가 뚜렷하다면 음식, 연애, 생활 습관, 직장, 디지털처럼 가까운 카테고리에서 고르세요.",
@@ -239,11 +253,6 @@ export function getListingFAQs(): Array<{ question: string; answer: string }> {
       question: "테스트 결과는 전문 심리 진단인가요?",
       answer:
         "아니요. 테몬의 테스트 결과는 가볍게 즐기는 성향 분석 콘텐츠입니다. 자기 이해와 친구와의 대화 소재로 활용하는 것이 좋습니다.",
-    },
-    {
-      question: "친구와 함께 하기 좋은 재밌는 테스트는 어디서 찾나요?",
-      answer:
-        "전체 테스트 목록에서 최신순으로 추가된 퀴즈와 관심 카테고리를 확인하세요. 결과 유형이 명확한 테스트일수록 친구와 비교하고 공유하기 쉽습니다.",
     },
   ];
 }
@@ -254,18 +263,18 @@ export function getDefaultResultFAQs(
 ): Array<{ question: string; answer: string }> {
   return [
     {
-      question: `What does ${resultName} mean in ${quizTitle}?`,
-      answer: `${resultName} describes the dominant preference pattern detected by the quiz. It should be used as a practical interpretation aid, not a fixed identity label.`,
+      question: `${quizTitle}에서 ${resultName} 결과는 어떤 뜻인가요?`,
+      answer: `${resultName} 결과는 이 테스트에서 드러난 주요 선택 패턴을 설명합니다. 고정된 성격 라벨이 아니라 나의 선호를 빠르게 해석하는 참고 자료로 활용하세요.`,
     },
     {
-      question: "Can this result change if I retake the quiz?",
+      question: "다시 테스트하면 결과가 달라질 수 있나요?",
       answer:
-        "Yes. Changes in mood, context, or decision criteria can change the result. That is useful signal about situational preference, not necessarily inconsistency.",
+        "네. 당시의 기분, 상황, 선택 기준에 따라 결과가 달라질 수 있습니다. 이는 모순이라기보다 상황별 선호가 달라질 수 있다는 신호로 보면 됩니다.",
     },
     {
-      question: "How should I use this result page?",
+      question: "이 결과 페이지는 어떻게 활용하면 좋나요?",
       answer:
-        "Use the traits, watchouts, and recommendations as a quick reference. The best next step is to compare the result with your real behavior and share it with someone who knows you well.",
+        "특징, 주의점, 추천 내용을 빠르게 확인한 뒤 실제 행동과 비교해보세요. 나를 잘 아는 사람과 공유해 서로의 선택 패턴을 비교해보는 것도 좋습니다.",
     },
   ];
 }
@@ -278,7 +287,7 @@ export function generateMbtiResultMetadata(config: {
   canonical: string;
 }): Metadata {
   const fullUrl = `${baseUrl}${config.canonical}`;
-  const title = `${config.quizTitle} Result: ${config.resultName} (${config.resultCode}) | Temon`;
+  const title = `${config.quizTitle} 결과 - ${config.resultName} (${config.resultCode}) | 테몬`;
 
   return {
     title,
@@ -292,7 +301,7 @@ export function generateMbtiResultMetadata(config: {
       description: config.summary,
       type: "website",
       url: fullUrl,
-      siteName: "Temon",
+      siteName: "테몬",
       locale: "ko_KR",
       images: [
         {
@@ -311,17 +320,7 @@ export function generateMbtiResultMetadata(config: {
         `${baseUrl}/api/og?title=${encodeURIComponent(config.resultName)}&desc=${encodeURIComponent(config.resultCode)}`,
       ],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
+    robots: noindexFollowRobots,
   };
 }
 
@@ -332,20 +331,21 @@ export function generateGenericResultMetadata(config: {
   canonical: string;
 }): Metadata {
   const fullUrl = `${baseUrl}${config.canonical}`;
+  const title = `${config.quizTitle} 결과 | ${config.title} | 테몬`;
 
   return {
-    title: `${config.quizTitle} Result | ${config.title} | Temon`,
+    title,
     description: config.description,
     metadataBase: new URL(baseUrl),
     alternates: {
       canonical: config.canonical,
     },
     openGraph: {
-      title: `${config.quizTitle} Result | ${config.title} | Temon`,
+      title,
       description: config.description,
       type: "website",
       url: fullUrl,
-      siteName: "Temon",
+      siteName: "테몬",
       locale: "ko_KR",
       images: [
         {
@@ -358,23 +358,13 @@ export function generateGenericResultMetadata(config: {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${config.quizTitle} Result | ${config.title} | Temon`,
+      title,
       description: config.description,
       images: [
         `${baseUrl}/api/og?title=${encodeURIComponent(config.quizTitle)}&desc=${encodeURIComponent(config.title)}`,
       ],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
+    robots: noindexFollowRobots,
   };
 }
 
@@ -425,14 +415,7 @@ export function generateTestPageMetadata(config: {
         `${baseUrl}/api/og?title=${encodeURIComponent(config.quizTitle)}&desc=${encodeURIComponent("지금 바로 테스트를 시작해보세요!")}`,
       ],
     },
-    robots: {
-      index: false, // 테스트 진행 페이지는 인덱싱하지 않음
-      follow: true,
-      googleBot: {
-        index: false,
-        follow: true,
-      },
-    },
+    robots: noindexFollowRobots,
   };
 }
 
@@ -486,17 +469,7 @@ export function generateResultPageMetadata(config: {
         `${baseUrl}/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent("나의 결과는?")}`,
       ],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
+    robots: noindexFollowRobots,
   };
 }
 

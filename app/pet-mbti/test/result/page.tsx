@@ -312,7 +312,7 @@ function ResultContent() {
           url: shareUrl,
         })
       } catch (err) {
-        console.log("Error sharing:", err)
+        void err
         const fullShareText = `${shareText}
 
 ${shareUrl}`
@@ -327,7 +327,7 @@ ${shareUrl}`
         await navigator.clipboard.writeText(fullShareText)
         alert("공유 메시지가 복사되었습니다! 친구들에게 붙여넣기 해보세요 📋✨")
       } catch (err) {
-        console.log("Clipboard API failed:", err)
+        void err
         prompt("아래 링크를 복사해서 친구들에게 공유해보세요:", shareUrl)
       }
     }
@@ -558,7 +558,7 @@ ${shareUrl}`
 
 export default function PetMBTIResult() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>결과를 불러오는 중...</div>}>
       <ResultContent />
     </Suspense>
   )

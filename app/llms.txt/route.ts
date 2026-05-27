@@ -22,6 +22,7 @@ export async function GET() {
 - 언어: 한국어
 - 전체 테스트 수: ${tests.length}개
 - 주요 페이지: https://temon.kr/tests
+- 글 목록: https://temon.kr/blog
 - 업데이트: 신규 테스트 발행 시 자동 반영
 
 ## 주요 카테고리

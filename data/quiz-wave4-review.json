@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-05-15T02:00:28.248Z",
+  "wave": "wave4",
+  "count": 200,
+  "minQualityScore": 100,
+  "maxDuplicateSimilarity": 0.4,
+  "rejectedCount": 12,
+  "firstScheduledAt": "2026-07-07T08:00:00+09:00",
+  "lastScheduledAt": "2026-08-25T20:00:00+09:00",
+  "sample": [
+    {
+      "title": "세탁물 분류 스타일 테스트",
+      "slug": "daily-laundry-sort-wave4",
+      "score": 100,
+      "scheduledAt": "2026-07-07T08:00:00+09:00"
+    },
+    {
+      "title": "냉장고 리셋 취향 테스트",
+      "slug": "daily-fridge-reset-wave4",
+      "score": 100,
+      "scheduledAt": "2026-07-07T12:00:00+09:00"
+    },
+    {
+      "title": "우산 챙기기 취향 테스트",
+      "slug": "daily-umbrella-check-wave4",
+      "score": 100,
+      "scheduledAt": "2026-07-07T16:00:00+09:00"
+    },
+    {
+      "title": "신발장 정리 스타일 테스트",
+      "slug": "daily-shoe-shelf-wave4",
+      "score": 100,
+      "scheduledAt": "2026-07-07T20:00:00+09:00"
+    },
+    {
+      "title": "가방 비우기 취향 테스트",
+      "slug": "daily-bag-lightening-wave4",
+      "score": 100,
+      "scheduledAt": "2026-07-08T08:00:00+09:00"
+    }
+  ]
+}

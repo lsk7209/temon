@@ -11,6 +11,7 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Bed, Sparkles } from "lucide-react"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "침대 정리 습관, 베개 배치로 16유형 성향을 분석합니다. 침대 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
@@ -30,6 +31,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("침대 정리 스타일 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "침대 정리 테스트 검색",
+    description:
+      "침대를 바로 정리하는지, 잠들기 전만 챙기는지, 베개와 이불 배치 기준은 무엇인지 확인합니다.",
+  },
+  {
+    title: "생활 루틴 성향",
+    description:
+      "침대 정리는 하루 시작 방식, 정돈감, 휴식 준비 기준을 보여주는 생활 습관 신호입니다.",
+  },
+  {
+    title: "결과 비교",
+    description:
+      "결과를 공유하면 함께 사는 사람이나 친구와 정리 기준이 어떻게 다른지 비교하기 좋습니다.",
+  },
 ]
 
 export default function BedMakingIntro() {
@@ -55,21 +74,21 @@ export default function BedMakingIntro() {
       <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
-          <div className="relative mx-auto w-32 h-32 mb-8">
+          <div className="relative mx-auto mb-8 h-32 w-48">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full animate-pulse" />
             <div className="absolute inset-2 bg-gradient-to-br from-blue-200 to-indigo-300 rounded-full flex items-center justify-center">
               <span className="text-4xl animate-bounce">🛏️</span>
             </div>
-            <div className="absolute -top-6 -left-6 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
+            <div className="absolute -top-6 left-2 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
               🧸
             </div>
-            <div className="absolute -top-4 -right-8 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
+            <div className="absolute -top-4 right-2 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
               🛋️
             </div>
-            <div className="absolute -bottom-6 -left-8 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
+            <div className="absolute -bottom-6 left-2 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
               🌙
             </div>
-            <div className="absolute -bottom-4 -right-6 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
+            <div className="absolute -bottom-4 right-2 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
               ⭐
             </div>
           </div>
@@ -123,6 +142,18 @@ export default function BedMakingIntro() {
             </div>
           </div>
         </div>
+
+        <GscLandingBoost
+          title="침대 정리 스타일 테스트, 왜 볼 만한가요?"
+          summary="침대 정리 스타일 테스트는 작은 생활 습관에서 정돈감, 실행력, 휴식 기준을 알고 싶은 검색 의도에 맞춘 무료 성향 테스트입니다. 아침 루틴과 공간 관리 방식을 함께 살펴볼 수 있습니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/morning-rush", label: "아침 준비 테스트" },
+            { href: "/tests/clean-style", label: "청소 스타일 테스트" },
+            { href: "/tests/evening-routine", label: "저녁 루틴 테스트" },
+          ]}
+          tone="blue"
+        />
 
         <div className="mt-20 space-y-12">
           <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">

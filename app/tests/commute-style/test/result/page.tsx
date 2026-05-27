@@ -1,13 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { ShareButtons } from "@/components/share-buttons";
+import { StaticResultEnhancements } from "@/components/static-result-enhancements";
 import { COMMUTE_STYLE_RESULTS } from "@/lib/data/commute-style-results";
 
 function ResultContent() {
@@ -18,14 +19,14 @@ function ResultContent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 via-indigo-50 to-violet-50 py-10 px-4">
       <div className="max-w-2xl mx-auto space-y-6">
-        <Card className="border-0 shadow-xl bg-white/90 backdrop-blur">
+        <Card id="result-main" className="border-0 shadow-xl bg-white/90 backdrop-blur">
           <CardHeader className="text-center space-y-3">
             <Badge className="mx-auto bg-gradient-to-r from-sky-500 to-indigo-500 text-white">
               {result.mbti}
             </Badge>
-            <CardTitle className="text-3xl md:text-4xl font-bold">
+            <h1 className="text-3xl md:text-4xl font-bold">
               {result.name}
-            </CardTitle>
+            </h1>
             <p className="text-lg text-gray-600">{result.summary}</p>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -107,6 +108,13 @@ function ResultContent() {
             <Link href="/tests">다른 테스트 보기</Link>
           </Button>
         </div>
+
+        <StaticResultEnhancements
+          testId="commute-style"
+          quizTitle="출퇴근 스타일 테스트"
+          resultName={result.name}
+          showToc
+        />
       </div>
     </div>
   );

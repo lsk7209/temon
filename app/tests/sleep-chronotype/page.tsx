@@ -8,6 +8,7 @@ import { LandingConversionSection } from "@/components/landing-conversion-sectio
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "기상·취침·집중 타이밍과 낮잠 습관으로 16유형 분석. 결과 공유 가능"
@@ -27,6 +28,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("수면 크로노타입 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "크로노타입 테스트 검색",
+    description:
+      "아침형·저녁형 같은 하루 에너지 리듬을 더 쉽게 이해하고 싶은 분에게 맞춘 테스트입니다.",
+  },
+  {
+    title: "수면 습관 점검",
+    description:
+      "기상 시간, 낮잠, 카페인, 집중 시간대를 함께 보며 내 루틴의 반복 패턴을 확인합니다.",
+  },
+  {
+    title: "결과 활용법",
+    description:
+      "결과는 의학적 수면 진단이 아니라 일상 루틴을 조정하기 위한 성향 참고 자료입니다.",
+  },
 ]
 
 export default function SleepChronotypeIntro() {
@@ -103,19 +122,19 @@ export default function SleepChronotypeIntro() {
             <p>💡 정확한 결과를 위해 솔직하게 답변해주세요!</p>
           </div>
 
+          <GscLandingBoost
+            title="크로노타입 테스트로 확인할 수 있는 것"
+            summary="크로노타입 테스트는 내가 언제 가장 집중하고 언제 쉽게 지치는지 알고 싶은 검색 의도에 맞춘 무료 성향 테스트입니다. 수면 시간 자체보다 하루 리듬, 집중 타이밍, 회복 습관을 함께 살펴봅니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/alarm-habit", label: "알람 습관 테스트" },
+              { href: "/tests/morning-mood", label: "아침 기분 테스트" },
+              { href: "/tests/evening-routine", label: "저녁 루틴 테스트" },
+            ]}
+            tone="indigo"
+          />
+
           {/* FAQ 섹션 */}
-          <div className="mt-12 text-left">
-            <AnswerEngineSection quizTitle="Sleep Chronotype Test" />
-          </div>
-
-          <div className="mt-12 text-left">
-            <LandingConversionSection quizTitle="Sleep Chronotype Test" />
-          </div>
-
-          <div className="mt-12 text-left">
-            <RelatedTestsSection testId="sleep-chronotype" />
-          </div>
-
           <div className="mt-12 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-left">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               자주 묻는 질문

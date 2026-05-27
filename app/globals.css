@@ -69,7 +69,7 @@ body {
 }
 
 .ad-reserve {
-  min-height: 250px;
+  min-height: clamp(180px, 28vw, 280px);
   margin-block: 1.5rem;
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(241, 245, 249, 0.9), rgba(248, 250, 252, 0.6));
@@ -79,6 +79,47 @@ body {
 .content-visibility-auto {
   content-visibility: auto;
   contain-intrinsic-size: 1px 900px;
+}
+
+.article-content {
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.article-content p,
+.article-content li {
+  line-height: 1.8;
+}
+
+.article-content h2,
+.article-content h3 {
+  line-height: 1.3;
+}
+
+main h2[id],
+main h3[id] {
+  scroll-margin-top: 6rem;
+}
+
+.article-content img,
+.article-content video,
+.article-content canvas,
+.article-content iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.article-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 380px) {
+  .article-content {
+    word-break: break-word;
+  }
 }
 
 /* Custom scrollbar styles */

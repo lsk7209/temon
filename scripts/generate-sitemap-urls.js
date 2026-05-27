@@ -7,7 +7,7 @@ const path = require('path')
 const { existsSync } = require('fs')
 const { readdir } = require('fs/promises')
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.temon.kr'
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://temon.kr'
 
 // ALL_TESTS 임포트 (동적 임포트 대신 직접 읽기)
 function getTestsFromConfig() {
@@ -93,6 +93,7 @@ function getStaticRoutes() {
   return [
     baseUrl,
     `${baseUrl}/tests`,
+    `${baseUrl}/blog`,
   ]
 }
 

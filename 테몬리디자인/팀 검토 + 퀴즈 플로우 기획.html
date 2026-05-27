@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>팀 검토 + 퀴즈 플로우 기획 · 테몬</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+:root{
+  --bg:#F6F7F9; --elev:#fff; --line:#E6E8EC; --line-soft:#EEF0F4;
+  --ink-1:#0B1220; --ink-2:#2A3142; --ink-3:#5B6373; --ink-4:#8A93A4; --ink-5:#B7BDC8;
+  --theme-50:#ECFEFF; --theme-100:#CFFAFE; --theme-200:#A5F3FC;
+  --theme-600:#0891B2; --theme-700:#0E7490; --theme-ink:#0B3D49;
+  --hi:#DC2626; --hi-bg:#FEF2F2;
+  --md:#D97706; --md-bg:#FFFBEB;
+  --lo:#0891B2; --lo-bg:#ECFEFF;
+  --good:#059669; --good-bg:#ECFDF5;
+  --container:1180px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
+  background:var(--bg); color:var(--ink-2);
+  font-size:15px; line-height:1.6; letter-spacing:-0.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.container{max-width:var(--container); margin:0 auto; padding:0 24px}
+@media (min-width:768px){.container{padding:0 32px}}
+.reading{max-width:880px; margin:0 auto; padding:0 24px}
+button{font-family:inherit; border:0; background:none; cursor:pointer; color:inherit; padding:0}
+
+/* ── doc header ─────────────────────────────────────────── */
+.doc-head{padding:48px 0 32px; border-bottom:1px solid var(--line-soft)}
+.doc-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12px; font-weight:700; color:var(--theme-700);
+  letter-spacing:0.06em; text-transform:uppercase;
+  background:var(--theme-50); padding:6px 12px; border-radius:999px;
+  border:1px solid color-mix(in oklab, var(--theme-200) 60%, white);
+}
+.doc-title{
+  font-size:clamp(28px, 5vw, 44px); font-weight:800; letter-spacing:-0.028em;
+  color:var(--ink-1); margin:14px 0 8px; line-height:1.2; text-wrap:balance;
+}
+.doc-sub{font-size:16px; color:var(--ink-3); margin:0; max-width:680px}
+.doc-meta{
+  display:flex; gap:18px; flex-wrap:wrap;
+  margin-top:18px; font-size:12.5px; color:var(--ink-4);
+}
+.doc-meta b{color:var(--ink-2); font-weight:600}
+
+/* ── section ────────────────────────────────────────────── */
+.section{padding:56px 0; border-bottom:1px solid var(--line-soft)}
+@media (min-width:768px){.section{padding:80px 0}}
+.section-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11.5px; font-weight:700; letter-spacing:0.06em;
+  color:var(--theme-700); text-transform:uppercase;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+.section-eyebrow .num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:22px; height:22px; border-radius:6px;
+  background:var(--theme-600); color:#fff; font-size:11px;
+}
+.section-title{
+  font-size:26px; font-weight:800; letter-spacing:-0.024em;
+  color:var(--ink-1); margin:14px 0 8px; line-height:1.3; text-wrap:balance;
+}
+@media (min-width:768px){.section-title{font-size:32px}}
+.section-desc{font-size:16px; color:var(--ink-3); margin:0 0 28px; max-width:680px}
+
+/* ── team intro ─────────────────────────────────────────── */
+.team-grid{
+  display:grid; grid-template-columns:1fr; gap:14px;
+}
+@media (min-width:768px){.team-grid{grid-template-columns:repeat(3, 1fr); gap:18px}}
+.team-card{
+  background:#fff; border:1px solid var(--line); border-radius:16px;
+  padding:22px; display:flex; flex-direction:column; gap:12px;
+  box-shadow:0 1px 0 rgba(11,18,32,0.04);
+}
+.team-top{display:flex; align-items:center; gap:14px}
+.avatar{
+  width:52px; height:52px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:18px; color:#fff;
+  letter-spacing:-0.02em; flex:0 0 52px;
+}
+.avatar-a{background:linear-gradient(135deg,#0891B2,#0E7490)}
+.avatar-b{background:linear-gradient(135deg,#7C3AED,#5B21B6)}
+.avatar-c{background:linear-gradient(135deg,#EA580C,#C2410C)}
+.team-name{font-size:16px; font-weight:800; color:var(--ink-1); letter-spacing:-0.018em}
+.team-role{font-size:12.5px; color:var(--ink-4); margin-top:2px}
+.team-bg{font-size:13.5px; color:var(--ink-2); line-height:1.6}
+.team-quote{
+  margin-top:auto; padding-top:14px; border-top:1px dashed var(--line);
+  font-size:13.5px; color:var(--ink-3); line-height:1.6;
+  font-style:italic;
+}
+.team-quote::before{content:'"'; font-weight:800; color:var(--theme-600); margin-right:2px}
+.team-quote::after{content:'"'; font-weight:800; color:var(--theme-600); margin-left:2px}
+.team-skill{
+  display:inline-flex; gap:6px; flex-wrap:wrap; margin-top:4px;
+}
+.team-skill span{
+  font-size:11px; padding:3px 8px; border-radius:6px;
+  background:var(--bg); color:var(--ink-3); font-weight:600;
+}
+
+/* ── review grid ────────────────────────────────────────── */
+.review-cols{
+  display:grid; grid-template-columns:1fr; gap:18px;
+}
+@media (min-width:1024px){.review-cols{grid-template-columns:repeat(3, 1fr); gap:22px}}
+.review-col{display:flex; flex-direction:column; gap:12px}
+.review-head{
+  display:flex; align-items:center; gap:10px;
+  padding:14px 16px;
+  background:#fff; border:1px solid var(--line); border-radius:14px;
+}
+.review-head .avatar{width:38px; height:38px; font-size:14px; flex:0 0 38px}
+.review-head-name{font-size:14px; font-weight:800; color:var(--ink-1)}
+.review-head-role{font-size:11.5px; color:var(--ink-4)}
+
+.comment{
+  background:#fff; border:1px solid var(--line); border-radius:14px;
+  padding:18px; display:flex; flex-direction:column; gap:8px;
+  box-shadow:0 1px 0 rgba(11,18,32,0.03);
+}
+.comment-top{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+}
+.sev{
+  font-size:10.5px; font-weight:800; letter-spacing:0.06em;
+  padding:3px 8px; border-radius:5px;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+.sev.hi{background:var(--hi-bg); color:var(--hi)}
+.sev.md{background:var(--md-bg); color:var(--md)}
+.sev.lo{background:var(--lo-bg); color:var(--lo)}
+.ref{
+  font-size:11px; color:var(--ink-5);
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+.comment-title{
+  font-size:15px; font-weight:800; color:var(--ink-1);
+  letter-spacing:-0.015em; line-height:1.4;
+}
+.comment-body{font-size:13.5px; color:var(--ink-2); line-height:1.65}
+.comment-fix{
+  margin-top:6px; padding-top:10px; border-top:1px dashed var(--line);
+  font-size:12.5px; color:var(--ink-3); line-height:1.6;
+  display:flex; gap:6px;
+}
+.comment-fix b{
+  color:var(--good); font-weight:700; flex:0 0 auto;
+}
+.comment-fix b::before{
+  content:''; display:inline-block; width:6px; height:6px; border-radius:50%;
+  background:var(--good); margin-right:6px; vertical-align:middle;
+}
+
+/* ── flow spec ─────────────────────────────────────────── */
+.flow{
+  display:grid; grid-template-columns:1fr; gap:32px;
+}
+@media (min-width:960px){.flow{grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:start}}
+.spec h3{
+  font-size:18px; font-weight:800; color:var(--ink-1);
+  letter-spacing:-0.02em; margin:0 0 10px;
+  display:flex; align-items:center; gap:10px;
+}
+.spec h3 .step{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:26px; height:26px; border-radius:7px;
+  background:var(--theme-50); color:var(--theme-700);
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:12px; font-weight:700;
+}
+.spec p{margin:0 0 18px; font-size:14.5px; line-height:1.7; color:var(--ink-2)}
+.mission{
+  background:#fff; border:1px solid var(--line); border-radius:14px;
+  padding:18px 20px; margin-bottom:22px;
+}
+.mission-h{
+  font-size:12px; font-weight:700; color:var(--theme-700);
+  text-transform:uppercase; letter-spacing:0.04em; margin-bottom:10px;
+}
+.mission ol{margin:0; padding:0 0 0 22px; font-size:14px; color:var(--ink-2); line-height:1.75}
+.mission ol li{padding:3px 0}
+.mission ol li b{color:var(--ink-1); font-weight:700}
+
+.layout-list{
+  background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+}
+.layout-row{
+  display:grid; grid-template-columns:auto 1fr;
+  gap:14px; padding:14px 18px;
+  border-top:1px solid var(--line-soft);
+  align-items:start;
+}
+.layout-row:first-child{border-top:0}
+.layout-tag{
+  font-size:11px; font-weight:700; padding:3px 8px; border-radius:5px;
+  font-family:'JetBrains Mono',ui-monospace,monospace; letter-spacing:0.04em;
+  background:var(--bg); color:var(--ink-3);
+  min-width:62px; text-align:center;
+}
+.layout-tag.sticky{background:var(--theme-50); color:var(--theme-700)}
+.layout-tag.body{background:#FAFBFC; color:var(--ink-3)}
+.layout-tag.cta{background:var(--good-bg); color:var(--good)}
+.layout-tag.opt{background:#FFFBEB; color:var(--md)}
+.layout-text{font-size:13.5px; color:var(--ink-2); line-height:1.6}
+.layout-text b{color:var(--ink-1); font-weight:700}
+.layout-text .small{font-size:12px; color:var(--ink-4); display:block; margin-top:3px}
+
+/* ── phone mockup ──────────────────────────────────────── */
+.mock-stage{
+  background:linear-gradient(180deg, #F1F3F7, #E6E8EC);
+  border:1px solid var(--line); border-radius:24px;
+  padding:32px 22px;
+  display:flex; flex-direction:column; align-items:center; gap:14px;
+  position:relative;
+}
+@media (min-width:960px){.mock-stage{position:sticky; top:24px}}
+.mock-label{
+  font-size:11.5px; font-weight:700; color:var(--ink-4);
+  letter-spacing:0.05em; text-transform:uppercase;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+.phone{
+  width:280px; min-height:560px;
+  background:#fff; border:1px solid #D9DCE2; border-radius:32px;
+  box-shadow:0 24px 60px -28px rgba(11,18,32,0.35);
+  padding:18px 14px 22px;
+  display:flex; flex-direction:column;
+  position:relative;
+  overflow:hidden;
+}
+.phone::before{
+  content:''; position:absolute; top:8px; left:50%; transform:translateX(-50%);
+  width:90px; height:18px; background:#0B1220; border-radius:0 0 12px 12px;
+}
+.phone-inner{margin-top:18px; flex:1; display:flex; flex-direction:column}
+
+/* mini ui */
+.mini-bar{height:6px; background:var(--line-soft); border-radius:99px; margin-bottom:14px; position:relative}
+.mini-bar > span{position:absolute; left:0; top:0; bottom:0; background:var(--theme-600); border-radius:99px}
+.mini-row{display:flex; align-items:center; justify-content:space-between; font-size:10.5px; color:var(--ink-4); margin-bottom:12px}
+.mini-x{width:18px; height:18px; border-radius:50%; background:#F1F3F7; display:inline-flex; align-items:center; justify-content:center; color:var(--ink-4); font-size:10px}
+
+.mini-pill{
+  display:inline-flex; align-items:center; height:18px; padding:0 8px;
+  border-radius:99px; font-size:9.5px; font-weight:700;
+  background:var(--theme-50); color:var(--theme-700);
+  letter-spacing:0.05em; align-self:flex-start;
+}
+.mini-h{font-size:15px; font-weight:800; color:var(--ink-1); line-height:1.3; letter-spacing:-0.015em; margin:8px 0 6px}
+.mini-sub{font-size:11px; color:var(--ink-3); line-height:1.55; margin:0 0 14px}
+
+.mini-meta{
+  display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px;
+}
+.mini-meta span{
+  font-size:9.5px; font-weight:600; padding:3px 7px; border-radius:5px;
+  background:#F1F3F7; color:var(--ink-3);
+}
+
+.mini-referral{
+  background:var(--theme-50); border:1px solid color-mix(in oklab, var(--theme-200) 70%, white);
+  border-radius:10px; padding:10px; margin-bottom:14px; display:flex; gap:8px; align-items:center;
+}
+.mini-referral .av{width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#7C3AED,#5B21B6); flex:0 0 24px}
+.mini-referral-text{font-size:10px; color:var(--ink-2); line-height:1.4}
+.mini-referral-text b{color:var(--theme-700); font-weight:800}
+
+.mini-btn{
+  height:36px; border-radius:10px;
+  background:var(--theme-600); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:700; letter-spacing:-0.01em;
+  margin-bottom:10px;
+}
+.mini-btn.ghost{background:#fff; border:1px solid var(--line); color:var(--ink-1)}
+
+.mini-preview{
+  background:#FAFBFC; border:1px dashed var(--line); border-radius:10px;
+  padding:10px; margin-bottom:14px;
+}
+.mini-preview-label{font-size:9px; font-weight:700; color:var(--ink-4); letter-spacing:0.04em; text-transform:uppercase; margin-bottom:4px}
+.mini-preview-q{font-size:11px; font-weight:700; color:var(--ink-1); line-height:1.4; margin-bottom:6px}
+.mini-preview-opts{display:flex; gap:4px}
+.mini-preview-opts > span{flex:1; height:18px; background:#fff; border:1px solid var(--line); border-radius:6px}
+
+.mini-counter{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:10px; color:var(--ink-4); align-self:center;
+}
+.mini-counter .pulse{
+  width:6px; height:6px; border-radius:50%; background:#10B981;
+  box-shadow:0 0 0 0 rgba(16,185,129,0.45);
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(16,185,129,0.45)}
+  70%{box-shadow:0 0 0 7px rgba(16,185,129,0)}
+  100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}
+}
+
+/* question mock */
+.mini-q-axis{
+  font-size:10px; font-weight:700; color:var(--theme-700);
+  letter-spacing:0.04em; text-transform:uppercase; margin-bottom:8px;
+}
+.mini-q-text{
+  font-size:16px; font-weight:800; color:var(--ink-1); letter-spacing:-0.02em;
+  line-height:1.35; margin-bottom:4px; text-wrap:balance;
+}
+.mini-q-hint{font-size:10.5px; color:var(--ink-4); margin-bottom:16px}
+.mini-opts{display:flex; flex-direction:column; gap:8px; margin-bottom:14px}
+.mini-opt{
+  padding:12px 12px; border:1px solid var(--line); border-radius:10px;
+  background:#fff; font-size:11.5px; font-weight:600; color:var(--ink-1);
+  display:flex; align-items:center; gap:8px; line-height:1.3;
+}
+.mini-opt.on{
+  border-color:var(--theme-600);
+  background:var(--theme-50);
+  color:var(--theme-ink);
+  box-shadow:0 0 0 3px color-mix(in oklab, var(--theme-200) 50%, transparent);
+}
+.mini-opt .dot{
+  width:14px; height:14px; border-radius:50%; border:1.5px solid var(--line);
+  flex:0 0 14px; display:inline-block;
+}
+.mini-opt.on .dot{border-color:var(--theme-600); background:var(--theme-600); box-shadow:inset 0 0 0 2px #fff}
+.mini-nav{display:flex; gap:6px; margin-top:auto}
+.mini-nav-btn{flex:1; height:32px; border-radius:8px; background:var(--bg); border:1px solid var(--line); font-size:11px; font-weight:700; color:var(--ink-3); display:flex; align-items:center; justify-content:center}
+.mini-nav-btn.prim{background:var(--theme-600); color:#fff; border-color:var(--theme-600)}
+
+/* loading mock */
+.mini-loading{
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+}
+.mini-spinner{
+  width:54px; height:54px; border-radius:50%;
+  background:conic-gradient(var(--theme-600), transparent 70%);
+  mask:radial-gradient(circle at center, transparent 18px, #000 19px);
+  -webkit-mask:radial-gradient(circle at center, transparent 18px, #000 19px);
+  animation:spin 1.2s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mini-loading-text{font-size:13px; font-weight:700; color:var(--ink-1); letter-spacing:-0.015em}
+.mini-loading-sub{font-size:11px; color:var(--ink-4)}
+
+/* annotation arrows */
+.annot{
+  position:absolute; font-size:11px; font-weight:600; color:var(--theme-700);
+  display:flex; align-items:center; gap:6px;
+  background:#fff; padding:6px 10px; border-radius:8px;
+  border:1px solid color-mix(in oklab, var(--theme-200) 60%, white);
+  box-shadow:0 4px 12px -6px rgba(11,18,32,0.15);
+}
+.annot::before{content:''; width:20px; height:1px; background:var(--theme-700)}
+
+/* ── action plan ──────────────────────────────────────── */
+.plan-grid{
+  display:grid; grid-template-columns:1fr; gap:14px;
+}
+@media (min-width:768px){.plan-grid{grid-template-columns:repeat(3, 1fr); gap:18px}}
+.plan-col{
+  background:#fff; border:1px solid var(--line); border-radius:16px;
+  padding:20px 22px; display:flex; flex-direction:column; gap:6px;
+}
+.plan-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px}
+.plan-tag{
+  font-size:11px; font-weight:800; letter-spacing:0.06em;
+  padding:4px 10px; border-radius:6px;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+}
+.plan-tag.p0{background:#FEF2F2; color:#DC2626}
+.plan-tag.p1{background:#FFFBEB; color:#D97706}
+.plan-tag.p2{background:#F1F3F7; color:#5B6373}
+.plan-time{font-size:11.5px; color:var(--ink-4); font-weight:600}
+.plan-title{font-size:14px; font-weight:800; color:var(--ink-1); letter-spacing:-0.015em; margin-bottom:6px}
+.plan-list{margin:0; padding:0; list-style:none}
+.plan-list li{
+  padding:10px 0;
+  border-top:1px solid var(--line-soft);
+  font-size:13.5px; color:var(--ink-2); line-height:1.55;
+  display:flex; gap:10px; align-items:flex-start;
+}
+.plan-list li:first-child{border-top:0; padding-top:0}
+.plan-list li .ref{flex:0 0 auto; padding-top:1px}
+.plan-list b{color:var(--ink-1); font-weight:700}
+
+/* ── consensus row ────────────────────────────────────── */
+.consensus{
+  background:linear-gradient(180deg, #fff, var(--theme-50));
+  border:1px solid color-mix(in oklab, var(--theme-200) 60%, var(--line));
+  border-radius:18px; padding:22px;
+}
+@media (min-width:768px){.consensus{padding:28px 32px}}
+.consensus-h{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11.5px; font-weight:800; color:var(--theme-700);
+  letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px;
+}
+.consensus-title{font-size:18px; font-weight:800; color:var(--ink-1); letter-spacing:-0.018em; margin:0 0 14px}
+.consensus-quote{
+  display:flex; gap:14px; padding:14px 0;
+  border-top:1px dashed color-mix(in oklab, var(--theme-200) 70%, white);
+}
+.consensus-quote:first-of-type{border-top:0; padding-top:4px}
+.consensus-quote .av{width:36px; height:36px; flex:0 0 36px}
+.consensus-quote-text{font-size:14px; color:var(--ink-2); line-height:1.65}
+.consensus-quote-text b{color:var(--ink-1)}
+.consensus-quote-who{font-size:11.5px; color:var(--ink-4); margin-top:4px}
+
+/* ── footer ─────────────────────────────────────────── */
+.doc-foot{
+  padding:32px 0 56px;
+  font-size:13px; color:var(--ink-4);
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+}
+.doc-foot a{color:var(--ink-2); font-weight:600; text-decoration:none}
+.doc-foot a:hover{color:var(--theme-700)}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ── 문서 헤더 ────────────────────────────────────── -->
+  <header class="doc-head">
+    <span class="doc-eyebrow">temon.kr · 내부 기획 문서 v0.1</span>
+    <h1 class="doc-title">결과 페이지 리뷰 + 인트로/질문 페이지 기획</h1>
+    <p class="doc-sub">결과 페이지 1차안을 3인 팀이 함께 검토하고, 그 위에 인트로·질문 페이지 스펙을 얹습니다. 카피와 카드 톤은 “친구에게 보내는 가벼운 리포트”라는 동일한 컨셉을 유지합니다.</p>
+    <div class="doc-meta">
+      <span><b>작성자</b> · 정수민 · 이도현 · 박지은</span>
+      <span><b>대상</b> · 결과 페이지 v1 → 풀 플로우 v0.5</span>
+      <span><b>리뷰일</b> · 2026. 05. 27</span>
+      <span><b>참조</b> · <a href="결과 페이지.html" style="color:var(--theme-700); font-weight:600; text-decoration:none">결과 페이지.html</a></span>
+    </div>
+  </header>
+
+  <!-- ── 1. TEAM ──────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">1</span> Team</div>
+    <h2 class="section-title">검토에 참여한 3인</h2>
+    <p class="section-desc">서로 다른 시선으로 한 페이지를 보기 위해, 사용자 행동·디자인·그로스 세 축으로 팀을 짰습니다.</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-top">
+          <div class="avatar avatar-a">정수</div>
+          <div>
+            <div class="team-name">정수민</div>
+            <div class="team-role">Senior UX Researcher · 6년차</div>
+          </div>
+        </div>
+        <div class="team-bg">한국 콘텐츠 플랫폼에서 정성적 리서치를 주로 했습니다. 특히 “한국 사용자는 결과를 끝까지 읽지 않고 캡처부터 한다”는 행동 패턴에 관심이 많습니다.</div>
+        <div class="team-skill">
+          <span>한국 사용자</span><span>캡처 공유 문화</span><span>MBTI 행동 데이터</span>
+        </div>
+        <div class="team-quote">결과 페이지의 첫 3초가 곧 공유율이에요.</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-top">
+          <div class="avatar avatar-b">이도</div>
+          <div>
+            <div class="team-name">이도현</div>
+            <div class="team-role">Lead Product Designer · 8년차</div>
+          </div>
+        </div>
+        <div class="team-bg">B2C 모바일 웹을 주로 디자인합니다. 포트레이트 360px에서 한 손으로 끝까지 가는 동선, 광고와 충돌하지 않는 레이아웃에 까다롭습니다.</div>
+        <div class="team-skill">
+          <span>모바일 한 손</span><span>마이크로 인터랙션</span><span>광고 친화 레이아웃</span>
+        </div>
+        <div class="team-quote">360px에서 검증 안 된 디자인은 디자인이 아닙니다.</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-top">
+          <div class="avatar avatar-c">박지</div>
+          <div>
+            <div class="team-name">박지은</div>
+            <div class="team-role">Growth & Content Lead · 5년차</div>
+          </div>
+        </div>
+        <div class="team-bg">SEO·AEO와 콘텐츠 그로스를 함께 봅니다. 결과 페이지의 본문 길이가 곧 자동광고 수익이고, 공유 카드는 곧 신규 유입이라는 시각으로 봅니다.</div>
+        <div class="team-skill">
+          <span>SEO/AEO</span><span>공유 루프</span><span>AdSense 자동광고</span>
+        </div>
+        <div class="team-quote">결과 페이지는 “읽히는 본문”이 곧 수익입니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2. REVIEW ────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">2</span> Review</div>
+    <h2 class="section-title">결과 페이지 v1 리뷰</h2>
+    <p class="section-desc">전체 톤은 좋지만, “친구에게 공유”라는 핵심 행동 관점에서 손볼 곳이 몇 군데 있습니다. 각자 3개씩, 심각도(HIGH/MED/LOW)로 표시합니다.</p>
+
+    <div class="review-cols">
+
+      <!-- 정수민 -->
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-a">정수</div>
+          <div>
+            <div class="review-head-name">정수민</div>
+            <div class="review-head-role">UX Researcher</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">Hero · rarity pill</span></div>
+          <div class="comment-title">“응답자의 14%”는 캡처 욕구가 약합니다</div>
+          <div class="comment-body">한국 사용자는 “나는 특별한가?”를 자극받을수록 캡처합니다. 14%는 평범한 숫자. 14%를 그대로 두기보다 정성 표현 (“흔하지 않은 유형”)이나 극단 표현 (“상위 N%”) 중 하나로 가는 게 인스타 캡션감이 됩니다.</div>
+          <div class="comment-fix"><b>fix</b><span>“흔하지 않은 유형 · 응답자 중 14%”처럼 정성+숫자 병기로 변경</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">FAQ · 순서</span></div>
+          <div class="comment-title">“MBTI와 같은가요?”는 1번이어야 합니다</div>
+          <div class="comment-body">한국에서 심리테스트 결과 페이지에 들어온 사용자가 가장 먼저 의심하는 게 이 질문이에요. 4번째에 있으면 의심을 안고 본문을 읽게 됩니다. 1번에 두거나, 결과 hero 바로 아래에 한 줄 disclaimer로 흡수.</div>
+          <div class="comment-fix"><b>fix</b><span>Hero summary 아래에 작게 “MBTI와는 달리 ‘선택 패턴’만 봐요” 한 줄 추가</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">체크리스트 · 라벨</span></div>
+          <div class="comment-title">“오늘 바로 써먹는” 톤이 to-do로 읽힙니다</div>
+          <div class="comment-body">한국 사용자는 체크박스를 일정관리가 아닌 ‘공감 표시’로 더 자주 씁니다. “이거 내 얘기 같으면 체크” 톤이 체크 비율을 1.5~2배 끌어올린 경험이 있어요.</div>
+          <div class="comment-fix"><b>fix</b><span>섹션명 후보: “나도 이렇다면 체크” / “요즘 나에게 해당되는 것”</span></div>
+        </div>
+      </div>
+
+      <!-- 이도현 -->
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-b">이도</div>
+          <div>
+            <div class="review-head-name">이도현</div>
+            <div class="review-head-role">Product Designer</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">체크리스트 · hit target</span></div>
+          <div class="comment-title">체크박스 26px은 모바일에서 작습니다</div>
+          <div class="comment-body">권장 44px에 한참 못 미쳐서 엄지로 정확히 누르기 어려워요. 박스 자체는 시각 표시로 두고, li 행 전체를 누를 수 있게 바꾸면 한 손 조작이 훨씬 편해집니다.</div>
+          <div class="comment-fix"><b>fix</b><span>&lt;li&gt;에 role="button" + 전체 클릭 영역, 체크 아이콘은 시각 단서로만</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">Hero · share card sticky</span></div>
+          <div class="comment-title">본문 진입하면 공유 카드가 사라집니다</div>
+          <div class="comment-body">데스크톱에서 sticky가 hero 영역까지만 살아 있어서, 사용자가 본문 읽다 “지금 공유하고 싶다”는 순간이 오면 다시 위로 스크롤해야 해요.</div>
+          <div class="comment-fix"><b>fix</b><span>본문 영역 진입 시 share card → 우측 상단 fixed mini badge로 축소되는 “shrinking sticky” 패턴</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">공유 카드 · 비율</span></div>
+          <div class="comment-title">공유처마다 잘리는 비율이 다릅니다</div>
+          <div class="comment-body">현재 카드는 1:1에 가까운 세로 비율인데, 인스타 스토리는 9:16, 카카오톡 미리보기는 1.91:1입니다. 한 가지로 가면 어딘가는 잘립니다.</div>
+          <div class="comment-fix"><b>fix</b><span>다운로드 모달에서 비율 3종 (1:1 / 9:16 / 1.91:1) 선택. 본문 카드는 1:1 유지.</span></div>
+        </div>
+      </div>
+
+      <!-- 박지은 -->
+      <div class="review-col">
+        <div class="review-head">
+          <div class="avatar avatar-c">박지</div>
+          <div>
+            <div class="review-head-name">박지은</div>
+            <div class="review-head-role">Growth & Content</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">SEO · H1 / og:title</span></div>
+          <div class="comment-title">결과명이 검색 키워드와 너무 멉니다</div>
+          <div class="comment-body">H1 “기준을 세우고 천천히 맞춰가는 안정형”은 사용자 친화적이지만, 검색·SNS 미리보기에서 줄바꿈이 추하고 “안정형”이라는 핵심 키워드가 묻혀요.</div>
+          <div class="comment-fix"><b>fix</b><span>데이터에 별명 필드 추가 (예: “기준러”, “안정형”). og:title은 별명 우선, 본문 H1은 풀네임 유지.</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev hi">HIGH</span><span class="ref">광고 · island</span></div>
+          <div class="comment-title">자동광고가 본문을 끊을 수 있어요</div>
+          <div class="comment-body">현재 본문이 길어서 AdSense 자동광고가 본문 단락 사이에 추가 슬롯을 더 끼울 가능성이 큽니다. 단락이 짧게 끊기는 곳에 들어가면 본문 리듬이 망가져요.</div>
+          <div class="comment-fix"><b>fix</b><span>Interpretation 영역에 <code>data-no-ad="true"</code> island 컨테이너 지정 + adsbygoogle에 ignore 설정</span></div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-top"><span class="sev md">MED</span><span class="ref">공유 카드 · 후크</span></div>
+          <div class="comment-title">캡처본을 본 친구가 어디로 들어와야 할지 애매</div>
+          <div class="comment-body">카드 하단 “나의 결과 보러가기 →”는 클릭 불가이고, URL도 없습니다. 친구가 캡처를 보고 사이트에 어떻게 들어와야 하는지 후크가 약해요.</div>
+          <div class="comment-fix"><b>fix</b><span>카드에 짧은 코드(예: STB-04) + “temon.kr/r/STB-04” 노출. 인트로 페이지에 코드 입력 필드 1개.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. INTRO PAGE ────────────────────────────────── -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">3</span> Intro Page</div>
+    <h2 class="section-title">인트로 페이지 기획</h2>
+    <p class="section-desc">검색·공유 링크로 도착한 사용자가 처음 보는 화면. 핵심은 “3초 안에 이해 → 한 번에 시작”입니다.</p>
+
+    <div class="flow">
+      <div class="spec">
+        <div class="mission">
+          <div class="mission-h">Mission</div>
+          <ol>
+            <li><b>3초 이해</b> · 이 테스트가 무엇을, 얼마나, 어떻게 봐주는지</li>
+            <li><b>Referral 후크</b> · 친구의 결과로 도착했다면 그 결과를 미리 보여줘서 “나는 어떨까?” 유발</li>
+            <li><b>한 번에 시작</b> · 스크롤 없이 첫 화면에서 시작 버튼 도달</li>
+          </ol>
+        </div>
+
+        <h3><span class="step">3-1</span> 레이아웃</h3>
+        <div class="layout-list">
+          <div class="layout-row">
+            <span class="layout-tag sticky">TOP</span>
+            <div class="layout-text"><b>카테고리 뱃지</b> + 닫기(X)<span class="small">예: “성향 테스트”. 닫기 = 메인으로</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag body">HERO</span>
+            <div class="layout-text"><b>테스트명</b> 큰 제목 + 한 줄 설명<span class="small">예: “나의 결정 방식에서 드러나는 패턴 12문항”</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag body">META</span>
+            <div class="layout-text"><b>3-up 메타</b><span class="small">12문항 · 약 2분 · 16가지 결과</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag opt">OPT</span>
+            <div class="layout-text"><b>Referral 카드</b> (?ref= 파라미터 있을 때만)<span class="small">“지수님이 받은 결과: 안정형. 본인은?” + 친구 결과 코드 미니 카드</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag cta">CTA</span>
+            <div class="layout-text"><b>시작하기</b> 풀폭 버튼 + 실시간 카운터<span class="small">“지금 1,243명이 함께 하고 있어요” (작은 글씨)</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag body">PREVIEW</span>
+            <div class="layout-text"><b>미리보기</b> 점선 카드<span class="small">첫 질문 한 줄 + 답변지 2-4개 (비활성 상태). “이런 식으로 답해요”</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag body">SOCIAL</span>
+            <div class="layout-text"><b>FAQ 1줄 + 결과 코드 입력</b><span class="small">“친구 결과 코드가 있나요? → STB-04 입력” 박지은 fix 반영</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag body">RELATED</span>
+            <div class="layout-text"><b>같은 카테고리 인기 3개</b> (썸네일 + 참여수)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 모크업 -->
+      <div class="mock-stage">
+        <div class="mock-label">Intro · 360px (mobile)</div>
+        <div class="phone">
+          <div class="phone-inner">
+            <div class="mini-row">
+              <span class="mini-pill">성향 테스트</span>
+              <span class="mini-x">✕</span>
+            </div>
+            <div class="mini-h" style="font-size:18px; line-height:1.25; margin:6px 0 8px">나의 선택 패턴<br/>2분 만에 확인하기</div>
+            <div class="mini-sub">결정할 때 나도 모르게 자주 쓰는 방식이 있어요. 12문항으로 가볍게 확인해봐요.</div>
+
+            <div class="mini-meta">
+              <span>12문항</span><span>약 2분</span><span>16가지 결과</span>
+            </div>
+
+            <div class="mini-referral">
+              <div class="av"></div>
+              <div class="mini-referral-text"><b>지수</b>님이 받은 결과: <b>안정형 (STB-04)</b><br/>본인은 어떤 유형일까요?</div>
+            </div>
+
+            <div class="mini-btn">시작하기 →</div>
+            <div class="mini-counter"><span class="pulse"></span>지금 1,243명이 함께 하고 있어요</div>
+
+            <div style="margin-top:14px"></div>
+            <div class="mini-preview">
+              <div class="mini-preview-label">PREVIEW · 첫 질문</div>
+              <div class="mini-preview-q">새로운 식당 vs 단골집, 끌리는 쪽은?</div>
+              <div class="mini-preview-opts"><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:11.5px; color:var(--ink-4); text-align:center; max-width:240px">
+          referral이 없으면 referral 카드 슬롯이 비고, 그 자리에 인기 테스트 3개가 올라옵니다.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4. QUESTION PAGE ────────────────────────────── -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">4</span> Question Page</div>
+    <h2 class="section-title">질문 페이지 기획</h2>
+    <p class="section-desc">12문항을 한 화면씩 carousel로. 답변 부담을 낮추고, 마지막에 결과 기대감을 만듭니다.</p>
+
+    <div class="flow">
+      <div class="spec">
+        <div class="mission">
+          <div class="mission-h">Mission</div>
+          <ol>
+            <li><b>진행도</b> · 5/12를 보면서 “끝이 보인다” 감각을 유지</li>
+            <li><b>한 손 조작</b> · 엄지로 닿는 영역에 선택지·다음 버튼</li>
+            <li><b>마지막 기대</b> · 12번 문항 후 1.5초 “결과 계산 중” 인터스티셜로 살짝 뜸 들이기</li>
+          </ol>
+        </div>
+
+        <h3><span class="step">4-1</span> 레이아웃</h3>
+        <div class="layout-list">
+          <div class="layout-row">
+            <span class="layout-tag sticky">STICKY TOP</span>
+            <div class="layout-text"><b>진행도 바</b> + <b>5/12</b> + 닫기(X)<span class="small">스크롤해도 항상 보이게. 닫기는 “지금까지 답 저장됨” 시트로 확인</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag body">QUESTION</span>
+            <div class="layout-text"><b>축 라벨</b> + <b>질문 본문</b> + <b>보조 한 줄</b><span class="small">예: 축 “선택 패턴” / Q “새로운 식당과 단골집, 끌리는 쪽은?” / 보조 “정답은 없어요”</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag body">OPTIONS</span>
+            <div class="layout-text"><b>선택지 카드</b> 2-4개<span class="small">각 카드 56px+. 짧은 라벨 + 작은 부연 1줄. 라디오 점은 시각 단서</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag sticky">STICKY BTM</span>
+            <div class="layout-text"><b>이전 / 다음</b><span class="small">선택 시 “자동 다음”도 옵션 (정수민 제안: 빠른 호흡 유지). 다음은 풀폭 primary</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag opt">TRANSITION</span>
+            <div class="layout-text"><b>좌→우 슬라이드 220ms</b><span class="small">진행감 + 답 변경하지 않는 자연스러운 다음</span></div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag cta">FINAL</span>
+            <div class="layout-text"><b>결과 계산 중</b> 1.5초 인터스티셜<span class="small">스피너 + “당신의 패턴을 정리하고 있어요”. 즉시 결과 보이지 않게 살짝 뜸 들이기</span></div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:24px"><span class="step">4-2</span> 디테일</h3>
+        <div class="layout-list">
+          <div class="layout-row">
+            <span class="layout-tag body">A11Y</span>
+            <div class="layout-text">선택지에 <b>키보드 1-4 단축키</b>. 화살표로 옵션 이동, Enter로 다음.</div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag body">SAVE</span>
+            <div class="layout-text">매 답변마다 <b>localStorage</b>에 진행도 저장 → 새로고침 / 광고 클릭 후 복귀 시 이어서.</div>
+          </div>
+          <div class="layout-row">
+            <span class="layout-tag body">AD</span>
+            <div class="layout-text">질문 페이지는 <b>광고 슬롯 X</b> (이탈 위험). 결과 페이지·인트로에서만 노출.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 모크업 -->
+      <div class="mock-stage">
+        <div class="mock-label">Question · 360px (5/12)</div>
+        <div class="phone">
+          <div class="phone-inner">
+            <div class="mini-row">
+              <span style="font-size:10.5px; color:var(--ink-3); font-weight:700">5 / 12</span>
+              <span class="mini-x">✕</span>
+            </div>
+            <div class="mini-bar"><span style="width:42%"></span></div>
+
+            <div class="mini-q-axis">Q5 · 선택 패턴</div>
+            <div class="mini-q-text">새로운 식당과 단골집,<br/>끌리는 쪽은?</div>
+            <div class="mini-q-hint">정답은 없어요. 더 가까운 쪽으로.</div>
+
+            <div class="mini-opts">
+              <div class="mini-opt">
+                <span class="dot"></span>
+                <span>새로운 식당이 더 끌려요</span>
+              </div>
+              <div class="mini-opt on">
+                <span class="dot"></span>
+                <span>단골집이 마음 편해요</span>
+              </div>
+              <div class="mini-opt">
+                <span class="dot"></span>
+                <span>그때그때 다른 것 같아요</span>
+              </div>
+            </div>
+
+            <div class="mini-nav">
+              <div class="mini-nav-btn">← 이전</div>
+              <div class="mini-nav-btn prim" style="flex:1.6">다음 →</div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-label" style="margin-top:6px">→ 12/12 이후</div>
+        <div class="phone" style="min-height:240px">
+          <div class="phone-inner">
+            <div class="mini-loading">
+              <div class="mini-spinner"></div>
+              <div class="mini-loading-text">결과 계산 중…</div>
+              <div class="mini-loading-sub">당신의 패턴을 정리하고 있어요</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 5. CONSENSUS ON RESULT PAGE V2 ─────────────── -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">5</span> Consensus</div>
+    <h2 class="section-title">결과 페이지 v2 — 3인이 합의한 변경점</h2>
+    <p class="section-desc">위 리뷰를 종합해 결과 페이지 v2에 반영할 항목을 추렸습니다.</p>
+
+    <div class="consensus">
+      <div class="consensus-h">합의한 변경점 5가지</div>
+      <h3 class="consensus-title">결과지의 “구조”가 아니라 “편집”을 손봅니다</h3>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-a">정수</div>
+        <div>
+          <div class="consensus-quote-text"><b>① rarity 표현 정성+숫자 병기.</b> Hero pill을 “흔하지 않은 유형 · 응답자 14%”로 변경. 캡처 욕구를 1차로 유발하는 핵심 카피.</div>
+          <div class="consensus-quote-who">정수민 · UX Researcher</div>
+        </div>
+      </div>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-a">정수</div>
+        <div>
+          <div class="consensus-quote-text"><b>② Hero 아래 1줄 disclaimer.</b> “MBTI와는 달리 ‘선택 패턴’만 봅니다”를 summary 바로 아래에 작게. FAQ 4번을 1번으로 끌어올리는 대신, 의심을 즉시 해소.</div>
+          <div class="consensus-quote-who">정수민 · UX Researcher</div>
+        </div>
+      </div>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-b">이도</div>
+        <div>
+          <div class="consensus-quote-text"><b>③ Shrinking share badge.</b> 본문 진입 시 우측 share card → 우상단 fixed mini badge로 축소. “지금 공유” 행동을 본문 끝까지 유지.</div>
+          <div class="consensus-quote-who">이도현 · Product Designer</div>
+        </div>
+      </div>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-b">이도</div>
+        <div>
+          <div class="consensus-quote-text"><b>④ 체크리스트 hit target 확장.</b> li 전체 클릭, 체크박스는 시각 단서. 라벨도 “나도 이렇다면 체크” 톤으로.</div>
+          <div class="consensus-quote-who">이도현 + 정수민</div>
+        </div>
+      </div>
+
+      <div class="consensus-quote">
+        <div class="avatar avatar-c">박지</div>
+        <div>
+          <div class="consensus-quote-text"><b>⑤ 결과 데이터에 <code>nickname</code> 필드 추가.</b> og:title = 별명(“기준러”), H1 = 풀네임. 공유 카드 하단에 “temon.kr/r/STB-04” 짧은 URL.</div>
+          <div class="consensus-quote-who">박지은 · Growth</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6. ACTION PLAN ────────────────────────────── -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="num">6</span> Action Plan</div>
+    <h2 class="section-title">다음 액션 · 우선순위</h2>
+    <p class="section-desc">P0는 이번 스프린트, P1은 다음 스프린트, P2는 백로그. 옆에 코멘트 출처(누가 낸 의견인지)를 함께 표시했습니다.</p>
+
+    <div class="plan-grid">
+      <!-- P0 -->
+      <div class="plan-col">
+        <div class="plan-head">
+          <span class="plan-tag p0">P0</span>
+          <span class="plan-time">~2주</span>
+        </div>
+        <div class="plan-title">이번 스프린트</div>
+        <ul class="plan-list">
+          <li><span class="ref">A1</span><span><b>인트로 페이지 빌드</b> · referral 카드 + 미리보기 포함</span></li>
+          <li><span class="ref">A2</span><span><b>질문 페이지 빌드</b> · 12문항 carousel + 마지막 인터스티셜</span></li>
+          <li><span class="ref">A3</span><span><b>결과 페이지 v2 반영</b> · 합의 ①②④ (rarity 카피, disclaimer, 체크리스트 hit target)</span></li>
+          <li><span class="ref">A4</span><span><b>nickname 필드 추가</b> · og:title 자동 적용 (박지은 ⑤)</span></li>
+        </ul>
+      </div>
+
+      <!-- P1 -->
+      <div class="plan-col">
+        <div class="plan-head">
+          <span class="plan-tag p1">P1</span>
+          <span class="plan-time">~4주</span>
+        </div>
+        <div class="plan-title">다음 스프린트</div>
+        <ul class="plan-list">
+          <li><span class="ref">B1</span><span><b>Shrinking share badge</b> · 본문 진입 시 우상단 mini로 (이도현 ③)</span></li>
+          <li><span class="ref">B2</span><span><b>공유 카드 비율 3종 다운로드</b> · 1:1 / 9:16 / 1.91:1 (이도현 HIGH)</span></li>
+          <li><span class="ref">B3</span><span><b>결과 코드 입력 → 결과 이동</b> · 인트로 1줄 + /r/:code 라우트 (박지은)</span></li>
+          <li><span class="ref">B4</span><span><b>schema.org Quiz 마크업</b> · 결과 페이지에 JSON-LD 삽입 (박지은)</span></li>
+          <li><span class="ref">B5</span><span><b>광고 island 컨테이너</b> · 본문 구간을 자동광고에서 제외 (박지은 HIGH)</span></li>
+        </ul>
+      </div>
+
+      <!-- P2 -->
+      <div class="plan-col">
+        <div class="plan-head">
+          <span class="plan-tag p2">P2</span>
+          <span class="plan-time">백로그</span>
+        </div>
+        <div class="plan-title">실험적 / 백로그</div>
+        <ul class="plan-list">
+          <li><span class="ref">C1</span><span><b>좌우 스와이프 “비슷한 유형” 캐러셀</b> · 체류 시간 실험</span></li>
+          <li><span class="ref">C2</span><span><b>같은 유형 익명 한 줄 코멘트</b> · 결과 페이지 하단</span></li>
+          <li><span class="ref">C3</span><span><b>실시간 카운터 백엔드</b> · 인트로 “지금 N명 참여 중” 회전</span></li>
+          <li><span class="ref">C4</span><span><b>다시하기 시 응답 유지 옵션</b> · 1~2개 문항만 바꿔서 결과 변화 확인</span></li>
+          <li><span class="ref">C5</span><span><b>다국어 (영어 / 일본어)</b> · 카드 톤은 각국 SNS 캡션 컨벤션 따라 별도 카피</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── footer ──────────────────────────────────── -->
+  <footer class="doc-foot">
+    <span>© 테몬 · 내부 기획 문서 · 2026.05.27</span>
+    <span><a href="결과 페이지.html">→ 결과 페이지 v1 보기</a></span>
+  </footer>
+
+</div>
+
+</body>
+</html>

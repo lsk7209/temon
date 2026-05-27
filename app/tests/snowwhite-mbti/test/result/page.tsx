@@ -111,7 +111,7 @@ function ResultContent() {
   const resultUseCases = getTopicResultUseCases("Snow White MBTI Test", character.name)
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>결과를 불러오는 중...</div>
   }
 
   const handleShare = async () => {
@@ -126,7 +126,7 @@ function ResultContent() {
         })
         return
       } catch (error) {
-        console.log("Error sharing:", error)
+        void error
       }
     }
 
@@ -400,7 +400,7 @@ function ResultContent() {
 
 export default function SnowWhiteMBTIResult() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>결과를 불러오는 중...</div>}>
       <ResultContent />
     </Suspense>
   )

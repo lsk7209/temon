@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "커피 MBTI 테스트 결과 - 무료 성격 테스트",
     description: "커피 MBTI 테스트 결과를 확인하세요! 당신의 커피 성격 유형과 특징을 알아보세요.",
     type: "website",
-    url: "https://www.temon.kr/tests/coffee-mbti/test/result",
+    url: "https://temon.kr/tests/coffee-mbti/test/result",
   },
   robots: {
     index: false, // 결과 페이지는 개인화된 내용이므로 인덱싱 제외
@@ -27,4 +27,3 @@ export default function ResultLayout({
 }) {
   return <>{children}</>
 }
-

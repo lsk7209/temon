@@ -8,6 +8,7 @@ import { LandingConversionSection } from "@/components/landing-conversion-sectio
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 const shortDescription = "갑자기 세상이 좀비로 뒤덮인다면? 나의 생존 전략과 역할로 알아보는 16가지 생존 유형."
 const fullDescription = "좀비 아포칼립스 생존 유형 테스트로 알아보는 나의 생존 DNA! 나는 좀비 헌터일까, 최초 감염자일까? 12개의 질문으로 극한 상황에서의 나의 본모습을 확인하고, 생존 확률을 높여줄 꿀팁과 아이템 추천까지 받아보세요."
@@ -25,6 +26,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("좀비 아포칼립스 생존 유형 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "좀비 테스트 검색",
+    description:
+      "위기 상황에서 도망, 협상, 수색, 방어 중 어떤 선택을 하는지로 생존 성향을 확인합니다.",
+  },
+  {
+    title: "친구와 역할 비교",
+    description:
+      "리더, 정찰, 방어, 치료처럼 팀 안에서 맡을 법한 역할을 결과로 비교하기 좋습니다.",
+  },
+  {
+    title: "재밌는 상황형 테스트",
+    description:
+      "실제 생존 가이드가 아니라 상상 상황을 통해 선택 패턴을 보는 오락용 성향 테스트입니다.",
+  },
 ]
 
 export default function ZombieSurvivalIntro() {
@@ -99,6 +118,18 @@ export default function ZombieSurvivalIntro() {
             <div className="mt-8 text-sm text-gray-500">
               <p>💡 주의: 실제 좀비 사태 발생 시 도움이 안 될 수도 있습니다.</p>
             </div>
+
+            <GscLandingBoost
+              title="좀비 아포칼립스 테스트, 무엇을 보나요?"
+              summary="좀비 아포칼립스 테스트는 극한 상황에서 내가 어떤 판단을 먼저 하는지 알고 싶은 검색 의도에 맞춘 상황형 성격 테스트입니다. 위험을 피하는 방식, 팀을 대하는 태도, 자원을 쓰는 기준을 가볍게 비교할 수 있습니다."
+              guides={gscGuides}
+              relatedLinks={[
+                { href: "/tests/breakup-style", label: "이별 후유증 테스트" },
+                { href: "/tests/meeting-villain", label: "회의 빌런 테스트" },
+                { href: "/tests/kpop-idol", label: "아이돌 포지션 테스트" },
+              ]}
+              tone="red"
+            />
           </div>
 
           <div className="max-w-2xl mx-auto">

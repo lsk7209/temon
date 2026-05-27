@@ -189,7 +189,7 @@ function ResultContent() {
           url: window.location.href,
         })
       } catch (err) {
-        console.log("공유 취소됨")
+        void err
       }
     } else {
       alert("이 브라우저는 공유 기능을 지원하지 않습니다.")

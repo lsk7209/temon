@@ -189,7 +189,7 @@ function ResultContent() {
   const resultUseCases = getTopicResultUseCases("K-Drama MBTI Test", result.title)
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>결과를 불러오는 중...</div>
   }
 
   const handleShare = async () => {
@@ -216,7 +216,7 @@ ${shareUrl}`
         alert("공유 메시지가 복사되었습니다! 친구들에게 붙여넣기 해보세요 📋✨")
       }
     } catch (err) {
-      console.error('복사 실패:', err)
+      void err
       alert('복사에 실패했습니다. 다시 시도해주세요.')
     }
   }

@@ -1,4 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import {
+  getDefaultIndexNowUrls,
+  INDEXNOW_ENDPOINTS,
+  submitUrlsToIndexNow,
+} from "@/lib/indexnow";
 
 /**
  * IndexNow 자동 제출 엔드포인트.
@@ -17,36 +22,12 @@ import { NextRequest, NextResponse } from "next/server";
  *   NEXT_PUBLIC_APP_URL  — 사이트 호스트
  */
 
-const INDEXNOW_ENDPOINTS = [
-  "https://api.indexnow.org/IndexNow", // 통합 제출(Bing·Yandex·Naver 전파)
-  "https://www.bing.com/IndexNow",
-  "https://searchadvisor.naver.com/indexnow",
-  "https://yandex.com/indexnow",
-] as const;
-
-const DEFAULT_URLS = [
-  "/",
-  "/tests",
-  "/about",
-  "/contact",
-  "/privacy",
-  "/terms",
-];
-
 export async function POST(request: NextRequest) {
   // 간이 인증 (CRON_SECRET or ADMIN_TOKEN)
   const auth = request.headers.get("authorization") || "";
   const secret = process.env.CRON_SECRET || process.env.ADMIN_TOKEN || "";
   if (secret && auth !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
-  const key = process.env.INDEXNOW_KEY;
-  if (!key) {
-    return NextResponse.json(
-      { error: "INDEXNOW_KEY not configured" },
-      { status: 500 },
-    );
   }
 
   const host = (process.env.NEXT_PUBLIC_APP_URL || "https://temon.kr").replace(
@@ -63,9 +44,9 @@ export async function POST(request: NextRequest) {
     urlList =
       Array.isArray(candidate) && candidate.length > 0
         ? (candidate as string[])
-        : DEFAULT_URLS;
+        : getDefaultIndexNowUrls(host);
   } catch {
-    urlList = DEFAULT_URLS;
+    urlList = getDefaultIndexNowUrls(host);
   }
 
   // 상대 경로를 절대 URL로 정규화
@@ -77,50 +58,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "no urls" }, { status: 400 });
   }
 
-  const hostname = new URL(host).hostname;
-  const keyLocation = `${host}/${key}.txt`;
-
-  const payload = {
-    host: hostname,
-    key,
-    keyLocation,
-    urlList: urlsToSubmit,
-  };
-
-  // 각 엔드포인트 병렬 호출
-  const results = await Promise.allSettled(
-    INDEXNOW_ENDPOINTS.map(async (endpoint) => {
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json; charset=utf-8" },
-        body: JSON.stringify(payload),
-        // IndexNow는 보통 <1초 응답. 타임아웃 방지용.
-        signal: AbortSignal.timeout(8_000),
-      });
-      return { endpoint, status: res.status, ok: res.ok };
-    }),
-  );
-
-  const summary = results.map((r, i) =>
-    r.status === "fulfilled"
-      ? r.value
-      : {
-          endpoint: INDEXNOW_ENDPOINTS[i],
-          error: (r.reason as Error)?.message || "failed",
-        },
-  );
-
-  return NextResponse.json({
-    success: true,
-    submitted: urlsToSubmit.length,
-    results: summary,
-  });
+  const result = await submitUrlsToIndexNow(urlsToSubmit);
+  return NextResponse.json(result, { status: result.success ? 200 : 502 });
 }
 
 export async function GET() {
   return NextResponse.json({
     hint: "POST with { urls: string[] } and Authorization: Bearer <CRON_SECRET>",
-    default_urls: DEFAULT_URLS,
+    default_urls: getDefaultIndexNowUrls(),
     endpoints: INDEXNOW_ENDPOINTS,
   });
 }

@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ShareButtons } from "@/components/share-buttons"
+import { ContentToc } from "@/components/content-toc"
 import { useResolvedResultType } from "@/hooks/use-resolved-result-type"
 import { JsonLd, createFAQSchema } from "@/components/json-ld"
 import { getTopicResultFAQs, getTopicResultUseCases } from "@/lib/quiz-topic-copy"
@@ -44,11 +45,19 @@ function formatSectionTitle(key: string) {
 
 function buildPracticalTips(result: MbtiResultRecord) {
   return [
-    `${result.name} types do better when they keep one clear decision rule instead of reacting randomly.`,
-    `If your result is ${result.mbti}, compare your last three choices and look for the repeat pattern.`,
-    `Use this result as a preference map, not a fixed label. Your context still changes the outcome.`,
+    `${result.name} 유형은 즉흥적으로 반응하기보다 한 가지 판단 기준을 정해두면 결과를 더 잘 활용할 수 있습니다.`,
+    `${result.mbti} 결과가 나왔다면 최근 세 번의 선택을 떠올리고 반복되는 기준이 무엇인지 비교해보세요.`,
+    "이 결과는 고정된 성격표가 아니라 지금의 선호와 습관을 읽는 지도처럼 사용하는 것이 좋습니다.",
   ]
 }
+
+const tocItems = [
+  { id: "result-main", label: "결과 요약" },
+  { id: "result-traits", label: "핵심 특징" },
+  { id: "result-interpretation", label: "결과 해석" },
+  { id: "result-faq", label: "자주 묻는 질문" },
+  { id: "result-related", label: "추천 테스트" },
+]
 
 function buildInterpretationParagraphs(result: MbtiResultRecord) {
   const firstTrait = result.traits[0] || `${result.name} tends to show a stable preference pattern`
@@ -121,7 +130,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
     <div className={`min-h-screen ${theme.page}`}>
       {resultFaqSchema && <JsonLd id={`${testId}-result-faq-schema`} data={resultFaqSchema} />}
       <div className="container max-w-4xl mx-auto px-4 py-8">
-        <div className="text-center mb-8">
+        <div id="result-main" className="text-center mb-8 scroll-mt-24">
           <div className={`inline-block px-6 py-3 bg-gradient-to-r ${theme.accent} rounded-full mb-4`}>
             <h1 className="text-3xl md:text-4xl font-bold text-white">{result.name}</h1>
           </div>
@@ -130,6 +139,8 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
             {result.mbti}
           </Badge>
         </div>
+
+        <ContentToc items={tocItems} className="mb-8" />
 
         <div className="mb-8 flex justify-center">
           <ShareButtons
@@ -142,9 +153,9 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
           />
         </div>
 
-        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+        <Card id="result-traits" className="mb-6 scroll-mt-24 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">특성</CardTitle>
+            <CardTitle className="text-2xl">핵심 특징</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
@@ -158,7 +169,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
           </CardContent>
         </Card>
 
-        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+        <Card id="result-interpretation" className="mb-6 scroll-mt-24 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
             <CardTitle className="text-2xl">실용적 해석</CardTitle>
           </CardHeader>
@@ -226,7 +237,7 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
           </Card>
         )}
 
-        <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
+        <Card id="result-faq" className="mb-6 scroll-mt-24 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
             <CardTitle className="text-2xl">결과 활용법</CardTitle>
           </CardHeader>
@@ -307,7 +318,9 @@ function ResultPageContent({ testId, quizTitle, testPath, results, theme }: Mbti
           </CardContent>
         </Card>
 
-        <RelatedTestsSection testId={testId} title="비슷한 주제의 테스트" />
+        <div id="result-related" className="scroll-mt-24">
+          <RelatedTestsSection testId={testId} title="비슷한 주제의 테스트" />
+        </div>
       </div>
     </div>
   )

@@ -53,7 +53,7 @@ function ResultContent() {
     if (resultId) {
       getTestResult(resultId)
         .then((data) => setResult(data))
-        .catch((err) => console.error("결과 조회 실패:", err))
+        .catch(() => undefined)
     }
   }, [resultId])
 

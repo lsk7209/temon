@@ -8,6 +8,7 @@ import { LandingConversionSection } from "@/components/landing-conversion-sectio
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "계획 구매부터 즉흥 지출까지, 당신의 소비 패턴을 16유형으로 분석. 유형별 절약 팁과 추천 설정 제공."
@@ -27,6 +28,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("소비 성향 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "소비성향 테스트 검색",
+    description:
+      "계획 구매, 충동구매, 가격 비교, 구독 관리처럼 실제 소비 장면을 기준으로 성향을 확인합니다.",
+  },
+  {
+    title: "절약 팁까지 확인",
+    description:
+      "결과 유형별로 돈을 쓰는 기준과 지출을 줄이는 첫 행동을 함께 볼 수 있습니다.",
+  },
+  {
+    title: "가벼운 무료 진단",
+    description:
+      "전문 재무 진단이 아니라 일상 소비 습관을 돌아보는 무료 성향 테스트로 활용하세요.",
+  },
 ]
 
 export default function SpendingStyleIntro() {
@@ -102,6 +121,18 @@ export default function SpendingStyleIntro() {
           <div className="mt-8 text-sm text-gray-500 dark:text-gray-400">
             <p>💡 정확한 결과를 위해 솔직하게 답변해주세요!</p>
           </div>
+
+          <GscLandingBoost
+            title="소비성향 테스트, 이런 분에게 맞습니다"
+            summary="소비성향 테스트는 내가 돈을 쓰기 전 어떤 기준으로 판단하는지 확인하려는 검색 의도에 맞춰 구성했습니다. 충동구매를 줄이고 싶거나, 구독·포인트·할인에 끌리는 패턴을 알고 싶을 때 먼저 풀어보기 좋습니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/perfection-balance-1xQC", label: "완벽주의 테스트" },
+              { href: "/tests/weekend-planning", label: "주말 계획 테스트" },
+              { href: "/tests/shopping-style", label: "쇼핑 스타일 테스트" },
+            ]}
+            tone="green"
+          />
 
           {/* FAQ 섹션 */}
           <div className="mt-12 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-left">

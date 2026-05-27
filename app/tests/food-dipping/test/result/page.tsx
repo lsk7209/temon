@@ -252,7 +252,7 @@ function ResultContent() {
           const data = await getTestResult(resultId)
           setResult(data)
         } catch (err) {
-          console.error("Failed to fetch test result:", err)
+          void err
           setError("결과를 불러오지 못했습니다.")
         } finally {
           setLoading(false)

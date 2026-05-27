@@ -94,7 +94,7 @@ export default function NTRPTestResult() {
         description: "결과 카드가 이미지로 저장되었습니다.",
       })
     } catch (error) {
-      console.error("PNG export failed:", error)
+      void error
       toast({
         title: "저장 실패",
         description: "이미지 저장 중 오류가 발생했습니다.",
@@ -159,7 +159,7 @@ export default function NTRPTestResult() {
         description: "결과가 PDF로 저장되었습니다.",
       })
     } catch (error) {
-      console.error("PDF export failed:", error)
+      void error
       toast({
         title: "저장 실패",
         description: "PDF 저장 중 오류가 발생했습니다.",
@@ -179,7 +179,7 @@ export default function NTRPTestResult() {
         description: "결과 링크가 클립보드에 복사되었습니다.",
       })
     } catch (error) {
-      console.error("Copy failed:", error)
+      void error
       toast({
         title: "복사 실패",
         description: "링크 복사 중 오류가 발생했습니다.",

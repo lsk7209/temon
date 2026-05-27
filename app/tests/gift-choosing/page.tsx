@@ -11,6 +11,7 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Gift, Sparkles } from "lucide-react"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "선물 선택 기준, 포장 방식으로 16유형 성향을 분석합니다. 선물 고르는 방식으로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성."
@@ -30,6 +31,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("선물 고르는 스타일 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "선물 테스트 검색",
+    description:
+      "실용성, 감동, 예산, 포장 방식 중 무엇을 먼저 보는지로 선물 선택 성향을 확인합니다.",
+  },
+  {
+    title: "관계 성향 확인",
+    description:
+      "선물을 고르는 방식은 상대를 관찰하는 기준과 마음을 표현하는 방식을 보여줍니다.",
+  },
+  {
+    title: "기념일 전 활용",
+    description:
+      "생일, 기념일, 감사 선물 전 내 선택 패턴을 가볍게 점검하기 좋습니다.",
+  },
 ]
 
 export default function GiftChoosingIntro() {
@@ -55,21 +74,21 @@ export default function GiftChoosingIntro() {
       <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
-          <div className="relative mx-auto w-32 h-32 mb-8">
+          <div className="relative mx-auto mb-8 h-32 w-48">
             <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full animate-pulse" />
             <div className="absolute inset-2 bg-gradient-to-br from-pink-200 to-rose-300 rounded-full flex items-center justify-center">
               <span className="text-4xl animate-bounce">💝</span>
             </div>
-            <div className="absolute -top-6 -left-6 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
+            <div className="absolute -top-6 left-2 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
               🎁
             </div>
-            <div className="absolute -top-4 -right-8 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
+            <div className="absolute -top-4 right-2 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
               🎀
             </div>
-            <div className="absolute -bottom-6 -left-8 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
+            <div className="absolute -bottom-6 left-2 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
               💐
             </div>
-            <div className="absolute -bottom-4 -right-6 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
+            <div className="absolute -bottom-4 right-2 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
               🌹
             </div>
           </div>
@@ -123,6 +142,18 @@ export default function GiftChoosingIntro() {
             </div>
           </div>
         </div>
+
+        <GscLandingBoost
+          title="선물 고르는 스타일 테스트, 무엇을 알려주나요?"
+          summary="선물 고르는 스타일 테스트는 내가 선물을 고를 때 실용성, 감정, 예산, 의미 중 무엇을 우선하는지 알고 싶은 검색 의도에 맞춘 무료 성향 테스트입니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/shopping-style", label: "쇼핑 스타일 테스트" },
+            { href: "/tests/spending-style", label: "소비 성향 테스트" },
+            { href: "/tests/promise-delay-reaction-nBFg", label: "약속 태도 테스트" },
+          ]}
+          tone="pink"
+        />
 
         <div className="mt-20 space-y-12">
           <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">

@@ -1,0 +1,4802 @@
+[
+  {
+    "title": "세탁물 분류 스타일 테스트",
+    "slug": "daily-laundry-sort-wave4",
+    "category": "생활",
+    "label": "세탁물 분류",
+    "mainKeyword": "세탁물 분류 스타일",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "세탁물 분류 기준",
+      "세탁물 분류 루틴",
+      "세탁물 분류 체크"
+    ],
+    "intentNote": "세탁물 분류 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-07T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "laundry-habit",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "냉장고 리셋 취향 테스트",
+    "slug": "daily-fridge-reset-wave4",
+    "category": "생활",
+    "label": "냉장고 리셋",
+    "mainKeyword": "냉장고 리셋 취향",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "냉장고 리셋 기준",
+      "냉장고 리셋 루틴",
+      "냉장고 리셋 체크"
+    ],
+    "intentNote": "냉장고 리셋 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-07T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "우산 챙기기 취향 테스트",
+    "slug": "daily-umbrella-check-wave4",
+    "category": "생활",
+    "label": "우산 챙기기",
+    "mainKeyword": "우산 챙기기 취향",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "우산 챙기기 기준",
+      "우산 챙기기 루틴",
+      "우산 챙기기 체크"
+    ],
+    "intentNote": "우산 챙기기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-07T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "신발장 정리 스타일 테스트",
+    "slug": "daily-shoe-shelf-wave4",
+    "category": "생활",
+    "label": "신발장 정리",
+    "mainKeyword": "신발장 정리 스타일",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "신발장 정리 기준",
+      "신발장 정리 루틴",
+      "신발장 정리 체크"
+    ],
+    "intentNote": "신발장 정리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-07T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "파일명 정리 성향 테스트",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "가방 비우기 취향 테스트",
+    "slug": "daily-bag-lightening-wave4",
+    "category": "생활",
+    "label": "가방 비우기",
+    "mainKeyword": "가방 비우기 취향",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "가방 비우기 기준",
+      "가방 비우기 루틴",
+      "가방 비우기 체크"
+    ],
+    "intentNote": "가방 비우기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-08T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "영수증 보관 스타일 테스트",
+    "slug": "daily-receipt-box-wave4",
+    "category": "생활",
+    "label": "영수증 보관",
+    "mainKeyword": "영수증 보관 스타일",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "영수증 보관 기준",
+      "영수증 보관 루틴",
+      "영수증 보관 체크"
+    ],
+    "intentNote": "영수증 보관 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-08T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "전자 영수증 보관 성향 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "싱크대 정리 취향 테스트",
+    "slug": "daily-sink-cleanup-wave4",
+    "category": "생활",
+    "label": "싱크대 정리",
+    "mainKeyword": "싱크대 정리 취향",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "싱크대 정리 기준",
+      "싱크대 정리 루틴",
+      "싱크대 정리 체크"
+    ],
+    "intentNote": "싱크대 정리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-08T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "집 조명 선택 스타일 테스트",
+    "slug": "daily-home-lighting-wave4",
+    "category": "생활",
+    "label": "집 조명 선택",
+    "mainKeyword": "집 조명 선택 스타일",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "집 조명 선택 기준",
+      "집 조명 선택 루틴",
+      "집 조명 선택 체크"
+    ],
+    "intentNote": "집 조명 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-08T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "home-noise-boundary",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "택배 언박싱 취향 테스트",
+    "slug": "daily-delivery-unpack-wave4",
+    "category": "생활",
+    "label": "택배 언박싱",
+    "mainKeyword": "택배 언박싱 취향",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "택배 언박싱 기준",
+      "택배 언박싱 루틴",
+      "택배 언박싱 체크"
+    ],
+    "intentNote": "택배 언박싱 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-09T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "택배 언박싱 성향 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "달력 확인 스타일 테스트",
+    "slug": "daily-calendar-review-wave4",
+    "category": "생활",
+    "label": "달력 확인",
+    "mainKeyword": "달력 확인 스타일",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "달력 확인 기준",
+      "달력 확인 루틴",
+      "달력 확인 체크"
+    ],
+    "intentNote": "달력 확인 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-09T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "food-review",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "간식 서랍 관리 스타일 테스트",
+    "slug": "daily-snack-drawer-wave4",
+    "category": "생활",
+    "label": "간식 서랍 관리",
+    "mainKeyword": "간식 서랍 관리 스타일",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "간식 서랍 관리 기준",
+      "간식 서랍 관리 루틴",
+      "간식 서랍 관리 체크"
+    ],
+    "intentNote": "간식 서랍 관리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-09T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "convenience-snack",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "잠옷 선택 취향 테스트",
+    "slug": "daily-sleepwear-choice-wave4",
+    "category": "생활",
+    "label": "잠옷 선택",
+    "mainKeyword": "잠옷 선택 취향",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "잠옷 선택 기준",
+      "잠옷 선택 루틴",
+      "잠옷 선택 체크"
+    ],
+    "intentNote": "잠옷 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-09T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.2,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "문단속 확인 스타일 테스트",
+    "slug": "daily-door-lock-check-wave4",
+    "category": "생활",
+    "label": "문단속 확인",
+    "mainKeyword": "문단속 확인 스타일",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "문단속 확인 기준",
+      "문단속 확인 루틴",
+      "문단속 확인 체크"
+    ],
+    "intentNote": "문단속 확인 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-10T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-umbrella-check-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "집안일 순서 취향 테스트",
+    "slug": "daily-house-chore-order-wave4",
+    "category": "생활",
+    "label": "집안일 순서",
+    "mainKeyword": "집안일 순서 취향",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "집안일 순서 기준",
+      "집안일 순서 루틴",
+      "집안일 순서 체크"
+    ],
+    "intentNote": "집안일 순서 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-10T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "아침 물 마시기 스타일 테스트",
+    "slug": "daily-morning-water-wave4",
+    "category": "생활",
+    "label": "아침 물 마시기",
+    "mainKeyword": "아침 물 마시기 스타일",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "아침 물 마시기 기준",
+      "아침 물 마시기 루틴",
+      "아침 물 마시기 체크"
+    ],
+    "intentNote": "아침 물 마시기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-10T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "morning-alarm",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "밤 충전 습관 취향 테스트",
+    "slug": "daily-night-charging-wave4",
+    "category": "생활",
+    "label": "밤 충전 습관",
+    "mainKeyword": "밤 충전 습관 취향",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "밤 충전 습관 기준",
+      "밤 충전 습관 루틴",
+      "밤 충전 습관 체크"
+    ],
+    "intentNote": "밤 충전 습관 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-10T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.2,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "식탁 리셋 스타일 테스트",
+    "slug": "daily-table-reset-wave4",
+    "category": "생활",
+    "label": "식탁 리셋",
+    "mainKeyword": "식탁 리셋 스타일",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "식탁 리셋 기준",
+      "식탁 리셋 루틴",
+      "식탁 리셋 체크"
+    ],
+    "intentNote": "식탁 리셋 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-11T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-fridge-reset-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "옷걸이 정리 취향 테스트",
+    "slug": "daily-closet-hanger-wave4",
+    "category": "생활",
+    "label": "옷걸이 정리",
+    "mainKeyword": "옷걸이 정리 취향",
+    "expandedKeywords": [
+      "생활 습관",
+      "일상 루틴",
+      "정리 성향",
+      "시간 관리",
+      "옷걸이 정리 기준",
+      "옷걸이 정리 루틴",
+      "옷걸이 정리 체크"
+    ],
+    "intentNote": "옷걸이 정리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-11T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "싱크대 정리 취향 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "알림 배지 처리 스타일 테스트",
+    "slug": "digital-notification-badge-wave4",
+    "category": "디지털",
+    "label": "알림 배지 처리",
+    "mainKeyword": "알림 배지 처리 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "알림 배지 처리 기준",
+      "알림 배지 처리 루틴",
+      "알림 배지 처리 체크"
+    ],
+    "intentNote": "알림 배지 처리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-11T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "notification-badge-clearing",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "중복 사진 정리 취향 테스트",
+    "slug": "digital-photo-duplicate-wave4",
+    "category": "디지털",
+    "label": "중복 사진 정리",
+    "mainKeyword": "중복 사진 정리 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "중복 사진 정리 기준",
+      "중복 사진 정리 루틴",
+      "중복 사진 정리 체크"
+    ],
+    "intentNote": "중복 사진 정리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-11T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "싱크대 정리 취향 테스트",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "앱 폴더 배치 스타일 테스트",
+    "slug": "digital-app-folder-wave4",
+    "category": "디지털",
+    "label": "앱 폴더 배치",
+    "mainKeyword": "앱 폴더 배치 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "앱 폴더 배치 기준",
+      "앱 폴더 배치 루틴",
+      "앱 폴더 배치 체크"
+    ],
+    "intentNote": "앱 폴더 배치 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-12T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "책상 배치 성향 테스트",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "클라우드 백업 취향 테스트",
+    "slug": "digital-cloud-backup-wave4",
+    "category": "디지털",
+    "label": "클라우드 백업",
+    "mainKeyword": "클라우드 백업 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "클라우드 백업 기준",
+      "클라우드 백업 루틴",
+      "클라우드 백업 체크"
+    ],
+    "intentNote": "클라우드 백업 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-12T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "검색 북마크 스타일 테스트",
+    "slug": "digital-search-bookmark-wave4",
+    "category": "디지털",
+    "label": "검색 북마크",
+    "mainKeyword": "검색 북마크 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "검색 북마크 기준",
+      "검색 북마크 루틴",
+      "검색 북마크 체크"
+    ],
+    "intentNote": "검색 북마크 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-12T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "북마크 성향",
+      "maxSimilarity": 0.2,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "채팅방 보관 취향 테스트",
+    "slug": "digital-chat-archive-wave4",
+    "category": "디지털",
+    "label": "채팅방 보관",
+    "mainKeyword": "채팅방 보관 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "채팅방 보관 기준",
+      "채팅방 보관 루틴",
+      "채팅방 보관 체크"
+    ],
+    "intentNote": "채팅방 보관 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-12T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "이메일함 정리 스타일 테스트",
+    "slug": "digital-email-inbox-wave4",
+    "category": "디지털",
+    "label": "이메일함 정리",
+    "mainKeyword": "이메일함 정리 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "이메일함 정리 기준",
+      "이메일함 정리 루틴",
+      "이메일함 정리 체크"
+    ],
+    "intentNote": "이메일함 정리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-13T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "email-handling-style",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "스크린타임 확인 취향 테스트",
+    "slug": "digital-screen-time-wave4",
+    "category": "디지털",
+    "label": "스크린타임 확인",
+    "mainKeyword": "스크린타임 확인 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "스크린타임 확인 기준",
+      "스크린타임 확인 루틴",
+      "스크린타임 확인 체크"
+    ],
+    "intentNote": "스크린타임 확인 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-13T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "비밀번호 관리 스타일 테스트",
+    "slug": "digital-password-manager-wave4",
+    "category": "디지털",
+    "label": "비밀번호 관리",
+    "mainKeyword": "비밀번호 관리 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "비밀번호 관리 기준",
+      "비밀번호 관리 루틴",
+      "비밀번호 관리 체크"
+    ],
+    "intentNote": "비밀번호 관리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-13T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "비밀번호 관리 성향 테스트",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "디지털 캘린더 취향 테스트",
+    "slug": "digital-digital-calendar-wave4",
+    "category": "디지털",
+    "label": "디지털 캘린더",
+    "mainKeyword": "디지털 캘린더 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "디지털 캘린더 기준",
+      "디지털 캘린더 루틴",
+      "디지털 캘린더 체크"
+    ],
+    "intentNote": "디지털 캘린더 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-13T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-calendar-review-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "메모 태그 스타일 테스트",
+    "slug": "digital-memo-tag-wave4",
+    "category": "디지털",
+    "label": "메모 태그",
+    "mainKeyword": "메모 태그 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "메모 태그 기준",
+      "메모 태그 루틴",
+      "메모 태그 체크"
+    ],
+    "intentNote": "메모 태그 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-14T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "업무 메모 습관 테스트",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "파일 이름 짓기 취향 테스트",
+    "slug": "digital-file-name-wave4",
+    "category": "디지털",
+    "label": "파일 이름 짓기",
+    "mainKeyword": "파일 이름 짓기 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "파일 이름 짓기 기준",
+      "파일 이름 짓기 루틴",
+      "파일 이름 짓기 체크"
+    ],
+    "intentNote": "파일 이름 짓기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-14T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "브라우저 확장 관리 스타일 테스트",
+    "slug": "digital-browser-extension-wave4",
+    "category": "디지털",
+    "label": "브라우저 확장 관리",
+    "mainKeyword": "브라우저 확장 관리 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "브라우저 확장 관리 기준",
+      "브라우저 확장 관리 루틴",
+      "브라우저 확장 관리 체크"
+    ],
+    "intentNote": "브라우저 확장 관리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-14T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "브라우저 탭 정리력 테스트",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "온라인 리뷰 확인 취향 테스트",
+    "slug": "digital-online-review-wave4",
+    "category": "디지털",
+    "label": "온라인 리뷰 확인",
+    "mainKeyword": "온라인 리뷰 확인 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "온라인 리뷰 확인 기준",
+      "온라인 리뷰 확인 루틴",
+      "온라인 리뷰 확인 체크"
+    ],
+    "intentNote": "온라인 리뷰 확인 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-14T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-calendar-review-wave4",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "장바구니 보류 스타일 테스트",
+    "slug": "digital-shopping-cart-wave4",
+    "category": "디지털",
+    "label": "장바구니 보류",
+    "mainKeyword": "장바구니 보류 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "장바구니 보류 기준",
+      "장바구니 보류 루틴",
+      "장바구니 보류 체크"
+    ],
+    "intentNote": "장바구니 보류 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-15T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "장바구니 보류 습관 테스트",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "프로필 사진 변경 취향 테스트",
+    "slug": "digital-profile-picture-wave4",
+    "category": "디지털",
+    "label": "프로필 사진 변경",
+    "mainKeyword": "프로필 사진 변경 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "프로필 사진 변경 기준",
+      "프로필 사진 변경 루틴",
+      "프로필 사진 변경 체크"
+    ],
+    "intentNote": "프로필 사진 변경 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-15T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "중복 사진 정리 취향 테스트",
+      "maxSimilarity": 0.222,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "영상 나중에 보기 스타일 테스트",
+    "slug": "digital-video-queue-wave4",
+    "category": "디지털",
+    "label": "영상 나중에 보기",
+    "mainKeyword": "영상 나중에 보기 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "영상 나중에 보기 기준",
+      "영상 나중에 보기 루틴",
+      "영상 나중에 보기 체크"
+    ],
+    "intentNote": "영상 나중에 보기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-15T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "나중에 볼 영상 관리 스타일 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "기기 업데이트 취향 테스트",
+    "slug": "digital-device-update-wave4",
+    "category": "디지털",
+    "label": "기기 업데이트",
+    "mainKeyword": "기기 업데이트 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "기기 업데이트 기준",
+      "기기 업데이트 루틴",
+      "기기 업데이트 체크"
+    ],
+    "intentNote": "기기 업데이트 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-15T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "AI 질문 작성 스타일 테스트",
+    "slug": "digital-ai-question-wave4",
+    "category": "디지털",
+    "label": "AI 질문 작성",
+    "mainKeyword": "AI 질문 작성 스타일",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "AI 질문 작성 기준",
+      "AI 질문 작성 루틴",
+      "AI 질문 작성 체크"
+    ],
+    "intentNote": "AI 질문 작성 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-16T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "보고서 작성 스타일 테스트",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "지도 장소 저장 취향 테스트",
+    "slug": "digital-map-save-wave4",
+    "category": "디지털",
+    "label": "지도 장소 저장",
+    "mainKeyword": "지도 장소 저장 취향",
+    "expandedKeywords": [
+      "디지털 정리",
+      "스마트폰 습관",
+      "온라인 생활",
+      "알림 관리",
+      "지도 장소 저장 기준",
+      "지도 장소 저장 루틴",
+      "지도 장소 저장 체크"
+    ],
+    "intentNote": "지도 장소 저장 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-16T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "늦은 답장 대처 스타일 테스트",
+    "slug": "relation-reply-delay-wave4",
+    "category": "관계",
+    "label": "늦은 답장 대처",
+    "mainKeyword": "늦은 답장 대처 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "늦은 답장 대처 기준",
+      "늦은 답장 대처 루틴",
+      "늦은 답장 대처 체크"
+    ],
+    "intentNote": "늦은 답장 대처 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-16T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "늦은 답장 대응 스타일 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "단체방 말투 취향 테스트",
+    "slug": "relation-group-chat-tone-wave4",
+    "category": "관계",
+    "label": "단체방 말투",
+    "mainKeyword": "단체방 말투 취향",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "단체방 말투 기준",
+      "단체방 말투 루틴",
+      "단체방 말투 체크"
+    ],
+    "intentNote": "단체방 말투 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-16T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "group-chat-read-style",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "생일 연락 방식 스타일 테스트",
+    "slug": "relation-birthday-call-wave4",
+    "category": "관계",
+    "label": "생일 연락 방식",
+    "mainKeyword": "생일 연락 방식 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "생일 연락 방식 기준",
+      "생일 연락 방식 루틴",
+      "생일 연락 방식 체크"
+    ],
+    "intentNote": "생일 연락 방식 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-17T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "birthday-care-style",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "작은 부탁 대응 취향 테스트",
+    "slug": "relation-small-favor-wave4",
+    "category": "관계",
+    "label": "작은 부탁 대응",
+    "mainKeyword": "작은 부탁 대응 취향",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "작은 부탁 대응 기준",
+      "작은 부탁 대응 루틴",
+      "작은 부탁 대응 체크"
+    ],
+    "intentNote": "작은 부탁 대응 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-17T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "칭찬 받아들이기 스타일 테스트",
+    "slug": "relation-compliment-accept-wave4",
+    "category": "관계",
+    "label": "칭찬 받아들이기",
+    "mainKeyword": "칭찬 받아들이기 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "칭찬 받아들이기 기준",
+      "칭찬 받아들이기 루틴",
+      "칭찬 받아들이기 체크"
+    ],
+    "intentNote": "칭찬 받아들이기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-17T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "compliment-response-style",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "어색한 대화 열기 취향 테스트",
+    "slug": "relation-awkward-talk-wave4",
+    "category": "관계",
+    "label": "어색한 대화 열기",
+    "mainKeyword": "어색한 대화 열기 취향",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "어색한 대화 열기 기준",
+      "어색한 대화 열기 루틴",
+      "어색한 대화 열기 체크"
+    ],
+    "intentNote": "어색한 대화 열기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-17T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "약속 변경 조율 스타일 테스트",
+    "slug": "relation-promise-change-wave4",
+    "category": "관계",
+    "label": "약속 변경 조율",
+    "mainKeyword": "약속 변경 조율 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "약속 변경 조율 기준",
+      "약속 변경 조율 루틴",
+      "약속 변경 조율 체크"
+    ],
+    "intentNote": "약속 변경 조율 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-18T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "약속 변경 요청 성향 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "선물 반응 취향 테스트",
+    "slug": "relation-gift-reaction-wave4",
+    "category": "관계",
+    "label": "선물 반응",
+    "mainKeyword": "선물 반응 취향",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "선물 반응 기준",
+      "선물 반응 루틴",
+      "선물 반응 체크"
+    ],
+    "intentNote": "선물 반응 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-18T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "친구와 거리 조절 스타일 테스트",
+    "slug": "relation-friend-boundary-wave4",
+    "category": "관계",
+    "label": "친구와 거리 조절",
+    "mainKeyword": "친구와 거리 조절 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "친구와 거리 조절 기준",
+      "친구와 거리 조절 루틴",
+      "친구와 거리 조절 체크"
+    ],
+    "intentNote": "친구와 거리 조절 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-18T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "friend-advice-style",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "위로 방식 취향 테스트",
+    "slug": "relation-comfort-style-wave4",
+    "category": "관계",
+    "label": "위로 방식",
+    "mainKeyword": "위로 방식 취향",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "위로 방식 기준",
+      "위로 방식 루틴",
+      "위로 방식 체크"
+    ],
+    "intentNote": "위로 방식 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-18T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "첫 만남 태도 스타일 테스트",
+    "slug": "relation-first-meeting-wave4",
+    "category": "관계",
+    "label": "첫 만남 태도",
+    "mainKeyword": "첫 만남 태도 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "첫 만남 태도 기준",
+      "첫 만남 태도 루틴",
+      "첫 만남 태도 체크"
+    ],
+    "intentNote": "첫 만남 태도 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-19T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "first-meeting-silence",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "사진 공유 매너 취향 테스트",
+    "slug": "relation-photo-share-wave4",
+    "category": "관계",
+    "label": "사진 공유 매너",
+    "mainKeyword": "사진 공유 매너 취향",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "사진 공유 매너 기준",
+      "사진 공유 매너 루틴",
+      "사진 공유 매너 체크"
+    ],
+    "intentNote": "사진 공유 매너 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-19T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "사진 태그 매너 성향 테스트",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "감사 표현 깊이 스타일 테스트",
+    "slug": "relation-thanks-depth-wave4",
+    "category": "관계",
+    "label": "감사 표현 깊이",
+    "mainKeyword": "감사 표현 깊이 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "감사 표현 깊이 기준",
+      "감사 표현 깊이 루틴",
+      "감사 표현 깊이 체크"
+    ],
+    "intentNote": "감사 표현 깊이 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-19T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-thanks-message-depth",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "갈등 후 진정 취향 테스트",
+    "slug": "relation-conflict-cooldown-wave4",
+    "category": "관계",
+    "label": "갈등 후 진정",
+    "mainKeyword": "갈등 후 진정 취향",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "갈등 후 진정 기준",
+      "갈등 후 진정 루틴",
+      "갈등 후 진정 체크"
+    ],
+    "intentNote": "갈등 후 진정 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-19T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-conflict-cooldown",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "초대 답장 스타일 테스트",
+    "slug": "relation-invitation-reply-wave4",
+    "category": "관계",
+    "label": "초대 답장",
+    "mainKeyword": "초대 답장 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "초대 답장 기준",
+      "초대 답장 루틴",
+      "초대 답장 체크"
+    ],
+    "intentNote": "초대 답장 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-20T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-reply-delay-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "팀 식사 대화 스타일 테스트",
+    "slug": "relation-team-meal-wave4",
+    "category": "관계",
+    "label": "팀 식사 대화",
+    "mainKeyword": "팀 식사 대화 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "팀 식사 대화 기준",
+      "팀 식사 대화 루틴",
+      "팀 식사 대화 체크"
+    ],
+    "intentNote": "팀 식사 대화 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-20T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "evening-meal",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "이웃 인사 취향 테스트",
+    "slug": "relation-neighbor-hello-wave4",
+    "category": "관계",
+    "label": "이웃 인사",
+    "mainKeyword": "이웃 인사 취향",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "이웃 인사 기준",
+      "이웃 인사 루틴",
+      "이웃 인사 체크"
+    ],
+    "intentNote": "이웃 인사 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-20T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "이웃 인사 방식 스타일 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "오랜 친구 연락 스타일 테스트",
+    "slug": "relation-old-friend-wave4",
+    "category": "관계",
+    "label": "오랜 친구 연락",
+    "mainKeyword": "오랜 친구 연락 스타일",
+    "expandedKeywords": [
+      "관계 성향",
+      "대화 방식",
+      "친구 관계",
+      "감정 표현",
+      "오랜 친구 연락 기준",
+      "오랜 친구 연락 루틴",
+      "오랜 친구 연락 체크"
+    ],
+    "intentNote": "오랜 친구 연락 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-20T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-friend-boundary-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "회의 메모 스타일 테스트",
+    "slug": "work-meeting-note-wave4",
+    "category": "일",
+    "label": "회의 메모",
+    "mainKeyword": "회의 메모 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "회의 메모 기준",
+      "회의 메모 루틴",
+      "회의 메모 체크"
+    ],
+    "intentNote": "회의 메모 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-21T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "회의 메모 방식 테스트",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "마감 버퍼 취향 테스트",
+    "slug": "work-deadline-buffer-wave4",
+    "category": "일",
+    "label": "마감 버퍼",
+    "mainKeyword": "마감 버퍼 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "마감 버퍼 기준",
+      "마감 버퍼 루틴",
+      "마감 버퍼 체크"
+    ],
+    "intentNote": "마감 버퍼 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-21T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "deadline-buffer-setting",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "업무 우선순위 스타일 테스트",
+    "slug": "work-task-priority-wave4",
+    "category": "일",
+    "label": "업무 우선순위",
+    "mainKeyword": "업무 우선순위 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "업무 우선순위 기준",
+      "업무 우선순위 루틴",
+      "업무 우선순위 체크"
+    ],
+    "intentNote": "업무 우선순위 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-21T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "업무 우선순위",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "피드백 읽기 취향 테스트",
+    "slug": "work-feedback-read-wave4",
+    "category": "일",
+    "label": "피드백 읽기",
+    "mainKeyword": "피드백 읽기 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "피드백 읽기 기준",
+      "피드백 읽기 루틴",
+      "피드백 읽기 체크"
+    ],
+    "intentNote": "피드백 읽기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-21T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "재택근무 루틴 스타일 테스트",
+    "slug": "work-remote-routine-wave4",
+    "category": "일",
+    "label": "재택근무 루틴",
+    "mainKeyword": "재택근무 루틴 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "재택근무 루틴 기준",
+      "재택근무 루틴 루틴",
+      "재택근무 루틴 체크"
+    ],
+    "intentNote": "재택근무 루틴 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-22T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "cstore-routine",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "집중 책상 취향 테스트",
+    "slug": "work-desk-focus-wave4",
+    "category": "일",
+    "label": "집중 책상",
+    "mainKeyword": "집중 책상 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "집중 책상 기준",
+      "집중 책상 루틴",
+      "집중 책상 체크"
+    ],
+    "intentNote": "집중 책상 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-22T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "업무 인수인계 스타일 테스트",
+    "slug": "work-handoff-message-wave4",
+    "category": "일",
+    "label": "업무 인수인계",
+    "mainKeyword": "업무 인수인계 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "업무 인수인계 기준",
+      "업무 인수인계 루틴",
+      "업무 인수인계 체크"
+    ],
+    "intentNote": "업무 인수인계 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-22T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "업무 인수인계 방식 테스트",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "점심시간 사용 취향 테스트",
+    "slug": "work-lunch-break-wave4",
+    "category": "일",
+    "label": "점심시간 사용",
+    "mainKeyword": "점심시간 사용 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "점심시간 사용 기준",
+      "점심시간 사용 루틴",
+      "점심시간 사용 체크"
+    ],
+    "intentNote": "점심시간 사용 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-22T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "lunch-break-boundary",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "급한 요청 대응 스타일 테스트",
+    "slug": "work-urgent-request-wave4",
+    "category": "일",
+    "label": "급한 요청 대응",
+    "mainKeyword": "급한 요청 대응 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "급한 요청 대응 기준",
+      "급한 요청 대응 루틴",
+      "급한 요청 대응 체크"
+    ],
+    "intentNote": "급한 요청 대응 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-23T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-request-style",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "주간 보고 취향 테스트",
+    "slug": "work-weekly-report-wave4",
+    "category": "일",
+    "label": "주간 보고",
+    "mainKeyword": "주간 보고 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "주간 보고 기준",
+      "주간 보고 루틴",
+      "주간 보고 체크"
+    ],
+    "intentNote": "주간 보고 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-23T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "일정 블록 스타일 테스트",
+    "slug": "work-calendar-block-wave4",
+    "category": "일",
+    "label": "일정 블록",
+    "mainKeyword": "일정 블록 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "일정 블록 기준",
+      "일정 블록 루틴",
+      "일정 블록 체크"
+    ],
+    "intentNote": "일정 블록 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-23T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-digital-calendar-wave4",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "회의 질문 취향 테스트",
+    "slug": "work-meeting-question-wave4",
+    "category": "일",
+    "label": "회의 질문",
+    "mainKeyword": "회의 질문 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "회의 질문 기준",
+      "회의 질문 루틴",
+      "회의 질문 체크"
+    ],
+    "intentNote": "회의 질문 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-23T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-ai-question-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "프로젝트 시작 스타일 테스트",
+    "slug": "work-project-start-wave4",
+    "category": "일",
+    "label": "프로젝트 시작",
+    "mainKeyword": "프로젝트 시작 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "프로젝트 시작 기준",
+      "프로젝트 시작 루틴",
+      "프로젝트 시작 체크"
+    ],
+    "intentNote": "프로젝트 시작 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-24T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "hobby-craft-project-start",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "업무 실수 복구 취향 테스트",
+    "slug": "work-mistake-recovery-wave4",
+    "category": "일",
+    "label": "업무 실수 복구",
+    "mainKeyword": "업무 실수 복구 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "업무 실수 복구 기준",
+      "업무 실수 복구 루틴",
+      "업무 실수 복구 체크"
+    ],
+    "intentNote": "업무 실수 복구 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-24T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "동료 도움 요청 스타일 테스트",
+    "slug": "work-colleague-help-wave4",
+    "category": "일",
+    "label": "동료 도움 요청",
+    "mainKeyword": "동료 도움 요청 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "동료 도움 요청 기준",
+      "동료 도움 요청 루틴",
+      "동료 도움 요청 체크"
+    ],
+    "intentNote": "동료 도움 요청 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-24T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "업무 요청 방식",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "아이디어 공유 취향 테스트",
+    "slug": "work-idea-share-wave4",
+    "category": "일",
+    "label": "아이디어 공유",
+    "mainKeyword": "아이디어 공유 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "아이디어 공유 기준",
+      "아이디어 공유 루틴",
+      "아이디어 공유 체크"
+    ],
+    "intentNote": "아이디어 공유 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-24T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-photo-share-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "업무 마무리 스타일 테스트",
+    "slug": "work-task-close-wave4",
+    "category": "일",
+    "label": "업무 마무리",
+    "mainKeyword": "업무 마무리 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "업무 마무리 기준",
+      "업무 마무리 루틴",
+      "업무 마무리 체크"
+    ],
+    "intentNote": "업무 마무리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-25T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-task-priority-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "문서 버전 관리 취향 테스트",
+    "slug": "work-document-version-wave4",
+    "category": "일",
+    "label": "문서 버전 관리",
+    "mainKeyword": "문서 버전 관리 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "문서 버전 관리 기준",
+      "문서 버전 관리 루틴",
+      "문서 버전 관리 체크"
+    ],
+    "intentNote": "문서 버전 관리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-25T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "문서 버전 규칙 성향 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "업무 메시지 톤 스타일 테스트",
+    "slug": "work-work-message-wave4",
+    "category": "일",
+    "label": "업무 메시지 톤",
+    "mainKeyword": "업무 메시지 톤 스타일",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "업무 메시지 톤 기준",
+      "업무 메시지 톤 루틴",
+      "업무 메시지 톤 체크"
+    ],
+    "intentNote": "업무 메시지 톤 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-25T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-handoff-message-wave4",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "퇴근 모드 전환 취향 테스트",
+    "slug": "work-after-work-switch-wave4",
+    "category": "일",
+    "label": "퇴근 모드 전환",
+    "mainKeyword": "퇴근 모드 전환 취향",
+    "expandedKeywords": [
+      "업무 성향",
+      "협업 방식",
+      "회의 습관",
+      "일 처리",
+      "퇴근 모드 전환 기준",
+      "퇴근 모드 전환 루틴",
+      "퇴근 모드 전환 체크"
+    ],
+    "intentNote": "퇴근 모드 전환 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-25T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "위시리스트 정리 취향 테스트",
+    "slug": "spend-wish-list-wave4",
+    "category": "소비",
+    "label": "위시리스트 정리",
+    "mainKeyword": "위시리스트 정리 취향",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "위시리스트 정리 기준",
+      "위시리스트 정리 루틴",
+      "위시리스트 정리 체크"
+    ],
+    "intentNote": "위시리스트 정리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-26T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "위시리스트 정리 성향 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "한정 수량 반응 스타일 테스트",
+    "slug": "spend-limited-stock-wave4",
+    "category": "소비",
+    "label": "한정 수량 반응",
+    "mainKeyword": "한정 수량 반응 스타일",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "한정 수량 반응 기준",
+      "한정 수량 반응 루틴",
+      "한정 수량 반응 체크"
+    ],
+    "intentNote": "한정 수량 반응 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-26T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "예고편 반응",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "구독 점검 스타일 테스트",
+    "slug": "spend-subscription-check-wave4",
+    "category": "소비",
+    "label": "구독 점검",
+    "mainKeyword": "구독 점검 스타일",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "구독 점검 기준",
+      "구독 점검 루틴",
+      "구독 점검 체크"
+    ],
+    "intentNote": "구독 점검 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-26T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-umbrella-check-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "환불 결정 취향 테스트",
+    "slug": "spend-refund-decision-wave4",
+    "category": "소비",
+    "label": "환불 결정",
+    "mainKeyword": "환불 결정 취향",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "환불 결정 기준",
+      "환불 결정 루틴",
+      "환불 결정 체크"
+    ],
+    "intentNote": "환불 결정 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-26T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "브랜드 갈아타기 스타일 테스트",
+    "slug": "spend-brand-switch-wave4",
+    "category": "소비",
+    "label": "브랜드 갈아타기",
+    "mainKeyword": "브랜드 갈아타기 스타일",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "브랜드 갈아타기 기준",
+      "브랜드 갈아타기 루틴",
+      "브랜드 갈아타기 체크"
+    ],
+    "intentNote": "브랜드 갈아타기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-27T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "브랜드 갈아타기 테스트",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "대량 구매 판단 취향 테스트",
+    "slug": "spend-bulk-buy-wave4",
+    "category": "소비",
+    "label": "대량 구매 판단",
+    "mainKeyword": "대량 구매 판단 취향",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "대량 구매 판단 기준",
+      "대량 구매 판단 루틴",
+      "대량 구매 판단 체크"
+    ],
+    "intentNote": "대량 구매 판단 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-27T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "spend-bulk-buy-judgment",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "선물 예산 취향 테스트",
+    "slug": "spend-gift-budget-wave4",
+    "category": "소비",
+    "label": "선물 예산",
+    "mainKeyword": "선물 예산 취향",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "선물 예산 기준",
+      "선물 예산 루틴",
+      "선물 예산 체크"
+    ],
+    "intentNote": "선물 예산 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-27T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "spend-gift-budget-setting",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "샘플 먼저 써보기 취향 테스트",
+    "slug": "spend-sample-first-wave4",
+    "category": "소비",
+    "label": "샘플 먼저 써보기",
+    "mainKeyword": "샘플 먼저 써보기 취향",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "샘플 먼저 써보기 기준",
+      "샘플 먼저 써보기 루틴",
+      "샘플 먼저 써보기 체크"
+    ],
+    "intentNote": "샘플 먼저 써보기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-27T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-first-meeting-wave4",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "중고거래 대화 스타일 테스트",
+    "slug": "spend-secondhand-chat-wave4",
+    "category": "소비",
+    "label": "중고거래 대화",
+    "mainKeyword": "중고거래 대화 스타일",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "중고거래 대화 기준",
+      "중고거래 대화 루틴",
+      "중고거래 대화 체크"
+    ],
+    "intentNote": "중고거래 대화 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-28T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "secondhand-chat-style",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "장바구니 비우기 스타일 테스트",
+    "slug": "spend-cart-abandon-wave4",
+    "category": "소비",
+    "label": "장바구니 비우기",
+    "mainKeyword": "장바구니 비우기 스타일",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "장바구니 비우기 기준",
+      "장바구니 비우기 루틴",
+      "장바구니 비우기 체크"
+    ],
+    "intentNote": "장바구니 비우기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-28T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "cart-abandon-style",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "프리미엄 옵션 선택 취향 테스트",
+    "slug": "spend-premium-choice-wave4",
+    "category": "소비",
+    "label": "프리미엄 옵션 선택",
+    "mainKeyword": "프리미엄 옵션 선택 취향",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "프리미엄 옵션 선택 기준",
+      "프리미엄 옵션 선택 루틴",
+      "프리미엄 옵션 선택 체크"
+    ],
+    "intentNote": "프리미엄 옵션 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-28T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-sleepwear-choice-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "지출 내역 확인 스타일 테스트",
+    "slug": "spend-receipt-review-wave4",
+    "category": "소비",
+    "label": "지출 내역 확인",
+    "mainKeyword": "지출 내역 확인 스타일",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "지출 내역 확인 기준",
+      "지출 내역 확인 루틴",
+      "지출 내역 확인 체크"
+    ],
+    "intentNote": "지출 내역 확인 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-28T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-receipt-box-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "결제수단 선택 취향 테스트",
+    "slug": "spend-pay-method-wave4",
+    "category": "소비",
+    "label": "결제수단 선택",
+    "mainKeyword": "결제수단 선택 취향",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "결제수단 선택 기준",
+      "결제수단 선택 루틴",
+      "결제수단 선택 체크"
+    ],
+    "intentNote": "결제수단 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-29T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.2,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "세일 페이지 탐색 스타일 테스트",
+    "slug": "spend-sale-scroll-wave4",
+    "category": "소비",
+    "label": "세일 페이지 탐색",
+    "mainKeyword": "세일 페이지 탐색 스타일",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "세일 페이지 탐색 기준",
+      "세일 페이지 탐색 루틴",
+      "세일 페이지 탐색 체크"
+    ],
+    "intentNote": "세일 페이지 탐색 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-29T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "food-sale",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "지금 살지 기다릴지 취향 테스트",
+    "slug": "spend-buy-or-wait-wave4",
+    "category": "소비",
+    "label": "지금 살지 기다릴지",
+    "mainKeyword": "지금 살지 기다릴지 취향",
+    "expandedKeywords": [
+      "소비 성향",
+      "구매 기준",
+      "예산 관리",
+      "후기 확인",
+      "지금 살지 기다릴지 기준",
+      "지금 살지 기다릴지 루틴",
+      "지금 살지 기다릴지 체크"
+    ],
+    "intentNote": "지금 살지 기다릴지 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-29T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "spend-bulk-buy-wave4",
+      "maxSimilarity": 0.222,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "주말 계획 스타일 테스트",
+    "slug": "leisure-weekend-plan-wave4",
+    "category": "여가",
+    "label": "주말 계획",
+    "mainKeyword": "주말 계획 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "주말 계획 기준",
+      "주말 계획 루틴",
+      "주말 계획 체크"
+    ],
+    "intentNote": "주말 계획 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-29T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "주말 프로젝트 계획 성향 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "플레이리스트 분위기 취향 테스트",
+    "slug": "leisure-playlist-mood-wave4",
+    "category": "여가",
+    "label": "플레이리스트 분위기",
+    "mainKeyword": "플레이리스트 분위기 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "플레이리스트 분위기 기준",
+      "플레이리스트 분위기 루틴",
+      "플레이리스트 분위기 체크"
+    ],
+    "intentNote": "플레이리스트 분위기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-30T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "영화 고르기 스타일 테스트",
+    "slug": "leisure-movie-pick-wave4",
+    "category": "여가",
+    "label": "영화 고르기",
+    "mainKeyword": "영화 고르기 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "영화 고르기 기준",
+      "영화 고르기 루틴",
+      "영화 고르기 체크"
+    ],
+    "intentNote": "영화 고르기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-30T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "movie-theater-style",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "읽을 책 쌓기 취향 테스트",
+    "slug": "leisure-book-stack-wave4",
+    "category": "여가",
+    "label": "읽을 책 쌓기",
+    "mainKeyword": "읽을 책 쌓기 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "읽을 책 쌓기 기준",
+      "읽을 책 쌓기 루틴",
+      "읽을 책 쌓기 체크"
+    ],
+    "intentNote": "읽을 책 쌓기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-30T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "홈카페 준비 스타일 테스트",
+    "slug": "leisure-home-cafe-wave4",
+    "category": "여가",
+    "label": "홈카페 준비",
+    "mainKeyword": "홈카페 준비 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "홈카페 준비 기준",
+      "홈카페 준비 루틴",
+      "홈카페 준비 체크"
+    ],
+    "intentNote": "홈카페 준비 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-30T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-home-lighting-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "산책 코스 취향 테스트",
+    "slug": "leisure-walking-route-wave4",
+    "category": "여가",
+    "label": "산책 코스",
+    "mainKeyword": "산책 코스 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "산책 코스 기준",
+      "산책 코스 루틴",
+      "산책 코스 체크"
+    ],
+    "intentNote": "산책 코스 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-31T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "동네 산책 코스 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "사진 산책 스타일 테스트",
+    "slug": "leisure-photo-walk-wave4",
+    "category": "여가",
+    "label": "사진 산책",
+    "mainKeyword": "사진 산책 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "사진 산책 기준",
+      "사진 산책 루틴",
+      "사진 산책 체크"
+    ],
+    "intentNote": "사진 산책 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-31T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "사진 산책 동선 스타일 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "게임 모드 선택 취향 테스트",
+    "slug": "leisure-game-mode-wave4",
+    "category": "여가",
+    "label": "게임 모드 선택",
+    "mainKeyword": "게임 모드 선택 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "게임 모드 선택 기준",
+      "게임 모드 선택 루틴",
+      "게임 모드 선택 체크"
+    ],
+    "intentNote": "게임 모드 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-31T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "퇴근 모드 전환 취향 테스트",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "만들기 시작 스타일 테스트",
+    "slug": "leisure-craft-start-wave4",
+    "category": "여가",
+    "label": "만들기 시작",
+    "mainKeyword": "만들기 시작 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "만들기 시작 기준",
+      "만들기 시작 루틴",
+      "만들기 시작 체크"
+    ],
+    "intentNote": "만들기 시작 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-07-31T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-project-start-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "전시 관람 속도 취향 테스트",
+    "slug": "leisure-museum-pace-wave4",
+    "category": "여가",
+    "label": "전시 관람 속도",
+    "mainKeyword": "전시 관람 속도 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "전시 관람 속도 기준",
+      "전시 관람 속도 루틴",
+      "전시 관람 속도 체크"
+    ],
+    "intentNote": "전시 관람 속도 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-01T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "공연 준비 스타일 테스트",
+    "slug": "leisure-concert-prep-wave4",
+    "category": "여가",
+    "label": "공연 준비",
+    "mainKeyword": "공연 준비 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "공연 준비 기준",
+      "공연 준비 루틴",
+      "공연 준비 체크"
+    ],
+    "intentNote": "공연 준비 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-01T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "meal-prep",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "취미 예산 취향 테스트",
+    "slug": "leisure-hobby-budget-wave4",
+    "category": "여가",
+    "label": "취미 예산",
+    "mainKeyword": "취미 예산 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "취미 예산 기준",
+      "취미 예산 루틴",
+      "취미 예산 체크"
+    ],
+    "intentNote": "취미 예산 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-01T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "hobby-hobby-budget-line",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "다이어리 꾸미기 스타일 테스트",
+    "slug": "leisure-diary-deco-wave4",
+    "category": "여가",
+    "label": "다이어리 꾸미기",
+    "mainKeyword": "다이어리 꾸미기 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "다이어리 꾸미기 기준",
+      "다이어리 꾸미기 루틴",
+      "다이어리 꾸미기 체크"
+    ],
+    "intentNote": "다이어리 꾸미기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-01T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "diary-decoration-type",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "혼자 쉬는 시간 취향 테스트",
+    "slug": "leisure-solo-time-wave4",
+    "category": "여가",
+    "label": "혼자 쉬는 시간",
+    "mainKeyword": "혼자 쉬는 시간 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "혼자 쉬는 시간 기준",
+      "혼자 쉬는 시간 루틴",
+      "혼자 쉬는 시간 체크"
+    ],
+    "intentNote": "혼자 쉬는 시간 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-02T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "solo-time-recharge",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "동호회 참여 스타일 테스트",
+    "slug": "leisure-club-fit-wave4",
+    "category": "여가",
+    "label": "동호회 참여",
+    "mainKeyword": "동호회 참여 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "동호회 참여 기준",
+      "동호회 참여 루틴",
+      "동호회 참여 체크"
+    ],
+    "intentNote": "동호회 참여 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-02T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "club-activity-style",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "창작 막힘 대처 취향 테스트",
+    "slug": "leisure-creative-block-wave4",
+    "category": "여가",
+    "label": "창작 막힘 대처",
+    "mainKeyword": "창작 막힘 대처 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "창작 막힘 대처 기준",
+      "창작 막힘 대처 루틴",
+      "창작 막힘 대처 체크"
+    ],
+    "intentNote": "창작 막힘 대처 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-02T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "창작 막힘 대응 성향 테스트",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "여행 영상 보기 스타일 테스트",
+    "slug": "leisure-travel-video-wave4",
+    "category": "여가",
+    "label": "여행 영상 보기",
+    "mainKeyword": "여행 영상 보기 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "여행 영상 보기 기준",
+      "여행 영상 보기 루틴",
+      "여행 영상 보기 체크"
+    ],
+    "intentNote": "여행 영상 보기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-02T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "영상 나중에 보기 스타일 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "새 레시피 시도 취향 테스트",
+    "slug": "leisure-recipe-try-wave4",
+    "category": "여가",
+    "label": "새 레시피 시도",
+    "mainKeyword": "새 레시피 시도 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "새 레시피 시도 기준",
+      "새 레시피 시도 루틴",
+      "새 레시피 시도 체크"
+    ],
+    "intentNote": "새 레시피 시도 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-03T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "퍼즐 푸는 방식 스타일 테스트",
+    "slug": "leisure-puzzle-style-wave4",
+    "category": "여가",
+    "label": "퍼즐 푸는 방식",
+    "mainKeyword": "퍼즐 푸는 방식 스타일",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "퍼즐 푸는 방식 기준",
+      "퍼즐 푸는 방식 루틴",
+      "퍼즐 푸는 방식 체크"
+    ],
+    "intentNote": "퍼즐 푸는 방식 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-03T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "퍼즐 성향",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "배움 키트 선택 취향 테스트",
+    "slug": "leisure-learning-kit-wave4",
+    "category": "여가",
+    "label": "배움 키트 선택",
+    "mainKeyword": "배움 키트 선택 취향",
+    "expandedKeywords": [
+      "여가 성향",
+      "취미 루틴",
+      "주말 계획",
+      "취향 탐색",
+      "배움 키트 선택 기준",
+      "배움 키트 선택 루틴",
+      "배움 키트 선택 체크"
+    ],
+    "intentNote": "배움 키트 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-03T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "hobby-learning-kit-choice",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "스트레스 신호 스타일 테스트",
+    "slug": "emotion-stress-signal-wave4",
+    "category": "감정",
+    "label": "스트레스 신호",
+    "mainKeyword": "스트레스 신호 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "스트레스 신호 기준",
+      "스트레스 신호 루틴",
+      "스트레스 신호 체크"
+    ],
+    "intentNote": "스트레스 신호 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-03T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-digital-calendar-wave4",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "기분 메모 취향 테스트",
+    "slug": "emotion-mood-note-wave4",
+    "category": "감정",
+    "label": "기분 메모",
+    "mainKeyword": "기분 메모 취향",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "기분 메모 기준",
+      "기분 메모 루틴",
+      "기분 메모 체크"
+    ],
+    "intentNote": "기분 메모 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-04T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-meeting-note-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "사과 준비 스타일 테스트",
+    "slug": "emotion-apology-ready-wave4",
+    "category": "감정",
+    "label": "사과 준비",
+    "mainKeyword": "사과 준비 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "사과 준비 기준",
+      "사과 준비 루틴",
+      "사과 준비 체크"
+    ],
+    "intentNote": "사과 준비 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-04T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "사과 준비 상태 스타일 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "고마움 받아들이기 취향 테스트",
+    "slug": "emotion-thanks-accept-wave4",
+    "category": "감정",
+    "label": "고마움 받아들이기",
+    "mainKeyword": "고마움 받아들이기 취향",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "고마움 받아들이기 기준",
+      "고마움 받아들이기 루틴",
+      "고마움 받아들이기 체크"
+    ],
+    "intentNote": "고마움 받아들이기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-04T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "고마움 받아들이기 스타일 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "결정 걱정 스타일 테스트",
+    "slug": "emotion-decision-worry-wave4",
+    "category": "감정",
+    "label": "결정 걱정",
+    "mainKeyword": "결정 걱정 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "결정 걱정 기준",
+      "결정 걱정 루틴",
+      "결정 걱정 체크"
+    ],
+    "intentNote": "결정 걱정 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-04T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "spend-refund-decision-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "혼자 리셋 취향 테스트",
+    "slug": "emotion-alone-reset-wave4",
+    "category": "감정",
+    "label": "혼자 리셋",
+    "mainKeyword": "혼자 리셋 취향",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "혼자 리셋 기준",
+      "혼자 리셋 루틴",
+      "혼자 리셋 체크"
+    ],
+    "intentNote": "혼자 리셋 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-05T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "냉장고 리셋 취향 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "비판 반응 스타일 테스트",
+    "slug": "emotion-criticism-response-wave4",
+    "category": "감정",
+    "label": "비판 반응",
+    "mainKeyword": "비판 반응 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "비판 반응 기준",
+      "비판 반응 루틴",
+      "비판 반응 체크"
+    ],
+    "intentNote": "비판 반응 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-05T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "feedback-response-style",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "칭찬 기억 취향 테스트",
+    "slug": "emotion-compliment-memory-wave4",
+    "category": "감정",
+    "label": "칭찬 기억",
+    "mainKeyword": "칭찬 기억 취향",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "칭찬 기억 기준",
+      "칭찬 기억 루틴",
+      "칭찬 기억 체크"
+    ],
+    "intentNote": "칭찬 기억 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-05T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-compliment-accept-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "에너지 낮은 날 스타일 테스트",
+    "slug": "emotion-energy-low-wave4",
+    "category": "감정",
+    "label": "에너지 낮은 날",
+    "mainKeyword": "에너지 낮은 날 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "에너지 낮은 날 기준",
+      "에너지 낮은 날 루틴",
+      "에너지 낮은 날 체크"
+    ],
+    "intentNote": "에너지 낮은 날 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-05T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "morning-energy",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "걱정 공유 취향 테스트",
+    "slug": "emotion-worry-share-wave4",
+    "category": "감정",
+    "label": "걱정 공유",
+    "mainKeyword": "걱정 공유 취향",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "걱정 공유 기준",
+      "걱정 공유 루틴",
+      "걱정 공유 체크"
+    ],
+    "intentNote": "걱정 공유 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-06T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-photo-share-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "혼잣말 톤 스타일 테스트",
+    "slug": "emotion-self-talk-wave4",
+    "category": "감정",
+    "label": "혼잣말 톤",
+    "mainKeyword": "혼잣말 톤 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "혼잣말 톤 기준",
+      "혼잣말 톤 루틴",
+      "혼잣말 톤 체크"
+    ],
+    "intentNote": "혼잣말 톤 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-06T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-awkward-talk-wave4",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "후회 다루기 취향 테스트",
+    "slug": "emotion-regret-handle-wave4",
+    "category": "감정",
+    "label": "후회 다루기",
+    "mainKeyword": "후회 다루기 취향",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "후회 다루기 기준",
+      "후회 다루기 루틴",
+      "후회 다루기 체크"
+    ],
+    "intentNote": "후회 다루기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-06T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "새 환경 적응 스타일 테스트",
+    "slug": "emotion-new-environment-wave4",
+    "category": "감정",
+    "label": "새 환경 적응",
+    "mainKeyword": "새 환경 적응 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "새 환경 적응 기준",
+      "새 환경 적응 루틴",
+      "새 환경 적응 체크"
+    ],
+    "intentNote": "새 환경 적응 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-06T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "food-new",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "우울한 날 루틴 취향 테스트",
+    "slug": "emotion-sad-day-wave4",
+    "category": "감정",
+    "label": "우울한 날 루틴",
+    "mainKeyword": "우울한 날 루틴 취향",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "우울한 날 루틴 기준",
+      "우울한 날 루틴 루틴",
+      "우울한 날 루틴 체크"
+    ],
+    "intentNote": "우울한 날 루틴 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-07T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "화 식히기 스타일 테스트",
+    "slug": "emotion-anger-cool-wave4",
+    "category": "감정",
+    "label": "화 식히기",
+    "mainKeyword": "화 식히기 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "화 식히기 기준",
+      "화 식히기 루틴",
+      "화 식히기 체크"
+    ],
+    "intentNote": "화 식히기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-07T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "emotion-anger-cooldown-style",
+      "maxSimilarity": 0.2,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "위안 물건 취향 테스트",
+    "slug": "emotion-comfort-object-wave4",
+    "category": "감정",
+    "label": "위안 물건",
+    "mainKeyword": "위안 물건 취향",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "위안 물건 기준",
+      "위안 물건 루틴",
+      "위안 물건 체크"
+    ],
+    "intentNote": "위안 물건 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-07T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-comfort-style-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "마음 경계 스타일 테스트",
+    "slug": "emotion-heart-boundary-wave4",
+    "category": "감정",
+    "label": "마음 경계",
+    "mainKeyword": "마음 경계 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "마음 경계 기준",
+      "마음 경계 루틴",
+      "마음 경계 체크"
+    ],
+    "intentNote": "마음 경계 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-07T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "relation-friend-boundary-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "잠들기 전 생각 취향 테스트",
+    "slug": "emotion-sleep-thought-wave4",
+    "category": "감정",
+    "label": "잠들기 전 생각",
+    "mainKeyword": "잠들기 전 생각 취향",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "잠들기 전 생각 기준",
+      "잠들기 전 생각 루틴",
+      "잠들기 전 생각 체크"
+    ],
+    "intentNote": "잠들기 전 생각 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-08T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "추억 상자 스타일 테스트",
+    "slug": "emotion-memory-box-wave4",
+    "category": "감정",
+    "label": "추억 상자",
+    "mainKeyword": "추억 상자 스타일",
+    "expandedKeywords": [
+      "감정 관리",
+      "마음 습관",
+      "스트레스 대처",
+      "자기이해",
+      "추억 상자 기준",
+      "추억 상자 루틴",
+      "추억 상자 체크"
+    ],
+    "intentNote": "추억 상자 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-08T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "emotion-memory-box-opening",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "짐 싸는 순서 스타일 테스트",
+    "slug": "travel-packing-order-wave4",
+    "category": "여행",
+    "label": "짐 싸는 순서",
+    "mainKeyword": "짐 싸는 순서 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "짐 싸는 순서 기준",
+      "짐 싸는 순서 루틴",
+      "짐 싸는 순서 체크"
+    ],
+    "intentNote": "짐 싸는 순서 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-08T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-house-chore-order-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "숙소 확인 취향 테스트",
+    "slug": "travel-hotel-check-wave4",
+    "category": "여행",
+    "label": "숙소 확인",
+    "mainKeyword": "숙소 확인 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "숙소 확인 기준",
+      "숙소 확인 루틴",
+      "숙소 확인 체크"
+    ],
+    "intentNote": "숙소 확인 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-08T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-umbrella-check-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "공항 도착 시간 스타일 테스트",
+    "slug": "travel-airport-time-wave4",
+    "category": "여행",
+    "label": "공항 도착 시간",
+    "mainKeyword": "공항 도착 시간 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "공항 도착 시간 기준",
+      "공항 도착 시간 루틴",
+      "공항 도착 시간 체크"
+    ],
+    "intentNote": "공항 도착 시간 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-09T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-screen-time-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "현지 음식 선택 취향 테스트",
+    "slug": "travel-local-food-wave4",
+    "category": "여행",
+    "label": "현지 음식 선택",
+    "mainKeyword": "현지 음식 선택 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "현지 음식 선택 기준",
+      "현지 음식 선택 루틴",
+      "현지 음식 선택 체크"
+    ],
+    "intentNote": "현지 음식 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-09T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "지도 동선 스타일 테스트",
+    "slug": "travel-map-route-wave4",
+    "category": "여행",
+    "label": "지도 동선",
+    "mainKeyword": "지도 동선 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "지도 동선 기준",
+      "지도 동선 루틴",
+      "지도 동선 체크"
+    ],
+    "intentNote": "지도 동선 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-09T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "map-route-selection",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "여행 예산 취향 테스트",
+    "slug": "travel-travel-budget-wave4",
+    "category": "여행",
+    "label": "여행 예산",
+    "mainKeyword": "여행 예산 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "여행 예산 기준",
+      "여행 예산 루틴",
+      "여행 예산 체크"
+    ],
+    "intentNote": "여행 예산 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-09T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "여행 예산 봉투 스타일 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "기념품 고르기 스타일 테스트",
+    "slug": "travel-souvenir-pick-wave4",
+    "category": "여행",
+    "label": "기념품 고르기",
+    "mainKeyword": "기념품 고르기 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "기념품 고르기 기준",
+      "기념품 고르기 루틴",
+      "기념품 고르기 체크"
+    ],
+    "intentNote": "기념품 고르기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-10T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "leisure-movie-pick-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "비 오는 여행 취향 테스트",
+    "slug": "travel-rain-plan-wave4",
+    "category": "여행",
+    "label": "비 오는 여행",
+    "mainKeyword": "비 오는 여행 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "비 오는 여행 기준",
+      "비 오는 여행 루틴",
+      "비 오는 여행 체크"
+    ],
+    "intentNote": "비 오는 여행 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-10T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "비 오는 여행 대응 스타일 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "사진 명소 선택 스타일 테스트",
+    "slug": "travel-photo-spot-wave4",
+    "category": "여행",
+    "label": "사진 명소 선택",
+    "mainKeyword": "사진 명소 선택 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "사진 명소 선택 기준",
+      "사진 명소 선택 루틴",
+      "사진 명소 선택 체크"
+    ],
+    "intentNote": "사진 명소 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-10T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-photo-duplicate-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "일정 빈칸 취향 테스트",
+    "slug": "travel-itinerary-gap-wave4",
+    "category": "여행",
+    "label": "일정 빈칸",
+    "mainKeyword": "일정 빈칸 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "일정 빈칸 기준",
+      "일정 빈칸 루틴",
+      "일정 빈칸 체크"
+    ],
+    "intentNote": "일정 빈칸 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-10T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "교통패스 판단 스타일 테스트",
+    "slug": "travel-transport-pass-wave4",
+    "category": "여행",
+    "label": "교통패스 판단",
+    "mainKeyword": "교통패스 판단 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "교통패스 판단 기준",
+      "교통패스 판단 루틴",
+      "교통패스 판단 체크"
+    ],
+    "intentNote": "교통패스 판단 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-11T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-digital-calendar-wave4",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "아침 일정 취향 테스트",
+    "slug": "travel-morning-tour-wave4",
+    "category": "여행",
+    "label": "아침 일정",
+    "mainKeyword": "아침 일정 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "아침 일정 기준",
+      "아침 일정 루틴",
+      "아침 일정 체크"
+    ],
+    "intentNote": "아침 일정 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-11T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-morning-water-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "야시장 방문 스타일 테스트",
+    "slug": "travel-night-market-wave4",
+    "category": "여행",
+    "label": "야시장 방문",
+    "mainKeyword": "야시장 방문 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "야시장 방문 기준",
+      "야시장 방문 루틴",
+      "야시장 방문 체크"
+    ],
+    "intentNote": "야시장 방문 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-11T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-night-charging-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "박물관과 카페 선택 취향 테스트",
+    "slug": "travel-museum-or-cafe-wave4",
+    "category": "여행",
+    "label": "박물관과 카페 선택",
+    "mainKeyword": "박물관과 카페 선택 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "박물관과 카페 선택 기준",
+      "박물관과 카페 선택 루틴",
+      "박물관과 카페 선택 체크"
+    ],
+    "intentNote": "박물관과 카페 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-11T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "leisure-home-cafe-wave4",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "동행 조율 스타일 테스트",
+    "slug": "travel-travel-companion-wave4",
+    "category": "여행",
+    "label": "동행 조율",
+    "mainKeyword": "동행 조율 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "동행 조율 기준",
+      "동행 조율 루틴",
+      "동행 조율 체크"
+    ],
+    "intentNote": "동행 조율 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-12T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "travel-travel-companion-role",
+      "maxSimilarity": 0.2,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "길 잃었을 때 취향 테스트",
+    "slug": "travel-lost-route-wave4",
+    "category": "여행",
+    "label": "길 잃었을 때",
+    "mainKeyword": "길 잃었을 때 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "길 잃었을 때 기준",
+      "길 잃었을 때 루틴",
+      "길 잃었을 때 체크"
+    ],
+    "intentNote": "길 잃었을 때 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-12T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "leisure-walking-route-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "여행 기록 스타일 테스트",
+    "slug": "travel-travel-record-wave4",
+    "category": "여행",
+    "label": "여행 기록",
+    "mainKeyword": "여행 기록 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "여행 기록 기준",
+      "여행 기록 루틴",
+      "여행 기록 체크"
+    ],
+    "intentNote": "여행 기록 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-12T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "여행 기록 남기기 스타일 테스트",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "체크리스트 사용 취향 테스트",
+    "slug": "travel-checklist-use-wave4",
+    "category": "여행",
+    "label": "체크리스트 사용",
+    "mainKeyword": "체크리스트 사용 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "체크리스트 사용 기준",
+      "체크리스트 사용 루틴",
+      "체크리스트 사용 체크"
+    ],
+    "intentNote": "체크리스트 사용 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-12T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "점심시간 사용 취향 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "귀가 후 정리 스타일 테스트",
+    "slug": "travel-return-unpack-wave4",
+    "category": "여행",
+    "label": "귀가 후 정리",
+    "mainKeyword": "귀가 후 정리 스타일",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "귀가 후 정리 기준",
+      "귀가 후 정리 루틴",
+      "귀가 후 정리 체크"
+    ],
+    "intentNote": "귀가 후 정리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-13T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-delivery-unpack-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "다음 여행 저장 취향 테스트",
+    "slug": "travel-next-trip-wave4",
+    "category": "여행",
+    "label": "다음 여행 저장",
+    "mainKeyword": "다음 여행 저장 취향",
+    "expandedKeywords": [
+      "여행 성향",
+      "동선 계획",
+      "숙소 선택",
+      "짐 싸기",
+      "다음 여행 저장 기준",
+      "다음 여행 저장 루틴",
+      "다음 여행 저장 체크"
+    ],
+    "intentNote": "다음 여행 저장 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-13T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "여행 예산 취향 테스트",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "스트레칭 시간 스타일 테스트",
+    "slug": "wellness-stretch-time-wave4",
+    "category": "건강",
+    "label": "스트레칭 시간",
+    "mainKeyword": "스트레칭 시간 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "스트레칭 시간 기준",
+      "스트레칭 시간 루틴",
+      "스트레칭 시간 체크"
+    ],
+    "intentNote": "스트레칭 시간 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-13T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-screen-time-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "물 마시기 알림 취향 테스트",
+    "slug": "wellness-water-reminder-wave4",
+    "category": "건강",
+    "label": "물 마시기 알림",
+    "mainKeyword": "물 마시기 알림 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "물 마시기 알림 기준",
+      "물 마시기 알림 루틴",
+      "물 마시기 알림 체크"
+    ],
+    "intentNote": "물 마시기 알림 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-13T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-morning-water-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "걷기 코스 스타일 테스트",
+    "slug": "wellness-walk-choice-wave4",
+    "category": "건강",
+    "label": "걷기 코스",
+    "mainKeyword": "걷기 코스 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "걷기 코스 기준",
+      "걷기 코스 루틴",
+      "걷기 코스 체크"
+    ],
+    "intentNote": "걷기 코스 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-14T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-sleepwear-choice-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "식사 균형 취향 테스트",
+    "slug": "wellness-meal-balance-wave4",
+    "category": "건강",
+    "label": "식사 균형",
+    "mainKeyword": "식사 균형 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "식사 균형 기준",
+      "식사 균형 루틴",
+      "식사 균형 체크"
+    ],
+    "intentNote": "식사 균형 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-14T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "meal-balance",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "수면 알람 스타일 테스트",
+    "slug": "wellness-sleep-alarm-wave4",
+    "category": "건강",
+    "label": "수면 알람",
+    "mainKeyword": "수면 알람 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "수면 알람 기준",
+      "수면 알람 루틴",
+      "수면 알람 체크"
+    ],
+    "intentNote": "수면 알람 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-14T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "emotion-sleep-thought-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "운동 시작 취향 테스트",
+    "slug": "wellness-exercise-start-wave4",
+    "category": "건강",
+    "label": "운동 시작",
+    "mainKeyword": "운동 시작 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "운동 시작 기준",
+      "운동 시작 루틴",
+      "운동 시작 체크"
+    ],
+    "intentNote": "운동 시작 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-14T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-project-start-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "자세 확인 스타일 테스트",
+    "slug": "wellness-posture-check-wave4",
+    "category": "건강",
+    "label": "자세 확인",
+    "mainKeyword": "자세 확인 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "자세 확인 기준",
+      "자세 확인 루틴",
+      "자세 확인 체크"
+    ],
+    "intentNote": "자세 확인 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-15T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-umbrella-check-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "눈 휴식 취향 테스트",
+    "slug": "wellness-eye-rest-wave4",
+    "category": "건강",
+    "label": "눈 휴식",
+    "mainKeyword": "눈 휴식 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "눈 휴식 기준",
+      "눈 휴식 루틴",
+      "눈 휴식 체크"
+    ],
+    "intentNote": "눈 휴식 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-15T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.2,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "간식 선택 스타일 테스트",
+    "slug": "wellness-snack-choice-wave4",
+    "category": "건강",
+    "label": "간식 선택",
+    "mainKeyword": "간식 선택 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "간식 선택 기준",
+      "간식 선택 루틴",
+      "간식 선택 체크"
+    ],
+    "intentNote": "간식 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-15T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-snack-drawer-wave4",
+      "maxSimilarity": 0.4,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "컨디션 기록 취향 테스트",
+    "slug": "wellness-condition-log-wave4",
+    "category": "건강",
+    "label": "컨디션 기록",
+    "mainKeyword": "컨디션 기록 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "컨디션 기록 기준",
+      "컨디션 기록 루틴",
+      "컨디션 기록 체크"
+    ],
+    "intentNote": "컨디션 기록 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-15T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "향 취향",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "쉬어야 할 신호 스타일 테스트",
+    "slug": "wellness-rest-sign-wave4",
+    "category": "건강",
+    "label": "쉬어야 할 신호",
+    "mainKeyword": "쉬어야 할 신호 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "쉬어야 할 신호 기준",
+      "쉬어야 할 신호 루틴",
+      "쉬어야 할 신호 체크"
+    ],
+    "intentNote": "쉬어야 할 신호 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-16T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "wellness-eye-rest-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "홈트 루틴 취향 테스트",
+    "slug": "wellness-home-workout-wave4",
+    "category": "건강",
+    "label": "홈트 루틴",
+    "mainKeyword": "홈트 루틴 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "홈트 루틴 기준",
+      "홈트 루틴 루틴",
+      "홈트 루틴 체크"
+    ],
+    "intentNote": "홈트 루틴 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-16T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-home-lighting-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "바깥 공기 쐬기 스타일 테스트",
+    "slug": "wellness-outdoor-air-wave4",
+    "category": "건강",
+    "label": "바깥 공기 쐬기",
+    "mainKeyword": "바깥 공기 쐬기 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "바깥 공기 쐬기 기준",
+      "바깥 공기 쐬기 루틴",
+      "바깥 공기 쐬기 체크"
+    ],
+    "intentNote": "바깥 공기 쐬기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-16T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-digital-calendar-wave4",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "건강 정보 확인 취향 테스트",
+    "slug": "wellness-health-info-wave4",
+    "category": "건강",
+    "label": "건강 정보 확인",
+    "mainKeyword": "건강 정보 확인 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "건강 정보 확인 기준",
+      "건강 정보 확인 루틴",
+      "건강 정보 확인 체크"
+    ],
+    "intentNote": "건강 정보 확인 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-16T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "스크린타임 확인 취향 테스트",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "루틴 끊긴 날 스타일 테스트",
+    "slug": "wellness-routine-break-wave4",
+    "category": "건강",
+    "label": "루틴 끊긴 날",
+    "mainKeyword": "루틴 끊긴 날 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "루틴 끊긴 날 기준",
+      "루틴 끊긴 날 루틴",
+      "루틴 끊긴 날 체크"
+    ],
+    "intentNote": "루틴 끊긴 날 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-17T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-remote-routine-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "몸의 신호 읽기 취향 테스트",
+    "slug": "wellness-body-signal-wave4",
+    "category": "건강",
+    "label": "몸의 신호 읽기",
+    "mainKeyword": "몸의 신호 읽기 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "몸의 신호 읽기 기준",
+      "몸의 신호 읽기 루틴",
+      "몸의 신호 읽기 체크"
+    ],
+    "intentNote": "몸의 신호 읽기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-17T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "피드백 읽기 취향 테스트",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "운동 전 준비 스타일 테스트",
+    "slug": "wellness-warmup-style-wave4",
+    "category": "건강",
+    "label": "운동 전 준비",
+    "mainKeyword": "운동 전 준비 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "운동 전 준비 기준",
+      "운동 전 준비 루틴",
+      "운동 전 준비 체크"
+    ],
+    "intentNote": "운동 전 준비 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-17T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "손님맞이 준비 스타일 테스트",
+      "maxSimilarity": 0.2,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "회복일 보내기 취향 테스트",
+    "slug": "wellness-recovery-day-wave4",
+    "category": "건강",
+    "label": "회복일 보내기",
+    "mainKeyword": "회복일 보내기 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "회복일 보내기 기준",
+      "회복일 보내기 루틴",
+      "회복일 보내기 체크"
+    ],
+    "intentNote": "회복일 보내기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-17T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-mistake-recovery-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "구내식당 메뉴 스타일 테스트",
+    "slug": "wellness-cafeteria-pick-wave4",
+    "category": "건강",
+    "label": "구내식당 메뉴",
+    "mainKeyword": "구내식당 메뉴 스타일",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "구내식당 메뉴 기준",
+      "구내식당 메뉴 루틴",
+      "구내식당 메뉴 체크"
+    ],
+    "intentNote": "구내식당 메뉴 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-18T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "leisure-movie-pick-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "야식 유혹 취향 테스트",
+    "slug": "wellness-late-night-snack-wave4",
+    "category": "건강",
+    "label": "야식 유혹",
+    "mainKeyword": "야식 유혹 취향",
+    "expandedKeywords": [
+      "건강 습관",
+      "운동 루틴",
+      "휴식 관리",
+      "수면 습관",
+      "야식 유혹 기준",
+      "야식 유혹 루틴",
+      "야식 유혹 체크"
+    ],
+    "intentNote": "야식 유혹 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-18T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-snack-drawer-wave4",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "공부 시작 스타일 테스트",
+    "slug": "learn-study-start-wave4",
+    "category": "학습",
+    "label": "공부 시작",
+    "mainKeyword": "공부 시작 스타일",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "공부 시작 기준",
+      "공부 시작 루틴",
+      "공부 시작 체크"
+    ],
+    "intentNote": "공부 시작 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-18T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-project-start-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "노트 정리 취향 테스트",
+    "slug": "learn-note-style-wave4",
+    "category": "학습",
+    "label": "노트 정리",
+    "mainKeyword": "노트 정리 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "노트 정리 기준",
+      "노트 정리 루틴",
+      "노트 정리 체크"
+    ],
+    "intentNote": "노트 정리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-18T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "싱크대 정리 취향 테스트",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "강의 속도 스타일 테스트",
+    "slug": "learn-lecture-speed-wave4",
+    "category": "학습",
+    "label": "강의 속도",
+    "mainKeyword": "강의 속도 스타일",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "강의 속도 기준",
+      "강의 속도 루틴",
+      "강의 속도 체크"
+    ],
+    "intentNote": "강의 속도 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-19T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "친해지는 속도 테스트",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "복습 주기 취향 테스트",
+    "slug": "learn-review-cycle-wave4",
+    "category": "학습",
+    "label": "복습 주기",
+    "mainKeyword": "복습 주기 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "복습 주기 기준",
+      "복습 주기 루틴",
+      "복습 주기 체크"
+    ],
+    "intentNote": "복습 주기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-19T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-calendar-review-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "시험 계획 스타일 테스트",
+    "slug": "learn-exam-plan-wave4",
+    "category": "학습",
+    "label": "시험 계획",
+    "mainKeyword": "시험 계획 스타일",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "시험 계획 기준",
+      "시험 계획 루틴",
+      "시험 계획 체크"
+    ],
+    "intentNote": "시험 계획 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-19T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "leisure-weekend-plan-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "질문 표시 취향 테스트",
+    "slug": "learn-question-mark-wave4",
+    "category": "학습",
+    "label": "질문 표시",
+    "mainKeyword": "질문 표시 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "질문 표시 기준",
+      "질문 표시 루틴",
+      "질문 표시 체크"
+    ],
+    "intentNote": "질문 표시 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-19T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-ai-question-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "공부 장소 스타일 테스트",
+    "slug": "learn-study-place-wave4",
+    "category": "학습",
+    "label": "공부 장소",
+    "mainKeyword": "공부 장소 스타일",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "공부 장소 기준",
+      "공부 장소 루틴",
+      "공부 장소 체크"
+    ],
+    "intentNote": "공부 장소 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-20T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "learn-study-start-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "암기카드 사용 취향 테스트",
+    "slug": "learn-flashcard-use-wave4",
+    "category": "학습",
+    "label": "암기카드 사용",
+    "mainKeyword": "암기카드 사용 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "암기카드 사용 기준",
+      "암기카드 사용 루틴",
+      "암기카드 사용 체크"
+    ],
+    "intentNote": "암기카드 사용 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-20T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "점심시간 사용 취향 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "마감 공부 스타일 테스트",
+    "slug": "learn-deadline-study-wave4",
+    "category": "학습",
+    "label": "마감 공부",
+    "mainKeyword": "마감 공부 스타일",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "마감 공부 기준",
+      "마감 공부 루틴",
+      "마감 공부 체크"
+    ],
+    "intentNote": "마감 공부 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-20T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-deadline-buffer-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "스터디 참여 취향 테스트",
+    "slug": "learn-group-study-wave4",
+    "category": "학습",
+    "label": "스터디 참여",
+    "mainKeyword": "스터디 참여 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "스터디 참여 기준",
+      "스터디 참여 루틴",
+      "스터디 참여 체크"
+    ],
+    "intentNote": "스터디 참여 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-20T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "learn-study-start-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "개념 지도 취향 테스트",
+    "slug": "learn-concept-map-wave4",
+    "category": "학습",
+    "label": "개념 지도",
+    "mainKeyword": "개념 지도 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "개념 지도 기준",
+      "개념 지도 루틴",
+      "개념 지도 체크"
+    ],
+    "intentNote": "개념 지도 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-21T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-map-save-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "휴식 타이머 스타일 테스트",
+    "slug": "learn-break-timer-wave4",
+    "category": "학습",
+    "label": "휴식 타이머",
+    "mainKeyword": "휴식 타이머 스타일",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "휴식 타이머 기준",
+      "휴식 타이머 루틴",
+      "휴식 타이머 체크"
+    ],
+    "intentNote": "휴식 타이머 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-21T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "work-lunch-break-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "형광펜 표시 취향 테스트",
+    "slug": "learn-reading-highlight-wave4",
+    "category": "학습",
+    "label": "형광펜 표시",
+    "mainKeyword": "형광펜 표시 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "형광펜 표시 기준",
+      "형광펜 표시 루틴",
+      "형광펜 표시 체크"
+    ],
+    "intentNote": "형광펜 표시 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-21T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "질문 표시 취향 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "기술 연습 스타일 테스트",
+    "slug": "learn-skill-practice-wave4",
+    "category": "학습",
+    "label": "기술 연습",
+    "mainKeyword": "기술 연습 스타일",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "기술 연습 기준",
+      "기술 연습 루틴",
+      "기술 연습 체크"
+    ],
+    "intentNote": "기술 연습 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-21T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "copywriting-practice-type",
+      "maxSimilarity": 0.167,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "온라인 강의 취향 테스트",
+    "slug": "learn-online-course-wave4",
+    "category": "학습",
+    "label": "온라인 강의",
+    "mainKeyword": "온라인 강의 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "온라인 강의 기준",
+      "온라인 강의 루틴",
+      "온라인 강의 체크"
+    ],
+    "intentNote": "온라인 강의 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-22T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-online-review-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "학습 목표 스타일 테스트",
+    "slug": "learn-learning-goal-wave4",
+    "category": "학습",
+    "label": "학습 목표",
+    "mainKeyword": "학습 목표 스타일",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "학습 목표 기준",
+      "학습 목표 루틴",
+      "학습 목표 체크"
+    ],
+    "intentNote": "학습 목표 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-22T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "leisure-learning-kit-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "피드백 반영 취향 테스트",
+    "slug": "learn-teacher-feedback-wave4",
+    "category": "학습",
+    "label": "피드백 반영",
+    "mainKeyword": "피드백 반영 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "피드백 반영 기준",
+      "피드백 반영 루틴",
+      "피드백 반영 체크"
+    ],
+    "intentNote": "피드백 반영 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-22T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "피드백 읽기 취향 테스트",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "자료 저장 스타일 테스트",
+    "slug": "learn-resource-save-wave4",
+    "category": "학습",
+    "label": "자료 저장",
+    "mainKeyword": "자료 저장 스타일",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "자료 저장 기준",
+      "자료 저장 루틴",
+      "자료 저장 체크"
+    ],
+    "intentNote": "자료 저장 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-22T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "digital-map-save-wave4",
+      "maxSimilarity": 0.333,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "공부 마무리 취향 테스트",
+    "slug": "learn-study-finish-wave4",
+    "category": "학습",
+    "label": "공부 마무리",
+    "mainKeyword": "공부 마무리 취향",
+    "expandedKeywords": [
+      "학습 성향",
+      "공부 루틴",
+      "집중 방식",
+      "기록 습관",
+      "공부 마무리 기준",
+      "공부 마무리 루틴",
+      "공부 마무리 체크"
+    ],
+    "intentNote": "공부 마무리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-23T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "learn-study-start-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "봄맞이 정리 스타일 테스트",
+    "slug": "season-spring-cleaning-wave4",
+    "category": "계절",
+    "label": "봄맞이 정리",
+    "mainKeyword": "봄맞이 정리 스타일",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "봄맞이 정리 기준",
+      "봄맞이 정리 루틴",
+      "봄맞이 정리 체크"
+    ],
+    "intentNote": "봄맞이 정리 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-23T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "evening-cleaning",
+      "maxSimilarity": 0.143,
+      "sharedTokens": 1
+    }
+  },
+  {
+    "title": "여름 더위 대처 취향 테스트",
+    "slug": "season-summer-heat-wave4",
+    "category": "계절",
+    "label": "여름 더위 대처",
+    "mainKeyword": "여름 더위 대처 취향",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "여름 더위 대처 기준",
+      "여름 더위 대처 루틴",
+      "여름 더위 대처 체크"
+    ],
+    "intentNote": "여름 더위 대처 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-23T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "창작 막힘 대처 취향 테스트",
+      "maxSimilarity": 0.2,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "가을 산책 스타일 테스트",
+    "slug": "season-autumn-walk-wave4",
+    "category": "계절",
+    "label": "가을 산책",
+    "mainKeyword": "가을 산책 스타일",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "가을 산책 기준",
+      "가을 산책 루틴",
+      "가을 산책 체크"
+    ],
+    "intentNote": "가을 산책 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-23T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "leisure-photo-walk-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "겨울 옷 겹쳐입기 취향 테스트",
+    "slug": "season-winter-layering-wave4",
+    "category": "계절",
+    "label": "겨울 옷 겹쳐입기",
+    "mainKeyword": "겨울 옷 겹쳐입기 취향",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "겨울 옷 겹쳐입기 기준",
+      "겨울 옷 겹쳐입기 루틴",
+      "겨울 옷 겹쳐입기 체크"
+    ],
+    "intentNote": "겨울 옷 겹쳐입기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-24T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "winter-layering-style",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "비 오는 날 보내기 스타일 테스트",
+    "slug": "season-rainy-day-wave4",
+    "category": "계절",
+    "label": "비 오는 날 보내기",
+    "mainKeyword": "비 오는 날 보내기 스타일",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "비 오는 날 보내기 기준",
+      "비 오는 날 보내기 루틴",
+      "비 오는 날 보내기 체크"
+    ],
+    "intentNote": "비 오는 날 보내기 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-24T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "emotion-sad-day-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "눈 오는 날 계획 취향 테스트",
+    "slug": "season-snow-plan-wave4",
+    "category": "계절",
+    "label": "눈 오는 날 계획",
+    "mainKeyword": "눈 오는 날 계획 취향",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "눈 오는 날 계획 기준",
+      "눈 오는 날 계획 루틴",
+      "눈 오는 날 계획 체크"
+    ],
+    "intentNote": "눈 오는 날 계획 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-24T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "leisure-weekend-plan-wave4",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "꽃구경 방식 취향 테스트",
+    "slug": "season-flower-view-wave4",
+    "category": "계절",
+    "label": "꽃구경 방식",
+    "mainKeyword": "꽃구경 방식 취향",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "꽃구경 방식 기준",
+      "꽃구경 방식 루틴",
+      "꽃구경 방식 체크"
+    ],
+    "intentNote": "꽃구경 방식 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-24T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "season-spring-cleaning-wave4",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "연휴 리셋 스타일 테스트",
+    "slug": "season-holiday-reset-wave4",
+    "category": "계절",
+    "label": "연휴 리셋",
+    "mainKeyword": "연휴 리셋 스타일",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "연휴 리셋 기준",
+      "연휴 리셋 루틴",
+      "연휴 리셋 체크"
+    ],
+    "intentNote": "연휴 리셋 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-25T08:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-fridge-reset-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "계절 메뉴 선택 취향 테스트",
+    "slug": "season-season-menu-wave4",
+    "category": "계절",
+    "label": "계절 메뉴 선택",
+    "mainKeyword": "계절 메뉴 선택 취향",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "계절 메뉴 선택 기준",
+      "계절 메뉴 선택 루틴",
+      "계절 메뉴 선택 체크"
+    ],
+    "intentNote": "계절 메뉴 선택 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-25T12:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "season-spring-cleaning-wave4",
+      "maxSimilarity": 0.25,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "맑은 날 피크닉 스타일 테스트",
+    "slug": "season-sunny-picnic-wave4",
+    "category": "계절",
+    "label": "맑은 날 피크닉",
+    "mainKeyword": "맑은 날 피크닉 스타일",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "맑은 날 피크닉 기준",
+      "맑은 날 피크닉 루틴",
+      "맑은 날 피크닉 체크"
+    ],
+    "intentNote": "맑은 날 피크닉 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-25T16:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "season-season-menu-wave4",
+      "maxSimilarity": 0.286,
+      "sharedTokens": 2
+    }
+  },
+  {
+    "title": "추운 아침 준비 취향 테스트",
+    "slug": "season-cold-morning-wave4",
+    "category": "계절",
+    "label": "추운 아침 준비",
+    "mainKeyword": "추운 아침 준비 취향",
+    "expandedKeywords": [
+      "계절 루틴",
+      "날씨 반응",
+      "계절 감각",
+      "외출 준비",
+      "추운 아침 준비 기준",
+      "추운 아침 준비 루틴",
+      "추운 아침 준비 체크"
+    ],
+    "intentNote": "추운 아침 준비 상황에서 드러나는 선택 기준과 행동 흐름을 12문항으로 가볍게 진단",
+    "scheduledAt": "2026-08-25T20:00:00+09:00",
+    "qualityTarget": 95,
+    "duplicateCheck": {
+      "nearestExisting": "daily-morning-water-wave4",
+      "maxSimilarity": 0.222,
+      "sharedTokens": 2
+    }
+  }
+]

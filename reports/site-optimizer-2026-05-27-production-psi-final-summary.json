@@ -1,0 +1,98 @@
+[
+  {
+    "url": "https://temon.kr/",
+    "strategy": "mobile",
+    "performance": 96,
+    "accessibility": 96,
+    "best_practices": 100,
+    "seo": 92,
+    "lcp": "2.1 s",
+    "tbt": "150 ms",
+    "cls": "0",
+    "fcp": "1.1 s"
+  },
+  {
+    "url": "https://temon.kr/",
+    "strategy": "desktop",
+    "performance": 95,
+    "accessibility": 96,
+    "best_practices": 100,
+    "seo": 92,
+    "lcp": "0.7 s",
+    "tbt": "180 ms",
+    "cls": "0",
+    "fcp": "0.5 s"
+  },
+  {
+    "url": "https://temon.kr/tests",
+    "strategy": "mobile",
+    "performance": 95,
+    "accessibility": 92,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "2.6 s",
+    "tbt": "100 ms",
+    "cls": "0",
+    "fcp": "1.2 s"
+  },
+  {
+    "url": "https://temon.kr/tests",
+    "strategy": "desktop",
+    "performance": 63,
+    "accessibility": 92,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "1.1 s",
+    "tbt": "960 ms",
+    "cls": "0",
+    "fcp": "0.6 s"
+  },
+  {
+    "url": "https://temon.kr/blog",
+    "strategy": "mobile",
+    "performance": 95,
+    "accessibility": 96,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "2.6 s",
+    "tbt": "50 ms",
+    "cls": "0",
+    "fcp": "1.2 s"
+  },
+  {
+    "url": "https://temon.kr/blog",
+    "strategy": "desktop",
+    "performance": 96,
+    "accessibility": 96,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "0.6 s",
+    "tbt": "170 ms",
+    "cls": "0",
+    "fcp": "0.5 s"
+  },
+  {
+    "url": "https://temon.kr/tests/ntrp-test",
+    "strategy": "mobile",
+    "performance": 85,
+    "accessibility": 92,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "2.3 s",
+    "tbt": "510 ms",
+    "cls": "0",
+    "fcp": "1.0 s"
+  },
+  {
+    "url": "https://temon.kr/tests/ntrp-test",
+    "strategy": "desktop",
+    "performance": 95,
+    "accessibility": 91,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "0.5 s",
+    "tbt": "180 ms",
+    "cls": "0",
+    "fcp": "0.3 s"
+  }
+]

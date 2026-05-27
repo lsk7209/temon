@@ -1,21 +1,18 @@
-# Status | 마지막: 2026-05-06
+# Status | 마지막: 2026-05-27
 ## 현재 작업
-wave3 퀴즈 200개 DB draft 적재 완료, 예약 발행 대기 중.
+사이트 속도/SEO/콘텐츠/AdSense/GSC/GA4/반응형 1차 종합 최적화 완료. 운영 배포 및 PSI/브라우저 검증 완료.
 ## 최근 변경 (최근 5개만)
-- 05-06: 네이버 사이트 소유확인 메타 태그를 전역 head에 단일 출력.
-- 05-06: 홈/면책조항/AI 인덱스/llms/광고 예약 공간 보강 후 배포.
-- 05-06: prose 150자 미만 테스트를 noindex 처리하고 sitemap에서 제외.
-- 05-06: wave3 토픽 200개와 전체 퀴즈 JSON 200개 생성, 최저 품질 92점.
-- 05-06: wave3 200개를 원격 DB에 draft로 적재, 2026-05-26부터 예약.
+- 05-27: 최종 Vercel production 배포 `dpl_5z3Aa6xaGPxmcsDVSce5JSohdxwz`, `https://temon.kr` alias 연결 확인.
+- 05-27: AdSense 로딩을 사용자 입력 또는 8초 지연 방식으로 변경하고 GA4 외부 스크립트를 `lazyOnload`로 조정.
+- 05-27: 운영 PSI 최종 측정 완료. `/blog` 95/96, `/tests` 95/96, `/tests/ntrp-test` 모바일 52→85 개선.
+- 05-27: `/blog`, `/tests`, 대표 결과페이지, 피드/RSS/AI 인덱스/robots/sitemap 운영 200 및 모바일 가로 넘침 0 확인.
+- 05-27: GSC/GA4/AdSense API 지표 수집 완료. 리포트는 `reports/site-optimizer-2026-05-27-*.md`.
 ## TODO
-- [ ] `/api/cron/publish`로 90점 이상 draft만 발행되는지 첫 발행 때 확인.
-- [ ] 배포 후 Naver Search Advisor에서 소유확인 성공 여부 확인.
-- [ ] 공개 후 sitemap 제출 및 IndexNow ping 확인.
+- [ ] 홈(`/`) 전역 메타 SEO 92 → 100 보강은 별도 작업으로 처리.
+- [ ] `/tests/ntrp-test` 모바일 성능 95+ 목표 시 애니메이션/클라이언트 JS 추가 축소.
 ## 결정사항
-- 퀴즈 생성: 외부 생성 API 대신 Codex가 만든 결정론적 생성기로 200개 생성.
-- 발행 간격: 기존 wave2 이후 2026-05-26부터 5시간 ± 지터로 예약.
-- 품질 기준: 저장 산출물 85점 이상, 발행 가능 기준 90점 이상.
+- 광고 로딩: 초기 CWV 보호를 위해 AdSense는 지연 로드하되 사용자 입력 시 즉시 로드.
+- 배포 제외: `.vercelignore`로 로컬 상태/리포트/DB/로그는 Vercel 업로드에서 제외.
 ## 주의
-- 기존 미완료 변경 파일(.bkit/.omc/.omx 등)은 되돌리지 않음.
-- wave3 DB 상태: draft 200개, 첫 예약 2026-05-26 08:18 KST.
-- lint/tsc 통과, OG 이미지 브라우저 검증 완료.
+- 운영 검증 리포트: `reports/site-optimizer-2026-05-27-production-verification.md`.
+- PageSpeed API 키는 `D:\env\키파일.txt`에서 사용했으며 출력하지 않음.

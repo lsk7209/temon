@@ -12,6 +12,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useState } from "react"
 import { ShareButtons } from "@/components/share-buttons"
+import { StaticResultEnhancements } from "@/components/static-result-enhancements"
 import { SPENDING_STYLE_RESULTS } from "@/lib/data/spending-style-results"
 import type { ResultType } from "@/lib/data/spending-style-results"
 
@@ -60,7 +61,7 @@ function ResultContent() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
       <div className="container max-w-4xl mx-auto px-4 py-8">
         {/* 헤더 */}
-        <div className="text-center mb-8">
+        <div id="result-main" className="text-center mb-8 scroll-mt-24">
           <div className="inline-block px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mb-4">
             <h1 className="text-3xl md:text-4xl font-bold text-white">{result.name}</h1>
           </div>
@@ -231,6 +232,13 @@ function ResultContent() {
             </Button>
           </Link>
         </div>
+
+        <StaticResultEnhancements
+          testId="spending-style"
+          quizTitle="소비 성향 테스트"
+          resultName={result.name}
+          showToc
+        />
       </div>
     </div>
   )
@@ -252,4 +260,3 @@ export default function SpendingStyleResult() {
     </Suspense>
   )
 }
-

@@ -8,6 +8,7 @@
     "lint": "next lint",
     "start": "next start",
     "create-test": "ts-node scripts/create-test.ts",
+    "audit:results": "node scripts/audit-result-pages.js",
     "wave3:generate": "node scripts/generate-wave3-quizzes.js",
     "wave3:verify": "node scripts/generate-wave3-quizzes.js --verify",
     "wave3:apply-db": "node scripts/generate-wave3-quizzes.js --apply-db",

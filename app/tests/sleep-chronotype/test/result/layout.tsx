@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "수면 크로노타입 테스트 결과 | 나의 리듬 확인",
     description: "당신의 수면 크로노타입을 확인하고, 맞춤형 루틴 가이드를 받아보세요.",
     type: "website",
-    url: "https://www.temon.kr/tests/sleep-chronotype/test/result",
+    url: "https://temon.kr/tests/sleep-chronotype/test/result",
   },
 }
 
@@ -26,4 +26,3 @@ export default function SleepChronotypeResultLayout({
 }) {
   return <>{children}</>
 }
-

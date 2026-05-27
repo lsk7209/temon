@@ -252,7 +252,7 @@ function ResultContent() {
           setLoadedResult({ id: result.id, testId: result.testId })
         })
         .catch((error) => {
-          console.error('결과 로드 실패:', error)
+          void error
         })
     }
   }, [resultId])
@@ -432,7 +432,7 @@ function ResultContent() {
 
 export default function CleanStyleResult() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>결과를 불러오는 중...</div>}>
       <ResultContent />
     </Suspense>
   )

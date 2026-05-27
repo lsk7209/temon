@@ -7,9 +7,11 @@ import {
   AlertCircle,
   HelpCircle,
 } from "lucide-react";
+import { ContentToc } from "@/components/content-toc";
 
 interface Props {
   testId: string;
+  title?: string;
 }
 
 /**
@@ -19,14 +21,24 @@ interface Props {
  *   → 기존 페이지 영향 없음, 확장 콘텐츠 있는 slug에만 추가 노출
  * - JSON-LD Article 스키마도 함께 주입해 Google이 "독립 기사"로 인식
  */
-export function TestExpandedIntro({ testId }: Props) {
+export function TestExpandedIntro({ testId, title }: Props) {
   const ext = getExtendedContent(testId);
   if (!ext) return null;
+  const headlineTitle = title || testId;
+  const tocItems = [
+    { id: "article-intro", label: "테스트 소개" },
+    { id: "article-meaning", label: "왜 의미가 있나요" },
+    { id: "article-usecases", label: "활용 방법" },
+    { id: "article-limit", label: "해석 전 주의사항" },
+    ...(ext.extraFaqs?.length
+      ? [{ id: "article-faq", label: "추가 질문" }]
+      : []),
+  ];
 
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: `${testId} 테스트 심층 가이드`,
+    headline: `${headlineTitle} 심층 가이드`,
     description: ext.intro.slice(0, 160),
     datePublished: ext.lastUpdated,
     dateModified: ext.lastUpdated,
@@ -47,7 +59,7 @@ export function TestExpandedIntro({ testId }: Props) {
 
   return (
     <section
-      className="mt-12 space-y-6"
+      className="article-content mt-12 space-y-6"
       aria-labelledby="expanded-intro-heading"
     >
       <script
@@ -62,8 +74,13 @@ export function TestExpandedIntro({ testId }: Props) {
         이 테스트 심층 가이드
       </h2>
 
+      <ContentToc items={tocItems} />
+
       {/* Intro */}
-      <Card className="border-0 shadow-md bg-white/90 backdrop-blur">
+      <Card
+        id="article-intro"
+        className="scroll-mt-24 border-0 bg-white/90 shadow-md backdrop-blur"
+      >
         <CardContent className="p-6 md:p-8 space-y-3">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center">
@@ -78,7 +95,10 @@ export function TestExpandedIntro({ testId }: Props) {
       </Card>
 
       {/* Why it matters */}
-      <Card className="border-0 shadow-md bg-white/90 backdrop-blur">
+      <Card
+        id="article-meaning"
+        className="scroll-mt-24 border-0 bg-white/90 shadow-md backdrop-blur"
+      >
         <CardContent className="p-6 md:p-8 space-y-3">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center">
@@ -91,7 +111,10 @@ export function TestExpandedIntro({ testId }: Props) {
       </Card>
 
       {/* Use cases */}
-      <Card className="border-0 shadow-md bg-white/90 backdrop-blur">
+      <Card
+        id="article-usecases"
+        className="scroll-mt-24 border-0 bg-white/90 shadow-md backdrop-blur"
+      >
         <CardContent className="p-6 md:p-8 space-y-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center">
@@ -113,7 +136,10 @@ export function TestExpandedIntro({ testId }: Props) {
       </Card>
 
       {/* Limitations — AdSense 투명성 신호 */}
-      <Card className="border-0 shadow-md bg-amber-50/90 backdrop-blur">
+      <Card
+        id="article-limit"
+        className="scroll-mt-24 border-0 bg-amber-50/90 shadow-md backdrop-blur"
+      >
         <CardContent className="p-6 md:p-8 space-y-3">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
@@ -127,7 +153,10 @@ export function TestExpandedIntro({ testId }: Props) {
 
       {/* Extra FAQs */}
       {ext.extraFaqs && ext.extraFaqs.length > 0 && (
-        <Card className="border-0 shadow-md bg-white/90 backdrop-blur">
+        <Card
+          id="article-faq"
+          className="scroll-mt-24 border-0 bg-white/90 shadow-md backdrop-blur"
+        >
           <CardContent className="p-6 md:p-8 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center">

@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-05-17T13:28:07.047Z",
+  "wave": "wave5",
+  "count": 300,
+  "slotIntervalHours": 5,
+  "minQualityScore": 100,
+  "maxDuplicateSimilarity": 0.4,
+  "rejectedCount": 0,
+  "firstScheduledAt": "2026-08-26T01:00:00+09:00",
+  "lastScheduledAt": "2026-10-27T08:00:00+09:00",
+  "sample": [
+    {
+      "title": "가구 배치 스타일 테스트",
+      "slug": "life-furniture-layout-wave5",
+      "score": 100,
+      "scheduledAt": "2026-08-26T01:00:00+09:00"
+    },
+    {
+      "title": "빨래 건조 취향 테스트",
+      "slug": "life-laundry-drying-wave5",
+      "score": 100,
+      "scheduledAt": "2026-08-26T06:00:00+09:00"
+    },
+    {
+      "title": "청소기 동선 스타일 테스트",
+      "slug": "life-vacuum-route-wave5",
+      "score": 100,
+      "scheduledAt": "2026-08-26T11:00:00+09:00"
+    },
+    {
+      "title": "분리수거 취향 테스트",
+      "slug": "life-recycle-sort-wave5",
+      "score": 100,
+      "scheduledAt": "2026-08-26T16:00:00+09:00"
+    },
+    {
+      "title": "향초 점화 스타일 테스트",
+      "slug": "life-candle-light-wave5",
+      "score": 100,
+      "scheduledAt": "2026-08-26T21:00:00+09:00"
+    }
+  ]
+}

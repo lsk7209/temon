@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-05-17T13:53:56.410Z",
+  "wave": "wave6",
+  "count": 300,
+  "slotIntervalHours": 5,
+  "minQualityScore": 100,
+  "maxDuplicateSimilarity": 0.4,
+  "rejectedCount": 0,
+  "firstScheduledAt": "2026-10-27T13:00:00+09:00",
+  "lastScheduledAt": "2026-12-28T20:00:00+09:00",
+  "sample": [
+    {
+      "title": "외출 체크리스트 스타일 테스트",
+      "slug": "outing-leave-checklist-wave6",
+      "score": 100,
+      "scheduledAt": "2026-10-27T13:00:00+09:00"
+    },
+    {
+      "title": "이어폰 챙김 취향 테스트",
+      "slug": "outing-earphone-pick-wave6",
+      "score": 100,
+      "scheduledAt": "2026-10-27T18:00:00+09:00"
+    },
+    {
+      "title": "마스크 챙김 스타일 테스트",
+      "slug": "outing-mask-pack-wave6",
+      "score": 100,
+      "scheduledAt": "2026-10-27T23:00:00+09:00"
+    },
+    {
+      "title": "카드와 현금 취향 테스트",
+      "slug": "outing-card-or-cash-wave6",
+      "score": 100,
+      "scheduledAt": "2026-10-28T04:00:00+09:00"
+    },
+    {
+      "title": "립밤 챙김 스타일 테스트",
+      "slug": "outing-lipbalm-pack-wave6",
+      "score": 100,
+      "scheduledAt": "2026-10-28T09:00:00+09:00"
+    }
+  ]
+}

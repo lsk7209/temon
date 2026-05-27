@@ -38,7 +38,28 @@ declare global {
   interface Window {
     gtag: GtagFunction;
     dataLayer: unknown[];
+    __temonPendingGtagEvents?: Array<() => void>;
   }
+}
+
+function runWhenGtagReady(callback: () => void) {
+  if (typeof window === "undefined") return;
+
+  if (typeof window.gtag === "function") {
+    callback();
+    return;
+  }
+
+  window.__temonPendingGtagEvents = window.__temonPendingGtagEvents || [];
+  window.__temonPendingGtagEvents.push(callback);
+
+  window.setTimeout(() => {
+    const pendingEvents = window.__temonPendingGtagEvents || [];
+    window.__temonPendingGtagEvents = [];
+    pendingEvents.forEach((event) => {
+      if (typeof window.gtag === "function") event();
+    });
+  }, 1200);
 }
 
 // 서버 트래킹 전송
@@ -64,13 +85,14 @@ export function trackVisit() {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    runWhenGtagReady(() => {
       window.gtag("event", "page_view", {
         page_title: document.title,
         page_location: window.location.href,
+        page_path: window.location.pathname,
         event_category: "engagement",
       });
-    }
+    });
     // 서버 트래킹
     sendTrackingEvent("page_view", {
       path: window.location.pathname,
@@ -87,13 +109,14 @@ export function trackPageVisit(pathname: string) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    runWhenGtagReady(() => {
       window.gtag("event", "page_view", {
         page_path: pathname,
         page_title: document.title,
+        page_location: window.location.href,
         event_category: "navigation",
       });
-    }
+    });
     // 서버 트래킹
     sendTrackingEvent("page_view", {
       path: pathname,

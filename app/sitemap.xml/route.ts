@@ -15,9 +15,12 @@ import { eq } from "drizzle-orm";
  * - test 실행/결과 페이지(`/tests/{id}/test`, `/tests/{id}/test/result`)는 sitemap에서 제외.
  *   인트로(`/tests/{id}`) 한 장만 색인되는 게 중복 회피 및 crawl budget 절감.
  *
- * Vercel ISR: 1시간마다 재생성.
+ * Vercel ISR: 5분마다 재생성.
  */
-export const revalidate = 3600;
+export const revalidate = 300;
+export const dynamic = "force-dynamic";
+const SITEMAP_CACHE_CONTROL =
+  "public, max-age=300, s-maxage=300, stale-while-revalidate=3600";
 
 type RouteEntry = {
   url: string;
@@ -35,9 +38,7 @@ type RouteEntry = {
 
 function buildSitemapXml(routes: RouteEntry[]): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes
   .map(
     (r) => `  <url>
@@ -45,7 +46,6 @@ ${routes
     <lastmod>${r.lastModified.toISOString()}</lastmod>
     <changefreq>${r.changeFrequency}</changefreq>
     <priority>${r.priority}</priority>
-    <mobile:mobile/>
   </url>`,
   )
   .join("\n")}
@@ -149,7 +149,7 @@ export async function GET() {
     return new NextResponse(buildSitemapXml(allRoutes), {
       headers: {
         "Content-Type": "application/xml; charset=utf-8",
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        "Cache-Control": SITEMAP_CACHE_CONTROL,
       },
     });
   } catch (error) {
@@ -185,7 +185,7 @@ export async function GET() {
     return new NextResponse(buildSitemapXml(fallback), {
       headers: {
         "Content-Type": "application/xml; charset=utf-8",
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        "Cache-Control": SITEMAP_CACHE_CONTROL,
       },
     });
   }

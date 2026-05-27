@@ -8,6 +8,7 @@ import { LandingConversionSection } from "@/components/landing-conversion-sectio
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas, getDefaultQuizFAQs } from "@/lib/quiz-seo-utils"
 import { ExternalLink } from "lucide-react"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "라면 취향으로 알아보는 성격 유형 테스트. 16가지 라면 MBTI 유형 발견!"
@@ -34,6 +35,24 @@ const faqs = [
   {
     question: "어떤 라면 유형이 있나요?",
     answer: "신라면, 진라면, 불닭볶음면, 짜파게티 등 16가지 다양한 라면 유형으로 당신의 성격을 표현해드립니다. 각 라면의 특징과 당신의 성격이 얼마나 일치하는지 확인해보세요.",
+  },
+]
+
+const gscGuides = [
+  {
+    title: "라면 테스트를 찾는 분",
+    description:
+      "꼬들면, 국물, 토핑, 끓이는 순서처럼 바로 떠올릴 수 있는 선택으로 성향을 확인합니다.",
+  },
+  {
+    title: "친구와 결과 비교",
+    description:
+      "결과명이 직관적이라 단톡방이나 SNS에서 서로의 라면 유형을 비교하기 좋습니다.",
+  },
+  {
+    title: "짧게 끝나는 MBTI",
+    description:
+      "12문항, 약 3분 기준으로 구성되어 가볍게 풀고 결과를 바로 공유할 수 있습니다.",
   },
 ]
 
@@ -106,6 +125,18 @@ export default function RamenMBTI() {
                 </div>
               </div>
             </section>
+
+            <GscLandingBoost
+              title="라면 테스트, 어떤 기준으로 보면 좋을까요?"
+              summary="라면 테스트는 음식 취향을 통해 성향을 가볍게 해석하려는 검색 의도에 맞춘 무료 성격 테스트입니다. 라면을 고르고 끓이고 먹는 방식은 익숙한 선택이라 처음 방문한 사람도 부담 없이 시작할 수 있습니다."
+              guides={gscGuides}
+              relatedLinks={[
+                { href: "/tests/coffee-mbti", label: "커피 MBTI 테스트" },
+                { href: "/tests/bungeoppang", label: "붕어빵 취향 테스트" },
+                { href: "/tests/chicken-style", label: "치킨 취향 테스트" },
+              ]}
+              tone="orange"
+            />
 
             {/* CTA Section */}
             <section className="text-center mb-8">

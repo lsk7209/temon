@@ -1,10 +1,13 @@
 import type { Metadata } from "next"
 import { generateResultPageMetadata } from "@/lib/quiz-seo-utils"
-import { ALL_TESTS } from "@/lib/tests-config"
 import { notFound } from "next/navigation"
+import {
+  getCleanTestTitle,
+  getPublishedTestSeoSource,
+} from "@/lib/test-seo-source"
 
 export async function generateMetadata({ params }: { params: { testId: string } }): Promise<Metadata> {
-  const test = ALL_TESTS.find(t => t.id === params.testId)
+  const test = await getPublishedTestSeoSource(params.testId)
   
   if (!test) {
     return {
@@ -13,15 +16,12 @@ export async function generateMetadata({ params }: { params: { testId: string } 
     }
   }
 
-  // 테스트 이름에서 이모지 제거
-  const testName = test.title.replace(/[^\w\s가-힣]/g, '').trim() || test.title
+  const testName = getCleanTestTitle(test.title)
   
-  // Naver-optimized description (under 80 chars)
   const shortDescription = `${testName} 테스트 결과 확인. 나의 성격 유형은?`
-  // Full description for Google/AI (140-160자 최적화)
-  let fullDescription = `${testName} 테스트 결과를 확인해보세요! 16가지 성격 유형 중 당신의 유형과 특징, 잘 맞는 유형을 알아보세요. 결과를 친구들과 공유하고 비교해보세요.`
+  let fullDescription = `${testName} 테스트 결과를 확인해보세요! ${test.resultTypeCount}가지 성격 유형 중 당신의 유형과 특징, 잘 맞는 유형을 알아보세요. 결과를 친구들과 공유하고 비교해보세요.`
   if (fullDescription.length < 140) {
-    fullDescription = `${testName} 테스트 결과를 확인해보세요! 16가지 성격 유형 중 당신의 유형과 특징, 잘 맞는 유형을 알아보세요. 결과를 친구들과 공유하고 비교해보세요. 무료로 이용할 수 있습니다.`
+    fullDescription = `${testName} 테스트 결과를 확인해보세요! ${test.resultTypeCount}가지 성격 유형 중 당신의 유형과 특징, 잘 맞는 유형을 알아보세요. 결과를 친구들과 공유하고 비교해보세요. 무료로 이용할 수 있습니다.`
   } else if (fullDescription.length > 160) {
     fullDescription = fullDescription.substring(0, 157) + "..."
   }
@@ -36,14 +36,14 @@ export async function generateMetadata({ params }: { params: { testId: string } 
   })
 }
 
-export default function TestResultLayout({
+export default async function TestResultLayout({
   children,
   params,
 }: {
   children: React.ReactNode
   params: { testId: string }
 }) {
-  const test = ALL_TESTS.find(t => t.id === params.testId)
+  const test = await getPublishedTestSeoSource(params.testId)
   
   if (!test) {
     notFound()

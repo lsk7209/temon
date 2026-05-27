@@ -165,7 +165,7 @@ function ResultContent() {
           url: window.location.href,
         })
       } catch (err) {
-        console.log("Error sharing:", err)
+        void err
       }
     } else {
       navigator.clipboard.writeText(window.location.href)
@@ -409,7 +409,7 @@ function ResultContent() {
 
 export default function SnowWhiteMBTIResult() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>결과를 불러오는 중...</div>}>
       <ResultContent />
     </Suspense>
   )

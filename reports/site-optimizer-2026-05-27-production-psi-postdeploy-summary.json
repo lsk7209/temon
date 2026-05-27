@@ -1,0 +1,98 @@
+[
+  {
+    "url": "https://temon.kr/",
+    "strategy": "mobile",
+    "performance": 85,
+    "accessibility": 96,
+    "best_practices": 100,
+    "seo": 92,
+    "lcp": "2.1 s",
+    "tbt": "440 ms",
+    "cls": "0",
+    "fcp": "1.1 s"
+  },
+  {
+    "url": "https://temon.kr/",
+    "strategy": "desktop",
+    "performance": 86,
+    "accessibility": 96,
+    "best_practices": 100,
+    "seo": 92,
+    "lcp": "0.7 s",
+    "tbt": "230 ms",
+    "cls": "0.093",
+    "fcp": "0.5 s"
+  },
+  {
+    "url": "https://temon.kr/tests",
+    "strategy": "mobile",
+    "performance": 81,
+    "accessibility": 93,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "4.5 s",
+    "tbt": "130 ms",
+    "cls": "0.005",
+    "fcp": "1.2 s"
+  },
+  {
+    "url": "https://temon.kr/tests",
+    "strategy": "desktop",
+    "performance": 80,
+    "accessibility": 93,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "1.2 s",
+    "tbt": "250 ms",
+    "cls": "0.106",
+    "fcp": "0.4 s"
+  },
+  {
+    "url": "https://temon.kr/blog",
+    "strategy": "mobile",
+    "performance": 98,
+    "accessibility": 96,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "1.7 s",
+    "tbt": "70 ms",
+    "cls": "0",
+    "fcp": "1.2 s"
+  },
+  {
+    "url": "https://temon.kr/blog",
+    "strategy": "desktop",
+    "performance": 98,
+    "accessibility": 96,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "0.6 s",
+    "tbt": "60 ms",
+    "cls": "0.06",
+    "fcp": "0.5 s"
+  },
+  {
+    "url": "https://temon.kr/tests/ntrp-test",
+    "strategy": "mobile",
+    "performance": 52,
+    "accessibility": 92,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "4.4 s",
+    "tbt": "1,070 ms",
+    "cls": "0.13",
+    "fcp": "1.1 s"
+  },
+  {
+    "url": "https://temon.kr/tests/ntrp-test",
+    "strategy": "desktop",
+    "performance": 98,
+    "accessibility": 92,
+    "best_practices": 100,
+    "seo": 100,
+    "lcp": "1.1 s",
+    "tbt": "30 ms",
+    "cls": "0",
+    "fcp": "0.3 s"
+  }
+]

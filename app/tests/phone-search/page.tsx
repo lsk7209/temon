@@ -11,15 +11,16 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Search, Sparkles } from "lucide-react"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "phone search로 알아보는 나의 성격 유형 테스트"
+const shortDescription = "검색 습관으로 알아보는 나의 성격 유형 테스트"
 // Full description for Google/AI
-const fullDescription = "phone search로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 phone search를 지금 바로 무료로 시작해보세요."
+const fullDescription = "검색 습관 테스트로 알아보는 나의 성격! 궁금한 것이 생겼을 때 검색하는 방식, 결과를 비교하는 기준, 정보를 저장하는 습관을 12문항으로 확인해보세요."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "phone-search",
-  title: "phone search",
+  title: "검색 습관 테스트",
   shortDescription,
   fullDescription,
   keywords: "검색, 스마트폰, 검색 습관, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
@@ -29,13 +30,31 @@ export const metadata: Metadata = generateQuizMetadata({
 })
 
 const faqs = [
-  ...getTopicQuizFAQs("phone search"),
+  ...getTopicQuizFAQs("검색 습관 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "검색 습관 테스트 검색",
+    description:
+      "정보를 빨리 찾는 편인지, 여러 자료를 비교하는 편인지, 저장해두는 편인지 확인합니다.",
+  },
+  {
+    title: "디지털 성향 확인",
+    description:
+      "스마트폰 검색 방식은 문제 해결 속도, 신뢰 기준, 호기심 패턴을 보여주는 좋은 단서입니다.",
+  },
+  {
+    title: "결과 활용",
+    description:
+      "결과는 전문 진단이 아니라 나의 정보 탐색 스타일을 돌아보는 무료 성향 테스트로 활용하세요.",
+  },
 ]
 
 export default function PhoneSearchIntro() {
   const schemas = generateQuizSchemas({
     quizId: "phone-search",
-    title: "phone search",
+    title: "검색 습관 테스트",
     shortDescription,
     fullDescription,
     keywords: "검색, 스마트폰, 검색 습관, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
@@ -55,21 +74,21 @@ export default function PhoneSearchIntro() {
       <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
-          <div className="relative mx-auto w-32 h-32 mb-8">
+          <div className="relative mx-auto mb-8 h-32 w-48">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full animate-pulse" />
             <div className="absolute inset-2 bg-gradient-to-br from-amber-200 to-orange-300 rounded-full flex items-center justify-center">
               <span className="text-4xl animate-bounce">🔍</span>
             </div>
-            <div className="absolute -top-6 -left-6 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
+            <div className="absolute -top-6 left-2 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
               💡
             </div>
-            <div className="absolute -top-4 -right-8 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
+            <div className="absolute -top-4 right-2 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
               📚
             </div>
-            <div className="absolute -bottom-6 -left-8 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
+            <div className="absolute -bottom-6 left-2 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
               🌐
             </div>
-            <div className="absolute -bottom-4 -right-6 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
+            <div className="absolute -bottom-4 right-2 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
               ✨
             </div>
           </div>
@@ -123,6 +142,18 @@ export default function PhoneSearchIntro() {
             </div>
           </div>
         </div>
+
+        <GscLandingBoost
+          title="검색 습관 테스트, 어떤 성향을 보나요?"
+          summary="검색 습관 테스트는 궁금한 것을 찾는 방식에서 나의 판단 기준과 정보 탐색 성향을 확인하려는 검색 의도에 맞춘 무료 테스트입니다. 키워드 선택, 결과 비교, 저장 습관을 함께 봅니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/phone-photo", label: "사진 찍는 습관 테스트" },
+            { href: "/tests/phone-app-organization", label: "앱 정리 테스트" },
+            { href: "/tests/phone-usage", label: "스마트폰 사용 테스트" },
+          ]}
+          tone="orange"
+        />
 
         <div className="mt-20 space-y-12">
           <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
@@ -251,7 +282,7 @@ export default function PhoneSearchIntro() {
 
         {/* FAQ Section for AI Bot Optimization */}
         <section className="mt-12 mb-8">
-          <FAQSection faqs={faqs} title="phone search 자주 묻는 질문" />
+          <FAQSection faqs={faqs} title="검색 습관 테스트 자주 묻는 질문" />
         </section>
 </main>
     </div>

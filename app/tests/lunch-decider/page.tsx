@@ -11,6 +11,7 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, UtensilsCrossed, Sparkles } from "lucide-react"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "12문항으로 알아보는 나의 회사 점심 의사결정 스타일! 후보 정리부터 대기줄, 결제 방식까지. 작은 선택이 업무 리듬을 말합니다."
@@ -30,6 +31,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("회사 점심 뭐 먹지 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "점심 메뉴 결정 검색",
+    description:
+      "후보를 미리 정하는지, 동료 의견을 따르는지, 대기줄을 감수하는지로 의사결정 성향을 봅니다.",
+  },
+  {
+    title: "직장인 루틴 성향",
+    description:
+      "회사 점심 선택은 업무 리듬, 사회 에너지, 안정 추구와 새로움 추구를 함께 보여줍니다.",
+  },
+  {
+    title: "동료와 비교",
+    description:
+      "결과를 팀원과 공유하면 팀밥, 혼밥, 단골집 선호가 어떻게 다른지 비교하기 좋습니다.",
+  },
 ]
 
 export default function LunchDeciderIntro() {
@@ -56,22 +75,22 @@ export default function LunchDeciderIntro() {
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
           {/* Animated Lunch Elements */}
-          <div className="relative mx-auto w-32 h-32 mb-8">
+          <div className="relative mx-auto mb-8 h-32 w-48">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full animate-pulse" />
             <div className="absolute inset-2 bg-gradient-to-br from-amber-200 to-orange-300 rounded-full flex items-center justify-center">
               <span className="text-4xl animate-bounce">🍱</span>
             </div>
             {/* Floating lunch elements */}
-            <div className="absolute -top-6 -left-6 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
+            <div className="absolute -top-6 left-2 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
               🍜
             </div>
-            <div className="absolute -top-4 -right-8 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
+            <div className="absolute -top-4 right-2 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
               🍛
             </div>
-            <div className="absolute -bottom-6 -left-8 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
+            <div className="absolute -bottom-6 left-2 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
               🥘
             </div>
-            <div className="absolute -bottom-4 -right-6 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
+            <div className="absolute -bottom-4 right-2 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
               🍲
             </div>
           </div>
@@ -126,6 +145,18 @@ export default function LunchDeciderIntro() {
             </div>
           </div>
         </div>
+
+        <GscLandingBoost
+          title="회사 점심 뭐 먹지 테스트, 이런 선택을 봅니다"
+          summary="회사 점심 테스트는 메뉴를 고르는 작은 순간에서 의사결정 스타일을 알고 싶은 검색 의도에 맞춘 무료 테스트입니다. 메뉴 후보, 동료 의견, 대기 시간, 결제 기준을 함께 확인합니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/restaurant-choice", label: "식당 선택 테스트" },
+            { href: "/tests/meal-social", label: "식사 모임 테스트" },
+            { href: "/tests/cafe-style", label: "카페 스타일 테스트" },
+          ]}
+          tone="orange"
+        />
 
         {/* Test Introduction */}
         <div className="mt-20 space-y-12">

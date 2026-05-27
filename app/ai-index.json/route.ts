@@ -29,7 +29,12 @@ export async function GET() {
         },
         {
           url: "/tests",
-          title: "MBTI 테스트 모음 | 무료 성격 테스트 - 테몬",
+          title: "성격 테스트 모음 | 무료 MBTI 테스트 - 테몬",
+          type: "listing",
+        },
+        {
+          url: "/blog",
+          title: "블로그 | 무료 성격 테스트 글 목록 - 테몬",
           type: "listing",
         },
         { url: "/about", title: "테몬 소개", type: "about" },

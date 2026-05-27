@@ -11,6 +11,7 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Camera, Sparkles } from "lucide-react"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "스마트폰으로 사진을 찍는 습관으로 알아보는 나의 성격 유형. 예쁜 것을 봤을 때, 사진을 찍고 싶을 때 등 구체적인 상황으로 분석합니다."
@@ -30,6 +31,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("사진 찍는 습관 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "사진 습관 테스트 검색",
+    description:
+      "사진을 바로 찍는지, 구도를 먼저 보는지, 공유까지 생각하는지로 디지털 성향을 확인합니다.",
+  },
+  {
+    title: "SNS 성향과 연결",
+    description:
+      "사진 저장, 보정, 업로드 기준을 통해 나의 기록 방식과 보여주기 방식을 가볍게 비교할 수 있습니다.",
+  },
+  {
+    title: "짧은 무료 테스트",
+    description:
+      "12문항으로 끝나며 결과는 친구와 공유해 서로의 사진 습관을 비교하기 좋습니다.",
+  },
 ]
 
 export default function PhonePhotoIntro() {
@@ -55,21 +74,21 @@ export default function PhonePhotoIntro() {
       <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
       <main className="container max-w-4xl mx-auto px-4 py-8">
         <div className="text-center space-y-8">
-          <div className="relative mx-auto w-32 h-32 mb-8">
+          <div className="relative mx-auto mb-8 h-32 w-48">
             <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full animate-pulse" />
             <div className="absolute inset-2 bg-gradient-to-br from-pink-200 to-rose-300 rounded-full flex items-center justify-center">
               <span className="text-4xl animate-bounce">📸</span>
             </div>
-            <div className="absolute -top-6 -left-6 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
+            <div className="absolute -top-6 left-2 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
               ✨
             </div>
-            <div className="absolute -top-4 -right-8 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
+            <div className="absolute -top-4 right-2 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
               🌸
             </div>
-            <div className="absolute -bottom-6 -left-8 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
+            <div className="absolute -bottom-6 left-2 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
               💫
             </div>
-            <div className="absolute -bottom-4 -right-6 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
+            <div className="absolute -bottom-4 right-2 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
               🎨
             </div>
           </div>
@@ -123,6 +142,18 @@ export default function PhonePhotoIntro() {
             </div>
           </div>
         </div>
+
+        <GscLandingBoost
+          title="사진 찍는 습관 테스트, 무엇을 보나요?"
+          summary="사진 찍는 습관 테스트는 스마트폰으로 기록하는 방식에서 성향을 알고 싶은 검색 의도에 맞춘 무료 테스트입니다. 구도, 타이밍, 공유 기준을 함께 보며 내가 순간을 남기는 방식을 확인합니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/phone-search", label: "검색 습관 테스트" },
+            { href: "/tests/phone-social-media", label: "SNS 사용 습관 테스트" },
+            { href: "/tests/phone-storage", label: "저장공간 관리 테스트" },
+          ]}
+          tone="pink"
+        />
 
         <div className="mt-20 space-y-12">
           <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">

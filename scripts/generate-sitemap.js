@@ -8,7 +8,7 @@ const path = require('path')
 const { readdir, stat } = require('fs/promises')
 const { existsSync } = require('fs')
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.temon.kr'
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://temon.kr'
 
 /**
  * app/tests 디렉토리를 스캔하여 실제 존재하는 테스트 ID 찾기
@@ -85,6 +85,12 @@ function getStaticRoutes() {
       lastModified: new Date().toISOString(),
       changeFrequency: 'daily',
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'daily',
+      priority: 0.85,
     },
   ]
 }

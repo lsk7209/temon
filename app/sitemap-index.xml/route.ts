@@ -6,7 +6,10 @@ import { NextResponse } from 'next/server'
  * 사이트맵이 50,000개를 초과할 경우 여러 사이트맵으로 분할
  * 현재는 단일 사이트맵 사용하지만, 향후 확장성을 위해 인덱스 구조 준비
  */
-export const revalidate = 3600 // 1시간마다 재생성
+export const revalidate = 300 // 5분마다 재생성
+export const dynamic = 'force-dynamic'
+const SITEMAP_CACHE_CONTROL =
+  'public, max-age=300, s-maxage=300, stale-while-revalidate=3600'
 
 export async function GET() {
   const baseUrl = 'https://temon.kr'
@@ -22,7 +25,7 @@ export async function GET() {
   return new NextResponse(sitemapIndex, {
     headers: {
       'Content-Type': 'application/xml; charset=utf-8',
-      'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      'Cache-Control': SITEMAP_CACHE_CONTROL,
     },
   })
 }

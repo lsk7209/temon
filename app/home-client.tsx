@@ -53,7 +53,7 @@ const guides = [
   {
     title: "검색 목적이 있다면",
     description:
-      "음식, 연애, 생활, 직장, 디지털처럼 관심사와 맞는 카테고리를 고르세요.",
+      "성격 테스트, 테스트 모음, 테스트 사이트처럼 찾는 목적에 맞춰 카테고리를 고르세요.",
   },
   {
     title: "대화 소재가 필요하다면",
@@ -66,6 +66,10 @@ const faqs = [
   {
     q: "테몬 MBTI 테스트 모음은 무료인가요?",
     a: "네. 가입이나 결제 없이 무료로 이용할 수 있습니다.",
+  },
+  {
+    q: "테몬은 어떤 테스트 사이트인가요?",
+    a: "MBTI 테스트 모음, 성격 테스트 모음, 취향 테스트를 주제별로 제공하는 무료 테스트 사이트입니다.",
   },
   {
     q: "테스트 결과는 공식 진단인가요?",
@@ -92,15 +96,16 @@ export default function HomeClient() {
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
             <Badge className="mb-5 border-0 bg-cyan-100 px-4 py-2 text-cyan-800">
-              무료 성격 테스트 플랫폼
+              무료 성격 테스트 사이트
             </Badge>
             <h1 className="text-4xl font-black leading-tight text-slate-950 md:text-6xl">
               무료 MBTI 테스트 모음
             </h1>
             <p className="article-summary key-takeaways mt-5 max-w-2xl text-lg leading-8 text-slate-700">
-              테몬은 가입 없이 2~3분 안에 끝나는 무료 MBTI 테스트와 성격
-              테스트를 모아 둔 한국어 테스트 플랫폼입니다. 음식, 연애, 생활,
-              디지털 등 일상 주제로 결과를 확인하고 친구와 비교할 수 있습니다.
+              테몬은 가입 없이 2~3분 안에 끝나는 무료 MBTI 테스트 모음과
+              성격 테스트 모음을 제공하는 한국어 테스트 사이트입니다. 음식,
+              연애, 생활, 디지털 등 일상 주제로 결과를 확인하고 친구와
+              비교할 수 있습니다.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button size="lg" asChild>
@@ -298,7 +303,7 @@ export default function HomeClient() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 text-center">
             <h2 className="text-3xl font-black text-slate-950">
-              MBTI 테스트 모음, 이렇게 고르면 좋아요
+              성격 테스트 사이트, 이렇게 고르면 좋아요
             </h2>
           </div>
 

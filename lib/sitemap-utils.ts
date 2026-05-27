@@ -172,6 +172,12 @@ export function getStaticRoutes(baseUrl: string): RouteInfo[] {
       priority: 0.9,
     },
     {
+      path: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.85,
+    },
+    {
       path: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
