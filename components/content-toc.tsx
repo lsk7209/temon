@@ -24,11 +24,11 @@ export function ContentToc({
       data-content-toc="manual"
       className={`rounded-lg border border-slate-200 bg-white/90 p-4 shadow-sm ${className}`}
     >
-      <div className="mb-3 flex items-center gap-2 text-sm font-bold text-slate-900">
+      <div className="mb-3 flex items-center gap-2 text-sm font-bold text-slate-950">
         <ListChecks className="h-4 w-4 text-violet-600" aria-hidden="true" />
         <span>{title}</span>
       </div>
-      <ol className="grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+      <ol className="grid gap-2 text-sm text-slate-700 sm:grid-cols-2 lg:grid-cols-1">
         {items.map((item, index) => (
           <li key={item.id}>
             <a

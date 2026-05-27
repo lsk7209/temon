@@ -76,6 +76,34 @@ body {
   contain: layout paint style;
 }
 
+.temon-flow,
+.temon-result {
+  color: #0f172a;
+  text-rendering: optimizeLegibility;
+}
+
+.temon-flow *,
+.temon-result * {
+  letter-spacing: 0;
+}
+
+.temon-flow button,
+.temon-result button,
+.temon-flow a,
+.temon-result a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.temon-flow h1,
+.temon-flow h2,
+.temon-flow h3,
+.temon-result h1,
+.temon-result h2,
+.temon-result h3 {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 .content-visibility-auto {
   content-visibility: auto;
   contain-intrinsic-size: 1px 900px;

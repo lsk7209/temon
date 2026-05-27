@@ -1,32 +1,75 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Clock, Users, Sparkles, CheckCircle2, PlayCircle } from "lucide-react";
-import { JsonLd, createQuizSchema } from "@/components/json-ld";
+import type React from "react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock,
+  PlayCircle,
+  Sparkles,
+  Users,
+} from "lucide-react";
+import { AnswerEngineSection } from "@/components/answer-engine-section";
+import { ContentToc } from "@/components/content-toc";
 import { FAQSection } from "@/components/faq-section";
+import { JsonLd, createQuizSchema } from "@/components/json-ld";
+import { RelatedTestsSection } from "@/components/related-tests-section";
+import { Button } from "@/components/ui/button";
 import {
   getIntroHighlights,
   getIntroLandingParagraphs,
   getIntroUseCases,
 } from "@/lib/quiz-seo-utils";
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy";
-import { RelatedTestsSection } from "@/components/related-tests-section";
-import { AnswerEngineSection } from "@/components/answer-engine-section";
-import { ContentToc } from "@/components/content-toc";
 
 interface TestIntroProps {
   id: string;
   title: string;
   description: string;
   questionCount: number;
-  avgMinutes?: number; // Default 3
-  resultCount?: number; // Default 16
-  participants?: number; // Fake number if needed
+  avgMinutes?: number;
+  resultCount?: number;
+  participants?: number;
   theme?: "blue" | "red" | "purple" | "green" | "pink";
 }
+
+const themeMap = {
+  blue: {
+    accent: "from-blue-600 to-cyan-500",
+    text: "text-blue-700",
+    soft: "bg-blue-50 text-blue-800",
+  },
+  red: {
+    accent: "from-rose-600 to-orange-500",
+    text: "text-rose-700",
+    soft: "bg-rose-50 text-rose-800",
+  },
+  purple: {
+    accent: "from-violet-600 to-fuchsia-500",
+    text: "text-violet-700",
+    soft: "bg-violet-50 text-violet-800",
+  },
+  green: {
+    accent: "from-emerald-600 to-teal-500",
+    text: "text-emerald-700",
+    soft: "bg-emerald-50 text-emerald-800",
+  },
+  pink: {
+    accent: "from-pink-600 to-rose-500",
+    text: "text-pink-700",
+    soft: "bg-pink-50 text-pink-800",
+  },
+};
+
+const tocItems = [
+  { id: "test-start", label: "테스트 시작" },
+  { id: "test-overview", label: "알 수 있는 것" },
+  { id: "test-reason", label: "효과적인 이유" },
+  { id: "test-recommend", label: "추천 대상" },
+  { id: "test-guide", label: "테스트 안내" },
+  { id: "test-faq", label: "자주 묻는 질문" },
+];
 
 export function TestIntro({
   id,
@@ -38,253 +81,184 @@ export function TestIntro({
   participants = 1234,
   theme = "blue",
 }: TestIntroProps) {
-  // Theme configs
-  const themes = {
-    blue: {
-      bg: "bg-[#F7FAFC]",
-      accent: "from-blue-500 to-cyan-500",
-      subAccent: "from-blue-200 to-cyan-300",
-      text: "text-blue-500",
-      badge: "bg-blue-100 text-blue-800",
-      icon: "💧",
-    },
-    red: {
-      bg: "bg-red-50",
-      accent: "from-red-500 to-orange-500",
-      subAccent: "from-red-200 to-orange-300",
-      text: "text-red-500",
-      badge: "bg-red-100 text-red-800",
-      icon: "🔥",
-    },
-    purple: {
-      bg: "bg-purple-50",
-      accent: "from-purple-500 to-pink-500",
-      subAccent: "from-purple-200 to-pink-300",
-      text: "text-purple-500",
-      badge: "bg-purple-100 text-purple-800",
-      icon: "✨",
-    },
-    green: {
-      bg: "bg-green-50",
-      accent: "from-green-500 to-emerald-500",
-      subAccent: "from-green-200 to-emerald-300",
-      text: "text-green-500",
-      badge: "bg-green-100 text-green-800",
-      icon: "🌿",
-    },
-    pink: {
-      bg: "bg-pink-50",
-      accent: "from-pink-500 to-rose-500",
-      subAccent: "from-pink-200 to-rose-300",
-      text: "text-pink-500",
-      badge: "bg-pink-100 text-pink-800",
-      icon: "🌸",
-    },
-  };
-
-  const t = themes[theme] || themes.blue;
-
-  const jsonLd = createQuizSchema({
-    name: title,
-    description: description,
-    url: `https://temon.kr/tests/${id}`,
-    questionCount: questionCount,
-    duration: `PT${avgMinutes}M`,
-    image: `https://temon.kr/images/tests/${id}/thumbnail.jpg`, // Fallback
-  });
+  const currentTheme = themeMap[theme] || themeMap.blue;
   const faqs = getTopicQuizFAQs(title);
   const highlights = getIntroHighlights(title);
   const landingParagraphs = getIntroLandingParagraphs(title);
   const useCases = getIntroUseCases(title);
-  const tocItems = [
-    { id: "test-start", label: "테스트 시작" },
-    { id: "test-overview", label: "알 수 있는 것" },
-    { id: "test-reason", label: "효과적인 이유" },
-    { id: "test-recommend", label: "추천 대상" },
-    { id: "test-guide", label: "테스트 안내" },
-    { id: "test-faq", label: "자주 묻는 질문" },
-  ];
+  const jsonLd = createQuizSchema({
+    name: title,
+    description,
+    url: `https://temon.kr/tests/${id}`,
+    questionCount,
+    duration: `PT${avgMinutes}M`,
+    image: `https://temon.kr/api/og?title=${encodeURIComponent(title)}`,
+  });
 
   return (
-    <div className={`min-h-screen ${t.bg}`}>
+    <div className="temon-flow min-h-screen bg-[#f6f7f9]">
       <JsonLd id="quiz-schema" data={jsonLd} />
-      <article className="container mx-auto max-w-5xl px-4 py-8 sm:py-12">
-        <div id="test-start" className="scroll-mt-24 text-center space-y-10">
-          {/* Animated Icon Area */}
-          <div className="relative mx-auto w-32 h-32 mb-8 group cursor-pointer hover:scale-110 transition-transform">
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${t.accent} rounded-full animate-pulse opacity-20`}
-            />
-            <div
-              className={`absolute inset-2 bg-gradient-to-br ${t.subAccent} rounded-full flex items-center justify-center shadow-lg`}
-            >
-              <span className="text-5xl animate-bounce">{t.icon}</span>
-            </div>
-          </div>
+      <article className="mx-auto max-w-6xl px-4 py-5 sm:px-6 lg:px-8">
+        <header className="mb-4 flex items-center justify-between rounded-lg border border-slate-200 bg-white/90 px-4 py-3 shadow-sm backdrop-blur">
+          <Link href="/tests" className="font-bold text-slate-950">
+            테몬 테스트
+          </Link>
+          <span className="text-sm font-semibold text-slate-500">
+            {avgMinutes}분 소요
+          </span>
+        </header>
 
-          <div className="space-y-6">
-            <Badge
-              variant="secondary"
-              className={`${t.badge} px-4 py-1 text-sm rounded-full`}
+        <section
+          id="test-start"
+          className="grid gap-6 scroll-mt-24 py-4 lg:grid-cols-[minmax(0,1fr)_320px]"
+        >
+          <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <p
+              className={`mb-4 inline-flex rounded-full px-3 py-1 text-sm font-bold ${currentTheme.soft}`}
             >
-              {t.icon} 인기 심리테스트
-            </Badge>
-
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-gray-900">
-              <span
-                className={`bg-gradient-to-r ${t.accent} bg-clip-text text-transparent`}
-              >
-                {title}
-              </span>
+              선택 패턴 테스트
+            </p>
+            <h1 className="break-keep text-3xl font-extrabold leading-tight tracking-normal text-slate-950 sm:text-5xl">
+              {title}
             </h1>
-
-            <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-5 max-w-2xl break-keep text-lg leading-8 text-slate-700">
               {description}
             </p>
-
-            <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 font-medium">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>{participants.toLocaleString()}명 참여</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Clock className="h-4 w-4" />
-                <span>{avgMinutes}분 소요</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle2 className="h-4 w-4" />
-                <span>{questionCount}문항</span>
-              </div>
+            <div className="mt-6 grid gap-3 text-sm font-semibold text-slate-600 sm:grid-cols-3">
+              <IntroStat
+                icon={<Users className="h-4 w-4" />}
+                label={`${participants.toLocaleString()}명 참여`}
+              />
+              <IntroStat icon={<Clock className="h-4 w-4" />} label={`${avgMinutes}분`} />
+              <IntroStat
+                icon={<CheckCircle2 className="h-4 w-4" />}
+                label={`${questionCount}문항`}
+              />
             </div>
-
-            <div className="space-y-4 pt-4">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button
-                size="lg"
-                className={`h-16 px-12 text-xl font-bold bg-gradient-to-r ${t.accent} hover:opacity-90 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rounded-full`}
                 asChild
+                size="lg"
+                className={`min-h-14 bg-gradient-to-r ${currentTheme.accent} text-base font-bold text-white hover:opacity-95`}
               >
                 <Link href={`/tests/${id}/test`}>
-                  <span className="text-2xl mr-3">{t.icon}</span>
+                  <PlayCircle className="mr-2 h-5 w-5" />
                   테스트 시작하기
-                  <PlayCircle className="ml-2 h-6 w-6" />
                 </Link>
               </Button>
-
-              <p className="text-sm text-center text-gray-500">
-                무료 • 회원가입 필요 없음 • {resultCount}가지 유형 분석
-              </p>
+              <Button asChild size="lg" variant="outline" className="min-h-14 bg-white">
+                <Link href="#test-overview">
+                  먼저 살펴보기
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
+            <p className="mt-4 text-sm leading-6 text-slate-500">
+              무료, 회원가입 없음, {resultCount}가지 유형 결과 제공.
+            </p>
           </div>
-        </div>
 
-        <ContentToc items={tocItems} className="mx-auto mt-12 max-w-3xl" />
-
-        <div className="article-content mt-16 space-y-10 sm:mt-20 sm:space-y-12">
-          <Card
-            id="test-overview"
-            className="scroll-mt-24 border-0 bg-white/80 shadow-xl backdrop-blur-sm"
-          >
-            <CardContent className="p-8 md:p-12">
-              <div className="text-center space-y-8">
-                <h2 className="text-2xl font-bold flex items-center justify-center space-x-2 text-gray-800">
-                  <Sparkles className={`h-6 w-6 ${t.text}`} />
-                  <span>무엇을 알 수 있나요?</span>
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                  <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-blue-100 transition-colors">
-                    <div className="text-2xl mb-3">🧐</div>
-                    <h3 className="font-bold text-lg mb-2">나의 성향 분석</h3>
-                    <p className="text-gray-500 text-sm">
-                      MBTI 기반으로 나의 성격과 행동 패턴을 정밀하게 분석합니다.
-                    </p>
-                  </div>
-                  <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-blue-100 transition-colors">
-                    <div className="text-2xl mb-3">🤝</div>
-                    <h3 className="font-bold text-lg mb-2">잘 맞는 친구</h3>
-                    <p className="text-gray-500 text-sm">
-                      나와 환상의 케미를 자랑하는 친구 유형을 찾아보세요.
-                    </p>
-                  </div>
-                  <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-blue-100 transition-colors">
-                    <div className="text-2xl mb-3">💌</div>
-                    <h3 className="font-bold text-lg mb-2">결과 공유</h3>
-                    <p className="text-gray-500 text-sm">
-                      재미있는 결과 이미지를 저장하고 인스타에 공유해보세요!
-                    </p>
-                  </div>
-                </div>
+          <aside className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm lg:self-start">
+            <p className="mb-3 text-sm font-bold text-slate-500">테스트 미리보기</p>
+            <div className="rounded-lg bg-slate-50 p-4">
+              <p className="break-keep text-lg font-bold leading-7 text-slate-950">
+                같은 상황에서 나는 어떤 기준으로 선택할까?
+              </p>
+              <div className="mt-4 grid gap-2">
+                <span className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+                  빠르게 결정한다
+                </span>
+                <span className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+                  조금 더 비교한다
+                </span>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </aside>
+        </section>
 
-          <Card
-            id="test-reason"
-            className="scroll-mt-24 border-0 bg-white/80 shadow-xl backdrop-blur-sm"
-          >
-            <CardContent className="p-8 md:p-12">
-              <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  이 테스트가 효과적인 이유
-                </h2>
-                <div className="space-y-4 max-w-3xl">
-                  {landingParagraphs.map((paragraph) => (
-                    <p
-                      key={paragraph}
-                      className="text-gray-600 leading-relaxed"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {highlights.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm"
-                    >
-                      <p className="text-gray-700 leading-relaxed">{item}</p>
-                    </div>
-                  ))}
-                </div>
+        <div className="mt-4 grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
+          <aside className="lg:sticky lg:top-6 lg:self-start">
+            <ContentToc items={tocItems} />
+          </aside>
+          <main className="article-content space-y-6">
+            <InfoSection
+              id="test-overview"
+              title="무엇을 알 수 있나요?"
+              iconClass={currentTheme.text}
+              items={highlights}
+            />
+            <section
+              id="test-reason"
+              className="scroll-mt-24 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
+            >
+              <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-slate-950">
+                <Sparkles className={`h-5 w-5 ${currentTheme.text}`} />
+                이 테스트가 효과적인 이유
+              </h2>
+              <div className="space-y-4">
+                {landingParagraphs.map((paragraph) => (
+                  <p key={paragraph} className="break-keep leading-8 text-slate-700">
+                    {paragraph}
+                  </p>
+                ))}
               </div>
-            </CardContent>
-          </Card>
-
-          <Card
-            id="test-recommend"
-            className="scroll-mt-24 border-0 bg-white/80 shadow-xl backdrop-blur-sm"
-          >
-            <CardContent className="p-8 md:p-12">
-              <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  이런 분에게 추천합니다
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {useCases.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm"
-                    >
-                      <p className="text-gray-700 leading-relaxed">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <section id="test-guide" className="scroll-mt-24">
-            <AnswerEngineSection quizTitle={title} />
-          </section>
-
-          <section id="test-faq" className="scroll-mt-24">
-            <FAQSection faqs={faqs} className="max-w-none" />
-          </section>
-
-          <RelatedTestsSection testId={id} title="추천 테스트" />
+            </section>
+            <InfoSection
+              id="test-recommend"
+              title="이런 분에게 추천합니다"
+              iconClass={currentTheme.text}
+              items={useCases}
+            />
+            <section id="test-guide" className="scroll-mt-24">
+              <AnswerEngineSection quizTitle={title} />
+            </section>
+            <section id="test-faq" className="scroll-mt-24">
+              <FAQSection faqs={faqs} className="max-w-none" />
+            </section>
+            <RelatedTestsSection testId={id} title="추천 테스트" />
+          </main>
         </div>
       </article>
     </div>
+  );
+}
+
+function IntroStat({ icon, label }: { icon: React.ReactNode; label: string }) {
+  return (
+    <div className="flex min-h-11 items-center gap-2 rounded-lg bg-slate-50 px-3">
+      {icon}
+      <span>{label}</span>
+    </div>
+  );
+}
+
+function InfoSection({
+  id,
+  title,
+  iconClass,
+  items,
+}: {
+  id: string;
+  title: string;
+  iconClass: string;
+  items: string[];
+}) {
+  return (
+    <section
+      id={id}
+      className="scroll-mt-24 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
+    >
+      <h2 className="mb-5 flex items-center gap-2 text-xl font-bold text-slate-950">
+        <Sparkles className={`h-5 w-5 ${iconClass}`} />
+        {title}
+      </h2>
+      <div className="grid gap-3 md:grid-cols-3">
+        {items.map((item) => (
+          <div key={item} className="rounded-lg bg-slate-50 p-4">
+            <p className="break-keep text-sm leading-7 text-slate-700">{item}</p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

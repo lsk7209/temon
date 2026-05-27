@@ -1,15 +1,9 @@
-/**
- * 퀴즈 진행률 표시 컴포넌트
- * 재사용 가능한 진행률 바
- */
-
-import { memo } from "react"
-import { Progress } from "@/components/ui/progress"
+import { memo } from "react";
 
 export interface QuizProgressBarProps {
-  currentQuestion: number
-  totalQuestions: number
-  progress: number
+  currentQuestion: number;
+  totalQuestions: number;
+  progress: number;
 }
 
 export const QuizProgressBar = memo(function QuizProgressBar({
@@ -18,15 +12,29 @@ export const QuizProgressBar = memo(function QuizProgressBar({
   progress,
 }: QuizProgressBarProps) {
   return (
-    <div className="container max-w-2xl mx-auto px-4 py-4">
-      <div className="flex items-center space-x-4">
-        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          {currentQuestion + 1} / {totalQuestions}
-        </span>
-        <Progress value={progress} className="flex-1" />
-        <div className="text-sm text-muted-foreground">{Math.round(progress)}%</div>
+    <div className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
+      <div className="mx-auto max-w-3xl px-4 py-3">
+        <div className="mb-2 flex items-center justify-between text-sm">
+          <span className="font-bold text-slate-950">
+            {currentQuestion + 1} / {totalQuestions}
+          </span>
+          <span className="font-semibold text-violet-700">
+            {Math.round(progress)}%
+          </span>
+        </div>
+        <div
+          className="h-2 overflow-hidden rounded-full bg-slate-100"
+          role="progressbar"
+          aria-valuenow={Math.round(progress)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-violet-600 to-blue-500 transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       </div>
     </div>
-  )
-})
-
+  );
+});
