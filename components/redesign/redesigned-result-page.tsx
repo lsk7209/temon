@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArrowRight, RefreshCw, ShieldCheck } from "lucide-react";
-import AdReserve from "@/components/ad-reserve";
 import { ContentToc } from "@/components/content-toc";
 import { RelatedTestsSection } from "@/components/related-tests-section";
 import { ShareButtons } from "@/components/share-buttons";
@@ -108,13 +107,11 @@ export function RedesignedResultPage({ data }: RedesignedResultPageProps) {
               </div>
             </section>
 
-            <AdReserve />
             <ResultSummaryCards
               traits={data.traits}
               actionTips={data.actionTips}
               compareSignals={data.compareSignals}
             />
-            <AdReserve />
 
             {data.useCases.length > 0 && (
               <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
