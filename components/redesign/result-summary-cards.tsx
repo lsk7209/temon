@@ -53,12 +53,12 @@ export function ResultSummaryCards({
         <div className="grid gap-4 lg:grid-cols-2">
           <GuideBlock
             icon={<CheckCircle2 className="h-5 w-5 text-emerald-600" />}
-            title="바로 해볼 것"
+            title="바로 써먹기"
             items={actionTips}
           />
           <GuideBlock
             icon={<AlertCircle className="h-5 w-5 text-amber-600" />}
-            title="비교해서 볼 것"
+            title="비교해서 보기"
             items={compareSignals}
           />
         </div>

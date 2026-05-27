@@ -13,9 +13,7 @@ import {
   normalizeTextList,
   type ResultViewModel,
 } from "@/lib/result-redesign";
-import {
-  getTopicResultFAQs,
-} from "@/lib/quiz-topic-copy";
+import { getTopicResultFAQs } from "@/lib/quiz-topic-copy";
 
 export const dynamic = "force-dynamic";
 
@@ -68,11 +66,14 @@ function buildFallbackTraits(resultName: string, quizTitle: string): string[] {
   return [
     `${resultName} 유형은 ${quizTitle}에서 반복적으로 드러난 선택 패턴을 요약한 결과입니다.`,
     "상황이 달라져도 비슷한 기준으로 판단하는 경향이 있습니다.",
-    "결과는 고정된 성격이 아니라 현재 선택 습관을 읽는 참고 자료로 보는 것이 좋습니다.",
+    "결과는 고정된 성격이 아니라 현재 선택 감각을 읽는 참고 자료로 보는 것이 좋습니다.",
   ];
 }
 
-function toViewModel(data: NonNullable<Awaited<ReturnType<typeof getResultData>>>, params: Props["params"]): ResultViewModel {
+function toViewModel(
+  data: NonNullable<Awaited<ReturnType<typeof getResultData>>>,
+  params: Props["params"],
+): ResultViewModel {
   const { test, result, typeDetail } = data;
   const traits = normalizeTextList(typeDetail.traits);
   const tips = normalizeTextList(typeDetail.tips);
@@ -82,7 +83,6 @@ function toViewModel(data: NonNullable<Awaited<ReturnType<typeof getResultData>>
   const summary =
     typeDetail.summary ||
     `${typeDetail.label} 유형은 ${test.title}에서 가장 강하게 드러난 선택 패턴입니다.`;
-  const resultUrl = `${BASE_URL}/tests/${params.testId}/test/result/${params.resultId}`;
 
   return {
     testId: params.testId,

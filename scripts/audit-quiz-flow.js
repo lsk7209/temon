@@ -27,6 +27,18 @@ const MIN = {
   resultSections: 5,
 };
 
+const AUTO_ENHANCEMENT_SKIP_SLUGS = new Set([
+  "breakup-style",
+  "commute-style",
+  "food-brand",
+  "hotel-breakfast",
+  "investment-style",
+  "meeting-villain",
+  "spending-style",
+  "spice-tolerance",
+  "zombie-survival",
+]);
+
 const MOJIBAKE_PATTERN =
   /(?:�|占|챙|챘|찾|챨|野|媛|뚯|寃|곌|낵|臾|덈|쒖|쇰|대|뒗|땲|덉|쓽|쟻)/g;
 
@@ -64,6 +76,16 @@ function parseJson(value, fallback = []) {
 
 function arrayCount(value) {
   return Array.isArray(value) ? value.length : 0;
+}
+
+function contentItemCount(value) {
+  if (Array.isArray(value)) return value.length;
+  if (!value || typeof value !== "object") return 0;
+  return Object.values(value).reduce((total, item) => {
+    if (Array.isArray(item)) return total + item.length;
+    if (item && typeof item === "object") return total + contentItemCount(item);
+    return total + (String(item || "").trim().length > 0 ? 1 : 0);
+  }, 0);
 }
 
 function addIssue(issues, severity, message) {
@@ -201,6 +223,14 @@ function auditQuestion(slug, testDir) {
 }
 
 function estimateQuestionCount(source) {
+  const questionsStart = source.indexOf("const questions");
+  const exportStart = source.indexOf("export default");
+  if (questionsStart >= 0 && exportStart > questionsStart) {
+    const questionBlock = source.slice(questionsStart, exportStart);
+    const byQuestionKey = countMatches(questionBlock, /\n\s*question\s*:/g);
+    if (byQuestionKey > 0) return byQuestionKey;
+  }
+
   const constArray = source.match(/const\s+questions\s*[:\w\s<>,]*=\s*\[([\s\S]*?)\n\s*\]/);
   if (constArray) {
     const byQuestion = countMatches(constArray[1], /question\s*:/g);
@@ -217,7 +247,11 @@ function auditResult(slug, testDir) {
   const layoutSource = readText(layoutPath);
   const issues = [];
   const usesCommon = source.includes("MbtiResultPage") || source.includes("RedesignedResultPage");
-  const usesAutoEnhancement = usesCommon || source.includes("StaticResultEnhancements");
+  const usesGlobalAutoEnhancement =
+    fs.existsSync(path.join(ROOT, "app", "tests", "layout.tsx")) &&
+    !AUTO_ENHANCEMENT_SKIP_SLUGS.has(slug);
+  const usesAutoEnhancement =
+    usesCommon || source.includes("StaticResultEnhancements") || usesGlobalAutoEnhancement;
   const resultMapCount = countMatches(source, /description:\s*\[|summary:\s*"|mbti:\s*"|typeCode/g);
   const effectiveSections =
     countMatches(source, /<section\b|<article\b|<Card\b/g) + (usesCommon ? 8 : 0) + (usesAutoEnhancement ? 4 : 0);
@@ -230,11 +264,11 @@ function auditResult(slug, testDir) {
     effectiveSections,
     effectiveParagraphs,
     metadata: /export const metadata|generateMetadata/.test(source + layoutSource),
-    share: /ShareButtons|navigator\.share|copy|clipboard/.test(source) || usesCommon,
-    faq: /FAQ|faq|ResultFaqSchema|createFAQSchema|getTopicResultFAQs/.test(source) || usesCommon,
-    toc: /ContentToc|resultTocItems|data-content-toc/.test(source) || usesCommon,
+    share: /ShareButtons|navigator\.share|copy|clipboard/.test(source) || usesCommon || usesGlobalAutoEnhancement,
+    faq: /FAQ|faq|ResultFaqSchema|createFAQSchema|getTopicResultFAQs/.test(source) || usesCommon || usesAutoEnhancement,
+    toc: /ContentToc|resultTocItems|data-content-toc/.test(source) || usesCommon || usesAutoEnhancement,
     related: /RelatedTestsSection|related/.test(source) || usesCommon || usesAutoEnhancement,
-    actionGuide: /actionTips|recommend|pitfalls|useCases|StaticResultEnhancements|실용|가이드|추천/.test(source) || usesCommon,
+    actionGuide: /actionTips|recommend|pitfalls|useCases|StaticResultEnhancements|활용|가이드|추천/.test(source) || usesCommon || usesAutoEnhancement,
     adReserve: /AdReserve|ad-reserve|data-ad-reserve/.test(source),
     englishTitle: /Where This Result|Action Guide|More .* Quizzes|>FAQ</.test(source),
     mojibakeHits: countMatches(source, MOJIBAKE_PATTERN),
@@ -375,11 +409,14 @@ async function auditDatabase() {
       const thinResults = testResults.filter((result) => {
         const summaryLength = String(result.summary || "").trim().length;
         const traits = parseJson(result.traits, []);
+        const picks = parseJson(result.picks, []);
+        const tips = parseJson(result.tips, []);
+        const matchTypes = parseJson(result.match_types, []);
         const details =
-          arrayCount(traits) +
-          arrayCount(parseJson(result.picks, [])) +
-          arrayCount(parseJson(result.tips, [])) +
-          arrayCount(parseJson(result.match_types, []));
+          contentItemCount(traits) +
+          contentItemCount(picks) +
+          contentItemCount(tips) +
+          contentItemCount(matchTypes);
         return (
           summaryLength < MIN.resultSummary ||
           arrayCount(traits) < MIN.resultTraits ||

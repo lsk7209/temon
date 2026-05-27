@@ -14,9 +14,7 @@ import {
   buildResultUseCases,
   type ResultViewModel,
 } from "@/lib/result-redesign";
-import {
-  getTopicResultFAQs,
-} from "@/lib/quiz-topic-copy";
+import { getTopicResultFAQs } from "@/lib/quiz-topic-copy";
 
 export interface MbtiResultRecord {
   mbti: string;
@@ -53,7 +51,7 @@ function buildActionTips(result: MbtiResultRecord): string[] {
 
   return [
     `${result.name} 결과에서 가장 강하게 보이는 선택 기준을 최근 상황과 비교해 보세요.`,
-    "친구와 결과를 공유하고 서로 다른 판단 기준을 이야기해 보면 해석이 더 쉬워집니다.",
+    "친구와 결과를 공유하고 서로 다른 판단 기준을 이야기해 보면 해석이 쉬워집니다.",
     "비슷한 주제의 테스트를 이어서 해보면 반복되는 선택 패턴을 확인할 수 있습니다.",
   ];
 }
@@ -71,7 +69,7 @@ function toViewModel(
   const safeTraits =
     traits.length > 0
       ? traits
-      : [`${result.name} 유형은 선택 패턴이 비교적 일관된 편입니다.`];
+      : [`${result.name} 유형은 선택 패턴을 비교하기 좋은 유형입니다.`];
 
   return {
     testId,

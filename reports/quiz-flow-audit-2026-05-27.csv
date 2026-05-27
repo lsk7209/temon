@@ -1,215 +1,215 @@
 slug,source,severity,score,recommendedFix,issues
-alarm-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test title too short or missing in registry | P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
-bag-organizing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-bathroom-habit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-bed-making,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 intro mojibake suspected: 26 | P2 question mojibake suspected: 16 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 31
-book-reading,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-breakfast-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-breakfast-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+alarm-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test title too short or missing in registry | P2 test description too short or missing in registry | P2 English section title remains
+bag-organizing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+bathroom-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+bed-making,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 intro mojibake suspected: 26 | P2 question mojibake suspected: 16 | P2 result metadata missing | P2 result mojibake suspected: 31
+book-reading,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+breakfast-preference,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+breakfast-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
 breakup-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
-bungeoppang,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cafe-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cake-cutting,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-chair-sitting,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-chicken-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-chicken-vs-jjimdak,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-clean-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-clothing-order,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-coffee-mbti,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing
-commute-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing
-convenience-snack,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-cleanup,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-complexity,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-create,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-experiment,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-follow,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 46
-cooking-garnishing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-improvise,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-measurement,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 19 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-method,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-modify,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 47
-cooking-multitask,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-music,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-presentation,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-recipe,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 22 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-seasoning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-share,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-shared,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P1 intro rendered H1 missing | P1 resultEntry rendered H1 missing
-cooking-solo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-time,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cooking-timing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cstore-routine,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-cvs-combo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-dessert-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-dinner-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-door-closing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-drink-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-evening-cleaning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 27
-evening-entertainment,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-evening-exercise,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 27
-evening-meal,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-evening-reflection,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 28
-evening-routine,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-evening-sleep-prep,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-evening-snack,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 27
-evening-social,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 45
-evening-wind-down,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-evening-work,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 27
-food-allergy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 20 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 117
-food-aroma,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-bitterness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+bungeoppang,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cafe-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cake-cutting,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+chair-sitting,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+chicken-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+chicken-vs-jjimdak,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+clean-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+clothing-order,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+coffee-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
+commute-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
+convenience-snack,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-cleanup,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-complexity,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-create,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-experiment,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-follow,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 46
+cooking-garnishing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-improvise,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-measurement,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 question mojibake suspected: 19 | P2 result metadata missing
+cooking-method,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-modify,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 47
+cooking-multitask,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-music,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-presentation,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-recipe,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 question mojibake suspected: 22 | P2 result metadata missing
+cooking-seasoning,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-share,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-shared,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+cooking-solo,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+cooking-time,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cooking-timing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cstore-routine,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+cvs-combo,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+dessert-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+dinner-preference,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+door-closing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+drink-preference,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+evening-cleaning,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 27
+evening-entertainment,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+evening-exercise,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 27
+evening-meal,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+evening-reflection,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 28
+evening-routine,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+evening-sleep-prep,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+evening-snack,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 27
+evening-social,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 45
+evening-wind-down,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+evening-work,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 27
+food-allergy,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 question mojibake suspected: 20 | P2 result metadata missing | P2 result mojibake suspected: 117
+food-aroma,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-bitterness,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
 food-brand,static,Pass,95,유지,
-food-budget,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-chewy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-color-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-combination,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-creamy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-crispy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-crunchy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-delivery,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-delivery-app,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-dipping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-garnishing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-garnishing-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-label,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-layering,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-mixing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-new,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-ordering,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-photography,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-plating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-portion,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-presentation,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-reheating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-review,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-sale,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-saltiness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-scooping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-seasoning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-sharing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-sourness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-spiciness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-storage,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-sweetness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-temperature,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-temperature-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P1 intro rendered H1 missing | P1 resultEntry rendered H1 missing
-food-texture,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-timing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 32
-food-umami,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-food-waste,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 19 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 120
-game-play-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-gift-choosing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-gift-wrapping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-grocery-shopping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-hamburger-combo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-budget,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-chewy,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-color-preference,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-combination,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-creamy,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-crispy,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-crunchy,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-delivery,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-delivery-app,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-dipping,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-garnishing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-garnishing-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-label,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-layering,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-mixing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-new,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-ordering,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-photography,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+food-plating,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-portion,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-presentation,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-reheating,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-review,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-sale,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-saltiness,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-scooping,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-seasoning,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-sharing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+food-sourness,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-spiciness,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-storage,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-sweetness,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-temperature,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-temperature-preference,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+food-texture,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-timing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 32
+food-umami,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+food-waste,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 question mojibake suspected: 19 | P2 result metadata missing | P2 result mojibake suspected: 120
+game-play-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+gift-choosing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+gift-wrapping,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+grocery-shopping,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+hamburger-combo,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
 hotel-breakfast,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
-instagram-story,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+instagram-story,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
 investment-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
-jachui,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-kakao-reply-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-karaoke-song,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-kdrama-character,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-kdrama-mbti,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result visible sections low: 1 | P2 result table of contents missing | P2 English section title remains
-kimbap-ingredient,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-kpop-idol,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result visible sections low: 1 | P2 result table of contents missing | P2 result action/use guide missing | P2 English section title remains
-laundry-habit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-leftover-handling,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-love-reaction,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-love-texting-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-lunch-decider,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-lunch-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-lunchbox-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-market-choice,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-balance,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-cleanup,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-duration,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-etiquette,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-frequency,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-group,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-leftover,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-order,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-pacing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-planning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-prep,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-preparation,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-serving,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-sharing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meal-social,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 34 | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 147
-meal-solo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-meat-grilling,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+jachui,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+kakao-reply-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+karaoke-song,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+kdrama-character,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+kdrama-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 English section title remains
+kimbap-ingredient,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+kpop-idol,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 English section title remains
+laundry-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+leftover-handling,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+love-reaction,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+love-texting-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+lunch-decider,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+lunch-preference,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+lunchbox-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+market-choice,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-balance,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-cleanup,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-duration,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-etiquette,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-frequency,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-group,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-leftover,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-order,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-pacing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-planning,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-prep,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+meal-preparation,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-serving,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-sharing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meal-social,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 question mojibake suspected: 34 | P2 result metadata missing | P2 result mojibake suspected: 147
+meal-solo,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+meat-grilling,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
 meeting-villain,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
-midnight-snack,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-mirror-habit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-morning-alarm,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result metadata missing | P2 English section title remains | P2 result mojibake suspected: 27
-morning-breakfast,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-morning-coffee,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 28
-morning-commute,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-morning-energy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-morning-mood,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-morning-outfit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-morning-phone,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result metadata missing | P2 English section title remains | P2 result mojibake suspected: 26
-morning-rush,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 intro mojibake suspected: 16 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 227
-morning-shower,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-movie-theater-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 32
-music-taste,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-noodle-eating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-ntrp-test,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 question count low: 1 | P3 previous question control missing | P3 console logging remains in question page | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-online-food,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-ott-habits,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-pet-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
-phone-app-organization,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-phone-backup,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-phone-battery,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 29
-phone-message,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-phone-notification,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-phone-payment,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-phone-photo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-phone-search,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-phone-social-media,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-phone-storage,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-phone-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 related tests missing
-phone-usage,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
-pizza-topping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-ramen-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
-restaurant-ambiance,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-restaurant-choice,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-restaurant-menu,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-restaurant-price,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 174
-restaurant-reservation,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-restaurant-service,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-rice-eating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-salad-dressing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-shopping-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-shower-habit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-skin-routine,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 related tests missing
-sleep-chronotype,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
-snack-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-snack-time,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-snowwhite-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result action/use guide missing | P2 English section title remains
-sock-wearing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-soup-eating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-soup-vs-bibim,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-spending-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing
+midnight-snack,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+mirror-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+morning-alarm,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 English section title remains | P2 result mojibake suspected: 27
+morning-breakfast,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+morning-coffee,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 28
+morning-commute,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+morning-energy,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+morning-mood,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+morning-outfit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+morning-phone,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 English section title remains | P2 result mojibake suspected: 26
+morning-rush,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 intro mojibake suspected: 16 | P2 result metadata missing | P2 result mojibake suspected: 227
+morning-shower,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+movie-theater-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 32
+music-taste,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+noodle-eating,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+ntrp-test,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P3 previous question control missing | P3 console logging remains in question page | P2 result metadata missing
+online-food,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+ott-habits,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+pet-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 English section title remains
+phone-app-organization,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+phone-backup,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+phone-battery,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 29
+phone-message,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+phone-notification,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+phone-payment,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+phone-photo,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+phone-search,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+phone-social-media,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+phone-storage,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+phone-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
+phone-usage,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 English section title remains
+pizza-topping,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+ramen-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 English section title remains
+restaurant-ambiance,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+restaurant-choice,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+restaurant-menu,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+restaurant-price,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 174
+restaurant-reservation,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+restaurant-service,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+rice-eating,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+salad-dressing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+shopping-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+shower-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+skin-routine,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
+sleep-chronotype,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 English section title remains
+snack-preference,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+snack-time,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+snowwhite-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 English section title remains
+sock-wearing,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+soup-eating,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+soup-vs-bibim,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+spending-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
 spice-tolerance,static,Pass,95,유지,
-stew-vs-soup,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-store-choice,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-study-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result action/use guide missing | P2 English section title remains
-subway-vs-bus,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-taste-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-travel-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-water-drinking,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
-weekend-balance,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-weekend-chore,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-weekend-food,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-weekend-hobby,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-weekend-lazy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-weekend-planning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-weekend-rest,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-weekend-shopping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-weekend-social,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-weekend-travel,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
-youtube-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result metadata missing | P2 English section title remains
+stew-vs-soup,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+store-choice,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+study-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 English section title remains
+subway-vs-bus,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+taste-preference,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 result metadata missing
+travel-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+water-drinking,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing
+weekend-balance,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-chore,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-food,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-hobby,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-lazy,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-planning,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-rest,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-shopping,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-social,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-travel,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 result mojibake suspected: 26
+youtube-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result metadata missing | P2 English section title remains
 zombie-survival,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
 asset-account-split-wave6,database-only,Pass,95,유지,
 asset-advisor-meet-wave6,database-only,Pass,95,유지,
@@ -236,8 +236,8 @@ asset-stock-buy-wave6,database-only,Pass,95,유지,
 asset-stock-sell-wave6,database-only,Pass,95,유지,
 asset-tax-deduction-wave6,database-only,Pass,95,유지,
 asset-wealth-record-wave6,database-only,Pass,95,유지,
-bakery-tray-route-A21b,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-boardgame-rule-reading-2OC3,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+bakery-tray-route-A21b,database-only,Pass,95,유지,
+boardgame-rule-reading-2OC3,database-only,Pass,95,유지,
 bond-club-greet-wave5,database-only,Pass,95,유지,
 bond-cousin-call-wave5,database-only,Pass,95,유지,
 bond-friend-distance-wave5,database-only,Pass,95,유지,
@@ -263,10 +263,10 @@ bond-shared-meal-wave5,database-only,Pass,95,유지,
 bond-sibling-tone-wave5,database-only,Pass,95,유지,
 bond-soft-refusal-wave5,database-only,Pass,95,유지,
 bond-wellbeing-card-wave5,database-only,Pass,95,유지,
-book-bookmark-style-pHPe,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-brand-switching-style-9L8v,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-budget-rounding-style-Zllz,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-buffet-first-plate-_yYp,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+book-bookmark-style-pHPe,database-only,Pass,95,유지,
+brand-switching-style-9L8v,database-only,Pass,95,유지,
+budget-rounding-style-Zllz,database-only,Pass,95,유지,
+buffet-first-plate-_yYp,database-only,Pass,95,유지,
 buy-after-ad-wave5,database-only,Pass,95,유지,
 buy-after-impulse-wave5,database-only,Pass,95,유지,
 buy-collection-start-wave5,database-only,Pass,95,유지,
@@ -292,8 +292,8 @@ buy-store-staff-wave5,database-only,Pass,95,유지,
 buy-subscribe-set-wave5,database-only,Pass,95,유지,
 buy-vintage-pick-wave5,database-only,Pass,95,유지,
 buy-visit-count-wave5,database-only,Pass,95,유지,
-cafe-order-decision-kgRg,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-calendar-blocking-style-qPuE,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+cafe-order-decision-kgRg,database-only,Pass,95,유지,
+calendar-blocking-style-qPuE,database-only,Pass,95,유지,
 care-before-work-wave5,database-only,Pass,95,유지,
 care-breath-count-wave5,database-only,Pass,95,유지,
 care-diary-close-wave5,database-only,Pass,95,유지,
@@ -344,7 +344,7 @@ career-schedule-change-wave5,database-only,Pass,95,유지,
 career-slack-reply-wave5,database-only,Pass,95,유지,
 career-title-call-wave5,database-only,Pass,95,유지,
 career-workshop-join-wave5,database-only,Pass,95,유지,
-cart-abandon-style-N3j0,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+cart-abandon-style-N3j0,database-only,Pass,95,유지,
 choice-appointment-reschedule,database-only,Pass,95,유지,
 choice-crowded-place-response,database-only,Pass,95,유지,
 choice-daily-route-change,database-only,Pass,95,유지,
@@ -365,10 +365,10 @@ choice-small-risk-check,database-only,Pass,95,유지,
 choice-time-gap-filling,database-only,Pass,95,유지,
 choice-unexpected-call-response,database-only,Pass,95,유지,
 choice-waiting-message-send,database-only,Pass,95,유지,
-concert-standing-choice-P9px,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-coupon-saving-style-Z8L_,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-craft-kit-starting-n_-k,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-customer-inquiry-writing-UUva,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+concert-standing-choice-P9px,database-only,Pass,95,유지,
+coupon-saving-style-Z8L_,database-only,Pass,95,유지,
+craft-kit-starting-n_-k,database-only,Pass,95,유지,
+customer-inquiry-writing-UUva,database-only,Pass,95,유지,
 daily-bag-lightening-wave4,database-only,Pass,95,유지,
 daily-calendar-review-wave4,database-only,Pass,95,유지,
 daily-closet-hanger-wave4,database-only,Pass,95,유지,
@@ -387,7 +387,7 @@ daily-sleepwear-choice-wave4,database-only,Pass,95,유지,
 daily-snack-drawer-wave4,database-only,Pass,95,유지,
 daily-table-reset-wave4,database-only,Pass,95,유지,
 daily-umbrella-check-wave4,database-only,Pass,95,유지,
-dark-mode-choice-yotA,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+dark-mode-choice-yotA,database-only,Pass,95,유지,
 digital-ai-question-wave4,database-only,Pass,95,유지,
 digital-app-folder-wave4,database-only,Pass,95,유지,
 digital-backup-routine,database-only,Pass,95,유지,
@@ -427,8 +427,8 @@ digital-shopping-cart-wave4,database-only,Pass,95,유지,
 digital-video-queue-wave4,database-only,Pass,95,유지,
 digital-video-watch-later,database-only,Pass,95,유지,
 digital-voice-memo-review,database-only,Pass,95,유지,
-document-review-pass-sGnI,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-download-folder-backlog-QUEd,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+document-review-pass-sGnI,database-only,Pass,95,유지,
+download-folder-backlog-QUEd,database-only,Pass,95,유지,
 drive-air-freshener-wave6,database-only,Pass,95,유지,
 drive-car-snack-wave6,database-only,Pass,95,유지,
 drive-dashcam-view-wave6,database-only,Pass,95,유지,
@@ -454,7 +454,7 @@ drive-traffic-jam-wave6,database-only,Pass,95,유지,
 drive-wash-routine-wave6,database-only,Pass,95,유지,
 drive-wiper-replace-wave6,database-only,Pass,95,유지,
 drive-yellow-light-wave6,database-only,Pass,95,유지,
-emoji-reaction-choice-DnDx,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+emoji-reaction-choice-DnDx,database-only,Pass,95,유지,
 emotion-alone-reset-wave4,database-only,Pass,95,유지,
 emotion-anger-cool-wave4,database-only,Pass,95,유지,
 emotion-anger-cooldown-style,database-only,Pass,95,유지,
@@ -491,10 +491,10 @@ emotion-thanks-accept-wave4,database-only,Pass,95,유지,
 emotion-thanks-acceptance,database-only,Pass,95,유지,
 emotion-worry-note-style,database-only,Pass,95,유지,
 emotion-worry-share-wave4,database-only,Pass,95,유지,
-focus-music-choice-YZtD,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-free-sample-choice-_yxp,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-free-shipping-threshold-lRle,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-grocery-label-checking-u3NR,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+focus-music-choice-YZtD,database-only,Pass,95,유지,
+free-sample-choice-_yxp,database-only,Pass,95,유지,
+free-shipping-threshold-lRle,database-only,Pass,95,유지,
+grocery-label-checking-u3NR,database-only,Pass,95,유지,
 hobby-baking-try-wave5,database-only,Pass,95,유지,
 hobby-board-game-wave5,database-only,Pass,95,유지,
 hobby-bookshelf-tidy-wave5,database-only,Pass,95,유지,
@@ -554,10 +554,10 @@ home-seasonal-decor-storage,database-only,Pass,95,유지,
 home-storage-box-labeling,database-only,Pass,95,유지,
 home-toolbox-arrangement,database-only,Pass,95,유지,
 home-window-cleaning-timing,database-only,Pass,95,유지,
-ice-cup-choice-iOtX,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-jjimdak-vs-chicken-mbti-test-KN2X,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB question count low: 6 | P1 DB thin result rows: 15 | P2 DB test description too short
-keyboard-shortcut-use-C1SK,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-late-night-delivery-reason-L6od,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+ice-cup-choice-iOtX,database-only,Pass,95,유지,
+jjimdak-vs-chicken-mbti-test-KN2X,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+keyboard-shortcut-use-C1SK,database-only,Pass,95,유지,
+late-night-delivery-reason-L6od,database-only,Pass,95,유지,
 learn-break-timer-wave4,database-only,Pass,95,유지,
 learn-concept-map-wave4,database-only,Pass,95,유지,
 learn-deadline-study-wave4,database-only,Pass,95,유지,
@@ -577,7 +577,7 @@ learn-study-finish-wave4,database-only,Pass,95,유지,
 learn-study-place-wave4,database-only,Pass,95,유지,
 learn-study-start-wave4,database-only,Pass,95,유지,
 learn-teacher-feedback-wave4,database-only,Pass,95,유지,
-leftovers-reheat-method-pgS7,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+leftovers-reheat-method-pgS7,database-only,Pass,95,유지,
 leisure-book-stack-wave4,database-only,Pass,95,유지,
 leisure-club-fit-wave4,database-only,Pass,95,유지,
 leisure-concert-prep-wave4,database-only,Pass,95,유지,
@@ -623,7 +623,7 @@ life-socks-fold-wave5,database-only,Pass,95,유지,
 life-spice-shelf-wave5,database-only,Pass,95,유지,
 life-vacuum-route-wave5,database-only,Pass,95,유지,
 life-water-filter-wave5,database-only,Pass,95,유지,
-map-route-selection-7Ri3,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+map-route-selection-7Ri3,database-only,Pass,95,유지,
 meal-bread-morning-wave6,database-only,Pass,95,유지,
 meal-coffee-after-wave6,database-only,Pass,95,유지,
 meal-cooking-mood-wave6,database-only,Pass,95,유지,
@@ -674,7 +674,7 @@ mood-share-with-wave5,database-only,Pass,95,유지,
 mood-thanks-diary-wave5,database-only,Pass,95,유지,
 mood-thrill-show-wave5,database-only,Pass,95,유지,
 mood-warm-words-wave5,database-only,Pass,95,유지,
-museum-route-style-tXqh,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+museum-route-style-tXqh,database-only,Pass,95,유지,
 music-album-cover-wave6,database-only,Pass,95,유지,
 music-bluetooth-speaker-wave6,database-only,Pass,95,유지,
 music-chart-check-wave6,database-only,Pass,95,유지,
@@ -700,9 +700,9 @@ music-throwback-play-wave6,database-only,Pass,95,유지,
 music-vinyl-listen-wave6,database-only,Pass,95,유지,
 music-work-music-wave6,database-only,Pass,95,유지,
 music-workout-music-wave6,database-only,Pass,95,유지,
-neighborhood-walk-route-yT-w,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-noodle-topping-extra-rAn3,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-notification-badge-clearing-mkq4,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+neighborhood-walk-route-yT-w,database-only,Pass,95,유지,
+noodle-topping-extra-rAn3,database-only,Pass,95,유지,
+notification-badge-clearing-mkq4,database-only,Pass,95,유지,
 outing-bus-or-subway-wave6,database-only,Pass,95,유지,
 outing-card-or-cash-wave6,database-only,Pass,95,유지,
 outing-dust-check-wave6,database-only,Pass,95,유지,
@@ -753,8 +753,8 @@ parent-sibling-mediation-wave6,database-only,Pass,95,유지,
 parent-snack-pick-kid-wave6,database-only,Pass,95,유지,
 parent-teacher-meet-wave6,database-only,Pass,95,유지,
 parent-theme-park-wave6,database-only,Pass,95,유지,
-password-reset-reaction-_VrE,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-pen-choice-style-PDX4,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+password-reset-reaction-_VrE,database-only,Pass,95,유지,
+pen-choice-style-PDX4,database-only,Pass,95,유지,
 pet-away-prep-wave6,database-only,Pass,95,유지,
 pet-barking-handle-wave6,database-only,Pass,95,유지,
 pet-bath-cycle-wave6,database-only,Pass,95,유지,
@@ -780,12 +780,11 @@ pet-vet-checkup-wave6,database-only,Pass,95,유지,
 pet-walk-route-wave6,database-only,Pass,95,유지,
 pet-walk-time-wave6,database-only,Pass,95,유지,
 pet-wet-or-dry-wave6,database-only,Pass,95,유지,
-phone-home-screen-priority-rTYp,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-photo-album-sorting-XSRL,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-photo-backup-timing-0Ztt,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-picnic-menu-packing-NJP5,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-playlist-ordering-style-OJGZ,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-presentation-rehearsal-style-PwN_,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+phone-home-screen-priority-rTYp,database-only,Pass,95,유지,
+photo-album-sorting-XSRL,database-only,Pass,95,유지,
+photo-backup-timing-0Ztt,database-only,Pass,95,유지,
+picnic-menu-packing-NJP5,database-only,Pass,95,유지,
+playlist-ordering-style-OJGZ,database-only,Pass,95,유지,
 read-audiobook-listen-wave6,database-only,Pass,95,유지,
 read-bedtime-read-wave6,database-only,Pass,95,유지,
 read-book-cover-wave6,database-only,Pass,95,유지,
@@ -849,12 +848,12 @@ relation-team-lunch-talk,database-only,Pass,95,유지,
 relation-team-meal-wave4,database-only,Pass,95,유지,
 relation-thanks-depth-wave4,database-only,Pass,95,유지,
 relation-thanks-message-depth,database-only,Pass,95,유지,
-return-policy-reading-0a-0,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-return-window-check-2wTR,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-reward-point-timing-3Q0A,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-salad-ingredient-picking-UBLW,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-sauce-pour-order-OUnF,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-screenshot-saving-style-fdmo,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+return-policy-reading-0a-0,database-only,Pass,95,유지,
+return-window-check-2wTR,database-only,Pass,95,유지,
+reward-point-timing-3Q0A,database-only,Pass,95,유지,
+salad-ingredient-picking-UBLW,database-only,Pass,95,유지,
+sauce-pour-order-OUnF,database-only,Pass,95,유지,
+screenshot-saving-style-fdmo,database-only,Pass,95,유지,
 season-after-rain-wave5,database-only,Pass,95,유지,
 season-aprfool-joke-wave5,database-only,Pass,95,유지,
 season-autumn-foliage-wave5,database-only,Pass,95,유지,
@@ -891,7 +890,7 @@ season-winter-ski-wave5,database-only,Pass,95,유지,
 season-winter-solstice-wave5,database-only,Pass,95,유지,
 season-xmas-tree-wave5,database-only,Pass,95,유지,
 season-year-end-wave5,database-only,Pass,95,유지,
-secondhand-chat-style-3a9U,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+secondhand-chat-style-3a9U,database-only,Pass,95,유지,
 self-attention-reset,database-only,Pass,95,유지,
 self-daily-priority-one,database-only,Pass,95,유지,
 self-decision-fatigue-care,database-only,Pass,95,유지,
@@ -940,7 +939,7 @@ senior-volunteer-senior-wave6,database-only,Pass,95,유지,
 senior-walk-routine-senior-wave6,database-only,Pass,95,유지,
 senior-will-prepare-wave6,database-only,Pass,95,유지,
 senior-young-friend-wave6,database-only,Pass,95,유지,
-shortform-scroll-stop--HNY,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+shortform-scroll-stop--HNY,database-only,Pass,95,유지,
 skill-adult-edu-wave5,database-only,Pass,95,유지,
 skill-cert-start-wave5,database-only,Pass,95,유지,
 skill-code-intro-wave5,database-only,Pass,95,유지,
@@ -966,7 +965,7 @@ skill-study-cafe-wave5,database-only,Pass,95,유지,
 skill-toeic-prep-wave5,database-only,Pass,95,유지,
 skill-tutor-class-wave5,database-only,Pass,95,유지,
 skill-write-class-wave5,database-only,Pass,95,유지,
-snack-sharing-boundary-qlxc,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+snack-sharing-boundary-qlxc,database-only,Pass,95,유지,
 spend-brand-switch-wave4,database-only,Pass,95,유지,
 spend-bulk-buy-judgment,database-only,Pass,95,유지,
 spend-bulk-buy-wave4,database-only,Pass,95,유지,
@@ -1003,7 +1002,7 @@ spend-unboxing-reaction,database-only,Pass,95,유지,
 spend-warranty-keeping-style,database-only,Pass,95,유지,
 spend-wish-list-pruning,database-only,Pass,95,유지,
 spend-wish-list-wave4,database-only,Pass,95,유지,
-spicy-challenge-reaction-Se6o,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+spicy-challenge-reaction-Se6o,database-only,Pass,95,유지,
 sport-app-track-wave6,database-only,Pass,95,유지,
 sport-aqua-walk-wave6,database-only,Pass,95,유지,
 sport-badminton-game-wave6,database-only,Pass,95,유지,
@@ -1029,10 +1028,10 @@ sport-swimming-lap-wave6,database-only,Pass,95,유지,
 sport-tennis-match-wave6,database-only,Pass,95,유지,
 sport-warmup-stretch-wave6,database-only,Pass,95,유지,
 sport-yoga-mat-wave6,database-only,Pass,95,유지,
-sports-cheering-volume-nzsJ,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-status-message-update-vuD-,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-sticker-collecting-style-G9Zk,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-streaming-watchlist-style-Yr1B,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+sports-cheering-volume-nzsJ,database-only,Pass,95,유지,
+status-message-update-vuD-,database-only,Pass,95,유지,
+sticker-collecting-style-G9Zk,database-only,Pass,95,유지,
+streaming-watchlist-style-Yr1B,database-only,Pass,95,유지,
 style-accessory-pick-wave6,database-only,Pass,95,유지,
 style-bag-day-wave6,database-only,Pass,95,유지,
 style-business-casual-wave6,database-only,Pass,95,유지,
@@ -1058,8 +1057,7 @@ style-wardrobe-rotate-wave6,database-only,Pass,95,유지,
 style-watch-pick-wave6,database-only,Pass,95,유지,
 style-wedding-guest-wave6,database-only,Pass,95,유지,
 style-weekend-comfort-wave6,database-only,Pass,95,유지,
-subscription-cancel-timing-dqRa,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-team-chat-mention-style-_cDp,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+subscription-cancel-timing-dqRa,database-only,Pass,95,유지,
 tech-ai-assistant-wave5,database-only,Pass,95,유지,
 tech-autocomplete-wave5,database-only,Pass,95,유지,
 tech-bg-app-wave5,database-only,Pass,95,유지,
@@ -1085,7 +1083,7 @@ tech-voice-memo-wave5,database-only,Pass,95,유지,
 tech-watch-notify-wave5,database-only,Pass,95,유지,
 tech-widget-layout-wave5,database-only,Pass,95,유지,
 tech-wifi-manage-wave5,database-only,Pass,95,유지,
-theater-entry-timing-yqJI,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+theater-entry-timing-yqJI,database-only,Pass,95,유지,
 travel-airport-dutyfree-route,database-only,Pass,95,유지,
 travel-airport-time-wave4,database-only,Pass,95,유지,
 travel-checklist-use-wave4,database-only,Pass,95,유지,
@@ -1113,7 +1111,7 @@ travel-rainy-trip-response,database-only,Pass,95,유지,
 travel-restaurant-waiting-choice,database-only,Pass,95,유지,
 travel-return-unpack-wave4,database-only,Pass,95,유지,
 travel-seat-upgrade-decision,database-only,Pass,95,유지,
-travel-souvenir-choice-bIsE,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+travel-souvenir-choice-bIsE,database-only,Pass,95,유지,
 travel-souvenir-choice-style,database-only,Pass,95,유지,
 travel-souvenir-list-check,database-only,Pass,95,유지,
 travel-souvenir-pick-wave4,database-only,Pass,95,유지,
@@ -1204,9 +1202,9 @@ vital-supplement-start-wave5,database-only,Pass,95,유지,
 vital-sweet-cut-wave5,database-only,Pass,95,유지,
 vital-vitamin-pick-wave5,database-only,Pass,95,유지,
 vital-wrist-care-wave5,database-only,Pass,95,유지,
-warranty-registration-style-GAQ1,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-water-temperature-choice-hFrW,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
-webtoon-comment-reading-qeOi,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+warranty-registration-style-GAQ1,database-only,Pass,95,유지,
+water-temperature-choice-hFrW,database-only,Pass,95,유지,
+webtoon-comment-reading-qeOi,database-only,Pass,95,유지,
 wellness-body-signal-wave4,database-only,Pass,95,유지,
 wellness-cafeteria-pick-wave4,database-only,Pass,95,유지,
 wellness-condition-log-wave4,database-only,Pass,95,유지,
@@ -1310,7 +1308,7 @@ emergency-fund-style-ULX_,database-only,Pass,95,유지,
 emotion-hiding-type--t0u,database-only,Pass,95,유지,
 ending-interpretation-b2dc,database-only,Pass,95,유지,
 episode-skip-threshold-5FGC,database-only,Pass,95,유지,
-exam-checking-order-j6Dm,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+exam-checking-order-j6Dm,database-only,Pass,95,유지,
 expectation-disappointment-hWUl,database-only,Pass,95,유지,
 family-conflict-style-ZVxf,database-only,Pass,95,유지,
 fandom-temperature-cp2E,database-only,Pass,95,유지,
@@ -1351,9 +1349,9 @@ leaving-check-style-rezv,database-only,Pass,95,유지,
 library-seat-selection-test-PHK_,database-only,Pass,95,유지,
 limited-drop-queue-GoUr,database-only,Pass,95,유지,
 lost-item-response-style-hhXS,database-only,Pass,95,유지,
-lunch-break-boundary-u6f4,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+lunch-break-boundary-u6f4,database-only,Pass,95,유지,
 lunchbox-style-test-BQ9n,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
-meeting-keyboard-sound-OZsn,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+meeting-keyboard-sound-OZsn,database-only,Pass,95,유지,
 meeting-note-taking-vYN8,database-only,Pass,95,유지,
 meme-reaction-style-test-Fi2N,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
 monsoon-indoor-plan-iouR,database-only,Pass,95,유지,
@@ -1373,6 +1371,7 @@ pizza-topping-mbti-test-hFyj,database-only,P2,70,SEO/목차/관련 링크/문구
 plant-care-style-n-bg,database-only,Pass,95,유지,
 popup-store-reaction-QO-G,database-only,Pass,95,유지,
 practice-participation-attitude-test-6z2j,database-only,Pass,95,유지,
+presentation-rehearsal-style-PwN_,database-only,Pass,95,유지,
 price-alert-waiting-GPDC,database-only,Pass,95,유지,
 procrastination-excuse-90j1,database-only,Pass,95,유지,
 product-review-reading-style-t4jU,database-only,Pass,95,유지,
@@ -1406,12 +1405,13 @@ split-bill-discussion-S3YP,database-only,Pass,95,유지,
 spoiler-boundary-FnQO,database-only,Pass,95,유지,
 spring-change-drive-zy00,database-only,Pass,95,유지,
 story-highlight-curation-Ik3b,database-only,Pass,95,유지,
-study-break-timing-K8Ot,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+study-break-timing-K8Ot,database-only,Pass,95,유지,
 subway-vs-bus-personality-test-93VO,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
 sushi-mbti-test-Yw65,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
 tanghulu-mbti-test-ej0S,database-only,Pass,95,유지,
 tangsooyuk-test-8enk,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
-task-switching-speed-Wn6a,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+task-switching-speed-Wn6a,database-only,Pass,95,유지,
+team-chat-mention-style-_cDp,database-only,Pass,95,유지,
 test-quiz-2-godsaeng-master-Tjjb,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
 timetable-planning-style-vQJS,database-only,Pass,95,유지,
 trailer-trust-type-vTSg,database-only,Pass,95,유지,

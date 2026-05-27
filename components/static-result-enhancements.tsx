@@ -50,7 +50,7 @@ export function StaticResultEnhancements({
         <CardContent>
           <ul className="space-y-3">
             {useCases.map((item) => (
-              <li key={item} className="text-gray-700 leading-relaxed">
+              <li key={item} className="leading-relaxed text-gray-700">
                 {item}
               </li>
             ))}

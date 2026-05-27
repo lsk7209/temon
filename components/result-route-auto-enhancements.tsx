@@ -3,8 +3,9 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import { ShareButtons } from "@/components/share-buttons";
 import { StaticResultEnhancements } from "@/components/static-result-enhancements";
+import { ALL_TESTS } from "@/lib/tests-config";
 
-const SKIP_SLUGS = new Set([
+export const AUTO_ENHANCEMENT_SKIP_SLUGS = [
   "breakup-style",
   "commute-style",
   "food-brand",
@@ -14,7 +15,9 @@ const SKIP_SLUGS = new Set([
   "spending-style",
   "spice-tolerance",
   "zombie-survival",
-]);
+] as const;
+
+const SKIP_SLUGS = new Set<string>(AUTO_ENHANCEMENT_SKIP_SLUGS);
 
 function getResultSlug(pathname: string): string | null {
   const match = pathname.match(/^\/tests\/([^/]+)\/test\/result\/?$/);
@@ -37,7 +40,8 @@ export function ResultRouteAutoEnhancements() {
   if (!slug || SKIP_SLUGS.has(slug)) return null;
 
   const resultType = searchParams.get("type")?.toUpperCase() || "RESULT";
-  const title = `${toTitle(slug)} 결과`;
+  const testTitle = ALL_TESTS.find((test) => test.id === slug)?.title;
+  const title = `${testTitle || toTitle(slug)} 결과`;
 
   return (
     <section className="mx-auto w-full max-w-[720px] px-4 pb-10">

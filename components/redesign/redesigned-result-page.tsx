@@ -35,7 +35,7 @@ export function RedesignedResultPage({ data }: RedesignedResultPageProps) {
 
         <section
           id="result-summary"
-          className="grid gap-6 scroll-mt-24 py-4 lg:grid-cols-[minmax(0,1fr)_340px]"
+          className="grid scroll-mt-24 gap-6 py-4 lg:grid-cols-[minmax(0,1fr)_340px]"
         >
           <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <p className="mb-3 text-sm font-bold text-violet-700">

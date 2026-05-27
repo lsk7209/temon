@@ -393,25 +393,25 @@ export function getTopicResultUseCases(
 
   if (lowerTitle.includes("drama")) {
     return [
-      `${resultName} works best when you compare it with your real behavior in conflict, romance, and group scenes.`,
-      "It is especially useful as shareable comparison content because role-based labels are easy to discuss with friends.",
-      "The strongest next click is usually another entertainment or relationship-style quiz.",
+      `${resultName} 결과는 갈등, 연애, 모임 장면에서 내가 실제로 반복하는 행동과 비교할 때 가장 유용합니다.`,
+      "역할 기반 결과는 친구와 비교하며 이야기하기 쉬워 공유용 콘텐츠로도 잘 맞습니다.",
+      "다음 단계로는 연애, 관계, 엔터테인먼트 계열 테스트를 이어서 보면 흐름이 자연스럽습니다.",
     ];
   }
 
   if (lowerTitle.includes("idol") || lowerTitle.includes("k-pop")) {
     return [
-      `${resultName} becomes clearer when you compare it with how you behave in teams, chats, or fast-moving social settings.`,
-      "This kind of result is strongest when it is used as a group-role explanation instead of a celebrity fantasy label.",
-      "Visitors who identify with one role often keep clicking into other pop-culture and personality quizzes.",
+      `${resultName} 결과는 팀, 단체 채팅, 빠르게 움직이는 사회적 상황에서의 내 행동과 비교하면 더 선명해집니다.`,
+      "이 결과는 특정 스타 판타지보다 내가 맡는 그룹 내 역할을 설명할 때 더 설득력 있습니다.",
+      "한 역할에 공감한 사용자는 다른 팝컬처·성향 테스트로 이어서 탐색하기 좋습니다.",
     ];
   }
 
   if (lowerTitle.includes("pet")) {
     return [
-      `${resultName} is most useful when you connect it to your actual home rhythm and social battery.`,
-      "Animal-style results work well because they make emotional patterns easier to recognize without heavy self-analysis.",
-      "The next useful step is checking whether the same pattern repeats in habit, food, or relationship quizzes.",
+      `${resultName} 결과는 집에서의 리듬, 회복 방식, 사회적 에너지와 연결해 볼 때 가장 유용합니다.`,
+      "동물 비유형 결과는 무거운 자기분석 없이 감정 패턴을 쉽게 알아차리게 해줍니다.",
+      "습관, 음식, 관계 테스트에서도 같은 패턴이 반복되는지 확인해 보세요.",
     ];
   }
 
@@ -421,31 +421,31 @@ export function getTopicResultUseCases(
     lowerTitle.includes("food")
   ) {
     return [
-      `${resultName} is best used as a clue about your comfort zone, experimentation level, and repeat-choice habit.`,
-      "Food-themed results perform well because visitors can immediately test whether the pattern shows up in real ordering behavior.",
-      "A strong next step is exploring other daily-life quizzes to see whether the same decision style appears again.",
+      `${resultName} 결과는 익숙한 선택을 선호하는지, 새로운 조합을 시도하는지, 반복 주문 습관이 있는지 살펴볼 때 좋습니다.`,
+      "음식 주제 결과는 실제 주문 행동과 바로 비교할 수 있어 체감도가 높습니다.",
+      "다른 일상 테스트를 이어서 보면 같은 결정 스타일이 반복되는지 확인할 수 있습니다.",
     ];
   }
 
   if (lowerTitle.includes("study")) {
     return [
-      `${resultName} is most useful when you turn the interpretation into one practical study adjustment this week.`,
-      "Study results become more accurate when you compare them with your actual exam period behavior rather than your ideal plan.",
-      "The best follow-up is another habit or productivity quiz that shows whether the same routine pattern is recurring.",
+      `${resultName} 결과는 이번 주 공부 방식에서 바로 바꿀 수 있는 한 가지 행동으로 연결할 때 가장 유용합니다.`,
+      "이상적인 계획보다 실제 시험 기간 행동과 비교하면 결과 해석이 더 정확해집니다.",
+      "습관이나 생산성 테스트를 이어서 보면 같은 루틴 패턴이 반복되는지 확인할 수 있습니다.",
     ];
   }
 
   if (lowerTitle.includes("alarm") || lowerTitle.includes("phone")) {
     return [
-      `${resultName} matters most when you map it onto one real loop you repeat every day.`,
-      "Habit-based result pages are strongest when they lead to one small behavioral change instead of a full routine reset.",
-      "The next click usually comes from curiosity about whether the same pattern appears in another routine-based quiz.",
+      `${resultName} 결과는 매일 반복하는 실제 루틴 하나에 대입해 볼 때 가장 의미가 큽니다.`,
+      "습관형 결과는 루틴 전체를 갈아엎기보다 작은 행동 하나를 조정할 때 실용적입니다.",
+      "다른 루틴 테스트에서도 같은 패턴이 나오는지 확인해 보세요.",
     ];
   }
 
   return [
-    `${resultName} is most useful when you compare it with your real repeat behavior instead of a one-off mood.`,
-    "The strongest value of a result page is showing how one pattern repeats across different kinds of choices.",
-    "Use related quizzes to test whether the same preference appears in nearby topics.",
+    `${resultName} 결과는 일시적인 기분보다 실제로 반복되는 행동과 비교할 때 가장 유용합니다.`,
+    "결과 페이지의 핵심 가치는 하나의 선택 패턴이 여러 상황에서 어떻게 반복되는지 보여주는 데 있습니다.",
+    "관련 테스트를 이어서 해보며 비슷한 선호가 다른 주제에서도 나타나는지 확인해 보세요.",
   ];
 }
