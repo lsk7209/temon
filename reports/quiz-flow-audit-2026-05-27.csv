@@ -1,0 +1,1434 @@
+slug,source,severity,score,recommendedFix,issues
+alarm-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test title too short or missing in registry | P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
+bag-organizing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+bathroom-habit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+bed-making,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 intro mojibake suspected: 26 | P2 question mojibake suspected: 16 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 31
+book-reading,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+breakfast-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+breakfast-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+breakup-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
+bungeoppang,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cafe-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cake-cutting,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+chair-sitting,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+chicken-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+chicken-vs-jjimdak,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+clean-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+clothing-order,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+coffee-mbti,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing
+commute-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing
+convenience-snack,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-cleanup,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-complexity,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-create,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-experiment,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-follow,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 46
+cooking-garnishing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-improvise,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-measurement,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 19 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-method,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-modify,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 47
+cooking-multitask,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-music,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-presentation,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-recipe,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 22 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-seasoning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-share,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-shared,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P1 intro rendered H1 missing | P1 resultEntry rendered H1 missing
+cooking-solo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-time,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cooking-timing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cstore-routine,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+cvs-combo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+dessert-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+dinner-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+door-closing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+drink-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+evening-cleaning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 27
+evening-entertainment,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+evening-exercise,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 27
+evening-meal,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+evening-reflection,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 28
+evening-routine,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+evening-sleep-prep,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+evening-snack,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 27
+evening-social,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 45
+evening-wind-down,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+evening-work,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 27
+food-allergy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 20 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 117
+food-aroma,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-bitterness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-brand,static,Pass,95,유지,
+food-budget,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-chewy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-color-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-combination,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-creamy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-crispy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-crunchy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-delivery,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-delivery-app,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-dipping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-garnishing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-garnishing-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-label,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-layering,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-mixing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-new,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-ordering,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-photography,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-plating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-portion,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-presentation,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-reheating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-review,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-sale,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-saltiness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-scooping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-seasoning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-sharing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-sourness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-spiciness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-storage,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-sweetness,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-temperature,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-temperature-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P1 intro rendered H1 missing | P1 resultEntry rendered H1 missing
+food-texture,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-timing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 32
+food-umami,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+food-waste,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 19 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 120
+game-play-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+gift-choosing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+gift-wrapping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+grocery-shopping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+hamburger-combo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+hotel-breakfast,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
+instagram-story,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+investment-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
+jachui,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+kakao-reply-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+karaoke-song,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+kdrama-character,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+kdrama-mbti,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result visible sections low: 1 | P2 result table of contents missing | P2 English section title remains
+kimbap-ingredient,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+kpop-idol,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result visible sections low: 1 | P2 result table of contents missing | P2 result action/use guide missing | P2 English section title remains
+laundry-habit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+leftover-handling,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+love-reaction,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+love-texting-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+lunch-decider,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+lunch-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+lunchbox-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+market-choice,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-balance,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-cleanup,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-duration,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-etiquette,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-frequency,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-group,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-leftover,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-order,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-pacing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-planning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-prep,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-preparation,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-serving,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-sharing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meal-social,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 question mojibake suspected: 34 | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 147
+meal-solo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meat-grilling,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+meeting-villain,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
+midnight-snack,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+mirror-habit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+morning-alarm,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result metadata missing | P2 English section title remains | P2 result mojibake suspected: 27
+morning-breakfast,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+morning-coffee,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 28
+morning-commute,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+morning-energy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+morning-mood,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+morning-outfit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+morning-phone,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result metadata missing | P2 English section title remains | P2 result mojibake suspected: 26
+morning-rush,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P2 intro mojibake suspected: 16 | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 227
+morning-shower,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+movie-theater-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 32
+music-taste,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+noodle-eating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+ntrp-test,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 question count low: 1 | P3 previous question control missing | P3 console logging remains in question page | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+online-food,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+ott-habits,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+pet-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
+phone-app-organization,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+phone-backup,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+phone-battery,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 29
+phone-message,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+phone-notification,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+phone-payment,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+phone-photo,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+phone-search,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+phone-social-media,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+phone-storage,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+phone-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 related tests missing
+phone-usage,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
+pizza-topping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+ramen-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
+restaurant-ambiance,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+restaurant-choice,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+restaurant-menu,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+restaurant-price,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 174
+restaurant-reservation,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+restaurant-service,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+rice-eating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+salad-dressing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+shopping-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+shower-habit,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+skin-routine,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 related tests missing
+sleep-chronotype,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 English section title remains
+snack-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result visible sections low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+snack-time,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+snowwhite-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result action/use guide missing | P2 English section title remains
+sock-wearing,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+soup-eating,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+soup-vs-bibim,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+spending-style,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing
+spice-tolerance,static,Pass,95,유지,
+stew-vs-soup,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+store-choice,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+study-mbti,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result action/use guide missing | P2 English section title remains
+subway-vs-bus,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+taste-preference,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+travel-style,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P1 result paragraphs low: 4 | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+water-drinking,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing
+weekend-balance,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-chore,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-food,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-hobby,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-lazy,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-planning,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-rest,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-shopping,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-social,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+weekend-travel,static,P1,40,"결과 페이지 섹션, FAQ, 공유, 설명 보강 우선",P2 test description too short or missing in registry | P1 result FAQ missing | P2 result table of contents missing | P2 related tests missing | P2 result metadata missing | P2 result mojibake suspected: 26
+youtube-habit,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry | P2 result table of contents missing | P2 result metadata missing | P2 English section title remains
+zombie-survival,static,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 test description too short or missing in registry
+asset-account-split-wave6,database-only,Pass,95,유지,
+asset-advisor-meet-wave6,database-only,Pass,95,유지,
+asset-bond-buy-wave6,database-only,Pass,95,유지,
+asset-credit-score-wave6,database-only,Pass,95,유지,
+asset-crypto-decide-wave6,database-only,Pass,95,유지,
+asset-dividend-pick-wave6,database-only,Pass,95,유지,
+asset-donation-set-wave6,database-only,Pass,95,유지,
+asset-etf-allocate-wave6,database-only,Pass,95,유지,
+asset-financial-news-wave6,database-only,Pass,95,유지,
+asset-fixed-deposit-wave6,database-only,Pass,95,유지,
+asset-fund-pick-wave6,database-only,Pass,95,유지,
+asset-installment-saving-wave6,database-only,Pass,95,유지,
+asset-insurance-review-wave6,database-only,Pass,95,유지,
+asset-loan-compare-wave6,database-only,Pass,95,유지,
+asset-monthly-budget-wave6,database-only,Pass,95,유지,
+asset-mortgage-plan-wave6,database-only,Pass,95,유지,
+asset-pension-add-wave6,database-only,Pass,95,유지,
+asset-rainy-day-fund-wave6,database-only,Pass,95,유지,
+asset-real-estate-look-wave6,database-only,Pass,95,유지,
+asset-saving-rate-wave6,database-only,Pass,95,유지,
+asset-spending-track-wave6,database-only,Pass,95,유지,
+asset-stock-buy-wave6,database-only,Pass,95,유지,
+asset-stock-sell-wave6,database-only,Pass,95,유지,
+asset-tax-deduction-wave6,database-only,Pass,95,유지,
+asset-wealth-record-wave6,database-only,Pass,95,유지,
+bakery-tray-route-A21b,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+boardgame-rule-reading-2OC3,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+bond-club-greet-wave5,database-only,Pass,95,유지,
+bond-cousin-call-wave5,database-only,Pass,95,유지,
+bond-friend-distance-wave5,database-only,Pass,95,유지,
+bond-friend-parent-wave5,database-only,Pass,95,유지,
+bond-friend-quarrel-wave5,database-only,Pass,95,유지,
+bond-friend-wedding-wave5,database-only,Pass,95,유지,
+bond-greet-length-wave5,database-only,Pass,95,유지,
+bond-holiday-message-wave5,database-only,Pass,95,유지,
+bond-inlaw-title-wave5,database-only,Pass,95,유지,
+bond-junior-care-wave5,database-only,Pass,95,유지,
+bond-kind-thanks-wave5,database-only,Pass,95,유지,
+bond-new-colleague-wave5,database-only,Pass,95,유지,
+bond-new-family-wave5,database-only,Pass,95,유지,
+bond-old-classmate-wave5,database-only,Pass,95,유지,
+bond-parent-check-wave5,database-only,Pass,95,유지,
+bond-parent-meet-wave5,database-only,Pass,95,유지,
+bond-partner-promise-wave5,database-only,Pass,95,유지,
+bond-reconcile-step-wave5,database-only,Pass,95,유지,
+bond-relative-meet-wave5,database-only,Pass,95,유지,
+bond-secret-share-wave5,database-only,Pass,95,유지,
+bond-senior-care-wave5,database-only,Pass,95,유지,
+bond-shared-meal-wave5,database-only,Pass,95,유지,
+bond-sibling-tone-wave5,database-only,Pass,95,유지,
+bond-soft-refusal-wave5,database-only,Pass,95,유지,
+bond-wellbeing-card-wave5,database-only,Pass,95,유지,
+book-bookmark-style-pHPe,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+brand-switching-style-9L8v,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+budget-rounding-style-Zllz,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+buffet-first-plate-_yYp,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+buy-after-ad-wave5,database-only,Pass,95,유지,
+buy-after-impulse-wave5,database-only,Pass,95,유지,
+buy-collection-start-wave5,database-only,Pass,95,유지,
+buy-color-pick-wave5,database-only,Pass,95,유지,
+buy-demo-try-wave5,database-only,Pass,95,유지,
+buy-eco-tag-wave5,database-only,Pass,95,유지,
+buy-first-try-wave5,database-only,Pass,95,유지,
+buy-friend-recommend-wave5,database-only,Pass,95,유지,
+buy-gift-receipt-wave5,database-only,Pass,95,유지,
+buy-installment-wave5,database-only,Pass,95,유지,
+buy-item-dispose-wave5,database-only,Pass,95,유지,
+buy-label-check-wave5,database-only,Pass,95,유지,
+buy-luxury-review-wave5,database-only,Pass,95,유지,
+buy-membership-join-wave5,database-only,Pass,95,유지,
+buy-new-card-wave5,database-only,Pass,95,유지,
+buy-new-launch-wave5,database-only,Pass,95,유지,
+buy-points-use-wave5,database-only,Pass,95,유지,
+buy-regular-shop-wave5,database-only,Pass,95,유지,
+buy-review-write-wave5,database-only,Pass,95,유지,
+buy-size-compare-wave5,database-only,Pass,95,유지,
+buy-store-loop-wave5,database-only,Pass,95,유지,
+buy-store-staff-wave5,database-only,Pass,95,유지,
+buy-subscribe-set-wave5,database-only,Pass,95,유지,
+buy-vintage-pick-wave5,database-only,Pass,95,유지,
+buy-visit-count-wave5,database-only,Pass,95,유지,
+cafe-order-decision-kgRg,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+calendar-blocking-style-qPuE,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+care-before-work-wave5,database-only,Pass,95,유지,
+care-breath-count-wave5,database-only,Pass,95,유지,
+care-diary-close-wave5,database-only,Pass,95,유지,
+care-digital-detox-wave5,database-only,Pass,95,유지,
+care-feeling-diary-wave5,database-only,Pass,95,유지,
+care-ground-feet-wave5,database-only,Pass,95,유지,
+care-mindful-step-wave5,database-only,Pass,95,유지,
+care-mirror-greet-wave5,database-only,Pass,95,유지,
+care-morning-meditate-wave5,database-only,Pass,95,유지,
+care-one-memo-wave5,database-only,Pass,95,유지,
+care-one-page-wave5,database-only,Pass,95,유지,
+care-one-photo-wave5,database-only,Pass,95,유지,
+care-one-song-wave5,database-only,Pass,95,유지,
+care-one-tea-wave5,database-only,Pass,95,유지,
+care-phone-away-wave5,database-only,Pass,95,유지,
+care-plant-look-wave5,database-only,Pass,95,유지,
+care-rest-signal-wave5,database-only,Pass,95,유지,
+care-scent-breath-wave5,database-only,Pass,95,유지,
+care-self-soothe-wave5,database-only,Pass,95,유지,
+care-short-walk-wave5,database-only,Pass,95,유지,
+care-sun-five-wave5,database-only,Pass,95,유지,
+care-tidy-one-min-wave5,database-only,Pass,95,유지,
+care-visualize-scene-wave5,database-only,Pass,95,유지,
+care-walk-meditate-wave5,database-only,Pass,95,유지,
+care-warm-water-wave5,database-only,Pass,95,유지,
+career-after-party-wave5,database-only,Pass,95,유지,
+career-approval-hold-wave5,database-only,Pass,95,유지,
+career-board-use-wave5,database-only,Pass,95,유지,
+career-business-trip-wave5,database-only,Pass,95,유지,
+career-commute-route-wave5,database-only,Pass,95,유지,
+career-company-event-wave5,database-only,Pass,95,유지,
+career-desk-tidy-wave5,database-only,Pass,95,유지,
+career-external-meet-wave5,database-only,Pass,95,유지,
+career-first-greet-wave5,database-only,Pass,95,유지,
+career-hr-review-wave5,database-only,Pass,95,유지,
+career-leave-apply-wave5,database-only,Pass,95,유지,
+career-lunch-invite-wave5,database-only,Pass,95,유지,
+career-lunch-pick-wave5,database-only,Pass,95,유지,
+career-mail-tone-wave5,database-only,Pass,95,유지,
+career-meeting-seat-wave5,database-only,Pass,95,유지,
+career-new-mentor-wave5,database-only,Pass,95,유지,
+career-next-week-plan-wave5,database-only,Pass,95,유지,
+career-off-time-protect-wave5,database-only,Pass,95,유지,
+career-overtime-call-wave5,database-only,Pass,95,유지,
+career-progress-share-wave5,database-only,Pass,95,유지,
+career-rest-timing-wave5,database-only,Pass,95,유지,
+career-schedule-change-wave5,database-only,Pass,95,유지,
+career-slack-reply-wave5,database-only,Pass,95,유지,
+career-title-call-wave5,database-only,Pass,95,유지,
+career-workshop-join-wave5,database-only,Pass,95,유지,
+cart-abandon-style-N3j0,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+choice-appointment-reschedule,database-only,Pass,95,유지,
+choice-crowded-place-response,database-only,Pass,95,유지,
+choice-daily-route-change,database-only,Pass,95,유지,
+choice-elevator-wait-choice,database-only,Pass,95,유지,
+choice-lost-and-found-action,database-only,Pass,95,유지,
+choice-lost-direction-ask,database-only,Pass,95,유지,
+choice-lost-receipt-handling,database-only,Pass,95,유지,
+choice-new-place-adaptation,database-only,Pass,95,유지,
+choice-noise-complaint-style,database-only,Pass,95,유지,
+choice-plan-b-ready,database-only,Pass,95,유지,
+choice-public-device-use,database-only,Pass,95,유지,
+choice-public-manner-check,database-only,Pass,95,유지,
+choice-queue-line-choice,database-only,Pass,95,유지,
+choice-repair-or-replace,database-only,Pass,95,유지,
+choice-schedule-overlap-choice,database-only,Pass,95,유지,
+choice-seat-choice-public,database-only,Pass,95,유지,
+choice-small-risk-check,database-only,Pass,95,유지,
+choice-time-gap-filling,database-only,Pass,95,유지,
+choice-unexpected-call-response,database-only,Pass,95,유지,
+choice-waiting-message-send,database-only,Pass,95,유지,
+concert-standing-choice-P9px,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+coupon-saving-style-Z8L_,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+craft-kit-starting-n_-k,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+customer-inquiry-writing-UUva,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+daily-bag-lightening-wave4,database-only,Pass,95,유지,
+daily-calendar-review-wave4,database-only,Pass,95,유지,
+daily-closet-hanger-wave4,database-only,Pass,95,유지,
+daily-delivery-unpack-wave4,database-only,Pass,95,유지,
+daily-door-lock-check-wave4,database-only,Pass,95,유지,
+daily-fridge-reset-wave4,database-only,Pass,95,유지,
+daily-home-lighting-wave4,database-only,Pass,95,유지,
+daily-house-chore-order-wave4,database-only,Pass,95,유지,
+daily-laundry-sort-wave4,database-only,Pass,95,유지,
+daily-morning-water-wave4,database-only,Pass,95,유지,
+daily-night-charging-wave4,database-only,Pass,95,유지,
+daily-receipt-box-wave4,database-only,Pass,95,유지,
+daily-shoe-shelf-wave4,database-only,Pass,95,유지,
+daily-sink-cleanup-wave4,database-only,Pass,95,유지,
+daily-sleepwear-choice-wave4,database-only,Pass,95,유지,
+daily-snack-drawer-wave4,database-only,Pass,95,유지,
+daily-table-reset-wave4,database-only,Pass,95,유지,
+daily-umbrella-check-wave4,database-only,Pass,95,유지,
+dark-mode-choice-yotA,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+digital-ai-question-wave4,database-only,Pass,95,유지,
+digital-app-folder-wave4,database-only,Pass,95,유지,
+digital-backup-routine,database-only,Pass,95,유지,
+digital-bookmark-sorting,database-only,Pass,95,유지,
+digital-browser-extension-wave4,database-only,Pass,95,유지,
+digital-chat-archive-wave4,database-only,Pass,95,유지,
+digital-cloud-backup-wave4,database-only,Pass,95,유지,
+digital-cloud-folder-rules,database-only,Pass,95,유지,
+digital-desktop-wallpaper-choice,database-only,Pass,95,유지,
+digital-device-battery-care,database-only,Pass,95,유지,
+digital-device-update-wave4,database-only,Pass,95,유지,
+digital-device-upgrade-timing,database-only,Pass,95,유지,
+digital-digital-calendar-wave4,database-only,Pass,95,유지,
+digital-digital-note-tagging,database-only,Pass,95,유지,
+digital-digital-receipt-saving,database-only,Pass,95,유지,
+digital-email-inbox-wave4,database-only,Pass,95,유지,
+digital-email-label-rules,database-only,Pass,95,유지,
+digital-file-name-wave4,database-only,Pass,95,유지,
+digital-file-share-permission,database-only,Pass,95,유지,
+digital-map-save-wave4,database-only,Pass,95,유지,
+digital-memo-tag-wave4,database-only,Pass,95,유지,
+digital-message-pin-habit,database-only,Pass,95,유지,
+digital-messenger-muted-chat,database-only,Pass,95,유지,
+digital-notification-badge-wave4,database-only,Pass,95,유지,
+digital-online-cart-later,database-only,Pass,95,유지,
+digital-online-profile-update,database-only,Pass,95,유지,
+digital-online-review-wave4,database-only,Pass,95,유지,
+digital-password-manager-wave4,database-only,Pass,95,유지,
+digital-password-reset-response,database-only,Pass,95,유지,
+digital-photo-duplicate-wave4,database-only,Pass,95,유지,
+digital-profile-picture-wave4,database-only,Pass,95,유지,
+digital-screen-time-wave4,database-only,Pass,95,유지,
+digital-screenshot-cleanup,database-only,Pass,95,유지,
+digital-search-bookmark-wave4,database-only,Pass,95,유지,
+digital-search-history-cleanup,database-only,Pass,95,유지,
+digital-shopping-cart-wave4,database-only,Pass,95,유지,
+digital-video-queue-wave4,database-only,Pass,95,유지,
+digital-video-watch-later,database-only,Pass,95,유지,
+digital-voice-memo-review,database-only,Pass,95,유지,
+document-review-pass-sGnI,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+download-folder-backlog-QUEd,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+drive-air-freshener-wave6,database-only,Pass,95,유지,
+drive-car-snack-wave6,database-only,Pass,95,유지,
+drive-dashcam-view-wave6,database-only,Pass,95,유지,
+drive-dent-fix-wave6,database-only,Pass,95,유지,
+drive-engine-warmup-wave6,database-only,Pass,95,유지,
+drive-fuel-economy-wave6,database-only,Pass,95,유지,
+drive-fuel-fill-wave6,database-only,Pass,95,유지,
+drive-highway-speed-wave6,database-only,Pass,95,유지,
+drive-honk-use-wave6,database-only,Pass,95,유지,
+drive-lane-change-wave6,database-only,Pass,95,유지,
+drive-music-drive-wave6,database-only,Pass,95,유지,
+drive-nav-trust-wave6,database-only,Pass,95,유지,
+drive-night-drive-wave6,database-only,Pass,95,유지,
+drive-park-style-wave6,database-only,Pass,95,유지,
+drive-passenger-care-wave6,database-only,Pass,95,유지,
+drive-pedestrian-wait-wave6,database-only,Pass,95,유지,
+drive-radio-listen-drive-wave6,database-only,Pass,95,유지,
+drive-repair-timing-wave6,database-only,Pass,95,유지,
+drive-reverse-park-wave6,database-only,Pass,95,유지,
+drive-seatbelt-back-wave6,database-only,Pass,95,유지,
+drive-tire-check-wave6,database-only,Pass,95,유지,
+drive-traffic-jam-wave6,database-only,Pass,95,유지,
+drive-wash-routine-wave6,database-only,Pass,95,유지,
+drive-wiper-replace-wave6,database-only,Pass,95,유지,
+drive-yellow-light-wave6,database-only,Pass,95,유지,
+emoji-reaction-choice-DnDx,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+emotion-alone-reset-wave4,database-only,Pass,95,유지,
+emotion-anger-cool-wave4,database-only,Pass,95,유지,
+emotion-anger-cooldown-style,database-only,Pass,95,유지,
+emotion-apology-readiness,database-only,Pass,95,유지,
+emotion-apology-ready-wave4,database-only,Pass,95,유지,
+emotion-bad-news-processing,database-only,Pass,95,유지,
+emotion-comfort-object-choice,database-only,Pass,95,유지,
+emotion-comfort-object-wave4,database-only,Pass,95,유지,
+emotion-compliment-memory-wave4,database-only,Pass,95,유지,
+emotion-criticism-response-wave4,database-only,Pass,95,유지,
+emotion-decision-anxiety-care,database-only,Pass,95,유지,
+emotion-decision-worry-wave4,database-only,Pass,95,유지,
+emotion-embarrassment-recovery,database-only,Pass,95,유지,
+emotion-energy-low-wave4,database-only,Pass,95,유지,
+emotion-good-news-sharing,database-only,Pass,95,유지,
+emotion-heart-boundary-wave4,database-only,Pass,95,유지,
+emotion-lonely-evening-plan,database-only,Pass,95,유지,
+emotion-memory-box-opening,database-only,Pass,95,유지,
+emotion-memory-box-wave4,database-only,Pass,95,유지,
+emotion-mood-music-choice,database-only,Pass,95,유지,
+emotion-mood-note-wave4,database-only,Pass,95,유지,
+emotion-new-environment-wave4,database-only,Pass,95,유지,
+emotion-nostalgia-response,database-only,Pass,95,유지,
+emotion-overthinking-stop,database-only,Pass,95,유지,
+emotion-pride-expression,database-only,Pass,95,유지,
+emotion-regret-handle-wave4,database-only,Pass,95,유지,
+emotion-regret-review-style,database-only,Pass,95,유지,
+emotion-sad-day-wave4,database-only,Pass,95,유지,
+emotion-self-talk-wave4,database-only,Pass,95,유지,
+emotion-sleep-thought-wave4,database-only,Pass,95,유지,
+emotion-stress-room-reset,database-only,Pass,95,유지,
+emotion-stress-signal-wave4,database-only,Pass,95,유지,
+emotion-thanks-accept-wave4,database-only,Pass,95,유지,
+emotion-thanks-acceptance,database-only,Pass,95,유지,
+emotion-worry-note-style,database-only,Pass,95,유지,
+emotion-worry-share-wave4,database-only,Pass,95,유지,
+focus-music-choice-YZtD,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+free-sample-choice-_yxp,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+free-shipping-threshold-lRle,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+grocery-label-checking-u3NR,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+hobby-baking-try-wave5,database-only,Pass,95,유지,
+hobby-board-game-wave5,database-only,Pass,95,유지,
+hobby-bookshelf-tidy-wave5,database-only,Pass,95,유지,
+hobby-bookstore-browsing,database-only,Pass,95,유지,
+hobby-camping-prep-wave5,database-only,Pass,95,유지,
+hobby-card-game-wave5,database-only,Pass,95,유지,
+hobby-class-signup-wave5,database-only,Pass,95,유지,
+hobby-collection-display,database-only,Pass,95,유지,
+hobby-coloring-set-wave5,database-only,Pass,95,유지,
+hobby-concert-seat-choice,database-only,Pass,95,유지,
+hobby-craft-kit-wave5,database-only,Pass,95,유지,
+hobby-craft-project-start,database-only,Pass,95,유지,
+hobby-creative-block-response,database-only,Pass,95,유지,
+hobby-cycle-ride-wave5,database-only,Pass,95,유지,
+hobby-dance-class-wave5,database-only,Pass,95,유지,
+hobby-drawing-reference-choice,database-only,Pass,95,유지,
+hobby-drawing-time-wave5,database-only,Pass,95,유지,
+hobby-embroidery-set-wave5,database-only,Pass,95,유지,
+hobby-game-difficulty-choice,database-only,Pass,95,유지,
+hobby-garden-care-wave5,database-only,Pass,95,유지,
+hobby-hiking-route-wave5,database-only,Pass,95,유지,
+hobby-hobby-budget-line,database-only,Pass,95,유지,
+hobby-hobby-sharing-post,database-only,Pass,95,유지,
+hobby-hobby-supply-shopping,database-only,Pass,95,유지,
+hobby-home-cafe-setup,database-only,Pass,95,유지,
+hobby-interior-shift-wave5,database-only,Pass,95,유지,
+hobby-karaoke-pick-wave5,database-only,Pass,95,유지,
+hobby-learning-kit-choice,database-only,Pass,95,유지,
+hobby-meditation-min-wave5,database-only,Pass,95,유지,
+hobby-movie-review-note,database-only,Pass,95,유지,
+hobby-museum-night-wave5,database-only,Pass,95,유지,
+hobby-music-practice-rhythm,database-only,Pass,95,유지,
+hobby-photo-edit-wave5,database-only,Pass,95,유지,
+hobby-photo-walk-route,database-only,Pass,95,유지,
+hobby-playlist-curation,database-only,Pass,95,유지,
+hobby-poem-read-wave5,database-only,Pass,95,유지,
+hobby-pottery-class-wave5,database-only,Pass,95,유지,
+hobby-radio-listen-wave5,database-only,Pass,95,유지,
+hobby-reading-list-priority,database-only,Pass,95,유지,
+hobby-solo-hobby-depth,database-only,Pass,95,유지,
+hobby-video-cut-wave5,database-only,Pass,95,유지,
+hobby-weekend-project-plan,database-only,Pass,95,유지,
+hobby-workshop-participation,database-only,Pass,95,유지,
+hobby-writing-start-wave5,database-only,Pass,95,유지,
+hobby-yoga-flow-wave5,database-only,Pass,95,유지,
+home-blanket-storage-style,database-only,Pass,95,유지,
+home-cleaning-tool-choice,database-only,Pass,95,유지,
+home-delivery-box-disposal,database-only,Pass,95,유지,
+home-drawer-zone-making,database-only,Pass,95,유지,
+home-guest-ready-routine,database-only,Pass,95,유지,
+home-home-noise-control,database-only,Pass,95,유지,
+home-home-scent-choice,database-only,Pass,95,유지,
+home-household-stock-check,database-only,Pass,95,유지,
+home-kitchen-counter-reset,database-only,Pass,95,유지,
+home-livingroom-reset,database-only,Pass,95,유지,
+home-seasonal-decor-storage,database-only,Pass,95,유지,
+home-storage-box-labeling,database-only,Pass,95,유지,
+home-toolbox-arrangement,database-only,Pass,95,유지,
+home-window-cleaning-timing,database-only,Pass,95,유지,
+ice-cup-choice-iOtX,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+jjimdak-vs-chicken-mbti-test-KN2X,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB question count low: 6 | P1 DB thin result rows: 15 | P2 DB test description too short
+keyboard-shortcut-use-C1SK,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+late-night-delivery-reason-L6od,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+learn-break-timer-wave4,database-only,Pass,95,유지,
+learn-concept-map-wave4,database-only,Pass,95,유지,
+learn-deadline-study-wave4,database-only,Pass,95,유지,
+learn-exam-plan-wave4,database-only,Pass,95,유지,
+learn-flashcard-use-wave4,database-only,Pass,95,유지,
+learn-group-study-wave4,database-only,Pass,95,유지,
+learn-learning-goal-wave4,database-only,Pass,95,유지,
+learn-lecture-speed-wave4,database-only,Pass,95,유지,
+learn-note-style-wave4,database-only,Pass,95,유지,
+learn-online-course-wave4,database-only,Pass,95,유지,
+learn-question-mark-wave4,database-only,Pass,95,유지,
+learn-reading-highlight-wave4,database-only,Pass,95,유지,
+learn-resource-save-wave4,database-only,Pass,95,유지,
+learn-review-cycle-wave4,database-only,Pass,95,유지,
+learn-skill-practice-wave4,database-only,Pass,95,유지,
+learn-study-finish-wave4,database-only,Pass,95,유지,
+learn-study-place-wave4,database-only,Pass,95,유지,
+learn-study-start-wave4,database-only,Pass,95,유지,
+learn-teacher-feedback-wave4,database-only,Pass,95,유지,
+leftovers-reheat-method-pgS7,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+leisure-book-stack-wave4,database-only,Pass,95,유지,
+leisure-club-fit-wave4,database-only,Pass,95,유지,
+leisure-concert-prep-wave4,database-only,Pass,95,유지,
+leisure-craft-start-wave4,database-only,Pass,95,유지,
+leisure-creative-block-wave4,database-only,Pass,95,유지,
+leisure-diary-deco-wave4,database-only,Pass,95,유지,
+leisure-game-mode-wave4,database-only,Pass,95,유지,
+leisure-hobby-budget-wave4,database-only,Pass,95,유지,
+leisure-home-cafe-wave4,database-only,Pass,95,유지,
+leisure-learning-kit-wave4,database-only,Pass,95,유지,
+leisure-movie-pick-wave4,database-only,Pass,95,유지,
+leisure-museum-pace-wave4,database-only,Pass,95,유지,
+leisure-photo-walk-wave4,database-only,Pass,95,유지,
+leisure-playlist-mood-wave4,database-only,Pass,95,유지,
+leisure-puzzle-style-wave4,database-only,Pass,95,유지,
+leisure-recipe-try-wave4,database-only,Pass,95,유지,
+leisure-solo-time-wave4,database-only,Pass,95,유지,
+leisure-travel-video-wave4,database-only,Pass,95,유지,
+leisure-walking-route-wave4,database-only,Pass,95,유지,
+leisure-weekend-plan-wave4,database-only,Pass,95,유지,
+life-appliance-spot-wave5,database-only,Pass,95,유지,
+life-balcony-use-wave5,database-only,Pass,95,유지,
+life-bin-position-wave5,database-only,Pass,95,유지,
+life-candle-light-wave5,database-only,Pass,95,유지,
+life-container-choice-wave5,database-only,Pass,95,유지,
+life-cup-wash-wave5,database-only,Pass,95,유지,
+life-curtain-open-wave5,database-only,Pass,95,유지,
+life-diffuser-spot-wave5,database-only,Pass,95,유지,
+life-dryrack-use-wave5,database-only,Pass,95,유지,
+life-foodscrap-bin-wave5,database-only,Pass,95,유지,
+life-frame-spot-wave5,database-only,Pass,95,유지,
+life-furniture-layout-wave5,database-only,Pass,95,유지,
+life-humidifier-care-wave5,database-only,Pass,95,유지,
+life-laundromat-visit-wave5,database-only,Pass,95,유지,
+life-laundry-drying-wave5,database-only,Pass,95,유지,
+life-mail-sort-wave5,database-only,Pass,95,유지,
+life-mug-pick-wave5,database-only,Pass,95,유지,
+life-paperbag-keep-wave5,database-only,Pass,95,유지,
+life-recycle-sort-wave5,database-only,Pass,95,유지,
+life-rug-care-wave5,database-only,Pass,95,유지,
+life-slipper-pair-wave5,database-only,Pass,95,유지,
+life-socks-fold-wave5,database-only,Pass,95,유지,
+life-spice-shelf-wave5,database-only,Pass,95,유지,
+life-vacuum-route-wave5,database-only,Pass,95,유지,
+life-water-filter-wave5,database-only,Pass,95,유지,
+map-route-selection-7Ri3,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+meal-bread-morning-wave6,database-only,Pass,95,유지,
+meal-coffee-after-wave6,database-only,Pass,95,유지,
+meal-cooking-mood-wave6,database-only,Pass,95,유지,
+meal-delivery-order-wave6,database-only,Pass,95,유지,
+meal-dish-order-wave6,database-only,Pass,95,유지,
+meal-egg-style-wave6,database-only,Pass,95,유지,
+meal-fridge-meal-wave6,database-only,Pass,95,유지,
+meal-fruit-end-wave6,database-only,Pass,95,유지,
+meal-leftover-keep-wave6,database-only,Pass,95,유지,
+meal-lunchbox-pack-wave6,database-only,Pass,95,유지,
+meal-meal-photo-wave6,database-only,Pass,95,유지,
+meal-meal-prep-wave6,database-only,Pass,95,유지,
+meal-new-recipe-wave6,database-only,Pass,95,유지,
+meal-noodle-night-wave6,database-only,Pass,95,유지,
+meal-plate-arrange-wave6,database-only,Pass,95,유지,
+meal-restaurant-pick-wave6,database-only,Pass,95,유지,
+meal-rice-ratio-wave6,database-only,Pass,95,유지,
+meal-sauce-mix-wave6,database-only,Pass,95,유지,
+meal-share-plate-wave6,database-only,Pass,95,유지,
+meal-solo-meal-mood-wave6,database-only,Pass,95,유지,
+meal-soup-or-stew-wave6,database-only,Pass,95,유지,
+meal-spice-rack-wave6,database-only,Pass,95,유지,
+meal-spicy-tolerance-wave6,database-only,Pass,95,유지,
+meal-sweet-after-wave6,database-only,Pass,95,유지,
+meal-takeout-frequency-wave6,database-only,Pass,95,유지,
+mood-anger-diary-wave5,database-only,Pass,95,유지,
+mood-anger-signal-wave5,database-only,Pass,95,유지,
+mood-burden-sign-wave5,database-only,Pass,95,유지,
+mood-comfort-food-wave5,database-only,Pass,95,유지,
+mood-comfort-music-wave5,database-only,Pass,95,유지,
+mood-compliment-give-wave5,database-only,Pass,95,유지,
+mood-envy-deal-wave5,database-only,Pass,95,유지,
+mood-fear-signal-wave5,database-only,Pass,95,유지,
+mood-heart-alarm-wave5,database-only,Pass,95,유지,
+mood-heart-empty-wave5,database-only,Pass,95,유지,
+mood-ignored-feel-wave5,database-only,Pass,95,유지,
+mood-jealous-hold-wave5,database-only,Pass,95,유지,
+mood-lonely-time-wave5,database-only,Pass,95,유지,
+mood-longing-hold-wave5,database-only,Pass,95,유지,
+mood-name-feel-wave5,database-only,Pass,95,유지,
+mood-new-start-wave5,database-only,Pass,95,유지,
+mood-refusal-feel-wave5,database-only,Pass,95,유지,
+mood-regret-sort-wave5,database-only,Pass,95,유지,
+mood-relief-feel-wave5,database-only,Pass,95,유지,
+mood-self-accept-wave5,database-only,Pass,95,유지,
+mood-self-boast-wave5,database-only,Pass,95,유지,
+mood-share-with-wave5,database-only,Pass,95,유지,
+mood-thanks-diary-wave5,database-only,Pass,95,유지,
+mood-thrill-show-wave5,database-only,Pass,95,유지,
+mood-warm-words-wave5,database-only,Pass,95,유지,
+museum-route-style-tXqh,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+music-album-cover-wave6,database-only,Pass,95,유지,
+music-bluetooth-speaker-wave6,database-only,Pass,95,유지,
+music-chart-check-wave6,database-only,Pass,95,유지,
+music-concert-photo-wave6,database-only,Pass,95,유지,
+music-cover-listen-wave6,database-only,Pass,95,유지,
+music-festival-go-wave6,database-only,Pass,95,유지,
+music-genre-explore-wave6,database-only,Pass,95,유지,
+music-headphone-pick-wave6,database-only,Pass,95,유지,
+music-instrumental-pref-wave6,database-only,Pass,95,유지,
+music-karaoke-list-wave6,database-only,Pass,95,유지,
+music-live-stream-wave6,database-only,Pass,95,유지,
+music-lyrics-read-wave6,database-only,Pass,95,유지,
+music-mood-playlist-wave6,database-only,Pass,95,유지,
+music-new-album-wave6,database-only,Pass,95,유지,
+music-podcast-mix-wave6,database-only,Pass,95,유지,
+music-radio-pick-wave6,database-only,Pass,95,유지,
+music-sleep-music-wave6,database-only,Pass,95,유지,
+music-solo-concert-wave6,database-only,Pass,95,유지,
+music-song-recommend-wave6,database-only,Pass,95,유지,
+music-song-share-wave6,database-only,Pass,95,유지,
+music-study-bgm-wave6,database-only,Pass,95,유지,
+music-throwback-play-wave6,database-only,Pass,95,유지,
+music-vinyl-listen-wave6,database-only,Pass,95,유지,
+music-work-music-wave6,database-only,Pass,95,유지,
+music-workout-music-wave6,database-only,Pass,95,유지,
+neighborhood-walk-route-yT-w,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+noodle-topping-extra-rAn3,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+notification-badge-clearing-mkq4,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+outing-bus-or-subway-wave6,database-only,Pass,95,유지,
+outing-card-or-cash-wave6,database-only,Pass,95,유지,
+outing-dust-check-wave6,database-only,Pass,95,유지,
+outing-earlier-leave-wave6,database-only,Pass,95,유지,
+outing-earphone-pick-wave6,database-only,Pass,95,유지,
+outing-forecast-glance-wave6,database-only,Pass,95,유지,
+outing-gas-shutoff-wave6,database-only,Pass,95,유지,
+outing-leave-checklist-wave6,database-only,Pass,95,유지,
+outing-lights-off-wave6,database-only,Pass,95,유지,
+outing-lipbalm-pack-wave6,database-only,Pass,95,유지,
+outing-map-preset-wave6,database-only,Pass,95,유지,
+outing-mask-pack-wave6,database-only,Pass,95,유지,
+outing-meeting-cafe-wave6,database-only,Pass,95,유지,
+outing-meeting-park-wave6,database-only,Pass,95,유지,
+outing-mirror-final-wave6,database-only,Pass,95,유지,
+outing-parking-find-wave6,database-only,Pass,95,유지,
+outing-public-bench-wave6,database-only,Pass,95,유지,
+outing-return-route-wave6,database-only,Pass,95,유지,
+outing-small-coin-wave6,database-only,Pass,95,유지,
+outing-snack-bag-wave6,database-only,Pass,95,유지,
+outing-solo-outing-wave6,database-only,Pass,95,유지,
+outing-taxi-call-wave6,database-only,Pass,95,유지,
+outing-umbrella-fold-wave6,database-only,Pass,95,유지,
+outing-walk-pace-wave6,database-only,Pass,95,유지,
+outing-water-bottle-wave6,database-only,Pass,95,유지,
+parent-academy-pick-wave6,database-only,Pass,95,유지,
+parent-allowance-set-wave6,database-only,Pass,95,유지,
+parent-bath-time-kid-wave6,database-only,Pass,95,유지,
+parent-bedtime-story-wave6,database-only,Pass,95,유지,
+parent-bedtime-talk-wave6,database-only,Pass,95,유지,
+parent-birthday-party-kid-wave6,database-only,Pass,95,유지,
+parent-chore-share-wave6,database-only,Pass,95,유지,
+parent-family-photo-wave6,database-only,Pass,95,유지,
+parent-family-trip-plan-wave6,database-only,Pass,95,유지,
+parent-health-checkup-kid-wave6,database-only,Pass,95,유지,
+parent-homework-help-wave6,database-only,Pass,95,유지,
+parent-lunchbox-kid-wave6,database-only,Pass,95,유지,
+parent-morning-routine-kid-wave6,database-only,Pass,95,유지,
+parent-museum-with-kid-wave6,database-only,Pass,95,유지,
+parent-new-friend-kid-wave6,database-only,Pass,95,유지,
+parent-pickup-time-wave6,database-only,Pass,95,유지,
+parent-playdate-wave6,database-only,Pass,95,유지,
+parent-praise-style-wave6,database-only,Pass,95,유지,
+parent-reading-with-kid-wave6,database-only,Pass,95,유지,
+parent-scolding-style-wave6,database-only,Pass,95,유지,
+parent-screen-time-kid-wave6,database-only,Pass,95,유지,
+parent-sibling-mediation-wave6,database-only,Pass,95,유지,
+parent-snack-pick-kid-wave6,database-only,Pass,95,유지,
+parent-teacher-meet-wave6,database-only,Pass,95,유지,
+parent-theme-park-wave6,database-only,Pass,95,유지,
+password-reset-reaction-_VrE,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+pen-choice-style-PDX4,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+pet-away-prep-wave6,database-only,Pass,95,유지,
+pet-barking-handle-wave6,database-only,Pass,95,유지,
+pet-bath-cycle-wave6,database-only,Pass,95,유지,
+pet-brush-time-wave6,database-only,Pass,95,유지,
+pet-clean-bed-wave6,database-only,Pass,95,유지,
+pet-dental-care-pet-wave6,database-only,Pass,95,유지,
+pet-kibble-pick-wave6,database-only,Pass,95,유지,
+pet-leash-type-wave6,database-only,Pass,95,유지,
+pet-litter-clean-wave6,database-only,Pass,95,유지,
+pet-nail-trim-wave6,database-only,Pass,95,유지,
+pet-new-toy-wave6,database-only,Pass,95,유지,
+pet-pet-insurance-wave6,database-only,Pass,95,유지,
+pet-pet-name-call-wave6,database-only,Pass,95,유지,
+pet-pet-photo-wave6,database-only,Pass,95,유지,
+pet-sleep-spot-wave6,database-only,Pass,95,유지,
+pet-socialize-wave6,database-only,Pass,95,유지,
+pet-stay-home-pet-wave6,database-only,Pass,95,유지,
+pet-toy-rotate-wave6,database-only,Pass,95,유지,
+pet-training-line-wave6,database-only,Pass,95,유지,
+pet-treat-give-wave6,database-only,Pass,95,유지,
+pet-vaccine-schedule-wave6,database-only,Pass,95,유지,
+pet-vet-checkup-wave6,database-only,Pass,95,유지,
+pet-walk-route-wave6,database-only,Pass,95,유지,
+pet-walk-time-wave6,database-only,Pass,95,유지,
+pet-wet-or-dry-wave6,database-only,Pass,95,유지,
+phone-home-screen-priority-rTYp,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+photo-album-sorting-XSRL,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+photo-backup-timing-0Ztt,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+picnic-menu-packing-NJP5,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+playlist-ordering-style-OJGZ,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+presentation-rehearsal-style-PwN_,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+read-audiobook-listen-wave6,database-only,Pass,95,유지,
+read-bedtime-read-wave6,database-only,Pass,95,유지,
+read-book-cover-wave6,database-only,Pass,95,유지,
+read-bookclub-join-wave6,database-only,Pass,95,유지,
+read-bookmark-pick-wave6,database-only,Pass,95,유지,
+read-bookshelf-style-wave6,database-only,Pass,95,유지,
+read-bookstore-walk-wave6,database-only,Pass,95,유지,
+read-commute-read-wave6,database-only,Pass,95,유지,
+read-ebook-vs-paper-wave6,database-only,Pass,95,유지,
+read-essay-pick-wave6,database-only,Pass,95,유지,
+read-finish-rate-wave6,database-only,Pass,95,유지,
+read-foreign-novel-wave6,database-only,Pass,95,유지,
+read-genre-fiction-wave6,database-only,Pass,95,유지,
+read-gift-book-wave6,database-only,Pass,95,유지,
+read-highlight-note-wave6,database-only,Pass,95,유지,
+read-history-book-wave6,database-only,Pass,95,유지,
+read-index-card-wave6,database-only,Pass,95,유지,
+read-library-borrow-wave6,database-only,Pass,95,유지,
+read-multi-book-wave6,database-only,Pass,95,유지,
+read-reading-cafe-wave6,database-only,Pass,95,유지,
+read-recommend-book-wave6,database-only,Pass,95,유지,
+read-reread-fav-wave6,database-only,Pass,95,유지,
+read-self-help-wave6,database-only,Pass,95,유지,
+read-short-story-wave6,database-only,Pass,95,유지,
+read-used-book-wave6,database-only,Pass,95,유지,
+relation-awkward-silence-handling,database-only,Pass,95,유지,
+relation-awkward-talk-wave4,database-only,Pass,95,유지,
+relation-birthday-call-wave4,database-only,Pass,95,유지,
+relation-birthday-message-tone,database-only,Pass,95,유지,
+relation-borrowed-item-return,database-only,Pass,95,유지,
+relation-comfort-message-style,database-only,Pass,95,유지,
+relation-comfort-style-wave4,database-only,Pass,95,유지,
+relation-compliment-accept-wave4,database-only,Pass,95,유지,
+relation-conflict-cooldown,database-only,Pass,95,유지,
+relation-conflict-cooldown-wave4,database-only,Pass,95,유지,
+relation-first-meeting-wave4,database-only,Pass,95,유지,
+relation-friend-boundary-wave4,database-only,Pass,95,유지,
+relation-gift-card-writing,database-only,Pass,95,유지,
+relation-gift-reaction-wave4,database-only,Pass,95,유지,
+relation-group-chat-tone-wave4,database-only,Pass,95,유지,
+relation-inside-joke-usage,database-only,Pass,95,유지,
+relation-invitation-reply-wave4,database-only,Pass,95,유지,
+relation-invitation-response,database-only,Pass,95,유지,
+relation-late-reply-handling,database-only,Pass,95,유지,
+relation-meeting-new-friend,database-only,Pass,95,유지,
+relation-memory-sharing-style,database-only,Pass,95,유지,
+relation-name-remembering-effort,database-only,Pass,95,유지,
+relation-neighbor-greeting-style,database-only,Pass,95,유지,
+relation-neighbor-hello-wave4,database-only,Pass,95,유지,
+relation-old-friend-wave4,database-only,Pass,95,유지,
+relation-party-exit-timing,database-only,Pass,95,유지,
+relation-photo-share-wave4,database-only,Pass,95,유지,
+relation-photo-tagging-manner,database-only,Pass,95,유지,
+relation-promise-change-wave4,database-only,Pass,95,유지,
+relation-promise-time-check,database-only,Pass,95,유지,
+relation-relationship-distance-reset,database-only,Pass,95,유지,
+relation-reply-delay-wave4,database-only,Pass,95,유지,
+relation-reunion-prep-style,database-only,Pass,95,유지,
+relation-small-favor-wave4,database-only,Pass,95,유지,
+relation-team-lunch-talk,database-only,Pass,95,유지,
+relation-team-meal-wave4,database-only,Pass,95,유지,
+relation-thanks-depth-wave4,database-only,Pass,95,유지,
+relation-thanks-message-depth,database-only,Pass,95,유지,
+return-policy-reading-0a-0,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+return-window-check-2wTR,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+reward-point-timing-3Q0A,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+salad-ingredient-picking-UBLW,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+sauce-pour-order-OUnF,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+screenshot-saving-style-fdmo,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+season-after-rain-wave5,database-only,Pass,95,유지,
+season-aprfool-joke-wave5,database-only,Pass,95,유지,
+season-autumn-foliage-wave5,database-only,Pass,95,유지,
+season-autumn-walk-wave4,database-only,Pass,95,유지,
+season-child-day-wave5,database-only,Pass,95,유지,
+season-chuseok-treat-wave5,database-only,Pass,95,유지,
+season-closet-shift-wave5,database-only,Pass,95,유지,
+season-cold-morning-wave4,database-only,Pass,95,유지,
+season-cold-out-wave5,database-only,Pass,95,유지,
+season-dust-mask-wave5,database-only,Pass,95,유지,
+season-flower-view-wave4,database-only,Pass,95,유지,
+season-full-moon-wave5,database-only,Pass,95,유지,
+season-halloween-dress-wave5,database-only,Pass,95,유지,
+season-heat-shelter-wave5,database-only,Pass,95,유지,
+season-holiday-reset-wave4,database-only,Pass,95,유지,
+season-hotbun-season-wave5,database-only,Pass,95,유지,
+season-monsoon-prep-wave5,database-only,Pass,95,유지,
+season-mosquito-block-wave5,database-only,Pass,95,유지,
+season-newyear-table-wave5,database-only,Pass,95,유지,
+season-parents-day-wave5,database-only,Pass,95,유지,
+season-rainy-day-wave4,database-only,Pass,95,유지,
+season-season-menu-wave4,database-only,Pass,95,유지,
+season-shaved-ice-wave5,database-only,Pass,95,유지,
+season-snow-plan-wave4,database-only,Pass,95,유지,
+season-spring-cleaning-wave4,database-only,Pass,95,유지,
+season-spring-new-wave5,database-only,Pass,95,유지,
+season-summer-beach-wave5,database-only,Pass,95,유지,
+season-summer-heat-wave4,database-only,Pass,95,유지,
+season-sun-uv-wave5,database-only,Pass,95,유지,
+season-sunny-picnic-wave4,database-only,Pass,95,유지,
+season-tea-brew-wave5,database-only,Pass,95,유지,
+season-winter-layering-wave4,database-only,Pass,95,유지,
+season-winter-ski-wave5,database-only,Pass,95,유지,
+season-winter-solstice-wave5,database-only,Pass,95,유지,
+season-xmas-tree-wave5,database-only,Pass,95,유지,
+season-year-end-wave5,database-only,Pass,95,유지,
+secondhand-chat-style-3a9U,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+self-attention-reset,database-only,Pass,95,유지,
+self-daily-priority-one,database-only,Pass,95,유지,
+self-decision-fatigue-care,database-only,Pass,95,유지,
+self-energy-budgeting,database-only,Pass,95,유지,
+self-focus-break-rhythm,database-only,Pass,95,유지,
+self-goal-wording-style,database-only,Pass,95,유지,
+self-habit-tracker-use,database-only,Pass,95,유지,
+self-monthly-theme-setting,database-only,Pass,95,유지,
+self-mood-log-habit,database-only,Pass,95,유지,
+self-morning-first-task,database-only,Pass,95,유지,
+self-motivation-slump-response,database-only,Pass,95,유지,
+self-personal-rule-making,database-only,Pass,95,유지,
+self-personal-space-reset,database-only,Pass,95,유지,
+self-promise-to-self,database-only,Pass,95,유지,
+self-rest-day-planning,database-only,Pass,95,유지,
+self-reward-setting-style,database-only,Pass,95,유지,
+self-routine-minimum-line,database-only,Pass,95,유지,
+self-routine-restart-style,database-only,Pass,95,유지,
+self-schedule-buffer-making,database-only,Pass,95,유지,
+self-self-check-question,database-only,Pass,95,유지,
+self-self-feedback-tone,database-only,Pass,95,유지,
+self-small-win-collecting,database-only,Pass,95,유지,
+self-weekly-review-habit,database-only,Pass,95,유지,
+senior-asset-handover-wave6,database-only,Pass,95,유지,
+senior-balance-exercise-wave6,database-only,Pass,95,유지,
+senior-digital-class-wave6,database-only,Pass,95,유지,
+senior-doctor-trust-wave6,database-only,Pass,95,유지,
+senior-downsize-home-wave6,database-only,Pass,95,유지,
+senior-family-gather-wave6,database-only,Pass,95,유지,
+senior-funeral-prep-wave6,database-only,Pass,95,유지,
+senior-grandchild-meet-wave6,database-only,Pass,95,유지,
+senior-healthcare-plan-wave6,database-only,Pass,95,유지,
+senior-learning-senior-wave6,database-only,Pass,95,유지,
+senior-legacy-letter-wave6,database-only,Pass,95,유지,
+senior-medication-list-wave6,database-only,Pass,95,유지,
+senior-memory-care-wave6,database-only,Pass,95,유지,
+senior-new-hobby-senior-wave6,database-only,Pass,95,유지,
+senior-pension-check-wave6,database-only,Pass,95,유지,
+senior-pet-with-senior-wave6,database-only,Pass,95,유지,
+senior-retirement-plan-wave6,database-only,Pass,95,유지,
+senior-second-career-wave6,database-only,Pass,95,유지,
+senior-senior-club-wave6,database-only,Pass,95,유지,
+senior-smartphone-help-wave6,database-only,Pass,95,유지,
+senior-travel-after-60-wave6,database-only,Pass,95,유지,
+senior-volunteer-senior-wave6,database-only,Pass,95,유지,
+senior-walk-routine-senior-wave6,database-only,Pass,95,유지,
+senior-will-prepare-wave6,database-only,Pass,95,유지,
+senior-young-friend-wave6,database-only,Pass,95,유지,
+shortform-scroll-stop--HNY,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+skill-adult-edu-wave5,database-only,Pass,95,유지,
+skill-cert-start-wave5,database-only,Pass,95,유지,
+skill-code-intro-wave5,database-only,Pass,95,유지,
+skill-debate-join-wave5,database-only,Pass,95,유지,
+skill-draw-class-wave5,database-only,Pass,95,유지,
+skill-eng-diary-wave5,database-only,Pass,95,유지,
+skill-eng-word-wave5,database-only,Pass,95,유지,
+skill-ged-prep-wave5,database-only,Pass,95,유지,
+skill-hanja-study-wave5,database-only,Pass,95,유지,
+skill-instrument-learn-wave5,database-only,Pass,95,유지,
+skill-interview-prep-wave5,database-only,Pass,95,유지,
+skill-lang-talk-wave5,database-only,Pass,95,유지,
+skill-library-use-wave5,database-only,Pass,95,유지,
+skill-listening-train-wave5,database-only,Pass,95,유지,
+skill-online-pay-wave5,database-only,Pass,95,유지,
+skill-portfolio-pack-wave5,database-only,Pass,95,유지,
+skill-pronounce-drill-wave5,database-only,Pass,95,유지,
+skill-read-challenge-wave5,database-only,Pass,95,유지,
+skill-resume-write-wave5,database-only,Pass,95,유지,
+skill-self-study-wave5,database-only,Pass,95,유지,
+skill-speech-drill-wave5,database-only,Pass,95,유지,
+skill-study-cafe-wave5,database-only,Pass,95,유지,
+skill-toeic-prep-wave5,database-only,Pass,95,유지,
+skill-tutor-class-wave5,database-only,Pass,95,유지,
+skill-write-class-wave5,database-only,Pass,95,유지,
+snack-sharing-boundary-qlxc,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+spend-brand-switch-wave4,database-only,Pass,95,유지,
+spend-bulk-buy-judgment,database-only,Pass,95,유지,
+spend-bulk-buy-wave4,database-only,Pass,95,유지,
+spend-buy-or-wait-wave4,database-only,Pass,95,유지,
+spend-cart-abandon-wave4,database-only,Pass,95,유지,
+spend-comparison-table-making,database-only,Pass,95,유지,
+spend-coupon-use-timing,database-only,Pass,95,유지,
+spend-delivery-fee-threshold,database-only,Pass,95,유지,
+spend-gift-budget-setting,database-only,Pass,95,유지,
+spend-gift-budget-wave4,database-only,Pass,95,유지,
+spend-impulse-buy-cooldown,database-only,Pass,95,유지,
+spend-limited-edition-response,database-only,Pass,95,유지,
+spend-limited-stock-wave4,database-only,Pass,95,유지,
+spend-minimal-buying-rule,database-only,Pass,95,유지,
+spend-offline-store-route,database-only,Pass,95,유지,
+spend-pay-method-wave4,database-only,Pass,95,유지,
+spend-payment-method-choice,database-only,Pass,95,유지,
+spend-personal-luxury-line,database-only,Pass,95,유지,
+spend-premium-choice-wave4,database-only,Pass,95,유지,
+spend-price-alert-setting,database-only,Pass,95,유지,
+spend-product-color-choice,database-only,Pass,95,유지,
+spend-receipt-review-wave4,database-only,Pass,95,유지,
+spend-refund-decision-wave4,database-only,Pass,95,유지,
+spend-return-decision-style,database-only,Pass,95,유지,
+spend-review-reading-depth,database-only,Pass,95,유지,
+spend-sale-scroll-wave4,database-only,Pass,95,유지,
+spend-sample-first-wave4,database-only,Pass,95,유지,
+spend-sample-test-before-buy,database-only,Pass,95,유지,
+spend-secondhand-chat-wave4,database-only,Pass,95,유지,
+spend-shopping-list-discipline,database-only,Pass,95,유지,
+spend-subscription-check-wave4,database-only,Pass,95,유지,
+spend-subscription-keep-cancel,database-only,Pass,95,유지,
+spend-unboxing-reaction,database-only,Pass,95,유지,
+spend-warranty-keeping-style,database-only,Pass,95,유지,
+spend-wish-list-pruning,database-only,Pass,95,유지,
+spend-wish-list-wave4,database-only,Pass,95,유지,
+spicy-challenge-reaction-Se6o,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+sport-app-track-wave6,database-only,Pass,95,유지,
+sport-aqua-walk-wave6,database-only,Pass,95,유지,
+sport-badminton-game-wave6,database-only,Pass,95,유지,
+sport-basketball-pickup-wave6,database-only,Pass,95,유지,
+sport-bench-press-wave6,database-only,Pass,95,유지,
+sport-bicycle-pace-wave6,database-only,Pass,95,유지,
+sport-climbing-route-wave6,database-only,Pass,95,유지,
+sport-gear-buy-wave6,database-only,Pass,95,유지,
+sport-group-class-sport-wave6,database-only,Pass,95,유지,
+sport-gym-time-wave6,database-only,Pass,95,유지,
+sport-heart-rate-zone-wave6,database-only,Pass,95,유지,
+sport-interval-run-wave6,database-only,Pass,95,유지,
+sport-mountain-elevation-wave6,database-only,Pass,95,유지,
+sport-pilates-class-wave6,database-only,Pass,95,유지,
+sport-protein-shake-wave6,database-only,Pass,95,유지,
+sport-pt-class-wave6,database-only,Pass,95,유지,
+sport-pull-up-wave6,database-only,Pass,95,유지,
+sport-rest-day-sport-wave6,database-only,Pass,95,유지,
+sport-running-distance-wave6,database-only,Pass,95,유지,
+sport-soccer-team-wave6,database-only,Pass,95,유지,
+sport-squat-set-wave6,database-only,Pass,95,유지,
+sport-swimming-lap-wave6,database-only,Pass,95,유지,
+sport-tennis-match-wave6,database-only,Pass,95,유지,
+sport-warmup-stretch-wave6,database-only,Pass,95,유지,
+sport-yoga-mat-wave6,database-only,Pass,95,유지,
+sports-cheering-volume-nzsJ,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+status-message-update-vuD-,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+sticker-collecting-style-G9Zk,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+streaming-watchlist-style-Yr1B,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+style-accessory-pick-wave6,database-only,Pass,95,유지,
+style-bag-day-wave6,database-only,Pass,95,유지,
+style-business-casual-wave6,database-only,Pass,95,유지,
+style-cleaning-bag-wave6,database-only,Pass,95,유지,
+style-coat-layer-wave6,database-only,Pass,95,유지,
+style-color-base-wave6,database-only,Pass,95,유지,
+style-color-match-mirror-wave6,database-only,Pass,95,유지,
+style-donate-clothes-wave6,database-only,Pass,95,유지,
+style-dry-clean-wave6,database-only,Pass,95,유지,
+style-formal-set-wave6,database-only,Pass,95,유지,
+style-funeral-attire-wave6,database-only,Pass,95,유지,
+style-hat-pick-wave6,database-only,Pass,95,유지,
+style-jewelry-daily-wave6,database-only,Pass,95,유지,
+style-outfit-pick-am-wave6,database-only,Pass,95,유지,
+style-pattern-mix-wave6,database-only,Pass,95,유지,
+style-perfume-spot-wave6,database-only,Pass,95,유지,
+style-rainy-shoes-wave6,database-only,Pass,95,유지,
+style-repair-clothes-wave6,database-only,Pass,95,유지,
+style-scarf-fold-wave6,database-only,Pass,95,유지,
+style-seasonal-buy-wave6,database-only,Pass,95,유지,
+style-sneaker-pick-wave6,database-only,Pass,95,유지,
+style-wardrobe-rotate-wave6,database-only,Pass,95,유지,
+style-watch-pick-wave6,database-only,Pass,95,유지,
+style-wedding-guest-wave6,database-only,Pass,95,유지,
+style-weekend-comfort-wave6,database-only,Pass,95,유지,
+subscription-cancel-timing-dqRa,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+team-chat-mention-style-_cDp,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+tech-ai-assistant-wave5,database-only,Pass,95,유지,
+tech-autocomplete-wave5,database-only,Pass,95,유지,
+tech-bg-app-wave5,database-only,Pass,95,유지,
+tech-card-register-wave5,database-only,Pass,95,유지,
+tech-clipboard-use-wave5,database-only,Pass,95,유지,
+tech-digital-id-wave5,database-only,Pass,95,유지,
+tech-digital-minimal-wave5,database-only,Pass,95,유지,
+tech-email-reply-wave5,database-only,Pass,95,유지,
+tech-emoji-use-wave5,database-only,Pass,95,유지,
+tech-family-calendar-wave5,database-only,Pass,95,유지,
+tech-folder-color-wave5,database-only,Pass,95,유지,
+tech-location-share-wave5,database-only,Pass,95,유지,
+tech-multi-device-wave5,database-only,Pass,95,유지,
+tech-music-mode-wave5,database-only,Pass,95,유지,
+tech-night-mode-wave5,database-only,Pass,95,유지,
+tech-note-app-wave5,database-only,Pass,95,유지,
+tech-ott-watch-wave5,database-only,Pass,95,유지,
+tech-qr-pay-wave5,database-only,Pass,95,유지,
+tech-security-alert-wave5,database-only,Pass,95,유지,
+tech-shortcut-key-wave5,database-only,Pass,95,유지,
+tech-video-call-wave5,database-only,Pass,95,유지,
+tech-voice-memo-wave5,database-only,Pass,95,유지,
+tech-watch-notify-wave5,database-only,Pass,95,유지,
+tech-widget-layout-wave5,database-only,Pass,95,유지,
+tech-wifi-manage-wave5,database-only,Pass,95,유지,
+theater-entry-timing-yqJI,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+travel-airport-dutyfree-route,database-only,Pass,95,유지,
+travel-airport-time-wave4,database-only,Pass,95,유지,
+travel-checklist-use-wave4,database-only,Pass,95,유지,
+travel-hotel-check-wave4,database-only,Pass,95,유지,
+travel-hotel-room-settling,database-only,Pass,95,유지,
+travel-itinerary-change-response,database-only,Pass,95,유지,
+travel-itinerary-gap-wave4,database-only,Pass,95,유지,
+travel-local-food-wave4,database-only,Pass,95,유지,
+travel-local-market-browsing,database-only,Pass,95,유지,
+travel-local-transport-choice,database-only,Pass,95,유지,
+travel-lost-route-wave4,database-only,Pass,95,유지,
+travel-luggage-weight-check,database-only,Pass,95,유지,
+travel-map-route-wave4,database-only,Pass,95,유지,
+travel-morning-tour-wave4,database-only,Pass,95,유지,
+travel-museum-audio-guide,database-only,Pass,95,유지,
+travel-museum-or-cafe-wave4,database-only,Pass,95,유지,
+travel-next-trip-wave4,database-only,Pass,95,유지,
+travel-night-market-wave4,database-only,Pass,95,유지,
+travel-packing-order-wave4,database-only,Pass,95,유지,
+travel-passport-copy-habit,database-only,Pass,95,유지,
+travel-photo-spot-wave4,database-only,Pass,95,유지,
+travel-post-trip-organizing,database-only,Pass,95,유지,
+travel-rain-plan-wave4,database-only,Pass,95,유지,
+travel-rainy-trip-response,database-only,Pass,95,유지,
+travel-restaurant-waiting-choice,database-only,Pass,95,유지,
+travel-return-unpack-wave4,database-only,Pass,95,유지,
+travel-seat-upgrade-decision,database-only,Pass,95,유지,
+travel-souvenir-choice-bIsE,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+travel-souvenir-choice-style,database-only,Pass,95,유지,
+travel-souvenir-list-check,database-only,Pass,95,유지,
+travel-souvenir-pick-wave4,database-only,Pass,95,유지,
+travel-sunrise-plan-choice,database-only,Pass,95,유지,
+travel-tour-vs-free-time,database-only,Pass,95,유지,
+travel-transport-pass-wave4,database-only,Pass,95,유지,
+travel-travel-budget-envelope,database-only,Pass,95,유지,
+travel-travel-budget-wave4,database-only,Pass,95,유지,
+travel-travel-companion-role,database-only,Pass,95,유지,
+travel-travel-companion-wave4,database-only,Pass,95,유지,
+travel-travel-note-keeping,database-only,Pass,95,유지,
+travel-travel-photo-selection,database-only,Pass,95,유지,
+travel-travel-record-wave4,database-only,Pass,95,유지,
+travel-travel-weather-pack,database-only,Pass,95,유지,
+travel-trip-memory-share,database-only,Pass,95,유지,
+trip-after-sns-wave5,database-only,Pass,95,유지,
+trip-alarm-set-wave5,database-only,Pass,95,유지,
+trip-bag-weight-wave5,database-only,Pass,95,유지,
+trip-camera-pack-wave5,database-only,Pass,95,유지,
+trip-currency-when-wave5,database-only,Pass,95,유지,
+trip-extra-bag-wave5,database-only,Pass,95,유지,
+trip-fellow-meal-wave5,database-only,Pass,95,유지,
+trip-flight-when-wave5,database-only,Pass,95,유지,
+trip-free-time-wave5,database-only,Pass,95,유지,
+trip-guesthouse-stay-wave5,database-only,Pass,95,유지,
+trip-guide-tour-wave5,database-only,Pass,95,유지,
+trip-hotel-room-wave5,database-only,Pass,95,유지,
+trip-jetlag-step-wave5,database-only,Pass,95,유지,
+trip-korean-food-wave5,database-only,Pass,95,유지,
+trip-local-sim-wave5,database-only,Pass,95,유지,
+trip-luggage-color-wave5,database-only,Pass,95,유지,
+trip-passport-keep-wave5,database-only,Pass,95,유지,
+trip-scenery-shot-wave5,database-only,Pass,95,유지,
+trip-selfie-pose-wave5,database-only,Pass,95,유지,
+trip-site-line-wave5,database-only,Pass,95,유지,
+trip-street-food-wave5,database-only,Pass,95,유지,
+trip-travel-diary-wave5,database-only,Pass,95,유지,
+trip-travel-insurance-wave5,database-only,Pass,95,유지,
+trip-visa-check-wave5,database-only,Pass,95,유지,
+trip-window-aisle-wave5,database-only,Pass,95,유지,
+visual-binge-watch-wave6,database-only,Pass,95,유지,
+visual-doc-watch-wave6,database-only,Pass,95,유지,
+visual-dubbed-pref-wave6,database-only,Pass,95,유지,
+visual-family-tv-wave6,database-only,Pass,95,유지,
+visual-long-form-wave6,database-only,Pass,95,유지,
+visual-movie-pick-couple-wave6,database-only,Pass,95,유지,
+visual-one-episode-wave6,database-only,Pass,95,유지,
+visual-ott-switch-wave6,database-only,Pass,95,유지,
+visual-popcorn-pick-wave6,database-only,Pass,95,유지,
+visual-projector-night-wave6,database-only,Pass,95,유지,
+visual-rating-give-wave6,database-only,Pass,95,유지,
+visual-recommendation-trust-wave6,database-only,Pass,95,유지,
+visual-replay-fav-wave6,database-only,Pass,95,유지,
+visual-review-after-wave6,database-only,Pass,95,유지,
+visual-save-later-video-wave6,database-only,Pass,95,유지,
+visual-seat-row-wave6,database-only,Pass,95,유지,
+visual-series-end-wave6,database-only,Pass,95,유지,
+visual-short-clip-wave6,database-only,Pass,95,유지,
+visual-spoiler-handle-wave6,database-only,Pass,95,유지,
+visual-subtitle-pick-wave6,database-only,Pass,95,유지,
+visual-theater-time-wave6,database-only,Pass,95,유지,
+visual-thumbnail-trust-wave6,database-only,Pass,95,유지,
+visual-vlog-pick-wave6,database-only,Pass,95,유지,
+visual-weekly-wait-wave6,database-only,Pass,95,유지,
+visual-youtuber-follow-wave6,database-only,Pass,95,유지,
+vital-alcohol-cut-wave5,database-only,Pass,95,유지,
+vital-caffeine-cut-wave5,database-only,Pass,95,유지,
+vital-core-work-wave5,database-only,Pass,95,유지,
+vital-dental-visit-wave5,database-only,Pass,95,유지,
+vital-digest-step-wave5,database-only,Pass,95,유지,
+vital-eye-check-wave5,database-only,Pass,95,유지,
+vital-fast-try-wave5,database-only,Pass,95,유지,
+vital-fever-step-wave5,database-only,Pass,95,유지,
+vital-fiber-add-wave5,database-only,Pass,95,유지,
+vital-foot-massage-wave5,database-only,Pass,95,유지,
+vital-headache-step-wave5,database-only,Pass,95,유지,
+vital-health-checkup-wave5,database-only,Pass,95,유지,
+vital-immunity-care-wave5,database-only,Pass,95,유지,
+vital-latenight-stop-wave5,database-only,Pass,95,유지,
+vital-meal-time-wave5,database-only,Pass,95,유지,
+vital-meds-time-wave5,database-only,Pass,95,유지,
+vital-neck-posture-wave5,database-only,Pass,95,유지,
+vital-protein-take-wave5,database-only,Pass,95,유지,
+vital-scale-check-wave5,database-only,Pass,95,유지,
+vital-shoulder-rotate-wave5,database-only,Pass,95,유지,
+vital-skin-visit-wave5,database-only,Pass,95,유지,
+vital-supplement-start-wave5,database-only,Pass,95,유지,
+vital-sweet-cut-wave5,database-only,Pass,95,유지,
+vital-vitamin-pick-wave5,database-only,Pass,95,유지,
+vital-wrist-care-wave5,database-only,Pass,95,유지,
+warranty-registration-style-GAQ1,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+water-temperature-choice-hFrW,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+webtoon-comment-reading-qeOi,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+wellness-body-signal-wave4,database-only,Pass,95,유지,
+wellness-cafeteria-pick-wave4,database-only,Pass,95,유지,
+wellness-condition-log-wave4,database-only,Pass,95,유지,
+wellness-exercise-start-wave4,database-only,Pass,95,유지,
+wellness-eye-rest-wave4,database-only,Pass,95,유지,
+wellness-health-info-wave4,database-only,Pass,95,유지,
+wellness-home-workout-wave4,database-only,Pass,95,유지,
+wellness-late-night-snack-wave4,database-only,Pass,95,유지,
+wellness-meal-balance-wave4,database-only,Pass,95,유지,
+wellness-outdoor-air-wave4,database-only,Pass,95,유지,
+wellness-posture-check-wave4,database-only,Pass,95,유지,
+wellness-recovery-day-wave4,database-only,Pass,95,유지,
+wellness-rest-sign-wave4,database-only,Pass,95,유지,
+wellness-routine-break-wave4,database-only,Pass,95,유지,
+wellness-sleep-alarm-wave4,database-only,Pass,95,유지,
+wellness-snack-choice-wave4,database-only,Pass,95,유지,
+wellness-stretch-time-wave4,database-only,Pass,95,유지,
+wellness-walk-choice-wave4,database-only,Pass,95,유지,
+wellness-warmup-style-wave4,database-only,Pass,95,유지,
+wellness-water-reminder-wave4,database-only,Pass,95,유지,
+work-after-work-switch-wave4,database-only,Pass,95,유지,
+work-calendar-block-wave4,database-only,Pass,95,유지,
+work-colleague-help-wave4,database-only,Pass,95,유지,
+work-deadline-buffer-wave4,database-only,Pass,95,유지,
+work-desk-focus-wave4,database-only,Pass,95,유지,
+work-document-version-wave4,database-only,Pass,95,유지,
+work-feedback-read-wave4,database-only,Pass,95,유지,
+work-handoff-message-wave4,database-only,Pass,95,유지,
+work-idea-share-wave4,database-only,Pass,95,유지,
+work-lunch-break-wave4,database-only,Pass,95,유지,
+work-meeting-note-wave4,database-only,Pass,95,유지,
+work-meeting-question-wave4,database-only,Pass,95,유지,
+work-mistake-recovery-wave4,database-only,Pass,95,유지,
+work-project-start-wave4,database-only,Pass,95,유지,
+work-remote-routine-wave4,database-only,Pass,95,유지,
+work-task-close-wave4,database-only,Pass,95,유지,
+work-task-priority-wave4,database-only,Pass,95,유지,
+work-urgent-request-wave4,database-only,Pass,95,유지,
+work-weekly-report-wave4,database-only,Pass,95,유지,
+work-work-message-wave4,database-only,Pass,95,유지,
+workplus-after-meeting-followup,database-only,Pass,95,유지,
+workplus-approval-line-check,database-only,Pass,95,유지,
+workplus-cross-team-message,database-only,Pass,95,유지,
+workplus-document-version-rule,database-only,Pass,95,유지,
+workplus-handoff-risk-note,database-only,Pass,95,유지,
+workplus-meeting-camera-choice,database-only,Pass,95,유지,
+workplus-meeting-note-action,database-only,Pass,95,유지,
+workplus-new-tool-adoption,database-only,Pass,95,유지,
+workplus-office-seat-preference,database-only,Pass,95,유지,
+workplus-office-supply-refill,database-only,Pass,95,유지,
+workplus-quick-question-timing,database-only,Pass,95,유지,
+workplus-quiet-work-block,database-only,Pass,95,유지,
+workplus-shared-drive-rules,database-only,Pass,95,유지,
+workplus-team-calendar-check,database-only,Pass,95,유지,
+workplus-urgent-task-triage,database-only,Pass,95,유지,
+workplus-work-chat-threading,database-only,Pass,95,유지,
+workplus-workday-wrap-up,database-only,Pass,95,유지,
+advice-request-response-cvzX,database-only,Pass,95,유지,
+ai-prompt-detail-style-3PJK,database-only,Pass,95,유지,
+apology-message-style-XOIx,database-only,Pass,95,유지,
+apology-style-FGmQ,database-only,Pass,95,유지,
+app-permission-check-style-_rQV,database-only,Pass,95,유지,
+appliance-manual-keeping-C-Gj,database-only,Pass,95,유지,
+appointment-planning-style-DEG8,database-only,Pass,95,유지,
+autumn-sentiment-type-wgf_,database-only,Pass,95,유지,
+bathroom-shelf-order-jmdC,database-only,Pass,95,유지,
+big-purchase-decision-style-k4As,database-only,Pass,95,유지,
+birthday-care-style-aKhD,database-only,Pass,95,유지,
+birthday-message-timing-JMAE,database-only,Pass,95,유지,
+bookmark-save-type-ecFP,database-only,Pass,95,유지,
+brain-opinion-mbti-lO1Z,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+browser-tab-control-unzW,database-only,Pass,95,유지,
+cake-cutting-style-test-G9Ge,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+calendar-color-type-jLKH,database-only,Pass,95,유지,
+canceled-plan-response-xyfb,database-only,Pass,95,유지,
+cart-hold-style-Z3Mt,database-only,Pass,95,유지,
+challenge-participation-style-test-DcIo,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+character-immersion-2WfA,database-only,Pass,95,유지,
+charger-borrowing-boundary-zghP,database-only,Pass,95,유지,
+choice-fatigue-type-jPIl,database-only,Pass,95,유지,
+class-question-style-s5Wm,database-only,Pass,95,유지,
+cloud-file-organization-ntHx,database-only,Pass,95,유지,
+club-activity-style-rUMo,database-only,Pass,95,유지,
+compliment-response-style-XxQq,database-only,Pass,95,유지,
+conflict-cooling-time-rKHG,database-only,Pass,95,유지,
+copywriting-practice-type-i4RP,database-only,Pass,95,유지,
+coupon-decision-style-XdLE,database-only,Pass,95,유지,
+deadline-buffer-setting-XITN,database-only,Pass,95,유지,
+delivery-waiting-style-USIB,database-only,Pass,95,유지,
+desk-layout-style-I0VX,database-only,Pass,95,유지,
+desk-snack-stash-F0f8,database-only,Pass,95,유지,
+diary-decoration-type-BE_V,database-only,Pass,95,유지,
+dm-boundary-type--qJH,database-only,Pass,95,유지,
+door-holding-manners-7bbJ,database-only,Pass,95,유지,
+drawing-style-mbti-test-aif7,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+drinking-buddy-type-test-x8nl,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+elevator-manner-style-_NOJ,database-only,Pass,95,유지,
+elevator-small-talk-7ZoY,database-only,Pass,95,유지,
+email-handling-style-xTrN,database-only,Pass,95,유지,
+emergency-fund-style-ULX_,database-only,Pass,95,유지,
+emotion-hiding-type--t0u,database-only,Pass,95,유지,
+ending-interpretation-b2dc,database-only,Pass,95,유지,
+episode-skip-threshold-5FGC,database-only,Pass,95,유지,
+exam-checking-order-j6Dm,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+expectation-disappointment-hWUl,database-only,Pass,95,유지,
+family-conflict-style-ZVxf,database-only,Pass,95,유지,
+fandom-temperature-cp2E,database-only,Pass,95,유지,
+favor-refusal-style-wMAG,database-only,Pass,95,유지,
+feed-upload-standard-mAzK,database-only,Pass,95,유지,
+feedback-reception-tendency-test-A9WY,database-only,Pass,95,유지,
+filename-organization-tendency-test-T6tA,database-only,Pass,95,유지,
+fine-dust-plan-change-nL0H,database-only,Pass,95,유지,
+first-impression-style-jbpt,database-only,Pass,95,유지,
+first-meeting-silence-AexZ,database-only,Pass,95,유지,
+free-trial-cancel-style-ZfS7,database-only,Pass,95,유지,
+friend-advice-style-PSLS,database-only,Pass,95,유지,
+friend-photo-tagging-CKu1,database-only,Pass,95,유지,
+friendship-pace-style-UsWe,database-only,Pass,95,유지,
+goods-keeping-type-3ez-,database-only,Pass,95,유지,
+group-chat-read-style-WLA_,database-only,Pass,95,유지,
+group-trip-role-CIMN,database-only,Pass,95,유지,
+gukmul-vs-bibim-style-test-p0Q2,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+heatwave-appointment-boundary-3uGU,database-only,Pass,95,유지,
+hobby-tool-upgrade-2kvY,database-only,Pass,95,유지,
+holiday-family-energy-gSgu,database-only,Pass,95,유지,
+home-bedding-change-rhythm,database-only,Pass,95,유지,
+home-closet-season-shift,database-only,Pass,95,유지,
+home-desk-reset-routine,database-only,Pass,95,유지,
+home-entryway-organization,database-only,Pass,95,유지,
+home-noise-boundary-FDVK,database-only,Pass,95,유지,
+home-pantry-inventory,database-only,Pass,95,유지,
+home-plant-watering-routine,database-only,Pass,95,유지,
+home-trash-sorting-flow,database-only,Pass,95,유지,
+household-tool-borrowing-KufB,database-only,Pass,95,유지,
+insurance-clause-check-v2KO,database-only,Pass,95,유지,
+jikdaeding-personality-test-2EK2,database-only,Pass,95,유지,
+jjigae-vs-gukmul-personality-test-Wb50,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+kimbap-dna-test-wTRs,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+korean-genre-style-test-C7vy,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+laundry-detergent-choice-OFpy,database-only,Pass,95,유지,
+leaving-check-style-rezv,database-only,Pass,95,유지,
+library-seat-selection-test-PHK_,database-only,Pass,95,유지,
+limited-drop-queue-GoUr,database-only,Pass,95,유지,
+lost-item-response-style-hhXS,database-only,Pass,95,유지,
+lunch-break-boundary-u6f4,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+lunchbox-style-test-BQ9n,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+meeting-keyboard-sound-OZsn,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+meeting-note-taking-vYN8,database-only,Pass,95,유지,
+meme-reaction-style-test-Fi2N,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+monsoon-indoor-plan-iouR,database-only,Pass,95,유지,
+monthly-planner-map-pzVq,database-only,Pass,95,유지,
+morning-window-open-bAAy,database-only,Pass,95,유지,
+movie-credit-patience-wdtV,database-only,Pass,95,유지,
+movie-picking-style-test-enKw,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+neighbor-smalltalk-style-eCoH,database-only,Pass,95,유지,
+newsletter-curation-type-VmMb,database-only,Pass,95,유지,
+newyear-goal-stamina-9kXr,database-only,Pass,95,유지,
+nickname-acceptance-style-Y7BO,database-only,Pass,95,유지,
+nickname-choice-type-QB-a,database-only,Pass,95,유지,
+parcel-unboxing-style-6bhe,database-only,Pass,95,유지,
+password-care-type-m9Ff,database-only,Pass,95,유지,
+perfection-balance-1xQC,database-only,Pass,95,유지,
+pizza-topping-mbti-test-hFyj,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+plant-care-style-n-bg,database-only,Pass,95,유지,
+popup-store-reaction-QO-G,database-only,Pass,95,유지,
+practice-participation-attitude-test-6z2j,database-only,Pass,95,유지,
+price-alert-waiting-GPDC,database-only,Pass,95,유지,
+procrastination-excuse-90j1,database-only,Pass,95,유지,
+product-review-reading-style-t4jU,database-only,Pass,95,유지,
+professor-consultation-readiness-test-lG38,database-only,Pass,95,유지,
+promise-delay-reaction-nBFg,database-only,Pass,95,유지,
+puzzle-solving-style-j5tm,database-only,Pass,95,유지,
+quiz-pmctma-8zTO,database-only,Pass,95,유지,
+quiz-tsa4s7-i_Ns,database-only,Pass,95,유지,
+recycling-style-uVwT,database-only,Pass,95,유지,
+reels-save-type-aTza,database-only,Pass,95,유지,
+refund-exchange-style-p9m8,database-only,Pass,95,유지,
+rejection-recovery-type-BQ7K,database-only,Pass,95,유지,
+report-writing-style-test-mbti-5zzN,database-only,Pass,95,유지,
+reunion-energy-type-O7te,database-only,Pass,95,유지,
+review-routine-style-7DoW,database-only,Pass,95,유지,
+room-temperature-control-Iyh6,database-only,Pass,95,유지,
+salad-dressing-mbti-test-vb9p,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+scent-rest-type-pS0q,database-only,Pass,95,유지,
+scholarship-preparation-test-XfMX,database-only,Pass,95,유지,
+search-query-style-w81Y,database-only,Pass,95,유지,
+secret-keeping-style-zDhY,database-only,Pass,95,유지,
+series-rewatch-trigger-JYm_,database-only,Pass,95,유지,
+shared-fridge-etiquette-JVC8,database-only,Pass,95,유지,
+shared-space-style-MS5K,database-only,Pass,95,유지,
+shoe-rack-order-NEo-,database-only,Pass,95,유지,
+sink-dish-timing-ckDP,database-only,Pass,95,유지,
+slang-adoption-type-cc0Q,database-only,Pass,95,유지,
+sns-profile-vibe-3Pd7,database-only,Pass,95,유지,
+solo-time-recharge-fhhz,database-only,Pass,95,유지,
+split-bill-discussion-S3YP,database-only,Pass,95,유지,
+spoiler-boundary-FnQO,database-only,Pass,95,유지,
+spring-change-drive-zy00,database-only,Pass,95,유지,
+story-highlight-curation-Ik3b,database-only,Pass,95,유지,
+study-break-timing-K8Ot,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+subway-vs-bus-personality-test-93VO,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+sushi-mbti-test-Yw65,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+tanghulu-mbti-test-ej0S,database-only,Pass,95,유지,
+tangsooyuk-test-8enk,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+task-switching-speed-Wn6a,database-only,P1,40,SEO/목차/관련 링크/문구 품질 보강,P1 DB thin result rows: 16
+test-quiz-2-godsaeng-master-Tjjb,database-only,P2,70,SEO/목차/관련 링크/문구 품질 보강,P2 DB test description too short
+timetable-planning-style-vQJS,database-only,Pass,95,유지,
+trailer-trust-type-vTSg,database-only,Pass,95,유지,
+trash-bag-replacement-mPUj,database-only,Pass,95,유지,
+umbrella-prep-style-PBoR,database-only,Pass,95,유지,
+umbrella-sharing-style-bTtR,database-only,Pass,95,유지,
+utility-bill-style-NmoJ,database-only,Pass,95,유지,
+vacation-afterglow-WWzL,database-only,Pass,95,유지,
+vacation-handover-mbti-test-HJA0,database-only,Pass,95,유지,
+waiting-line-behavior-0oBM,database-only,Pass,95,유지,
+wallet-place-routine-mJpI,database-only,Pass,95,유지,
+warranty-repair-response-vkIk,database-only,Pass,95,유지,
+weekend-invitation-choice-euCX,database-only,Pass,95,유지,
+winter-layering-style-fNqz,database-only,Pass,95,유지,
+work-handover-style-test-8pFU,database-only,Pass,95,유지,
+work-note-habit-test-r7CT,database-only,Pass,95,유지,
+work-priority-test-bdXE,database-only,Pass,95,유지,
+work-refusal-style-test-E4sK,database-only,Pass,95,유지,
+work-request-style-PmKx,database-only,Pass,95,유지,
+year-end-reflection-oF8m,database-only,Pass,95,유지,
