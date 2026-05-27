@@ -4,20 +4,22 @@ import {
   getAiIndexTests,
   toAbsoluteUrl,
 } from "@/lib/ai-content-index";
+import { getAllBlogPosts } from "@/lib/blog-posts";
 
 export const revalidate = 3600;
 
 export async function GET() {
   const tests = await getAiIndexTests();
+  const posts = getAllBlogPosts();
   const now = new Date().toISOString();
 
   return NextResponse.json(
     {
       site: {
-        name: "테몬 MBTI",
+        name: "테몬",
         url: "https://temon.kr",
         description:
-          "무료 MBTI 테스트 모음. 성격 테스트와 재밌는 심리테스트를 주제별로 제공하는 한국어 테스트 플랫폼",
+          "무료 성격 퀴즈, 관계 테스트, 취향 테스트와 결과 해석 블로그를 제공하는 한국어 퀴즈 사이트입니다.",
         language: "ko",
         lastUpdated: now.slice(0, 10),
       },
@@ -34,7 +36,7 @@ export async function GET() {
         },
         {
           url: "/blog",
-          title: "블로그 | 무료 성격 테스트 글 목록 - 테몬",
+          title: "퀴즈 블로그 | 성격·관계·취향 테스트 해석 - 테몬",
           type: "listing",
         },
         { url: "/about", title: "테몬 소개", type: "about" },
@@ -45,11 +47,23 @@ export async function GET() {
         { url: "/llms.txt", title: "AI 검색 안내", type: "ai-index" },
         { url: "/llms-full.txt", title: "AI 전체 콘텐츠 인덱스", type: "ai-index" },
       ],
+      blogPosts: posts.map((post) => ({
+        url: `/blog/${post.slug}`,
+        absoluteUrl: `https://temon.kr/blog/${post.slug}`,
+        title: post.title,
+        description: post.description,
+        category: post.category,
+        keywords: post.keywords,
+        publishedAt: post.publishedAt,
+        updatedAt: post.updatedAt,
+        relatedTests: post.relatedTests,
+      })),
       tests: tests.map((test) => ({
         ...test,
         absoluteUrl: toAbsoluteUrl(test.url),
       })),
       totalTests: tests.length,
+      totalBlogPosts: posts.length,
       categories: getAiIndexCategories(tests),
       generatedAt: now,
     },

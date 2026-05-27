@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getStaticRoutes } from "@/lib/sitemap-utils";
 import { getIndexableTests } from "@/lib/visible-tests";
+import { getAllBlogPosts } from "@/lib/blog-posts";
 import { getDb, isDbAvailable } from "@/lib/db/client";
 import { tests } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
@@ -118,6 +119,12 @@ export async function GET() {
       priority: r.priority ?? 0.5,
     }));
     const dbTestRoutes = await getPublishedDbTestRoutes(baseUrl, now);
+    const blogRoutes: RouteEntry[] = getAllBlogPosts().map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: toValidDate(post.updatedAt, now),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    }));
 
     // getIndexableTests() = publishAt 도달 AND noindex 아닌 테스트만.
     // 드립 공개 대기 중인 테스트는 자동으로 sitemap에서 제외됨.
@@ -141,7 +148,12 @@ export async function GET() {
 
     // 중복 URL 제거 (staticRoutes에 /tests가 이미 포함되므로)
     const merged = new Map<string, RouteEntry>();
-    for (const r of [...staticRoutes, ...testRoutes, ...dbTestRoutes]) {
+    for (const r of [
+      ...staticRoutes,
+      ...testRoutes,
+      ...dbTestRoutes,
+      ...blogRoutes,
+    ]) {
       merged.set(r.url, r);
     }
     const allRoutes = Array.from(merged.values());
