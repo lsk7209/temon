@@ -304,7 +304,7 @@ function ResultContent() {
 
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-8">
           <CardHeader>
-            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+            <CardTitle className="text-2xl">이 결과가 유용한 순간</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {useCases.map((item, index) => (
@@ -317,7 +317,7 @@ function ResultContent() {
 
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-8">
           <CardHeader>
-            <CardTitle className="text-2xl">FAQ</CardTitle>
+            <CardTitle className="text-2xl">자주 묻는 질문</CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
             {faqs.map((faq) => (
@@ -330,7 +330,7 @@ function ResultContent() {
         </Card>
 
         <div className="mb-8">
-          <RelatedTestsSection testId="youtube-habit" title="More Lifestyle Quizzes To Compare" />
+          <RelatedTestsSection testId="youtube-habit" title="?자주 묻는 질문 ???" />
         </div>
 
         {/* Other Tests */}

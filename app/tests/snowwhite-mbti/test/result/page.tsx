@@ -313,7 +313,7 @@ function ResultContent() {
 
         <Card className="mb-8 border-0 bg-white/90 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+            <CardTitle className="text-2xl">이 결과가 유용한 순간</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {resultUseCases.map((item) => (
@@ -326,7 +326,7 @@ function ResultContent() {
 
         <Card className="mb-8 border-0 bg-white/90 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl">FAQ</CardTitle>
+            <CardTitle className="text-2xl">자주 묻는 질문</CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
             {faqItems.map((item) => (

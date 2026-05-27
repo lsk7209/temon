@@ -2861,6 +2861,25 @@ export const ALL_TESTS: Test[] = [
   },
 ];
 
+const MIN_DESCRIPTION_LENGTH = 50;
+
+function cleanLabel(value: string) {
+  return value.replace(/[^\w가-힣\s]/g, "").replace(/\s+/g, " ").trim();
+}
+
+function buildExpandedDescription(test: Test) {
+  const title = cleanLabel(test.title) || test.id.replace(/-/g, " ");
+  const category = cleanLabel(test.category) || "퀴즈";
+  const tags = test.tags.map(cleanLabel).filter(Boolean).slice(0, 3).join(", ");
+  return `${title}는 ${category} 주제로 나의 선택 패턴과 취향을 알아보는 무료 퀴즈 테스트입니다. ${tags ? `${tags} 관련 질문을 통해 ` : ""}결과별 해석과 추천 테스트까지 함께 확인할 수 있습니다.`;
+}
+
+for (const test of ALL_TESTS) {
+  if (test.description.trim().length < MIN_DESCRIPTION_LENGTH) {
+    test.description = buildExpandedDescription(test);
+  }
+}
+
 // Get all unique categories
 export const CATEGORIES = [
   "전체",

@@ -412,23 +412,21 @@ ${shareUrl}`
 
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
           <CardHeader className="pb-4 sm:pb-6">
-            <CardTitle className="text-xl sm:text-2xl">Routine Reset</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">루틴 조정 가이드</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-              This result becomes useful when you connect it to one specific morning bottleneck. Instead of changing
-              everything at once, adjust one alarm, one wake-up trigger, or one preparation habit first.
+              이 결과는 아침에 반복되는 막힘 지점 하나와 연결할 때 유용합니다. 모든 루틴을 한번에 바꾸기보다 알람, 기상 자극, 준비 습관 중 하나부터 조정해 보세요.
             </p>
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-              Morning style is usually tied to sleep timing, evening wind-down, and how much decision-making happens
-              right after waking up. That is why small routine edits often work better than motivation alone.
+              아침 스타일은 대부분 취침 시간, 저녁 정리 루틴, 기상 직후의 선택 부담과 연결됩니다. 그래서 동기부여보다 작은 루틴 수정이 더 잘 작동할 때가 많습니다.
             </p>
           </CardContent>
         </Card>
 
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
           <CardHeader className="pb-4 sm:pb-6">
-            <CardTitle className="text-xl sm:text-2xl">Where This Result Becomes Useful</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">이 결과가 유용한 순간</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {resultUseCases.map((item) => (
@@ -441,7 +439,7 @@ ${shareUrl}`
 
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
           <CardHeader className="pb-4 sm:pb-6">
-            <CardTitle className="text-xl sm:text-2xl">FAQ</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">자주 묻는 질문</CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
             {faqItems.map((item) => (

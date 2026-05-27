@@ -184,8 +184,7 @@ export default function NTRPTestPage() {
       const finalLevel = parseFloat(resultType)
       router.push(`/tests/ntrp-test/test/result?level=${finalLevel}&id=${resultId}`)
     },
-    onError: (error, resultType) => {
-      console.error('결과 저장 실패:', error)
+    onError: (_error, resultType) => {
       const finalLevel = parseFloat(resultType)
       router.push(`/tests/ntrp-test/test/result?level=${finalLevel}`)
     },
@@ -223,6 +222,11 @@ export default function NTRPTestPage() {
 
   const progress = ((currentQuestion + 1) / questions.length) * 100
 
+  const handlePrevious = () => {
+    setScores((previousScores) => previousScores.slice(0, -1))
+    setCurrentQuestion((previousQuestion) => Math.max(0, previousQuestion - 1))
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
       <div className="container mx-auto px-4 py-8">
@@ -252,6 +256,16 @@ export default function NTRPTestPage() {
                 </Button>
               ))}
             </div>
+            {currentQuestion > 0 && (
+              <Button
+                type="button"
+                variant="ghost"
+                className="mt-6 w-full text-green-700"
+                onClick={handlePrevious}
+              >
+                이전 질문으로 돌아가기
+              </Button>
+            )}
           </div>
         </div>
       </div>

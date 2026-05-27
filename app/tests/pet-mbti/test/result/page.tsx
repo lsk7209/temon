@@ -542,7 +542,7 @@ ${shareUrl}`
 
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
           <CardHeader className="pb-4 sm:pb-6">
-            <CardTitle className="text-xl sm:text-2xl">Where This Result Becomes Useful</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">이 결과가 유용한 순간</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {resultUseCases.map((item) => (
@@ -555,7 +555,7 @@ ${shareUrl}`
 
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur mb-6 sm:mb-8">
           <CardHeader className="pb-4 sm:pb-6">
-            <CardTitle className="text-xl sm:text-2xl">FAQ</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">자주 묻는 질문</CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
             {faqItems.map((item) => (

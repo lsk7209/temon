@@ -92,7 +92,7 @@ function ResultContent() {
         {/* 사용 성향 요약 */}
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+            <CardTitle className="text-2xl">이 결과가 유용한 순간</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {resultUseCases.map((item) => (
@@ -215,7 +215,7 @@ function ResultContent() {
           <CardContent>
             <Card className="mb-6 bg-transparent shadow-none border-0">
               <CardHeader className="px-0 pt-0">
-                <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+                <CardTitle className="text-2xl">이 결과가 유용한 순간</CardTitle>
               </CardHeader>
               <CardContent className="px-0 space-y-3">
                 {resultUseCases.map((item) => (
@@ -276,7 +276,7 @@ function ResultContent() {
         {/* CTA 버튼 */}
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">Action Guide</CardTitle>
+            <CardTitle className="text-2xl">활용 가이드</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
             <p>
@@ -293,7 +293,7 @@ function ResultContent() {
 
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+            <CardTitle className="text-2xl">이 결과가 유용한 순간</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
             {resultUseCases.map((item) => (
@@ -304,7 +304,7 @@ function ResultContent() {
 
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">FAQ</CardTitle>
+            <CardTitle className="text-2xl">자주 묻는 질문</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {faqItems.map((item) => (

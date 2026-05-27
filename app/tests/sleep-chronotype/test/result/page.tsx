@@ -222,7 +222,7 @@ function ResultContent() {
         {/* CTA 버튼 */}
         <Card className="mb-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur">
           <CardHeader>
-            <CardTitle className="text-2xl">Where This Result Becomes Useful</CardTitle>
+            <CardTitle className="text-2xl">이 결과가 유용한 순간</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
@@ -237,7 +237,7 @@ function ResultContent() {
         </Card>
 
         <div className="mb-8">
-          <RelatedTestsSection testId="sleep-chronotype" title="More Routine Quizzes To Compare" />
+          <RelatedTestsSection testId="sleep-chronotype" title="?자주 묻는 질문?" />
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

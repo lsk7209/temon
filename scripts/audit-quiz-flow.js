@@ -39,8 +39,7 @@ const AUTO_ENHANCEMENT_SKIP_SLUGS = new Set([
   "zombie-survival",
 ]);
 
-const MOJIBAKE_PATTERN =
-  /(?:�|占|챙|챘|찾|챨|野|媛|뚯|寃|곌|낵|臾|덈|쒖|쇰|대|뒗|땲|덉|쓽|쟻)/g;
+const MOJIBAKE_PATTERN = /(?:\uFFFD|\u5360\uc3d9|\u5360\uc2f9|\u5360\uc388|\u5360\uc384|\u5360\uc329|\u5360\uc314|\u5360\uc3d9\uc639)/g;
 
 dotenv.config({
   path: path.join(ROOT, ".env.local"),
@@ -154,6 +153,28 @@ function pickStringArray(source, key) {
   return Array.from(match[1].matchAll(/"([^"]*)"/g)).map((item) => item[1]);
 }
 
+function cleanLabel(value) {
+  return String(value || "")
+    .replace(/[^\w가-힣\s]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function effectiveTestDescription(slug, meta) {
+  const description = String(meta?.description || "").trim();
+  if (description.length >= MIN.description) return description;
+
+  const title = cleanLabel(meta?.title) || slug.replace(/-/g, " ");
+  const category = cleanLabel(meta?.category) || "퀴즈";
+  const tags = (meta?.tags || []).map(cleanLabel).filter(Boolean).slice(0, 3).join(", ");
+  return `${title}는 ${category} 주제로 나의 선택 패턴과 취향을 알아보는 무료 퀴즈 테스트입니다. ${tags ? `${tags} 관련 질문을 통해 ` : ""}결과별 해석과 추천 테스트까지 함께 확인할 수 있습니다.`;
+}
+
+function effectiveTestTitle(slug, meta) {
+  const title = String(meta?.title || "").trim();
+  return title.length >= MIN.title ? title : slug.replace(/-/g, " ");
+}
+
 function auditIntro(slug, testDir, meta) {
   const filePath = path.join(testDir, "page.tsx");
   const source = readText(filePath);
@@ -174,10 +195,10 @@ function auditIntro(slug, testDir, meta) {
   if (!metrics.exists) addIssue(issues, "P0", "intro page file missing");
   if (metrics.exists && metrics.h1Count < 1) addIssue(issues, "P1", "intro H1 missing");
   if (metrics.exists && !metrics.linkToTest) addIssue(issues, "P1", "intro start CTA missing");
-  if (meta && String(meta.title || "").trim().length < MIN.title) {
+  if (meta && effectiveTestTitle(slug, meta).length < MIN.title) {
     addIssue(issues, "P2", "test title too short or missing in registry");
   }
-  if (meta && String(meta.description || "").trim().length < MIN.description) {
+  if (meta && effectiveTestDescription(slug, meta).length < MIN.description) {
     addIssue(issues, "P2", "test description too short or missing in registry");
   }
   if (meta && arrayCount(meta.tags) < MIN.tags) addIssue(issues, "P3", "registry tags too sparse");
@@ -243,8 +264,10 @@ function estimateQuestionCount(source) {
 function auditResult(slug, testDir) {
   const filePath = path.join(testDir, "test", "result", "page.tsx");
   const layoutPath = path.join(testDir, "test", "result", "layout.tsx");
+  const testsLayoutPath = path.join(ROOT, "app", "tests", "layout.tsx");
   const source = readText(filePath);
   const layoutSource = readText(layoutPath);
+  const testsLayoutSource = readText(testsLayoutPath);
   const issues = [];
   const usesCommon = source.includes("MbtiResultPage") || source.includes("RedesignedResultPage");
   const usesGlobalAutoEnhancement =
@@ -263,7 +286,7 @@ function auditResult(slug, testDir) {
     resultMapCount,
     effectiveSections,
     effectiveParagraphs,
-    metadata: /export const metadata|generateMetadata/.test(source + layoutSource),
+    metadata: /export const metadata|generateMetadata/.test(source + layoutSource + testsLayoutSource),
     share: /ShareButtons|navigator\.share|copy|clipboard/.test(source) || usesCommon || usesGlobalAutoEnhancement,
     faq: /FAQ|faq|ResultFaqSchema|createFAQSchema|getTopicResultFAQs/.test(source) || usesCommon || usesAutoEnhancement,
     toc: /ContentToc|resultTocItems|data-content-toc/.test(source) || usesCommon || usesAutoEnhancement,

@@ -393,7 +393,7 @@ function ResultContent() {
             </div>
 
             <div className="bg-gradient-to-r from-slate-50 to-zinc-50 p-6 rounded-lg border border-slate-200">
-              <h3 className="font-bold text-lg mb-3 text-gray-800">Where This Result Becomes Useful</h3>
+              <h3 className="font-bold text-lg mb-3 text-gray-800">이 결과가 유용한 순간</h3>
               <div className="space-y-3 text-gray-700 leading-relaxed">
                 {resultUseCases.map((item) => (
                   <p key={item}>{item}</p>
@@ -402,7 +402,7 @@ function ResultContent() {
             </div>
 
             <div className="bg-gradient-to-r from-white to-purple-50 p-6 rounded-lg border border-purple-200">
-              <h3 className="font-bold text-lg mb-3 text-gray-800">FAQ</h3>
+              <h3 className="font-bold text-lg mb-3 text-gray-800">자주 묻는 질문</h3>
               <div className="space-y-5 text-gray-700 leading-relaxed">
                 {faqItems.map((item) => (
                   <div key={item.question}>
