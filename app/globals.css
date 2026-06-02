@@ -144,6 +144,12 @@ main h3[id] {
   white-space: nowrap;
 }
 
+.google-auto-placed,
+.adsbygoogle {
+  max-width: 100%;
+  overflow: hidden;
+}
+
 @media (max-width: 380px) {
   .article-content {
     word-break: break-word;

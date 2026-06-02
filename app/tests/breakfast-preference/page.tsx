@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -101,6 +102,34 @@ export default function BreakfastPreferencePage() {
           </CardContent>
         </Card>
       
+        <GscLandingBoost
+          title="아침 식사 취향 테스트는 무엇을 알려주나요?"
+          summary="아침에 무엇을 먹고 어떻게 고르는지는 하루를 시작하는 방식과 연결됩니다. 이 테스트는 식단을 평가하기보다 든든함, 속도, 익숙함, 기분 전환 중 내가 무엇을 우선하는지 가볍게 보여줍니다."
+          guides={[
+            {
+              title: "하루 시작 방식 확인",
+              description:
+                "든든한 한 끼를 선호하는지, 가볍고 빠른 선택을 선호하는지에 따라 결과의 핵심 성향이 달라집니다.",
+            },
+            {
+              title: "선택 기준 읽기",
+              description:
+                "맛, 포만감, 건강함, 준비 시간을 어떻게 비교하는지 보면 일상 의사결정 방식도 함께 보입니다.",
+            },
+            {
+              title: "다른 식습관 테스트와 비교",
+              description:
+                "아침 식사 결과는 커피, 간식, 저녁 메뉴 테스트와 같이 보면 하루 루틴 성향을 더 쉽게 해석할 수 있습니다.",
+            },
+          ]}
+          relatedLinks={[
+            { href: "/tests/morning-coffee", label: "아침 커피 테스트" },
+            { href: "/tests/snack-preference", label: "간식 취향 테스트" },
+            { href: "/tests/evening-meal", label: "저녁 메뉴 테스트" },
+          ]}
+          tone="orange"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Breakfast Preference Test" />
         </div>

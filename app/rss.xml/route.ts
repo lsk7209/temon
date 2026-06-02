@@ -2,12 +2,14 @@ import { NextResponse } from 'next/server'
 import { desc, eq } from 'drizzle-orm'
 import { getDb, isDbAvailable } from '@/lib/db/client'
 import { tests } from '@/lib/db/schema'
-import { getVisibleTests } from '@/lib/visible-tests'
+import { getIndexableTests } from '@/lib/visible-tests'
+import { getSiteUrl, toSiteUrl } from '@/lib/site-url'
+import { getAllBlogPosts } from '@/lib/blog-posts'
+import { isNoindexTest } from '@/lib/noindex-tests'
 
 export const revalidate = 3600
 export const dynamic = 'force-dynamic'
 
-const BASE_URL = 'https://temon.kr'
 const RSS_LIMIT = 30
 const STATIC_FALLBACK_DATE = new Date('2025-01-01T00:00:00.000Z')
 
@@ -71,18 +73,21 @@ async function getPublishedDbRssItems(now: Date): Promise<RssItem[]> {
       .from(tests)
       .where(eq(tests.status, 'published'))
       .orderBy(desc(tests.publishedAt), desc(tests.createdAt))
-      .limit(RSS_LIMIT)
+      .limit(RSS_LIMIT * 3)
       .all()
 
-    return rows.map((test) => ({
+    return rows
+      .filter((test) => test.slug && !isNoindexTest(test.slug))
+      .slice(0, RSS_LIMIT)
+      .map((test) => ({
       id: test.id,
       title: test.title,
-      url: `${BASE_URL}/tests/${test.slug}`,
+      url: toSiteUrl(`/tests/${test.slug}`),
       description: test.description || `${test.title} 테스트를 시작해보세요.`,
       category: test.category || 'quiz',
       tags: [],
       publishedAt: toValidDate(test.publishedAt || test.createdAt, now),
-    }))
+      }))
   } catch (error) {
     console.error('Failed to build DB RSS items:', error)
     return []
@@ -90,7 +95,7 @@ async function getPublishedDbRssItems(now: Date): Promise<RssItem[]> {
 }
 
 function getStaticRssItems(now: Date): RssItem[] {
-  return getVisibleTests(now).map((test) => {
+  return getIndexableTests(now).map((test) => {
     const publishedAt = test.publishAt
       ? toValidDate(test.publishAt, STATIC_FALLBACK_DATE)
       : STATIC_FALLBACK_DATE
@@ -98,13 +103,25 @@ function getStaticRssItems(now: Date): RssItem[] {
     return {
       id: test.id,
       title: test.title,
-      url: `${BASE_URL}${test.href}`,
+      url: toSiteUrl(test.href),
       description: test.description || `${test.title} 테스트를 시작해보세요.`,
       category: test.category,
       tags: test.tags.filter((tag) => tag !== test.category),
       publishedAt,
     }
   })
+}
+
+function getBlogRssItems(): RssItem[] {
+  return getAllBlogPosts().map((post) => ({
+    id: `blog-${post.slug}`,
+    title: post.title,
+    url: toSiteUrl(`/blog/${post.slug}`),
+    description: post.description,
+    category: post.category,
+    tags: post.keywords,
+    publishedAt: toValidDate(post.publishedAt, STATIC_FALLBACK_DATE),
+  }))
 }
 
 function mergeRssItems(items: RssItem[]): RssItem[] {
@@ -135,10 +152,12 @@ function buildRssItem(item: RssItem): string {
 
 export async function GET() {
   const currentDate = new Date()
+  const baseUrl = getSiteUrl()
   const formattedDate = formatRFC822Date(currentDate)
   const dbItems = await getPublishedDbRssItems(currentDate)
   const staticItems = getStaticRssItems(currentDate)
-  const rssItems = mergeRssItems([...dbItems, ...staticItems])
+  const blogItems = getBlogRssItems()
+  const rssItems = mergeRssItems([...dbItems, ...staticItems, ...blogItems])
     .map(buildRssItem)
     .join('\n')
 
@@ -146,19 +165,19 @@ export async function GET() {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>테몬 MBTI - 무료 성격 테스트 모음</title>
-    <link>${BASE_URL}</link>
+    <link>${baseUrl}</link>
     <description>MBTI 테스트로 알아보는 나만의 성격 유형! 커피, 라면, 반려동물, 공부 습관 등 다양한 주제로 재미있는 MBTI 테스트를 무료로 시작해보세요.</description>
     <language>ko-KR</language>
     <lastBuildDate>${formattedDate}</lastBuildDate>
-    <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
     <generator>테몬 MBTI</generator>
     <webMaster>admin@temon.kr (테몬)</webMaster>
     <managingEditor>admin@temon.kr (테몬)</managingEditor>
     <copyright>Copyright ${new Date().getFullYear()} 테몬. All rights reserved.</copyright>
     <image>
-      <url>${BASE_URL}/favicon-32x32.png</url>
+      <url>${baseUrl}/favicon-32x32.png</url>
       <title>테몬 MBTI</title>
-      <link>${BASE_URL}</link>
+      <link>${baseUrl}</link>
     </image>
 ${rssItems}
   </channel>

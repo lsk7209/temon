@@ -23,13 +23,13 @@ export async function GET() {
 테몬은 무료 MBTI형 테스트, 성격 퀴즈, 관계 테스트, 취향 테스트, 생활 유형 테스트를 제공하는 한국어 퀴즈 사이트입니다.
 검색 사용자와 AI 응답 엔진이 테스트 주제, 카테고리, URL, 블로그 해석 글을 쉽게 이해하도록 이 파일을 제공합니다.
 
-- 사이트: https://temon.kr
+- 사이트: [https://temon.kr](https://temon.kr)
 - 전체 테스트 수: ${tests.length}개
 - 블로그 글 수: ${posts.length}개
-- 테스트 목록: https://temon.kr/tests
-- 글 목록: https://temon.kr/blog
-- 사이트맵: https://temon.kr/sitemap.xml
-- AI 인덱스 JSON: https://temon.kr/ai-index.json
+- 테스트 목록: [https://temon.kr/tests](https://temon.kr/tests)
+- 글 목록: [https://temon.kr/blog](https://temon.kr/blog)
+- 사이트맵: [https://temon.kr/sitemap.xml](https://temon.kr/sitemap.xml)
+- AI 인덱스 JSON: [https://temon.kr/ai-index.json](https://temon.kr/ai-index.json)
 - 생성 시각: ${new Date().toISOString()}
 
 ## 콘텐츠 원칙
@@ -42,7 +42,7 @@ export async function GET() {
 ${posts
   .map(
     (post) => `### ${post.title}
-- URL: https://temon.kr/blog/${post.slug}
+- URL: [https://temon.kr/blog/${post.slug}](https://temon.kr/blog/${post.slug})
 - 카테고리: ${post.category}
 - 설명: ${post.description}
 - 핵심 요약: ${post.summary}
@@ -59,7 +59,7 @@ ${testsByCategory
 ${group.tests
   .map(
     (test) =>
-      `- ${test.title}: ${test.description} | ${toAbsoluteUrl(test.url)}`,
+      `- ${test.title}: ${test.description} | [${toAbsoluteUrl(test.url)}](${toAbsoluteUrl(test.url)})`,
   )
   .join("\n")}`,
   )

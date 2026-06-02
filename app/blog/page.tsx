@@ -180,7 +180,7 @@ export default function BlogPage() {
           </div>
         </section>
 
-        <section id="featured-posts" className="px-4 pb-12">
+        <section id="featured-posts" className="scroll-mt-24 px-4 pb-12">
           <div className="mx-auto max-w-6xl">
             <div className="mb-5 flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-violet-600" aria-hidden="true" />
@@ -229,7 +229,7 @@ export default function BlogPage() {
           </div>
         </section>
 
-        <section id="category-guide" className="px-4 pb-12">
+        <section id="category-guide" className="scroll-mt-24 px-4 pb-12">
           <div className="mx-auto max-w-6xl rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
             <div className="mb-4 flex items-center gap-2">
               <Search className="h-5 w-5 text-cyan-600" aria-hidden="true" />
@@ -256,7 +256,7 @@ export default function BlogPage() {
           </div>
         </section>
 
-        <section id="reading-guide" className="px-4 pb-12">
+        <section id="reading-guide" className="scroll-mt-24 px-4 pb-12">
           <div className="mx-auto max-w-6xl rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
             <div className="mb-4 flex items-center gap-2">
               <BookOpenText className="h-5 w-5 text-emerald-600" aria-hidden="true" />
@@ -279,7 +279,7 @@ export default function BlogPage() {
           </div>
         </section>
 
-        <section id="blog-faq" className="px-4 pb-16">
+        <section id="blog-faq" className="scroll-mt-24 px-4 pb-16">
           <div className="mx-auto max-w-6xl rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-black">자주 묻는 질문</h2>
             <div className="mt-5 grid gap-4">

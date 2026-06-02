@@ -45,6 +45,7 @@ export function generateMetadata({ params }: BlogDetailPageProps): Metadata {
   if (!post) return {};
 
   const url = `/blog/${post.slug}`;
+  const ogImage = `${BASE_URL}/api/og?title=${encodeURIComponent(post.title)}&desc=${encodeURIComponent(post.description)}`;
 
   return {
     title: `${post.title} - 테몬`,
@@ -65,7 +66,7 @@ export function generateMetadata({ params }: BlogDetailPageProps): Metadata {
       tags: post.keywords,
       images: [
         {
-          url: `${BASE_URL}/api/og?title=${encodeURIComponent(post.title)}&desc=${encodeURIComponent(post.description)}`,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -76,6 +77,7 @@ export function generateMetadata({ params }: BlogDetailPageProps): Metadata {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
+      images: [ogImage],
     },
     robots: {
       index: true,
@@ -256,7 +258,11 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                 </ul>
               </section>
 
-              <div className="mt-6 rounded-lg border border-slate-200 bg-white px-6 shadow-sm md:px-8">
+              <div className="mt-6 lg:hidden">
+                <ContentToc items={tocItems} title="글 목차" />
+              </div>
+
+              <div className="article-content mt-6 rounded-lg border border-slate-200 bg-white px-6 shadow-sm md:px-8">
                 {post.sections.map((section) => (
                   <BlogSectionBlock key={section.id} section={section} />
                 ))}
@@ -342,7 +348,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
               </section>
             </div>
 
-            <aside className="lg:sticky lg:top-24 lg:self-start">
+            <aside className="hidden lg:sticky lg:top-24 lg:block lg:self-start">
               <ContentToc items={tocItems} title="글 목차" />
             </aside>
           </div>

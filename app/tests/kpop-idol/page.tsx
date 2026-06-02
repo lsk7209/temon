@@ -10,34 +10,68 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card } from "@/components/ui/card"
 import { Sparkles } from "lucide-react"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "K-팝 아이돌 포지션 테스트로 알아보는 나의 포지션! 카리스마 리더부터 4차원 막내까지, 아이돌 그룹에서 내 포지션을 무료로 확인해보세요."
+const shortDescription = "아이돌 포지션 테스트로 리더, 보컬, 댄서, 비주얼, 막내 유형을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "K-팝 아이돌 포지션 테스트로 알아보는 나의 포지션! 카리스마 리더부터 4차원 막내까지, 아이돌 그룹에서 내 포지션을 무료로 확인해보세요."
+const fullDescription = "아이돌 포지션 테스트로 무대, 팀워크, 팬 소통 상황에서 나의 역할을 확인하세요. 리더, 메인보컬, 메인댄서, 비주얼, 막내 등 K-팝 그룹 안의 포지션을 무료로 비교할 수 있습니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "kpop-idol",
-  title: "K-팝 아이돌 포지션 테스트 - 무료 성격 테스트",
+  title: "아이돌 포지션 테스트",
   shortDescription,
   fullDescription,
-  keywords: "K-팝, 아이돌 테스트, 포지션 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords: "아이돌 포지션 테스트, 포지션 테스트, 아이돌 테스트, KPOP 테스트, K-팝 테스트, 케이팝 테스트, 성격 테스트, 무료 테스트",
   canonical: "/tests/kpop-idol",
   questionCount: 8,
   duration: "PT2M",
 })
 
 const faqs = [
-  ...getTopicQuizFAQs("K-팝 아이돌 포지션 테스트 - 무료 성격 테스트"),
+  ...getTopicQuizFAQs("아이돌 포지션 테스트"),
+  {
+    question: "아이돌 포지션 테스트는 무엇을 알려주나요?",
+    answer:
+      "팀 상황에서 내가 리더, 메인보컬, 메인댄서, 비주얼, 막내 중 어떤 역할에 가까운지 가볍게 보여주는 무료 성격 테스트입니다.",
+  },
+  {
+    question: "KPOP을 잘 몰라도 포지션 테스트를 할 수 있나요?",
+    answer:
+      "네. 실제 아이돌 지식보다 팀워크, 표현 방식, 주목받는 상황, 팬 소통 같은 일반적인 선택을 바탕으로 결과를 계산합니다.",
+  },
+  {
+    question: "친구와 같이 하면 어떻게 비교하면 좋나요?",
+    answer:
+      "각자 결과를 확인한 뒤 누가 리더형인지, 누가 분위기 담당인지, 누가 무대 체질인지 비교하면 모임 안 역할을 재미있게 볼 수 있습니다.",
+  },
+]
+
+const gscGuides = [
+  {
+    title: "포지션 테스트 검색",
+    description:
+      "리더, 메인보컬, 메인댄서, 비주얼, 막내처럼 익숙한 역할명으로 결과를 바로 이해할 수 있습니다.",
+  },
+  {
+    title: "K-팝 상황 선택",
+    description:
+      "무대 준비, 팀 회의, 팬 소통 같은 장면에서 내가 어떤 선택을 하는지 확인합니다.",
+  },
+  {
+    title: "친구와 결과 비교",
+    description:
+      "같은 그룹이라면 누가 리더인지, 누가 분위기 담당인지 가볍게 비교하기 좋습니다.",
+  },
 ]
 
 export default function KpopIdolIntro() {
   const schemas = generateQuizSchemas({
     quizId: "kpop-idol",
-    title: "K-팝 아이돌 포지션 테스트 - 무료 성격 테스트",
+    title: "아이돌 포지션 테스트",
     shortDescription,
     fullDescription,
-    keywords: "K-팝, 아이돌 테스트, 포지션 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords: "아이돌 포지션 테스트, 포지션 테스트, 아이돌 테스트, KPOP 테스트, K-팝 테스트, 케이팝 테스트, 성격 테스트, 무료 테스트",
     canonical: "/tests/kpop-idol",
     questionCount: 8,
     duration: "PT2M",
@@ -61,11 +95,11 @@ export default function KpopIdolIntro() {
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
             K-팝 아이돌 포지션 테스트
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-700 mb-6 font-medium">아이돌 그룹에서 내 포지션은?</p>
+          <p className="text-xl md:text-2xl text-gray-700 mb-6 font-medium">아이돌 포지션 테스트로 그룹 안에서 내 역할을 확인하세요.</p>
 
           <div className="space-y-4 mb-8 text-left bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
             <p className="text-gray-700 leading-relaxed">
@@ -105,6 +139,18 @@ export default function KpopIdolIntro() {
 
           <p className="mt-6 text-sm text-gray-500">소요 시간: 약 2분 | 총 8문항</p>
         </Card>
+
+        <GscLandingBoost
+          title="아이돌 포지션 테스트, 무엇을 보나요?"
+          summary="아이돌 포지션 테스트는 무대 위 실력보다 팀 안에서 어떤 역할을 맡기 쉬운지 알고 싶은 검색 의도에 맞춘 무료 성격 테스트입니다. 리더십, 표현력, 분위기 전환, 팬 소통 반응을 가볍게 비교합니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/kdrama-mbti", label: "K드라마 MBTI 테스트" },
+            { href: "/tests/music-taste", label: "음악 취향 테스트" },
+            { href: "/tests/instagram-story", label: "인스타 스토리 테스트" },
+          ]}
+          tone="pink"
+        />
       
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Kpop Idol Test" />
@@ -120,7 +166,7 @@ export default function KpopIdolIntro() {
 
         {/* FAQ Section for AI Bot Optimization */}
         <section className="mt-12 mb-8">
-          <FAQSection faqs={faqs} title="K-팝 아이돌 포지션 테스트 - 무료 성격 테스트 자주 묻는 질문" />
+          <FAQSection faqs={faqs} title="아이돌 포지션 테스트 자주 묻는 질문" />
         </section>
 </div>
     </div>

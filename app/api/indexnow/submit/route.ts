@@ -4,6 +4,7 @@ import {
   INDEXNOW_ENDPOINTS,
   submitUrlsToIndexNow,
 } from "@/lib/indexnow";
+import { getSiteUrl } from "@/lib/site-url";
 
 /**
  * IndexNow 자동 제출 엔드포인트.
@@ -26,14 +27,17 @@ export async function POST(request: NextRequest) {
   // 간이 인증 (CRON_SECRET or ADMIN_TOKEN)
   const auth = request.headers.get("authorization") || "";
   const secret = process.env.CRON_SECRET || process.env.ADMIN_TOKEN || "";
-  if (secret && auth !== `Bearer ${secret}`) {
+  if (!secret) {
+    return NextResponse.json(
+      { error: "IndexNow submit secret is not configured" },
+      { status: 503 },
+    );
+  }
+  if (auth !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  const host = (process.env.NEXT_PUBLIC_APP_URL || "https://temon.kr").replace(
-    /\/$/,
-    "",
-  );
+  const host = getSiteUrl();
 
   let urlList: string[];
   try {
@@ -42,8 +46,10 @@ export async function POST(request: NextRequest) {
     };
     const candidate = body?.urls;
     urlList =
-      Array.isArray(candidate) && candidate.length > 0
-        ? (candidate as string[])
+      Array.isArray(candidate) &&
+      candidate.length > 0 &&
+      candidate.every((url): url is string => typeof url === "string")
+        ? candidate
         : getDefaultIndexNowUrls(host);
   } catch {
     urlList = getDefaultIndexNowUrls(host);

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { AutoGscLandingBoost } from "@/components/gsc-auto-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -138,6 +139,8 @@ export default function SkinRoutineIntro() {
         </div>
       
         <div className="mt-12">
+          <AutoGscLandingBoost testId="skin-routine" />
+
           <AnswerEngineSection quizTitle="Skin Routine Test" />
         </div>
 

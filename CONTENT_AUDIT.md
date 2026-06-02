@@ -1,15 +1,15 @@
 # 콘텐츠 전수 조사 리포트 (v2 — prose 기준)
 
-- 생성일: 2026-05-06
+- 생성일: 2026-06-01
 - 대상: 212개 테스트 랜딩 (app/tests/{id}/page.tsx)
 
 ## 요약 지표
 
 - 전체 페이지: **212**
-- 본문(prose) 매우 얇음 <150자: **23**
-- 본문(prose) 얇음 <300자: **133**
+- 본문(prose) 매우 얇음 <150자: **33**
+- 본문(prose) 얇음 <300자: **141**
 - 본문(prose) 양호 >=600자: **1**
-- 의심 중복/유사 페어 (score >= 0.55): **69**
+- 의심 중복/유사 페어 (score >= 0.55): **63**
 
 > 본문 prose는 JSX <p>/<h1-h3>/<li>/<span>의 실제 표시 텍스트.
 > metadata.description은 검색 결과용이며 페이지 본문에는 나타나지 않음.
@@ -45,22 +45,22 @@
 | 12 | breakfast-preference | lunch-preference | 0.59 | 0.33 | 0.60 | 0.91 |
 | 13 | cooking-cleanup | cooking-experiment | 0.59 | 0.33 | 0.60 | 0.91 |
 | 14 | cooking-cleanup | cooking-improvise | 0.59 | 0.33 | 0.60 | 0.91 |
-| 15 | cooking-cleanup | cooking-multitask | 0.59 | 0.33 | 0.60 | 0.91 |
-| 16 | cooking-cleanup | cooking-share | 0.59 | 0.33 | 0.60 | 0.91 |
-| 17 | cooking-cleanup | cooking-shared | 0.59 | 0.33 | 0.60 | 0.91 |
-| 18 | cooking-cleanup | cooking-solo | 0.59 | 0.33 | 0.60 | 0.91 |
-| 19 | cooking-cleanup | cooking-timing | 0.59 | 0.33 | 0.60 | 0.91 |
-| 20 | cooking-cleanup | meal-cleanup | 0.59 | 0.33 | 0.60 | 0.91 |
-| 21 | cooking-create | cooking-follow | 0.59 | 0.33 | 0.60 | 0.91 |
-| 22 | cooking-create | cooking-modify | 0.59 | 0.33 | 0.60 | 0.91 |
-| 23 | cooking-create | cooking-recipe | 0.59 | 0.33 | 0.60 | 0.91 |
-| 24 | cooking-experiment | cooking-improvise | 0.59 | 0.33 | 0.60 | 0.91 |
-| 25 | cooking-experiment | cooking-multitask | 0.59 | 0.33 | 0.60 | 0.91 |
-| 26 | cooking-experiment | cooking-share | 0.59 | 0.33 | 0.60 | 0.91 |
-| 27 | cooking-experiment | cooking-shared | 0.59 | 0.33 | 0.60 | 0.91 |
-| 28 | cooking-experiment | cooking-solo | 0.59 | 0.33 | 0.60 | 0.91 |
-| 29 | cooking-experiment | cooking-timing | 0.59 | 0.33 | 0.60 | 0.91 |
-| 30 | cooking-follow | cooking-modify | 0.59 | 0.33 | 0.60 | 0.91 |
+| 15 | cooking-cleanup | cooking-share | 0.59 | 0.33 | 0.60 | 0.91 |
+| 16 | cooking-cleanup | cooking-shared | 0.59 | 0.33 | 0.60 | 0.91 |
+| 17 | cooking-cleanup | cooking-solo | 0.59 | 0.33 | 0.60 | 0.91 |
+| 18 | cooking-cleanup | cooking-timing | 0.59 | 0.33 | 0.60 | 0.91 |
+| 19 | cooking-cleanup | meal-cleanup | 0.59 | 0.33 | 0.60 | 0.91 |
+| 20 | cooking-create | cooking-follow | 0.59 | 0.33 | 0.60 | 0.91 |
+| 21 | cooking-create | cooking-modify | 0.59 | 0.33 | 0.60 | 0.91 |
+| 22 | cooking-create | cooking-recipe | 0.59 | 0.33 | 0.60 | 0.91 |
+| 23 | cooking-experiment | cooking-improvise | 0.59 | 0.33 | 0.60 | 0.91 |
+| 24 | cooking-experiment | cooking-share | 0.59 | 0.33 | 0.60 | 0.91 |
+| 25 | cooking-experiment | cooking-shared | 0.59 | 0.33 | 0.60 | 0.91 |
+| 26 | cooking-experiment | cooking-solo | 0.59 | 0.33 | 0.60 | 0.91 |
+| 27 | cooking-experiment | cooking-timing | 0.59 | 0.33 | 0.60 | 0.91 |
+| 28 | cooking-follow | cooking-modify | 0.59 | 0.33 | 0.60 | 0.91 |
+| 29 | cooking-follow | cooking-recipe | 0.59 | 0.33 | 0.60 | 0.91 |
+| 30 | cooking-improvise | cooking-share | 0.59 | 0.33 | 0.60 | 0.91 |
 
 ## Kill List 후보 (본문 <150자) — 상위 40
 
@@ -72,11 +72,21 @@
 | meal-order | 식사 순서 테스트 | 116 | 114 |
 | meal-balance | 식사 균형 테스트 | 117 | 115 |
 | meal-duration | 식사 시간 테스트 | 117 | 115 |
+| clean-style | 청소 테스트 검색 | 126 | 128 |
+| pizza-topping | 피자 테스트 검색 | 129 | 150 |
+| weekend-rest | 주말 휴식 테스트 검색 | 129 | 136 |
 | meal-planning | 식사 계획 스타일 테스트 | 132 | 126 |
 | meal-sharing | 음식 공유 스타일 테스트 | 132 | 126 |
+| morning-alarm | 아침 알람 테스트 검색 | 132 | 143 |
+| jachui | 자취생 테스트 검색 | 133 | 138 |
+| morning-energy | 아침 에너지 테스트 검색 | 133 | 138 |
+| chair-sitting | 의자 테스트 검색 | 134 | 132 |
 | meal-preparation | 식사 준비 스타일 테스트 | 135 | 126 |
+| salad-dressing | 샐러드 테스트 검색 | 136 | 134 |
+| evening-social | 저녁 약속 테스트 검색 | 137 | 147 |
 | meal-serving | 음식 나누기 스타일 테스트 | 137 | 129 |
 | meal-social | 식사 사회성 테스트 | 137 | 118 |
+| morning-coffee | 아침 커피 테스트 검색 | 137 | 133 |
 | food-scooping | 떠 먹기 스타일 테스트 | 139 | 127 |
 | cooking-shared | 공동 요리 스타일 테스트 | 140 | 126 |
 | meal-solo | 혼밥 스타일 테스트 | 140 | 117 |
@@ -86,7 +96,7 @@
 | meal-leftover | 남은 음식 처리 스타일 테스트 | 144 | 135 |
 | food-layering | 음식 층별 먹기 스타일 테스트 | 148 | 137 |
 | restaurant-ambiance | 분위기 선호도 테스트 | 148 | 120 |
-| coffee-mbti | 커피 MBTI 테스트 | 149 | 180 |
+| coffee-mbti | 커피 MBTI 테스트 | 149 | 149 |
 | grocery-shopping | 장보기 스타일 테스트 | 149 | 120 |
 | restaurant-service | 서비스 선호도 테스트 | 149 | 120 |
 
@@ -108,11 +118,21 @@
 | meal-order | 116 | 114 |
 | meal-balance | 117 | 115 |
 | meal-duration | 117 | 115 |
+| clean-style | 126 | 128 |
+| pizza-topping | 129 | 150 |
+| weekend-rest | 129 | 136 |
 | meal-planning | 132 | 126 |
 | meal-sharing | 132 | 126 |
+| morning-alarm | 132 | 143 |
+| jachui | 133 | 138 |
+| morning-energy | 133 | 138 |
+| chair-sitting | 134 | 132 |
 | meal-preparation | 135 | 126 |
+| salad-dressing | 136 | 134 |
+| evening-social | 137 | 147 |
 | meal-serving | 137 | 129 |
 | meal-social | 137 | 118 |
+| morning-coffee | 137 | 133 |
 | food-scooping | 139 | 127 |
 | cooking-shared | 140 | 126 |
 | meal-solo | 140 | 117 |
@@ -122,23 +142,21 @@
 | meal-leftover | 144 | 135 |
 | food-layering | 148 | 137 |
 | restaurant-ambiance | 148 | 120 |
-| coffee-mbti | 149 | 180 |
+| coffee-mbti | 149 | 149 |
 | grocery-shopping | 149 | 120 |
 | restaurant-service | 149 | 120 |
 | food-mixing | 150 | 136 |
 | restaurant-price | 150 | 120 |
 | food-plating | 151 | 137 |
-| cooking-garnishing | 152 | 126 |
+| cooking-garnishing | 152 | 134 |
 | cooking-music | 152 | 135 |
 | cooking-timing | 152 | 129 |
 | meal-etiquette | 152 | 126 |
 | cooking-presentation | 153 | 123 |
 | cooking-seasoning | 154 | 126 |
 | meal-cleanup | 154 | 132 |
-| ramen-mbti | 155 | 176 |
 | cooking-experiment | 156 | 126 |
 | cooking-share | 156 | 126 |
-| kpop-idol | 156 | 154 |
 | market-choice | 156 | 126 |
 | midnight-snack | 156 | 117 |
 | restaurant-menu | 156 | 126 |
@@ -163,18 +181,19 @@
 | food-sweetness | 167 | 127 |
 | food-aroma | 169 | 133 |
 | food-budget | 169 | 135 |
+| kpop-idol | 172 | 145 |
 | food-new | 173 | 148 |
 | food-sale | 173 | 135 |
 | food-umami | 173 | 130 |
 | breakfast-preference | 174 | 126 |
-| cooking-multitask | 174 | 135 |
 | dinner-preference | 174 | 126 |
 | food-chewy | 174 | 130 |
 | food-crispy | 174 | 130 |
 | food-crunchy | 174 | 130 |
-| food-spiciness | 174 | 130 |
+| food-spiciness | 174 | 114 |
 | lunch-preference | 174 | 126 |
 | online-food | 176 | 138 |
+| ramen-mbti | 177 | 148 |
 | food-color-preference | 178 | 136 |
 | food-portion | 178 | 133 |
 | food-garnishing-style | 179 | 136 |
@@ -183,12 +202,13 @@
 | food-temperature-preference | 181 | 142 |
 | food-brand | 186 | 135 |
 | meeting-villain | 188 | 175 |
-| snowwhite-mbti | 194 | 142 |
-| breakup-style | 202 | 190 |
-| zombie-survival | 210 | 170 |
+| snowwhite-mbti | 194 | 121 |
+| breakup-style | 202 | 140 |
+| cooking-multitask | 202 | 141 |
+| zombie-survival | 216 | 144 |
 | laundry-habit | 240 | 130 |
 | leftover-handling | 243 | 136 |
-| food-ordering | 244 | 142 |
+| food-ordering | 244 | 137 |
 | taste-preference | 244 | 136 |
 | food-photography | 245 | 134 |
 | food-sharing | 245 | 138 |
@@ -198,7 +218,6 @@
 | spice-tolerance | 248 | 142 |
 | food-seasoning | 249 | 132 |
 | book-reading | 250 | 132 |
-| chair-sitting | 250 | 136 |
 | rice-eating | 251 | 142 |
 | bag-organizing | 252 | 133 |
 | water-drinking | 252 | 134 |
@@ -211,24 +230,23 @@
 | food-garnishing | 258 | 136 |
 | restaurant-choice | 258 | 144 |
 | food-texture | 260 | 144 |
-| food-timing | 260 | 136 |
+| food-timing | 260 | 124 |
 | soup-eating | 261 | 142 |
 | door-closing | 262 | 138 |
 | food-waste | 262 | 144 |
 | clothing-order | 263 | 132 |
-| game-play-style | 264 | 156 |
-| chicken-vs-jjimdak | 265 | 158 |
+| game-play-style | 264 | 131 |
+| chicken-vs-jjimdak | 265 | 132 |
 | drink-preference | 265 | 138 |
 | food-reheating | 266 | 138 |
 | food-combination | 267 | 144 |
-| food-temperature | 269 | 148 |
+| food-temperature | 269 | 133 |
 | bed-making | 272 | 140 |
 | food-storage | 273 | 138 |
 | breakfast-style | 274 | 140 |
 | shower-habit | 275 | 152 |
 | gift-choosing | 276 | 160 |
-| kimbap-ingredient | 276 | 144 |
-| salad-dressing | 278 | 136 |
+| kimbap-ingredient | 276 | 131 |
 | sock-wearing | 278 | 136 |
 | lunchbox-style | 284 | 162 |
 | meat-grilling | 285 | 146 |
@@ -236,7 +254,6 @@
 | cake-cutting | 289 | 163 |
 | food-allergy | 298 | 150 |
 | karaoke-song | 300 | 162 |
-| pizza-topping | 301 | 162 |
 | stew-vs-soup | 306 | 152 |
 | instagram-story | 308 | 170 |
 | soup-vs-bibim | 312 | 165 |
@@ -245,27 +262,22 @@
 | alarm-habit | 421 | 163 |
 | hamburger-combo | 448 | 164 |
 | pet-mbti | 451 | 122 |
-| cafe-style | 454 | 162 |
-| jachui | 455 | 172 |
+| cafe-style | 454 | 137 |
 | shopping-style | 457 | 156 |
-| dessert-style | 458 | 140 |
+| dessert-style | 458 | 138 |
 | travel-style | 461 | 142 |
-| clean-style | 468 | 156 |
 | food-delivery | 468 | 150 |
-| morning-coffee | 468 | 140 |
-| phone-notification | 474 | 144 |
-| sleep-chronotype | 474 | 135 |
+| phone-notification | 474 | 129 |
 | evening-routine | 475 | 154 |
 | study-mbti | 476 | 138 |
 | morning-commute | 477 | 140 |
 | phone-photo | 478 | 152 |
-| phone-app-organization | 482 | 146 |
+| phone-app-organization | 482 | 124 |
 | phone-backup | 482 | 127 |
-| phone-search | 483 | 127 |
-| morning-alarm | 484 | 142 |
+| phone-search | 483 | 110 |
 | movie-theater-style | 484 | 169 |
 | phone-message | 484 | 130 |
-| morning-rush | 492 | 154 |
+| morning-rush | 492 | 137 |
 | evening-cleaning | 496 | 154 |
 | evening-wind-down | 496 | 146 |
 | evening-exercise | 497 | 158 |
@@ -274,32 +286,30 @@
 | cstore-routine | 501 | 114 |
 | weekend-social | 501 | 156 |
 | evening-snack | 502 | 152 |
+| sleep-chronotype | 502 | 135 |
 | evening-work | 504 | 161 |
 | kakao-reply-style | 505 | 126 |
 | morning-breakfast | 505 | 152 |
 | weekend-chore | 505 | 158 |
-| evening-social | 506 | 158 |
 | love-texting-style | 506 | 128 |
 | skin-routine | 506 | 138 |
-| morning-outfit | 508 | 146 |
-| weekend-lazy | 508 | 162 |
+| morning-outfit | 508 | 124 |
+| weekend-lazy | 508 | 129 |
 | phone-payment | 511 | 130 |
 | weekend-travel | 511 | 162 |
-| music-taste | 512 | 165 |
+| music-taste | 512 | 123 |
 | phone-social-media | 512 | 145 |
-| weekend-rest | 512 | 164 |
 | weekend-shopping | 513 | 163 |
-| weekend-planning | 514 | 160 |
+| weekend-planning | 514 | 132 |
 | phone-battery | 516 | 163 |
 | phone-usage | 516 | 110 |
 | phone-storage | 517 | 160 |
 | evening-reflection | 519 | 162 |
-| morning-energy | 519 | 154 |
 | morning-phone | 520 | 168 |
 | bungeoppang | 523 | 196 |
-| weekend-balance | 523 | 173 |
-| evening-meal | 525 | 162 |
-| morning-mood | 527 | 163 |
+| weekend-balance | 523 | 123 |
+| evening-meal | 525 | 144 |
+| morning-mood | 527 | 131 |
 | weekend-hobby | 527 | 166 |
 | love-reaction | 529 | 154 |
 | chicken-style | 531 | 147 |
@@ -309,9 +319,9 @@
 | convenience-snack | 538 | 128 |
 | cvs-combo | 540 | 108 |
 | weekend-food | 541 | 164 |
-| spending-style | 554 | 116 |
 | ott-habits | 561 | 156 |
-| kdrama-mbti | 566 | 167 |
+| spending-style | 562 | 134 |
+| kdrama-mbti | 566 | 133 |
 | lunch-decider | 590 | 144 |
 | kdrama-character | 613 | 134 |
 

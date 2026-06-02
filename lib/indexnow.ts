@@ -5,7 +5,8 @@
  * Used for real-time indexing of new tests and updates.
  */
 
-const DEFAULT_HOST = "temon.kr";
+import { getSiteUrl } from "@/lib/site-url";
+
 const DEFAULT_KEY = process.env.INDEXNOW_KEY || "";
 export const INDEXNOW_ENDPOINTS = [
   "https://api.indexnow.org/IndexNow",
@@ -47,17 +48,15 @@ export const INDEXNOW_DEFAULT_PATHS = [
 ] as const;
 
 export function getDefaultIndexNowUrls(baseUrl?: string): string[] {
-  const host = (baseUrl || process.env.NEXT_PUBLIC_APP_URL || `https://${DEFAULT_HOST}`)
-    .replace(/\/$/, "");
+  const host = baseUrl ? baseUrl.trim().replace(/\/+$/, "") : getSiteUrl();
 
   return INDEXNOW_DEFAULT_PATHS.map((path) => `${host}${path}`);
 }
 
 function getIndexNowConfig() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || `https://${DEFAULT_HOST}`;
-  const normalizedBaseUrl = baseUrl.replace(/\/$/, "");
+  const normalizedBaseUrl = getSiteUrl();
   const host = new URL(normalizedBaseUrl).host;
-  const key = process.env.INDEXNOW_KEY || DEFAULT_KEY;
+  const key = (process.env.INDEXNOW_KEY || DEFAULT_KEY).trim();
 
   return {
     normalizedBaseUrl,

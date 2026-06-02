@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -207,6 +208,34 @@ export default function ConvenienceSnackIntro() {
               </div>
             </CardContent>
           </Card>
+
+          <GscLandingBoost
+            title="편의점 간식 테스트는 어떤 사람에게 맞나요?"
+            summary="편의점 간식 선택은 익숙한 조합을 고르는지, 새 상품을 시도하는지, 가성비와 기분 전환 중 무엇을 우선하는지 보여줍니다. 이 테스트는 간식 취향을 통해 짧은 선택 순간의 성향을 가볍게 해석합니다."
+            guides={[
+              {
+                title: "간식 선택 기준 확인",
+                description:
+                  "가격, 맛, 양, 신상품 여부 중 어떤 기준을 먼저 보는지에 따라 결과의 캐릭터가 달라집니다.",
+              },
+              {
+                title: "루틴형과 탐색형 구분",
+                description:
+                  "늘 먹던 조합을 고르는지, 행사 상품과 새 조합을 찾는지로 일상 선택 패턴을 읽을 수 있습니다.",
+              },
+              {
+                title: "음식 취향 테스트와 연결",
+                description:
+                  "편의점 간식 결과는 매운맛, 디저트, 온라인 음식 주문 테스트와 함께 보면 취향이 더 선명해집니다.",
+              },
+            ]}
+            relatedLinks={[
+              { href: "/tests/snack-preference", label: "간식 취향 테스트" },
+              { href: "/tests/food-spiciness", label: "매운맛 테스트" },
+              { href: "/tests/online-food", label: "온라인 음식 주문 테스트" },
+            ]}
+            tone="green"
+          />
 
           {/* Special Features Section */}
           <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">

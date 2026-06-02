@@ -6,18 +6,19 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
-const shortDescription = "이별 후 나의 행동과 감정 처리를 통해 알아보는 16가지 이별 후유증 유형 분석."
-const fullDescription = "이별 후유증 유형 테스트로 알아보는 나의 이별 극복 스타일! 쿨내 진동형일까, 미련 뚝뚝형일까? 12개의 질문으로 16가지 이별 후유증 유형 중 당신은 어떤 유형인지 확인해보세요. 내 마음을 위로하고 정리하는 데 도움을 주는 맞춤형 극복 팁도 함께 제공합니다."
+const shortDescription = "이별 후유증 유형 테스트로 감정 정리와 이별 극복 스타일을 16유형으로 확인하세요."
+const fullDescription = "이별 후유증 유형 테스트로 이별 뒤 감정 처리, 미련, 회복 속도, 연락 충동을 12문항으로 확인하세요. 16가지 이별 극복 스타일과 마음 정리 팁을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "breakup-style",
   title: "이별 후유증 유형 테스트",
   shortDescription,
   fullDescription,
-  keywords: "이별, 연애, 후유증, 이별 극복, 성향 테스트, MBTI, 무료 테스트",
+  keywords: "이별 후유증 유형 테스트, 이별 극복 테스트, 이별 테스트, 연애 테스트, 감정 정리, 미련 테스트, 무료 테스트",
   canonical: "/tests/breakup-style",
   questionCount: 12,
   duration: "PT3M",
@@ -27,13 +28,31 @@ const faqs = [
   ...getTopicQuizFAQs("이별 후유증 유형 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "이별 후유증 유형 검색",
+    description:
+      "이별 뒤 감정이 오래 남는지, 빠르게 정리하는지, 연락 충동을 어떻게 다루는지 유형으로 정리합니다.",
+  },
+  {
+    title: "이별 극복 스타일 확인",
+    description:
+      "쿨하게 넘기는 편인지, 추억을 곱씹는 편인지 12개 상황 선택으로 가볍게 확인할 수 있습니다.",
+  },
+  {
+    title: "마음 정리 팁 연결",
+    description:
+      "결과는 진단명이 아니라 현재 반응 패턴을 이해하고 회복 루틴을 고르는 참고용입니다.",
+  },
+]
+
 export default function BreakupStyleIntro() {
   const schemas = generateQuizSchemas({
     quizId: "breakup-style",
     title: "이별 후유증 유형 테스트",
     shortDescription,
     fullDescription,
-    keywords: "이별, 연애, 후유증, 이별 극복, 성향 테스트, MBTI, 무료 테스트",
+    keywords: "이별 후유증 유형 테스트, 이별 극복 테스트, 이별 테스트, 연애 테스트, 감정 정리, 미련 테스트, 무료 테스트",
     canonical: "/tests/breakup-style",
     questionCount: 12,
     duration: "PT3M",
@@ -102,6 +121,20 @@ export default function BreakupStyleIntro() {
           </div>
 
           <div className="max-w-2xl mx-auto">
+            <div className="mt-12">
+              <GscLandingBoost
+                title="이별 후유증 유형 테스트로 보는 마음 정리 패턴"
+                summary="이별 후유증 유형 테스트는 이별 뒤 감정 정리, 미련, 회복 속도, 연락하고 싶은 마음을 알고 싶은 검색 의도에 맞춘 무료 성향 테스트입니다. 12문항으로 현재 반응을 16가지 이별 극복 스타일로 나누어 보여줍니다."
+                guides={gscGuides}
+                relatedLinks={[
+                  { href: "/tests/kdrama-mbti", label: "K-드라마 클리셰 테스트" },
+                  { href: "/tests/meeting-villain", label: "모임 빌런 테스트" },
+                  { href: "/tests/snowwhite-mbti", label: "백설공주 에겐테토 테스트" },
+                ]}
+                tone="pink"
+              />
+            </div>
+
             <div className="mt-12">
               <AnswerEngineSection quizTitle="Breakup Style Test" />
             </div>

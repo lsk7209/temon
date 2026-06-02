@@ -12,6 +12,8 @@ interface ScriptConfig {
 
 export default function AdminHeadScripts() {
   useEffect(() => {
+    if (process.env.NODE_ENV === "production") return
+
     // localStorage에서 저장된 스크립트들을 읽어와서 head에 삽입
     try {
       const saved = localStorage.getItem('admin_head_scripts')

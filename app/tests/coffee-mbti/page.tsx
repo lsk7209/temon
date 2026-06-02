@@ -7,6 +7,7 @@ import { AnswerEngineSection } from "@/components/answer-engine-section";
 import { LandingConversionSection } from "@/components/landing-conversion-section";
 import { RelatedTestsSection } from "@/components/related-tests-section";
 import { TestExpandedIntro } from "@/components/test-expanded-intro";
+import { GscLandingBoost } from "@/components/gsc-landing-boost";
 import {
   generateQuizMetadata,
   generateQuizSchemas,
@@ -16,10 +17,10 @@ import { ExternalLink } from "lucide-react";
 
 // Naver-optimized description (under 80 chars)
 const shortDescription =
-  "커피 취향으로 알아보는 성격 유형 테스트. 16가지 커피 MBTI 유형 발견!";
+  "커피 MBTI 테스트로 아메리카노·라떼 취향에 숨은 성격 유형을 확인하세요.";
 // Full description for Google/AI
 const fullDescription =
-  "커피 MBTI 테스트로 알아보는 나의 성격! 좋아하는 커피로 16가지 커피 유형 중 당신은 어떤 커피일까요? 커피 취향에 숨겨진 성격 특성을 발견하고, 나에게 맞는 완벽한 커피를 추천받아보세요. 재미있는 커피 MBTI 테스트를 지금 시작해보세요.";
+  "커피 MBTI 테스트로 아메리카노, 라떼, 달달한 커피, 디카페인처럼 자주 고르는 커피 취향에 숨은 성격 유형을 확인하세요. 12문항으로 16가지 커피 유형과 추천 스타일을 무료로 제공합니다.";
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "coffee-mbti",
@@ -27,7 +28,7 @@ export const metadata: Metadata = generateQuizMetadata({
   shortDescription,
   fullDescription,
   keywords:
-    "커피 MBTI, 커피 테스트, 성격 테스트, MBTI, 커피 유형, 심리테스트, 무료 테스트",
+    "커피 MBTI 테스트, 커피 테스트, 커피 취향 테스트, 아메리카노 테스트, 라떼 테스트, 성격 테스트, 무료 테스트",
   canonical: "/tests/coffee-mbti",
   questionCount: 12,
   duration: "PT3M",
@@ -47,13 +48,32 @@ const faqs = [
   },
 ];
 
+const gscGuides = [
+  {
+    title: "커피 취향 테스트 검색",
+    description:
+      "아메리카노, 라떼, 달달한 음료처럼 자주 고르는 메뉴로 성향을 가볍게 확인합니다.",
+  },
+  {
+    title: "카페 선택 습관 연결",
+    description:
+      "메뉴 취향뿐 아니라 카페에서 머무는 방식, 주문 속도, 새로운 메뉴 시도 성향까지 함께 봅니다.",
+  },
+  {
+    title: "16가지 커피 유형",
+    description:
+      "결과는 성격을 단정하지 않고 내 취향을 설명하기 쉬운 커피 캐릭터로 정리합니다.",
+  },
+];
+
 export default function CoffeeMBTI() {
   const schemas = generateQuizSchemas({
     quizId: "coffee-mbti",
     title: "커피 MBTI 테스트",
     shortDescription,
     fullDescription,
-    keywords: "커피 MBTI, 커피 테스트",
+    keywords:
+      "커피 MBTI 테스트, 커피 테스트, 커피 취향 테스트, 아메리카노 테스트, 라떼 테스트, 성격 테스트, 무료 테스트",
     canonical: "/tests/coffee-mbti",
     questionCount: 12,
     duration: "PT3M",
@@ -144,6 +164,18 @@ export default function CoffeeMBTI() {
             </section>
 
             <TestExpandedIntro testId="coffee-mbti" />
+
+            <GscLandingBoost
+              title="커피 MBTI 테스트로 보는 카페 취향"
+              summary="커피 MBTI 테스트는 커피 취향 테스트, 아메리카노 테스트, 라떼 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 좋아하는 커피와 카페에서의 선택 습관을 바탕으로 16가지 커피 유형을 보여줍니다."
+              guides={gscGuides}
+              relatedLinks={[
+                { href: "/tests/cafe-style", label: "카페 스타일 테스트" },
+                { href: "/tests/music-taste", label: "음악 취향 테스트" },
+                { href: "/tests/morning-coffee", label: "아침 커피 루틴 테스트" },
+              ]}
+              tone="orange"
+            />
 
             <AnswerEngineSection quizTitle="Coffee MBTI" />
 

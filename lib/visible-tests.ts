@@ -4,8 +4,8 @@
  * - `publishAt` (ISO)이 있으면 현재 시각 이후일 때 숨김 → 드립 공개
  * - `NOINDEX_TEST_IDS`는 sitemap/search engine 제외용 (페이지 자체 접근은 가능)
  *
- * 홈, /tests 인덱스, RSS/feed는 getVisibleTests() 사용.
- * sitemap.xml은 getIndexableTests() 사용 (noindex까지 제외).
+ * 홈, /tests 인덱스는 getVisibleTests() 사용.
+ * sitemap.xml, RSS/feed, AI index는 getIndexableTests() 사용 (noindex까지 제외).
  */
 
 import { getAllTests, type Test } from "@/lib/tests-config";
@@ -25,16 +25,16 @@ export function isTestPublished(test: Test, now: Date = new Date()): boolean {
 }
 
 /**
- * 홈/tests 인덱스/RSS·Atom 등 "사이트 내 노출" 대상.
- * noindex 페이지도 포함 — 내부 탐색은 허용, sitemap만 제외되므로.
+ * 홈/tests 인덱스 등 "사이트 내부 탐색" 대상.
+ * noindex 페이지도 포함 — 사용자는 접근 가능하되 discovery 채널에서는 제외한다.
  */
 export function getVisibleTests(now: Date = new Date()): Test[] {
   return getAllTests().filter((t) => isTestPublished(t, now));
 }
 
 /**
- * sitemap.xml / 외부 검색엔진용.
- * 드립 대기 + noindex 제외한 최종 색인 대상.
+ * sitemap.xml / RSS / Atom / AI index 등 discovery 채널용.
+ * 드립 공개 대기 + noindex 제외한 최종 색인 대상.
  */
 export function getIndexableTests(now: Date = new Date()): Test[] {
   return getVisibleTests(now).filter((t) => !NOINDEX_TEST_IDS.has(t.id));

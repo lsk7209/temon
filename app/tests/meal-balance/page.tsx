@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { AutoGscLandingBoost } from "@/components/gsc-auto-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { TestExpandedIntro } from "@/components/test-expanded-intro"
@@ -105,6 +106,8 @@ export default function MealBalancePage() {
         <TestExpandedIntro testId="meal-balance" />
       
         <div className="mt-12">
+          <AutoGscLandingBoost testId="meal-balance" />
+
           <AnswerEngineSection quizTitle="Meal Balance Test" />
         </div>
 

@@ -5,13 +5,16 @@ import { eq, and } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { z } from "zod";
+import { buildDraftQuality } from "@/lib/draft-quality";
 
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
-const genAI = new GoogleGenerativeAI(
-  process.env.GOOGLE_API_KEY || process.env.GOOGLE_GENERATIVE_AI_KEY || "",
-);
+function getGoogleAiClient() {
+  const apiKey = process.env.GOOGLE_API_KEY || process.env.GOOGLE_GENERATIVE_AI_KEY;
+  if (!apiKey) return null;
+  return new GoogleGenerativeAI(apiKey);
+}
 
 // MBTI 타입 코드 (16개)
 const MBTI_TYPES = [
@@ -89,6 +92,14 @@ export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const genAI = getGoogleAiClient();
+  if (!genAI) {
+    return NextResponse.json(
+      { success: false, error: "Google Generative AI key is not configured" },
+      { status: 503 },
+    );
   }
 
   const db = getDb(); // 한 번만 생성하여 재사용
@@ -217,6 +228,51 @@ export async function GET(request: Request) {
     // 4. 트랜잭션으로 DB 저장 (All-or-Nothing)
     const testId = nanoid();
     const finalSlug = `${quizData.slug}-${nanoid(4)}`;
+    const keywords = quizData.keywords ?? [];
+    const qualityMetadata = {
+      keywords,
+      mainKeyword: keywords[0] ?? queueItem.keyword,
+      expandedKeywords: keywords.slice(0, 8),
+      copyQuality: "ai-generated-v1",
+      resultCopyQuality: "ai-generated-v1",
+      seoOptimized: true,
+      scheduledAt: queueMetadata.scheduledAt ?? null,
+      wave: queueMetadata.wave ?? null,
+    };
+    const questionsData = quizData.questions.map((q, idx) => ({
+      id: nanoid(),
+      testId,
+      questionOrder: idx + 1,
+      questionText: q.text,
+      choice1Text: q.choices[0]?.text ?? "",
+      choice1Tags: JSON.stringify(q.choices[0]?.tags ?? []),
+      choice2Text: q.choices[1]?.text ?? "",
+      choice2Tags: JSON.stringify(q.choices[1]?.tags ?? []),
+    }));
+    const resultsData = quizData.results.map((r) => ({
+      id: nanoid(),
+      testId,
+      typeCode: r.type,
+      label: r.label,
+      summary: r.summary,
+      traits: JSON.stringify(r.traits ?? []),
+      picks: JSON.stringify(r.presets ?? {}),
+      matchTypes: JSON.stringify({
+        best: r.recommend ?? [],
+        worst: r.pitfalls ?? [],
+      }),
+    }));
+    const quality = buildDraftQuality(
+      {
+        title: quizData.title,
+        description: quizData.description,
+        questionCount: quizData.questions.length,
+        resultTypeCount: quizData.results.length,
+      },
+      qualityMetadata,
+      questionsData,
+      resultsData,
+    );
 
     await db.transaction(async (tx) => {
       // Insert Test
@@ -231,41 +287,16 @@ export async function GET(request: Request) {
         publishedAt: scheduledAt,
         questionCount: quizData.questions.length,
         resultTypeCount: quizData.results.length,
-        metadata: JSON.stringify({
-          keywords: quizData.keywords ?? [],
-          seoOptimized: true,
-          scheduledAt: queueMetadata.scheduledAt ?? null,
-          wave: queueMetadata.wave ?? null,
-        }),
+        metadata: {
+          ...qualityMetadata,
+          quality,
+        },
       });
 
       // Insert Questions
-      const questionsData = quizData.questions.map((q, idx) => ({
-        id: nanoid(),
-        testId,
-        questionOrder: idx + 1,
-        questionText: q.text,
-        choice1Text: q.choices[0]?.text ?? "",
-        choice1Tags: JSON.stringify(q.choices[0]?.tags ?? []),
-        choice2Text: q.choices[1]?.text ?? "",
-        choice2Tags: JSON.stringify(q.choices[1]?.tags ?? []),
-      }));
       await tx.insert(questions).values(questionsData);
 
       // Insert Results
-      const resultsData = quizData.results.map((r) => ({
-        id: nanoid(),
-        testId,
-        typeCode: r.type,
-        label: r.label,
-        summary: r.summary,
-        traits: JSON.stringify(r.traits ?? []),
-        picks: JSON.stringify(r.presets ?? {}),
-        matchTypes: JSON.stringify({
-          best: r.recommend ?? [],
-          worst: r.pitfalls ?? [],
-        }),
-      }));
       await tx.insert(resultTypes).values(resultsData);
 
       // 큐 상태 업데이트 (트랜잭션 내에서)

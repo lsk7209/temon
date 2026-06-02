@@ -33,7 +33,7 @@ export function ContentToc({
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className="flex min-h-9 items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:bg-violet-50 hover:text-violet-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+              className="flex min-h-11 items-center gap-2 rounded-md px-3 py-2 transition-colors hover:bg-violet-50 hover:text-violet-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
             >
               <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-100 text-xs font-semibold text-slate-600">
                 {index + 1}

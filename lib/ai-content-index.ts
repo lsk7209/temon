@@ -1,9 +1,8 @@
 import { desc, eq } from "drizzle-orm";
 import { getDb, isDbAvailable } from "@/lib/db/client";
 import { tests } from "@/lib/db/schema";
-import { ALL_TESTS } from "@/lib/tests-config";
-
-const baseUrl = "https://temon.kr";
+import { getIndexableTests } from "@/lib/visible-tests";
+import { getSiteUrl } from "@/lib/site-url";
 
 export interface AiIndexTest {
   id: string;
@@ -13,13 +12,15 @@ export interface AiIndexTest {
   url: string;
 }
 
-const staticTests: AiIndexTest[] = ALL_TESTS.map((test) => ({
-  id: test.id,
-  title: test.title,
-  description: test.description,
-  category: test.category,
-  url: test.href,
-}));
+function getStaticTests(): AiIndexTest[] {
+  return getIndexableTests().map((test) => ({
+    id: test.id,
+    title: test.title,
+    description: test.description,
+    category: test.category,
+    url: test.href,
+  }));
+}
 
 async function getDynamicTests(): Promise<AiIndexTest[]> {
   if (!isDbAvailable()) {
@@ -64,6 +65,7 @@ function normalizeCategory(category: string | null): string {
 
 export async function getAiIndexTests(): Promise<AiIndexTest[]> {
   const dynamicTests = await getDynamicTests();
+  const staticTests = getStaticTests();
   const testsByUrl = new Map<string, AiIndexTest>();
 
   [...dynamicTests, ...staticTests].forEach((test) => {
@@ -80,6 +82,5 @@ export function getAiIndexCategories(items: AiIndexTest[]): string[] {
 }
 
 export function toAbsoluteUrl(path: string): string {
-  return path.startsWith("http") ? path : `${baseUrl}${path}`;
+  return path.startsWith("http") ? path : `${getSiteUrl()}${path}`;
 }
-

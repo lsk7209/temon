@@ -79,7 +79,9 @@ export default function TestsPageClient({
     ...dynamicTests.map(toTestCard),
     ...getAllTests(),
   ]);
-  const categoryOptions = CATEGORIES.filter((category, index) => index > 0 && category);
+  const categoryOptions = CATEGORIES.filter(
+    (category, index) => index > 0 && category,
+  );
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
@@ -134,9 +136,8 @@ export default function TestsPageClient({
           </h1>
 
           <p className="mx-auto mb-8 max-w-3xl text-xl font-medium text-gray-700 md:text-2xl">
-            무료 MBTI 테스트, 성격 테스트, 취향 테스트, 재밌는 심리테스트를
-            한곳에서 고르세요. 관심 주제별로 빠르게 찾고 결과를 친구와
-            공유할 수 있습니다.
+            무료 MBTI 테스트, 성격 테스트, 취향 테스트를 한곳에서 골라보세요.
+            관심 주제별로 빠르게 찾고 결과를 친구와 공유할 수 있습니다.
           </p>
         </div>
       </section>
@@ -159,7 +160,7 @@ export default function TestsPageClient({
               <div className="border-t pt-4">
                 <div className="mb-3 flex items-center gap-2 px-1 text-sm text-gray-500">
                   <span className="font-semibold">카테고리</span>
-                  <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-400">
+                  <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700">
                     좌우로 스크롤해 확인
                   </span>
                 </div>
@@ -254,7 +255,7 @@ export default function TestsPageClient({
                           <CardTitle className="text-2xl font-bold transition-colors group-hover:text-violet-600">
                             {test.title}
                           </CardTitle>
-                          <CardDescription className="text-base text-gray-600">
+                          <CardDescription className="line-clamp-3 text-base text-gray-600">
                             {test.description}
                           </CardDescription>
                         </CardHeader>

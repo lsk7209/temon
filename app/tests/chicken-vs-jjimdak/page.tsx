@@ -6,23 +6,24 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, UtensilsCrossed, Sparkles } from "lucide-react"
+import { Clock, Users, UtensilsCrossed } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "찜닭과 치킨 중 선택 기준으로 16유형 성향을 분석합니다. 찜닭파 vs 치킨파로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성."
+const shortDescription = "찜닭 vs 치킨 선택 테스트로 음식 취향과 선택 성향을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "찜닭과 치킨 중 선택 기준으로 16유형 성향을 분석합니다. 찜닭파 vs 치킨파로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성."
+const fullDescription = "찜닭 vs 치킨 선택 테스트로 찜닭파인지 치킨파인지, 국물·바삭함·매운맛·함께 먹는 방식을 기준으로 음식 선택 성향을 확인하세요. 12문항 무료 테스트입니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "chicken-vs-jjimdak",
   title: "찜닭 vs 치킨 선택 테스트",
   shortDescription,
   fullDescription,
-  keywords: "찜닭 테스트, 치킨 테스트, 찜닭파, 치킨파, 음식 선호도, 성향 테스트, 심리테스트, 무료 테스트",
+  keywords: "찜닭 vs 치킨 테스트, 찜닭 테스트, 치킨 테스트, 찜닭파, 치킨파, 음식 취향 테스트, 무료 테스트",
   canonical: "/tests/chicken-vs-jjimdak",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("찜닭 vs 치킨 선택 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "찜닭 vs 치킨 테스트 검색",
+    description:
+      "찜닭파인지 치킨파인지 단순 선호를 넘어 국물, 바삭함, 매운맛, 사이드 선택 기준을 봅니다.",
+  },
+  {
+    title: "음식 취향 성향 분석",
+    description:
+      "혼자 먹을 때와 같이 먹을 때 선택이 달라지는지, 안정적인 메뉴와 즉흥 메뉴 중 어디에 가까운지 확인합니다.",
+  },
+  {
+    title: "가벼운 밈형 결과",
+    description:
+      "정밀 진단보다 친구와 공유하기 좋은 음식 취향 테스트로 16가지 선택 스타일을 보여줍니다.",
+  },
+]
+
 export default function ChickenVsJjimdakIntro() {
   const schemas = generateQuizSchemas({
     quizId: "chicken-vs-jjimdak",
     title: "찜닭 vs 치킨 선택 테스트",
     shortDescription,
     fullDescription,
-    keywords: "찜닭 테스트, 치킨 테스트, 찜닭파, 치킨파, 음식 선호도, 성향 테스트, 심리테스트, 무료 테스트",
+    keywords: "찜닭 vs 치킨 테스트, 찜닭 테스트, 치킨 테스트, 찜닭파, 치킨파, 음식 취향 테스트, 무료 테스트",
     canonical: "/tests/chicken-vs-jjimdak",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function ChickenVsJjimdakIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">1. 찜닭 vs 치킨 선택 기준은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">찜닭 선호 vs 치킨 선호</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">찜닭 선호 vs 치킨 선호</p>
                     </div>
                     <div className="p-4 bg-red-50 dark:bg-red-950 rounded-lg">
                       <p className="font-medium">2. 먹는 방식은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">국물과 함께 vs 바삭하게</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">국물과 함께 vs 바삭하게</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">3. 선택 이유는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">따뜻함 vs 바삭함</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">따뜻함 vs 바삭함</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-red-50 dark:bg-red-950 rounded-lg">
                       <p className="font-medium">4. 함께 먹는 음식은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">밥과 함께 vs 맥주와 함께</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">밥과 함께 vs 맥주와 함께</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">5. 매운 정도는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">매운맛 선호 vs 순한맛 선호</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">매운맛 선호 vs 순한맛 선호</p>
                     </div>
                     <div className="p-4 bg-red-50 dark:bg-red-950 rounded-lg">
                       <p className="font-medium">6. 먹는 감정은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">따뜻함 vs 상쾌함</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">따뜻함 vs 상쾌함</p>
                     </div>
                   </div>
                 </div>
@@ -169,6 +188,20 @@ export default function ChickenVsJjimdakIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="찜닭 vs 치킨 선택 테스트로 보는 음식 취향"
+            summary="찜닭 vs 치킨 선택 테스트는 찜닭파, 치킨파, 음식 취향 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 국물과 바삭함, 매운맛, 같이 먹는 방식의 선택을 바탕으로 16가지 음식 선택 스타일을 보여줍니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/food-spiciness", label: "매운맛 취향 테스트" },
+              { href: "/tests/food-ordering", label: "주문 방식 테스트" },
+              { href: "/tests/ramen-mbti", label: "라면 MBTI 테스트" },
+            ]}
+            tone="orange"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Chicken Vs Jjimdak Test" />
         </div>

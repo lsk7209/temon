@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,16 +14,16 @@ import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Bell, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "스마트폰 알림을 대하는 방식으로 알아보는 나의 성격 유형. 알림이 올 때, 알림이 너무 많을 때 등 구체적인 상황으로 분석합니다."
+const shortDescription = "알림 대하는 방식 테스트로 즉시 확인형·무음형 스마트폰 성향을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "스마트폰 알림을 대하는 방식으로 알아보는 나의 성격 유형. 알림이 올 때, 알림이 너무 많을 때 등 구체적인 상황으로 분석합니다."
+const fullDescription = "알림 대하는 방식 테스트로 스마트폰 알림을 즉시 확인하는지, 모아보는지, 정리하는지 확인하세요. 12문항으로 16가지 디지털 알림 스타일을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "phone-notification",
   title: "알림 대하는 방식 테스트",
   shortDescription,
   fullDescription,
-  keywords: "알림, 스마트폰, 알림 설정, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords: "알림 대하는 방식 테스트, 스마트폰 알림 테스트, 알림 설정 테스트, 디지털 습관 테스트, 폰 알림, 성격 테스트, 무료 테스트",
   canonical: "/tests/phone-notification",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("알림 대하는 방식 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "스마트폰 알림 테스트 검색",
+    description:
+      "알림을 바로 확인하는지, 쌓아두는지, 무음으로 관리하는지 일상적인 스마트폰 습관을 봅니다.",
+  },
+  {
+    title: "알림 설정 성향 확인",
+    description:
+      "중요 알림만 남기는 편인지, 모든 앱 알림을 켜두는 편인지 디지털 정리 기준을 확인합니다.",
+  },
+  {
+    title: "디지털 웰빙 참고",
+    description:
+      "결과는 사용 습관을 비판하지 않고 집중, 효율, 소통 기준을 이해하는 참고용입니다.",
+  },
+]
+
 export default function PhoneNotificationIntro() {
   const schemas = generateQuizSchemas({
     quizId: "phone-notification",
     title: "알림 대하는 방식 테스트",
     shortDescription,
     fullDescription,
-    keywords: "알림, 스마트폰, 알림 설정, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords: "알림 대하는 방식 테스트, 스마트폰 알림 테스트, 알림 설정 테스트, 디지털 습관 테스트, 폰 알림, 성격 테스트, 무료 테스트",
     canonical: "/tests/phone-notification",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function PhoneNotificationIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">1. 알림이 올 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">즉시 확인한다 vs 나중에 확인한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">즉시 확인한다 vs 나중에 확인한다</p>
                     </div>
                     <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
                       <p className="font-medium">2. 알림이 너무 많을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">알림을 정리한다 vs 그대로 둔다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">알림을 정리한다 vs 그대로 둔다</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">3. 알림을 확인하는 방식</p>
-                      <p className="text-sm text-muted-foreground mt-1">혼자 조용히 확인한다 vs 사람들과 함께 확인한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">혼자 조용히 확인한다 vs 사람들과 함께 확인한다</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
                       <p className="font-medium">4. 알림을 확인하는 시간</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 시간에 확인한다 vs 그때그때 확인한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 시간에 확인한다 vs 그때그때 확인한다</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">5. 알림을 확인하는 이유</p>
-                      <p className="text-sm text-muted-foreground mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
                     </div>
                     <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
                       <p className="font-medium">6. 알림을 선택하는 기준</p>
-                      <p className="text-sm text-muted-foreground mt-1">효율성과 목표를 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">효율성과 목표를 위해 vs 기분과 컨디션을 위해</p>
                     </div>
                   </div>
                 </div>
@@ -191,7 +210,7 @@ export default function PhoneNotificationIntro() {
                     >
                       <div className="text-2xl mb-1">{character.emoji}</div>
                       <div className="text-xs font-medium">{character.name}</div>
-                      <div className="text-xs text-muted-foreground">{character.type}</div>
+                      <div className="text-xs text-slate-700 dark:text-slate-200">{character.type}</div>
                     </div>
                   ))}
                 </div>
@@ -213,7 +232,7 @@ export default function PhoneNotificationIntro() {
                       <span className="text-2xl">🎯</span>
                     </div>
                     <h3 className="font-semibold">정확한 분석</h3>
-                    <p className="text-sm text-muted-foreground">12문항으로 알림 습관을 4축으로 정량화해 유형화</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-200">12문항으로 알림 습관을 4축으로 정량화해 유형화</p>
                   </div>
 
                   <div className="text-center space-y-3">
@@ -221,7 +240,7 @@ export default function PhoneNotificationIntro() {
                       <span className="text-2xl">💡</span>
                     </div>
                     <h3 className="font-semibold">맞춤 팁</h3>
-                    <p className="text-sm text-muted-foreground">당신의 유형에 맞는 알림 스타일 및 디지털 웰빙 팁 제공</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-200">당신의 유형에 맞는 알림 스타일 및 디지털 웰빙 팁 제공</p>
                   </div>
 
                   <div className="text-center space-y-3">
@@ -229,7 +248,7 @@ export default function PhoneNotificationIntro() {
                       <span className="text-2xl">🔗</span>
                     </div>
                     <h3 className="font-semibold">쉬운 공유</h3>
-                    <p className="text-sm text-muted-foreground">결과를 친구들과 쉽게 공유하고 비교해보세요</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-200">결과를 친구들과 쉽게 공유하고 비교해보세요</p>
                   </div>
                 </div>
               </div>
@@ -237,6 +256,20 @@ export default function PhoneNotificationIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="알림 대하는 방식 테스트로 보는 디지털 습관"
+            summary="알림 대하는 방식 테스트는 스마트폰 알림 테스트, 알림 설정 테스트, 디지털 습관 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 즉시 확인, 모아보기, 무음 설정, 알림 정리 기준을 바탕으로 16가지 알림 스타일을 보여줍니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/phone-app-organization", label: "앱 정리 스타일 테스트" },
+              { href: "/tests/phone-usage", label: "폰 사용 습관 테스트" },
+              { href: "/tests/phone-storage", label: "폰 저장공간 정리 테스트" },
+            ]}
+            tone="blue"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Phone Notification Test" />
         </div>

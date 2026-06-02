@@ -9,19 +9,30 @@
  * 본문을 300자 이상으로 보강하면 이 목록에서 제거해 색인을 복구한다.
  */
 export const NOINDEX_TEST_IDS = new Set<string>([
-  // content-audit v2, 2026-05-06: prose <150
+  // content-audit v2, 2026-06-01: prose <150
   "commute-style",
   "meal-frequency",
   "meal-pacing",
   "meal-order",
   "meal-balance",
   "meal-duration",
+  "clean-style",
+  "pizza-topping",
+  "weekend-rest",
   "meal-planning",
   "meal-sharing",
+  "morning-alarm",
+  "jachui",
+  "morning-energy",
+  "chair-sitting",
   "meal-preparation",
+  "salad-dressing",
+  "evening-social",
   "meal-serving",
   "meal-social",
+  "morning-coffee",
   "food-scooping",
+  "cooking-shared",
   "meal-solo",
   "cooking-solo",
   "food-dipping",
@@ -33,7 +44,8 @@ export const NOINDEX_TEST_IDS = new Set<string>([
   "grocery-shopping",
   "restaurant-service",
 
-  // cooking-shared는 next.config.mjs에서 cooking-share로 308 redirect 처리됨.
+  // cooking-shared는 next.config.mjs에서 cooking-share로 308 redirect 처리되지만
+  // 별도 라우트 파일이 남아 있어 직접 접근/메타 생성 시에도 noindex를 유지한다.
 ]);
 
 export function isNoindexTest(id: string): boolean {

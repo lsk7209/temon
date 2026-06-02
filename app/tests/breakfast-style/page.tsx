@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
@@ -169,6 +170,34 @@ export default function BreakfastStyleIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="아침식사 스타일로 보는 하루 시작 성향"
+          summary="아침식사를 준비하고 고르는 방식은 계획성, 속도, 컨디션 관리 방식과 이어집니다. 이 테스트는 식단의 좋고 나쁨이 아니라 아침을 어떻게 시작해야 편한 사람인지 보여줍니다."
+          guides={[
+            {
+              title: "준비 방식 확인",
+              description:
+                "미리 준비한 메뉴를 먹는지, 그날 기분에 맞춰 고르는지로 계획형과 즉흥형 단서를 확인합니다.",
+            },
+            {
+              title: "아침 컨디션 기준",
+              description:
+                "든든함, 가벼움, 빠른 준비, 맛 중 어떤 기준을 우선하는지에 따라 결과 해석이 달라집니다.",
+            },
+            {
+              title: "루틴 테스트로 확장",
+              description:
+                "아침식사 스타일은 알람 습관, 아침 샤워, 출근 준비 테스트와 함께 보면 더 입체적으로 읽힙니다.",
+            },
+          ]}
+          relatedLinks={[
+            { href: "/tests/alarm-habit", label: "알람 습관 테스트" },
+            { href: "/tests/morning-shower", label: "아침 샤워 테스트" },
+            { href: "/tests/morning-rush", label: "아침 준비 테스트" },
+          ]}
+          tone="orange"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Breakfast Style Test" />
         </div>

@@ -40,3 +40,13 @@ next-env.d.ts
 .wrangler/
 wrangler.toml.local
 .claude/
+
+# local agent/runtime artifacts
+.omx/
+.omc/
+.bkit/snapshots/
+
+# local database and operational backups
+local.db
+reports/*backup*.json
+reports/*backup*.ts

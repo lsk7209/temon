@@ -6,23 +6,24 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, UtensilsCrossed, Sparkles } from "lucide-react"
+import { Clock, Users, UtensilsCrossed } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "김밥 재료 선택으로 16유형 성향을 분석합니다. 김밥에 넣는 재료로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성."
+const shortDescription = "김밥 재료 선택 테스트로 기본파·특별재료파 음식 취향을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "김밥 재료 선택으로 16유형 성향을 분석합니다. 김밥에 넣는 재료로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성."
+const fullDescription = "김밥 재료 선택 테스트로 기본 김밥 재료를 선호하는지 특별한 재료와 조합을 시도하는지 확인하세요. 12문항으로 16가지 김밥 취향 유형을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "kimbap-ingredient",
   title: "김밥 재료 선택 테스트",
   shortDescription,
   fullDescription,
-  keywords: "김밥 테스트, 김밥 재료, 재료 선택, 성향 테스트, 심리테스트, 무료 테스트",
+  keywords: "김밥 재료 선택 테스트, 김밥 테스트, 김밥 재료 테스트, 음식 취향 테스트, 재료 선택 테스트, 김밥파, 무료 테스트",
   canonical: "/tests/kimbap-ingredient",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("김밥 재료 선택 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "김밥 재료 테스트 검색",
+    description:
+      "단무지, 계란, 햄처럼 익숙한 재료를 고르는지 새로운 재료와 조합을 시도하는지 확인합니다.",
+  },
+  {
+    title: "재료 조합 성향 분석",
+    description:
+      "정해진 조합을 좋아하는지, 매번 다르게 만드는지, 재료 양과 배치까지 선택 기준을 봅니다.",
+  },
+  {
+    title: "음식 취향 공유용",
+    description:
+      "결과는 입맛을 단정하지 않고 김밥을 고르는 습관을 친구와 비교하기 쉬운 유형으로 정리합니다.",
+  },
+]
+
 export default function KimbapIngredientIntro() {
   const schemas = generateQuizSchemas({
     quizId: "kimbap-ingredient",
     title: "김밥 재료 선택 테스트",
     shortDescription,
     fullDescription,
-    keywords: "김밥 테스트, 김밥 재료, 재료 선택, 성향 테스트, 심리테스트, 무료 테스트",
+    keywords: "김밥 재료 선택 테스트, 김밥 테스트, 김밥 재료 테스트, 음식 취향 테스트, 재료 선택 테스트, 김밥파, 무료 테스트",
     canonical: "/tests/kimbap-ingredient",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function KimbapIngredientIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-green-50 dark:bg-green-950 rounded-lg">
                       <p className="font-medium">1. 김밥 재료 선택 기준은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">전통적인 재료 vs 특별한 재료</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">전통적인 재료 vs 특별한 재료</p>
                     </div>
                     <div className="p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
                       <p className="font-medium">2. 재료 조합 방식은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">고정된 조합 vs 매번 다르게</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">고정된 조합 vs 매번 다르게</p>
                     </div>
                     <div className="p-4 bg-green-50 dark:bg-green-950 rounded-lg">
                       <p className="font-medium">3. 재료 양은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">적당히 vs 많이</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">적당히 vs 많이</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
                       <p className="font-medium">4. 재료 배치 방식은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">정돈된 배치 vs 자연스럽게</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정돈된 배치 vs 자연스럽게</p>
                     </div>
                     <div className="p-4 bg-green-50 dark:bg-green-950 rounded-lg">
                       <p className="font-medium">5. 김밥 만드는 순서는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 순서 vs 그때그때</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 순서 vs 그때그때</p>
                     </div>
                     <div className="p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
                       <p className="font-medium">6. 김밥 먹는 방식은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">작게 자르기 vs 크게 자르기</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">작게 자르기 vs 크게 자르기</p>
                     </div>
                   </div>
                 </div>
@@ -169,6 +188,20 @@ export default function KimbapIngredientIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="김밥 재료 선택 테스트로 보는 음식 취향"
+            summary="김밥 재료 선택 테스트는 김밥 재료 테스트, 음식 취향 테스트, 재료 선택 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 기본 재료 선호, 특별 재료 시도, 재료 양과 배치 기준을 바탕으로 16가지 김밥 취향 유형을 보여줍니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/food-ordering", label: "주문 방식 테스트" },
+              { href: "/tests/restaurant-menu", label: "식당 메뉴 선택 테스트" },
+              { href: "/tests/cvs-combo", label: "편의점 조합 테스트" },
+            ]}
+            tone="green"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Kimbap Ingredient Test" />
         </div>

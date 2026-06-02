@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -169,6 +170,34 @@ export default function BagOrganizingIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="가방 정리 방식으로 보는 성향"
+          summary="가방을 정리하는 방식은 준비성, 즉흥성, 물건을 찾는 순서처럼 하루의 움직임과 이어집니다. 이 테스트는 가방 속 상태를 평가하기보다 내가 일을 준비하고 처리하는 기본 패턴을 가볍게 확인하도록 구성되어 있습니다."
+          guides={[
+            {
+              title: "준비성 신호 보기",
+              description:
+                "항상 필요한 물건을 미리 챙기는지, 상황이 생긴 뒤 빠르게 해결하는지에 따라 결과 해석이 달라집니다.",
+            },
+            {
+              title: "정리 기준 구분",
+              description:
+                "위치가 정해진 타입인지, 자주 쓰는 물건 중심으로 꺼내기 쉽게 두는 타입인지 확인합니다.",
+            },
+            {
+              title: "생활 테스트로 확장",
+              description:
+                "가방 정리 결과는 방 정리, 소비 성향, 외출 준비 방식과 함께 보면 더 자연스럽게 읽힙니다.",
+            },
+          ]}
+          relatedLinks={[
+            { href: "/tests/clean-style", label: "청소 스타일 테스트" },
+            { href: "/tests/spending-style", label: "소비 성향 테스트" },
+            { href: "/tests/morning-outfit", label: "아침 옷차림 테스트" },
+          ]}
+          tone="orange"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Bag Organizing Test" />
         </div>

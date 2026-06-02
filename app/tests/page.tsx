@@ -27,11 +27,11 @@ const keywordGuides = [
   {
     query: "재밌는 테스트",
     description:
-      "친구와 결과를 비교하기 좋은 짧은 성격 테스트와 취향 테스트를 먼저 모았습니다.",
+      "친구와 결과를 비교하기 좋은 성격 테스트와 취향 테스트를 먼저 모았습니다.",
     links: [
       { href: "/tests", label: "재밌는 테스트 모음" },
       { href: "/tests/kpop-idol", label: "아이돌 포지션 테스트" },
-      { href: "/tests/ramen-mbti", label: "라면 테스트" },
+      { href: "/tests/ramen-mbti", label: "라면 MBTI 테스트" },
     ],
   },
   {
@@ -54,6 +54,109 @@ const keywordGuides = [
       { href: "/blog", label: "테스트 글 목록" },
     ],
   },
+  {
+    query: "성격 성향 테스트",
+    description:
+      "소비, 수면, 공부, 관계처럼 일상 선택에서 드러나는 성향을 가볍게 확인합니다.",
+    links: [
+      { href: "/tests/spending-style", label: "소비 성향 테스트" },
+      { href: "/tests/sleep-chronotype", label: "수면 성향 테스트" },
+      { href: "/tests/study-mbti", label: "공부 성향 테스트" },
+    ],
+  },
+  {
+    query: "심리테스트 사이트",
+    description:
+      "전문 진단이 아닌, 친구와 공유하며 즐기기 좋은 무료 심리테스트와 성격 테스트를 모았습니다.",
+    links: [
+      { href: "/tests", label: "무료 심리테스트 모음" },
+      {
+        href: "/blog/why-personality-quizzes-feel-accurate",
+        label: "심리테스트가 맞게 느껴지는 이유",
+      },
+      { href: "/tests/music-taste", label: "음악 취향 심리테스트" },
+    ],
+  },
+  {
+    query: "무료 MBTI 검사 사이트",
+    description:
+      "가입 절차 없이 한국어 질문으로 바로 시작할 수 있는 무료 MBTI 스타일 테스트를 연결했습니다.",
+    links: [
+      { href: "/tests/coffee-mbti", label: "커피 MBTI 검사" },
+      { href: "/tests/pet-mbti", label: "반려동물 MBTI 검사" },
+      { href: "/tests/kdrama-mbti", label: "K드라마 MBTI 검사" },
+    ],
+  },
+  {
+    query: "MBTI 테스트 무료",
+    description:
+      "무료로 바로 풀 수 있고 결과 공유가 쉬운 MBTI형 테스트를 찾는 방문자에게 맞췄습니다.",
+    links: [
+      { href: "/tests/coffee-mbti", label: "무료 커피 MBTI 테스트" },
+      { href: "/tests/ramen-mbti", label: "무료 라면 MBTI 테스트" },
+      { href: "/tests/pet-mbti", label: "무료 반려동물 MBTI 테스트" },
+    ],
+  },
+  {
+    query: "MBTI 테스트 질문 한국어",
+    description:
+      "한국어 질문을 읽고 2~3분 안에 풀 수 있는 테스트를 고르도록 구성했습니다.",
+    links: [
+      { href: "/tests/coffee-mbti/test", label: "커피 MBTI 질문 풀기" },
+      { href: "/tests/study-mbti/test", label: "공부 MBTI 질문 풀기" },
+      { href: "/tests/kdrama-mbti/test", label: "K드라마 MBTI 질문 풀기" },
+    ],
+  },
+  {
+    query: "소비성향 테스트",
+    description:
+      "돈을 쓰는 기준, 할인 반응, 충동구매 패턴을 가볍게 확인하는 테스트입니다.",
+    links: [
+      { href: "/tests/spending-style", label: "소비 성향 테스트" },
+      { href: "/tests/shopping-style", label: "쇼핑 스타일 테스트" },
+      { href: "/tests/market-choice", label: "장보기 선택 테스트" },
+    ],
+  },
+  {
+    query: "크로노타입 테스트",
+    description:
+      "아침과 밤의 에너지 리듬, 집중 시간, 수면 습관을 확인하려는 검색어에 맞췄습니다.",
+    links: [
+      { href: "/tests/sleep-chronotype", label: "수면 크로노타입 테스트" },
+      { href: "/tests/morning-energy", label: "아침 에너지 테스트" },
+      { href: "/tests/evening-routine", label: "저녁 루틴 테스트" },
+    ],
+  },
+  {
+    query: "좀비 생존 테스트",
+    description:
+      "상황형 질문으로 생존 판단, 대응 성향, 위험 대처 스타일을 재미있게 비교합니다.",
+    links: [
+      { href: "/tests/zombie-survival", label: "좀비 생존 테스트" },
+      { href: "/tests/game-play-style", label: "게임 플레이 스타일 테스트" },
+      { href: "/tests/weekend-planning", label: "계획형 테스트" },
+    ],
+  },
+  {
+    query: "완벽주의 테스트",
+    description:
+      "기준을 높이는 시간, 자기검열, 마감 전 압박감을 확인하고 균형점을 찾는 테스트입니다.",
+    links: [
+      { href: "/tests/perfection-balance-1xQC", label: "완벽주의 균형 테스트" },
+      { href: "/tests/study-mbti", label: "공부 스타일 테스트" },
+      { href: "/tests/weekend-balance", label: "주말 균형 테스트" },
+    ],
+  },
+  {
+    query: "테스트 사이트",
+    description:
+      "MBTI, 성격, 취향, 생활 습관 테스트를 한 페이지에서 탐색하고 주제별로 이어서 볼 수 있습니다.",
+    links: [
+      { href: "/tests", label: "전체 테스트 사이트" },
+      { href: "/tests/morning-energy", label: "생활 성향 테스트" },
+      { href: "/tests/ramen-mbti", label: "음식 취향 테스트" },
+    ],
+  },
 ];
 
 const listingFaqs = [
@@ -65,7 +168,7 @@ const listingFaqs = [
   {
     question: "어떤 테스트부터 시작하면 좋나요?",
     answer:
-      "처음이라면 참여하기 쉬운 인기 테스트나 최신 테스트를 먼저 추천합니다. 관심사가 뚜렷하다면 음식, 생활, 관계, 직장, 디지털 같은 주제에서 고르면 됩니다.",
+      "처음이라면 참여하기 쉬운 인기 테스트나 최신 테스트를 먼저 추천합니다. 관심사가 뚜렷하다면 음식, 생활, 관계, 직장, 연애 같은 주제에서 고르면 됩니다.",
   },
   {
     question: "테스트 결과는 전문 진단인가요?",
@@ -80,21 +183,21 @@ const listingFaqs = [
 ];
 
 const shortDescription =
-  "무료 성격 테스트 모음에서 MBTI, 취향, 생활, 관계 테스트를 주제별로 골라보세요.";
+  "재밌는 테스트 사이트에서 무료 MBTI 검사, 한국어 질문, 성격 성향 테스트, 심리테스트를 주제별로 골라보세요.";
 const fullDescription =
-  "테몬의 무료 성격 테스트 모음에서 MBTI 테스트, 취향 테스트, 관계 테스트, 생활 테스트를 주제별로 찾아보세요. 짧게 끝나는 재밌는 심리테스트를 한곳에 모았습니다.";
+  "테몬의 무료 성격 테스트 모음에서 MBTI 검사, 한국어 MBTI 질문, 심리테스트, 취향 테스트, 관계 테스트, 생활 테스트를 주제별로 찾아보세요. 짧게 끝나는 재밌는 테스트를 한곳에 모았습니다.";
 
 export const metadata: Metadata = {
-  title: "성격 테스트 모음 | 무료 MBTI 테스트 - 테몬",
+  title: "재밌는 테스트 모음 | 무료 MBTI 성격 테스트 - 테몬",
   description: shortDescription,
   keywords:
-    "성격 테스트 모음, MBTI 테스트 모음, 무료 MBTI 테스트, 재밌는 테스트, 심리테스트, 성격테스트 사이트, 테몬",
+    "재밌는 테스트 모음, 성격 테스트 모음, MBTI 테스트 모음, 무료 MBTI 검사 사이트, MBTI 테스트 질문 한국어, MBTI 테스트 무료, 성격 성향 테스트, 심리테스트 사이트, 테스트 사이트, 테몬",
   metadataBase: new URL(baseUrl),
   alternates: {
     canonical: "/tests",
   },
   openGraph: {
-    title: "성격 테스트 모음 | 무료 MBTI 테스트 - 테몬",
+    title: "재밌는 테스트 모음 | 무료 MBTI 성격 테스트 - 테몬",
     description: fullDescription,
     type: "website",
     url: `${baseUrl}/tests`,
@@ -111,7 +214,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "성격 테스트 모음 | 무료 MBTI 테스트 - 테몬",
+    title: "재밌는 테스트 모음 | 무료 MBTI 성격 테스트 - 테몬",
     description: fullDescription,
     images: [
       `${baseUrl}/api/og?title=${encodeURIComponent("테몬 MBTI 테스트 모음")}&desc=${encodeURIComponent("무료 심리테스트")}`,
@@ -216,7 +319,7 @@ export default async function TestsPage() {
               클릭하기 좋은 테스트 묶음을 정리했습니다.
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {keywordGuides.map((guide) => (
               <article
                 key={guide.query}
@@ -261,21 +364,27 @@ export default async function TestsPage() {
           </p>
           <div className="grid gap-4 md:grid-cols-3">
             <div className="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
-              <h3 className="mb-2 font-semibold text-gray-900">주제별로 고르기</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">
+                주제별로 고르기
+              </h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                음식, 역할, 생활 습관, 관계, 디지털처럼 관심사가 뚜렷하다면
+                음식, 역할, 생활 습관, 관계, 연애처럼 관심사가 뚜렷하다면
                 카테고리 필터로 비슷한 테스트를 이어서 볼 수 있습니다.
               </p>
             </div>
             <div className="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
-              <h3 className="mb-2 font-semibold text-gray-900">처음이면 인기 테스트</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">
+                처음이면 인기 테스트
+              </h3>
               <p className="text-sm leading-relaxed text-gray-600">
                 처음 방문했다면 결과 유형이 쉽고 공유하기 좋은 테스트부터
                 시작하세요. 친구와 비교하기에도 좋습니다.
               </p>
             </div>
             <div className="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
-              <h3 className="mb-2 font-semibold text-gray-900">최신 테스트 확인</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">
+                최신 테스트 확인
+              </h3>
               <p className="text-sm leading-relaxed text-gray-600">
                 새로 추가된 테스트는 최근 관심사와 맞춰져 있습니다. 짧게 풀고
                 결과 공유까지 자연스럽게 이어집니다.

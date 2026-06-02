@@ -10,19 +10,20 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { Clock, Users, Scale, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "주말에 할 일과 쉬는 일을 균형잡는 방식으로 알아보는 나의 성격 유형. 주말에 할 일과 쉬는 일을 정할 때, 주말에 시간이 부족할 때 등 ..."
+const shortDescription = "주말 균형 테스트로 휴식, 약속, 집안일, 시간관리 성향을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "주말에 할 일과 쉬는 일을 균형잡는 방식으로 알아보는 나의 성격 유형. 주말에 할 일과 쉬는 일을 정할 때, 주말에 시간이 부족할 때 등 구체적인 상황으로 분석합니다."
+const fullDescription = "주말 균형 테스트로 휴식, 약속, 집안일, 시간관리 기준을 12문항으로 확인하세요. 할 일과 쉬는 일을 나누는 16가지 주말 유형을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "weekend-balance",
   title: "주말 균형잡기 테스트",
   shortDescription,
   fullDescription,
-  keywords: "주말 균형, 시간관리, 균형잡기, 주말 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords: "주말 균형 테스트, 주말 시간관리, 주말 계획 테스트, 휴식 테스트, 집안일 테스트, 생활 성향 테스트, 무료 테스트",
   canonical: "/tests/weekend-balance",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("주말 균형잡기 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "주말 균형 테스트 검색",
+    description:
+      "주말에 쉬는 시간, 약속, 집안일, 개인 시간을 어떤 순서로 배치하는지 확인합니다.",
+  },
+  {
+    title: "할 일과 휴식 기준",
+    description:
+      "계획을 세워야 편한 편인지, 컨디션에 맞춰 조정해야 회복되는 편인지 나눠 볼 수 있습니다.",
+  },
+  {
+    title: "주말 루틴 참고",
+    description:
+      "결과는 시간관리 평가가 아니라 다음 주말을 덜 피곤하게 보내기 위한 성향 참고 자료입니다.",
+  },
+]
+
 export default function WeekendBalanceIntro() {
   const schemas = generateQuizSchemas({
     quizId: "weekend-balance",
     title: "주말 균형잡기 테스트",
     shortDescription,
     fullDescription,
-    keywords: "주말 균형, 시간관리, 균형잡기, 주말 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords: "주말 균형 테스트, 주말 시간관리, 주말 계획 테스트, 휴식 테스트, 집안일 테스트, 생활 성향 테스트, 무료 테스트",
     canonical: "/tests/weekend-balance",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function WeekendBalanceIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
                       <p className="font-medium">1. 주말에 할 일과 쉬는 일을 정할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">미리 계획을 세운다 vs 그때그때 결정한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">미리 계획을 세운다 vs 그때그때 결정한다</p>
                     </div>
                     <div className="p-4 bg-teal-50 dark:bg-teal-950 rounded-lg">
                       <p className="font-medium">2. 주말에 시간이 부족할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">계획대로 우선순위를 정한다 vs 상황에 따라 조정한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">계획대로 우선순위를 정한다 vs 상황에 따라 조정한다</p>
                     </div>
                     <div className="p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
                       <p className="font-medium">3. 주말에 균형을 잡는 방식</p>
-                      <p className="text-sm text-muted-foreground mt-1">혼자 조용히 계획한다 vs 사람들과 함께 논의한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">혼자 조용히 계획한다 vs 사람들과 함께 논의한다</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-teal-50 dark:bg-teal-950 rounded-lg">
                       <p className="font-medium">4. 주말에 균형을 잡는 시간</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 시간에 계획한다 vs 그때그때 계획한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 시간에 계획한다 vs 그때그때 계획한다</p>
                     </div>
                     <div className="p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
                       <p className="font-medium">5. 주말에 균형을 잡는 이유</p>
-                      <p className="text-sm text-muted-foreground mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
                     </div>
                     <div className="p-4 bg-teal-50 dark:bg-teal-950 rounded-lg">
                       <p className="font-medium">6. 주말에 균형을 선택하는 기준</p>
-                      <p className="text-sm text-muted-foreground mt-1">효율성과 목표를 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">효율성과 목표를 위해 vs 기분과 컨디션을 위해</p>
                     </div>
                   </div>
                 </div>
@@ -237,6 +256,18 @@ export default function WeekendBalanceIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="주말 균형 테스트로 보는 시간관리 기준"
+          summary="주말 균형 테스트는 쉬고 싶은 마음과 해야 할 일을 어떻게 나누는지 알고 싶은 검색 의도에 맞춘 무료 생활 성향 테스트입니다. 약속, 집안일, 개인 시간, 회복 시간을 배치하는 기준을 16가지 유형으로 정리합니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/weekend-planning", label: "주말 계획 테스트" },
+            { href: "/tests/weekend-rest", label: "주말 휴식 테스트" },
+            { href: "/tests/weekend-lazy", label: "주말 게으름 테스트" },
+          ]}
+          tone="green"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Weekend Balance Test" />
         </div>

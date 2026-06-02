@@ -280,6 +280,40 @@ export function generateOrganizationSchema(): Record<string, unknown> {
  * ItemList 스키마 생성 (테스트 목록 페이지 최적화)
  * Google, Naver 검색 최적화
  */
+/**
+ * WebPage speakable schema for AEO/GEO.
+ * Search and answer engines can use these selectors as concise answer surfaces.
+ */
+export function generateSpeakableWebPageSchema(config: {
+  name: string;
+  url: string;
+  description: string;
+  cssSelectors?: string[];
+}): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: config.name,
+    url: config.url,
+    description: config.description,
+    inLanguage: "ko",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "테몬 MBTI",
+      url: "https://temon.kr",
+    },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: config.cssSelectors || [
+        "h1",
+        ".article-summary",
+        ".key-takeaways",
+        "#gsc-search-intent",
+      ],
+    },
+  };
+}
+
 export function generateItemListSchema(
   items: Array<{
     name: string;

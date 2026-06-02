@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Badge } from "@/components/ui/badge"
@@ -244,6 +245,34 @@ export default function AlarmHabitIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="알람 습관 테스트는 무엇을 보여주나요?"
+          summary="알람을 끄는 방식은 아침 집중도, 준비 속도, 계획성과 연결됩니다. 이 테스트는 늦잠 여부를 판단하기보다 내가 하루를 시작할 때 어떤 기준으로 움직이는지 가볍게 확인하도록 구성되어 있습니다."
+          guides={[
+            {
+              title: "기상 반응 확인",
+              description:
+                "알람이 울리자마자 일어나는지, 스누즈를 반복하는지, 여러 알람을 나눠 두는지로 아침 반응 패턴을 봅니다.",
+            },
+            {
+              title: "준비 루틴 해석",
+              description:
+                "일어나서 바로 움직이는 타입인지, 잠깐 정리 시간이 필요한 타입인지에 따라 결과의 핵심 포인트가 달라집니다.",
+            },
+            {
+              title: "아침 테스트와 연결",
+              description:
+                "알람 결과는 아침 식사, 아침 커피, 아침 에너지 테스트와 같이 보면 하루 시작 성향을 더 자연스럽게 읽을 수 있습니다.",
+            },
+          ]}
+          relatedLinks={[
+            { href: "/tests/morning-alarm", label: "아침 알람 테스트" },
+            { href: "/tests/morning-energy", label: "아침 에너지 테스트" },
+            { href: "/tests/morning-coffee", label: "아침 커피 테스트" },
+          ]}
+          tone="blue"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Alarm Habit Test" />
         </div>

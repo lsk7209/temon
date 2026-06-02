@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -12,16 +13,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Flame } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "매운맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형 테스트"
+const shortDescription = "매운맛 테스트로 매운 음식 취향과 음식 성격 유형을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "매운맛 선호도 테스트로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 매운맛 선호도 테스트를 지금 바로 무료로 시작해보세요."
+const fullDescription = "매운맛 테스트로 매운 음식 취향, 도전 성향, 음식 선택 방식을 확인하세요. 12문항으로 나와 닮은 음식 성격 유형을 무료로 볼 수 있습니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "food-spiciness",
-  title: "매운맛 선호도 테스트",
+  title: "매운맛 테스트",
   shortDescription,
   fullDescription,
-  keywords: "매운맛 선호도 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords: "매운맛 테스트, 매운맛 선호도 테스트, 음식 테스트, 매운 음식 테스트, 매운맛 MBTI, 성격 테스트, 심리테스트, 무료 테스트",
   canonical: "/tests/food-spiciness",
   questionCount: 12,
   duration: "PT3M",
@@ -29,15 +30,43 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("매운맛 선호도 테스트"),
+  {
+    question: "매운맛 테스트는 무엇을 알려주나요?",
+    answer:
+      "매운 음식을 고르는 기준, 도전 강도, 스트레스를 푸는 방식 등을 바탕으로 음식 취향과 성격 유형을 가볍게 해석합니다.",
+  },
+  {
+    question: "음식 테스트로 친구와 비교할 수 있나요?",
+    answer:
+      "네. 결과 유형은 공유하기 쉽게 구성되어 있어 친구의 라면 취향, 매운맛 단계, 음식 선택 스타일과 비교하기 좋습니다.",
+  },
+]
+
+const gscGuides = [
+  {
+    title: "매운맛 테스트",
+    description:
+      "맵찔이부터 불닭 도전자까지 매운맛을 대하는 태도와 선택 기준을 12문항으로 확인합니다.",
+  },
+  {
+    title: "음식 테스트",
+    description:
+      "매운 음식 취향을 통해 즉흥성, 도전 성향, 안정 추구 성향처럼 음식 선택에 드러나는 패턴을 살펴봅니다.",
+  },
+  {
+    title: "매운맛 MBTI",
+    description:
+      "정식 MBTI 검사는 아니지만 매운맛을 즐기는 방식으로 친구와 비교하기 쉬운 음식 성격 유형을 제공합니다.",
+  },
 ]
 
 export default function FoodSpicinessPage() {
   const schemas = generateQuizSchemas({
     quizId: "food-spiciness",
-    title: "매운맛 선호도 테스트",
+    title: "매운맛 테스트",
     shortDescription,
     fullDescription,
-    keywords: "매운맛 선호도 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords: "매운맛 테스트, 매운맛 선호도 테스트, 음식 테스트, 매운 음식 테스트, 매운맛 MBTI, 성격 테스트, 심리테스트, 무료 테스트",
     canonical: "/tests/food-spiciness",
     questionCount: 12,
     duration: "PT3M",
@@ -100,6 +129,18 @@ export default function FoodSpicinessPage() {
             </div>
           </CardContent>
         </Card>
+
+        <GscLandingBoost
+          title="매운맛 테스트로 보는 음식 취향"
+          summary="이 페이지는 매운맛 테스트, 음식 테스트, 매운 음식 취향 테스트를 찾는 사용자를 위한 무료 테스트입니다. 매운맛 단계와 먹는 상황을 고르면 나의 음식 성격 유형을 빠르게 확인할 수 있습니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/ramen-mbti", label: "라면 테스트" },
+            { href: "/tests/taste-preference", label: "입맛 취향 테스트" },
+            { href: "/tests/food-temperature", label: "음식 온도 취향 테스트" },
+          ]}
+          tone="orange"
+        />
       
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Food Spiciness Test" />

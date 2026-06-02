@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { getSiteUrl } from '@/lib/site-url'
 
 /**
  * 사이트맵 인덱스 생성 (대용량 사이트 최적화)
@@ -12,7 +13,7 @@ const SITEMAP_CACHE_CONTROL =
   'public, max-age=300, s-maxage=300, stale-while-revalidate=3600'
 
 export async function GET() {
-  const baseUrl = 'https://temon.kr'
+  const baseUrl = getSiteUrl()
   
   const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

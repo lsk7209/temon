@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
@@ -101,6 +102,36 @@ export default function StoreChoicePage() {
           </CardContent>
         </Card>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="매장 선택 테스트로 보는 선택 기준"
+            summary="매장 선택 테스트는 어디서 사고 먹고 머무를지 고르는 기준을 통해 소비 성향과 결정 방식을 확인하는 무료 성격 테스트입니다. 익숙한 매장을 고르는지, 분위기와 동선을 보는지, 가격과 효율을 우선하는지에 따라 나의 선택 패턴을 정리합니다."
+            guides={[
+              {
+                title: "선택 기준 파악",
+                description:
+                  "가격, 위치, 분위기, 익숙함 중 어떤 요소를 먼저 보는지 확인합니다.",
+              },
+              {
+                title: "소비 성향 비교",
+                description:
+                  "실용적인 선택과 감각적인 선택의 비중을 결과 유형으로 비교할 수 있습니다.",
+              },
+              {
+                title: "일상 의사결정 참고",
+                description:
+                  "매장 선택처럼 자주 반복되는 선택에서 나오는 습관을 가볍게 점검합니다.",
+              },
+            ]}
+            relatedLinks={[
+              { href: "/tests/restaurant-choice", label: "식당 선택 테스트" },
+              { href: "/tests/cafe-style", label: "카페 취향 테스트" },
+              { href: "/tests/convenience-snack", label: "편의점 간식 테스트" },
+            ]}
+            tone="pink"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Store Choice Test" />
         </div>

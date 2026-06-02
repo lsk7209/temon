@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -169,6 +170,34 @@ export default function BookReadingIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="책 읽는 습관 테스트 사용법"
+          summary="책을 읽는 방식은 집중 시간, 정보 습득 방식, 감정 몰입도와 연결됩니다. 이 테스트는 독서량을 평가하지 않고 책을 고르고 읽고 기억하는 패턴을 통해 나에게 맞는 성향을 가볍게 보여줍니다."
+          guides={[
+            {
+              title: "읽는 속도보다 방식",
+              description:
+                "빠르게 많이 읽는지보다 밑줄, 메모, 완독 여부, 동시에 여러 권을 읽는지 같은 습관을 중심으로 봅니다.",
+            },
+            {
+              title: "선호 장르와 집중감",
+              description:
+                "정보형 글을 좋아하는지, 이야기 몰입을 좋아하는지에 따라 결과의 대화 포인트가 달라집니다.",
+            },
+            {
+              title: "공부·취향 테스트와 연결",
+              description:
+                "독서 습관 결과는 공부 방식, 음악 취향, 주말 루틴 테스트와 같이 보면 더 입체적으로 해석할 수 있습니다.",
+            },
+          ]}
+          relatedLinks={[
+            { href: "/tests/study-mbti", label: "공부 스타일 테스트" },
+            { href: "/tests/music-taste", label: "음악 취향 테스트" },
+            { href: "/tests/weekend-hobby", label: "주말 취미 테스트" },
+          ]}
+          tone="indigo"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Book Reading Test" />
         </div>

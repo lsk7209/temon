@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
@@ -237,6 +238,36 @@ export default function EveningReflectionIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="저녁 회고 테스트, 하루를 어떻게 돌아보는지 확인해요"
+            summary="저녁 회고 테스트는 하루 마무리 방식, 감정 정리 습관, 밤 루틴 성향을 알고 싶은 검색 의도에 맞춘 무료 성격 테스트입니다. 하루를 기록하는 방식, 기분을 정리하는 기준, 내일을 준비하는 태도를 통해 나에게 맞는 회고 스타일을 보여줍니다."
+            guides={[
+              {
+                title: "하루 마무리 루틴",
+                description:
+                  "오늘 있었던 일을 바로 정리하는 편인지, 느낌만 남기고 쉬는 편인지 확인합니다.",
+              },
+              {
+                title: "감정 정리 방식",
+                description:
+                  "일정과 성과 중심으로 보는지, 감정과 관계 중심으로 보는지 비교합니다.",
+              },
+              {
+                title: "밤 시간 활용",
+                description:
+                  "내일 계획을 세우는 타입과 회복을 먼저 챙기는 타입을 구분합니다.",
+              },
+            ]}
+            relatedLinks={[
+              { href: "/tests/evening-meal", label: "저녁 식사 스타일 테스트" },
+              { href: "/tests/evening-social", label: "저녁 약속 테스트" },
+              { href: "/tests/weekend-rest", label: "주말 충전 테스트" },
+            ]}
+            tone="pink"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Evening Reflection Test" />
         </div>

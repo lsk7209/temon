@@ -46,10 +46,11 @@ export default function Header() {
         {shouldShowBackButton && (
           <Link
             href={backHref}
+            aria-label="이전 페이지로 이동"
             className="mr-4 flex items-center text-sm font-medium transition-colors hover:text-foreground/80"
             onClick={() => handleNavClick("back")}
           >
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-5 w-5" aria-hidden="true" />
           </Link>
         )}
 
@@ -89,9 +90,10 @@ export default function Header() {
           <SheetTrigger asChild>
             <Button
               variant="ghost"
+              aria-label="메뉴 토글 열기"
               className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
             >
-              <Menu className="h-5 w-5" />
+              <Menu className="h-5 w-5" aria-hidden="true" />
               <span className="sr-only">메뉴 토글</span>
             </Button>
           </SheetTrigger>

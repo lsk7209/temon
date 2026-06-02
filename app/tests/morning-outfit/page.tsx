@@ -10,12 +10,13 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { Clock, Users, Shirt, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "아침에 옷을 고르는 방식으로 알아보는 나의 성격 유형. 옷을 고를 때, 옷이 다 빨래통에 있을 때 등 구체적인 상황으로 분석합니다."
+const shortDescription = "옷 고르기 테스트로 아침 패션 선택, 준비 시간, 스타일 기준을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "아침에 옷을 고르는 방식으로 알아보는 나의 성격 유형. 옷을 고를 때, 옷이 다 빨래통에 있을 때 등 구체적인 상황으로 분석합니다."
+const fullDescription = "옷 고르기 테스트로 아침 패션 선택, 준비 시간, 편안함과 스타일 기준을 12문항으로 확인하세요. 16가지 아침 옷 선택 유형을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "morning-outfit",
@@ -30,6 +31,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("아침 옷 고르기 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "옷 고르기 테스트 검색",
+    description:
+      "아침에 옷을 빨리 정하는지, 기분과 일정에 맞춰 여러 번 바꾸는지 선택 기준을 확인합니다.",
+  },
+  {
+    title: "패션 선택 기준",
+    description:
+      "편안함, 실용성, 스타일, 새로움 중 어떤 기준이 먼저 오는지 생활 문항으로 나눠 봅니다.",
+  },
+  {
+    title: "준비 시간 줄이기",
+    description:
+      "결과는 패션 평가가 아니라 아침 준비를 덜 피곤하게 만드는 선택 습관 참고 자료입니다.",
+  },
 ]
 
 export default function MorningOutfitIntro() {
@@ -137,30 +156,30 @@ export default function MorningOutfitIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-pink-50 dark:bg-pink-950 rounded-lg">
                       <p className="font-medium">1. 아침에 옷을 고를 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">미리 정해둔 옷으로 바로 입는다 vs 그때그때 고른다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">미리 정해둔 옷으로 바로 입는다 vs 그때그때 고른다</p>
                     </div>
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">2. 옷이 다 빨래통에 있을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">빨래를 먼저 한다 vs 다른 옷을 찾는다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">빨래를 먼저 한다 vs 다른 옷을 찾는다</p>
                     </div>
                     <div className="p-4 bg-pink-50 dark:bg-pink-950 rounded-lg">
                       <p className="font-medium">3. 옷을 입고 나서 마음에 안 들 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">바로 갈아입는다 vs 그냥 입고 간다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">바로 갈아입는다 vs 그냥 입고 간다</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">4. 옷을 조합할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 조합으로 입는다 vs 그때그때 다르게 조합한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 조합으로 입는다 vs 그때그때 다르게 조합한다</p>
                     </div>
                     <div className="p-4 bg-pink-50 dark:bg-pink-950 rounded-lg">
                       <p className="font-medium">5. 옷을 고르는 시간이 부족할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">빠르게 기본 옷으로 입는다 vs 시간을 내서 고른다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">빠르게 기본 옷으로 입는다 vs 시간을 내서 고른다</p>
                     </div>
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">6. 옷을 고를 때 기준</p>
-                      <p className="text-sm text-muted-foreground mt-1">편안함과 실용성을 우선한다 vs 스타일과 멋을 우선한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">편안함과 실용성을 우선한다 vs 스타일과 멋을 우선한다</p>
                     </div>
                   </div>
                 </div>
@@ -237,6 +256,18 @@ export default function MorningOutfitIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="옷 고르기 테스트로 보는 아침 선택 기준"
+          summary="옷 고르기 테스트는 아침마다 무엇을 입을지 오래 고민하는 이유, 편한 옷과 예쁜 옷 사이에서 어떤 기준을 먼저 보는지 알고 싶은 검색 의도에 맞춘 무료 생활 성향 테스트입니다. 준비 시간, 스타일 기준, 상황 판단을 16가지 유형으로 정리합니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/clothing-order", label: "옷 정리 테스트" },
+            { href: "/tests/morning-rush", label: "아침 준비 테스트" },
+            { href: "/tests/shopping-style", label: "쇼핑 스타일 테스트" },
+          ]}
+          tone="pink"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Morning Outfit Test" />
         </div>

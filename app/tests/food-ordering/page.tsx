@@ -6,23 +6,24 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Smartphone, Sparkles } from "lucide-react"
+import { Clock, Users, Smartphone } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "직접 주문 vs 앱 주문 선호로 16유형 성향을 분석합니다. 주문 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+const shortDescription = "주문 방식 테스트로 앱 주문·직접 주문 성향과 선택 패턴을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "직접 주문 vs 앱 주문 선호로 16유형 성향을 분석합니다. 주문 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+const fullDescription = "주문 방식 테스트로 앱 주문을 선호하는지 직접 주문을 선호하는지, 메뉴 선택 속도와 소통 방식을 12문항으로 확인하세요. 16가지 주문 스타일을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "food-ordering",
   title: "주문 방식 테스트",
   shortDescription,
   fullDescription,
-  keywords: "주문 테스트, 앱 주문, 직접 주문, 주문 방식, 성향 테스트, 심리테스트, 무료 테스트",
+  keywords: "주문 방식 테스트, 앱 주문 테스트, 직접 주문 테스트, 음식 주문 테스트, 메뉴 선택 테스트, 성향 테스트, 무료 테스트",
   canonical: "/tests/food-ordering",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("주문 방식 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "주문 방식 테스트 검색",
+    description:
+      "앱으로 조용히 주문하는 편인지, 직원과 직접 확인하며 주문하는 편인지 선택 습관을 봅니다.",
+  },
+  {
+    title: "메뉴 선택 속도 확인",
+    description:
+      "미리 고르는지, 현장에서 바꾸는지, 리뷰와 사진을 보는지 같은 주문 전 행동을 함께 분석합니다.",
+  },
+  {
+    title: "소통과 효율 비교",
+    description:
+      "효율을 우선하는지, 직접 묻고 확인하는 안정감을 더 보는지 16가지 주문 스타일로 정리합니다.",
+  },
+]
+
 export default function FoodOrderingIntro() {
   const schemas = generateQuizSchemas({
     quizId: "food-ordering",
     title: "주문 방식 테스트",
     shortDescription,
     fullDescription,
-    keywords: "주문 테스트, 앱 주문, 직접 주문, 주문 방식, 성향 테스트, 심리테스트, 무료 테스트",
+    keywords: "주문 방식 테스트, 앱 주문 테스트, 직접 주문 테스트, 음식 주문 테스트, 메뉴 선택 테스트, 성향 테스트, 무료 테스트",
     canonical: "/tests/food-ordering",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function FoodOrderingIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">1. 주문 방식 선호는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">앱 주문 vs 직접 주문</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">앱 주문 vs 직접 주문</p>
                     </div>
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">2. 주문 준비는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">미리 준비 vs 그때그때</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">미리 준비 vs 그때그때</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">3. 주문 선택은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">신중하게 vs 즉시</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">신중하게 vs 즉시</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">4. 주문 이유는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">편의성 vs 소통</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">편의성 vs 소통</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">5. 주문 공유는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">다른 사람과 vs 혼자</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">다른 사람과 vs 혼자</p>
                     </div>
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">6. 주문 기준은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">효율성 vs 감성</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">효율성 vs 감성</p>
                     </div>
                   </div>
                 </div>
@@ -169,6 +188,20 @@ export default function FoodOrderingIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="주문 방식 테스트로 보는 메뉴 선택 패턴"
+            summary="주문 방식 테스트는 앱 주문 테스트, 직접 주문 테스트, 메뉴 선택 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 주문 전 고민 시간, 직원과의 소통, 효율 우선 여부를 바탕으로 16가지 주문 스타일을 보여줍니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/food-timing", label: "식사 시간대 테스트" },
+              { href: "/tests/chicken-vs-jjimdak", label: "찜닭 vs 치킨 테스트" },
+              { href: "/tests/restaurant-choice", label: "식당 선택 테스트" },
+            ]}
+            tone="blue"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Food Ordering Test" />
         </div>

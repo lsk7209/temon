@@ -10,34 +10,53 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Layers } from "lucide-react"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "요리 멀티태스킹 스타일로 알아보는 나의 성격 유형 테스트"
+const shortDescription = "멀티태스킹 테스트로 집중 전환, 우선순위, 동시에 처리하는 습관을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "요리 멀티태스킹 스타일 테스트로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 요리 멀티태스킹 스타일 테스트를 지금 바로 무료로 시작해보세요."
+const fullDescription = "멀티태스킹 테스트로 요리 중 여러 일을 동시에 처리하는 방식, 집중 전환 속도, 우선순위 판단을 12문항으로 확인하세요. 16가지 유형으로 나의 처리 습관을 무료로 정리합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "cooking-multitask",
-  title: "요리 멀티태스킹 스타일 테스트",
+  title: "멀티태스킹 테스트",
   shortDescription,
   fullDescription,
-  keywords: "요리 멀티태스킹 스타일 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords: "멀티태스킹 테스트, 요리 멀티태스킹, 집중 전환 테스트, 우선순위 테스트, 성격 테스트, 무료 테스트",
   canonical: "/tests/cooking-multitask",
   questionCount: 12,
   duration: "PT3M",
 })
 
 const faqs = [
-  ...getTopicQuizFAQs("요리 멀티태스킹 스타일 테스트"),
+  ...getTopicQuizFAQs("멀티태스킹 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "멀티태스킹 테스트 검색",
+    description:
+      "동시에 여러 일을 시작할 때 집중이 분산되는지, 오히려 리듬이 생기는지 확인합니다.",
+  },
+  {
+    title: "우선순위 판단",
+    description:
+      "요리처럼 타이밍이 겹치는 상황에서 먼저 처리하는 기준과 전환 속도를 봅니다.",
+  },
+  {
+    title: "결과 활용법",
+    description:
+      "결과는 업무 능력 평가가 아니라 일상에서 편한 처리 순서를 찾기 위한 참고 자료입니다.",
+  },
 ]
 
 export default function CookingMultitaskPage() {
   const schemas = generateQuizSchemas({
     quizId: "cooking-multitask",
-    title: "요리 멀티태스킹 스타일 테스트",
+    title: "멀티태스킹 테스트",
     shortDescription,
     fullDescription,
-    keywords: "요리 멀티태스킹 스타일 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords: "멀티태스킹 테스트, 요리 멀티태스킹, 집중 전환 테스트, 우선순위 테스트, 성격 테스트, 무료 테스트",
     canonical: "/tests/cooking-multitask",
     questionCount: 12,
     duration: "PT3M",
@@ -63,10 +82,10 @@ export default function CookingMultitaskPage() {
 
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                🔄 요리 멀티태스킹 스타일 테스트
+                🔄 멀티태스킹 테스트
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                요리 멀티태스킹 스타일로 알아보는 나의 성격 유형
+                동시에 처리할 때의 집중 전환, 우선순위, 타이밍 감각을 확인하세요.
               </p>
             </div>
 
@@ -94,12 +113,25 @@ export default function CookingMultitaskPage() {
             <div className="pt-8 text-left space-y-4">
               <h2 className="text-2xl font-bold">이 테스트는?</h2>
               <p className="text-muted-foreground leading-relaxed">
-                요리 멀티태스킹 스타일과 여러 일을 동시에 처리하는 패턴, 멀티태스킹을 즐기는 스타일을 통해 당신의 성격 유형을 분석합니다. 
-                요리 멀티태스킹 스타일은 외향성, 내향성, 감성, 논리성 등 다양한 성격 특성을 반영합니다.
+                멀티태스킹 테스트는 여러 일을 동시에 처리하는 패턴, 우선순위를 바꾸는 속도,
+                한 가지 일에 다시 집중하는 방식을 통해 나에게 맞는 처리 리듬을 보여줍니다.
+                요리 상황처럼 타이밍이 겹치는 장면을 기준으로 하기 때문에 처음 방문한 사람도 쉽게 답할 수 있습니다.
               </p>
             </div>
           </CardContent>
         </Card>
+
+        <GscLandingBoost
+          title="멀티태스킹 테스트로 확인할 수 있는 것"
+          summary="멀티태스킹 테스트는 여러 일을 동시에 처리할 때 내가 빨리 전환하는 편인지, 하나씩 끝내야 안정되는 편인지 알고 싶은 검색 의도에 맞춘 무료 성격 테스트입니다. 요리 중 타이밍이 겹치는 장면을 통해 집중 전환과 우선순위 기준을 가볍게 확인합니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/cooking-timing", label: "요리 타이밍 테스트" },
+            { href: "/tests/cooking-recipe", label: "요리 레시피 테스트" },
+            { href: "/tests/phone-usage", label: "폰 사용 습관 테스트" },
+          ]}
+          tone="blue"
+        />
       
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Cooking Multitask Test" />
@@ -115,7 +147,7 @@ export default function CookingMultitaskPage() {
 
         {/* FAQ Section for AI Bot Optimization */}
         <section className="mt-12 mb-8">
-          <FAQSection faqs={faqs} title="요리 멀티태스킹 스타일 테스트 자주 묻는 질문" />
+          <FAQSection faqs={faqs} title="멀티태스킹 테스트 자주 묻는 질문" />
         </section>
 </main>
     </div>

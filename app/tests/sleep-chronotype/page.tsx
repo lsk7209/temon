@@ -11,16 +11,16 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "기상·취침·집중 타이밍과 낮잠 습관으로 16유형 분석. 결과 공유 가능"
+const shortDescription = "크로노타입 테스트로 아침형·저녁형, 집중 시간, 수면 루틴을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "수면 크로노타입 테스트로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 수면 크로노타입 테스트를 지금 바로 무료로 시작해보세요."
+const fullDescription = "크로노타입 테스트로 아침형·저녁형, 집중 시간, 낮잠 습관, 카페인 타이밍을 12문항으로 확인하세요. 수면 리듬을 16가지 유형으로 정리해 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "sleep-chronotype",
-  title: "수면 크로노타입 테스트",
+  title: "크로노타입 테스트",
   shortDescription,
   fullDescription,
-  keywords: "수면, 크로노타입, 리듬, 기상, 취침, 성향 테스트, MBTI, 무료 테스트",
+  keywords: "크로노타입 테스트, 수면 크로노타입, 아침형 저녁형 테스트, 수면 리듬, 집중 시간, 무료 테스트",
   canonical: "/tests/sleep-chronotype",
   questionCount: 12,
   duration: "PT2M",
@@ -51,10 +51,10 @@ const gscGuides = [
 export default function SleepChronotypeIntro() {
   const schemas = generateQuizSchemas({
     quizId: "sleep-chronotype",
-    title: "수면 크로노타입 테스트",
+    title: "크로노타입 테스트",
     shortDescription,
     fullDescription,
-    keywords: "수면, 크로노타입, 리듬, 기상, 취침, 성향 테스트, MBTI, 무료 테스트",
+    keywords: "크로노타입 테스트, 수면 크로노타입, 아침형 저녁형 테스트, 수면 리듬, 집중 시간, 무료 테스트",
     canonical: "/tests/sleep-chronotype",
     questionCount: 12,
     duration: "PT2M",
@@ -76,7 +76,7 @@ export default function SleepChronotypeIntro() {
               🌙 수면 크로노타입으로 알아보는 나의 하루 리듬
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              기상 시간, 낮잠 습관, 집중 타이밍을 12문항으로 분석해 16유형으로 매핑
+              크로노타입 테스트로 기상 시간, 낮잠 습관, 집중 타이밍, 밤 시간 에너지 변화를 12문항으로 분석해 16유형으로 매핑합니다.
             </p>
           </div>
 

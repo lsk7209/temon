@@ -5,6 +5,7 @@ import {
   toAbsoluteUrl,
 } from "@/lib/ai-content-index";
 import { getAllBlogPosts } from "@/lib/blog-posts";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const revalidate = 3600;
 
@@ -12,12 +13,13 @@ export async function GET() {
   const tests = await getAiIndexTests();
   const posts = getAllBlogPosts();
   const now = new Date().toISOString();
+  const siteUrl = getSiteUrl();
 
   return NextResponse.json(
     {
       site: {
         name: "테몬",
-        url: "https://temon.kr",
+        url: siteUrl,
         description:
           "무료 성격 퀴즈, 관계 테스트, 취향 테스트와 결과 해석 블로그를 제공하는 한국어 퀴즈 사이트입니다.",
         language: "ko",
@@ -26,12 +28,12 @@ export async function GET() {
       pages: [
         {
           url: "/",
-          title: "MBTI 테스트 모음 | 무료 성격 테스트 - 테몬",
+          title: "무료 MBTI 테스트 모음 | 재밌는 성격테스트 - 테몬",
           type: "home",
         },
         {
           url: "/tests",
-          title: "성격 테스트 모음 | 무료 MBTI 테스트 - 테몬",
+          title: "재밌는 테스트 모음 | 무료 MBTI 성격테스트 - 테몬",
           type: "listing",
         },
         {
@@ -49,7 +51,7 @@ export async function GET() {
       ],
       blogPosts: posts.map((post) => ({
         url: `/blog/${post.slug}`,
-        absoluteUrl: `https://temon.kr/blog/${post.slug}`,
+        absoluteUrl: `${siteUrl}/blog/${post.slug}`,
         title: post.title,
         description: post.description,
         category: post.category,

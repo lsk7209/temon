@@ -168,7 +168,7 @@ const cleanCharacters = {
   INTP: {
     name: "실험적 청소러",
     emoji: "🔬",
-    summary: "도중에 딴짓多",
+    summary: "도중에 딴짓 많음",
     description: [
       "도중에 딴짓이 많은 당신은 실험적 청소러예요. 일단 손부터 움직이고, '나중에 해야지' 하고 넘기며, 조용히 집중하며 청소해요.",
       "과감히 버리고, 새로 배치 시도하며, 그냥 대충 끝내는 탐구·분석형 스타일이에요.",
@@ -437,4 +437,3 @@ export default function CleanStyleResult() {
     </Suspense>
   )
 }
-

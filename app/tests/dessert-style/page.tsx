@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,16 +14,16 @@ import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Cake, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "12문항으로 알아보는 나의 디저트 취향! 달콤, 진지, 즉흥, 감성까지 🍰 디저트를 고르는 순간, 당신의 성격이 드러납니다."
+const shortDescription = "디저트 취향 성격 테스트로 케이크·마카롱 선택 성향을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "12문항으로 알아보는 나의 디저트 취향! 달콤, 진지, 즉흥, 감성까지 🍰 디저트를 고르는 순간, 당신의 성격이 드러납니다."
+const fullDescription = "디저트 취향 성격 테스트로 케이크, 마카롱, 달콤한 디저트, 담백한 디저트 중 어떤 선택 성향인지 확인하세요. 12문항으로 16가지 디저트 취향 유형을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "dessert-style",
   title: "디저트 취향 성격 테스트",
   shortDescription,
   fullDescription,
-  keywords: "디저트 성격 테스트, 달콤한 취향 MBTI, 카페 취향 테스트, 디저트 취향, 카페 디저트, 마카롱, 케이크, 홍대 카페, 연남동 디저트, 제주 베이커리, MBTI, 심리테스트, 무료 테스트",
+  keywords: "디저트 취향 테스트, 디저트 성격 테스트, 카페 디저트 테스트, 케이크 테스트, 마카롱 테스트, 카페 취향 테스트, 무료 테스트",
   canonical: "/tests/dessert-style",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("디저트 취향 성격 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "디저트 취향 테스트 검색",
+    description:
+      "케이크, 마카롱, 쿠키, 초콜릿처럼 자주 고르는 디저트와 카페 선택 기준을 함께 봅니다.",
+  },
+  {
+    title: "카페 디저트 선택 성향",
+    description:
+      "늘 먹던 메뉴를 고르는지, 신메뉴를 시도하는지, 맛과 분위기 중 무엇을 더 보는지 확인합니다.",
+  },
+  {
+    title: "공유하기 쉬운 16유형",
+    description:
+      "결과는 취향을 단정하지 않고 친구와 비교하기 쉬운 디저트 캐릭터로 정리합니다.",
+  },
+]
+
 export default function DessertStyleIntro() {
   const schemas = generateQuizSchemas({
     quizId: "dessert-style",
     title: "디저트 취향 성격 테스트",
     shortDescription,
     fullDescription,
-    keywords: "디저트 성격 테스트, 달콤한 취향 MBTI, 카페 취향 테스트, 디저트 취향, 카페 디저트, 마카롱, 케이크, 홍대 카페, 연남동 디저트, 제주 베이커리, MBTI, 심리테스트, 무료 테스트",
+    keywords: "디저트 취향 테스트, 디저트 성격 테스트, 카페 디저트 테스트, 케이크 테스트, 마카롱 테스트, 카페 취향 테스트, 무료 테스트",
     canonical: "/tests/dessert-style",
     questionCount: 12,
     duration: "PT3M",
@@ -141,30 +160,30 @@ export default function DessertStyleIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
                       <p className="font-medium">1. 카페에서 메뉴 고를 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">늘 먹는 메뉴 vs 오늘은 새로운 메뉴!</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">늘 먹는 메뉴 vs 오늘은 새로운 메뉴!</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">2. 디저트 취향</p>
-                      <p className="text-sm text-muted-foreground mt-1">달콤·진한 맛 vs 담백·깔끔한 맛</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">달콤·진한 맛 vs 담백·깔끔한 맛</p>
                     </div>
                     <div className="p-4 bg-yellow-50 dark:bg-yellow-950 rounded-lg">
                       <p className="font-medium">3. 카페 자리를 고를 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">창가 자리 필수 vs 아무 자리나 상관없음</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">창가 자리 필수 vs 아무 자리나 상관없음</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
                       <p className="font-medium">4. 사진 찍을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">음식 중심 구도 vs 감성 분위기 중심</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">음식 중심 구도 vs 감성 분위기 중심</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">5. 케이크 고를 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">생크림 고전파 vs 무스·티라미수 등 신메뉴</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">생크림 고전파 vs 무스·티라미수 등 신메뉴</p>
                     </div>
                     <div className="p-4 bg-yellow-50 dark:bg-yellow-950 rounded-lg">
                       <p className="font-medium">6. 친구가 고른 디저트가 더 맛있을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">나도 그걸 시킬 걸 후회 vs 그냥 참고 내 것 먹음</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">나도 그걸 시킬 걸 후회 vs 그냥 참고 내 것 먹음</p>
                     </div>
                   </div>
                 </div>
@@ -196,7 +215,7 @@ export default function DessertStyleIntro() {
                     >
                       <div className="text-2xl mb-1">{character.emoji}</div>
                       <div className="text-xs font-medium">{character.name}</div>
-                      <div className="text-xs text-muted-foreground">{character.type}</div>
+                      <div className="text-xs text-slate-700 dark:text-slate-200">{character.type}</div>
                     </div>
                   ))}
                 </div>
@@ -219,7 +238,7 @@ export default function DessertStyleIntro() {
                       <span className="text-2xl">🎯</span>
                     </div>
                     <h3 className="font-semibold">정확한 분석</h3>
-                    <p className="text-sm text-muted-foreground">12가지 디저트 루틴으로 MBTI 4축을 정확하게 분석</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-200">12가지 디저트 루틴으로 MBTI 4축을 정확하게 분석</p>
                   </div>
 
                   <div className="text-center space-y-3">
@@ -227,7 +246,7 @@ export default function DessertStyleIntro() {
                       <span className="text-2xl">💡</span>
                     </div>
                     <h3 className="font-semibold">맞춤 추천</h3>
-                    <p className="text-sm text-muted-foreground">당신의 유형에 맞는 디저트, 카페 추천</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-200">당신의 유형에 맞는 디저트, 카페 추천</p>
                   </div>
 
                   <div className="text-center space-y-3">
@@ -235,7 +254,7 @@ export default function DessertStyleIntro() {
                       <span className="text-2xl">🔗</span>
                     </div>
                     <h3 className="font-semibold">쉬운 공유</h3>
-                    <p className="text-sm text-muted-foreground">결과를 친구들과 쉽게 공유하고 비교해보세요</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-200">결과를 친구들과 쉽게 공유하고 비교해보세요</p>
                   </div>
                 </div>
               </div>
@@ -243,6 +262,20 @@ export default function DessertStyleIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="디저트 취향 성격 테스트로 보는 카페 선택"
+            summary="디저트 취향 성격 테스트는 디저트 취향 테스트, 카페 디저트 테스트, 케이크 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 달콤한 맛, 담백한 맛, 새로운 메뉴 시도, 사진 취향을 바탕으로 16가지 디저트 유형을 보여줍니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/cafe-style", label: "카페 스타일 테스트" },
+              { href: "/tests/coffee-mbti", label: "커피 MBTI 테스트" },
+              { href: "/tests/cake-cutting", label: "케이크 자르기 테스트" },
+            ]}
+            tone="orange"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Dessert Style Test" />
         </div>

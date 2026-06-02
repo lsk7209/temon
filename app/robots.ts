@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 
 /**
  * 동적 robots.txt 생성 (Next.js 13+ App Router)
@@ -9,20 +10,21 @@ import { MetadataRoute } from "next";
  * - Daum (Daumoa): 안정적 크롤링
  */
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://temon.kr";
+  const baseUrl = getSiteUrl();
+  const privateResultPaths = ["/tests/*/test/result", "/tests/*/test/result/*"];
 
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/admin", "/tests/*/test/result/*"],
+        disallow: ["/api/", "/admin", ...privateResultPaths],
         crawlDelay: 1,
       },
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/admin", "/tests/*/test/result/*"],
+        disallow: ["/api/", "/admin", ...privateResultPaths],
         crawlDelay: 0, // Google은 최대 속도 크롤링
       },
       {
@@ -33,24 +35,24 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "Googlebot-Mobile",
         allow: "/",
-        disallow: ["/api/", "/admin", "/tests/*/test/result/*"],
+        disallow: ["/api/", "/admin", ...privateResultPaths],
       },
       {
         userAgent: "Yeti",
         allow: "/",
-        disallow: ["/api/", "/admin", "/tests/*/test/result/*"],
+        disallow: ["/api/", "/admin", ...privateResultPaths],
         crawlDelay: 1, // 네이버는 안정적 크롤링
       },
       {
         userAgent: "Yeti-Mobile",
         allow: "/",
-        disallow: ["/api/", "/admin", "/tests/*/test/result/*"],
+        disallow: ["/api/", "/admin", ...privateResultPaths],
         crawlDelay: 1,
       },
       {
         userAgent: "Daumoa",
         allow: "/",
-        disallow: ["/api/", "/admin", "/tests/*/test/result/*"],
+        disallow: ["/api/", "/admin", ...privateResultPaths],
         crawlDelay: 1,
       },
       // AI 검색 엔진 크롤러 명시 허용 (GEO 최적화)

@@ -12,6 +12,25 @@ import {
 import { isNoindexTest } from "@/lib/noindex-tests";
 
 const baseUrl = "https://temon.kr";
+const siteName = "테몬";
+
+function inferTestIntent(testName: string, category = "성격"): string {
+  const source = `${testName} ${category}`;
+
+  if (/좀비|생존|아포칼립스/.test(source)) return "생존";
+  if (/소비|구매|쇼핑|예산|지출/.test(source)) return "소비성향";
+  if (/크로노|수면|잠|아침형|저녁형|알람|기상/.test(source)) return "크로노타입";
+  if (/완벽|균형|밸런스/.test(source)) return "완벽주의";
+  if (/MBTI|엠비티아이/i.test(source)) return "MBTI";
+  if (/심리/.test(source)) return "심리";
+  if (/취향|음식|커피|라면|음악|향수/.test(source)) return "취향";
+
+  return category.replace(/\s*테스트\s*$/g, "").trim() || "성격";
+}
+
+function buildQuizTitle(testName: string, intent: string): string {
+  return `${testName} | 무료 ${intent} 테스트 - ${siteName}`;
+}
 
 const noindexFollowRobots = {
   index: false,
@@ -48,7 +67,7 @@ export function generateQuizMetadata(config: QuizSEOConfig): Metadata {
   const noindex = isNoindexTest(config.quizId);
 
   return {
-    title: `${config.title} | 무료 성격 테스트 | 테몬`,
+    title: buildQuizTitle(config.title, inferTestIntent(config.title)),
     description: config.shortDescription, // Naver-optimized
     keywords: config.keywords,
     metadataBase: new URL(baseUrl),
@@ -56,11 +75,11 @@ export function generateQuizMetadata(config: QuizSEOConfig): Metadata {
       canonical: config.canonical,
     },
     openGraph: {
-      title: `${config.title} | 무료 성격 테스트`,
+      title: buildQuizTitle(config.title, inferTestIntent(config.title)),
       description: config.fullDescription, // Full description for OG
       type: "website",
       url: fullUrl,
-      siteName: "테몬",
+      siteName,
       locale: "ko_KR",
       images: [
         {
@@ -73,7 +92,7 @@ export function generateQuizMetadata(config: QuizSEOConfig): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${config.title} | 무료 성격 테스트`,
+      title: buildQuizTitle(config.title, inferTestIntent(config.title)),
       description: config.fullDescription,
       images: [ogImage],
     },
@@ -301,7 +320,7 @@ export function generateMbtiResultMetadata(config: {
       description: config.summary,
       type: "website",
       url: fullUrl,
-      siteName: "테몬",
+      siteName,
       locale: "ko_KR",
       images: [
         {
@@ -345,7 +364,7 @@ export function generateGenericResultMetadata(config: {
       description: config.description,
       type: "website",
       url: fullUrl,
-      siteName: "테몬",
+      siteName,
       locale: "ko_KR",
       images: [
         {
@@ -488,7 +507,8 @@ export function generateUniqueTestMetadata(config: {
   const fullUrl = `${baseUrl}${config.canonical}`;
 
   // 고유한 제목 생성 (네이버 40자 기준 우선)
-  const uniqueTitle = `${config.testName} | 무료 성격 테스트 | 테몬`;
+  const intent = inferTestIntent(config.testName, config.testCategory);
+  const uniqueTitle = buildQuizTitle(config.testName, intent);
 
   // Naver 최적화: 80자 이하 설명
   let shortDescription = config.testDescription;
@@ -497,9 +517,9 @@ export function generateUniqueTestMetadata(config: {
   }
 
   // 전체 설명 (140-160자 최적화, OpenGraph용)
-  let fullDescription = `${config.testName} 테스트로 알아보는 나의 성격 유형. ${config.testDescription} 12문항, 약 3분 소요, 결과 공유 이미지 자동 생성.`;
+  let fullDescription = `${config.testName}로 알아보는 나의 ${intent} 유형. ${config.testDescription} 12문항, 약 3분 소요, 결과 공유 이미지 자동 생성.`;
   if (fullDescription.length < 140) {
-    fullDescription = `${config.testName} 테스트로 알아보는 나의 성격 유형. ${config.testDescription} 12개의 질문에 답변하여 16가지 성격 유형 중 당신의 유형을 알아보세요. 약 3분 소요되며, 결과를 친구들과 공유할 수 있습니다.`;
+    fullDescription = `${config.testName}로 알아보는 나의 ${intent} 유형. ${config.testDescription} 12개의 질문에 답변하여 16가지 성향 유형 중 당신의 유형을 알아보세요. 약 3분 소요되며, 결과를 친구들과 공유할 수 있습니다.`;
   } else if (fullDescription.length > 160) {
     fullDescription = fullDescription.substring(0, 157) + "...";
   }
@@ -517,7 +537,7 @@ export function generateUniqueTestMetadata(config: {
       description: fullDescription,
       type: "website",
       url: fullUrl,
-      siteName: "테몬",
+      siteName,
       locale: "ko_KR",
       images: [
         {

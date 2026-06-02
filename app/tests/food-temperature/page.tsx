@@ -6,23 +6,24 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Thermometer, Sparkles } from "lucide-react"
+import { Clock, Users, Thermometer } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "뜨거운 음식 vs 차가운 음식 선호로 16유형 성향을 분석합니다. 온도 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+const shortDescription = "음식 온도 선호도 테스트로 뜨거운 음식파·차가운 음식파 성향을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "뜨거운 음식 vs 차가운 음식 선호로 16유형 성향을 분석합니다. 온도 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+const fullDescription = "음식 온도 선호도 테스트로 뜨거운 음식과 차가운 음식 중 어떤 선택을 더 편하게 느끼는지 확인하세요. 12문항으로 16가지 음식 온도 취향 유형을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "food-temperature",
   title: "음식 온도 선호도 테스트",
   shortDescription,
   fullDescription,
-  keywords: "음식 온도 테스트, 뜨거운 음식, 차가운 음식, 선호도, 성향 테스트, 심리테스트, 무료 테스트",
+  keywords: "음식 온도 선호도 테스트, 음식 온도 테스트, 뜨거운 음식 테스트, 차가운 음식 테스트, 음식 취향 테스트, 성향 테스트, 무료 테스트",
   canonical: "/tests/food-temperature",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("음식 온도 선호도 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "음식 온도 테스트 검색",
+    description:
+      "뜨거운 국물, 차가운 음료, 계절별 메뉴처럼 음식 온도를 고르는 기준을 확인합니다.",
+  },
+  {
+    title: "뜨거운 음식파와 차가운 음식파",
+    description:
+      "따뜻함과 안정감을 선호하는지, 시원함과 산뜻함을 선호하는지 상황별 선택으로 나눕니다.",
+  },
+  {
+    title: "음식 취향 유형 정리",
+    description:
+      "결과는 입맛을 평가하지 않고 온도 선택에서 반복되는 취향 패턴을 가볍게 설명합니다.",
+  },
+]
+
 export default function FoodTemperatureIntro() {
   const schemas = generateQuizSchemas({
     quizId: "food-temperature",
     title: "음식 온도 선호도 테스트",
     shortDescription,
     fullDescription,
-    keywords: "음식 온도 테스트, 뜨거운 음식, 차가운 음식, 선호도, 성향 테스트, 심리테스트, 무료 테스트",
+    keywords: "음식 온도 선호도 테스트, 음식 온도 테스트, 뜨거운 음식 테스트, 차가운 음식 테스트, 음식 취향 테스트, 성향 테스트, 무료 테스트",
     canonical: "/tests/food-temperature",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function FoodTemperatureIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-red-50 dark:bg-red-950 rounded-lg">
                       <p className="font-medium">1. 국물 음식 선호는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">뜨거운 국물 vs 차가운 국물</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">뜨거운 국물 vs 차가운 국물</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">2. 음료 선택은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">뜨거운 음료 vs 차가운 음료</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">뜨거운 음료 vs 차가운 음료</p>
                     </div>
                     <div className="p-4 bg-red-50 dark:bg-red-950 rounded-lg">
                       <p className="font-medium">3. 계절별 선호는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">계절 무관 vs 계절 따라</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">계절 무관 vs 계절 따라</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">4. 식사 시작은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">뜨거운 것부터 vs 차가운 것부터</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">뜨거운 것부터 vs 차가운 것부터</p>
                     </div>
                     <div className="p-4 bg-red-50 dark:bg-red-950 rounded-lg">
                       <p className="font-medium">5. 온도 선택 이유는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">감성 vs 실용</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">감성 vs 실용</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">6. 온도 변화는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">즉시 vs 천천히</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">즉시 vs 천천히</p>
                     </div>
                   </div>
                 </div>
@@ -169,6 +188,20 @@ export default function FoodTemperatureIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="음식 온도 선호도 테스트로 보는 입맛 기준"
+            summary="음식 온도 선호도 테스트는 음식 온도 테스트, 뜨거운 음식 테스트, 차가운 음식 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 국물, 음료, 계절 메뉴, 식사 시작 방식의 선택을 바탕으로 16가지 음식 온도 취향 유형을 보여줍니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/food-timing", label: "식사 시간대 테스트" },
+              { href: "/tests/soup-vs-bibim", label: "국물 vs 비빔 테스트" },
+              { href: "/tests/food-spiciness", label: "매운맛 취향 테스트" },
+            ]}
+            tone="red"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Food Temperature Test" />
         </div>

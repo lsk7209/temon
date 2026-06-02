@@ -39,7 +39,7 @@ const AUTO_ENHANCEMENT_SKIP_SLUGS = new Set([
   "zombie-survival",
 ]);
 
-const MOJIBAKE_PATTERN = /(?:\uFFFD|\u5360\uc3d9|\u5360\uc2f9|\u5360\uc388|\u5360\uc384|\u5360\uc329|\u5360\uc314|\u5360\uc3d9\uc639)/g;
+const MOJIBAKE_PATTERN = /[\uFFFD\u3400-\u9FFF]|[\u00c2\u00c3\u00ea\u00eb\u00ec\u00ef\u00f0][\u0080-\u00ff]*/g;
 
 dotenv.config({
   path: path.join(ROOT, ".env.local"),

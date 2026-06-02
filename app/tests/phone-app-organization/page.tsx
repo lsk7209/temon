@@ -10,19 +10,20 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { Clock, Users, Grid, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "스마트폰 앱을 정리하는 방식으로 알아보는 나의 성격 유형. 앱이 너무 많아질 때, 앱을 정리할 때 등 구체적인 상황으로 분석합니다."
+const shortDescription = "앱 정리 테스트로 홈화면, 폴더, 알림, 삭제 습관을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "스마트폰 앱을 정리하는 방식으로 알아보는 나의 성격 유형. 앱이 너무 많아질 때, 앱을 정리할 때 등 구체적인 상황으로 분석합니다."
+const fullDescription = "앱 정리 테스트로 스마트폰 홈화면, 폴더 분류, 알림 관리, 앱 삭제 습관을 12문항으로 확인하세요. 16가지 앱 관리 유형을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "phone-app-organization",
   title: "앱 정리 방식 테스트",
   shortDescription,
   fullDescription,
-  keywords: "앱 정리, 스마트폰, 앱 관리, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords: "앱 정리 테스트, 스마트폰 앱 정리, 홈화면 정리, 앱 관리, 알림 관리, 디지털 테스트, 무료 테스트",
   canonical: "/tests/phone-app-organization",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("앱 정리 방식 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "앱 정리 테스트 검색",
+    description:
+      "홈화면을 깔끔하게 유지하는지, 자주 쓰는 앱만 남기는지, 폴더와 검색을 어떻게 쓰는지 확인합니다.",
+  },
+  {
+    title: "디지털 정리 습관",
+    description:
+      "앱 삭제, 알림 정리, 폴더 분류처럼 스마트폰 사용 피로를 만드는 기준을 나눠 봅니다.",
+  },
+  {
+    title: "관리 팁 참고",
+    description:
+      "결과는 생산성 평가가 아니라 내 스마트폰 화면이 편해지는 정리 방식을 찾는 참고 자료입니다.",
+  },
+]
+
 export default function PhoneAppOrganizationIntro() {
   const schemas = generateQuizSchemas({
     quizId: "phone-app-organization",
     title: "앱 정리 방식 테스트",
     shortDescription,
     fullDescription,
-    keywords: "앱 정리, 스마트폰, 앱 관리, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords: "앱 정리 테스트, 스마트폰 앱 정리, 홈화면 정리, 앱 관리, 알림 관리, 디지털 테스트, 무료 테스트",
     canonical: "/tests/phone-app-organization",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function PhoneAppOrganizationIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">1. 앱이 너무 많아질 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">즉시 정리한다 vs 나중에 정리한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">즉시 정리한다 vs 나중에 정리한다</p>
                     </div>
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">2. 앱을 정리할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">계획대로 정리한다 vs 상황에 따라 정리한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">계획대로 정리한다 vs 상황에 따라 정리한다</p>
                     </div>
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">3. 앱을 정리하는 방식</p>
-                      <p className="text-sm text-muted-foreground mt-1">혼자 조용히 정리한다 vs 사람들과 함께 정리한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">혼자 조용히 정리한다 vs 사람들과 함께 정리한다</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">4. 앱을 정리하는 시간</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 시간에 정리한다 vs 그때그때 정리한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 시간에 정리한다 vs 그때그때 정리한다</p>
                     </div>
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">5. 앱을 정리하는 이유</p>
-                      <p className="text-sm text-muted-foreground mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
                     </div>
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">6. 앱을 선택하는 기준</p>
-                      <p className="text-sm text-muted-foreground mt-1">효율성과 목표를 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">효율성과 목표를 위해 vs 기분과 컨디션을 위해</p>
                     </div>
                   </div>
                 </div>
@@ -237,6 +256,18 @@ export default function PhoneAppOrganizationIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="앱 정리 테스트로 확인하는 스마트폰 관리 습관"
+          summary="앱 정리 테스트는 스마트폰 홈화면이 복잡해질 때 바로 정리하는 편인지, 검색과 폴더로 버티는 편인지 알고 싶은 검색 의도에 맞춘 무료 디지털 성향 테스트입니다. 앱 삭제, 알림 정리, 폴더 분류 기준을 16가지 유형으로 보여줍니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/phone-notification", label: "알림 관리 테스트" },
+            { href: "/tests/phone-storage", label: "폰 저장공간 테스트" },
+            { href: "/tests/phone-usage", label: "폰 사용 습관 테스트" },
+          ]}
+          tone="indigo"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Phone App Organization Test" />
         </div>

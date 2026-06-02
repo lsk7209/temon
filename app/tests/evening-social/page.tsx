@@ -1,44 +1,86 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { JsonLd } from "@/components/json-ld"
-import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { FAQSection } from "@/components/faq-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
+import { JsonLd } from "@/components/json-ld"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Clock, Users, MessageSquare, Sparkles } from "lucide-react"
+import { Clock, MessageSquare, Sparkles, Users } from "lucide-react"
 
-// Naver-optimized description (under 80 chars)
-const shortDescription = "저녁 약속을 대하는 방식으로 알아보는 나의 성격 유형. 저녁 약속이 생겼을 때, 저녁 약속을 취소해야 할 때 등 구체적인 상황으로 분석합니다."
-// Full description for Google/AI
-const fullDescription = "저녁 약속을 대하는 방식으로 알아보는 나의 성격 유형. 저녁 약속이 생겼을 때, 저녁 약속을 취소해야 할 때 등 구체적인 상황으로 분석합니다."
+const quizTitle = "저녁 약속 대하는 방식 테스트"
+const shortDescription = "저녁 약속 테스트로 약속형·즉흥형·혼자충전형 사회 성향을 16유형으로 확인하세요."
+const fullDescription =
+  "저녁 약속 대하는 방식 테스트로 약속이 생겼을 때 계획하는지, 즉흥적으로 움직이는지, 사람들과 에너지를 얻는지 확인하세요. 12문항으로 16가지 저녁 약속 스타일을 무료로 제공합니다."
+const keywords =
+  "저녁 약속 테스트, 약속 스타일 테스트, 사회성 테스트, 저녁 약속 성향, 인간관계 테스트, 약속 MBTI, 무료 테스트"
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "evening-social",
-  title: "저녁 약속 대하는 방식 테스트",
+  title: quizTitle,
   shortDescription,
   fullDescription,
-  keywords: "저녁 약속, 사회성, 저녁 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords,
   canonical: "/tests/evening-social",
   questionCount: 12,
   duration: "PT3M",
 })
 
-const faqs = [
-  ...getTopicQuizFAQs("저녁 약속 대하는 방식 테스트"),
+const faqs = [...getTopicQuizFAQs(quizTitle)]
+
+const gscGuides = [
+  {
+    title: "저녁 약속 테스트 검색",
+    description: "약속이 생겼을 때 계획부터 세우는지, 상황에 맞춰 움직이는지 확인합니다.",
+  },
+  {
+    title: "사회성 성향 분석",
+    description: "약속 장소, 시간, 대화 방식, 약속 후 에너지 변화를 기준으로 사회적 리듬을 봅니다.",
+  },
+  {
+    title: "인간관계 참고",
+    description: "결과는 사회성 평가가 아니라 저녁 약속을 대하는 습관을 친구와 비교하기 위한 참고용입니다.",
+  },
+]
+
+const questionCards = [
+  ["1. 저녁 약속이 생겼을 때", "바로 계획한다 vs 그때그때 대처한다"],
+  ["2. 약속을 취소해야 할 때", "미리 알려준다 vs 상황에 따라 결정한다"],
+  ["3. 약속 장소를 정할 때", "검증된 곳을 고른다 vs 새로운 곳을 제안한다"],
+  ["4. 약속 시간에 맞출 때", "정확히 도착한다 vs 자연스럽게 맞춘다"],
+  ["5. 대화가 길어질 때", "주제를 정리한다 vs 흐름대로 이어간다"],
+  ["6. 약속 후 기분은", "에너지를 얻는다 vs 에너지를 회복해야 한다"],
+]
+
+const socialTypes = [
+  ["즉흥 모임형", "ENFP"],
+  ["공감 대화형", "INFP"],
+  ["시간 관리형", "ENFJ"],
+  ["깊은 관계형", "INFJ"],
+  ["아이디어형", "ENTP"],
+  ["관찰 분석형", "INTP"],
+  ["효율 약속형", "ENTJ"],
+  ["계획 실행형", "INTJ"],
+]
+
+const featureCards = [
+  ["정확한 분석", "12문항으로 약속을 대하는 습관을 4축으로 나눠 유형화합니다."],
+  ["맞춤 팁", "유형에 맞는 만남 방식과 사회적 에너지 관리 팁을 제공합니다."],
+  ["쉬운 공유", "결과를 친구들과 공유하고 약속 스타일을 비교할 수 있습니다."],
 ]
 
 export default function EveningSocialIntro() {
   const schemas = generateQuizSchemas({
     quizId: "evening-social",
-    title: "저녁 약속 대하는 방식 테스트",
+    title: quizTitle,
     shortDescription,
     fullDescription,
-    keywords: "저녁 약속, 사회성, 저녁 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords,
     canonical: "/tests/evening-social",
     questionCount: 12,
     duration: "PT3M",
@@ -47,214 +89,112 @@ export default function EveningSocialIntro() {
 
   return (
     <>
-      {/* Structured Data for SEO/GEO */}
       <JsonLd id="evening-social-quiz-schema" data={schemas.quiz} />
       <JsonLd id="evening-social-breadcrumb-schema" data={schemas.breadcrumb} />
       {schemas.faq && <JsonLd id="evening-social-faq-schema" data={schemas.faq} />}
 
       <div className="min-h-screen bg-[#F7FAFC] dark:bg-gray-950">
-      <main className="container max-w-4xl mx-auto px-4 py-8">
-        <div className="text-center space-y-8">
-          <div className="relative mx-auto w-32 h-32 mb-8">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full animate-pulse" />
-            <div className="absolute inset-2 bg-gradient-to-br from-blue-200 to-cyan-300 rounded-full flex items-center justify-center">
-              <span className="text-4xl animate-bounce">💬</span>
+        <main className="container mx-auto max-w-4xl px-4 py-8">
+          <section className="space-y-8 text-center">
+            <div className="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-blue-200 to-cyan-300 shadow-lg">
+              <MessageSquare className="h-14 w-14 text-blue-900" aria-hidden="true" />
             </div>
-            <div className="absolute -top-6 -left-6 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
-              👥
-            </div>
-            <div className="absolute -top-4 -right-8 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
-              🎉
-            </div>
-            <div className="absolute -bottom-6 -left-8 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
-              🍻
-            </div>
-            <div className="absolute -bottom-4 -right-6 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
-              🎊
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <Badge variant="secondary" className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-              💬 NEW 테스트
-            </Badge>
-
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                저녁 약속 대하는 방식으로 보는
-              </span>
-              <br />
-              <span className="text-foreground">나의 성격 유형 💬</span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              저녁 약속이 생겼을 때, 저녁 약속을 취소해야 할 때 등 구체적인 상황으로 16유형 분석. 12문항, 약 3분 소요.
-            </p>
-
-            <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>8,130명 참여</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Clock className="h-4 w-4" />
-                <span>3분 소요</span>
-              </div>
-              <div className="flex items-center space-x-2">
+            <div className="space-y-6">
+              <Badge variant="secondary" className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                NEW 테스트
+              </Badge>
+              <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+                <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
+                  저녁 약속을 대하는 방식으로 보는
+                </span>
+                <br />
+                <span className="text-foreground">나의 사회성 리듬</span>
+              </h1>
+              <p className="mx-auto max-w-2xl text-xl leading-relaxed text-slate-700 dark:text-slate-200 md:text-2xl">
+                약속을 계획하는지, 즉흥적으로 움직이는지, 만남 후 에너지가 어떻게 바뀌는지 확인합니다.
+              </p>
+              <div className="flex items-center justify-center gap-6 text-sm text-slate-700 dark:text-slate-200">
+                <span className="flex items-center gap-2"><Users className="h-4 w-4" />8,130명 참여</span>
+                <span className="flex items-center gap-2"><Clock className="h-4 w-4" />3분 소요</span>
                 <span>12문항</span>
               </div>
-            </div>
-
-            <div className="space-y-4">
-              <Button
-                size="lg"
-                className="h-16 px-12 text-xl bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-300"
-                asChild
-              >
-                <Link href="/tests/evening-social/test">
-                  <span className="text-2xl mr-3">💬</span>
-                  테스트 시작하기
-                </Link>
+              <Button size="lg" className="h-16 px-12 text-xl bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600" asChild>
+                <Link href="/tests/evening-social/test">테스트 시작하기</Link>
               </Button>
-
-              <p className="text-sm text-center text-muted-foreground">
-                무료 • 회원가입 불필요 • 16가지 약속 스타일 분석
-              </p>
             </div>
-          </div>
-        </div>
+          </section>
 
-        <div className="mt-20 space-y-12">
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
-            <CardContent className="p-8">
-              <div className="text-center space-y-6">
-                <h2 className="text-2xl font-bold flex items-center justify-center space-x-2">
-                  <MessageSquare className="h-6 w-6 text-blue-500" />
-                  <span>이런 질문들이 나와요!</span>
+          <section className="mt-20 space-y-12" aria-label="테스트 소개">
+            <Card className="border-0 bg-white/80 shadow-xl backdrop-blur">
+              <CardContent className="p-8">
+                <h2 className="mb-6 flex items-center justify-center gap-2 text-2xl font-bold">
+                  <MessageSquare className="h-6 w-6 text-blue-500" /> 이런 질문들이 있어요
                 </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                  <div className="space-y-4">
-                    <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                      <p className="font-medium">1. 저녁 약속이 생겼을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">즉시 계획을 세운다 vs 그때그때 대처한다</p>
-                    </div>
-                    <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
-                      <p className="font-medium">2. 저녁 약속을 취소해야 할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">미리 알려준다 vs 상황에 따라 결정한다</p>
-                    </div>
-                    <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                      <p className="font-medium">3. 저녁 약속 장소를 정할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 장소를 제안한다 vs 다양한 장소를 제안한다</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
-                      <p className="font-medium">4. 저녁 약속에 참석할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 시간에 정확히 간다 vs 유연하게 간다</p>
-                    </div>
-                    <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                      <p className="font-medium">5. 저녁 약속에서 대화할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">주제를 정해두고 대화한다 vs 자유롭게 대화한다</p>
-                    </div>
-                    <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
-                      <p className="font-medium">6. 저녁 약속 후 기분</p>
-                      <p className="text-sm text-muted-foreground mt-1">에너지를 얻는다 vs 에너지를 소모한다</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
-            <CardContent className="p-8">
-              <div className="text-center space-y-6">
-                <h2 className="text-2xl font-bold">💬 16가지 약속 스타일</h2>
-                <p className="text-muted-foreground">당신은 어떤 약속러일까요?</p>
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {[
-                    { emoji: "🌅", name: "즉흥형", type: "ENFP" },
-                    { emoji: "😴", name: "여유형", type: "INFP" },
-                    { emoji: "⏰", name: "시간관리형", type: "ENFJ" },
-                    { emoji: "🧘", name: "명상형", type: "INFJ" },
-                    { emoji: "📱", name: "혁신형", type: "ENTP" },
-                    { emoji: "🎵", name: "분석형", type: "INTP" },
-                    { emoji: "💪", name: "효율형", type: "ENTJ" },
-                    { emoji: "🌙", name: "야행성형", type: "INTJ" },
-                  ].map((character) => (
-                    <div
-                      key={character.type}
-                      className="p-3 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950 dark:to-cyan-950 rounded-lg text-center"
-                    >
-                      <div className="text-2xl mb-1">{character.emoji}</div>
-                      <div className="text-xs font-medium">{character.name}</div>
-                      <div className="text-xs text-muted-foreground">{character.type}</div>
+                <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-2">
+                  {questionCards.map(([title, description], index) => (
+                    <div key={title} className={`rounded-lg p-4 ${index % 2 === 0 ? "bg-blue-50 dark:bg-blue-950" : "bg-cyan-50 dark:bg-cyan-950"}`}>
+                      <p className="font-medium">{title}</p>
+                      <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">{description}</p>
                     </div>
                   ))}
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
 
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
-            <CardContent className="p-8">
-              <div className="text-center space-y-6">
-                <h2 className="text-2xl font-bold flex items-center justify-center space-x-2">
-                  <Sparkles className="h-6 w-6 text-cyan-500" />
-                  <span>특별한 기능</span>
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="text-center space-y-3">
-                    <div className="w-12 h-12 mx-auto bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                      <span className="text-2xl">🎯</span>
+            <Card className="border-0 bg-white/80 shadow-xl backdrop-blur">
+              <CardContent className="p-8 text-center">
+                <h2 className="text-2xl font-bold">16가지 저녁 약속 스타일</h2>
+                <p className="mt-2 text-slate-700 dark:text-slate-200">당신은 어떤 약속 리듬을 가졌을까요?</p>
+                <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+                  {socialTypes.map(([name, type]) => (
+                    <div key={type} className="rounded-lg bg-gradient-to-br from-blue-50 to-cyan-50 p-3 text-center dark:from-blue-950 dark:to-cyan-950">
+                      <div className="text-xs font-medium">{name}</div>
+                      <div className="text-xs text-slate-700 dark:text-slate-200">{type}</div>
                     </div>
-                    <h3 className="font-semibold">정확한 분석</h3>
-                    <p className="text-sm text-muted-foreground">12문항으로 약속 대하는 습관을 4축으로 정량화해 유형화</p>
-                  </div>
-
-                  <div className="text-center space-y-3">
-                    <div className="w-12 h-12 mx-auto bg-cyan-100 dark:bg-cyan-900 rounded-full flex items-center justify-center">
-                      <span className="text-2xl">💡</span>
-                    </div>
-                    <h3 className="font-semibold">맞춤 팁</h3>
-                    <p className="text-sm text-muted-foreground">당신의 유형에 맞는 약속 스타일 및 사회성 팁 제공</p>
-                  </div>
-
-                  <div className="text-center space-y-3">
-                    <div className="w-12 h-12 mx-auto bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                      <span className="text-2xl">🔗</span>
-                    </div>
-                    <h3 className="font-semibold">쉬운 공유</h3>
-                    <p className="text-sm text-muted-foreground">결과를 친구들과 쉽게 공유하고 비교해보세요</p>
-                  </div>
+                  ))}
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      
-        <div className="mt-12">
-          <AnswerEngineSection quizTitle="Evening Social Test" />
-        </div>
+              </CardContent>
+            </Card>
 
-        <div className="mt-12">
-          <LandingConversionSection quizTitle="Evening Social Test" />
-        </div>
+            <Card className="border-0 bg-white/80 shadow-xl backdrop-blur">
+              <CardContent className="p-8 text-center">
+                <h2 className="mb-6 flex items-center justify-center gap-2 text-2xl font-bold">
+                  <Sparkles className="h-6 w-6 text-cyan-500" /> 특별한 기능
+                </h2>
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                  {featureCards.map(([title, description]) => (
+                    <div key={title} className="space-y-2">
+                      <h3 className="font-semibold">{title}</h3>
+                      <p className="text-sm text-slate-700 dark:text-slate-200">{description}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </section>
 
-        <div className="mt-12">
-          <RelatedTestsSection testId="evening-social" />
-        </div>
+          <div className="mt-12">
+            <GscLandingBoost
+              title="저녁 약속 테스트로 보는 사회성 리듬"
+              summary="저녁 약속 테스트는 약속 스타일 테스트, 사회성 테스트, 인간관계 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 약속 시간, 장소 선택, 대화 방식과 만남 후 에너지 변화를 바탕으로 16가지 저녁 약속 스타일을 보여줍니다."
+              guides={gscGuides}
+              relatedLinks={[
+                { href: "/tests/weekend-social", label: "주말 만남 테스트" },
+                { href: "/tests/meal-social", label: "식사 소셜 테스트" },
+                { href: "/tests/evening-meal", label: "저녁 식사 스타일 테스트" },
+              ]}
+              tone="blue"
+            />
+          </div>
 
-        {/* FAQ Section for AI Bot Optimization */}
-        <section className="mt-12 mb-8">
-          <FAQSection faqs={faqs} title="저녁 약속 대하는 방식 테스트 자주 묻는 질문" />
-        </section>
-</main>
-    </div>
+          <div className="mt-12"><AnswerEngineSection quizTitle="Evening Social Test" /></div>
+          <div className="mt-12"><LandingConversionSection quizTitle="Evening Social Test" /></div>
+          <div className="mt-12"><RelatedTestsSection testId="evening-social" /></div>
+          <section className="mb-8 mt-12">
+            <FAQSection faqs={faqs} title="저녁 약속 대하는 방식 테스트 자주 묻는 질문" />
+          </section>
+        </main>
+      </div>
     </>
   )
 }

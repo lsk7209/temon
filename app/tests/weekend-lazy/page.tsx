@@ -10,12 +10,13 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { Clock, Users, Bed, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "주말에 게으름 피우는 방식으로 알아보는 나의 성격 유형. 주말에 늦잠을 잘 때, 주말에 아무것도 안 하고 싶을 때 등 구체적인 상황으로 분..."
+const shortDescription = "주말 게으름 테스트로 늦잠, 휴식, 미루기 습관을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "주말에 게으름 피우는 방식으로 알아보는 나의 성격 유형. 주말에 늦잠을 잘 때, 주말에 아무것도 안 하고 싶을 때 등 구체적인 상황으로 분석합니다."
+const fullDescription = "주말 게으름 테스트로 늦잠, 휴식, 미루기, 에너지 회복 방식을 12문항으로 확인하세요. 16가지 주말 휴식 유형과 나에게 맞는 쉬는 법을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "weekend-lazy",
@@ -30,6 +31,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("주말 게으름 피우기 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "주말 게으름 테스트 검색",
+    description:
+      "늦잠, 침대 휴식, 집콕, 미루기처럼 주말에 반복되는 쉬는 방식을 성향으로 정리합니다.",
+  },
+  {
+    title: "휴식 방식 확인",
+    description:
+      "아무것도 안 해야 회복되는 편인지, 느슨한 계획이 있어야 안정되는 편인지 비교할 수 있습니다.",
+  },
+  {
+    title: "주말 루틴 참고",
+    description:
+      "결과는 생산성 평가가 아니라 내 에너지가 회복되는 조건을 찾는 가벼운 참고 자료입니다.",
+  },
 ]
 
 export default function WeekendLazyIntro() {
@@ -137,30 +156,30 @@ export default function WeekendLazyIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
                       <p className="font-medium">1. 주말에 늦잠을 잘 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 시간에 일어난다 vs 충분히 잔다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 시간에 일어난다 vs 충분히 잔다</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">2. 주말에 아무것도 안 하고 싶을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">계획을 세운다 vs 그냥 둔다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">계획을 세운다 vs 그냥 둔다</p>
                     </div>
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
                       <p className="font-medium">3. 주말에 게으름 피울 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">혼자 조용히 피운다 vs 사람들과 함께 피운다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">혼자 조용히 피운다 vs 사람들과 함께 피운다</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">4. 주말에 게으름 피우는 시간</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 시간에 피운다 vs 그때그때 피운다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 시간에 피운다 vs 그때그때 피운다</p>
                     </div>
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
                       <p className="font-medium">5. 주말에 게으름 피우는 이유</p>
-                      <p className="text-sm text-muted-foreground mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">6. 주말에 게으름 피우는 방식</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 방식으로 피운다 vs 그때그때 선택한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 방식으로 피운다 vs 그때그때 선택한다</p>
                     </div>
                   </div>
                 </div>
@@ -237,6 +256,18 @@ export default function WeekendLazyIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="주말 게으름 테스트로 보는 휴식 성향"
+          summary="주말 게으름 테스트는 주말에 늦잠을 자거나 아무것도 안 하고 싶은 순간, 내가 왜 미루고 어떻게 회복하는지 알고 싶은 검색 의도에 맞춘 무료 생활 성향 테스트입니다. 게으름을 나쁘게 판단하기보다 휴식 리듬과 에너지 회복 방식을 16가지 유형으로 정리합니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/weekend-planning", label: "주말 계획 테스트" },
+            { href: "/tests/weekend-rest", label: "주말 휴식 테스트" },
+            { href: "/tests/sleep-chronotype", label: "크로노타입 테스트" },
+          ]}
+          tone="orange"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Weekend Lazy Test" />
         </div>

@@ -13,6 +13,7 @@ import AutoContentToc from "@/components/auto-content-toc";
 import WebVitals from "@/components/web-vitals";
 import {
   generateOrganizationSchema,
+  generateSpeakableWebPageSchema,
   generateWebSiteSchema,
 } from "@/lib/seo-utils";
 import { Analytics } from "@vercel/analytics/react";
@@ -121,13 +122,25 @@ export default function RootLayout({
     target: `${baseUrl}/tests?q={search_term_string}`,
     queryInput: "required name=search_term_string",
   });
+  const speakableWebPageSchema = generateSpeakableWebPageSchema({
+    name: "테몬 MBTI",
+    url: baseUrl,
+    description:
+      "무료 성격 테스트와 취향 테스트를 제공하는 한국어 퀴즈 사이트입니다.",
+  });
 
   return (
     <html lang="ko">
       <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
         {/* SEO, AEO, GEO 최적화를 위한 구조화된 데이터 */}
         <JsonLd id="organization-schema" data={organizationSchema} />
         <JsonLd id="website-schema" data={websiteSchema} />
+        <JsonLd id="speakable-webpage-schema" data={speakableWebPageSchema} />
         <Script
           id="adsense-loader"
           async

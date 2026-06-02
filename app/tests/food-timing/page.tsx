@@ -6,23 +6,24 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Timer, Sparkles } from "lucide-react"
+import { Clock, Users, Timer } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "식사 시간대와 규칙성으로 16유형 성향을 분석합니다. 시간대 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+const shortDescription = "식사 시간대 테스트로 규칙형·즉흥형 식사 루틴과 생활 패턴을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "식사 시간대와 규칙성으로 16유형 성향을 분석합니다. 시간대 한 번에 내 성격이. 12문항, 결과 공유 이미지 자동 생성."
+const fullDescription = "식사 시간대 테스트로 아침·점심·저녁을 규칙적으로 먹는지, 즉흥적으로 조절하는지 확인하세요. 12문항으로 16가지 식사 루틴 유형을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "food-timing",
   title: "식사 시간대 테스트",
   shortDescription,
   fullDescription,
-  keywords: "식사 시간 테스트, 식사 시간대, 규칙성, 생활 패턴, 선호도, 성향 테스트, 심리테스트, 무료 테스트",
+  keywords: "식사 시간대 테스트, 식사 시간 테스트, 식사 루틴 테스트, 생활 패턴 테스트, 규칙형 테스트, 즉흥형 테스트, 무료 테스트",
   canonical: "/tests/food-timing",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("식사 시간대 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "식사 시간대 테스트 검색",
+    description:
+      "아침, 점심, 저녁을 정해진 시간에 먹는지 컨디션에 맞춰 바꾸는지 생활 패턴을 봅니다.",
+  },
+  {
+    title: "규칙형과 즉흥형 비교",
+    description:
+      "일정, 배고픔, 약속, 업무 흐름 중 무엇이 식사 시간을 결정하는지 선택 질문으로 확인합니다.",
+  },
+  {
+    title: "루틴 점검용 결과",
+    description:
+      "결과는 식습관 평가가 아니라 내 하루 리듬과 식사 타이밍 기준을 이해하기 위한 참고용입니다.",
+  },
+]
+
 export default function FoodTimingIntro() {
   const schemas = generateQuizSchemas({
     quizId: "food-timing",
     title: "식사 시간대 테스트",
     shortDescription,
     fullDescription,
-    keywords: "식사 시간 테스트, 식사 시간대, 규칙성, 생활 패턴, 선호도, 성향 테스트, 심리테스트, 무료 테스트",
+    keywords: "식사 시간대 테스트, 식사 시간 테스트, 식사 루틴 테스트, 생활 패턴 테스트, 규칙형 테스트, 즉흥형 테스트, 무료 테스트",
     canonical: "/tests/food-timing",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function FoodTimingIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">1. 아침 식사 시간은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">규칙적 vs 유연하게</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">규칙적 vs 유연하게</p>
                     </div>
                     <div className="p-4 bg-red-50 dark:bg-red-950 rounded-lg">
                       <p className="font-medium">2. 점심 식사 시간은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 시간 vs 그때그때</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 시간 vs 그때그때</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">3. 저녁 식사 시간은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">계획적 vs 즉흥적</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">계획적 vs 즉흥적</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-red-50 dark:bg-red-950 rounded-lg">
                       <p className="font-medium">4. 식사 시간 선택 기준은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">감성 vs 실용</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">감성 vs 실용</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">5. 식사 시간 공유는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">적극적으로 vs 조용히</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">적극적으로 vs 조용히</p>
                     </div>
                     <div className="p-4 bg-red-50 dark:bg-red-950 rounded-lg">
                       <p className="font-medium">6. 식사 시간 변화 대처는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">즉시 vs 유연하게</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">즉시 vs 유연하게</p>
                     </div>
                   </div>
                 </div>
@@ -169,6 +188,20 @@ export default function FoodTimingIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="식사 시간대 테스트로 보는 하루 루틴"
+            summary="식사 시간대 테스트는 식사 루틴 테스트, 생활 패턴 테스트, 규칙형 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 아침·점심·저녁 타이밍과 일정 변경 반응을 바탕으로 16가지 식사 루틴 유형을 보여줍니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/food-ordering", label: "주문 방식 테스트" },
+              { href: "/tests/evening-meal", label: "저녁 식사 루틴 테스트" },
+              { href: "/tests/breakfast-style", label: "아침 식사 스타일 테스트" },
+            ]}
+            tone="orange"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Food Timing Test" />
         </div>

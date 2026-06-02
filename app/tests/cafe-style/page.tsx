@@ -10,12 +10,13 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { Clock, Users, Coffee, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "12문항으로 보는 나의 카페 라이프 스타일! 메뉴 선택부터 자리까지, 당신의 성격이 드러납니다. 카페에서의 나 스타일 테스트를 무료로 시작..."
+const shortDescription = "카페 스타일 테스트로 커피 주문, 좌석 선택, 카공 습관을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "12문항으로 보는 나의 카페 라이프 스타일! 메뉴 선택부터 자리까지, 당신의 성격이 드러납니다. 카페에서의 나 스타일 테스트를 무료로 시작해보세요."
+const fullDescription = "카페 스타일 테스트로 커피 주문, 좌석 선택, 카공 습관, 대화 방식을 12문항으로 확인하세요. 16가지 카페 유형과 나에게 맞는 카페 활용법을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "cafe-style",
@@ -30,6 +31,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("카페 스타일 성격 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "카페 스타일 테스트 검색",
+    description:
+      "커피 메뉴, 좌석, 카공, 대화 방식처럼 카페에서 반복되는 선택 기준을 성격 신호로 정리합니다.",
+  },
+  {
+    title: "카공족 성향 확인",
+    description:
+      "혼자 집중하는 편인지, 분위기와 사람 구경으로 쉬는 편인지 카페 이용 목적을 나눠 볼 수 있습니다.",
+  },
+  {
+    title: "친구와 비교하기",
+    description:
+      "같은 카페에 가도 메뉴와 자리를 고르는 기준이 달라지는 이유를 결과 유형으로 가볍게 비교하세요.",
+  },
 ]
 
 export default function CafeStyleIntro() {
@@ -142,30 +161,30 @@ export default function CafeStyleIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
                       <p className="font-medium">☕ 카페에 가면 먼저 하는 일은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">자리를 찾는다 vs 메뉴판부터 본다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">자리를 찾는다 vs 메뉴판부터 본다</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">☕ 커피 메뉴 고를 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">늘 마시는 고정 메뉴 vs 새로운 시그니처 시도</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">늘 마시는 고정 메뉴 vs 새로운 시그니처 시도</p>
                     </div>
                     <div className="p-4 bg-brown-50 dark:bg-brown-950 rounded-lg">
                       <p className="font-medium">☕ 카페 분위기는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">조용하고 집중 가능한 곳 vs 북적북적 활기찬 곳</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">조용하고 집중 가능한 곳 vs 북적북적 활기찬 곳</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
                       <p className="font-medium">☕ 자리에 앉았을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">노트북·책 꺼내 준비 vs 일단 커피 향 즐김</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">노트북·책 꺼내 준비 vs 일단 커피 향 즐김</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
                       <p className="font-medium">☕ 카페 사진을 찍을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">음식·메뉴 중심 vs 감성·분위기 중심</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">음식·메뉴 중심 vs 감성·분위기 중심</p>
                     </div>
                     <div className="p-4 bg-brown-50 dark:bg-brown-950 rounded-lg">
                       <p className="font-medium">☕ 혼자 카페에 있을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">집중 모드 ON vs 사람 구경하며 힐링</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">집중 모드 ON vs 사람 구경하며 힐링</p>
                     </div>
                   </div>
                 </div>
@@ -244,6 +263,18 @@ export default function CafeStyleIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="카페 스타일 테스트로 확인할 수 있는 것"
+          summary="카페 스타일 테스트는 카페에 가면 어떤 자리와 메뉴를 먼저 고르는지, 혼자 집중하는지 대화와 분위기를 즐기는지 알고 싶은 검색 의도에 맞춘 무료 취향 테스트입니다. 커피 취향보다 카페에서 반복되는 행동 기준을 중심으로 16가지 유형을 보여줍니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/coffee-mbti", label: "커피 MBTI 테스트" },
+            { href: "/tests/music-taste", label: "음악 취향 테스트" },
+            { href: "/tests/phone-photo", label: "사진 찍는 습관 테스트" },
+          ]}
+          tone="orange"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Cafe Style Test" />
         </div>

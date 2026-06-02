@@ -1,16 +1,19 @@
-# Status | 마지막: 2026-05-27
+# Status | 마지막: 2026-05-28
 ## 현재 작업
-퀴즈 인트로/질문/결과 전수 감사 P0/P1/P2/P3 모두 해소 완료. 배포 커밋 준비 중.
+사이트 종합 최적화 마감 검증 완료. 최신 배포와 프로덕션 전수 검사까지 통과.
 ## 최근 변경 (최근 5개만)
-- 05-27: quiz-flow 감사 1,433개 전체 Pass로 개선.
-- 05-27: 짧은 테스트 설명은 자동 확장 설명으로 보강하고 DB 짧은 설명 19건을 갱신.
-- 05-27: 결과 페이지 영문 섹션 제목과 일부 영문 안내문을 한국어로 교정.
-- 05-27: NTRP 질문 화면에 이전 질문 버튼을 추가하고 미사용 에러 인자를 정리.
-- 05-27: `/tests` 공통 메타데이터와 canonical/OG 정보를 추가.
+- 05-28: 최신 프로덕션 배포 `dpl_B4R68H6JSixMxrui8U1ekAzZE3Kz`, `temon.kr` alias 완료.
+- 05-28: 프로덕션 212개 정적 `/tests/*` URL 200 및 GSC 보강 섹션 3종 전수 검사 통과.
+- 05-28: 모바일 대표 페이지 `cooking-style` 브라우저 검증 통과: H1 1개, 관련 링크 3개, overflow 없음, 콘솔 오류 없음.
+- 05-28: Lighthouse 모바일 `food-aroma` 접근성/Best Practices/SEO/Agentic 100, LCP 426ms, CLS 0.00 확인.
+- 05-28: robots/sitemap/rss/feed/llms/ai-index/ads.txt, GA4, AdSense 지연 로딩, IndexNow, GSC sitemap/Indexing API 실검증 완료.
 ## TODO
-- [ ] 홈(`/`) 전역 메타 SEO 92~100 보강은 별도 작업으로 처리.
+- [ ] 커밋 전 변경 범위 최종 리뷰 및 로컬 cache 파일 분리.
 ## 결정사항
-- 짧은 설명 보강: 기존 테스트 데이터를 대규모로 바꾸지 않고 표시/감사용 확장 설명을 공통 생성.
-- 광고 영역: AdSense 자동광고만 사용하므로 수동 광고 슬롯은 추가하지 않음.
+- GSC 보강: 모든 정적 테스트 랜딩에 검색 의도, 실행 가이드, 관련 테스트 섹션을 노출.
+- AEO/GEO: 전역 WebPage schema에 `h1`, `.article-summary`, `.key-takeaways`, `#gsc-search-intent`를 speakable 후보로 노출.
+- AdSense 지연: 스크립트는 랜딩에서만 허용하고 테스트 진행 화면은 계속 제외.
 ## 주의
-- 로컬 `.bkit`, `.omc`, `.omx`, `local.db` 변경은 기존 상태/cache 파일이라 커밋 대상에서 제외.
+- Google Search: sitemap 제출 204, Indexing API `food-aroma` URL_UPDATED 200 확인.
+- IndexNow: api.indexnow/Bing/Naver 200, Yandex 202 확인.
+- `.bkit`, `.omc`, `.omx`, `local.db` 변경은 로컬 상태/cache로 보고 작업 대상에서 제외.

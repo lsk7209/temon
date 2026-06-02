@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
@@ -101,6 +102,36 @@ export default function CookingExperimentPage() {
           </CardContent>
         </Card>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="요리 실험 테스트로 보는 레시피 응용 성향"
+            summary="요리 실험 테스트는 레시피를 그대로 따르는지, 재료와 양념을 바꿔보는지 궁금한 사람을 위한 무료 성격 테스트입니다. 익숙한 조합을 선호하는지, 새로운 맛을 시도하는지, 실패 가능성을 어떻게 받아들이는지로 나의 창의적 선택 패턴을 확인합니다."
+            guides={[
+              {
+                title: "레시피 응용 기준",
+                description:
+                  "정해진 방법을 따르는 편인지, 상황에 맞춰 재료를 바꾸는 편인지 구분합니다.",
+              },
+              {
+                title: "새로운 맛 수용도",
+                description:
+                  "낯선 조합을 시도하는 정도와 실패를 받아들이는 방식을 함께 봅니다.",
+              },
+              {
+                title: "요리 스타일 연결",
+                description:
+                  "계량, 즉흥, 플레이팅, 공유 성향 테스트와 이어 보면 더 입체적으로 이해할 수 있습니다.",
+              },
+            ]}
+            relatedLinks={[
+              { href: "/tests/cooking-recipe", label: "레시피 스타일 테스트" },
+              { href: "/tests/cooking-improvise", label: "즉흥 요리 테스트" },
+              { href: "/tests/cooking-measurement", label: "계량 습관 테스트" },
+            ]}
+            tone="orange"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Cooking Experiment Test" />
         </div>

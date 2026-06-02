@@ -1,10 +1,14 @@
 import type { Metadata, ResolvingMetadata } from "next"
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 import { TestIntro } from "@/components/test-intro"
 import { JsonLd } from "@/components/json-ld"
 import { generateQuizSchemas, generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { TestExpandedIntro } from "@/components/test-expanded-intro"
+import {
+  AutoGscLandingBoost,
+  hasAutoGscLandingBoost,
+} from "@/components/gsc-auto-landing-boost"
 import { getDb, isDbAvailable } from "@/lib/db/client"
 import { tests } from "@/lib/db/schema"
 import { and, eq, or } from "drizzle-orm"
@@ -50,12 +54,24 @@ export async function generateMetadata(
     }
   }
 
+  const testCategory = test.category || "성격";
+  const keywordSet = [
+    test.title,
+    `${test.title} 무료 테스트`,
+    `${testCategory} 테스트`,
+    "무료 성격 테스트",
+    "MBTI 테스트",
+    "심리테스트",
+    "테스트 사이트",
+    "테몬",
+  ];
+
   return generateUniqueTestMetadata({
     testName: test.title,
-    testCategory: test.category || "성격",
+    testCategory,
     testDescription: test.description || "",
-    keywords: `${test.title}, 무료 성격 테스트, MBTI 테스트, 심리테스트, 테스트 사이트, 테몬`,
-    canonical: `/tests/${params.testId}`,
+    keywords: keywordSet.join(", "),
+    canonical: `/tests/${test.slug}`,
   })
 }
 
@@ -66,15 +82,30 @@ export default async function DynamicTestPage({ params }: Props) {
     notFound()
   }
 
+  if (params.testId !== test.slug) {
+    redirect(`/tests/${test.slug}`)
+  }
+
   const fullDescription = test.description || ""
   const faqs = getTopicQuizFAQs(test.title)
+  const testCategory = test.category || "성격";
+  const keywordSet = [
+    test.title,
+    `${test.title} 무료 테스트`,
+    `${testCategory} 테스트`,
+    "무료 성격 테스트",
+    "MBTI 테스트",
+    "심리테스트",
+    "테스트 사이트",
+    "테몬",
+  ];
   const schemas = generateQuizSchemas({
-    quizId: params.testId,
+    quizId: test.slug,
     title: test.title,
     shortDescription: fullDescription.slice(0, 80),
     fullDescription,
-    keywords: `${test.title}, 무료 성격 테스트, MBTI 테스트, 심리테스트, 테스트 사이트, 테몬`,
-    canonical: `/tests/${params.testId}`,
+    keywords: keywordSet.join(", "),
+    canonical: `/tests/${test.slug}`,
     questionCount: test.questionCount,
     duration: `PT${test.avgMinutes || 3}M`,
     faqs,
@@ -87,7 +118,7 @@ export default async function DynamicTestPage({ params }: Props) {
       {schemas.faq && <JsonLd id="faq-schema" data={schemas.faq} />}
 
       <TestIntro
-        id={params.testId}
+        id={test.slug}
         title={test.title}
         description={fullDescription}
         questionCount={test.questionCount}
@@ -96,7 +127,10 @@ export default async function DynamicTestPage({ params }: Props) {
         theme="purple"
       />
       <div className="mx-auto max-w-5xl px-4">
-        <TestExpandedIntro testId={params.testId} title={test.title} />
+        <TestExpandedIntro testId={test.slug} title={test.title} />
+        {hasAutoGscLandingBoost(test.slug) && (
+          <AutoGscLandingBoost testId={test.slug} />
+        )}
       </div>
     </>
   )

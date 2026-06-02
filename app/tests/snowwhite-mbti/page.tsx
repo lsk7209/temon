@@ -11,8 +11,8 @@ import {
   generateQuizSchemas,
 } from "@/lib/quiz-seo-utils";
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy";
+import { GscLandingBoost } from "@/components/gsc-landing-boost";
 import { ExternalLink } from "lucide-react";
-import Script from "next/script";
 import {
   Accordion,
   AccordionContent,
@@ -22,10 +22,10 @@ import {
 
 // Naver-optimized description (under 80 chars)
 const shortDescription =
-  "백설공주 에겐테토 테스트로 알아보는 나의 성향! 감정파 에겐일까? 효율파 테토일까? 재미있는 병맛 테스트를 무료로 시작해보세요.";
+  "백설공주 에겐테토 테스트로 감정파·효율파 성향을 4유형으로 확인하세요.";
 // Full description for Google/AI
 const fullDescription =
-  "백설공주 에겐테토 테스트로 알아보는 나의 성향! 감정파 에겐일까? 효율파 테토일까? 재미있는 병맛 테스트를 무료로 시작해보세요.";
+  "백설공주 에겐테토 테스트로 감정파 에겐, 효율파 테토 성향을 동화 상황 질문으로 확인하세요. 10문항으로 4가지 밈 성향 유형을 무료로 제공합니다.";
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "snowwhite-mbti",
@@ -41,6 +41,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("백설공주 에겐테토 테스트 - 무료 성격 테스트"),
+];
+
+const gscGuides = [
+  {
+    title: "백설공주 에겐테토 테스트 검색",
+    description:
+      "에겐과 테토 밈을 백설공주 상황에 넣어 감정 공감형인지 효율 판단형인지 가볍게 확인합니다.",
+  },
+  {
+    title: "감정파와 효율파 비교",
+    description:
+      "결과는 네 가지 유형으로 나뉘며, 친구와 서로 어떤 판단 기준을 먼저 보는지 비교하기 좋습니다.",
+  },
+  {
+    title: "밈 성향 테스트",
+    description:
+      "공식 MBTI 진단이 아니라 유행어와 동화 설정을 섞은 엔터테인먼트형 무료 테스트입니다.",
+  },
 ];
 
 export default function SnowWhiteMBTI() {
@@ -127,6 +145,18 @@ export default function SnowWhiteMBTI() {
               <div className="mt-8 text-sm text-gray-500">
                 <p>💡 솔직하게 답변하면 더 재미있어요!</p>
               </div>
+
+              <GscLandingBoost
+                title="백설공주 에겐테토 테스트로 보는 밈 성향"
+                summary="백설공주 에겐테토 테스트는 에겐과 테토 성향을 동화 속 선택 상황으로 가볍게 확인하고 싶은 검색 의도에 맞춘 무료 밈 성향 테스트입니다. 감정과 공감을 먼저 보는지, 효율과 판단을 먼저 보는지 4가지 유형으로 정리합니다."
+                guides={gscGuides}
+                relatedLinks={[
+                  { href: "/tests/kdrama-mbti", label: "K드라마 MBTI 테스트" },
+                  { href: "/tests/kpop-idol", label: "아이돌 포지션 테스트" },
+                  { href: "/tests/meeting-villain", label: "회의 빌런 테스트" },
+                ]}
+                tone="pink"
+              />
 
               <div className="bg-white rounded-2xl shadow-xl p-8 mt-8 text-left">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">

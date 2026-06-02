@@ -95,7 +95,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "commute-style",
     title: "🚇 출퇴근 스타일 테스트",
-    description: "출퇴근길 선택으로 알아보는 16가지 통근 캐릭터",
+    description: "출퇴근 스타일 테스트는 통근, 출퇴근길 상황에서 드러나는 업무 습관과 협업 반응을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일 처리 순서, 커뮤니케이션 방식, 마감 대응에서 드러나는 업무 스타일을 16가지 결과로 정리합니다.",
     icon: Train,
     href: "/tests/commute-style",
     color: "from-sky-500 via-indigo-500 to-violet-500",
@@ -110,7 +110,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meeting-villain",
     title: "😈 회의 빌런 테스트",
-    description: "회의 시간, 당신의 역할과 행동 패턴으로 알아보는 16가지 유형",
+    description: "회의 빌런 테스트는 역할, 행동 상황에서 드러나는 업무 습관과 협업 반응을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일 처리 순서, 커뮤니케이션 방식, 마감 대응에서 드러나는 업무 스타일을 16가지 결과로 정리합니다.",
     icon: Users,
     href: "/tests/meeting-villain",
     color: "from-gray-500 to-slate-600",
@@ -124,7 +124,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "breakup-style",
     title: "💔 이별 후유증 유형",
-    description: "이별 후 나의 행동과 감정 처리를 통해 알아보는 극복 스타일",
+    description: "이별 후유증 유형은 연애, 심리 상황에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: Heart,
     href: "/tests/breakup-style",
     color: "from-rose-500 to-pink-600",
@@ -138,7 +138,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "hotel-breakfast",
     title: "🥞 호텔 조식 공략법",
-    description: "뷔페에서 음식을 담고 먹는 스타일로 알아보는 여행 성향",
+    description: "호텔 조식 공략법은 여행, 뷔페 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/hotel-breakfast",
     color: "from-orange-500 to-yellow-600",
@@ -152,7 +152,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "investment-style",
     title: "📈 주식 투자 스타일",
-    description: "나는 야수의 심장일까, 소심한 개미일까? 투자 성향 분석",
+    description: "주식 투자 스타일은 위험 감수와 안정 선호에서 드러나는 투자 성향과 리스크 판단을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 정보 확인, 위험 감수, 장기 계획에서 드러나는 재테크 스타일을 16가지 결과로 정리합니다.",
     icon: DollarSign,
     href: "/tests/investment-style",
     color: "from-green-500 to-emerald-600",
@@ -166,7 +166,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "zombie-survival",
     title: "🧟‍♂️ 좀비 아포칼립스 생존",
-    description: "좀비 사태 발생 시 나의 생존 확률과 역할 분석",
+    description: "좀비 아포칼립스 생존은 상상, 발생 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: AlertTriangle,
     href: "/tests/zombie-survival",
     color: "from-red-900 to-gray-900",
@@ -180,7 +180,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "coffee-mbti",
     title: "☕ 커피 MBTI",
-    description: "당신의 커피 취향으로 알아보는 성격 유형",
+    description: "커피 MBTI는 음료, 취향 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Coffee,
     href: "/tests/coffee-mbti",
     color: "from-amber-500 to-orange-600",
@@ -194,7 +194,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "kdrama-mbti",
     title: "🎬 K-드라마 클리셰",
-    description: "드라마 속 당신은 어떤 캐릭터?",
+    description: "K-드라마 클리셰는 캐릭터 선택 장면에서 드러나는 감상 취향과 몰입 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 콘텐츠를 고르고 즐기는 기준, 반응 속도, 공유 방식에서 드러나는 취향을 16가지 결과로 정리합니다.",
     icon: Clapperboard,
     href: "/tests/kdrama-mbti",
     color: "from-pink-500 to-purple-600",
@@ -208,7 +208,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "snowwhite-mbti",
     title: "🍎 백설공주 에겐테토",
-    description: "백설공주로 알아보는 에겐 vs 테토 성향",
+    description: "백설공주 에겐테토는 선호와 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Heart,
     href: "/tests/snowwhite-mbti",
     color: "from-pink-500 to-purple-600",
@@ -222,7 +222,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "ramen-mbti",
     title: "🍜 라면 MBTI",
-    description: "라면 취향으로 알아보는 나의 성격",
+    description: "라면 MBTI는 취향과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Soup,
     href: "/tests/ramen-mbti",
     color: "from-red-500 to-pink-600",
@@ -235,7 +235,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "pet-mbti",
     title: "🐾 반려동물 MBTI",
-    description: "반려동물 성향으로 알아보는 성격 테스트",
+    description: "반려동물 MBTI는 선호와 선택 장면에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: Heart,
     href: "/tests/pet-mbti",
     color: "from-pink-500 to-rose-600",
@@ -247,7 +247,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "study-mbti",
     title: "📚 공부 MBTI",
-    description: "나만의 공부 스타일 찾기",
+    description: "공부 MBTI는 공부 루틴과 집중 장면에서 드러나는 학습 태도와 참여 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 수업, 과제, 기록 상황에서 반복되는 공부 루틴과 집중 방식을 16가지 결과로 정리합니다.",
     icon: BookOpen,
     href: "/tests/study-mbti",
     color: "from-blue-500 to-cyan-600",
@@ -259,7 +259,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "alarm-habit",
     title: "⏰ 알람 습관",
-    description: "아침 알람으로 보는 성격 유형",
+    description: "알람 습관은 아침 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: AlarmClock,
     href: "/tests/alarm-habit",
     color: "from-purple-500 to-indigo-600",
@@ -271,7 +271,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "ntrp-test",
     title: "🎾 NTRP 테스트",
-    description: "테니스 실력 레벨 측정",
+    description: "NTRP 테스트는 테니스, 스포츠 상황에서 드러나는 운동 습관과 경기 대응 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 준비, 집중, 피드백 상황에서 드러나는 플레이 스타일과 성장 포인트를 16가지 결과로 정리합니다.",
     icon: Trophy,
     href: "/tests/ntrp-test",
     color: "from-green-500 to-emerald-600",
@@ -283,7 +283,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "kpop-idol",
     title: "🎤 K-팝 아이돌 포지션",
-    description: "아이돌 그룹에서 내 포지션은?",
+    description: "K-팝 아이돌 포지션은 그룹 선택 장면에서 드러나는 감상 취향과 몰입 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 콘텐츠를 고르고 즐기는 기준, 반응 속도, 공유 방식에서 드러나는 취향을 16가지 결과로 정리합니다.",
     icon: Trophy,
     href: "/tests/kpop-idol",
     color: "from-purple-500 to-pink-600",
@@ -297,7 +297,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "movie-theater-style",
     title: "🎬 영화관 관람 스타일",
-    description: "영화관에서도 성격이 보인다고?",
+    description: "영화관 관람 스타일은 관람 선택과 동행 장면에서 드러나는 감상 취향과 몰입 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 콘텐츠를 고르고 즐기는 기준, 반응 속도, 공유 방식에서 드러나는 취향을 16가지 결과로 정리합니다.",
     icon: Clapperboard,
     href: "/tests/movie-theater-style",
     color: "from-indigo-500 to-purple-600",
@@ -311,7 +311,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "jachui",
     title: "🍳 자취 밥상 스타일",
-    description: "오늘도 자취생의 밥상은 드라마다",
+    description: "자취 밥상 스타일은 요리와 일상 식사 장면에서 드러나는 감상 취향과 몰입 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 콘텐츠를 고르고 즐기는 기준, 반응 속도, 공유 방식에서 드러나는 취향을 16가지 결과로 정리합니다.",
     icon: ChefHat,
     href: "/tests/jachui",
     color: "from-orange-500 to-amber-600",
@@ -325,7 +325,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "music-taste",
     title: "🎧 음악 취향 성격 테스트",
-    description: "내 플레이리스트 속 성격, 당신은 어떤 음악 타입?",
+    description: "음악 취향 성격 테스트는 플레이리스트, 타입 상황에서 드러나는 감상 취향과 몰입 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 콘텐츠를 고르고 즐기는 기준, 반응 속도, 공유 방식에서 드러나는 취향을 16가지 결과로 정리합니다.",
     icon: Music,
     href: "/tests/music-taste",
     color: "from-purple-500 to-pink-600",
@@ -339,7 +339,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cafe-style",
     title: "☕ 카페 스타일 성격 테스트",
-    description: "카페에 가면 드러나는 당신의 성격",
+    description: "카페 스타일 성격 테스트는 카공족, 커피 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Coffee,
     href: "/tests/cafe-style",
     color: "from-amber-500 to-brown-600",
@@ -353,7 +353,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "travel-style",
     title: "🧳 여행 짐 스타일 테스트",
-    description: "여행 떠나기 전, 당신은 어떤 짐꾼인가요?",
+    description: "여행 짐 스타일 테스트는 짐 싸기와 이동 준비 장면에서 드러나는 여행 준비와 이동 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 계획, 이동, 동행 상황에서 드러나는 여행 스타일과 에너지 사용 방식을 16가지 결과로 정리합니다.",
     icon: Plane,
     href: "/tests/travel-style",
     color: "from-cyan-500 to-indigo-600",
@@ -367,7 +367,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-style",
     title: "📱 스마트폰 사용 습관 테스트",
-    description: "스마트폰 사용 습관으로 알아보는 나의 성격",
+    description: "스마트폰 사용 습관 테스트는 휴대폰 선택 장면에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Smartphone,
     href: "/tests/phone-style",
     color: "from-violet-500 to-fuchsia-600",
@@ -382,7 +382,7 @@ export const ALL_TESTS: Test[] = [
     id: "phone-usage",
     title: "📱 스마트폰 사용 스타일",
     description:
-      "알림, 앱 정리, 집중, 커뮤니케이션 습관으로 알아보는 나의 성향",
+      "스마트폰 사용 스타일은 알림, 집중 상황에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Smartphone,
     href: "/tests/phone-usage",
     color: "from-blue-500 to-indigo-600",
@@ -396,7 +396,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-delivery",
     title: "🍕 배달 음식 선택 테스트",
-    description: "배달 앱을 켜는 순간, 당신의 성격이 드러난다",
+    description: "배달 음식 선택 테스트는 취향, 배달앱 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/food-delivery",
     color: "from-red-500 to-orange-600",
@@ -410,7 +410,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "shopping-style",
     title: "🛍️ 쇼핑 스타일 성격 테스트",
-    description: "쇼핑할 때마다 드러나는 진짜 나의 성격",
+    description: "쇼핑 스타일 성격 테스트는 구매, 습관 상황에서 드러나는 구매 기준과 소비 판단을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 가격, 할인, 장바구니, 결제 전 고민에서 드러나는 소비 스타일을 16가지 결과로 정리합니다.",
     icon: ShoppingBag,
     href: "/tests/shopping-style",
     color: "from-pink-500 to-rose-600",
@@ -424,7 +424,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "dessert-style",
     title: "🍰 디저트 취향 성격 테스트",
-    description: "디저트를 고르는 순간, 당신의 성격이 드러난다",
+    description: "디저트 취향 성격 테스트는 카페 메뉴와 디저트 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Cake,
     href: "/tests/dessert-style",
     color: "from-amber-500 to-orange-600",
@@ -438,7 +438,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "clean-style",
     title: "🧹 방 청소 스타일 테스트",
-    description: "청소하는 모습으로 알아보는 나의 성격!",
+    description: "방 청소 스타일 테스트는 정리, 습관 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Sparkles,
     href: "/tests/clean-style",
     color: "from-blue-500 to-cyan-600",
@@ -453,7 +453,7 @@ export const ALL_TESTS: Test[] = [
     id: "evening-routine",
     title: "🌙 퇴근 후 루틴 테스트",
     description:
-      "퇴근하고 집에 와서 하는 '그 행동들'에 당신의 성격이 숨어있습니다.",
+      "퇴근 후 루틴 테스트는 저녁 시간과 퇴근 후 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Moon,
     href: "/tests/evening-routine",
     color: "from-purple-500 to-pink-600",
@@ -474,7 +474,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "skin-routine",
     title: "✨ 피부 루틴 성향",
-    description: "당신의 스킨케어 습관으로 알아보는 성향",
+    description: "피부 루틴 성향은 스킨케어, 뷰티 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Sparkles,
     href: "/tests/skin-routine",
     color: "from-pink-500 to-rose-600",
@@ -488,7 +488,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "spending-style",
     title: "💰 소비 성향 테스트",
-    description: "계획성, 즉흥성, 비교 습관으로 알아보는 나의 소비 패턴",
+    description: "소비 성향 테스트는 구매, 예산 상황에서 드러나는 구매 기준과 소비 판단을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 가격, 할인, 장바구니, 결제 전 고민에서 드러나는 소비 스타일을 16가지 결과로 정리합니다.",
     icon: ShoppingBag,
     href: "/tests/spending-style",
     color: "from-green-500 to-emerald-600",
@@ -502,7 +502,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "sleep-chronotype",
     title: "🌙 수면 크로노타입",
-    description: "당신의 수면 리듬으로 알아보는 성향",
+    description: "수면 크로노타입은 리듬 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Moon,
     href: "/tests/sleep-chronotype",
     color: "from-indigo-500 to-purple-600",
@@ -516,7 +516,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "chicken-style",
     title: "🍗 치킨 주문 스타일 테스트",
-    description: "치킨 주문 습관으로 16유형 성향을 분석합니다",
+    description: "치킨 주문 스타일 테스트는 반반, 배달 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Drumstick,
     href: "/tests/chicken-style",
     color: "from-yellow-500 to-orange-600",
@@ -530,7 +530,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "convenience-snack",
     title: "🏪 편의점 간식 루틴 테스트",
-    description: "편의점 간식 선택 루틴으로 성향을 분석합니다",
+    description: "편의점 간식 루틴 테스트는 신상품, 행사 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Store,
     href: "/tests/convenience-snack",
     color: "from-green-500 to-emerald-600",
@@ -544,7 +544,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cstore-routine",
     title: "🏬 편의점 루틴 테스트",
-    description: "편의점 선택 습관으로 보는 16유형",
+    description: "편의점 루틴 테스트는 간편식, 원플러스원 상황에서 드러나는 구매 기준과 소비 판단을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 가격, 할인, 장바구니, 결제 전 고민에서 드러나는 소비 스타일을 16가지 결과로 정리합니다.",
     icon: Store,
     href: "/tests/cstore-routine",
     color: "from-blue-500 to-cyan-600",
@@ -558,7 +558,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cvs-combo",
     title: "🛒 편의점 조합 스타일 테스트",
-    description: "편의점 선택 습관으로 16유형 성향을 분석합니다",
+    description: "편의점 조합 스타일 테스트는 야식, 간편식 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: ShoppingBag,
     href: "/tests/cvs-combo",
     color: "from-green-500 to-teal-600",
@@ -572,7 +572,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "kakao-reply-style",
     title: "💬 카톡 답장 스타일 테스트",
-    description: "답장 속도·말투·읽씹 습관으로 보는 소통 성향",
+    description: "카톡 답장 스타일 테스트는 메신저, 소통 상황에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: MessageSquare,
     href: "/tests/kakao-reply-style",
     color: "from-yellow-400 to-orange-500",
@@ -586,7 +586,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "love-texting-style",
     title: "💕 연애 연락 텐션 테스트",
-    description: "연락 속도·길이·톤으로 보는 연애 커뮤니케이션 유형",
+    description: "연애 연락 텐션 테스트는 커뮤니케이션, 속도 상황에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: Heart,
     href: "/tests/love-texting-style",
     color: "from-pink-500 to-rose-600",
@@ -600,7 +600,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "lunch-decider",
     title: "🍱 회사 점심 뭐 먹지 테스트",
-    description: "직장인 점심 의사결정 스타일을 분석합니다",
+    description: "회사 점심 뭐 먹지 테스트는 메뉴, 직장인 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/lunch-decider",
     color: "from-amber-500 to-orange-600",
@@ -622,7 +622,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "youtube-habit",
     title: "📺 유튜브 시청 습관 테스트",
-    description: "유튜브 시청 습관으로 16유형 성향을 분석합니다",
+    description: "유튜브 시청 습관 테스트는 영상, 배속 상황에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Play,
     href: "/tests/youtube-habit",
     color: "from-red-500 to-pink-600",
@@ -643,7 +643,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "love-reaction",
     title: "💕 연애 상황 반응 테스트",
-    description: "연락 습관, 갈등 해결, 데이트 운영, 감정 표현으로 16유형 분석",
+    description: "연애 상황 반응 테스트는 연락, 데이트 상황에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: Heart,
     href: "/tests/love-reaction",
     color: "from-pink-500 to-rose-600",
@@ -658,7 +658,7 @@ export const ALL_TESTS: Test[] = [
     id: "ott-habits",
     title: "📺 OTT 시청 습관 테스트",
     description:
-      "정주행 방식, 추천 활용, 스포 대처, 감상 기록 습관으로 16유형 분석",
+      "OTT 시청 습관 테스트는 정주행, 추천 상황에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Play,
     href: "/tests/ott-habits",
     color: "from-purple-500 to-indigo-600",
@@ -672,7 +672,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "bungeoppang",
     title: "🐟 붕어빵 취향 테스트",
-    description: "맛 선택, 구매 방식, 먹는 습관으로 16유형 분석",
+    description: "붕어빵 취향 테스트는 겨울, 간식 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Cake,
     href: "/tests/bungeoppang",
     color: "from-orange-500 to-red-600",
@@ -693,7 +693,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "kdrama-character",
     title: "🎬 K-드라마 인물 매칭 테스트",
-    description: "드라마 속 상황 선택으로 내 캐릭터 유형 찾기",
+    description: "K-드라마 인물 매칭 테스트는 K드라마, 캐릭터 상황에서 드러나는 감상 취향과 몰입 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 콘텐츠를 고르고 즐기는 기준, 반응 속도, 공유 방식에서 드러나는 취향을 16가지 결과로 정리합니다.",
     icon: Clapperboard,
     href: "/tests/kdrama-character",
     color: "from-pink-500 to-purple-600",
@@ -713,7 +713,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "hamburger-combo",
     title: "🍔 햄버거 조합 스타일 테스트",
-    description: "패티, 빵, 야채, 소스 선택으로 알아보는 나의 성격",
+    description: "햄버거 조합 스타일 테스트는 패티, 소스 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/hamburger-combo",
     color: "from-orange-500 to-red-600",
@@ -727,7 +727,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "pizza-topping",
     title: "🍕 피자 토핑 선택 테스트",
-    description: "토핑 선택 습관으로 알아보는 나의 성격",
+    description: "피자 토핑 선택 테스트는 페퍼로니, 치즈 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/pizza-topping",
     color: "from-red-500 to-orange-600",
@@ -741,7 +741,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "instagram-story",
     title: "📸 인스타그램 스토리 스타일 테스트",
-    description: "스토리 올리는 방식으로 알아보는 나의 성격",
+    description: "인스타그램 스토리 스타일 테스트는 SNS, 필터 상황에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Camera,
     href: "/tests/instagram-story",
     color: "from-pink-500 to-purple-600",
@@ -755,7 +755,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "shower-habit",
     title: "🚿 샤워 습관 테스트",
-    description: "샤워 시간, 순서, 온도로 알아보는 나의 성격",
+    description: "샤워 습관 테스트는 루틴, 일상 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Droplets,
     href: "/tests/shower-habit",
     color: "from-blue-500 to-cyan-600",
@@ -769,7 +769,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "gift-wrapping",
     title: "🎁 포장지 뜯는 스타일 테스트",
-    description: "포장지 뜯는 방식으로 알아보는 나의 성격",
+    description: "포장지 뜯는 스타일 테스트는 선물과 포장 확인 장면에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: Gift,
     href: "/tests/gift-wrapping",
     color: "from-yellow-500 to-orange-600",
@@ -783,7 +783,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "karaoke-song",
     title: "🎤 노래방 곡 선택 테스트",
-    description: "노래방 곡 선택 방식으로 알아보는 나의 성격",
+    description: "노래방 곡 선택 테스트는 음악 선택 장면에서 드러나는 감상 취향과 몰입 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 콘텐츠를 고르고 즐기는 기준, 반응 속도, 공유 방식에서 드러나는 취향을 16가지 결과로 정리합니다.",
     icon: Music,
     href: "/tests/karaoke-song",
     color: "from-pink-500 to-red-600",
@@ -797,7 +797,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "soup-vs-bibim",
     title: "🍜 국물 vs 비빔 스타일 테스트",
-    description: "국물파 vs 비빔파로 알아보는 나의 성격",
+    description: "국물 vs 비빔 스타일 테스트는 국물파, 비빔파 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/soup-vs-bibim",
     color: "from-blue-500 to-green-600",
@@ -811,7 +811,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "lunchbox-style",
     title: "🍱 도시락 싸는 스타일 테스트",
-    description: "도시락 구성, 포장으로 알아보는 나의 성격",
+    description: "도시락 싸는 스타일 테스트는 포장, 구성 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/lunchbox-style",
     color: "from-amber-500 to-orange-600",
@@ -825,7 +825,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "game-play-style",
     title: "🎮 게임 플레이 스타일 테스트",
-    description: "게임 플레이 방식으로 알아보는 나의 성격",
+    description: "게임 플레이 스타일 테스트는 게이머 선택 장면에서 드러나는 감상 취향과 몰입 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 콘텐츠를 고르고 즐기는 기준, 반응 속도, 공유 방식에서 드러나는 취향을 16가지 결과로 정리합니다.",
     icon: Play,
     href: "/tests/game-play-style",
     color: "from-purple-500 to-indigo-600",
@@ -839,7 +839,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "gift-choosing",
     title: "💝 선물 고르는 스타일 테스트",
-    description: "선물 선택 기준, 포장 방식으로 알아보는 나의 성격",
+    description: "선물 고르는 스타일 테스트는 포장, 배려 상황에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: Gift,
     href: "/tests/gift-choosing",
     color: "from-pink-500 to-rose-600",
@@ -853,7 +853,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "chicken-vs-jjimdak",
     title: "🍗 찜닭 vs 치킨 선택 테스트",
-    description: "찜닭파 vs 치킨파로 알아보는 나의 성격",
+    description: "찜닭 vs 치킨 선택 테스트는 찜닭파, 치킨파 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/chicken-vs-jjimdak",
     color: "from-orange-500 to-red-600",
@@ -867,7 +867,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cake-cutting",
     title: "🍰 케이크 자르는 스타일 테스트",
-    description: "케이크 자르는 방식, 조각 선택으로 알아보는 나의 성격",
+    description: "케이크 자르는 스타일 테스트는 자르기, 조각 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Cake,
     href: "/tests/cake-cutting",
     color: "from-pink-500 to-rose-600",
@@ -881,7 +881,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "kimbap-ingredient",
     title: "🍙 김밥 재료 선택 테스트",
-    description: "김밥 재료 선택으로 알아보는 나의 성격",
+    description: "김밥 재료 선택 테스트는 조합 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/kimbap-ingredient",
     color: "from-green-500 to-emerald-600",
@@ -895,7 +895,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "stew-vs-soup",
     title: "🍲 찌개 vs 국물 스타일 테스트",
-    description: "찌개 종류 선택, 국물 마시는 습관으로 알아보는 나의 성격",
+    description: "찌개 vs 국물 스타일 테스트는 된장찌개, 김치찌개 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Soup,
     href: "/tests/stew-vs-soup",
     color: "from-orange-500 to-red-600",
@@ -909,7 +909,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "salad-dressing",
     title: "🥗 샐러드 드레싱 선택 테스트",
-    description: "샐러드 드레싱 선택으로 알아보는 나의 성격",
+    description: "샐러드 드레싱 선택 테스트는 올리브오일, 발사믹 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Salad,
     href: "/tests/salad-dressing",
     color: "from-green-500 to-lime-600",
@@ -923,7 +923,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meat-grilling",
     title: "🍖 고기 굽는 스타일 테스트",
-    description: "고기 굽는 방식, 익힘 정도 선호로 알아보는 나의 성격",
+    description: "고기 굽는 스타일 테스트는 굽기, 레어 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Drumstick,
     href: "/tests/meat-grilling",
     color: "from-red-500 to-orange-600",
@@ -937,7 +937,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "bed-making",
     title: "🛏️ 침대 정리 스타일 테스트",
-    description: "침대 정리 습관, 베개 배치로 알아보는 나의 성격",
+    description: "침대 정리 스타일 테스트는 베개, 배치 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Bed,
     href: "/tests/bed-making",
     color: "from-blue-500 to-indigo-600",
@@ -951,7 +951,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "door-closing",
     title: "🚪 문 닫는 스타일 테스트",
-    description: "문 닫는 방식, 잠금 습관으로 알아보는 나의 성격",
+    description: "문 닫는 스타일 테스트는 닫기, 잠금 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: DoorOpen,
     href: "/tests/door-closing",
     color: "from-purple-500 to-pink-600",
@@ -965,7 +965,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "bathroom-habit",
     title: "🚿 화장실 사용 습관 테스트",
-    description: "화장실 사용 패턴, 정리 습관으로 알아보는 나의 성격",
+    description: "화장실 사용 습관 테스트는 정리 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Droplets,
     href: "/tests/bathroom-habit",
     color: "from-cyan-500 to-blue-600",
@@ -979,7 +979,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "sock-wearing",
     title: "🧦 양말 신는 스타일 테스트",
-    description: "양말 선택, 신는 방식으로 알아보는 나의 성격",
+    description: "양말 신는 스타일 테스트는 신기, 매칭 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Shirt,
     href: "/tests/sock-wearing",
     color: "from-yellow-500 to-orange-600",
@@ -993,7 +993,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "clothing-order",
     title: "👔 옷 입는 순서 테스트",
-    description: "옷 입는 순서, 스타일로 알아보는 나의 성격",
+    description: "옷 입는 순서 테스트는 입기, 조합 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Shirt,
     href: "/tests/clothing-order",
     color: "from-indigo-500 to-purple-600",
@@ -1007,7 +1007,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "subway-vs-bus",
     title: "🚇 지하철 vs 버스 선택 테스트",
-    description: "지하철 vs 버스 선택 기준으로 알아보는 나의 성격",
+    description: "지하철 vs 버스 선택 테스트는 대중교통, 기준 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Plane,
     href: "/tests/subway-vs-bus",
     color: "from-sky-500 to-blue-600",
@@ -1021,7 +1021,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "bag-organizing",
     title: "🎒 가방 정리 스타일 테스트",
-    description: "가방 정리 방식, 스타일로 알아보는 나의 성격",
+    description: "가방 정리 스타일 테스트는 조합 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: ShoppingBag,
     href: "/tests/bag-organizing",
     color: "from-amber-500 to-orange-600",
@@ -1035,7 +1035,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "laundry-habit",
     title: "🧺 세탁 습관 테스트",
-    description: "세탁 방식, 습관으로 알아보는 나의 성격",
+    description: "세탁 습관 테스트는 정리 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Droplets,
     href: "/tests/laundry-habit",
     color: "from-cyan-500 to-blue-600",
@@ -1049,7 +1049,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "chair-sitting",
     title: "🪑 의자 앉는 스타일 테스트",
-    description: "의자 앉는 방식, 스타일로 알아보는 나의 성격",
+    description: "의자 앉는 스타일 테스트는 앉기, 자세 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Bed,
     href: "/tests/chair-sitting",
     color: "from-emerald-500 to-teal-600",
@@ -1063,7 +1063,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "water-drinking",
     title: "💧 물 마시는 습관 테스트",
-    description: "물 마시는 방식, 습관으로 알아보는 나의 성격",
+    description: "물 마시는 습관 테스트는 마시기 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Droplets,
     href: "/tests/water-drinking",
     color: "from-blue-500 to-cyan-600",
@@ -1077,7 +1077,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "mirror-habit",
     title: "🪞 거울 보는 습관 테스트",
-    description: "거울 보는 방식, 습관으로 알아보는 나의 성격",
+    description: "거울 보는 습관 테스트는 보기 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Camera,
     href: "/tests/mirror-habit",
     color: "from-rose-500 to-pink-600",
@@ -1091,7 +1091,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "book-reading",
     title: "📚 책 읽는 습관 테스트",
-    description: "책 읽는 방식, 습관으로 알아보는 나의 성격",
+    description: "책 읽는 습관 테스트는 읽기 선택 장면에서 드러나는 학습 태도와 참여 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 수업, 과제, 기록 상황에서 반복되는 공부 루틴과 집중 방식을 16가지 결과로 정리합니다.",
     icon: BookOpen,
     href: "/tests/book-reading",
     color: "from-violet-500 to-purple-600",
@@ -1105,7 +1105,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-temperature",
     title: "🌡️ 음식 온도 선호도 테스트",
-    description: "뜨거운 음식 vs 차가운 음식 선호로 16유형 성향을 분석합니다",
+    description: "음식 온도 선호도 테스트는 식습관, 뜨거운 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Thermometer,
     href: "/tests/food-temperature",
     color: "from-red-500 to-blue-500",
@@ -1119,7 +1119,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-texture",
     title: "🍮 음식 질감 선호도 테스트",
-    description: "부드러운 vs 쫄깃한 질감 선호로 16유형 성향을 분석합니다",
+    description: "음식 질감 선호도 테스트는 식감, 부드러운 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Cookie,
     href: "/tests/food-texture",
     color: "from-purple-500 to-pink-500",
@@ -1133,7 +1133,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-presentation",
     title: "🎨 음식 플레이팅 선호도 테스트",
-    description: "음식 모양과 배치 선호로 16유형 성향을 분석합니다",
+    description: "음식 플레이팅 선호도 테스트는 예술, 시각적 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Palette,
     href: "/tests/food-presentation",
     color: "from-indigo-500 to-purple-500",
@@ -1147,7 +1147,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-combination",
     title: "🍱 음식 조합 스타일 테스트",
-    description: "음식 섞어 먹기 vs 따로 먹기로 16유형 성향을 분석합니다",
+    description: "음식 조합 스타일 테스트는 섞어, 먹기 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/food-combination",
     color: "from-teal-500 to-cyan-500",
@@ -1161,7 +1161,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-timing",
     title: "⏰ 식사 시간대 테스트",
-    description: "식사 시간대와 규칙성으로 16유형 성향을 분석합니다",
+    description: "식사 시간대 테스트는 규칙성, 16 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Timer,
     href: "/tests/food-timing",
     color: "from-orange-500 to-red-500",
@@ -1175,7 +1175,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-waste",
     title: "♻️ 음식 낭비 대처 테스트",
-    description: "음식 남기고 버리는 방식으로 16유형 성향을 분석합니다",
+    description: "음식 낭비 대처 테스트는 절약, 환경 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Recycle,
     href: "/tests/food-waste",
     color: "from-green-500 to-emerald-500",
@@ -1189,7 +1189,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-allergy",
     title: "⚠️ 알레르기 대처 스타일 테스트",
-    description: "알레르기 음식 피하는 방식으로 16유형 성향을 분석합니다",
+    description: "알레르기 대처 스타일 테스트는 건강, 주의 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: AlertTriangle,
     href: "/tests/food-allergy",
     color: "from-yellow-500 to-orange-500",
@@ -1203,7 +1203,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-spiciness",
     title: "🌶️ 매운맛 선호도 테스트",
-    description: "매운맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "매운맛 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Flame,
     href: "/tests/food-spiciness",
     color: "from-red-500 to-orange-500",
@@ -1217,7 +1217,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-sweetness",
     title: "🍬 단맛 선호도 테스트",
-    description: "단맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "단맛 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Candy,
     href: "/tests/food-sweetness",
     color: "from-pink-500 to-purple-500",
@@ -1231,7 +1231,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-sourness",
     title: "🍋 신맛 선호도 테스트",
-    description: "신맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "신맛 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Star,
     href: "/tests/food-sourness",
     color: "from-yellow-500 to-orange-500",
@@ -1245,7 +1245,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-saltiness",
     title: "🧂 짠맛 선호도 테스트",
-    description: "짠맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "짠맛 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/food-saltiness",
     color: "from-blue-500 to-teal-500",
@@ -1259,7 +1259,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-bitterness",
     title: "☕ 쓴맛 선호도 테스트",
-    description: "쓴맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "쓴맛 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Coffee,
     href: "/tests/food-bitterness",
     color: "from-amber-500 to-brown-500",
@@ -1273,7 +1273,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-umami",
     title: "🍖 감칠맛 선호도 테스트",
-    description: "감칠맛을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "감칠맛 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Drumstick,
     href: "/tests/food-umami",
     color: "from-red-500 to-orange-500",
@@ -1287,7 +1287,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-crispy",
     title: "🍪 바삭함 선호도 테스트",
-    description: "바삭함을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "바삭함 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Cookie,
     href: "/tests/food-crispy",
     color: "from-yellow-500 to-orange-500",
@@ -1301,7 +1301,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-chewy",
     title: "💗 쫄깃함 선호도 테스트",
-    description: "쫄깃함을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "쫄깃함 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Heart,
     href: "/tests/food-chewy",
     color: "from-pink-500 to-red-500",
@@ -1315,7 +1315,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-creamy",
     title: "🍰 부드러움 선호도 테스트",
-    description: "부드러움을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "부드러움 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Cake,
     href: "/tests/food-creamy",
     color: "from-purple-500 to-pink-500",
@@ -1329,7 +1329,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-crunchy",
     title: "🥗 아삭함 선호도 테스트",
-    description: "아삭함을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "아삭함 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Salad,
     href: "/tests/food-crunchy",
     color: "from-green-500 to-teal-500",
@@ -1343,7 +1343,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-portion",
     title: "🍽️ 음식 양 선호도 테스트",
-    description: "음식 양을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "음식 양 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/food-portion",
     color: "from-indigo-500 to-purple-500",
@@ -1357,7 +1357,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-plating",
     title: "🎨 음식 접시 배치 스타일 테스트",
-    description: "음식 접시 배치 방식을 통해 알아보는 나의 성격 유형",
+    description: "음식 접시 배치 스타일 테스트는 플레이팅, 통해 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Palette,
     href: "/tests/food-plating",
     color: "from-violet-500 to-fuchsia-500",
@@ -1371,7 +1371,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-garnishing-style",
     title: "🌿 음식 장식 선호도 테스트",
-    description: "음식 장식을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "음식 장식 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Sprout,
     href: "/tests/food-garnishing-style",
     color: "from-emerald-500 to-teal-500",
@@ -1385,7 +1385,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-color-preference",
     title: "🌈 음식 색상 선호도 테스트",
-    description: "음식 색상을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "음식 색상 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Palette,
     href: "/tests/food-color-preference",
     color: "from-pink-500 via-purple-500 to-blue-500",
@@ -1399,7 +1399,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-aroma",
     title: "🌸 음식 향 선호도 테스트",
-    description: "음식 향을 좋아하는 정도와 방식으로 알아보는 나의 성격 유형",
+    description: "음식 향 선호도 테스트는 취향과 선호 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Sparkles,
     href: "/tests/food-aroma",
     color: "from-rose-500 via-pink-500 to-purple-500",
@@ -1415,7 +1415,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-mixing",
     title: "🍽️ 음식 섞어 먹기 스타일 테스트",
-    description: "음식을 섞어 먹는 방식으로 알아보는 나의 성격 유형",
+    description: "음식 섞어 먹기 스타일 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/food-mixing",
     color: "from-indigo-500 via-purple-500 to-pink-500",
@@ -1429,7 +1429,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-layering",
     title: "📚 음식 층별 먹기 스타일 테스트",
-    description: "음식을 층별로 먹는 방식으로 알아보는 나의 성격 유형",
+    description: "음식 층별 먹기 스타일 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Layers,
     href: "/tests/food-layering",
     color: "from-blue-500 via-indigo-500 to-purple-500",
@@ -1443,7 +1443,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-dipping",
     title: "💧 찍어 먹기 스타일 테스트",
-    description: "음식을 찍어 먹는 방식으로 알아보는 나의 성격 유형",
+    description: "찍어 먹기 스타일 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Droplets,
     href: "/tests/food-dipping",
     color: "from-cyan-500 via-blue-500 to-indigo-500",
@@ -1457,7 +1457,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-scooping",
     title: "🥄 떠 먹기 스타일 테스트",
-    description: "음식을 떠 먹는 방식으로 알아보는 나의 성격 유형",
+    description: "떠 먹기 스타일 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Soup,
     href: "/tests/food-scooping",
     color: "from-orange-500 via-amber-500 to-yellow-500",
@@ -1471,7 +1471,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-frequency",
     title: "⏰ 식사 빈도 테스트",
-    description: "식사 빈도로 알아보는 나의 성격 유형",
+    description: "식사 빈도 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Timer,
     href: "/tests/meal-frequency",
     color: "from-emerald-500 via-teal-500 to-cyan-500",
@@ -1485,7 +1485,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-duration",
     title: "🕐 식사 시간 테스트",
-    description: "식사 시간으로 알아보는 나의 성격 유형",
+    description: "식사 시간 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Clock,
     href: "/tests/meal-duration",
     color: "from-violet-500 via-purple-500 to-fuchsia-500",
@@ -1499,7 +1499,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-pacing",
     title: "⚡ 식사 속도 테스트",
-    description: "식사 속도로 알아보는 나의 성격 유형",
+    description: "식사 속도 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Timer,
     href: "/tests/meal-pacing",
     color: "from-rose-500 via-pink-500 to-red-500",
@@ -1513,7 +1513,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-order",
     title: "🔄 식사 순서 테스트",
-    description: "식사 순서로 알아보는 나의 성격 유형",
+    description: "식사 순서 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: ArrowUpDown,
     href: "/tests/meal-order",
     color: "from-indigo-500 via-purple-500 to-pink-500",
@@ -1527,7 +1527,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-balance",
     title: "⚖️ 식사 균형 테스트",
-    description: "식사 균형으로 알아보는 나의 성격 유형",
+    description: "식사 균형 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Scale,
     href: "/tests/meal-balance",
     color: "from-emerald-500 via-teal-500 to-cyan-500",
@@ -1541,7 +1541,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-planning",
     title: "📅 식사 계획 스타일 테스트",
-    description: "식사 계획 스타일로 알아보는 나의 성격 유형",
+    description: "식사 계획 스타일 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Calendar,
     href: "/tests/meal-planning",
     color: "from-blue-500 via-indigo-500 to-purple-500",
@@ -1555,7 +1555,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-preparation",
     title: "👨‍🍳 식사 준비 스타일 테스트",
-    description: "식사 준비 스타일로 알아보는 나의 성격 유형",
+    description: "식사 준비 스타일 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: ChefHat,
     href: "/tests/meal-preparation",
     color: "from-orange-500 via-red-500 to-pink-500",
@@ -1569,7 +1569,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-serving",
     title: "🍽️ 음식 나누기 스타일 테스트",
-    description: "음식 나누기 스타일로 알아보는 나의 성격 유형",
+    description: "음식 나누기 스타일 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/meal-serving",
     color: "from-amber-500 via-yellow-500 to-orange-500",
@@ -1583,7 +1583,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-sharing",
     title: "🤝 음식 공유 스타일 테스트",
-    description: "음식 공유 스타일로 알아보는 나의 성격 유형",
+    description: "음식 공유 스타일 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Users,
     href: "/tests/meal-sharing",
     color: "from-green-500 via-emerald-500 to-teal-500",
@@ -1597,7 +1597,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-leftover",
     title: "♻️ 남은 음식 처리 스타일 테스트",
-    description: "남은 음식 처리 스타일로 알아보는 나의 성격 유형",
+    description: "남은 음식 처리 스타일 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Recycle,
     href: "/tests/meal-leftover",
     color: "from-slate-500 via-gray-500 to-zinc-500",
@@ -1611,7 +1611,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "breakfast-preference",
     title: "🌅 아침 식사 선호도 테스트",
-    description: "아침 식사 선호도로 알아보는 나의 성격 유형",
+    description: "아침 식사 선호도 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Sun,
     href: "/tests/breakfast-preference",
     color: "from-yellow-500 via-orange-500 to-amber-500",
@@ -1625,7 +1625,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "lunch-preference",
     title: "🍱 점심 식사 선호도 테스트",
-    description: "점심 식사 선호도로 알아보는 나의 성격 유형",
+    description: "점심 식사 선호도 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/lunch-preference",
     color: "from-blue-500 via-indigo-500 to-purple-500",
@@ -1639,7 +1639,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "dinner-preference",
     title: "🌙 저녁 식사 선호도 테스트",
-    description: "저녁 식사 선호도로 알아보는 나의 성격 유형",
+    description: "저녁 식사 선호도 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Moon,
     href: "/tests/dinner-preference",
     color: "from-purple-500 via-indigo-500 to-blue-500",
@@ -1653,7 +1653,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "snack-preference",
     title: "🍬 간식 선호도 테스트",
-    description: "간식 선호도로 알아보는 나의 성격 유형",
+    description: "간식 선호도 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Candy,
     href: "/tests/snack-preference",
     color: "from-pink-500 via-rose-500 to-red-500",
@@ -1667,7 +1667,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "midnight-snack",
     title: "🌙 야식 선호도 테스트",
-    description: "야식 선호도로 알아보는 나의 성격 유형",
+    description: "야식 선호도 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Moon,
     href: "/tests/midnight-snack",
     color: "from-indigo-500 via-purple-500 to-pink-500",
@@ -1681,7 +1681,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-social",
     title: "👥 식사 사회성 테스트",
-    description: "식사 사회성으로 알아보는 나의 성격 유형",
+    description: "식사 사회성 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Users,
     href: "/tests/meal-social",
     color: "from-cyan-500 via-teal-500 to-emerald-500",
@@ -1695,7 +1695,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-solo",
     title: "🍽️ 혼밥 스타일 테스트",
-    description: "혼밥 스타일로 알아보는 나의 성격 유형",
+    description: "혼밥 스타일 테스트는 식사, 습관 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: User,
     href: "/tests/meal-solo",
     color: "from-gray-500 via-slate-500 to-zinc-500",
@@ -1709,7 +1709,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-group",
     title: "👨‍👩‍👧‍👦 단체 식사 스타일 테스트",
-    description: "단체 식사 스타일로 알아보는 나의 성격 유형",
+    description: "단체 식사 스타일 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Users,
     href: "/tests/meal-group",
     color: "from-violet-500 via-purple-500 to-fuchsia-500",
@@ -1723,7 +1723,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-etiquette",
     title: "🍽️ 식사 예절 스타일 테스트",
-    description: "식사 예절 스타일로 알아보는 나의 성격 유형",
+    description: "식사 예절 스타일 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: HandHeart,
     href: "/tests/meal-etiquette",
     color: "from-emerald-500 via-teal-500 to-cyan-500",
@@ -1737,7 +1737,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "meal-cleanup",
     title: "🧹 식사 후 정리 스타일 테스트",
-    description: "식사 후 정리 스타일로 알아보는 나의 성격 유형",
+    description: "식사 후 정리 스타일 테스트는 습관과 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Sparkles,
     href: "/tests/meal-cleanup",
     color: "from-rose-500 via-pink-500 to-fuchsia-500",
@@ -1751,7 +1751,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-method",
     title: "👨‍🍳 조리 방법 선호도 테스트",
-    description: "조리 방법 선호도로 알아보는 나의 성격 유형",
+    description: "조리 방법 선호도 테스트는 요리 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: ChefHat,
     href: "/tests/cooking-method",
     color: "from-orange-500 via-red-500 to-pink-500",
@@ -1765,7 +1765,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-time",
     title: "⏱️ 조리 시간 선호도 테스트",
-    description: "조리 시간 선호도로 알아보는 나의 성격 유형",
+    description: "조리 시간 선호도 테스트는 요리 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Timer,
     href: "/tests/cooking-time",
     color: "from-blue-500 via-indigo-500 to-purple-500",
@@ -1779,7 +1779,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-complexity",
     title: "🎯 요리 복잡도 선호도 테스트",
-    description: "요리 복잡도 선호도로 알아보는 나의 성격 유형",
+    description: "요리 복잡도 선호도 테스트는 조리 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Layers,
     href: "/tests/cooking-complexity",
     color: "from-purple-500 via-violet-500 to-fuchsia-500",
@@ -1793,7 +1793,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-experiment",
     title: "🧪 요리 실험 스타일 테스트",
-    description: "요리 실험 스타일로 알아보는 나의 성격 유형",
+    description: "요리 실험 스타일 테스트는 조리 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: FlaskConical,
     href: "/tests/cooking-experiment",
     color: "from-yellow-500 via-amber-500 to-orange-500",
@@ -1807,7 +1807,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-recipe",
     title: "📖 레시피 사용 스타일 테스트",
-    description: "레시피 사용 스타일로 알아보는 나의 성격 유형",
+    description: "레시피 사용 스타일 테스트는 요리, 조리 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: BookOpen,
     href: "/tests/cooking-recipe",
     color: "from-green-500 via-emerald-500 to-teal-500",
@@ -1821,7 +1821,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-measurement",
     title: "⚖️ 계량 스타일 테스트",
-    description: "계량 스타일로 알아보는 나의 성격 유형",
+    description: "계량 스타일 테스트는 요리, 조리 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Scale,
     href: "/tests/cooking-measurement",
     color: "from-cyan-500 via-teal-500 to-blue-500",
@@ -1835,7 +1835,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-label",
     title: "🏷️ 식품 라벨 확인 스타일 테스트",
-    description: "식품 라벨 읽는 습관으로 16유형 성향을 분석합니다",
+    description: "식품 라벨 확인 스타일 테스트는 건강, 정보 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: FileText,
     href: "/tests/food-label",
     color: "from-blue-500 to-cyan-500",
@@ -1849,7 +1849,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-storage",
     title: "❄️ 음식 보관 스타일 테스트",
-    description: "냉장고 정리와 보관 방식으로 16유형 성향을 분석합니다",
+    description: "음식 보관 스타일 테스트는 냉장고, 정리 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Snowflake,
     href: "/tests/food-storage",
     color: "from-cyan-500 to-blue-500",
@@ -1863,7 +1863,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-reheating",
     title: "🔥 음식 재가열 스타일 테스트",
-    description: "남은 음식 데우는 방식으로 16유형 성향을 분석합니다",
+    description: "음식 재가열 스타일 테스트는 전자레인지, 데우기 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Flame,
     href: "/tests/food-reheating",
     color: "from-orange-500 to-red-500",
@@ -1877,7 +1877,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-seasoning",
     title: "🧂 양념 사용 스타일 테스트",
-    description: "양념 사용량과 방식으로 16유형 성향을 분석합니다",
+    description: "양념 사용 스타일 테스트는 조미료, 취향 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: ChefHat,
     href: "/tests/food-seasoning",
     color: "from-amber-500 to-yellow-500",
@@ -1891,7 +1891,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-garnishing",
     title: "🌿 음식 장식 스타일 테스트",
-    description: "음식 꾸미기와 장식 선호로 16유형 성향을 분석합니다",
+    description: "음식 장식 스타일 테스트는 플레이팅, 미식 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Sprout,
     href: "/tests/food-garnishing",
     color: "from-green-500 to-emerald-500",
@@ -1905,7 +1905,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-ordering",
     title: "📱 주문 방식 테스트",
-    description: "직접 주문 vs 앱 주문 선호로 16유형 성향을 분석합니다",
+    description: "주문 방식 테스트는 직접, 선호 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Smartphone,
     href: "/tests/food-ordering",
     color: "from-indigo-500 to-purple-500",
@@ -1919,7 +1919,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-review",
     title: "⭐ 음식 리뷰 작성 스타일 테스트",
-    description: "음식 리뷰 쓰는 방식으로 16유형 성향을 분석합니다",
+    description: "음식 리뷰 작성 스타일 테스트는 공유, 16 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Star,
     href: "/tests/food-review",
     color: "from-yellow-500 to-orange-500",
@@ -1933,7 +1933,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-seasoning",
     title: "🌶️ 양념 사용 스타일 테스트",
-    description: "양념 사용 스타일로 알아보는 나의 성격 유형",
+    description: "양념 사용 스타일 테스트는 조미료, 요리 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Sprout,
     href: "/tests/cooking-seasoning",
     color: "from-red-500 to-pink-500",
@@ -1947,7 +1947,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-garnishing",
     title: "✨ 음식 장식 스타일 테스트",
-    description: "음식 장식 스타일로 알아보는 나의 성격 유형",
+    description: "음식 장식 스타일 테스트는 플레이팅, 요리 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Sparkles,
     href: "/tests/cooking-garnishing",
     color: "from-pink-500 to-rose-500",
@@ -1961,7 +1961,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-presentation",
     title: "🎨 플레이팅 스타일 테스트",
-    description: "플레이팅 스타일로 알아보는 나의 성격 유형",
+    description: "플레이팅 스타일 테스트는 배치, 요리 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Palette,
     href: "/tests/cooking-presentation",
     color: "from-indigo-500 to-purple-500",
@@ -1975,7 +1975,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-cleanup",
     title: "🧹 요리 후 정리 스타일 테스트",
-    description: "요리 후 정리 스타일로 알아보는 나의 성격 유형",
+    description: "요리 후 정리 스타일 테스트는 청소, 습관 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Recycle,
     href: "/tests/cooking-cleanup",
     color: "from-slate-500 to-gray-500",
@@ -1991,7 +1991,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-solo",
     title: "🧑‍🍳 혼자 요리 스타일 테스트",
-    description: "혼자 요리 스타일로 알아보는 나의 성격 유형",
+    description: "혼자 요리 스타일 테스트는 독립 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: ChefHat,
     href: "/tests/cooking-solo",
     color: "from-orange-500 via-amber-500 to-yellow-500",
@@ -2005,7 +2005,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-music",
     title: "🎵 요리할 때 음악 스타일 테스트",
-    description: "요리할 때 음악 스타일로 알아보는 나의 성격 유형",
+    description: "요리할 때 음악 스타일 테스트는 환경 선택 장면에서 드러나는 감상 취향과 몰입 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 콘텐츠를 고르고 즐기는 기준, 반응 속도, 공유 방식에서 드러나는 취향을 16가지 결과로 정리합니다.",
     icon: Music,
     href: "/tests/cooking-music",
     color: "from-purple-500 via-fuchsia-500 to-pink-500",
@@ -2019,7 +2019,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-timing",
     title: "⏰ 요리 타이밍 스타일 테스트",
-    description: "요리 타이밍 스타일로 알아보는 나의 성격 유형",
+    description: "요리 타이밍 스타일 테스트는 관리 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Timer,
     href: "/tests/cooking-timing",
     color: "from-green-500 via-emerald-500 to-teal-500",
@@ -2033,7 +2033,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-multitask",
     title: "🔄 요리 멀티태스킹 스타일 테스트",
-    description: "요리 멀티태스킹 스타일로 알아보는 나의 성격 유형",
+    description: "요리 멀티태스킹 스타일 테스트는 효율 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Layers,
     href: "/tests/cooking-multitask",
     color: "from-cyan-500 via-blue-500 to-indigo-500",
@@ -2047,7 +2047,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-improvise",
     title: "✨ 즉흥 요리 스타일 테스트",
-    description: "즉흥 요리 스타일로 알아보는 나의 성격 유형",
+    description: "즉흥 요리 스타일 테스트는 자유로운 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Sparkles,
     href: "/tests/cooking-improvise",
     color: "from-pink-500 via-rose-500 to-red-500",
@@ -2061,7 +2061,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-follow",
     title: "📖 레시피 따르기 스타일 테스트",
-    description: "레시피 따르기 스타일로 알아보는 나의 성격 유형",
+    description: "레시피 따르기 스타일 테스트는 요리, 방법 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: BookOpen,
     href: "/tests/cooking-follow",
     color: "from-violet-500 via-purple-500 to-fuchsia-500",
@@ -2075,7 +2075,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-modify",
     title: "✏️ 레시피 수정 스타일 테스트",
-    description: "레시피 수정 스타일로 알아보는 나의 성격 유형",
+    description: "레시피 수정 스타일 테스트는 요리, 방법 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: PencilRuler,
     href: "/tests/cooking-modify",
     color: "from-emerald-500 via-teal-500 to-cyan-500",
@@ -2089,7 +2089,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-create",
     title: "🧪 레시피 창조 스타일 테스트",
-    description: "레시피 창조 스타일로 알아보는 나의 성격 유형",
+    description: "레시피 창조 스타일 테스트는 요리, 방법 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Wand2,
     href: "/tests/cooking-create",
     color: "from-amber-500 via-orange-500 to-red-500",
@@ -2103,7 +2103,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "cooking-share",
     title: "📤 요리 공유 스타일 테스트",
-    description: "요리 공유 스타일로 알아보는 나의 성격 유형",
+    description: "요리 공유 스타일 테스트는 방법 선택 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Share2,
     href: "/tests/cooking-share",
     color: "from-sky-500 via-blue-500 to-indigo-500",
@@ -2117,7 +2117,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "grocery-shopping",
     title: "🛒 장보기 스타일 테스트",
-    description: "장보기 스타일로 알아보는 나의 성격 유형",
+    description: "장보기 스타일 테스트는 구매와 선택 장면에서 드러나는 구매 기준과 소비 판단을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 가격, 할인, 장바구니, 결제 전 고민에서 드러나는 소비 스타일을 16가지 결과로 정리합니다.",
     icon: ShoppingCart,
     href: "/tests/grocery-shopping",
     color: "from-green-500 via-emerald-500 to-teal-500",
@@ -2131,7 +2131,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "market-choice",
     title: "🏪 시장 선택 스타일 테스트",
-    description: "시장 선택 스타일로 알아보는 나의 성격 유형",
+    description: "시장 선택 스타일 테스트는 구매와 선택 장면에서 드러나는 구매 기준과 소비 판단을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 가격, 할인, 장바구니, 결제 전 고민에서 드러나는 소비 스타일을 16가지 결과로 정리합니다.",
     icon: Store,
     href: "/tests/market-choice",
     color: "from-orange-500 via-amber-500 to-yellow-500",
@@ -2145,7 +2145,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "store-choice",
     title: "🏬 매장 선택 스타일 테스트",
-    description: "매장 선택 스타일로 알아보는 나의 성격 유형",
+    description: "매장 선택 스타일 테스트는 구매와 선택 장면에서 드러나는 구매 기준과 소비 판단을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 가격, 할인, 장바구니, 결제 전 고민에서 드러나는 소비 스타일을 16가지 결과로 정리합니다.",
     icon: Building2,
     href: "/tests/store-choice",
     color: "from-purple-500 via-pink-500 to-rose-500",
@@ -2159,7 +2159,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "online-food",
     title: "💻 온라인 음식 주문 스타일 테스트",
-    description: "온라인 음식 주문 스타일로 알아보는 나의 성격 유형",
+    description: "온라인 음식 주문 스타일 테스트는 구매와 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Laptop,
     href: "/tests/online-food",
     color: "from-blue-500 via-indigo-500 to-purple-500",
@@ -2173,7 +2173,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-delivery-app",
     title: "📱 배달 앱 사용 스타일 테스트",
-    description: "배달 앱 사용 스타일로 알아보는 나의 성격 유형",
+    description: "배달 앱 사용 스타일 테스트는 구매와 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Smartphone,
     href: "/tests/food-delivery-app",
     color: "from-cyan-500 via-teal-500 to-emerald-500",
@@ -2187,7 +2187,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "restaurant-reservation",
     title: "📅 식당 예약 스타일 테스트",
-    description: "식당 예약 스타일로 알아보는 나의 성격 유형",
+    description: "식당 예약 스타일 테스트는 구매와 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Calendar,
     href: "/tests/restaurant-reservation",
     color: "from-red-500 via-rose-500 to-pink-500",
@@ -2201,7 +2201,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "restaurant-menu",
     title: "📋 메뉴 선택 스타일 테스트",
-    description: "메뉴 선택 스타일로 알아보는 나의 성격 유형",
+    description: "메뉴 선택 스타일 테스트는 구매와 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: FileText,
     href: "/tests/restaurant-menu",
     color: "from-violet-500 via-purple-500 to-fuchsia-500",
@@ -2215,7 +2215,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "restaurant-service",
     title: "🤝 서비스 선호도 테스트",
-    description: "서비스 선호도로 알아보는 나의 성격 유형",
+    description: "서비스 선호도 테스트는 구매와 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: HandHeart,
     href: "/tests/restaurant-service",
     color: "from-emerald-500 via-teal-500 to-cyan-500",
@@ -2229,7 +2229,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "restaurant-ambiance",
     title: "✨ 분위기 선호도 테스트",
-    description: "분위기 선호도로 알아보는 나의 성격 유형",
+    description: "분위기 선호도 테스트는 구매와 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Sparkles,
     href: "/tests/restaurant-ambiance",
     color: "from-indigo-500 via-blue-500 to-sky-500",
@@ -2243,7 +2243,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "restaurant-price",
     title: "💰 가격대 선호도 테스트",
-    description: "가격대 선호도로 알아보는 나의 성격 유형",
+    description: "가격대 선호도 테스트는 구매와 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: DollarSign,
     href: "/tests/restaurant-price",
     color: "from-yellow-500 via-amber-500 to-orange-500",
@@ -2257,7 +2257,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-budget",
     title: "💳 음식 예산 관리 스타일 테스트",
-    description: "음식 예산 관리 스타일로 알아보는 나의 성격 유형",
+    description: "음식 예산 관리 스타일 테스트는 구매와 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Wallet,
     href: "/tests/food-budget",
     color: "from-green-500 via-emerald-500 to-teal-500",
@@ -2271,7 +2271,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "food-sale",
     title: "🏷️ 할인 상품 선택 스타일 테스트",
-    description: "할인 상품 선택 스타일로 알아보는 나의 성격 유형",
+    description: "할인 상품 선택 스타일 테스트는 구매와 선택 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Tag,
     href: "/tests/food-sale",
     color: "from-pink-500 via-rose-500 to-red-500",
@@ -2286,7 +2286,7 @@ export const ALL_TESTS: Test[] = [
     id: "food-new",
     title: "✨ 신상품 시도 스타일 테스트",
     description:
-      "새로운 음식 상품을 발견했을 때의 반응과 선택 방식으로 알아보는 나의 성격 유형",
+      "신상품 시도 스타일 테스트는 모험, 트렌드 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Sparkles,
     href: "/tests/food-new",
     color: "from-purple-500 via-pink-500 to-rose-500",
@@ -2300,7 +2300,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-alarm",
     title: "⏰ 아침 알람 대하는 방식",
-    description: "아침 알람을 대하는 방식으로 알아보는 나의 성격 유형",
+    description: "아침 알람 대하는 방식은 기상, 루틴 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: AlarmClock,
     href: "/tests/morning-alarm",
     color: "from-orange-500 to-red-500",
@@ -2314,7 +2314,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-coffee",
     title: "☕ 아침 커피 마시는 방식",
-    description: "아침에 커피를 마시는 방식으로 알아보는 나의 성격 유형",
+    description: "아침 커피 마시는 방식은 습관, 루틴 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Coffee,
     href: "/tests/morning-coffee",
     color: "from-amber-500 to-orange-500",
@@ -2328,7 +2328,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-shower",
     title: "🚿 아침 샤워 습관",
-    description: "아침에 샤워하는 습관으로 알아보는 나의 성격 유형",
+    description: "아침 샤워 습관은 아침 루틴 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Droplets,
     href: "/tests/morning-shower",
     color: "from-blue-500 to-cyan-500",
@@ -2342,7 +2342,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-outfit",
     title: "👔 아침 옷 고르기",
-    description: "아침에 옷을 고르는 방식으로 알아보는 나의 성격 유형",
+    description: "아침 옷 고르기는 패션, 루틴 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Shirt,
     href: "/tests/morning-outfit",
     color: "from-pink-500 to-purple-500",
@@ -2356,7 +2356,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-breakfast",
     title: "🍳 아침 식사 스타일",
-    description: "아침에 식사하는 스타일로 알아보는 나의 성격 유형",
+    description: "아침 식사 스타일은 습관, 루틴 상황에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/morning-breakfast",
     color: "from-yellow-500 to-orange-500",
@@ -2370,7 +2370,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-commute",
     title: "🚇 출근길 습관",
-    description: "출근길 습관으로 알아보는 나의 성격 유형",
+    description: "출근길 습관은 교통, 루틴 상황에서 드러나는 업무 습관과 협업 반응을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일 처리 순서, 커뮤니케이션 방식, 마감 대응에서 드러나는 업무 스타일을 16가지 결과로 정리합니다.",
     icon: Building2,
     href: "/tests/morning-commute",
     color: "from-indigo-500 to-blue-500",
@@ -2384,7 +2384,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-phone",
     title: "📱 아침 핸드폰 체크",
-    description: "아침에 핸드폰을 체크하는 방식으로 알아보는 나의 성격 유형",
+    description: "아침 핸드폰 체크는 스마트폰, 습관 상황에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Smartphone,
     href: "/tests/morning-phone",
     color: "from-purple-500 to-pink-500",
@@ -2398,7 +2398,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-energy",
     title: "⚡ 아침 에너지 관리",
-    description: "아침에 에너지를 관리하는 방식으로 알아보는 나의 성격 유형",
+    description: "아침 에너지 관리는 건강, 루틴 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Sun,
     href: "/tests/morning-energy",
     color: "from-yellow-500 to-orange-500",
@@ -2412,7 +2412,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-rush",
     title: "⏰ 아침 바쁠 때 대처",
-    description: "아침에 바쁠 때 대처하는 방식으로 알아보는 나의 성격 유형",
+    description: "아침 바쁠 때 대처는 시간관리, 스트레스 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Timer,
     href: "/tests/morning-rush",
     color: "from-red-500 to-pink-500",
@@ -2426,7 +2426,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "morning-mood",
     title: "😊 아침 기분 관리",
-    description: "아침에 기분을 관리하는 방식으로 알아보는 나의 성격 유형",
+    description: "아침 기분 관리는 심리, 루틴 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Heart,
     href: "/tests/morning-mood",
     color: "from-pink-500 to-rose-500",
@@ -2440,7 +2440,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-wind-down",
     title: "🌙 저녁 휴식 방식",
-    description: "저녁에 휴식하는 방식으로 알아보는 나의 성격 유형",
+    description: "저녁 휴식 방식은 루틴, 힐링 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Moon,
     href: "/tests/evening-wind-down",
     color: "from-indigo-500 to-purple-500",
@@ -2454,7 +2454,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-meal",
     title: "🍽️ 저녁 식사 스타일",
-    description: "저녁에 식사하는 스타일로 알아보는 나의 성격 유형",
+    description: "저녁 식사 스타일은 저녁 루틴 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/evening-meal",
     color: "from-orange-500 to-red-500",
@@ -2468,7 +2468,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-entertainment",
     title: "📺 저녁 오락 선택",
-    description: "저녁에 오락을 선택하는 방식으로 알아보는 나의 성격 유형",
+    description: "저녁 오락 선택은 저녁 루틴 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Play,
     href: "/tests/evening-entertainment",
     color: "from-violet-500 to-purple-500",
@@ -2482,7 +2482,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-social",
     title: "💬 저녁 약속 대하는 방식",
-    description: "저녁 약속을 대하는 방식으로 알아보는 나의 성격 유형",
+    description: "저녁 약속 대하는 방식은 사회성, 루틴 상황에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: MessageSquare,
     href: "/tests/evening-social",
     color: "from-blue-500 to-cyan-500",
@@ -2496,7 +2496,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-work",
     title: "💼 저녁 업무 처리",
-    description: "저녁에 업무를 처리하는 방식으로 알아보는 나의 성격 유형",
+    description: "저녁 업무 처리는 시간관리, 루틴 상황에서 드러나는 업무 습관과 협업 반응을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일 처리 순서, 커뮤니케이션 방식, 마감 대응에서 드러나는 업무 스타일을 16가지 결과로 정리합니다.",
     icon: Laptop,
     href: "/tests/evening-work",
     color: "from-slate-500 to-gray-500",
@@ -2510,7 +2510,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-exercise",
     title: "💪 저녁 운동 습관",
-    description: "저녁에 운동하는 습관으로 알아보는 나의 성격 유형",
+    description: "저녁 운동 습관은 건강, 루틴 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Flame,
     href: "/tests/evening-exercise",
     color: "from-red-500 to-orange-500",
@@ -2524,7 +2524,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-snack",
     title: "🍪 저녁 간식 선택",
-    description: "저녁에 간식을 선택하는 방식으로 알아보는 나의 성격 유형",
+    description: "저녁 간식 선택은 저녁 루틴 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: Cookie,
     href: "/tests/evening-snack",
     color: "from-yellow-500 to-amber-500",
@@ -2538,7 +2538,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-cleaning",
     title: "🧹 저녁 정리 습관",
-    description: "저녁에 정리하는 습관으로 알아보는 나의 성격 유형",
+    description: "저녁 정리 습관은 저녁 루틴 장면에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Recycle,
     href: "/tests/evening-cleaning",
     color: "from-teal-500 to-cyan-500",
@@ -2552,7 +2552,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-sleep-prep",
     title: "🌙 잠들기 전 준비",
-    description: "잠들기 전 준비하는 방식으로 알아보는 나의 성격 유형",
+    description: "잠들기 전 준비는 저녁, 수면 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Bed,
     href: "/tests/evening-sleep-prep",
     color: "from-indigo-500 to-purple-500",
@@ -2566,7 +2566,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "evening-reflection",
     title: "📖 저녁 하루 돌아보기",
-    description: "저녁에 하루를 돌아보는 방식으로 알아보는 나의 성격 유형",
+    description: "저녁 하루 돌아보기는 성찰, 계획 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: BookOpen,
     href: "/tests/evening-reflection",
     color: "from-rose-500 to-pink-500",
@@ -2580,7 +2580,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-planning",
     title: "📅 주말 계획 세우기",
-    description: "주말에 계획을 세우는 방식으로 알아보는 나의 성격 유형",
+    description: "주말 계획 세우기는 시간관리, 루틴 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Calendar,
     href: "/tests/weekend-planning",
     color: "from-emerald-500 to-teal-500",
@@ -2594,7 +2594,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-lazy",
     title: "😴 주말 게으름 피우기",
-    description: "주말에 게으름 피우는 방식으로 알아보는 나의 성격 유형",
+    description: "주말 게으름 피우기는 휴식, 습관 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Bed,
     href: "/tests/weekend-lazy",
     color: "from-amber-500 to-orange-500",
@@ -2608,7 +2608,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-social",
     title: "👥 주말 모임 스타일",
-    description: "주말에 모임에 가는 방식으로 알아보는 나의 성격 유형",
+    description: "주말 모임 스타일은 사회성, 루틴 상황에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: MessageSquare,
     href: "/tests/weekend-social",
     color: "from-blue-500 to-cyan-500",
@@ -2622,7 +2622,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-chore",
     title: "🧹 주말 집안일",
-    description: "주말에 집안일을 하는 방식으로 알아보는 나의 성격 유형",
+    description: "주말 집안일은 습관, 루틴 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Recycle,
     href: "/tests/weekend-chore",
     color: "from-green-500 to-emerald-500",
@@ -2636,7 +2636,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-hobby",
     title: "🎨 주말 취미 활동",
-    description: "주말에 취미 활동을 하는 방식으로 알아보는 나의 성격 유형",
+    description: "주말 취미 활동은 주말 루틴 장면에서 드러나는 취미 몰입과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 시작 방식, 꾸준함, 결과물을 다루는 태도에서 드러나는 취미 스타일을 16가지 결과로 정리합니다.",
     icon: Palette,
     href: "/tests/weekend-hobby",
     color: "from-purple-500 to-pink-500",
@@ -2650,7 +2650,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-shopping",
     title: "🛍️ 주말 쇼핑 스타일",
-    description: "주말에 쇼핑을 하는 방식으로 알아보는 나의 성격 유형",
+    description: "주말 쇼핑 스타일은 주말 루틴 장면에서 드러나는 구매 기준과 소비 판단을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 가격, 할인, 장바구니, 결제 전 고민에서 드러나는 소비 스타일을 16가지 결과로 정리합니다.",
     icon: ShoppingBag,
     href: "/tests/weekend-shopping",
     color: "from-fuchsia-500 to-rose-500",
@@ -2664,7 +2664,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-food",
     title: "🍕 주말 음식 선택",
-    description: "주말에 음식을 선택하는 방식으로 알아보는 나의 성격 유형",
+    description: "주말 음식 선택은 주말 루틴 장면에서 드러나는 취향과 메뉴 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 먹는 방식, 주문 기준, 함께 먹는 상황에서 반복되는 취향을 16가지 결과로 정리합니다.",
     icon: UtensilsCrossed,
     href: "/tests/weekend-food",
     color: "from-orange-500 to-red-500",
@@ -2678,7 +2678,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-travel",
     title: "✈️ 주말 여행 스타일",
-    description: "주말에 여행을 하는 방식으로 알아보는 나의 성격 유형",
+    description: "주말 여행 스타일은 계획, 루틴 상황에서 드러나는 여행 준비와 이동 선택 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 계획, 이동, 동행 상황에서 드러나는 여행 스타일과 에너지 사용 방식을 16가지 결과로 정리합니다.",
     icon: Plane,
     href: "/tests/weekend-travel",
     color: "from-sky-500 to-blue-500",
@@ -2692,7 +2692,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "weekend-rest",
     title: "🌙 주말 충전 방식",
-    description: "주말에 에너지를 충전하는 방식으로 알아보는 나의 성격 유형",
+    description: "주말 충전 방식은 휴식, 에너지 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Moon,
     href: "/tests/weekend-rest",
     color: "from-violet-500 to-purple-500",
@@ -2707,7 +2707,7 @@ export const ALL_TESTS: Test[] = [
     id: "weekend-balance",
     title: "⚖️ 주말 균형잡기",
     description:
-      "주말에 할 일과 쉬는 일을 균형잡는 방식으로 알아보는 나의 성격 유형",
+      "주말 균형잡기는 시간관리, 루틴 상황에서 드러나는 생활 루틴과 선택 습관을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 일상적인 결정, 감정 반응, 루틴 관리에서 반복되는 성향을 16가지 결과로 정리합니다.",
     icon: Scale,
     href: "/tests/weekend-balance",
     color: "from-emerald-500 to-teal-500",
@@ -2721,7 +2721,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-notification",
     title: "🔔 알림 대하는 방식",
-    description: "스마트폰 알림을 대하는 방식으로 알아보는 나의 성격 유형",
+    description: "알림 대하는 방식은 스마트폰, 습관 상황에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Bell,
     href: "/tests/phone-notification",
     color: "from-blue-500 to-cyan-500",
@@ -2735,7 +2735,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-battery",
     title: "🔋 배터리 관리",
-    description: "스마트폰 배터리를 관리하는 방식으로 알아보는 나의 성격 유형",
+    description: "배터리 관리는 스마트폰 관리 장면에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Zap,
     href: "/tests/phone-battery",
     color: "from-yellow-500 to-orange-500",
@@ -2750,7 +2750,7 @@ export const ALL_TESTS: Test[] = [
     id: "phone-storage",
     title: "💾 저장공간 관리",
     description:
-      "스마트폰 저장공간을 관리하는 방식으로 알아보는 나의 성격 유형",
+      "저장공간 관리는 스마트폰 관리 장면에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: HardDrive,
     href: "/tests/phone-storage",
     color: "from-green-500 to-emerald-500",
@@ -2764,7 +2764,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-app-organization",
     title: "📱 앱 정리 방식",
-    description: "스마트폰 앱을 정리하는 방식으로 알아보는 나의 성격 유형",
+    description: "앱 정리 방식은 스마트폰 정리 장면에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Grid,
     href: "/tests/phone-app-organization",
     color: "from-indigo-500 to-purple-500",
@@ -2778,7 +2778,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-photo",
     title: "📸 사진 찍는 습관",
-    description: "스마트폰으로 사진을 찍는 습관으로 알아보는 나의 성격 유형",
+    description: "사진 찍는 습관은 스마트폰 사용 장면에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Camera,
     href: "/tests/phone-photo",
     color: "from-pink-500 to-rose-500",
@@ -2792,7 +2792,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-social-media",
     title: "📱 SNS 사용 습관",
-    description: "SNS를 사용하는 습관으로 알아보는 나의 성격 유형",
+    description: "SNS 사용 습관은 스마트폰 사용 장면에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: MessageSquare,
     href: "/tests/phone-social-media",
     color: "from-blue-500 to-cyan-500",
@@ -2806,7 +2806,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-message",
     title: "💬 메시지 답장 스타일",
-    description: "메시지를 답장하는 스타일로 알아보는 나의 성격 유형",
+    description: "메시지 답장 스타일은 스마트폰, 소통 상황에서 드러나는 관계 반응과 표현 방식을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 약속, 대화, 배려 상황에서 드러나는 거리감과 소통 패턴을 16가지 결과로 정리합니다.",
     icon: MessageSquare,
     href: "/tests/phone-message",
     color: "from-purple-500 to-pink-500",
@@ -2820,7 +2820,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-search",
     title: "🔍 검색 습관",
-    description: "스마트폰으로 검색하는 습관으로 알아보는 나의 성격 유형",
+    description: "검색 습관은 스마트폰 검색 장면에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Search,
     href: "/tests/phone-search",
     color: "from-amber-500 to-orange-500",
@@ -2834,7 +2834,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-payment",
     title: "💳 모바일 결제 스타일",
-    description: "모바일로 결제하는 스타일로 알아보는 나의 성격 유형",
+    description: "모바일 결제 스타일은 스마트폰, 습관 상황에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: CreditCard,
     href: "/tests/phone-payment",
     color: "from-emerald-500 to-teal-500",
@@ -2848,7 +2848,7 @@ export const ALL_TESTS: Test[] = [
   {
     id: "phone-backup",
     title: "☁️ 백업 습관",
-    description: "스마트폰 데이터를 백업하는 습관으로 알아보는 나의 성격 유형",
+    description: "백업 습관은 스마트폰, 관리 상황에서 드러나는 디지털 사용 습관과 정리 기준을 살펴봅니다. 12문항 답변으로 선택 기준과 반응 패턴을 확인하고, 앱, 알림, 파일, 온라인 도구를 다루는 방식에서 반복되는 사용 패턴을 16가지 결과로 정리합니다.",
     icon: Cloud,
     href: "/tests/phone-backup",
     color: "from-sky-500 to-blue-500",

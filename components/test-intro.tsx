@@ -177,7 +177,7 @@ export function TestIntro({
         </section>
 
         <div className="mt-4 grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
-          <aside className="lg:sticky lg:top-6 lg:self-start">
+          <aside className="lg:sticky lg:top-24 lg:self-start">
             <ContentToc items={tocItems} />
           </aside>
           <main className="article-content space-y-6">

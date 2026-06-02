@@ -62,6 +62,39 @@ const guides = [
   },
 ];
 
+const quickLinks = [
+  {
+    label: "테스트 모음",
+    href: "/tests",
+    description: "전체 무료 테스트를 한 번에 보기",
+  },
+  {
+    label: "MBTI 테스트 한국어",
+    href: "/tests/coffee-mbti",
+    description: "한국어 질문으로 바로 시작",
+  },
+  {
+    label: "심리테스트 사이트",
+    href: "/tests",
+    description: "친구와 공유하기 좋은 테스트",
+  },
+  {
+    label: "완벽주의 테스트",
+    href: "/tests/perfection-balance-1xQC",
+    description: "기준과 부담의 균형 확인",
+  },
+  {
+    label: "소비성향 테스트",
+    href: "/tests/spending-style",
+    description: "지출 습관과 할인 반응 보기",
+  },
+  {
+    label: "좀비 생존 테스트",
+    href: "/tests/zombie-survival",
+    description: "상황형 선택으로 생존 유형 비교",
+  },
+];
+
 const faqs = [
   {
     q: "테몬 MBTI 테스트 모음은 무료인가요?",
@@ -103,9 +136,9 @@ export default function HomeClient() {
             </h1>
             <p className="article-summary key-takeaways mt-5 max-w-2xl text-lg leading-8 text-slate-700">
               테몬은 가입 없이 2~3분 안에 끝나는 무료 MBTI 테스트 모음과
-              성격 테스트 모음을 제공하는 한국어 테스트 사이트입니다. 음식,
-              연애, 생활, 디지털 등 일상 주제로 결과를 확인하고 친구와
-              비교할 수 있습니다.
+              재밌는 성격 테스트를 제공하는 한국어 테스트 사이트입니다.
+              음식, 연애, 생활, 디지털 등 일상 주제로 결과를 확인하고
+              친구와 비교할 수 있습니다.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button size="lg" asChild>
@@ -137,6 +170,43 @@ export default function HomeClient() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 className="text-xl font-black text-slate-950">
+                  검색어별 빠른 시작
+                </h2>
+                <p className="mt-1 text-sm leading-6 text-slate-600">
+                  많이 찾는 테스트 모음, MBTI 테스트, 심리테스트 주제로 바로 이동하세요.
+                </p>
+              </div>
+              <Link
+                href="/tests"
+                className="text-sm font-bold text-cyan-700 transition hover:text-cyan-900"
+              >
+                전체 테스트 보기
+              </Link>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {quickLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="rounded-lg border border-slate-100 bg-slate-50 p-4 transition hover:border-cyan-200 hover:bg-cyan-50"
+                >
+                  <span className="font-bold text-slate-950">{item.label}</span>
+                  <span className="mt-1 block text-sm leading-6 text-slate-600">
+                    {item.description}
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

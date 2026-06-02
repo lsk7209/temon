@@ -22,7 +22,7 @@ const CONTENT_THRESHOLDS = {
   minDetailBullets: 6,
 };
 
-const MOJIBAKE_PATTERN = /[�]|[ìëãð]|[寃뚯뒪뱀쒓]/g;
+const MOJIBAKE_PATTERN = /[\uFFFD\u3400-\u9FFF]|[\u00c2\u00c3\u00ea\u00eb\u00ec\u00ef\u00f0][\u0080-\u00ff]*/g;
 
 dotenv.config({
   path: path.join(ROOT, ".env.local"),
@@ -119,6 +119,11 @@ function hasPattern(source, pattern) {
 
 function auditStaticResultPages() {
   const testsLayoutPath = path.join(TESTS_DIR, "layout.tsx");
+  const robotsPath = path.join(ROOT, "app", "robots.ts");
+  const robotsSource = fs.existsSync(robotsPath) ? readText(robotsPath) : "";
+  const resultRoutesBlocked =
+    robotsSource.includes("/tests/*/test/result") &&
+    robotsSource.includes("/tests/*/test/result/*");
   const hasGlobalResultEnhancer =
     fs.existsSync(testsLayoutPath) &&
     readText(testsLayoutPath).includes("ResultRouteAutoEnhancements");
@@ -211,6 +216,7 @@ function auditStaticResultPages() {
         /export const metadata|generateMetadata/.test(source) ||
         (fs.existsSync(resultLayoutPath) &&
           /export const metadata|generateMetadata/.test(readText(resultLayoutPath))),
+      resultRoutesBlocked,
       hasConsoleError: /console\.error|console\.log/.test(source),
       hasEnglishSectionTitle:
         /Where This Result Becomes Useful|Action Guide|More Routine Quizzes To Compare|>FAQ<|FAQ<\/|FAQ"/.test(source),
@@ -231,7 +237,9 @@ function auditStaticResultPages() {
     if (!flags.hasToc) issues.push("P2 result table of contents missing");
     if (!flags.hasRelated) issues.push("P2 related tests missing");
     if (!flags.hasActionGuideEffective) issues.push("P2 action guide missing");
-    if (!flags.hasMetadata) issues.push("P2 static metadata missing");
+    if (!flags.hasMetadata && !flags.resultRoutesBlocked) {
+      issues.push("P2 static metadata missing");
+    }
     if (flags.hasEnglishSectionTitle) {
       issues.push("P2 English section title remains");
     }

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -169,6 +170,34 @@ export default function CakeCuttingIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="케이크 자르는 방식으로 보는 성향"
+          summary="케이크를 어떻게 자르고 어떤 조각을 고르는지는 공평함, 디테일, 분위기 배려 같은 성향을 드러냅니다. 이 테스트는 행동을 맞고 틀리게 나누지 않고 함께 먹는 자리에서 내가 어떤 기준으로 움직이는지 보여줍니다."
+          guides={[
+            {
+              title: "공평함 기준 보기",
+              description:
+                "조각 크기를 정확히 맞추려는지, 분위기를 우선해 자연스럽게 나누는지에 따라 결과가 달라집니다.",
+            },
+            {
+              title: "선택 순서 해석",
+              description:
+                "먼저 고르는지, 남은 조각을 받는지, 다른 사람 취향을 먼저 묻는지 같은 선택이 성향 단서가 됩니다.",
+            },
+            {
+              title: "파티·디저트 테스트와 연결",
+              description:
+                "케이크 결과는 디저트 취향, 카페 스타일, 모임 반응 테스트와 같이 보면 더 자연스럽게 읽힙니다.",
+            },
+          ]}
+          relatedLinks={[
+            { href: "/tests/dessert-style", label: "디저트 취향 테스트" },
+            { href: "/tests/cafe-style", label: "카페 스타일 테스트" },
+            { href: "/tests/weekend-social", label: "주말 모임 테스트" },
+          ]}
+          tone="pink"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Cake Cutting Test" />
         </div>

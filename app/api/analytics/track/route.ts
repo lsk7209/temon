@@ -106,11 +106,18 @@ export async function POST(request: NextRequest) {
       });
     } else if (type === "test_start") {
       const testId = typeof payload.testId === "string" ? payload.testId : "";
-      await db.insert(testStarts).values({
-        id: crypto.randomUUID(),
-        testId: testId,
-        createdAt: new Date(),
-      });
+      try {
+        await db.insert(testStarts).values({
+          id: crypto.randomUUID(),
+          testId: testId,
+          createdAt: new Date(),
+        });
+      } catch {
+        return NextResponse.json({
+          success: true,
+          skipped: "test_start_not_persisted",
+        });
+      }
     }
 
     return NextResponse.json({ success: true });

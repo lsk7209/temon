@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,16 +14,16 @@ import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Calendar, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "주말에 계획을 세우는 방식으로 알아보는 나의 성격 유형. 주말에 계획을 세울 때, 주말 계획을 변경해야 할 때 등 구체적인 상황으로 분석합니다."
+const shortDescription = "주말 계획 세우기 테스트로 계획형·즉흥형 주말 성향을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "주말에 계획을 세우는 방식으로 알아보는 나의 성격 유형. 주말에 계획을 세울 때, 주말 계획을 변경해야 할 때 등 구체적인 상황으로 분석합니다."
+const fullDescription = "주말 계획 세우기 테스트로 계획형인지 즉흥형인지, 시간관리와 휴식 균형을 어떻게 잡는지 확인하세요. 12문항으로 16가지 주말 계획 스타일을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "weekend-planning",
   title: "주말 계획 세우기 테스트",
   shortDescription,
   fullDescription,
-  keywords: "주말 계획, 계획 세우기, 주말 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords: "주말 계획 세우기 테스트, 주말 계획 테스트, 계획형 테스트, 즉흥형 테스트, 시간관리 테스트, 주말 성향 테스트, 무료 테스트",
   canonical: "/tests/weekend-planning",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("주말 계획 세우기 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "주말 계획 테스트 검색",
+    description:
+      "주말을 미리 짜는 편인지, 당일 컨디션에 맞춰 바꾸는 편인지 실제 선택 상황으로 확인합니다.",
+  },
+  {
+    title: "계획형과 즉흥형 비교",
+    description:
+      "일정표, 약속 변경, 휴식 배분, 혼자 보내는 시간 같은 기준으로 주말 운영 성향을 나눕니다.",
+  },
+  {
+    title: "시간관리 팁 연결",
+    description:
+      "결과 유형에 맞춰 무리하지 않는 주말 루틴과 여유 시간을 잡는 방향을 참고할 수 있습니다.",
+  },
+]
+
 export default function WeekendPlanningIntro() {
   const schemas = generateQuizSchemas({
     quizId: "weekend-planning",
     title: "주말 계획 세우기 테스트",
     shortDescription,
     fullDescription,
-    keywords: "주말 계획, 계획 세우기, 주말 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords: "주말 계획 세우기 테스트, 주말 계획 테스트, 계획형 테스트, 즉흥형 테스트, 시간관리 테스트, 주말 성향 테스트, 무료 테스트",
     canonical: "/tests/weekend-planning",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function WeekendPlanningIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
                       <p className="font-medium">1. 주말에 계획을 세울 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">미리 정해둔 계획을 세운다 vs 그때그때 선택한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">미리 정해둔 계획을 세운다 vs 그때그때 선택한다</p>
                     </div>
                     <div className="p-4 bg-teal-50 dark:bg-teal-950 rounded-lg">
                       <p className="font-medium">2. 주말 계획을 변경해야 할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">미리 알려준다 vs 상황에 따라 변경한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">미리 알려준다 vs 상황에 따라 변경한다</p>
                     </div>
                     <div className="p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
                       <p className="font-medium">3. 주말에 계획을 세우는 방식</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 순서대로 세운다 vs 우선순위에 따라 세운다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 순서대로 세운다 vs 우선순위에 따라 세운다</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-teal-50 dark:bg-teal-950 rounded-lg">
                       <p className="font-medium">4. 주말에 계획을 세울 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">혼자 조용히 세운다 vs 사람들과 함께 세운다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">혼자 조용히 세운다 vs 사람들과 함께 세운다</p>
                     </div>
                     <div className="p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
                       <p className="font-medium">5. 주말에 계획을 세우는 시간</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 시간에 세운다 vs 그때그때 세운다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 시간에 세운다 vs 그때그때 세운다</p>
                     </div>
                     <div className="p-4 bg-teal-50 dark:bg-teal-950 rounded-lg">
                       <p className="font-medium">6. 주말에 계획을 세우는 이유</p>
-                      <p className="text-sm text-muted-foreground mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
                     </div>
                   </div>
                 </div>
@@ -237,6 +256,20 @@ export default function WeekendPlanningIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="주말 계획 세우기 테스트로 보는 시간관리 성향"
+            summary="주말 계획 세우기 테스트는 주말 계획 테스트, 계획형 테스트, 즉흥형 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 약속을 미리 정하는 방식, 일정 변경 반응, 휴식 배분을 바탕으로 16가지 주말 계획 스타일을 보여줍니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/weekend-balance", label: "주말 균형 테스트" },
+              { href: "/tests/weekend-rest", label: "주말 휴식 테스트" },
+              { href: "/tests/weekend-lazy", label: "주말 게으름 테스트" },
+            ]}
+            tone="green"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Weekend Planning Test" />
         </div>

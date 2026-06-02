@@ -11,16 +11,16 @@ import { ExternalLink } from "lucide-react"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "라면 취향으로 알아보는 성격 유형 테스트. 16가지 라면 MBTI 유형 발견!"
+const shortDescription = "라면 테스트로 면 익힘, 국물, 토핑 취향을 고르고 16가지 라면 MBTI를 확인하세요."
 // Full description for Google/AI
-const fullDescription = "라면 MBTI 테스트로 알아보는 나의 성격! 좋아하는 라면으로 16가지 라면 유형 중 당신은 어떤 라면일까요? 라면 끓이는 방법, 토핑 선택, 먹는 습관 등으로 알아보는 나의 성격 특성. 재미있는 라면 MBTI 테스트를 지금 시작해보세요."
+const fullDescription = "라면 테스트로 면 익힘, 국물 취향, 계란과 토핑 선택, 먹는 습관을 고르고 16가지 라면 MBTI 유형을 확인하세요. 친구와 결과를 비교하기 좋은 무료 음식 성격 테스트입니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "ramen-mbti",
-  title: "라면 MBTI 테스트",
+  title: "라면 테스트",
   shortDescription,
   fullDescription,
-  keywords: "라면 MBTI, 라면 테스트, 성격 테스트, MBTI, 라면 유형, 심리테스트, 무료 테스트",
+  keywords: "라면 테스트, 라면 MBTI, 라면 성격 테스트, 음식 테스트, 라면 유형, 짧은 MBTI 테스트, 무료 테스트",
   canonical: "/tests/ramen-mbti",
   questionCount: 12,
   duration: "PT3M",
@@ -35,6 +35,16 @@ const faqs = [
   {
     question: "어떤 라면 유형이 있나요?",
     answer: "신라면, 진라면, 불닭볶음면, 짜파게티 등 16가지 다양한 라면 유형으로 당신의 성격을 표현해드립니다. 각 라면의 특징과 당신의 성격이 얼마나 일치하는지 확인해보세요.",
+  },
+  {
+    question: "라면 테스트와 라면 MBTI는 같은 테스트인가요?",
+    answer:
+      "이 페이지에서는 라면 테스트와 라면 MBTI를 같은 무료 음식 성격 테스트로 안내합니다. 면 익힘, 국물, 토핑, 먹는 상황을 골라 16가지 라면 유형을 확인합니다.",
+  },
+  {
+    question: "짧은 MBTI 테스트처럼 바로 끝낼 수 있나요?",
+    answer:
+      "네. 12문항으로 구성되어 약 3분 안에 끝낼 수 있고, 결과 페이지에서 나의 라면 유형과 친구와 비교하기 좋은 해석을 바로 볼 수 있습니다.",
   },
 ]
 
@@ -59,10 +69,10 @@ const gscGuides = [
 export default function RamenMBTI() {
   const schemas = generateQuizSchemas({
     quizId: "ramen-mbti",
-    title: "라면 MBTI 테스트",
+    title: "라면 테스트",
     shortDescription,
     fullDescription,
-    keywords: "라면 MBTI, 라면 테스트",
+    keywords: "라면 테스트, 라면 MBTI, 라면 성격 테스트, 음식 테스트, 라면 유형, 짧은 MBTI 테스트, 무료 테스트",
     canonical: "/tests/ramen-mbti",
     questionCount: 12,
     duration: "PT3M",
@@ -82,7 +92,7 @@ export default function RamenMBTI() {
             {/* Header Section */}
             <header className="text-center mb-8">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">🍜 라면 MBTI</h1>
-              <p className="text-xl text-gray-600 mb-8">당신의 라면 취향으로 알아보는 성격 유형</p>
+              <p className="text-xl text-gray-600 mb-8">라면 테스트로 면 익힘, 국물, 토핑 취향에 숨어 있는 성격 유형을 확인하세요.</p>
             </header>
 
             {/* Main Content Section */}
@@ -101,11 +111,11 @@ export default function RamenMBTI() {
                 <div className="border-t pt-6">
                   <div className="grid grid-cols-2 gap-4 text-sm text-gray-500">
                     <div className="text-center">
-                      <div className="font-semibold text-orange-600">소요시간</div>
+                      <div className="font-semibold text-orange-700">소요시간</div>
                       <div>약 3분</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-semibold text-orange-600">문항수</div>
+                      <div className="font-semibold text-orange-700">문항수</div>
                       <div>12문항</div>
                     </div>
                   </div>
@@ -118,7 +128,7 @@ export default function RamenMBTI() {
                     href="https://ko.wikipedia.org/wiki/%EB%9D%BC%EB%A9%B4"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-orange-600 hover:text-orange-700 hover:underline"
+                    className="inline-flex items-center text-orange-700 hover:text-orange-800 hover:underline"
                   >
                     라면의 역사와 종류 알아보기 <ExternalLink className="ml-1 h-4 w-4" />
                   </a>
@@ -143,7 +153,7 @@ export default function RamenMBTI() {
               <Link href="/tests/ramen-mbti/test">
                 <Button
                   size="lg"
-                  className="w-full md:w-auto px-12 py-4 text-lg font-semibold bg-orange-600 hover:bg-orange-700"
+                  className="w-full md:w-auto px-12 py-4 text-lg font-semibold bg-orange-700 hover:bg-orange-800"
                 >
                   테스트 시작하기 🚀
                 </Button>

@@ -10,19 +10,20 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { Clock, Users, Play, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "게임 플레이 방식으로 16유형 성향을 분석합니다. 게임 선택, 플레이 스타일로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성."
+const shortDescription = "게임 플레이 스타일 테스트로 승부욕, 협동, 전략 성향을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "게임 플레이 방식으로 16유형 성향을 분석합니다. 게임 선택, 플레이 스타일로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자동 생성."
+const fullDescription = "게임 플레이 스타일 테스트로 게임 선택 기준, 승부욕, 협동 성향, 전략적 플레이 방식을 12문항으로 확인하세요. 16가지 게임 유형을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "game-play-style",
   title: "게임 플레이 스타일 테스트",
   shortDescription,
   fullDescription,
-  keywords: "게임 테스트, 게임 플레이, 게임 스타일, 성향 테스트, 심리테스트, 무료 테스트",
+  keywords: "게임 플레이 스타일 테스트, 게임 테스트, 게임 성향 테스트, 플레이 스타일, 승부욕 테스트, 협동 게임, 무료 테스트",
   canonical: "/tests/game-play-style",
   questionCount: 12,
   duration: "PT3M",
@@ -32,13 +33,31 @@ const faqs = [
   ...getTopicQuizFAQs("게임 플레이 스타일 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "게임 플레이 스타일 테스트 검색",
+    description:
+      "게임을 고르는 기준, 승부욕, 협동 방식, 공략을 보는 습관을 생활 성향처럼 정리합니다.",
+  },
+  {
+    title: "솔로와 팀플 비교",
+    description:
+      "혼자 몰입하는 편인지, 팀에서 역할을 나누며 즐기는 편인지 결과 유형으로 확인할 수 있습니다.",
+  },
+  {
+    title: "가벼운 취향 분석",
+    description:
+      "실력 평가가 아니라 게임 안에서 반복되는 선택 기준을 알아보는 무료 취향 테스트입니다.",
+  },
+]
+
 export default function GamePlayStyleIntro() {
   const schemas = generateQuizSchemas({
     quizId: "game-play-style",
     title: "게임 플레이 스타일 테스트",
     shortDescription,
     fullDescription,
-    keywords: "게임 테스트, 게임 플레이, 게임 스타일, 성향 테스트, 심리테스트, 무료 테스트",
+    keywords: "게임 플레이 스타일 테스트, 게임 테스트, 게임 성향 테스트, 플레이 스타일, 승부욕 테스트, 협동 게임, 무료 테스트",
     canonical: "/tests/game-play-style",
     questionCount: 12,
     duration: "PT3M",
@@ -137,30 +156,30 @@ export default function GamePlayStyleIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">1. 게임 선택 기준은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">인기 게임 vs 나만의 취향</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">인기 게임 vs 나만의 취향</p>
                     </div>
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">2. 게임 플레이 스타일은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">전략적 vs 즉흥적</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">전략적 vs 즉흥적</p>
                     </div>
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">3. 게임 목적은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">승리 vs 즐거움</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">승리 vs 즐거움</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">4. 게임 플레이 시간은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">계획적으로 vs 그때그때</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">계획적으로 vs 그때그때</p>
                     </div>
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">5. 게임 플레이 사람은?</p>
-                      <p className="text-sm text-muted-foreground mt-1">혼자 vs 함께</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">혼자 vs 함께</p>
                     </div>
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">6. 게임 후기는?</p>
-                      <p className="text-sm text-muted-foreground mt-1">후기 공유 vs 조용히 즐기기</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">후기 공유 vs 조용히 즐기기</p>
                     </div>
                   </div>
                 </div>
@@ -169,6 +188,18 @@ export default function GamePlayStyleIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="게임 플레이 스타일 테스트로 보는 선택 패턴"
+          summary="게임 플레이 스타일 테스트는 내가 게임에서 승리를 우선하는지, 친구와 함께 즐기는 과정을 더 보는지 알고 싶은 검색 의도에 맞춘 무료 성향 테스트입니다. 게임 장르 취향보다 플레이 중 반복되는 선택 기준과 팀 안의 역할을 16가지 유형으로 정리합니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/ott-habits", label: "OTT 시청 습관 테스트" },
+            { href: "/tests/youtube-habit", label: "유튜브 습관 테스트" },
+            { href: "/tests/phone-usage", label: "폰 사용 습관 테스트" },
+          ]}
+          tone="indigo"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Game Play Style Test" />
         </div>

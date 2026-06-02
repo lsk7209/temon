@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -169,6 +170,34 @@ export default function BathroomHabitIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="화장실 습관 테스트는 무엇을 보여주나요?"
+          summary="화장실을 쓰는 방식은 정리감, 민감도, 기다림 방식처럼 일상에서 자주 드러나는 성향을 가볍게 보여줍니다. 이 테스트는 위생 습관을 평가하기보다 내가 불편함을 처리하는 패턴을 빠르게 확인하는 데 맞춰져 있습니다."
+          guides={[
+            {
+              title: "불편함 처리 방식 확인",
+              description:
+                "문이 닫혀 있거나 예상 밖의 소리가 들릴 때 바로 확인하는지, 조용히 기다리는지 같은 반응을 중심으로 봅니다.",
+            },
+            {
+              title: "정리 기준 파악",
+              description:
+                "사용 전후 확인, 물건 위치, 소리와 냄새에 대한 민감도를 통해 생활 속 정리 기준을 읽을 수 있습니다.",
+            },
+            {
+              title: "결과는 가볍게 해석",
+              description:
+                "결과는 성격 진단이 아니라 대화용 해석입니다. 친구와 비교하거나 비슷한 생활 습관 테스트로 이어가기 좋습니다.",
+            },
+          ]}
+          relatedLinks={[
+            { href: "/tests/clean-style", label: "청소 스타일 테스트" },
+            { href: "/tests/shower-habit", label: "샤워 습관 테스트" },
+            { href: "/tests/morning-shower", label: "아침 샤워 테스트" },
+          ]}
+          tone="blue"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Bathroom Habit Test" />
         </div>

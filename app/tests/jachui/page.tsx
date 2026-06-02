@@ -1,44 +1,86 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { JsonLd } from "@/components/json-ld"
-import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { FAQSection } from "@/components/faq-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
+import { JsonLd } from "@/components/json-ld"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Clock, Users, ChefHat, Sparkles } from "lucide-react"
+import { ChefHat, Clock, Sparkles, Users } from "lucide-react"
 
-// Naver-optimized description (under 80 chars)
-const shortDescription = "12문항으로 알아보는 나의 자취 밥상 습관. 요리·배달·정리 루틴까지 성격으로 분석합니다. 자취 밥상 스타일 테스트로 알아보는 나의 성격 ..."
-// Full description for Google/AI
-const fullDescription = "12문항으로 알아보는 나의 자취 밥상 습관. 요리·배달·정리 루틴까지 성격으로 분석합니다. 자취 밥상 스타일 테스트로 알아보는 나의 성격 유형을 무료로 시작해보세요."
+const quizTitle = "자취 밥상 스타일 테스트"
+const shortDescription = "자취 밥상 스타일 테스트로 요리형·배달형·절약형 식사 습관을 16유형으로 확인하세요."
+const fullDescription =
+  "자취 밥상 스타일 테스트로 혼밥을 준비하는 방식, 배달앱을 쓰는 기준, 냉장고 정리 습관을 확인하세요. 12문항으로 16가지 자취생 식사 유형을 무료로 제공합니다."
+const keywords =
+  "자취 밥상 스타일 테스트, 자취생 테스트, 자취 밥상 테스트, 혼밥 테스트, 배달앱 테스트, 자취 요리 테스트, 무료 테스트"
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "jachui",
-  title: "자취 밥상 스타일 테스트",
+  title: quizTitle,
   shortDescription,
   fullDescription,
-  keywords: "자취, 밥상, 자취 밥상, 자취생, 원룸, 자취촌, 배달앱, 요리, 배달, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords,
   canonical: "/tests/jachui",
   questionCount: 12,
   duration: "PT3M",
 })
 
-const faqs = [
-  ...getTopicQuizFAQs("자취 밥상 스타일 테스트"),
+const faqs = [...getTopicQuizFAQs(quizTitle)]
+
+const gscGuides = [
+  {
+    title: "자취생 테스트 검색",
+    description: "혼밥을 직접 해 먹는지, 배달앱을 켜는지, 냉장고 재료를 어떻게 쓰는지 확인합니다.",
+  },
+  {
+    title: "밥상 습관 분석",
+    description: "요리, 배달, 장보기, 식사 시간, 정리 습관을 기준으로 자취 밥상 리듬을 나눕니다.",
+  },
+  {
+    title: "혼밥 루틴 참고",
+    description: "결과는 식습관 평가가 아니라 혼자 사는 생활에서 드러나는 선택 기준을 이해하기 위한 참고용입니다.",
+  },
+]
+
+const questionCards = [
+  ["1. 냉장고를 열었을 때", "재료가 정리되어 있다 vs 배달 쿠폰이 먼저 보인다"],
+  ["2. 밥 먹기 전 고민은", "반찬 구성과 영양 vs 오늘 끌리는 맛과 기분"],
+  ["3. 식사 시간은", "일정하게 맞춘다 vs 배고플 때 먹는다"],
+  ["4. 배달앱을 켰을 때", "평점과 후기를 본다 vs 사진이 끌리는 메뉴를 고른다"],
+  ["5. 친구가 집에 온다면", "직접 한상 차린다 vs 같이 배달을 고른다"],
+  ["6. 남은 김치가 있다면", "김치볶음밥을 만든다 vs 컵라면에 곁들인다"],
+]
+
+const typeCards = [
+  ["즉흥 요리러", "ENFP"],
+  ["감성 혼밥러", "INFP"],
+  ["공유밥상 리더", "ENFJ"],
+  ["철학적 미식가", "INFJ"],
+  ["창의 조리왕", "ENTP"],
+  ["레시피 분석러", "INTP"],
+  ["식단 관리자", "ENTJ"],
+  ["효율 요리 설계자", "INTJ"],
+]
+
+const featureCards = [
+  ["정확한 분석", "12문항으로 자취 밥상 습관을 4축으로 나눠 유형화합니다."],
+  ["맞춤 추천", "유형에 맞는 메뉴 선택과 장보기 루틴 팁을 제공합니다."],
+  ["쉬운 공유", "결과를 친구들과 공유하고 자취 밥상 스타일을 비교할 수 있습니다."],
 ]
 
 export default function JachuiIntro() {
   const schemas = generateQuizSchemas({
     quizId: "jachui",
-    title: "자취 밥상 스타일 테스트",
+    title: quizTitle,
     shortDescription,
     fullDescription,
-    keywords: "자취, 밥상, 자취 밥상, 자취생, 원룸, 자취촌, 배달앱, 요리, 배달, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords,
     canonical: "/tests/jachui",
     questionCount: 12,
     duration: "PT3M",
@@ -47,219 +89,108 @@ export default function JachuiIntro() {
 
   return (
     <>
-      {/* Structured Data for SEO/GEO */}
       <JsonLd id="jachui-quiz-schema" data={schemas.quiz} />
       <JsonLd id="jachui-breadcrumb-schema" data={schemas.breadcrumb} />
       {schemas.faq && <JsonLd id="jachui-faq-schema" data={schemas.faq} />}
 
       <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-orange-950 dark:via-amber-950 dark:to-yellow-950">
-      <main className="container max-w-4xl mx-auto px-4 py-8">
-        <div className="text-center space-y-8">
-          {/* Animated Cooking Elements */}
-          <div className="relative mx-auto w-32 h-32 mb-8">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-amber-500 rounded-full animate-pulse" />
-            <div className="absolute inset-2 bg-gradient-to-br from-orange-200 to-amber-300 rounded-full flex items-center justify-center">
-              <span className="text-4xl animate-bounce">🍳</span>
+        <main className="container mx-auto max-w-4xl px-4 py-8">
+          <section className="space-y-8 text-center">
+            <div className="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-orange-200 to-amber-300 shadow-lg">
+              <ChefHat className="h-14 w-14 text-orange-900" aria-hidden="true" />
             </div>
-            {/* Floating cooking elements */}
-            <div className="absolute -top-6 -left-6 text-lg animate-bounce" style={{ animationDelay: "0.5s" }}>
-              🍚
-            </div>
-            <div className="absolute -top-4 -right-8 text-lg animate-bounce" style={{ animationDelay: "1s" }}>
-              🥘
-            </div>
-            <div className="absolute -bottom-6 -left-8 text-lg animate-bounce" style={{ animationDelay: "1.5s" }}>
-              🍜
-            </div>
-            <div className="absolute -bottom-4 -right-6 text-lg animate-bounce" style={{ animationDelay: "2s" }}>
-              🥗
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <Badge variant="secondary" className="bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
-              🍳 NEW 테스트
-            </Badge>
-
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
-                오늘도 자취생의 밥상은
-              </span>
-              <br />
-              <span className="text-foreground">드라마다 🎬🍳</span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              요리? 귀찮음? 배달? 당신의 자취 밥상 습관으로 보는 성격 유형 테스트
-            </p>
-
-            {/* Stats */}
-            <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>10,746명 참여</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Clock className="h-4 w-4" />
-                <span>3분 소요</span>
-              </div>
-              <div className="flex items-center space-x-2">
+            <div className="space-y-6">
+              <Badge variant="secondary" className="bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">NEW 테스트</Badge>
+              <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+                <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">자취 밥상으로 보는</span>
+                <br />
+                <span className="text-foreground">나의 식사 루틴 유형</span>
+              </h1>
+              <p className="mx-auto max-w-2xl text-xl leading-relaxed text-slate-700 dark:text-slate-200 md:text-2xl">
+                요리, 배달, 냉장고 정리, 혼밥 기준까지 자취 생활의 밥상 습관을 12문항으로 확인합니다.
+              </p>
+              <div className="flex items-center justify-center gap-6 text-sm text-slate-700 dark:text-slate-200">
+                <span className="flex items-center gap-2"><Users className="h-4 w-4" />10,746명 참여</span>
+                <span className="flex items-center gap-2"><Clock className="h-4 w-4" />3분 소요</span>
                 <span>12문항</span>
               </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="space-y-4">
-              <Button
-                size="lg"
-                className="h-16 px-12 text-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 shadow-lg hover:shadow-xl transition-all duration-300 group"
-                asChild
-              >
-                <Link href="/tests/jachui/test">
-                  <span className="text-2xl mr-3 group-hover:animate-bounce">🍚</span>
-                  테스트 시작하기
-                </Link>
+              <Button size="lg" className="h-16 px-12 text-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600" asChild>
+                <Link href="/tests/jachui/test">테스트 시작하기</Link>
               </Button>
-
-              <p className="text-sm text-center text-muted-foreground">무료 • 회원가입 불필요 • 16가지 밥상 유형 분석</p>
             </div>
-          </div>
-        </div>
+          </section>
 
-        {/* Preview Section */}
-        <div className="mt-20 space-y-12">
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
-            <CardContent className="p-8">
-              <div className="text-center space-y-6">
-                <h2 className="text-2xl font-bold flex items-center justify-center space-x-2">
-                  <ChefHat className="h-6 w-6 text-orange-500" />
-                  <span>이런 질문들이 나와요!</span>
+          <section className="mt-20 space-y-12" aria-label="테스트 소개">
+            <Card className="border-0 bg-white/80 shadow-xl backdrop-blur">
+              <CardContent className="p-8">
+                <h2 className="mb-6 flex items-center justify-center gap-2 text-2xl font-bold">
+                  <ChefHat className="h-6 w-6 text-orange-500" /> 이런 질문들이 있어요
                 </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                  <div className="space-y-4">
-                    <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-                      <p className="font-medium">🧊 냉장고를 열었을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">재료가 정리되어 있다 vs 반쯤 비어있고 배달 쿠폰만</p>
-                    </div>
-                    <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
-                      <p className="font-medium">🍽️ 밥 먹기 전 고민은</p>
-                      <p className="text-sm text-muted-foreground mt-1">반찬 구성과 영양 vs 메뉴 맛과 기분</p>
-                    </div>
-                    <div className="p-4 bg-yellow-50 dark:bg-yellow-950 rounded-lg">
-                      <p className="font-medium">⏰ 식사 시간은</p>
-                      <p className="text-sm text-muted-foreground mt-1">일정하게 맞춘다 vs 배고프면 먹는다</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-                      <p className="font-medium">🍳 배달앱을 켰을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">평점/후기부터 본다 vs 썸네일/사진 맛집부터 본다</p>
-                    </div>
-                    <div className="p-4 bg-amber-50 dark:bg-amber-950 rounded-lg">
-                      <p className="font-medium">👥 친구가 집에 온다면</p>
-                      <p className="text-sm text-muted-foreground mt-1">한상 차림 준비! vs 배달 시키자고 제안</p>
-                    </div>
-                    <div className="p-4 bg-yellow-50 dark:bg-yellow-950 rounded-lg">
-                      <p className="font-medium">🍲 냉장고에 남은 김치로</p>
-                      <p className="text-sm text-muted-foreground mt-1">김치볶음밥 만든다 vs 그냥 컵라면 먹는다</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Character Preview */}
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
-            <CardContent className="p-8">
-              <div className="text-center space-y-6">
-                <h2 className="text-2xl font-bold">🎭 16가지 밥상 유형</h2>
-                <p className="text-muted-foreground">당신은 어떤 자취 밥상 스타일일까요?</p>
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {[
-                    { emoji: "🎈", name: "즉흥 요리러", type: "ENFP" },
-                    { emoji: "🌙", name: "감성 혼밥러", type: "INFP" },
-                    { emoji: "🤝", name: "공유밥상 리더", type: "ENFJ" },
-                    { emoji: "📖", name: "철학적 미식가", type: "INFJ" },
-                    { emoji: "🧪", name: "창의 조리왕", type: "ENTP" },
-                    { emoji: "🔬", name: "레시피 분석러", type: "INTP" },
-                    { emoji: "🧱", name: "식단 관리자", type: "ENTJ" },
-                    { emoji: "📐", name: "효율 요리 설계자", type: "INTJ" },
-                  ].map((character) => (
-                    <div
-                      key={character.type}
-                      className="p-3 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950 dark:to-amber-950 rounded-lg text-center"
-                    >
-                      <div className="text-2xl mb-1">{character.emoji}</div>
-                      <div className="text-xs font-medium">{character.name}</div>
-                      <div className="text-xs text-muted-foreground">{character.type}</div>
+                <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-2">
+                  {questionCards.map(([title, description], index) => (
+                    <div key={title} className={`rounded-lg p-4 ${index % 2 === 0 ? "bg-orange-50 dark:bg-orange-950" : "bg-amber-50 dark:bg-amber-950"}`}>
+                      <p className="font-medium">{title}</p>
+                      <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">{description}</p>
                     </div>
                   ))}
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
 
-          {/* Features */}
-          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur">
-            <CardContent className="p-8">
-              <div className="text-center space-y-6">
-                <h2 className="text-2xl font-bold flex items-center justify-center space-x-2">
-                  <Sparkles className="h-6 w-6 text-amber-500" />
-                  <span>특별한 기능</span>
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="text-center space-y-3">
-                    <div className="w-12 h-12 mx-auto bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center">
-                      <span className="text-2xl">🎯</span>
+            <Card className="border-0 bg-white/80 shadow-xl backdrop-blur">
+              <CardContent className="p-8 text-center">
+                <h2 className="text-2xl font-bold">16가지 자취 밥상 유형</h2>
+                <p className="mt-2 text-slate-700 dark:text-slate-200">당신은 어떤 자취 식사 스타일일까요?</p>
+                <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+                  {typeCards.map(([name, type]) => (
+                    <div key={type} className="rounded-lg bg-gradient-to-br from-orange-50 to-amber-50 p-3 text-center dark:from-orange-950 dark:to-amber-950">
+                      <div className="text-xs font-medium">{name}</div>
+                      <div className="text-xs text-slate-700 dark:text-slate-200">{type}</div>
                     </div>
-                    <h3 className="font-semibold">정확한 분석</h3>
-                    <p className="text-sm text-muted-foreground">12가지 자취 밥상 습관으로 MBTI 4축을 정확하게 분석</p>
-                  </div>
-
-                  <div className="text-center space-y-3">
-                    <div className="w-12 h-12 mx-auto bg-amber-100 dark:bg-amber-900 rounded-full flex items-center justify-center">
-                      <span className="text-2xl">💡</span>
-                    </div>
-                    <h3 className="font-semibold">맞춤 추천</h3>
-                    <p className="text-sm text-muted-foreground">당신의 유형에 맞는 추천 메뉴와 장보기 꿀템</p>
-                  </div>
-
-                  <div className="text-center space-y-3">
-                    <div className="w-12 h-12 mx-auto bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center">
-                      <span className="text-2xl">🔗</span>
-                    </div>
-                    <h3 className="font-semibold">쉬운 공유</h3>
-                    <p className="text-sm text-muted-foreground">결과를 친구들과 쉽게 공유하고 비교해보세요</p>
-                  </div>
+                  ))}
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      
-        <div className="mt-12">
-          <AnswerEngineSection quizTitle="Jachui Test" />
-        </div>
+              </CardContent>
+            </Card>
 
-        <div className="mt-12">
-          <LandingConversionSection quizTitle="Jachui Test" />
-        </div>
+            <Card className="border-0 bg-white/80 shadow-xl backdrop-blur">
+              <CardContent className="p-8 text-center">
+                <h2 className="mb-6 flex items-center justify-center gap-2 text-2xl font-bold">
+                  <Sparkles className="h-6 w-6 text-amber-500" /> 특별한 기능
+                </h2>
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                  {featureCards.map(([title, description]) => (
+                    <div key={title} className="space-y-2">
+                      <h3 className="font-semibold">{title}</h3>
+                      <p className="text-sm text-slate-700 dark:text-slate-200">{description}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </section>
 
-        <div className="mt-12">
-          <RelatedTestsSection testId="jachui" />
-        </div>
+          <div className="mt-12">
+            <GscLandingBoost
+              title="자취 밥상 스타일 테스트로 보는 혼밥 루틴"
+              summary="자취 밥상 스타일 테스트는 자취생 테스트, 혼밥 테스트, 배달앱 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 요리와 배달 선택, 냉장고 재료 활용, 식사 시간과 정리 습관을 바탕으로 16가지 자취 밥상 유형을 보여줍니다."
+              guides={gscGuides}
+              relatedLinks={[
+                { href: "/tests/meal-solo", label: "혼밥 스타일 테스트" },
+                { href: "/tests/cooking-style", label: "요리 스타일 테스트" },
+                { href: "/tests/online-food", label: "배달 음식 선택 테스트" },
+              ]}
+              tone="orange"
+            />
+          </div>
 
-        {/* FAQ Section for AI Bot Optimization */}
-        <section className="mt-12 mb-8">
-          <FAQSection faqs={faqs} title="자취 밥상 스타일 테스트 자주 묻는 질문" />
-        </section>
-</main>
-    </div>
+          <div className="mt-12"><AnswerEngineSection quizTitle="Jachui Test" /></div>
+          <div className="mt-12"><LandingConversionSection quizTitle="Jachui Test" /></div>
+          <div className="mt-12"><RelatedTestsSection testId="jachui" /></div>
+          <section className="mb-8 mt-12">
+            <FAQSection faqs={faqs} title="자취 밥상 스타일 테스트 자주 묻는 질문" />
+          </section>
+        </main>
+      </div>
     </>
   )
 }

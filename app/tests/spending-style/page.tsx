@@ -11,16 +11,16 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "계획 구매부터 즉흥 지출까지, 당신의 소비 패턴을 16유형으로 분석. 유형별 절약 팁과 추천 설정 제공."
+const shortDescription = "소비성향 테스트로 충동구매, 할인 반응, 예산 습관을 16유형으로 확인하세요."
 // Full description for Google/AI
-const fullDescription = "계획 구매부터 즉흥 지출까지, 당신의 소비 패턴을 16유형으로 분석. 유형별 절약 팁과 추천 설정 제공."
+const fullDescription = "소비성향 테스트로 계획 구매, 즉흥 지출, 할인 반응, 구독 관리, 예산 습관을 12문항으로 확인하세요. 16가지 소비 유형과 유형별 절약 팁을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "spending-style",
-  title: "소비 성향 테스트",
+  title: "소비성향 테스트",
   shortDescription,
   fullDescription,
-  keywords: "소비, 구매, 예산, 가격, 충동구매, 성향 테스트, MBTI, 무료 테스트",
+  keywords: "소비성향 테스트, 소비 성향 테스트, 충동구매 테스트, 구매 성향, 예산 습관, 절약 테스트, 무료 테스트",
   canonical: "/tests/spending-style",
   questionCount: 12,
   duration: "PT2M",
@@ -51,10 +51,10 @@ const gscGuides = [
 export default function SpendingStyleIntro() {
   const schemas = generateQuizSchemas({
     quizId: "spending-style",
-    title: "소비 성향 테스트",
+    title: "소비성향 테스트",
     shortDescription,
     fullDescription,
-    keywords: "소비, 구매, 예산, 가격, 충동구매, 성향 테스트, MBTI, 무료 테스트",
+    keywords: "소비성향 테스트, 소비 성향 테스트, 충동구매 테스트, 구매 성향, 예산 습관, 절약 테스트, 무료 테스트",
     canonical: "/tests/spending-style",
     questionCount: 12,
     duration: "PT2M",
@@ -76,7 +76,7 @@ export default function SpendingStyleIntro() {
               💰 소비 습관으로 보는 나의 성향
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              계획성, 즉흥성, 비교 습관, 리스크 민감도, 절약·투자 균형을 12문항으로 분석하여 16유형으로 매핑합니다.
+              소비성향 테스트로 계획성, 즉흥성, 할인 반응, 비교 습관, 예산 관리 기준을 12문항으로 분석하여 16유형으로 매핑합니다.
             </p>
           </div>
 

@@ -126,7 +126,12 @@ export function AnswerEngineSection({ quizTitle }: { quizTitle: string }) {
       <CardContent className="p-8 md:p-12">
         <div className="space-y-6">
           <div className="space-y-3">
-            <Badge variant="secondary">테스트 안내</Badge>
+            <Badge
+              variant="secondary"
+              className="bg-sky-700 text-white hover:bg-sky-700"
+            >
+              테스트 안내
+            </Badge>
             <h2 className="text-2xl font-bold text-gray-900">
               이 테스트, 이런 분께 딱 맞아요
             </h2>

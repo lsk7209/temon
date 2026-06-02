@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
@@ -237,6 +238,36 @@ export default function WeekendSocialIntro() {
           </Card>
         </div>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="주말 모임 테스트, 어떤 상황에서 보면 좋을까요?"
+            summary="주말 모임 테스트는 주말 만남, 약속 스타일, 친구 모임 성향을 가볍게 확인하려는 검색 의도에 맞춘 무료 성격 테스트입니다. 약속을 잡는 방식, 모임에서 에너지를 쓰는 방식, 대화 참여 스타일을 기준으로 나의 사회적 리듬을 빠르게 비교할 수 있습니다."
+            guides={[
+              {
+                title: "주말 약속 성향 확인",
+                description:
+                  "미리 일정을 정하는 편인지, 당일 분위기에 맞춰 움직이는 편인지 살펴봅니다.",
+              },
+              {
+                title: "모임 에너지 비교",
+                description:
+                  "여럿이 있을 때 에너지가 차는지, 모임 후 회복 시간이 필요한지 구분합니다.",
+              },
+              {
+                title: "친구와 결과 공유",
+                description:
+                  "결과 유형이 직관적이라 단톡방에서 서로의 모임 스타일을 비교하기 좋습니다.",
+              },
+            ]}
+            relatedLinks={[
+              { href: "/tests/evening-social", label: "저녁 약속 테스트" },
+              { href: "/tests/weekend-rest", label: "주말 충전 테스트" },
+              { href: "/tests/weekend-planning", label: "주말 계획 테스트" },
+            ]}
+            tone="blue"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Weekend Social Test" />
         </div>

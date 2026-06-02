@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/faq-section";
 import { AnswerEngineSection } from "@/components/answer-engine-section";
 import { LandingConversionSection } from "@/components/landing-conversion-section";
 import { RelatedTestsSection } from "@/components/related-tests-section";
+import { GscLandingBoost } from "@/components/gsc-landing-boost";
 import {
   generateQuizMetadata,
   generateQuizSchemas,
@@ -14,7 +15,6 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Users, Sparkles, ExternalLink } from "lucide-react";
-import Script from "next/script";
 import {
   Accordion,
   AccordionContent,
@@ -24,10 +24,10 @@ import {
 
 // Naver-optimized description (under 80 chars)
 const shortDescription =
-  "K-드라마 클리셰 테스트로 알아보는 나의 드라마 캐릭터! 재벌남/여부터 국밥 조연까지, 10개의 드라마 클리셰 상황에서 당신의 선택은? 무...";
+  "K-드라마 클리셰 테스트로 내가 닮은 드라마 캐릭터 유형을 확인하세요.";
 // Full description for Google/AI
 const fullDescription =
-  "K-드라마 클리셰 테스트로 알아보는 나의 드라마 캐릭터! 재벌남/여부터 국밥 조연까지, 10개의 드라마 클리셰 상황에서 당신의 선택은? 무료로 시작해보세요.";
+  "K-드라마 클리셰 테스트로 재벌 2세, 캔디형 주인공, 서브 남주, 국밥 조연처럼 내가 닮은 드라마 캐릭터 유형을 확인하세요. 10가지 드라마 상황을 무료로 분석합니다.";
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "kdrama-mbti",
@@ -35,13 +35,31 @@ export const metadata: Metadata = generateQuizMetadata({
   shortDescription,
   fullDescription,
   keywords:
-    "K-드라마, 드라마 테스트, 클리셰 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    "K-드라마 클리셰 테스트, 드라마 테스트, 드라마 캐릭터 테스트, K드라마 MBTI, 클리셰 테스트, 무료 테스트",
   canonical: "/tests/kdrama-mbti",
   questionCount: 10,
   duration: "PT2M",
 });
 
 const faqs = [...getTopicQuizFAQs("K-드라마 클리셰 테스트 - 무료 성격 테스트")];
+
+const gscGuides = [
+  {
+    title: "드라마 캐릭터 테스트 검색",
+    description:
+      "K-드라마 속 자주 나오는 장면에서 어떤 선택을 하는지 보고 닮은 캐릭터 포지션을 찾습니다.",
+  },
+  {
+    title: "클리셰 상황 기반 분석",
+    description:
+      "우산 장면, 첫사랑 재회, 고백, 엔딩씬처럼 익숙한 장면을 선택형 질문으로 구성했습니다.",
+  },
+  {
+    title: "밈처럼 가볍게 공유",
+    description:
+      "정밀 심리검사가 아니라 친구와 결과를 비교하기 좋은 무료 K-드라마 성향 테스트입니다.",
+  },
+];
 
 export default function KDramaMBTIIntro() {
   const schemas = generateQuizSchemas({
@@ -50,7 +68,7 @@ export default function KDramaMBTIIntro() {
     shortDescription,
     fullDescription,
     keywords:
-      "K-드라마, 드라마 테스트, 클리셰 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+      "K-드라마 클리셰 테스트, 드라마 테스트, 드라마 캐릭터 테스트, K드라마 MBTI, 클리셰 테스트, 무료 테스트",
     canonical: "/tests/kdrama-mbti",
     questionCount: 10,
     duration: "PT2M",
@@ -158,7 +176,7 @@ export default function KDramaMBTIIntro() {
                         <p className="font-medium">
                           1. 비 오는 날, 누군가 우산을 씌워줬다. 당신은?
                         </p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           심쿵하며 눈을 마주친다 vs 쿨하게 뿌리친다
                         </p>
                       </div>
@@ -166,7 +184,7 @@ export default function KDramaMBTIIntro() {
                         <p className="font-medium">
                           2. 갑자기 첫사랑이 나타났다!
                         </p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           눈물 글썽이며 달려간다 vs 아무렇지 않게 인사한다
                         </p>
                       </div>
@@ -174,7 +192,7 @@ export default function KDramaMBTIIntro() {
                         <p className="font-medium">
                           3. 길에서 부딪힌 낯선 사람. 드라마라면?
                         </p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           바로 사랑에 빠진다 vs 사과하고 지나간다
                         </p>
                       </div>
@@ -182,7 +200,7 @@ export default function KDramaMBTIIntro() {
                         <p className="font-medium">
                           4. 위기 상황! 당신의 선택은?
                         </p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           내가 직접 구하러 뛴다 vs 그냥 국밥 먹으러 간다
                         </p>
                       </div>
@@ -190,20 +208,20 @@ export default function KDramaMBTIIntro() {
                         <p className="font-medium">
                           5. 대사 한마디로 승부 본다. 당신의 스타일은?
                         </p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           "내 마음 아직도 네 거야." vs "이러다 늦겠다, 먼저
                           간다."
                         </p>
                       </div>
                       <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                         <p className="font-medium">6. 집안 배경은?</p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           재벌가 대저택 vs 옥탑방 원룸
                         </p>
                       </div>
                       <div className="p-4 bg-pink-50 dark:bg-pink-950 rounded-lg">
                         <p className="font-medium">7. 연애 중 싸움이 났다!</p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           울면서 매달린다 vs "그럼 헤어지자."
                         </p>
                       </div>
@@ -211,13 +229,13 @@ export default function KDramaMBTIIntro() {
                         <p className="font-medium">
                           8. 가장 닮은 드라마 장르는?
                         </p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           눈물 쏙 빼는 정통 멜로 vs 웃긴 상황극 같은 로코
                         </p>
                       </div>
                       <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                         <p className="font-medium">9. 누군가 고백했다!</p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           "나도 좋아했어." vs "고마워, 근데 안 돼."
                         </p>
                       </div>
@@ -225,7 +243,7 @@ export default function KDramaMBTIIntro() {
                         <p className="font-medium">
                           10. 엔딩씬, 당신의 선택은?
                         </p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">
                           슬로모션 키스 vs 그냥 국밥 먹으며 크레딧 올라감
                         </p>
                       </div>
@@ -289,6 +307,20 @@ export default function KDramaMBTIIntro() {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+
+            <div className="mt-12">
+              <GscLandingBoost
+                title="K-드라마 클리셰 테스트로 찾는 내 캐릭터"
+                summary="K-드라마 클리셰 테스트는 드라마 캐릭터 테스트, 클리셰 테스트, K드라마 MBTI를 찾는 검색 의도에 맞춰 만든 무료 성향 테스트입니다. 익숙한 드라마 장면에서의 선택을 바탕으로 내가 어떤 캐릭터 포지션에 가까운지 보여줍니다."
+                guides={gscGuides}
+                relatedLinks={[
+                  { href: "/tests/kpop-idol", label: "K팝 아이돌 포지션 테스트" },
+                  { href: "/tests/snowwhite-mbti", label: "백설공주 에겐테토 테스트" },
+                  { href: "/tests/breakup-style", label: "이별 후유증 유형 테스트" },
+                ]}
+                tone="pink"
+              />
             </div>
 
             <div className="mt-12">

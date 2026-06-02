@@ -10,15 +10,15 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
 
-const shortDescription = "갑자기 세상이 좀비로 뒤덮인다면? 나의 생존 전략과 역할로 알아보는 16가지 생존 유형."
-const fullDescription = "좀비 아포칼립스 생존 유형 테스트로 알아보는 나의 생존 DNA! 나는 좀비 헌터일까, 최초 감염자일까? 12개의 질문으로 극한 상황에서의 나의 본모습을 확인하고, 생존 확률을 높여줄 꿀팁과 아이템 추천까지 받아보세요."
+const shortDescription = "좀비 아포칼립스 테스트로 생존 전략, 팀 역할, 위기 판단을 16유형으로 확인하세요."
+const fullDescription = "좀비 아포칼립스 테스트로 도망, 수색, 방어, 팀플 선택을 고르고 나의 생존 유형을 확인하세요. 12개 상황 질문으로 생존 전략과 팀 안의 역할을 무료로 비교할 수 있습니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "zombie-survival",
-  title: "좀비 아포칼립스 생존 유형 테스트",
+  title: "좀비 아포칼립스 테스트",
   shortDescription,
   fullDescription,
-  keywords: "좀비, 아포칼립스, 생존 테스트, 생존 유형, 성향 테스트, MBTI, 무료 테스트",
+  keywords: "좀비 아포칼립스 테스트, 좀비 테스트, 생존 테스트, 생존 유형, 상황형 테스트, 무료 테스트",
   canonical: "/tests/zombie-survival",
   questionCount: 12,
   duration: "PT3M",
@@ -49,10 +49,10 @@ const gscGuides = [
 export default function ZombieSurvivalIntro() {
   const schemas = generateQuizSchemas({
     quizId: "zombie-survival",
-    title: "좀비 아포칼립스 생존 유형 테스트",
+    title: "좀비 아포칼립스 테스트",
     shortDescription,
     fullDescription,
-    keywords: "좀비, 아포칼립스, 생존 테스트, 생존 유형, 성향 테스트, MBTI, 무료 테스트",
+    keywords: "좀비 아포칼립스 테스트, 좀비 테스트, 생존 테스트, 생존 유형, 상황형 테스트, 무료 테스트",
     canonical: "/tests/zombie-survival",
     questionCount: 12,
     duration: "PT3M",
@@ -73,7 +73,7 @@ export default function ZombieSurvivalIntro() {
                 🧟‍♂️ 좀비 아포칼립스 생존 유형
               </h1>
               <p className="text-xl text-gray-300 mb-8">
-                지금 당장 좀비가 나타난다면? 당신은 얼마나 살아남을 수 있을까요?
+                좀비 아포칼립스 테스트로 위기 순간의 생존 전략과 팀 안의 역할을 확인하세요.
               </p>
             </div>
 

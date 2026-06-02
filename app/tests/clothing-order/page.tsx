@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
@@ -169,6 +170,34 @@ export default function ClothingOrderIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="옷 입는 순서 테스트 사용법"
+          summary="옷을 입는 순서와 코디를 정하는 방식은 준비성, 실용성, 감각 중심 선택을 보여줍니다. 이 테스트는 패션 센스를 평가하지 않고 외출 전 내가 어떤 흐름으로 결정을 내리는지 가볍게 해석합니다."
+          guides={[
+            {
+              title: "준비 순서 확인",
+              description:
+                "정해진 순서대로 입는지, 눈에 보이는 것부터 고르는지로 외출 준비의 안정감과 즉흥성을 봅니다.",
+            },
+            {
+              title: "코디 기준 읽기",
+              description:
+                "날씨, 일정, 편안함, 분위기 중 무엇을 먼저 보는지에 따라 결과의 성향 설명이 달라집니다.",
+            },
+            {
+              title: "외출 루틴과 연결",
+              description:
+                "옷 입는 순서는 아침 옷차림, 가방 정리, 쇼핑 스타일 테스트와 함께 보면 더 자연스럽게 읽힙니다.",
+            },
+          ]}
+          relatedLinks={[
+            { href: "/tests/morning-outfit", label: "아침 옷차림 테스트" },
+            { href: "/tests/bag-organizing", label: "가방 정리 테스트" },
+            { href: "/tests/shopping-style", label: "쇼핑 스타일 테스트" },
+          ]}
+          tone="indigo"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Clothing Order Test" />
         </div>

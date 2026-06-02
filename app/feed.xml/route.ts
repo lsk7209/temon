@@ -2,7 +2,10 @@ import { NextResponse } from "next/server";
 import { desc, eq } from "drizzle-orm";
 import { getDb, isDbAvailable } from "@/lib/db/client";
 import { tests } from "@/lib/db/schema";
-import { getVisibleTests } from "@/lib/visible-tests";
+import { getIndexableTests } from "@/lib/visible-tests";
+import { getSiteUrl, toSiteUrl } from "@/lib/site-url";
+import { getAllBlogPosts } from "@/lib/blog-posts";
+import { isNoindexTest } from "@/lib/noindex-tests";
 
 export const revalidate = 3600;
 
@@ -14,9 +17,9 @@ type FeedItem = {
   category: string;
   updatedAt: Date;
   publishedAt: Date;
+  contentType: "test" | "blog";
 };
 
-const BASE_URL = "https://temon.kr";
 const FEED_LIMIT = 30;
 const STATIC_FALLBACK_DATE = new Date("2025-01-01T00:00:00.000Z");
 
@@ -62,21 +65,25 @@ async function getPublishedDbFeedItems(now: Date): Promise<FeedItem[]> {
       .from(tests)
       .where(eq(tests.status, "published"))
       .orderBy(desc(tests.publishedAt), desc(tests.createdAt))
-      .limit(FEED_LIMIT)
+      .limit(FEED_LIMIT * 3)
       .all();
 
-    return rows.map((test) => {
+    return rows
+      .filter((test) => test.slug && !isNoindexTest(test.slug))
+      .slice(0, FEED_LIMIT)
+      .map((test) => {
       const publishedAt = toValidDate(test.publishedAt || test.createdAt, now);
       return {
         id: test.id,
         title: test.title,
-        url: `${BASE_URL}/tests/${test.slug}`,
+        url: toSiteUrl(`/tests/${test.slug}`),
         description: test.description || `${test.title} 테스트를 시작해보세요.`,
         category: test.category || "quiz",
         publishedAt,
         updatedAt: toValidDate(test.updatedAt || test.publishedAt || test.createdAt, publishedAt),
+        contentType: "test",
       };
-    });
+      });
   } catch (error) {
     console.error("Failed to build DB feed items:", error);
     return [];
@@ -84,18 +91,35 @@ async function getPublishedDbFeedItems(now: Date): Promise<FeedItem[]> {
 }
 
 function getStaticFeedItems(now: Date): FeedItem[] {
-  return getVisibleTests(now).map((test) => {
+  return getIndexableTests(now).map((test) => {
     const publishedAt = test.publishAt
       ? toValidDate(test.publishAt, STATIC_FALLBACK_DATE)
       : STATIC_FALLBACK_DATE;
     return {
       id: test.id,
       title: test.title,
-      url: `${BASE_URL}${test.href}`,
+      url: toSiteUrl(test.href),
       description: test.description || `${test.title} 테스트를 시작해보세요.`,
       category: test.category,
       publishedAt,
       updatedAt: publishedAt,
+      contentType: "test",
+    };
+  });
+}
+
+function getBlogFeedItems(): FeedItem[] {
+  return getAllBlogPosts().map((post) => {
+    const publishedAt = toValidDate(post.publishedAt, STATIC_FALLBACK_DATE);
+    return {
+      id: `blog-${post.slug}`,
+      title: post.title,
+      url: toSiteUrl(`/blog/${post.slug}`),
+      description: post.description,
+      category: post.category,
+      publishedAt,
+      updatedAt: toValidDate(post.updatedAt, publishedAt),
+      contentType: "blog",
     };
   });
 }
@@ -115,6 +139,7 @@ function buildEntry(item: FeedItem): string {
   const description = escapeXml(item.description);
   const url = escapeXml(item.url);
   const category = escapeXml(item.category);
+  const ctaLabel = item.contentType === "blog" ? "글 읽기" : "테스트 시작하기";
 
   return `    <entry>
       <id>${url}</id>
@@ -126,32 +151,34 @@ function buildEntry(item: FeedItem): string {
         <name>테몬</name>
       </author>
       <summary type="html">${description}</summary>
-      <content type="html">&lt;p&gt;${description}&lt;/p&gt;&lt;p&gt;&lt;a href="${url}"&gt;테스트 시작하기&lt;/a&gt;&lt;/p&gt;</content>
+      <content type="html">&lt;p&gt;${description}&lt;/p&gt;&lt;p&gt;&lt;a href="${url}"&gt;${ctaLabel}&lt;/a&gt;&lt;/p&gt;</content>
       <category term="${category}"/>
     </entry>`;
 }
 
 export async function GET() {
   const now = new Date();
+  const baseUrl = getSiteUrl();
   const dbItems = await getPublishedDbFeedItems(now);
   const staticItems = getStaticFeedItems(now);
-  const feedItems = mergeFeedItems([...dbItems, ...staticItems]);
+  const blogItems = getBlogFeedItems();
+  const feedItems = mergeFeedItems([...dbItems, ...staticItems, ...blogItems]);
 
   const atomFeed = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR">
-  <id>${BASE_URL}/feed.xml</id>
+  <id>${baseUrl}/feed.xml</id>
   <title>테몬 MBTI 테스트 모음</title>
   <subtitle>무료 성격 테스트와 취향 테스트를 최신 공개 순서로 제공합니다.</subtitle>
-  <link href="${BASE_URL}" rel="alternate"/>
-  <link href="${BASE_URL}/feed.xml" rel="self"/>
+  <link href="${baseUrl}" rel="alternate"/>
+  <link href="${baseUrl}/feed.xml" rel="self"/>
   <updated>${now.toISOString()}</updated>
   <author>
     <name>테몬</name>
     <email>admin@temon.kr</email>
   </author>
   <rights>Copyright ${now.getFullYear()} 테몬. All rights reserved.</rights>
-  <icon>${BASE_URL}/favicon-32x32.png</icon>
-  <logo>${BASE_URL}/favicon-32x32.png</logo>
+  <icon>${baseUrl}/favicon-32x32.png</icon>
+  <logo>${baseUrl}/favicon-32x32.png</logo>
 ${feedItems.map(buildEntry).join("\n")}
 </feed>`;
 

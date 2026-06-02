@@ -10,12 +10,13 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { Clock, Users, Heart, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "아침에 기분을 관리하는 방식으로 알아보는 나의 성격 유형. 아침에 기분이 안 좋을 때, 아침에 좋은 일이 생겼을 때 등 구체적인 상황으로 ..."
+const shortDescription = "아침 기분 테스트로 감정 전환, 컨디션 관리, 하루 시작 방식을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "아침에 기분을 관리하는 방식으로 알아보는 나의 성격 유형. 아침에 기분이 안 좋을 때, 아침에 좋은 일이 생겼을 때 등 구체적인 상황으로 분석합니다."
+const fullDescription = "아침 기분 테스트로 감정 전환, 컨디션 관리, 하루 시작 루틴을 12문항으로 확인하세요. 16가지 아침 기분 유형과 나에게 맞는 시작 방식을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "morning-mood",
@@ -30,6 +31,24 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("아침 기분 관리 테스트"),
+]
+
+const gscGuides = [
+  {
+    title: "아침 기분 테스트 검색",
+    description:
+      "아침에 기분이 좋거나 가라앉을 때 어떤 방식으로 전환하는지 생활 장면으로 확인합니다.",
+  },
+  {
+    title: "하루 시작 방식",
+    description:
+      "감정을 바로 표현하는 편인지, 조용히 정리해야 하루가 시작되는 편인지 결과로 나눠 봅니다.",
+  },
+  {
+    title: "가벼운 루틴 참고",
+    description:
+      "결과는 심리 진단이 아니라 아침 컨디션을 덜 흔들리게 만드는 작은 루틴 참고 자료입니다.",
+  },
 ]
 
 export default function MorningMoodIntro() {
@@ -137,30 +156,30 @@ export default function MorningMoodIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-pink-50 dark:bg-pink-950 rounded-lg">
                       <p className="font-medium">1. 아침에 기분이 안 좋을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">기분을 전환하기 위해 무언가를 한다 vs 그냥 둔다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">기분을 전환하기 위해 무언가를 한다 vs 그냥 둔다</p>
                     </div>
                     <div className="p-4 bg-rose-50 dark:bg-rose-950 rounded-lg">
                       <p className="font-medium">2. 아침에 좋은 일이 생겼을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">즉시 기분을 표현한다 vs 조용히 즐긴다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">즉시 기분을 표현한다 vs 조용히 즐긴다</p>
                     </div>
                     <div className="p-4 bg-pink-50 dark:bg-pink-950 rounded-lg">
                       <p className="font-medium">3. 아침에 기분을 관리할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 방법으로 관리한다 vs 그때그때 다르게 관리한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">정해진 방법으로 관리한다 vs 그때그때 다르게 관리한다</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-rose-50 dark:bg-rose-950 rounded-lg">
                       <p className="font-medium">4. 아침에 기분을 전환할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">활동이나 운동을 한다 vs 휴식이나 명상을 한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">활동이나 운동을 한다 vs 휴식이나 명상을 한다</p>
                     </div>
                     <div className="p-4 bg-pink-50 dark:bg-pink-950 rounded-lg">
                       <p className="font-medium">5. 아침에 기분을 표현할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">사람들과 함께 표현한다 vs 혼자만의 시간을 즐긴다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">사람들과 함께 표현한다 vs 혼자만의 시간을 즐긴다</p>
                     </div>
                     <div className="p-4 bg-rose-50 dark:bg-rose-950 rounded-lg">
                       <p className="font-medium">6. 아침에 기분을 관리하는 이유</p>
-                      <p className="text-sm text-muted-foreground mt-1">효율성과 생산성을 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">효율성과 생산성을 위해 vs 기분과 컨디션을 위해</p>
                     </div>
                   </div>
                 </div>
@@ -237,6 +256,18 @@ export default function MorningMoodIntro() {
           </Card>
         </div>
       
+        <GscLandingBoost
+          title="아침 기분 테스트로 확인하는 하루 시작 패턴"
+          summary="아침 기분 테스트는 눈뜬 직후 감정과 컨디션이 하루에 어떤 영향을 주는지 알고 싶은 검색 의도에 맞춘 무료 생활 성향 테스트입니다. 기분을 빨리 전환하는 편인지, 천천히 정리해야 안정되는 편인지 16가지 유형으로 확인할 수 있습니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/morning-alarm", label: "아침 알람 테스트" },
+            { href: "/tests/morning-rush", label: "아침 준비 테스트" },
+            { href: "/tests/sleep-chronotype", label: "크로노타입 테스트" },
+          ]}
+          tone="pink"
+        />
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Morning Mood Test" />
         </div>

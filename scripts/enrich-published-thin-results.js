@@ -1,13 +1,21 @@
 #!/usr/bin/env node
 const path = require("node:path");
+const fs = require("node:fs");
 const dotenv = require("dotenv");
 const { createClient } = require("@libsql/client");
 
 const ROOT = path.resolve(__dirname, "..");
+const REPORTS_DIR = path.join(ROOT, "reports");
 const APPLY = process.argv.includes("--apply");
+const STATUS_ARG = process.argv.find((arg) => arg.startsWith("--status="));
+const TARGET_STATUS = STATUS_ARG ? STATUS_ARG.split("=")[1] : "published";
 const MIN_SUMMARY = 140;
 const MIN_TRAITS = 4;
 const MIN_DETAIL_ITEMS = 6;
+
+if (!["published", "draft"].includes(TARGET_STATUS)) {
+  throw new Error("--status must be published or draft");
+}
 
 dotenv.config({ path: path.join(ROOT, ".env.local"), override: true, quiet: true });
 
@@ -156,6 +164,29 @@ function enrichRow(row) {
   };
 }
 
+function writeBackup(rows) {
+  fs.mkdirSync(REPORTS_DIR, { recursive: true });
+  const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const backupPath = path.join(
+    REPORTS_DIR,
+    `${TARGET_STATUS}-thin-results-backup-${stamp}.json`,
+  );
+  fs.writeFileSync(
+    backupPath,
+    `${JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        rowCount: rows.length,
+        rows,
+      },
+      null,
+      2,
+    )}\n`,
+    "utf8",
+  );
+  return backupPath;
+}
+
 async function main() {
   if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
     throw new Error("TURSO_DATABASE_URL or TURSO_AUTH_TOKEN missing");
@@ -168,7 +199,8 @@ async function main() {
 
   try {
     const rows = (
-      await db.execute(`
+      await db.execute({
+        sql: `
         select
           rt.id,
           rt.type_code,
@@ -182,15 +214,19 @@ async function main() {
           t.title
         from result_types rt
         join tests t on t.id = rt.test_id
-        where t.status = 'published'
+        where t.status = ?
         order by t.slug, rt.type_code
-      `)
+      `,
+        args: [TARGET_STATUS],
+      })
     ).rows;
 
-    const updates = rows.filter(isThin).map(enrichRow);
+    const thinRows = rows.filter(isThin);
+    const updates = thinRows.map(enrichRow);
 
     console.log(`mode: ${APPLY ? "apply" : "dry-run"}`);
-    console.log(`published rows checked: ${rows.length}`);
+    console.log(`status: ${TARGET_STATUS}`);
+    console.log(`rows checked: ${rows.length}`);
     console.log(`thin rows to update: ${updates.length}`);
     console.log(
       JSON.stringify(
@@ -214,6 +250,9 @@ async function main() {
 
     if (!APPLY) return;
 
+    const backupPath = writeBackup(thinRows);
+    console.log(`backup written: ${path.relative(ROOT, backupPath)}`);
+
     for (const update of updates) {
       await db.execute({
         sql: `
@@ -232,7 +271,7 @@ async function main() {
       });
     }
 
-    console.log(`OK: enriched ${updates.length} published result rows`);
+    console.log(`OK: enriched ${updates.length} ${TARGET_STATUS} result rows`);
   } finally {
     db.close();
   }

@@ -20,13 +20,13 @@ export async function GET() {
 테몬은 무료 성격 퀴즈, 관계 테스트, 취향 테스트, 생활 유형 테스트를 제공하는 한국어 퀴즈 사이트입니다.
 블로그는 퀴즈 결과를 진단처럼 단정하지 않고 선택 습관, 대화 힌트, 자기이해 관점으로 설명합니다.
 
-- URL: https://temon.kr
+- URL: [https://temon.kr](https://temon.kr)
 - 언어: 한국어
 - 전체 테스트 수: ${tests.length}개
 - 블로그 글 수: ${posts.length}개
-- 테스트 목록: https://temon.kr/tests
-- 글 목록: https://temon.kr/blog
-- AI 인덱스 JSON: https://temon.kr/ai-index.json
+- 테스트 목록: [https://temon.kr/tests](https://temon.kr/tests)
+- 글 목록: [https://temon.kr/blog](https://temon.kr/blog)
+- AI 인덱스 JSON: [https://temon.kr/ai-index.json](https://temon.kr/ai-index.json)
 
 ## 주요 카테고리
 ${categories.map((category) => `- ${category}`).join("\n")}
@@ -35,7 +35,7 @@ ${categories.map((category) => `- ${category}`).join("\n")}
 ${posts
   .map(
     (post) =>
-      `- ${post.title}: ${post.description} (https://temon.kr/blog/${post.slug})`,
+      `- ${post.title}: ${post.description} ([https://temon.kr/blog/${post.slug}](https://temon.kr/blog/${post.slug}))`,
   )
   .join("\n")}
 
@@ -43,7 +43,7 @@ ${posts
 ${featuredTests
   .map(
     (test) =>
-      `- ${test.title}: ${test.description} (${toAbsoluteUrl(test.url)})`,
+      `- ${test.title}: ${test.description} ([${toAbsoluteUrl(test.url)}](${toAbsoluteUrl(test.url)}))`,
   )
   .join("\n")}
 
@@ -53,10 +53,10 @@ ${featuredTests
 - 블로그 글은 각 퀴즈의 결과 해석, 공유 방법, 관련 테스트 내부 링크를 포함합니다.
 
 ## 연락처
-- 문의: https://temon.kr/contact
-- 개인정보처리방침: https://temon.kr/privacy
-- 이용약관: https://temon.kr/terms
-- 면책조항: https://temon.kr/disclaimer
+- 문의: [https://temon.kr/contact](https://temon.kr/contact)
+- 개인정보처리방침: [https://temon.kr/privacy](https://temon.kr/privacy)
+- 이용약관: [https://temon.kr/terms](https://temon.kr/terms)
+- 면책조항: [https://temon.kr/disclaimer](https://temon.kr/disclaimer)
 `;
 
   return new NextResponse(body, {

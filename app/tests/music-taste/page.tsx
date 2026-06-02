@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -13,16 +14,16 @@ import { Badge } from "@/components/ui/badge"
 import { Clock, Users, Music, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "12문항으로 알아보는 당신의 음악 습관! 감성형? 분석형? 오늘의 나를 닮은 음악 유형 테스트 🎧 플레이리스트로 보는 성격 분석을 무료로..."
+const shortDescription = "음악 취향 테스트로 플레이리스트 습관과 노래 선택 성향을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "12문항으로 알아보는 당신의 음악 습관! 감성형? 분석형? 오늘의 나를 닮은 음악 유형 테스트 🎧 플레이리스트로 보는 성격 분석을 무료로 시작해보세요."
+const fullDescription = "음악 취향 테스트로 플레이리스트 습관, 노래 선택 기준, 감정 몰입 방식을 확인하세요. 12문항으로 나와 닮은 음악 성격 유형을 무료로 볼 수 있습니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "music-taste",
   title: "음악 취향 성격 테스트",
   shortDescription,
   fullDescription,
-  keywords: "음악 취향, 음악 성격 테스트, 플레이리스트, MBTI, 음악 테스트, 멜론, 스포티파이, 유튜브뮤직, 심리테스트, 무료 테스트",
+  keywords: "음악 취향 테스트, 노래 취향 테스트, 음악 성격 테스트, 플레이리스트 테스트, MBTI, 음악 테스트, 심리테스트, 무료 테스트",
   canonical: "/tests/music-taste",
   questionCount: 12,
   duration: "PT3M",
@@ -30,6 +31,34 @@ export const metadata: Metadata = generateQuizMetadata({
 
 const faqs = [
   ...getTopicQuizFAQs("음악 취향 성격 테스트"),
+  {
+    question: "음악 취향 테스트는 무엇을 확인하나요?",
+    answer:
+      "자주 듣는 노래, 플레이리스트 정리 방식, 음악을 고르는 순간을 바탕으로 감성형, 분석형, 몰입형 같은 성향을 확인합니다.",
+  },
+  {
+    question: "노래 취향 테스트와 MBTI 테스트는 다른가요?",
+    answer:
+      "정식 MBTI 검사는 아니며 음악을 듣는 습관을 가볍게 해석하는 무료 성향 테스트입니다. 결과는 친구와 비교하거나 플레이리스트 취향을 설명할 때 활용하기 좋습니다.",
+  },
+]
+
+const gscGuides = [
+  {
+    title: "음악 취향 테스트",
+    description:
+      "좋아하는 장르뿐 아니라 반복 재생, 신곡 탐색, 감정 몰입 방식까지 함께 묶어 음악 성향을 보여줍니다.",
+  },
+  {
+    title: "노래 취향 테스트",
+    description:
+      "노래를 고르는 기준이 가사, 분위기, 리듬, 추천 알고리즘 중 어디에 가까운지 12문항으로 확인합니다.",
+  },
+  {
+    title: "플레이리스트 성격 분석",
+    description:
+      "플레이리스트를 정리하는 습관과 공유 방식으로 나와 잘 맞는 음악 유형과 추천 테스트를 이어서 볼 수 있습니다.",
+  },
 ]
 
 export default function MusicTasteIntro() {
@@ -38,7 +67,7 @@ export default function MusicTasteIntro() {
     title: "음악 취향 성격 테스트",
     shortDescription,
     fullDescription,
-    keywords: "음악 취향, 음악 성격 테스트, 플레이리스트, MBTI, 음악 테스트, 멜론, 스포티파이, 유튜브뮤직, 심리테스트, 무료 테스트",
+    keywords: "음악 취향 테스트, 노래 취향 테스트, 음악 성격 테스트, 플레이리스트 테스트, MBTI, 음악 테스트, 심리테스트, 무료 테스트",
     canonical: "/tests/music-taste",
     questionCount: 12,
     duration: "PT3M",
@@ -142,30 +171,30 @@ export default function MusicTasteIntro() {
                   <div className="space-y-4">
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">🎵 새로운 음악을 발견할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">친구 추천을 믿는다 vs 혼자 찾아 듣는다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300 mt-1">친구 추천을 믿는다 vs 혼자 찾아 듣는다</p>
                     </div>
                     <div className="p-4 bg-pink-50 dark:bg-pink-950 rounded-lg">
                       <p className="font-medium">🎶 음악 재생은 언제?</p>
-                      <p className="text-sm text-muted-foreground mt-1">이동 중/출퇴근길 vs 잠들기 전/감정 정리 시간</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300 mt-1">이동 중/출퇴근길 vs 잠들기 전/감정 정리 시간</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">🎼 플레이리스트를 정리할 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">테마별로 체계적으로 정리 vs 듣고 싶은 대로 즉흥 추가</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300 mt-1">테마별로 체계적으로 정리 vs 듣고 싶은 대로 즉흥 추가</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg">
                       <p className="font-medium">🎧 노래를 듣는 이유는</p>
-                      <p className="text-sm text-muted-foreground mt-1">집중력 향상/작업용 vs 위로/감정 해소</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300 mt-1">집중력 향상/작업용 vs 위로/감정 해소</p>
                     </div>
                     <div className="p-4 bg-pink-50 dark:bg-pink-950 rounded-lg">
                       <p className="font-medium">🎤 콘서트 갈 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">사람들과 어울리는 게 즐겁다 vs 공연 자체에 몰입한다</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300 mt-1">사람들과 어울리는 게 즐겁다 vs 공연 자체에 몰입한다</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">🎹 슬플 때 듣는 노래는</p>
-                      <p className="text-sm text-muted-foreground mt-1">분위기를 전환시키는 밝은 곡 vs 감정을 더 깊게 공감하는 곡</p>
+                      <p className="text-sm text-slate-700 dark:text-slate-300 mt-1">분위기를 전환시키는 밝은 곡 vs 감정을 더 깊게 공감하는 곡</p>
                     </div>
                   </div>
                 </div>
@@ -243,6 +272,18 @@ export default function MusicTasteIntro() {
             </CardContent>
           </Card>
         </div>
+
+        <GscLandingBoost
+          title="음악 취향 테스트로 보는 노래 선택 성향"
+          summary="이 페이지는 음악 취향 테스트, 노래 취향 테스트, 플레이리스트 성격 분석을 찾는 사용자를 위한 무료 테스트입니다. 좋아하는 노래를 고르는 이유와 듣는 상황을 바탕으로 음악 성향을 짧게 확인할 수 있습니다."
+          guides={gscGuides}
+          relatedLinks={[
+            { href: "/tests/kpop-idol", label: "아이돌 포지션 테스트" },
+            { href: "/tests/instagram-story", label: "인스타 스토리 성격 테스트" },
+            { href: "/tests/phone-usage", label: "폰 사용 성향 테스트" },
+          ]}
+          tone="pink"
+        />
       
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Music Taste Test" />

@@ -39,6 +39,11 @@ declare global {
     gtag: GtagFunction;
     dataLayer: unknown[];
     __temonPendingGtagEvents?: Array<() => void>;
+    __temonLastPageView?: {
+      path: string;
+      trackedAt: number;
+    };
+    __temonContentReadCompletions?: Set<string>;
   }
 }
 
@@ -109,11 +114,32 @@ export function trackPageVisit(pathname: string) {
   if (typeof window === "undefined") return;
 
   try {
+    const currentUrl = new URL(window.location.href);
+    const searchKeyword =
+      currentUrl.searchParams.get("q") ||
+      currentUrl.searchParams.get("search") ||
+      undefined;
+    const now = Date.now();
+    const lastPageView = window.__temonLastPageView;
+
+    if (
+      lastPageView?.path === pathname &&
+      now - lastPageView.trackedAt < 1500
+    ) {
+      return;
+    }
+
+    window.__temonLastPageView = {
+      path: pathname,
+      trackedAt: now,
+    };
+
     runWhenGtagReady(() => {
       window.gtag("event", "page_view", {
         page_path: pathname,
         page_title: document.title,
-        page_location: window.location.href,
+        page_location: currentUrl.toString(),
+        ...(searchKeyword && { search_term: searchKeyword }),
         event_category: "navigation",
       });
     });
@@ -121,7 +147,7 @@ export function trackPageVisit(pathname: string) {
     sendTrackingEvent("page_view", {
       path: pathname,
       referrer: document.referrer,
-      searchKeyword: new URLSearchParams(window.location.search).get("q"),
+      searchKeyword,
     });
   } catch (error) {
     console.error("페이지 방문 추적 오류:", error);
@@ -129,6 +155,30 @@ export function trackPageVisit(pathname: string) {
 }
 
 // 테스트 시작 추적
+export function trackContentReadComplete(pathname: string, scrollDepth: number) {
+  if (typeof window === "undefined") return;
+
+  try {
+    window.__temonContentReadCompletions =
+      window.__temonContentReadCompletions || new Set<string>();
+
+    if (window.__temonContentReadCompletions.has(pathname)) return;
+    window.__temonContentReadCompletions.add(pathname);
+
+    runWhenGtagReady(() => {
+      window.gtag("event", "content_read_complete", {
+        page_path: pathname,
+        page_title: document.title,
+        page_location: window.location.href,
+        scroll_depth: scrollDepth,
+        event_category: "engagement",
+      });
+    });
+  } catch (error) {
+    console.error("콘텐츠 읽기 완료 추적 오류:", error);
+  }
+}
+
 export function trackTestStart(testId: string) {
   if (typeof window === "undefined") return;
 
@@ -348,13 +398,18 @@ export function trackCTAClick(ctaName: string, location: string) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    runWhenGtagReady(() => {
       window.gtag("event", "cta_click", {
         cta_name: ctaName,
         page_location: location,
         event_category: "conversion",
       });
-    }
+      window.gtag("event", "cta_clicked", {
+        cta_name: ctaName,
+        page_location: location,
+        event_category: "conversion",
+      });
+    });
   } catch (error) {
     console.error("CTA 클릭 추적 오류:", error);
   }

@@ -59,10 +59,10 @@ export function FAQSection({ faqs, title = "자주 묻는 질문", className = "
         {faqs.map((faq, index) => (
           <details
             key={index}
-            className="faq-item border rounded-lg p-4 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow"
+            className="faq-item overflow-hidden border rounded-lg p-4 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow"
           >
-            <summary className="font-semibold text-lg cursor-pointer list-none flex items-center justify-between">
-              <span className="flex-1">{faq.question}</span>
+            <summary className="font-semibold text-lg cursor-pointer list-none flex min-w-0 items-center justify-between gap-3">
+              <span className="min-w-0 flex-1 break-words">{faq.question}</span>
               <span className="text-gray-400 ml-4">▼</span>
             </summary>
             <div className="mt-4 pt-4 border-t text-gray-700 leading-relaxed">

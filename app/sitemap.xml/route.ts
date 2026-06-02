@@ -5,6 +5,8 @@ import { getAllBlogPosts } from "@/lib/blog-posts";
 import { getDb, isDbAvailable } from "@/lib/db/client";
 import { tests } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
+import { getSiteUrl } from "@/lib/site-url";
+import { isNoindexTest } from "@/lib/noindex-tests";
 
 /**
  * Sitemap.xml 동적 생성 (Route Handler)
@@ -90,7 +92,7 @@ async function getPublishedDbTestRoutes(
       .all();
 
     return rows
-      .filter((test) => test.slug)
+      .filter((test) => test.slug && !isNoindexTest(test.slug))
       .map((test) => ({
         url: `${baseUrl}/tests/${test.slug}`,
         lastModified: toValidDate(
@@ -107,7 +109,7 @@ async function getPublishedDbTestRoutes(
 }
 
 export async function GET() {
-  const baseUrl = "https://temon.kr";
+  const baseUrl = getSiteUrl();
   const now = new Date();
 
   try {

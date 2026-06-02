@@ -6,22 +6,23 @@ import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
+import { GscLandingBoost } from "@/components/gsc-landing-boost"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "음식 장식 스타일로 알아보는 나의 성격 유형 테스트"
+const shortDescription = "음식 장식 스타일 테스트로 플레이팅·꾸미기 취향과 성격 유형을 확인하세요."
 // Full description for Google/AI
-const fullDescription = "음식 장식 스타일 테스트로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 음식 장식 스타일 테스트를 지금 바로 무료로 시작해보세요."
+const fullDescription = "음식 장식 스타일 테스트로 플레이팅, 데코, 색감, 마무리 장식 취향을 통해 나의 성격 유형을 확인하세요. 12문항으로 16가지 음식 장식 스타일을 무료로 제공합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "cooking-garnishing",
   title: "음식 장식 스타일 테스트",
   shortDescription,
   fullDescription,
-  keywords: "음식 장식 스타일 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+  keywords: "음식 장식 스타일 테스트, 플레이팅 테스트, 음식 꾸미기 테스트, 데코 취향 테스트, 요리 장식, 성격 테스트, 무료 테스트",
   canonical: "/tests/cooking-garnishing",
   questionCount: 12,
   duration: "PT3M",
@@ -31,13 +32,31 @@ const faqs = [
   ...getTopicQuizFAQs("음식 장식 스타일 테스트"),
 ]
 
+const gscGuides = [
+  {
+    title: "음식 장식 스타일 검색",
+    description:
+      "플레이팅을 깔끔하게 하는지, 색감과 장식을 더하는지, 마무리 취향을 선택형 질문으로 봅니다.",
+  },
+  {
+    title: "요리 꾸미기 취향 확인",
+    description:
+      "맛 중심인지, 보기 좋은 완성도를 중요하게 보는지, 사진 공유까지 생각하는지 함께 확인합니다.",
+  },
+  {
+    title: "가벼운 성향 분석",
+    description:
+      "결과는 요리 실력 평가가 아니라 음식 표현 방식과 취향을 설명하기 위한 무료 테스트입니다.",
+  },
+]
+
 export default function CookingGarnishingPage() {
   const schemas = generateQuizSchemas({
     quizId: "cooking-garnishing",
     title: "음식 장식 스타일 테스트",
     shortDescription,
     fullDescription,
-    keywords: "음식 장식 스타일 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
+    keywords: "음식 장식 스타일 테스트, 플레이팅 테스트, 음식 꾸미기 테스트, 데코 취향 테스트, 요리 장식, 성격 테스트, 무료 테스트",
     canonical: "/tests/cooking-garnishing",
     questionCount: 12,
     duration: "PT3M",
@@ -101,6 +120,20 @@ export default function CookingGarnishingPage() {
           </CardContent>
         </Card>
       
+        <div className="mt-12">
+          <GscLandingBoost
+            title="음식 장식 스타일 테스트로 보는 플레이팅 취향"
+            summary="음식 장식 스타일 테스트는 플레이팅 테스트, 음식 꾸미기 테스트, 데코 취향 테스트를 찾는 검색 의도에 맞춘 무료 성향 테스트입니다. 색감, 마무리 장식, 사진 공유, 맛과 보기 좋은 완성도의 균형을 바탕으로 16가지 장식 스타일을 보여줍니다."
+            guides={gscGuides}
+            relatedLinks={[
+              { href: "/tests/cooking-presentation", label: "요리 플레이팅 테스트" },
+              { href: "/tests/cooking-method", label: "요리 방식 테스트" },
+              { href: "/tests/dessert-style", label: "디저트 취향 테스트" },
+            ]}
+            tone="pink"
+          />
+        </div>
+
         <div className="mt-12">
           <AnswerEngineSection quizTitle="Cooking Garnishing Test" />
         </div>
