@@ -32,6 +32,12 @@ export type BlogFaq = {
   answer: string;
 };
 
+export type BlogReference = {
+  title: string;
+  href: string;
+  source: string;
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -46,6 +52,7 @@ export type BlogPost = {
   sections: BlogSection[];
   closing: string[];
   faqs: BlogFaq[];
+  references?: BlogReference[];
   relatedTests: RelatedTestLink[];
 };
 
@@ -149,7 +156,7 @@ const BLOG_POSTS: BlogPost[] = [
     relatedTests: [
       {
         title: "완벽주의 균형 테스트",
-        href: "/tests/perfection-balance-1xQC",
+        href: "/tests/study-mbti",
         reason: "높은 기준과 실행 피로의 균형을 확인하기 좋습니다.",
       },
       {

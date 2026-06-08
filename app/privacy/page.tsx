@@ -75,6 +75,20 @@ export default function PrivacyPage() {
                                 본 서비스는 사용자 경험 개선 및 광고 제공을 위해 쿠키를 사용합니다.
                                 브라우저 설정에서 쿠키를 비활성화할 수 있으나, 일부 기능이 제한될 수 있습니다.
                             </p>
+                            <p className="mt-3">
+                                Google AdSense는 광고 제공, 광고 성과 측정, 부정 이용 방지를 위해 쿠키 또는 유사 기술을
+                                사용할 수 있습니다. 사용자는 Google 광고 설정에서 맞춤형 광고를 관리할 수 있습니다.
+                            </p>
+                            <p className="mt-3">
+                                Google의 광고 데이터 처리 방식은{" "}
+                                <a
+                                    href="https://policies.google.com/technologies/ads"
+                                    className="text-violet-600 hover:underline"
+                                >
+                                    Google 광고 기술 안내
+                                </a>
+                                에서 확인할 수 있습니다.
+                            </p>
                         </section>
 
                         <section>

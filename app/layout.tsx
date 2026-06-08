@@ -23,10 +23,6 @@ import { JsonLd } from "@/components/json-ld";
 const inter = Inter({ subsets: ["latin"] });
 const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-L167CCPS8E";
-const ADSENSE_CLIENT_ID =
-  process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ||
-  process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID ||
-  "ca-pub-3050601904412736";
 const NAVER_SITE_VERIFICATION =
   process.env.NAVER_SITE_VERIFICATION ||
   "a57f4e75c60c7b2f5117885c1ffcdf9c1b3ca4b4";
@@ -141,13 +137,6 @@ export default function RootLayout({
         <JsonLd id="organization-schema" data={organizationSchema} />
         <JsonLd id="website-schema" data={websiteSchema} />
         <JsonLd id="speakable-webpage-schema" data={speakableWebPageSchema} />
-        <Script
-          id="adsense-loader"
-          async
-          crossOrigin="anonymous"
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
-          strategy="afterInteractive"
-        />
         {/* Google tag (gtag.js) - GA4 실시간 노출 안정화 */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
@@ -210,17 +199,16 @@ export default function RootLayout({
         >
           본문 바로가기
         </a>
+        <AdminHeadScripts />
+        <Header />
+        <main id="main-content" className="min-h-screen">
+          <AutoContentToc />
+          {children}
+        </main>
+        <Footer />
         <Suspense fallback={null}>
-          <AnalyticsProvider>
-            <AdSenseScript />
-            <AdminHeadScripts />
-            <Header />
-            <main id="main-content" className="min-h-screen">
-              <AutoContentToc />
-              {children}
-            </main>
-            <Footer />
-          </AnalyticsProvider>
+          <AdSenseScript />
+          <AnalyticsProvider />
         </Suspense>
         {/* Vercel Analytics & Speed Insights */}
         {isVercel && <Analytics />}

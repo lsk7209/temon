@@ -293,6 +293,20 @@ export default async function TestsPage() {
       <JsonLd id="tests-itemlist-schema" data={itemListSchema} />
       <JsonLd id="tests-faq-schema" data={faqSchema} />
 
+      <section className="bg-gradient-to-br from-violet-50 via-pink-50 to-cyan-50 px-4 pb-10 pt-16">
+        <div className="mx-auto max-w-7xl text-center">
+          <p className="mx-auto mb-6 inline-flex rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-6 py-2 text-lg font-semibold text-white">
+            무료 테스트 사이트
+          </p>
+          <h1 className="text-5xl font-black leading-tight text-gray-950 md:text-7xl">
+            성격 테스트 모음
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-xl font-medium leading-8 text-gray-700 md:text-2xl">
+            무료 MBTI 테스트, 성격 테스트, 취향 테스트를 한곳에서 골라보세요. 관심 주제별로 빠르게 찾고 결과를 친구와 공유할 수 있습니다.
+          </p>
+        </div>
+      </section>
+
       <TestsPageClient
         dynamicTests={dynamicTests.map((test) => ({
           ...test,

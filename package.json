@@ -16,6 +16,8 @@
     "wave3:generate": "node scripts/generate-wave3-quizzes.js",
     "wave3:verify": "node scripts/generate-wave3-quizzes.js --verify",
     "wave3:apply-db": "node scripts/generate-wave3-quizzes.js --apply-db",
+    "gsc:sitemap": "node scripts/gsc-sitemap-submit.js",
+    "gsc:sitemap:status": "node scripts/gsc-sitemap-submit.js --status-only",
     "git-push": "node scripts/git-push.js",
     "git-push-auto": "node scripts/git-push-auto.js",
     "deploy": "npm run build && npm run git-push-auto"

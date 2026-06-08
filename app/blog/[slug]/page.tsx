@@ -23,12 +23,26 @@ import {
   getBlogPostBySlug,
   getRelatedBlogPosts,
   type BlogPost,
+  type BlogReference,
   type BlogSection,
 } from "@/lib/blog-posts";
 
 const BASE_URL = "https://temon.kr";
 
 export const revalidate = 86400;
+
+const DEFAULT_REFERENCES: BlogReference[] = [
+  {
+    title: "심리학 주제와 성격 개념을 확인할 때 참고할 수 있는 기본 자료",
+    href: "https://dictionary.apa.org/personality",
+    source: "APA Dictionary of Psychology",
+  },
+  {
+    title: "검색 노출용 글이 사람에게 도움이 되는지 점검하는 기준",
+    href: "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+    source: "Google Search Central",
+  },
+];
 
 type BlogDetailPageProps = {
   params: {
@@ -186,6 +200,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
   if (!post) notFound();
 
   const relatedPosts = getRelatedBlogPosts(post.slug, 3);
+  const references = post.references?.length ? post.references : DEFAULT_REFERENCES;
   const url = `${BASE_URL}/blog/${post.slug}`;
   const tocItems = buildToc(post);
   const articleSchema = createArticleSchema({
@@ -281,6 +296,28 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                     ))}
                   </div>
                 </section>
+                <section className="border-t border-slate-200 py-10">
+                  <h2 className="text-2xl font-black leading-tight text-slate-950 md:text-3xl">
+                    바로 이어서 보기
+                  </h2>
+                  <p className="mt-4 text-[1.06rem] leading-9 text-slate-800">
+                    글을 읽고 자신의 선택 기준을 확인하고 싶다면{" "}
+                    <Link
+                      href={post.relatedTests[0]?.href ?? "/tests"}
+                      className="font-bold text-violet-700 underline-offset-4 hover:underline"
+                    >
+                      {post.relatedTests[0]?.title ?? "테몬 테스트"}
+                    </Link>
+                    를 먼저 풀어보세요. 비슷한 글을 더 읽고 싶다면{" "}
+                    <Link
+                      href={`/blog/${relatedPosts[0]?.slug ?? ""}`}
+                      className="font-bold text-violet-700 underline-offset-4 hover:underline"
+                    >
+                      {relatedPosts[0]?.title ?? "다른 퀴즈 글"}
+                    </Link>
+                    도 함께 보면 결과 해석 흐름을 비교하기 쉽습니다.
+                  </p>
+                </section>
               </div>
 
               <section className="mt-6 rounded-lg border border-slate-200 bg-white p-6 shadow-sm md:p-8">
@@ -321,6 +358,23 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                     </section>
                   ))}
                 </div>
+              </section>
+
+              <section className="mt-6 rounded-lg border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+                <h2 className="text-2xl font-black">참고 자료</h2>
+                <ul className="mt-4 grid gap-3">
+                  {references.map((reference) => (
+                    <li key={reference.href} className="leading-7 text-slate-700">
+                      <a
+                        href={reference.href}
+                        className="font-bold text-violet-700 underline-offset-4 hover:underline"
+                      >
+                        {reference.source}
+                      </a>
+                      <span className="text-slate-500"> - {reference.title}</span>
+                    </li>
+                  ))}
+                </ul>
               </section>
 
               <section className="mt-6 rounded-lg border border-slate-200 bg-slate-950 p-6 text-white shadow-sm md:p-8">

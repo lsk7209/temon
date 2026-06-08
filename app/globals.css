@@ -68,14 +68,6 @@ body {
   }
 }
 
-.ad-reserve {
-  min-height: clamp(180px, 28vw, 280px);
-  margin-block: 1.5rem;
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(241, 245, 249, 0.9), rgba(248, 250, 252, 0.6));
-  contain: layout paint style;
-}
-
 .temon-flow,
 .temon-result {
   color: #0f172a;
@@ -117,6 +109,14 @@ body {
 .article-content p,
 .article-content li {
   line-height: 1.8;
+}
+
+.article-content p,
+.article-content ul,
+.article-content ol,
+.article-content h2,
+.article-content h3 {
+  max-width: 48rem;
 }
 
 .article-content h2,

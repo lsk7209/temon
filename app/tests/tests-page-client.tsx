@@ -125,23 +125,6 @@ export default function TestsPageClient({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-50 via-pink-50 to-cyan-50">
-      <section className="relative overflow-hidden px-4 pb-16 pt-20">
-        <div className="relative z-10 mx-auto max-w-7xl text-center">
-          <Badge className="mb-6 border-0 bg-gradient-to-r from-violet-500 to-pink-500 px-6 py-2 text-lg text-white">
-            무료 테스트 사이트
-          </Badge>
-
-          <h1 className="mb-6 bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-600 bg-clip-text text-5xl font-black leading-tight text-transparent md:text-7xl">
-            성격 테스트 모음
-          </h1>
-
-          <p className="mx-auto mb-8 max-w-3xl text-xl font-medium text-gray-700 md:text-2xl">
-            무료 MBTI 테스트, 성격 테스트, 취향 테스트를 한곳에서 골라보세요.
-            관심 주제별로 빠르게 찾고 결과를 친구와 공유할 수 있습니다.
-          </p>
-        </div>
-      </section>
-
       <section className="px-4 pb-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 rounded-2xl bg-white/80 p-6 shadow-lg backdrop-blur-sm">

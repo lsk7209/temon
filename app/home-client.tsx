@@ -18,7 +18,6 @@ import {
 } from "@/lib/format-participants";
 import type { LucideIcon } from "lucide-react";
 import { getHomePageTests, ALL_TESTS } from "@/lib/tests-config";
-import AdReserve from "@/components/ad-reserve";
 
 interface Feature {
   icon: LucideIcon;
@@ -212,10 +211,6 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4">
-        <AdReserve />
-      </div>
-
       {newTests.length > 0 && (
         <section id="new-tests" className="content-visibility-auto px-4 py-12">
           <div className="mx-auto max-w-7xl">
@@ -364,10 +359,6 @@ export default function HomeClient() {
           )}
         </div>
       </section>
-
-      <div className="mx-auto max-w-7xl px-4">
-        <AdReserve className="min-h-[280px]" />
-      </div>
 
       <section className="content-visibility-auto bg-white px-4 py-14">
         <div className="mx-auto max-w-5xl">

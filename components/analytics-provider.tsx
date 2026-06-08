@@ -15,7 +15,7 @@ const TEST_START_LABEL_PATTERN = /\uD14C\uC2A4\uD2B8\s*\uC2DC\uC791/
 const TEST_PATH_PATTERN = /\/test(?:\/|$)/
 
 interface AnalyticsProviderProps {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export default function AnalyticsProvider({ children }: AnalyticsProviderProps) {
@@ -90,5 +90,5 @@ export default function AnalyticsProvider({ children }: AnalyticsProviderProps) 
     }
   }, [pagePath])
 
-  return <>{children}</>
+  return children ? <>{children}</> : null
 }

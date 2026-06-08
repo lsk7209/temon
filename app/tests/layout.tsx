@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { ResultRouteAutoEnhancements } from "@/components/result-route-auto-enhancements";
 
@@ -24,7 +25,9 @@ export default function TestsLayout({ children }: { children: ReactNode }) {
   return (
     <>
       {children}
-      <ResultRouteAutoEnhancements />
+      <Suspense fallback={null}>
+        <ResultRouteAutoEnhancements />
+      </Suspense>
     </>
   );
 }
