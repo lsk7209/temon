@@ -18,9 +18,73 @@ const baseUrl = "https://temon.kr";
 
 const tocItems = [
   { id: "tests-list", label: "전체 테스트" },
+  { id: "tests-interpretation-guide", label: "해석 가이드" },
   { id: "tests-keyword-guide", label: "검색어별 추천" },
   { id: "tests-guide", label: "고르는 방법" },
   { id: "tests-faq", label: "자주 묻는 질문" },
+];
+
+const interpretationGuides = [
+  {
+    title: "무료 MBTI 테스트를 고를 때 확인할 기준",
+    description:
+      "한국어 질문, 결과 해석, 공유 흐름, 진단 고지까지 처음 방문자가 확인할 기준을 정리했습니다.",
+    href: "/blog/free-mbti-test-guide-korean",
+    links: [
+      { href: "/tests/coffee-mbti", label: "커피 MBTI" },
+      { href: "/tests/study-mbti", label: "공부 MBTI" },
+    ],
+  },
+  {
+    title: "MBTI 테스트 결과를 실용적으로 해석하는 법",
+    description:
+      "유형명에서 끝내지 않고 장점, 피로 지점, 관계 대화, 다음 행동으로 읽는 방법입니다.",
+    href: "/blog/mbti-test-result-interpretation",
+    links: [
+      { href: "/tests/perfection-balance-1xQC", label: "완벽주의 테스트" },
+      { href: "/tests/study-mbti", label: "공부 스타일" },
+    ],
+  },
+  {
+    title: "음식 취향 테스트를 한 번에 읽는 방법",
+    description:
+      "라면, 커피, 디저트 테스트를 안정감, 새로움, 루틴, 관계 대화로 연결하는 허브 글입니다.",
+    href: "/blog/food-personality-test-hub",
+    links: [
+      { href: "/tests/ramen-mbti", label: "라면 MBTI" },
+      { href: "/tests/coffee-mbti", label: "커피 MBTI" },
+    ],
+  },
+  {
+    title: "연애 테스트 결과를 대화로 활용하는 방법",
+    description:
+      "연애 테스트 결과를 상대 평가가 아니라 관계 기준과 감정 표현 대화로 바꾸는 방법입니다.",
+    href: "/blog/love-reaction-test-conversation",
+    links: [
+      { href: "/tests/love-reaction", label: "연애 반응" },
+      { href: "/tests/breakup-style", label: "이별 대처" },
+    ],
+  },
+  {
+    title: "소비성향 테스트로 보는 돈 쓰는 습관",
+    description:
+      "충동구매, 비교 습관, 만족 기준을 금융 조언이 아닌 일상 선택 습관으로 읽습니다.",
+    href: "/blog/spending-style-test-money-habits",
+    links: [
+      { href: "/tests/spending-style", label: "소비성향" },
+      { href: "/tests/shopping-style", label: "쇼핑 스타일" },
+    ],
+  },
+  {
+    title: "크로노타입 테스트 결과를 하루 루틴에 적용하는 법",
+    description:
+      "아침형·저녁형 이름보다 에너지 시간대와 일정 배치를 중심으로 해석합니다.",
+    href: "/blog/sleep-chronotype-test-routine",
+    links: [
+      { href: "/tests/sleep-chronotype", label: "크로노타입" },
+      { href: "/tests/morning-energy", label: "아침 에너지" },
+    ],
+  },
 ];
 
 const keywordGuides = [
@@ -183,12 +247,31 @@ const listingFaqs = [
 ];
 
 const shortDescription =
-  "재밌는 테스트 사이트에서 무료 MBTI 검사, 한국어 질문, 성격 성향 테스트, 심리테스트를 주제별로 골라보세요.";
+  "무료 MBTI 테스트와 성격 테스트를 회원가입 없이 바로 시작하세요. 한국어 질문, 2~3분 결과, 친구 공유가 쉬운 심리테스트 모음입니다.";
 const fullDescription =
-  "테몬의 무료 성격 테스트 모음에서 MBTI 검사, 한국어 MBTI 질문, 심리테스트, 취향 테스트, 관계 테스트, 생활 테스트를 주제별로 찾아보세요. 짧게 끝나는 재밌는 테스트를 한곳에 모았습니다.";
+  "테몬의 무료 성격 테스트 모음에서 MBTI 검사, 한국어 MBTI 질문, 심리테스트, 취향 테스트, 관계 테스트, 생활 테스트를 주제별로 찾아보세요. 회원가입 없이 짧게 끝나는 재밌는 테스트를 한곳에 모았습니다.";
+
+const trustHighlights = [
+  {
+    title: "회원가입 없이 무료",
+    description: "설치나 로그인 없이 바로 시작할 수 있는 무료 테스트입니다.",
+  },
+  {
+    title: "한국어 질문",
+    description: "모바일에서 읽기 쉬운 짧은 한국어 문항으로 구성했습니다.",
+  },
+  {
+    title: "2~3분 결과",
+    description: "짧게 풀고 결과를 바로 확인해 친구와 공유할 수 있습니다.",
+  },
+  {
+    title: "진단이 아닌 재미",
+    description: "전문 심리 진단이 아니라 자기이해와 대화를 위한 콘텐츠입니다.",
+  },
+];
 
 export const metadata: Metadata = {
-  title: "재밌는 테스트 모음 | 무료 MBTI 성격 테스트 - 테몬",
+  title: "성격 성향 테스트 모음 | 무료 심리·MBTI 테스트 바로가기 - 테몬",
   description: shortDescription,
   keywords:
     "재밌는 테스트 모음, 성격 테스트 모음, MBTI 테스트 모음, 무료 MBTI 검사 사이트, MBTI 테스트 질문 한국어, MBTI 테스트 무료, 성격 성향 테스트, 심리테스트 사이트, 테스트 사이트, 테몬",
@@ -197,7 +280,7 @@ export const metadata: Metadata = {
     canonical: "/tests",
   },
   openGraph: {
-    title: "재밌는 테스트 모음 | 무료 MBTI 성격 테스트 - 테몬",
+    title: "성격 성향 테스트 모음 | 무료 심리·MBTI 테스트 바로가기 - 테몬",
     description: fullDescription,
     type: "website",
     url: `${baseUrl}/tests`,
@@ -214,7 +297,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "재밌는 테스트 모음 | 무료 MBTI 성격 테스트 - 테몬",
+    title: "무료 MBTI 테스트 모음 | 성격·심리테스트 사이트 - 테몬",
     description: fullDescription,
     images: [
       `${baseUrl}/api/og?title=${encodeURIComponent("테몬 MBTI 테스트 모음")}&desc=${encodeURIComponent("무료 심리테스트")}`,
@@ -302,8 +385,24 @@ export default async function TestsPage() {
             성격 테스트 모음
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-xl font-medium leading-8 text-gray-700 md:text-2xl">
-            무료 MBTI 테스트, 성격 테스트, 취향 테스트를 한곳에서 골라보세요. 관심 주제별로 빠르게 찾고 결과를 친구와 공유할 수 있습니다.
+            무료 MBTI 테스트, 성격 테스트, 취향 테스트를 한곳에서 골라보세요.
+            관심 주제별로 빠르게 찾고 결과를 친구와 공유할 수 있습니다.
           </p>
+          <div className="mx-auto mt-8 grid max-w-5xl gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
+            {trustHighlights.map((highlight) => (
+              <div
+                key={highlight.title}
+                className="rounded-lg border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur-sm"
+              >
+                <h2 className="text-base font-black text-gray-950">
+                  {highlight.title}
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-gray-700">
+                  {highlight.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -318,6 +417,58 @@ export default async function TestsPage() {
       <div className="container mx-auto max-w-4xl px-4 pb-8">
         <ContentToc items={tocItems} />
       </div>
+
+      <section
+        id="tests-interpretation-guide"
+        className="article-content container mx-auto max-w-5xl px-4 pb-12"
+      >
+        <div className="rounded-lg border border-cyan-100 bg-white/85 p-6 shadow-lg backdrop-blur-sm md:p-8">
+          <div className="mb-6 max-w-3xl">
+            <h2 className="text-2xl font-black text-gray-950">
+              테스트 결과를 더 잘 읽는 해석 가이드
+            </h2>
+            <p className="mt-3 leading-7 text-gray-700">
+              테스트를 풀기 전에는 고르는 기준을, 결과를 본 뒤에는 해석 방법을
+              함께 읽어보세요. 각 글은 관련 테스트로 바로 이어지도록
+              연결했습니다.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {interpretationGuides.map((guide) => (
+              <article
+                key={guide.href}
+                className="rounded-lg border border-gray-100 bg-white p-5 shadow-sm"
+              >
+                <h3 className="text-lg font-black leading-snug text-gray-950">
+                  <Link href={guide.href} className="hover:text-cyan-700">
+                    {guide.title}
+                  </Link>
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-gray-600">
+                  {guide.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Link
+                    href={guide.href}
+                    className="rounded-full bg-cyan-50 px-3 py-1.5 text-sm font-semibold text-cyan-700 ring-1 ring-cyan-100 transition hover:bg-cyan-100"
+                  >
+                    글 읽기
+                  </Link>
+                  {guide.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="rounded-full bg-gray-50 px-3 py-1.5 text-sm font-semibold text-gray-700 ring-1 ring-gray-100 transition hover:bg-gray-100"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section
         id="tests-keyword-guide"

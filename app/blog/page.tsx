@@ -19,15 +19,15 @@ const BASE_URL = "https://temon.kr";
 
 export const revalidate = 86400;
 
-const title = "퀴즈 블로그 | 성격·관계·취향 테스트 해석 - 테몬";
+const title = "무료 MBTI 테스트 해석 블로그 | 성격·취향 테스트 가이드 - 테몬";
 const description =
-  "테몬 퀴즈 블로그에서 성격, 관계, 취향, 일상, 직장·공부, 디지털 습관 테스트를 더 깊게 읽어보세요.";
+  "테몬 퀴즈 블로그에서 무료 MBTI 테스트, 성격 테스트, 음식 취향 테스트, 연애 테스트 결과를 더 깊게 해석해보세요.";
 
 export const metadata: Metadata = {
   title,
   description,
   keywords:
-    "퀴즈 블로그, 성격 퀴즈, 관계 테스트, 취향 테스트, MBTI 테스트, 테몬 블로그",
+    "무료 MBTI 테스트 해석, 성격 테스트 블로그, 취향 테스트 가이드, 연애 테스트 해석, 음식 취향 테스트, 테몬 블로그",
   alternates: {
     canonical: "/blog",
   },
@@ -65,10 +65,50 @@ export const metadata: Metadata = {
 };
 
 const tocItems = [
+  { id: "intent-guide", label: "검색 주제" },
   { id: "featured-posts", label: "추천 글" },
   { id: "category-guide", label: "카테고리" },
   { id: "reading-guide", label: "읽는 방법" },
   { id: "blog-faq", label: "자주 묻는 질문" },
+];
+
+const intentGuides = [
+  {
+    query: "무료 MBTI 테스트",
+    description:
+      "한국어 질문, 결과 해석, 공유 흐름까지 확인하고 바로 테스트로 이동합니다.",
+    href: "/blog/free-mbti-test-guide-korean",
+  },
+  {
+    query: "MBTI 결과 해석",
+    description:
+      "결과명을 넘어 생활 장면, 관계 대화, 다음 행동으로 읽는 방법입니다.",
+    href: "/blog/mbti-test-result-interpretation",
+  },
+  {
+    query: "커피 MBTI",
+    description:
+      "커피 선택 습관을 루틴, 집중 방식, 카페 취향으로 해석합니다.",
+    href: "/blog/coffee-mbti-personality-guide",
+  },
+  {
+    query: "라면 MBTI",
+    description:
+      "맵기, 토핑, 조리 방식으로 음식 취향과 선택 습관을 비교합니다.",
+    href: "/blog/ramen-mbti-food-personality",
+  },
+  {
+    query: "소비성향 테스트",
+    description:
+      "충동구매와 비교 습관을 평가가 아닌 일상 선택 기준으로 읽습니다.",
+    href: "/blog/spending-style-test-money-habits",
+  },
+  {
+    query: "크로노타입 테스트",
+    description:
+      "아침형·저녁형 이름보다 하루 에너지 곡선과 루틴 배치를 봅니다.",
+    href: "/blog/sleep-chronotype-test-routine",
+  },
 ];
 
 const faqs = [
@@ -156,12 +196,12 @@ export default function BlogPage() {
                 테몬 퀴즈 블로그
               </Badge>
               <h1 className="max-w-4xl text-4xl font-black leading-tight md:text-6xl">
-                퀴즈 결과를 더 잘 읽는 글 모음
+                무료 MBTI 테스트 결과를 더 잘 읽는 글 모음
               </h1>
               <p className="article-summary key-takeaways mt-5 max-w-3xl text-lg leading-8 text-slate-700">
-                테몬 블로그는 성격·관계·취향·일상·직장·디지털 퀴즈를 더
-                깊게 읽기 위한 해석 글입니다. 결과를 단정하지 않고 선택
-                습관과 대화 힌트로 연결합니다.
+                테몬 블로그는 무료 MBTI 테스트, 성격 테스트, 음식 취향 테스트,
+                연애 테스트 결과를 더 깊게 읽기 위한 해석 글입니다. 결과를
+                단정하지 않고 선택 습관과 대화 힌트로 연결합니다.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild className="rounded-lg bg-slate-950 text-white">
@@ -177,6 +217,39 @@ export default function BlogPage() {
             </div>
 
             <ContentToc items={tocItems} title="목차" className="lg:sticky lg:top-24 lg:self-start" />
+          </div>
+        </section>
+
+        <section id="intent-guide" className="scroll-mt-24 px-4 pb-12">
+          <div className="mx-auto max-w-6xl rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="mb-5 flex items-center gap-2">
+              <Search className="h-5 w-5 text-cyan-600" aria-hidden="true" />
+              <h2 className="text-2xl font-black md:text-3xl">
+                검색 주제별 해석 가이드
+              </h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {intentGuides.map((guide) => (
+                <article
+                  key={guide.href}
+                  className="rounded-lg border border-slate-200 bg-slate-50 p-5"
+                >
+                  <h3 className="text-lg font-black text-slate-950">
+                    {guide.query}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">
+                    {guide.description}
+                  </p>
+                  <Link
+                    href={guide.href}
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-cyan-700"
+                  >
+                    가이드 읽기
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
