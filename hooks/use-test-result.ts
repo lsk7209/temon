@@ -37,12 +37,12 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
       const attemptId = `attempt_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
 
       try {
-        // 테스트 시작 이벤트 전송 (D1 데이터베이스에 저장)
+        // 테스트 시작 이벤트 전송 (DB에 저장)
         if (typeof window !== 'undefined' && window.temonAnalytics?.trackAttemptStarted) {
           window.temonAnalytics.trackAttemptStarted(testId, attemptId)
         } else {
           // analytics.js가 로드되지 않은 경우 직접 전송
-          // 404 에러는 조용히 무시 (Cloudflare Functions 미배포 시 정상)
+          // 404 에러는 조용히 무시 (수집 API 미배포 시 정상)
           fetch('/api/collect', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -67,12 +67,12 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
           answers,
         })
 
-        // 테스트 완료 이벤트 전송 (D1 데이터베이스에 저장)
+        // 테스트 완료 이벤트 전송 (DB에 저장)
         if (typeof window !== 'undefined' && window.temonAnalytics?.trackAttemptCompleted) {
           window.temonAnalytics.trackAttemptCompleted(attemptId)
         } else {
           // analytics.js가 로드되지 않은 경우 직접 전송
-          // 404 에러는 조용히 무시 (Cloudflare Functions 미배포 시 정상)
+          // 404 에러는 조용히 무시 (수집 API 미배포 시 정상)
           fetch('/api/collect', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

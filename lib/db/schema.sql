@@ -1,5 +1,5 @@
 -- 테몬 MBTI 플랫폼 데이터베이스 스키마
--- Cloudflare D1 (SQLite) 호환
+-- SQLite/libsql compatible
 
 -- 테스트 결과 테이블
 CREATE TABLE IF NOT EXISTS test_results (

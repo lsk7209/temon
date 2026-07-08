@@ -1,5 +1,5 @@
--- Cloudflare D1 Analytics 스키마 초기화
--- 실행: wrangler d1 migrations apply temon-analytics
+-- Analytics schema initialization
+-- Apply with the current production database migration process.
 
 CREATE TABLE IF NOT EXISTS session (
   session_id TEXT PRIMARY KEY,

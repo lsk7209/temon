@@ -15,13 +15,12 @@ export async function saveTestResult(data: {
         id,
         ...data,
         createdAt: new Date(),
-    }).run() // Cloudflare D1 uses .run() for insert -> result
+    }).run()
     return id
 }
 
 export async function getTestResult(id: string) {
-    // D1 / SQLite often use .get() for single result, .all() for validation
-    // Drizzle with Cloudflare D1 usually supports .get() on select().limit(1)
+    // SQLite/libsql uses .get() for a single result.
     const db = getDb()
     const result = await db.select().from(testResults).where(eq(testResults.id, id)).get()
     return result

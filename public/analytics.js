@@ -98,7 +98,7 @@
     }
 
     // 비동기 전송 (fire and forget)
-    // 404 에러는 조용히 무시 (Cloudflare Functions가 배포되지 않은 경우)
+    // 404 에러는 조용히 무시 (수집 API가 배포되지 않은 경우)
     fetch(COLLECT_ENDPOINT, {
       method: 'POST',
       headers: {
