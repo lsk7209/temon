@@ -1,5 +1,5 @@
--- Cloudflare D1 초기 스키마 마이그레이션
--- 실행: wrangler d1 execute temon-db --file=lib/db/migrations/001_initial_schema.sql
+-- Initial database schema migration
+-- Apply with the current production database migration process.
 
 -- 테스트 메타데이터
 CREATE TABLE IF NOT EXISTS tests (

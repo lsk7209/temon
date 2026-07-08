@@ -124,9 +124,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
         window.location.href = '/admin'
         return
       }
-
-      // Cloudflare Pages Functions는 같은 도메인에서 /api/dashboard-stats로 접근 가능
-      // 프로덕션에서는 자동으로 Functions로 라우팅됨
+      // Vercel/Next.js API route on the same domain.
       // 참고: /api/reports는 광고 차단기에 의해 차단될 수 있어 변경함
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || '/api/dashboard-stats'
       const res = await fetch(`${apiUrl}?${params.toString()}`, {
@@ -141,7 +139,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
 
         // DB 연결 상태 확인
         if (json.dbConnected === false) {
-          alert(`⚠️ 데이터베이스 연결 오류\n\n${json.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
+          alert(`⚠️ 데이터베이스 연결 오류\n\n${json.message || 'Turso/libsql database is not configured.'}\n\nCheck the Vercel environment variables for the database connection.`)
         }
 
         setData(json)
@@ -158,7 +156,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
 
         // DB 연결 오류인 경우
         if (errorData.dbConnected === false || res.status === 503) {
-          alert(`⚠️ 데이터베이스 연결 오류\n\n${errorData.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
+          alert(`⚠️ 데이터베이스 연결 오류\n\n${errorData.message || 'Turso/libsql database is not configured.'}\n\nCheck the Vercel environment variables for the database connection.`)
         } else {
           alert(`데이터를 불러올 수 없습니다. (${res.status})\n${errorData.message || '관리자에게 문의하세요.'}`)
         }
@@ -209,7 +207,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
 
           // DB 연결 상태 확인
           if (json.dbConnected === false) {
-            alert(`⚠️ 데이터베이스 연결 오류\n\n${json.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
+            alert(`⚠️ 데이터베이스 연결 오류\n\n${json.message || 'Turso/libsql database is not configured.'}\n\nCheck the Vercel environment variables for the database connection.`)
           }
 
           setData(json)
@@ -226,7 +224,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
 
           // DB 연결 오류인 경우
           if (errorData.dbConnected === false || res.status === 503) {
-            alert(`⚠️ 데이터베이스 연결 오류\n\n${errorData.message || 'D1 데이터베이스가 설정되지 않았습니다.'}\n\nCloudflare Dashboard에서 D1 데이터베이스를 바인딩해주세요.`)
+            alert(`⚠️ 데이터베이스 연결 오류\n\n${errorData.message || 'Turso/libsql database is not configured.'}\n\nCheck the Vercel environment variables for the database connection.`)
           }
 
           // 에러가 발생해도 빈 데이터 구조를 설정하여 UI가 표시되도록 함
@@ -398,7 +396,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
                 <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 text-sm">
                   <span>⚠️</span>
                   <span>
-                    데이터가 없습니다. D1 데이터베이스가 연결되어 있고 데이터가 수집되고 있는지 확인해주세요.
+                    데이터가 없습니다. DB 연결과 데이터 수집 상태를 확인해주세요.
                   </span>
                 </div>
               ) : (
@@ -572,4 +570,3 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
     </div>
   )
 }
-

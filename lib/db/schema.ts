@@ -1,5 +1,5 @@
 /**
- * Cloudflare D1 Database Schema
+ * Application database schema
  * Drizzle ORM을 사용한 테스트 플랫폼 스키마
  */
 

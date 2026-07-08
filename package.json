@@ -23,7 +23,6 @@
     "deploy": "npm run build && npm run git-push-auto"
   },
   "dependencies": {
-    "@cloudflare/workers-types": "^4.20241106.0",
     "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^3.9.1",
     "@libsql/client": "^0.17.0",
