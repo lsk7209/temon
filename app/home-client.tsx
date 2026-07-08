@@ -131,12 +131,12 @@ export default function HomeClient() {
               무료 성격 테스트 사이트
             </Badge>
             <h1 className="text-4xl font-black leading-tight text-slate-950 md:text-6xl">
-              무료 MBTI 테스트 모음
+              재밌는 테스트 모음
             </h1>
             <p className="article-summary key-takeaways mt-5 max-w-2xl text-lg leading-8 text-slate-700">
               테몬은 가입 없이 2~3분 안에 끝나는 무료 MBTI 테스트 모음과
               재밌는 성격 테스트를 제공하는 한국어 테스트 사이트입니다.
-              음식, 연애, 생활, 디지털 등 일상 주제로 결과를 확인하고
+              음식, 연애, 생활, 아이돌 같은 일상 주제로 결과를 확인하고
               친구와 비교할 수 있습니다.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
