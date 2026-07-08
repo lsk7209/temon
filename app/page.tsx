@@ -10,12 +10,12 @@ import HomeClient from "./home-client";
 
 const baseUrl = "https://temon.kr";
 const canonical = "/";
-const title = "무료 MBTI 테스트 모음 | 재미있는 성격 테스트 - 테몬";
+const title = "테스트 모음, 재미있는 MBTI·연애·아이돌 테스트 - 테몬";
 const description =
-  "가입 없이 바로 즐기는 무료 MBTI 테스트 모음. 성격 테스트, 취향 테스트, 생활 습관 테스트를 2~3분 안에 확인하고 친구와 공유해보세요.";
+  "테몬에서 무료 MBTI 테스트, 성격 테스트, 연애·취향·아이돌 테스트를 한곳에서 골라보세요. 가입 없이 2~3분 안에 결과를 확인하고 친구와 공유할 수 있습니다.";
 const ogImage = `${baseUrl}/api/og?title=${encodeURIComponent(
-  "무료 MBTI 테스트 모음",
-)}&desc=${encodeURIComponent("재미있는 성격 테스트와 취향 테스트 모음")}`;
+  "재밌는 테스트 모음",
+)}&desc=${encodeURIComponent("MBTI부터 아이돌 포지션까지 무료 테스트")}`;
 
 const homeFaqs = [
   {
@@ -36,7 +36,7 @@ const homeFaqs = [
   {
     question: "테스트 결과는 정확한 진단인가요?",
     answer:
-      "테몬의 결과는 가볍게 즐기는 성향 분석 콘텐츠입니다. 의료, 심리, 진로 진단이 아니며 자기 이해와 대화 소재로 활용하는 것이 좋습니다.",
+      "테몬의 결과는 가볍게 즐기는 성향 분석 콘텐츠입니다. 의료, 심리, 진로 진단이 아니라 자기 이해와 대화 소재로 사용하는 것이 좋습니다.",
   },
 ];
 
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   title,
   description,
   keywords:
-    "MBTI 테스트 모음, 무료 MBTI 테스트, 재미있는 테스트, 성격 테스트 모음, 성격 테스트 사이트, 테스트 사이트, 무료 성격 테스트, 취향 테스트, 연애 테스트, 음식 테스트",
+    "MBTI 테스트 모음, 무료 MBTI 테스트, 재밌는 테스트, 성격 테스트 모음, 테스트 사이트, 무료 성격 테스트, 취향 테스트, 연애 테스트, 음식 테스트, 아이돌 테스트",
   metadataBase: new URL(baseUrl),
   alternates: {
     canonical,
