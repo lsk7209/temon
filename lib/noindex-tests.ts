@@ -44,6 +44,14 @@ export const NOINDEX_TEST_IDS = new Set<string>([
   "grocery-shopping",
   "restaurant-service",
 
+  // 2026-07-09 fleet quality audit: sampled pages under 700 visible tokens.
+  // Keep access/share routes alive, but remove from Google discovery until expanded.
+  "alarm-habit",
+  "bag-organizing",
+  "bathroom-habit",
+  "bed-making",
+  "book-reading",
+
   // cooking-shared는 next.config.mjs에서 cooking-share로 308 redirect 처리되지만
   // 별도 라우트 파일이 남아 있어 직접 접근/메타 생성 시에도 noindex를 유지한다.
 ]);
