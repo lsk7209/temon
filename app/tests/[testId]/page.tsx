@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/json-ld"
 import { generateQuizSchemas, generateUniqueTestMetadata } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { TestExpandedIntro } from "@/components/test-expanded-intro"
+import { TestQualitySignals } from "@/components/test-quality-signals"
 import {
   AutoGscLandingBoost,
   hasAutoGscLandingBoost,
@@ -131,6 +132,13 @@ export default async function DynamicTestPage({ params }: Props) {
         {hasAutoGscLandingBoost(test.slug) && (
           <AutoGscLandingBoost testId={test.slug} />
         )}
+        <TestQualitySignals
+          title={test.title}
+          category={test.category}
+          questionCount={test.questionCount}
+          avgMinutes={test.avgMinutes}
+          resultCount={test.resultTypeCount}
+        />
       </div>
     </>
   )
