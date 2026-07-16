@@ -30,6 +30,7 @@ import {
 const BASE_URL = "https://temon.kr";
 
 export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 const DEFAULT_REFERENCES: BlogReference[] = [
   {

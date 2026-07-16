@@ -15,6 +15,8 @@ import {
   type BlogPost,
 } from "@/lib/blog-posts";
 
+export const dynamic = "force-dynamic";
+
 const BASE_URL = "https://temon.kr";
 
 export const revalidate = 86400;

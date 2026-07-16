@@ -1,3 +1,5 @@
+import { APPROVED_AUGUST_2026_POSTS } from "./blog-posts-approved-august-2026";
+
 export type BlogPostCategory =
   | "심리"
   | "관계"
@@ -57,6 +59,7 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS: BlogPost[] = [
+  ...APPROVED_AUGUST_2026_POSTS,
   {
     slug: "free-mbti-test-guide-korean",
     title: "무료 MBTI 테스트를 고를 때 확인할 기준",
@@ -1749,26 +1752,35 @@ const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export function getAllBlogPosts(): BlogPost[] {
-  return BLOG_POSTS;
+function toPublishTime(post: BlogPost): number {
+  const value = post.publishedAt.includes("T")
+    ? post.publishedAt
+    : `${post.publishedAt}T10:00:00+09:00`;
+  const timestamp = Date.parse(value);
+  return Number.isNaN(timestamp) ? 0 : timestamp;
+}
+
+export function getAllBlogPosts(now = new Date()): BlogPost[] {
+  return BLOG_POSTS.filter((post) => toPublishTime(post) <= now.getTime());
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return BLOG_POSTS.find((post) => post.slug === slug);
+  return getAllBlogPosts().find((post) => post.slug === slug);
 }
 
 export function getBlogCategories(): BlogPostCategory[] {
-  return Array.from(new Set(BLOG_POSTS.map((post) => post.category)));
+  return Array.from(new Set(getAllBlogPosts().map((post) => post.category)));
 }
 
 export function getRelatedBlogPosts(slug: string, limit = 3): BlogPost[] {
   const current = getBlogPostBySlug(slug);
-  if (!current) return BLOG_POSTS.slice(0, limit);
+  const publishedPosts = getAllBlogPosts();
+  if (!current) return publishedPosts.slice(0, limit);
 
-  const sameCategory = BLOG_POSTS.filter(
+  const sameCategory = publishedPosts.filter(
     (post) => post.slug !== slug && post.category === current.category,
   );
-  const others = BLOG_POSTS.filter(
+  const others = publishedPosts.filter(
     (post) => post.slug !== slug && post.category !== current.category,
   );
 
