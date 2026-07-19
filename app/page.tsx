@@ -10,12 +10,12 @@ import HomeClient from "./home-client";
 
 const baseUrl = "https://temon.kr";
 const canonical = "/";
-const title = "테스트 모음, 재미있는 MBTI·연애·아이돌 테스트 - 테몬";
+const title = "무료 심리 테스트·MBTI 테스트 모음 | 테몬";
 const description =
-  "테몬에서 무료 MBTI 테스트, 성격 테스트, 연애·취향·아이돌 테스트를 한곳에서 골라보세요. 가입 없이 2~3분 안에 결과를 확인하고 친구와 공유할 수 있습니다.";
+  "무료 심리 테스트와 MBTI·성격·연애·취향·아이돌 테스트를 가입 없이 2~3분 안에 즐겨보세요. 결과는 가벼운 자기이해와 대화 소재를 위한 콘텐츠입니다.";
 const ogImage = `${baseUrl}/api/og?title=${encodeURIComponent(
-  "재밌는 테스트 모음",
-)}&desc=${encodeURIComponent("MBTI부터 아이돌 포지션까지 무료 테스트")}`;
+  "무료 심리 테스트·MBTI 테스트 모음",
+)}&desc=${encodeURIComponent("가입 없이 즐기는 성격·연애·취향 테스트")}`;
 
 const homeFaqs = [
   {
