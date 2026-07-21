@@ -14,11 +14,17 @@ jobs:
 
       - name: robots.txt 안전 체크
         run: |
-          if grep -q "Disallow: /$" public/robots.txt; then
-            echo "❌ ERROR: robots.txt가 전체 사이트를 차단하고 있습니다!"
-            exit 1
+          if [ ! -f "app/robots.ts" ]; then
+            echo "⚠️  WARNING: app/robots.ts를 찾을 수 없어 robots 체크를 건너뜁니다"
+          else
+            # userAgent: "*" 규칙만 확인 (Bytespider 등 개별 봇 차단은 의도된 것이므로 오탐 대상 아님)
+            WILDCARD_RULE=$(grep -A5 'userAgent: "\*"' app/robots.ts)
+            if echo "$WILDCARD_RULE" | grep -q 'disallow: \["\/"\]' && ! echo "$WILDCARD_RULE" | grep -q 'allow: "/"'; then
+              echo "❌ ERROR: robots.ts의 기본(*) 규칙이 전체 사이트를 차단하고 있습니다!"
+              exit 1
+            fi
+            echo "✅ robots.ts 안전 확인"
           fi
-          echo "✅ robots.txt 안전 확인"
 
       - name: AI 크롤러 허용 체크
         run: |

@@ -30,10 +30,11 @@ jobs:
         run: |
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://temon.kr/robots.txt)
           echo "✅ robots.txt HTTP $STATUS"
-          # Disallow: / 전체 차단 체크
+          # User-agent: * 블록에서만 전체 차단 여부 체크 (다른 봇 전용 블록의 의도된 Disallow: /는 오탐 대상 아님, 예: Bytespider)
           CONTENT=$(curl -s https://temon.kr/robots.txt)
-          if echo "$CONTENT" | grep -q "^Disallow: /$"; then
-            echo "❌ CRITICAL: robots.txt가 전체 사이트를 차단하고 있습니다!"
+          WILDCARD_BLOCK=$(printf '%s\n' "$CONTENT" | awk '/^User-[Aa]gent: \*[[:space:]]*$/{flag=1; next} /^User-[Aa]gent:/{flag=0} flag')
+          if echo "$WILDCARD_BLOCK" | grep -qx "Disallow: /" && ! echo "$WILDCARD_BLOCK" | grep -qx "Allow: /"; then
+            echo "❌ CRITICAL: robots.txt의 User-agent: * 블록이 전체 사이트를 차단하고 있습니다!"
             exit 1
           fi
 
