@@ -12,6 +12,8 @@ const MIN_PUBLISH_QUALITY_SCORE = 90;
 const SEARCH_SUBMISSION_VERSION = "1.0";
 const DEFAULT_SEARCH_RETRY_BATCH_SIZE = 10;
 const MAX_SEARCH_RETRY_BATCH_SIZE = 50;
+const DEFAULT_SEARCH_RETRY_SCAN_LIMIT = 50;
+const MAX_SEARCH_RETRY_SCAN_LIMIT = 100;
 
 function parseMetadata(value: unknown) {
   if (!value) return {};
@@ -79,6 +81,18 @@ function getSearchRetryBatchSize() {
     : DEFAULT_SEARCH_RETRY_BATCH_SIZE;
 
   return Math.min(Math.max(batchSize, 1), MAX_SEARCH_RETRY_BATCH_SIZE);
+}
+
+function getSearchRetryScanLimit() {
+  const configured = Number.parseInt(
+    process.env.SEARCH_SUBMISSION_RETRY_SCAN_LIMIT || "",
+    10,
+  );
+  const scanLimit = Number.isFinite(configured)
+    ? configured
+    : DEFAULT_SEARCH_RETRY_SCAN_LIMIT;
+
+  return Math.min(Math.max(scanLimit, 1), MAX_SEARCH_RETRY_SCAN_LIMIT);
 }
 
 function buildPublishedUrls(
@@ -189,7 +203,7 @@ async function retryPendingSearchSubmissions(
     .from(tests)
     .where(eq(tests.status, "published"))
     .orderBy(desc(tests.updatedAt))
-    .limit(500);
+    .limit(getSearchRetryScanLimit());
 
   const retryableTests = publishedTests.filter((test) =>
     shouldRetrySearchSubmission(parseMetadata(test.metadata)),
