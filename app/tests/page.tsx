@@ -270,6 +270,29 @@ const trustHighlights = [
   },
 ];
 
+const quickStartTests = [
+  {
+    href: "/tests/coffee-mbti",
+    label: "커피 MBTI 테스트",
+    description: "가볍게 시작하는 취향·성격 테스트",
+  },
+  {
+    href: "/tests/kpop-idol",
+    label: "K-pop 아이돌 테스트",
+    description: "친구와 결과를 비교하기 좋은 재미 테스트",
+  },
+  {
+    href: "/tests/music-taste",
+    label: "음악 취향 테스트",
+    description: "플레이리스트로 보는 나의 선택 성향",
+  },
+  {
+    href: "/tests/sleep-chronotype",
+    label: "수면 유형 테스트",
+    description: "일상 루틴에서 찾는 나의 에너지 리듬",
+  },
+];
+
 export const metadata: Metadata = {
   title: "성격 성향 테스트 모음 | 무료 심리·MBTI 테스트 바로가기 - 테몬",
   description: shortDescription,
@@ -401,6 +424,41 @@ export default async function TestsPage() {
                   {highlight.description}
                 </p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="tests-quick-start"
+        className="container mx-auto max-w-7xl px-4 py-8"
+      >
+        <div className="rounded-2xl border border-violet-100 bg-white p-5 shadow-sm sm:p-6">
+          <p className="text-sm font-bold text-violet-700">
+            재밌는 테스트를 찾는다면
+          </p>
+          <h2
+            id="tests-quick-start"
+            className="mt-1 text-2xl font-black text-gray-950"
+          >
+            지금 바로 해보기 좋은 테스트
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-600">
+            처음이라면 취향, 일상, 친구와 공유하기 좋은 주제 중에서 하나를 골라
+            바로 시작해 보세요.
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {quickStartTests.map((test) => (
+              <Link
+                key={test.href}
+                href={test.href}
+                className="rounded-xl border border-gray-100 bg-gray-50 p-4 transition hover:border-violet-200 hover:bg-violet-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
+              >
+                <span className="block font-bold text-gray-950">{test.label}</span>
+                <span className="mt-1 block text-sm leading-5 text-gray-600">
+                  {test.description}
+                </span>
+              </Link>
             ))}
           </div>
         </div>
