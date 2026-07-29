@@ -9,27 +9,40 @@ const ADSENSE_CLIENT_ID =
   process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID ||
   "ca-pub-3050601904412736";
 const ADSENSE_SCRIPT_ID = "adsense-loader";
-const ADSENSE_EXCLUDED_PATH_PREFIXES = ["/admin", "/dashboard"] as const;
 const MOBILE_ADS_MAX_WIDTH = 767;
+const LEGACY_CONTENT_PATHS = new Set([
+  "/alarm-habit",
+  "/coffee-mbti",
+  "/kdrama-mbti",
+  "/kpop-idol",
+  "/ntrp-test",
+  "/pet-mbti",
+  "/ramen-mbti",
+  "/snowwhite-mbti",
+  "/study-mbti",
+]);
 
-function isAdSenseExcludedPath(pathname: string | null) {
+function isAdSenseEligiblePath(pathname: string | null) {
   if (!pathname) return false;
-  if (ADSENSE_EXCLUDED_PATH_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
-    return true;
-  }
+  if (pathname === "/" || pathname === "/tests" || pathname === "/blog") return true;
+  if (LEGACY_CONTENT_PATHS.has(pathname)) return true;
 
-  return /\/tests\/[^/]+\/test(?:\/|$)/.test(pathname);
+  if (pathname.startsWith("/blog/")) return true;
+  return /^\/tests\/[^/]+\/?$/.test(pathname);
 }
 
 export default function AdSenseScript() {
   const pathname = usePathname();
   const [isMobileViewport, setIsMobileViewport] = useState(true);
+  const [isIndexablePage, setIsIndexablePage] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_ADS_MAX_WIDTH}px)`);
     const updateViewport = () => setIsMobileViewport(mediaQuery.matches);
 
     updateViewport();
+    const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    setIsIndexablePage(!robots?.content.toLowerCase().includes("noindex"));
     mediaQuery.addEventListener("change", updateViewport);
 
     return () => mediaQuery.removeEventListener("change", updateViewport);
@@ -41,7 +54,8 @@ export default function AdSenseScript() {
   if (
     !ADSENSE_CLIENT_ID ||
     isMobileViewport ||
-    isAdSenseExcludedPath(pathname)
+    !isIndexablePage ||
+    !isAdSenseEligiblePath(pathname)
   ) {
     return null;
   }

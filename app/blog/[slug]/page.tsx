@@ -57,7 +57,14 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: BlogDetailPageProps): Metadata {
   const post = getBlogPostBySlug(params.slug);
-  if (!post) return {};
+  if (!post) {
+    return {
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
+  }
 
   const url = `/blog/${post.slug}`;
   const ogImage = `${BASE_URL}/api/og?title=${encodeURIComponent(post.title)}&desc=${encodeURIComponent(post.description)}`;

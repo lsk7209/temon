@@ -52,6 +52,10 @@ export async function generateMetadata(
   if (!test) {
     return {
       title: "Test not found",
+      robots: {
+        index: false,
+        follow: true,
+      },
     }
   }
 
