@@ -2,6 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const DASHBOARD_BASE = "https://multi-dashboard-one.vercel.app";
 const SITE_KEY = "temon";
@@ -9,11 +10,35 @@ const SLOT_KEY = "coupang-inline";
 const LABEL = "생활용품";
 const DISCLOSURE =
   "이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.";
-const HIDDEN_PREFIXES = ["/admin", "/privacy", "/terms", "/contact"];
+const LEGACY_CONTENT_PATHS = new Set([
+  "/alarm-habit",
+  "/coffee-mbti",
+  "/kdrama-mbti",
+  "/kpop-idol",
+  "/ntrp-test",
+  "/pet-mbti",
+  "/ramen-mbti",
+  "/snowwhite-mbti",
+  "/study-mbti",
+]);
+
+function isAffiliateEligiblePath(pathname: string) {
+  if (pathname === "/" || pathname === "/tests" || pathname === "/blog") return true;
+  if (LEGACY_CONTENT_PATHS.has(pathname)) return true;
+  if (pathname.startsWith("/blog/")) return true;
+  return /^\/tests\/[^/]+\/?$/.test(pathname);
+}
 
 export default function CoupangAffiliateBanner() {
   const pathname = usePathname() ?? "/";
-  if (HIDDEN_PREFIXES.some((path) => pathname === path || pathname.startsWith(`${path}/`))) return null;
+  const [isIndexablePage, setIsIndexablePage] = useState(false);
+
+  useEffect(() => {
+    const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    setIsIndexablePage(!robots?.content.toLowerCase().includes("noindex"));
+  }, [pathname]);
+
+  if (!isIndexablePage || !isAffiliateEligiblePath(pathname)) return null;
 
   const params = new URLSearchParams({
     siteKey: SITE_KEY,
