@@ -96,11 +96,6 @@ body {
   overflow-wrap: anywhere;
 }
 
-.content-visibility-auto {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 900px;
-}
-
 .article-content {
   overflow-wrap: anywhere;
   word-break: keep-all;

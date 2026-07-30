@@ -212,7 +212,7 @@ export default function HomeClient() {
       </section>
 
       {newTests.length > 0 && (
-        <section id="new-tests" className="content-visibility-auto px-4 py-12">
+        <section id="new-tests" className="px-4 py-12">
           <div className="mx-auto max-w-7xl">
             <div className="mb-6 flex items-end justify-between gap-4">
               <div>
@@ -285,7 +285,7 @@ export default function HomeClient() {
         </section>
       )}
 
-      <section className="content-visibility-auto px-4 py-12">
+      <section className="px-4 py-12">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 text-center">
             <h2 className="text-3xl font-black text-slate-950">
@@ -360,7 +360,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <section className="content-visibility-auto bg-white px-4 py-14">
+      <section className="bg-white px-4 py-14">
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 text-center">
             <h2 className="text-3xl font-black text-slate-950">
@@ -386,7 +386,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <section className="content-visibility-auto px-4 py-14">
+      <section className="px-4 py-14">
         <div className="mx-auto max-w-4xl">
           <h2 className="mb-8 text-center text-3xl font-black text-slate-950">
             자주 묻는 질문
