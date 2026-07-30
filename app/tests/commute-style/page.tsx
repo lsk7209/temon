@@ -58,7 +58,7 @@ export default function CommuteStyleIntro() {
       )}
 
       <article className="min-h-screen bg-gradient-to-br from-sky-50 via-indigo-50 to-violet-50">
-        <main className="container max-w-4xl mx-auto px-4 py-16">
+        <div className="container max-w-4xl mx-auto px-4 py-16">
           <Card className="border-0 shadow-2xl bg-white/90 backdrop-blur">
             <CardContent className="p-8 md:p-12 text-center space-y-8">
               <div className="flex justify-center">
@@ -133,7 +133,7 @@ export default function CommuteStyleIntro() {
               title="출퇴근 스타일 테스트 자주 묻는 질문"
             />
           </section>
-        </main>
+        </div>
       </article>
     </>
   );
