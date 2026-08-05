@@ -8,7 +8,6 @@ import AnalyticsProvider from "@/components/analytics-provider";
 import Script from "next/script";
 import { Suspense } from "react";
 import AdminHeadScripts from "@/components/admin-head-scripts";
-import AdSenseScript from "@/components/adsense-script";
 import AutoContentToc from "@/components/auto-content-toc";
 import CoupangAffiliateBanner from "@/components/affiliate/CoupangAffiliateBanner";
 import WebVitals from "@/components/web-vitals";
@@ -201,7 +200,6 @@ export default function RootLayout({
         <CoupangAffiliateBanner />
         <Footer />
         <Suspense fallback={null}>
-          <AdSenseScript />
           <AnalyticsProvider />
         </Suspense>
         {isVercel && <Analytics />}
