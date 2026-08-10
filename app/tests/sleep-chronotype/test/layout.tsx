@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/tests/sleep-chronotype/test",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
   openGraph: {
     title: "수면 크로노타입 테스트 | 12문항으로 보는 나의 리듬",
     description: "기상·취침·집중 타이밍과 낮잠 습관으로 16유형 분석. 결과 공유 가능",

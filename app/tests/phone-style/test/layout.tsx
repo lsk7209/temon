@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/tests/phone-style/test",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
   openGraph: {
     title: "스마트폰 사용 스타일 테스트 | 12문항으로 보는 나의 사용 성향",
     description: "알림, 홈화면 정리, 배터리 관리 습관으로 16유형 분석. 결과 공유 가능",
