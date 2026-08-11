@@ -25,8 +25,10 @@ for (const testId of staticLayouts) {
 
 const dynamicLayout = read("app/tests/[testId]/test/layout.tsx");
 const metadataHelper = read("lib/quiz-seo-utils.ts");
+const nextConfig = read("next.config.mjs");
 
 assert.match(dynamicLayout, /canonical:\s*`\/tests\/\$\{params\.testId\}\/test`/);
 assert.match(metadataHelper, /function generateTestPageMetadata[\s\S]*?robots:\s*noindexFollowRobots,/);
+assert.match(nextConfig, /source:\s*['"]\/tests\/:slug\/test\/:path\*['"][\s\S]*?key:\s*['"]X-Robots-Tag['"][\s\S]*?value:\s*['"]noindex, follow['"]/);
 
-console.log(`verified ${staticLayouts.length + 1} active test metadata layouts`);
+console.log(`verified ${staticLayouts.length + 1} active test metadata layouts and the static-route X-Robots-Tag gate`);
