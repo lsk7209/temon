@@ -1,0 +1,82 @@
+{
+  "target": "temon.kr",
+  "mode": "apply",
+  "site_lane": "rejected_site",
+  "checked_at": "2026-08-17",
+  "rejection_evidence": {
+    "state": "available",
+    "location": "User-provided Google Chrome and AdSense policy notices",
+    "date": "2026-08-15",
+    "policy": "Better Ads Standards on mobile"
+  },
+  "playbook_evidence": {
+    "playbook_loaded": true,
+    "as_of": "2026-08-05",
+    "references_used": ["adsense-playbook/SKILL.md"],
+    "currentness_checked": false
+  },
+  "external_approval_status": "user_confirmed",
+  "adsense_readiness": "not_ready",
+  "submission_readiness": "not_ready",
+  "blocked": ["mobile-better-ads-violation", "production-not-yet-deployed", "exact-report-items-not-exported"],
+  "needs_patch": [],
+  "review": ["google-review-request"],
+  "auto_safe": ["retain-mobile-adsense-pause", "remove-third-party-affiliate-ad-delivery"],
+  "needs_approval": [],
+  "manual": ["google-review-request"],
+  "findings": [
+    {
+      "id": "mobile-better-ads-violation",
+      "status": "blocked",
+      "priority": "P0",
+      "confidence": "high",
+      "tier": "T1",
+      "action_class": "AUTO_SAFE",
+      "evidence": "The supplied notices state that Chrome mobile and AdSense stopped ads for Better Ads Standards violations."
+    },
+    {
+      "id": "retain-mobile-adsense-pause",
+      "status": "ok",
+      "priority": "P0",
+      "confidence": "high",
+      "tier": "T1",
+      "action_class": "AUTO_SAFE",
+      "evidence": "The current main branch keeps the AdSense loader out of the root layout and its component blocks mobile viewports, preventing the reviewed mobile experience from returning before approval."
+    },
+    {
+      "id": "remove-third-party-affiliate-ad-delivery",
+      "status": "ok",
+      "priority": "P0",
+      "confidence": "high",
+      "tier": "T1",
+      "action_class": "AUTO_SAFE",
+      "evidence": "The Coupang affiliate banner component and its layout import/render were removed, so neither the banner nor its measurement script can render."
+    },
+    {
+      "id": "production-not-yet-deployed",
+      "status": "blocked",
+      "priority": "P0",
+      "confidence": "high",
+      "tier": "T1",
+      "action_class": "NEEDS_APPROVAL",
+      "evidence": "Only the local repository was changed; no production deployment or cache purge was performed."
+    },
+    {
+      "id": "exact-report-items-not-exported",
+      "status": "review",
+      "priority": "P1",
+      "confidence": "medium",
+      "tier": "T2",
+      "action_class": "MANUAL",
+      "evidence": "The notice gives the policy category but not the exact URL/creative list from the Ad Experience Report."
+    }
+  ],
+  "verification": [
+    "npm run build completed successfully on 2026-08-17; Next.js generated 1,094 routes.",
+    "Static source assertions confirmed both delivery switches are false."
+  ],
+  "dashboard_evidence": {},
+  "snapshot_timestamp": "not_applicable",
+  "connector_status": {},
+  "next_step": "Deploy these changes, then use the Ad Experience Report on a mobile viewport to confirm no ads or ad overlays remain before submitting Google's review request."
+}

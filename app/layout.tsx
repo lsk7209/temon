@@ -9,7 +9,6 @@ import Script from "next/script";
 import { Suspense } from "react";
 import AdminHeadScripts from "@/components/admin-head-scripts";
 import AutoContentToc from "@/components/auto-content-toc";
-import CoupangAffiliateBanner from "@/components/affiliate/CoupangAffiliateBanner";
 import WebVitals from "@/components/web-vitals";
 import {
   generateOrganizationSchema,
@@ -197,7 +196,6 @@ export default function RootLayout({
           <AutoContentToc />
           {children}
         </main>
-        <CoupangAffiliateBanner />
         <Footer />
         <Suspense fallback={null}>
           <AnalyticsProvider />
