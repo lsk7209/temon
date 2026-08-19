@@ -10,6 +10,7 @@ import { Suspense } from "react";
 import AdminHeadScripts from "@/components/admin-head-scripts";
 import AutoContentToc from "@/components/auto-content-toc";
 import WebVitals from "@/components/web-vitals";
+import AdSenseScript from "@/components/adsense-script";
 import {
   generateOrganizationSchema,
   generateSpeakableWebPageSchema,
@@ -191,6 +192,7 @@ export default function RootLayout({
           본문 바로가기
         </a>
         <AdminHeadScripts />
+        <AdSenseScript />
         <Header />
         <main id="main-content" className="min-h-screen">
           <AutoContentToc />
