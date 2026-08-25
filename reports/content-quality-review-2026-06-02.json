@@ -1,0 +1,713 @@
+{
+  "summary": {
+    "generatedAt": "2026-06-02T03:20:38.752Z",
+    "dbTests": 1221,
+    "dbPublished": 256,
+    "publishedDescriptionDefects": 18,
+    "staticTests": 193,
+    "resultAudit": {
+      "generatedAt": "2026-06-02T03:13:16.879Z",
+      "static": {
+        "tests": 212,
+        "bySeverity": {
+          "Pass": 212
+        },
+        "thinOrBroken": 0
+      },
+      "database": {
+        "tests": 1221,
+        "publishedTests": 256,
+        "draftTests": 965,
+        "resultRows": 19536,
+        "publishedThinTests": 0,
+        "draftThinTests": 0,
+        "publishedBySeverity": {
+          "Pass": 256
+        },
+        "draftBySeverity": {
+          "Pass": 965
+        }
+      },
+      "waveJson": {
+        "files": 4,
+        "items": 1000,
+        "thinItems": 0,
+        "byFile": [
+          {
+            "file": "data/quiz-wave3-200.json",
+            "items": 200,
+            "thinItems": 0
+          },
+          {
+            "file": "data/quiz-wave4-200.json",
+            "items": 200,
+            "thinItems": 0
+          },
+          {
+            "file": "data/quiz-wave5-300.json",
+            "items": 300,
+            "thinItems": 0
+          },
+          {
+            "file": "data/quiz-wave6-300.json",
+            "items": 300,
+            "thinItems": 0
+          }
+        ]
+      }
+    },
+    "quizAudit": {},
+    "gscTopPages": [
+      {
+        "clicks": 20,
+        "impressions": 829,
+        "ctr": 0.024125452352231604,
+        "position": 12.990349819059107,
+        "page": "https://temon.kr/tests",
+        "ctrPercent": "2.41%",
+        "priority": "P0",
+        "opportunityScore": 13.16
+      },
+      {
+        "clicks": 60,
+        "impressions": 1798,
+        "ctr": 0.03337041156840934,
+        "position": 10.14293659621802,
+        "page": "https://temon.kr/",
+        "ctrPercent": "3.34%",
+        "priority": "P1",
+        "opportunityScore": 11.92
+      },
+      {
+        "clicks": 1,
+        "impressions": 96,
+        "ctr": 0.010416666666666666,
+        "position": 6.916666666666667,
+        "page": "https://temon.kr/tests/perfection-balance-1xQC",
+        "ctrPercent": "1.04%",
+        "priority": "P2",
+        "opportunityScore": 2.84
+      },
+      {
+        "clicks": 3,
+        "impressions": 112,
+        "ctr": 0.026785714285714284,
+        "position": 7.607142857142857,
+        "page": "https://temon.kr/tests/zombie-survival",
+        "ctrPercent": "2.68%",
+        "priority": "P1",
+        "opportunityScore": 1.48
+      },
+      {
+        "clicks": 2,
+        "impressions": 74,
+        "ctr": 0.02702702702702703,
+        "position": 9.472972972972974,
+        "page": "https://temon.kr/tests/spending-style",
+        "ctrPercent": "2.70%",
+        "priority": "P2",
+        "opportunityScore": 0.96
+      }
+    ],
+    "gscTopQueries": [
+      {
+        "clicks": 13,
+        "impressions": 448,
+        "ctr": 0.029017857142857144,
+        "position": 8.40625,
+        "query": "테스트 모음",
+        "ctrPercent": "2.90%",
+        "opportunityScore": 4.92
+      },
+      {
+        "clicks": 0,
+        "impressions": 77,
+        "ctr": 0,
+        "position": 7.12987012987013,
+        "query": "완벽주의 테스트",
+        "ctrPercent": "0.00%",
+        "opportunityScore": 3.08
+      },
+      {
+        "clicks": 0,
+        "impressions": 61,
+        "ctr": 0,
+        "position": 12.163934426229508,
+        "query": "테스트 사이트",
+        "ctrPercent": "0.00%",
+        "opportunityScore": 2.44
+      },
+      {
+        "clicks": 0,
+        "impressions": 57,
+        "ctr": 0,
+        "position": 8.929824561403509,
+        "query": "mbti test 한국어",
+        "ctrPercent": "0.00%",
+        "opportunityScore": 2.28
+      },
+      {
+        "clicks": 1,
+        "impressions": 76,
+        "ctr": 0.013157894736842105,
+        "position": 9.43421052631579,
+        "query": "재밌는 테스트",
+        "ctrPercent": "1.32%",
+        "opportunityScore": 2.04
+      },
+      {
+        "clicks": 3,
+        "impressions": 115,
+        "ctr": 0.02608695652173913,
+        "position": 7.226086956521739,
+        "query": "재밌는 테스트 사이트",
+        "ctrPercent": "2.61%",
+        "opportunityScore": 1.6
+      },
+      {
+        "clicks": 0,
+        "impressions": 39,
+        "ctr": 0,
+        "position": 8.282051282051281,
+        "query": "mbti 테스트 한국어",
+        "ctrPercent": "0.00%",
+        "opportunityScore": 1.56
+      },
+      {
+        "clicks": 0,
+        "impressions": 35,
+        "ctr": 0,
+        "position": 8.2,
+        "query": "mbti 검사 무료 사이트",
+        "ctrPercent": "0.00%",
+        "opportunityScore": 1.4
+      },
+      {
+        "clicks": 0,
+        "impressions": 34,
+        "ctr": 0,
+        "position": 9.205882352941176,
+        "query": "성향 테스트 모음",
+        "ctrPercent": "0.00%",
+        "opportunityScore": 1.36
+      },
+      {
+        "clicks": 0,
+        "impressions": 43,
+        "ctr": 0,
+        "position": 35.02325581395349,
+        "query": "테스트",
+        "ctrPercent": "0.00%",
+        "opportunityScore": 0.95
+      },
+      {
+        "clicks": 1,
+        "impressions": 38,
+        "ctr": 0.02631578947368421,
+        "position": 12.052631578947368,
+        "query": "심리테스트 사이트",
+        "ctrPercent": "2.63%",
+        "opportunityScore": 0.52
+      },
+      {
+        "clicks": 4,
+        "impressions": 87,
+        "ctr": 0.04597701149425287,
+        "position": 7.850574712643678,
+        "query": "테스트모음",
+        "ctrPercent": "4.60%",
+        "opportunityScore": 0
+      }
+    ]
+  },
+  "publishedDescriptionDefects": [
+    {
+      "slug": "brain-opinion-mbti-lO1Z",
+      "title": "당신의 '뇌피셜' 유형은? 썰 푸는 MBTI!",
+      "description": "'' ? MBTI!? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "cake-cutting-style-test-G9Ge",
+      "title": "🍰 당신의 케이크 자르는 운명은?! MBTI 폼 미쳤다 🍰",
+      "description": "?! MBTI? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "challenge-participation-style-test-DcIo",
+      "title": "🔥 당신의 챌린지 영혼은? 갓생 도전 유형 테스트 🔥",
+      "description": "?? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "drawing-style-mbti-test-aif7",
+      "title": "✨ 당신의 그림 실력은 MBTI 유형별로 확연히 다르다? 지금 바로 확인!",
+      "description": "MBTI ? !? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "drinking-buddy-type-test-x8nl",
+      "title": "💥 술친절 유형 테스트: 당신의 술자리 MBTI는?",
+      "description": ": MBTI?? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "gukmul-vs-bibim-style-test-p0Q2",
+      "title": "🏆 국물 vs 비빔: 당신의 식탁 DNA는 뭘까? 🍲🥢",
+      "description": "vs : DNA ?? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "jjigae-vs-gukmul-personality-test-Wb50",
+      "title": "당신의 찌개와 국물 심리 테스트",
+      "description": "jjigae vs gukmul personality test Wb50? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "kimbap-dna-test-wTRs",
+      "title": "당신의 '김밥 DNA'는 무엇인가? 🍙 별별 김밥 재료 궁합 테스트!",
+      "description": "' DNA' ? !? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "korean-genre-style-test-C7vy",
+      "title": "🔥 당신의 소울메이트 장르를 찾아드립니다! 노래하는 장르 스타일 테스트 🔥",
+      "description": "!? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "lunchbox-style-test-BQ9n",
+      "title": "나만의 '인생 도시락' 스타일 진단 테스트 🍱",
+      "description": "' '? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "meme-reaction-style-test-Fi2N",
+      "title": "나만의 밈 반응 스타일은? 💥 MBTI 밈잘알 테스트 💥",
+      "description": "? MBTI? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "movie-picking-style-test-enKw",
+      "title": "당신의 뇌를 해킹하는 영화 고르는 스타일 테스트 🎬",
+      "description": "movie picking style test enKw? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "pizza-topping-mbti-test-hFyj",
+      "title": "🍕 나만의 인생 피자 토핑 MBTI 🍕",
+      "description": "MBTI? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "salad-dressing-mbti-test-vb9p",
+      "title": "나는 어떤 샐러드 드레싱일까? 🥗✨ 당신의 찐친 드레싱 MBTI 테스트!",
+      "description": "? MBTI !? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "subway-vs-bus-personality-test-93VO",
+      "title": "지하철 VS 버스, 당신의 완벽한 출퇴근 메이트는?",
+      "description": "VS , ?? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "sushi-mbti-test-Yw65",
+      "title": "🍣 초밥 MBTI: 네 맘속 최애 초밥은?",
+      "description": "MBTI: ?? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "tangsooyuk-test-8enk",
+      "title": "탕수육 부먹 찍먹 테스트",
+      "description": "tangsooyuk test 8enk? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    },
+    {
+      "slug": "test-quiz-2-godsaeng-master-Tjjb",
+      "title": "✨ 테스트용 퀴즈 2: 당신은 어떤 갓생살이 장인인가요? ✨",
+      "description": "2: ?? ai-generated ??? ?? ?? ??? ??? ???? ?? ?? ??????. ??? ??? ??? ??, ?? ?, ?? ???? ?? ??? ? ????.",
+      "category": "ai-generated",
+      "status": "published"
+    }
+  ],
+  "staticShortDescriptions": [
+    {
+      "id": "commute-style",
+      "title": "🚇 출퇴근 스타일 테스트",
+      "description": "출퇴근길 선택으로 알아보는 16가지 통근 캐릭터",
+      "category": "직장"
+    },
+    {
+      "id": "meeting-villain",
+      "title": "😈 회의 빌런 테스트",
+      "description": "회의 시간, 당신의 역할과 행동 패턴으로 알아보는 16가지 유형",
+      "category": "직장"
+    },
+    {
+      "id": "breakup-style",
+      "title": "💔 이별 후유증 유형",
+      "description": "이별 후 나의 행동과 감정 처리를 통해 알아보는 극복 스타일",
+      "category": "연애"
+    },
+    {
+      "id": "hotel-breakfast",
+      "title": "🥞 호텔 조식 공략법",
+      "description": "뷔페에서 음식을 담고 먹는 스타일로 알아보는 여행 성향",
+      "category": "여행"
+    },
+    {
+      "id": "investment-style",
+      "title": "📈 주식 투자 스타일",
+      "description": "나는 야수의 심장일까, 소심한 개미일까? 투자 성향 분석",
+      "category": "재테크"
+    },
+    {
+      "id": "zombie-survival",
+      "title": "🧟‍♂️ 좀비 아포칼립스 생존",
+      "description": "좀비 사태 발생 시 나의 생존 확률과 역할 분석",
+      "category": "상상"
+    },
+    {
+      "id": "coffee-mbti",
+      "title": "☕ 커피 MBTI",
+      "description": "당신의 커피 취향으로 알아보는 성격 유형",
+      "category": "음식"
+    },
+    {
+      "id": "kdrama-mbti",
+      "title": "🎬 K-드라마 클리셰",
+      "description": "드라마 속 당신은 어떤 캐릭터?",
+      "category": "엔터테인먼트"
+    },
+    {
+      "id": "snowwhite-mbti",
+      "title": "🍎 백설공주 에겐테토",
+      "description": "백설공주로 알아보는 에겐 vs 테토 성향",
+      "category": "동화"
+    },
+    {
+      "id": "ramen-mbti",
+      "title": "🍜 라면 MBTI",
+      "description": "라면 취향으로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "pet-mbti",
+      "title": "🐾 반려동물 MBTI",
+      "description": "반려동물 성향으로 알아보는 성격 테스트",
+      "category": "관계"
+    },
+    {
+      "id": "study-mbti",
+      "title": "📚 공부 MBTI",
+      "description": "나만의 공부 스타일 찾기",
+      "category": "학습"
+    },
+    {
+      "id": "alarm-habit",
+      "title": "⏰ 알람 습관",
+      "description": "아침 알람으로 보는 성격 유형",
+      "category": "생활"
+    },
+    {
+      "id": "ntrp-test",
+      "title": "🎾 NTRP 테스트",
+      "description": "테니스 실력 레벨 측정",
+      "category": "스포츠"
+    },
+    {
+      "id": "kpop-idol",
+      "title": "🎤 K-팝 아이돌 포지션",
+      "description": "아이돌 그룹에서 내 포지션은?",
+      "category": "엔터테인먼트"
+    },
+    {
+      "id": "movie-theater-style",
+      "title": "🎬 영화관 관람 스타일",
+      "description": "영화관에서도 성격이 보인다고?",
+      "category": "엔터테인먼트"
+    },
+    {
+      "id": "jachui",
+      "title": "🍳 자취 밥상 스타일",
+      "description": "오늘도 자취생의 밥상은 드라마다",
+      "category": "생활"
+    },
+    {
+      "id": "music-taste",
+      "title": "🎧 음악 취향 성격 테스트",
+      "description": "내 플레이리스트 속 성격, 당신은 어떤 음악 타입?",
+      "category": "엔터테인먼트"
+    },
+    {
+      "id": "cafe-style",
+      "title": "☕ 카페 스타일 성격 테스트",
+      "description": "카페에 가면 드러나는 당신의 성격",
+      "category": "생활"
+    },
+    {
+      "id": "travel-style",
+      "title": "🧳 여행 짐 스타일 테스트",
+      "description": "여행 떠나기 전, 당신은 어떤 짐꾼인가요?",
+      "category": "생활"
+    },
+    {
+      "id": "phone-style",
+      "title": "📱 스마트폰 사용 습관 테스트",
+      "description": "스마트폰 사용 습관으로 알아보는 나의 성격",
+      "category": "생활"
+    },
+    {
+      "id": "phone-usage",
+      "title": "📱 스마트폰 사용 스타일",
+      "description": "알림, 앱 정리, 집중, 커뮤니케이션 습관으로 알아보는 나의 성향",
+      "category": "생활"
+    },
+    {
+      "id": "food-delivery",
+      "title": "🍕 배달 음식 선택 테스트",
+      "description": "배달 앱을 켜는 순간, 당신의 성격이 드러난다",
+      "category": "생활"
+    },
+    {
+      "id": "shopping-style",
+      "title": "🛍️ 쇼핑 스타일 성격 테스트",
+      "description": "쇼핑할 때마다 드러나는 진짜 나의 성격",
+      "category": "생활"
+    },
+    {
+      "id": "dessert-style",
+      "title": "🍰 디저트 취향 성격 테스트",
+      "description": "디저트를 고르는 순간, 당신의 성격이 드러난다",
+      "category": "음식"
+    },
+    {
+      "id": "clean-style",
+      "title": "🧹 방 청소 스타일 테스트",
+      "description": "청소하는 모습으로 알아보는 나의 성격!",
+      "category": "생활"
+    },
+    {
+      "id": "evening-routine",
+      "title": "🌙 퇴근 후 루틴 테스트",
+      "description": "퇴근하고 집에 와서 하는 '그 행동들'에 당신의 성격이 숨어있습니다.",
+      "category": "생활"
+    },
+    {
+      "id": "skin-routine",
+      "title": "✨ 피부 루틴 성향",
+      "description": "당신의 스킨케어 습관으로 알아보는 성향",
+      "category": "뷰티"
+    },
+    {
+      "id": "spending-style",
+      "title": "💰 소비 성향 테스트",
+      "description": "계획성, 즉흥성, 비교 습관으로 알아보는 나의 소비 패턴",
+      "category": "생활"
+    },
+    {
+      "id": "sleep-chronotype",
+      "title": "🌙 수면 크로노타입",
+      "description": "당신의 수면 리듬으로 알아보는 성향",
+      "category": "생활"
+    },
+    {
+      "id": "chicken-style",
+      "title": "🍗 치킨 주문 스타일 테스트",
+      "description": "치킨 주문 습관으로 16유형 성향을 분석합니다",
+      "category": "음식"
+    },
+    {
+      "id": "convenience-snack",
+      "title": "🏪 편의점 간식 루틴 테스트",
+      "description": "편의점 간식 선택 루틴으로 성향을 분석합니다",
+      "category": "생활"
+    },
+    {
+      "id": "cstore-routine",
+      "title": "🏬 편의점 루틴 테스트",
+      "description": "편의점 선택 습관으로 보는 16유형",
+      "category": "생활"
+    },
+    {
+      "id": "cvs-combo",
+      "title": "🛒 편의점 조합 스타일 테스트",
+      "description": "편의점 선택 습관으로 16유형 성향을 분석합니다",
+      "category": "생활"
+    },
+    {
+      "id": "kakao-reply-style",
+      "title": "💬 카톡 답장 스타일 테스트",
+      "description": "답장 속도·말투·읽씹 습관으로 보는 소통 성향",
+      "category": "생활"
+    },
+    {
+      "id": "love-texting-style",
+      "title": "💕 연애 연락 텐션 테스트",
+      "description": "연락 속도·길이·톤으로 보는 연애 커뮤니케이션 유형",
+      "category": "관계"
+    },
+    {
+      "id": "lunch-decider",
+      "title": "🍱 회사 점심 뭐 먹지 테스트",
+      "description": "직장인 점심 의사결정 스타일을 분석합니다",
+      "category": "생활"
+    },
+    {
+      "id": "youtube-habit",
+      "title": "📺 유튜브 시청 습관 테스트",
+      "description": "유튜브 시청 습관으로 16유형 성향을 분석합니다",
+      "category": "엔터테인먼트"
+    },
+    {
+      "id": "love-reaction",
+      "title": "💕 연애 상황 반응 테스트",
+      "description": "연락 습관, 갈등 해결, 데이트 운영, 감정 표현으로 16유형 분석",
+      "category": "관계"
+    },
+    {
+      "id": "bungeoppang",
+      "title": "🐟 붕어빵 취향 테스트",
+      "description": "맛 선택, 구매 방식, 먹는 습관으로 16유형 분석",
+      "category": "음식"
+    },
+    {
+      "id": "kdrama-character",
+      "title": "🎬 K-드라마 인물 매칭 테스트",
+      "description": "드라마 속 상황 선택으로 내 캐릭터 유형 찾기",
+      "category": "엔터테인먼트"
+    },
+    {
+      "id": "hamburger-combo",
+      "title": "🍔 햄버거 조합 스타일 테스트",
+      "description": "패티, 빵, 야채, 소스 선택으로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "pizza-topping",
+      "title": "🍕 피자 토핑 선택 테스트",
+      "description": "토핑 선택 습관으로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "instagram-story",
+      "title": "📸 인스타그램 스토리 스타일 테스트",
+      "description": "스토리 올리는 방식으로 알아보는 나의 성격",
+      "category": "엔터테인먼트"
+    },
+    {
+      "id": "shower-habit",
+      "title": "🚿 샤워 습관 테스트",
+      "description": "샤워 시간, 순서, 온도로 알아보는 나의 성격",
+      "category": "생활"
+    },
+    {
+      "id": "gift-wrapping",
+      "title": "🎁 포장지 뜯는 스타일 테스트",
+      "description": "포장지 뜯는 방식으로 알아보는 나의 성격",
+      "category": "생활"
+    },
+    {
+      "id": "karaoke-song",
+      "title": "🎤 노래방 곡 선택 테스트",
+      "description": "노래방 곡 선택 방식으로 알아보는 나의 성격",
+      "category": "엔터테인먼트"
+    },
+    {
+      "id": "soup-vs-bibim",
+      "title": "🍜 국물 vs 비빔 스타일 테스트",
+      "description": "국물파 vs 비빔파로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "lunchbox-style",
+      "title": "🍱 도시락 싸는 스타일 테스트",
+      "description": "도시락 구성, 포장으로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "game-play-style",
+      "title": "🎮 게임 플레이 스타일 테스트",
+      "description": "게임 플레이 방식으로 알아보는 나의 성격",
+      "category": "엔터테인먼트"
+    },
+    {
+      "id": "gift-choosing",
+      "title": "💝 선물 고르는 스타일 테스트",
+      "description": "선물 선택 기준, 포장 방식으로 알아보는 나의 성격",
+      "category": "관계"
+    },
+    {
+      "id": "chicken-vs-jjimdak",
+      "title": "🍗 찜닭 vs 치킨 선택 테스트",
+      "description": "찜닭파 vs 치킨파로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "cake-cutting",
+      "title": "🍰 케이크 자르는 스타일 테스트",
+      "description": "케이크 자르는 방식, 조각 선택으로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "kimbap-ingredient",
+      "title": "🍙 김밥 재료 선택 테스트",
+      "description": "김밥 재료 선택으로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "stew-vs-soup",
+      "title": "🍲 찌개 vs 국물 스타일 테스트",
+      "description": "찌개 종류 선택, 국물 마시는 습관으로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "salad-dressing",
+      "title": "🥗 샐러드 드레싱 선택 테스트",
+      "description": "샐러드 드레싱 선택으로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "meat-grilling",
+      "title": "🍖 고기 굽는 스타일 테스트",
+      "description": "고기 굽는 방식, 익힘 정도 선호로 알아보는 나의 성격",
+      "category": "음식"
+    },
+    {
+      "id": "bed-making",
+      "title": "🛏️ 침대 정리 스타일 테스트",
+      "description": "침대 정리 습관, 베개 배치로 알아보는 나의 성격",
+      "category": "생활"
+    },
+    {
+      "id": "door-closing",
+      "title": "🚪 문 닫는 스타일 테스트",
+      "description": "문 닫는 방식, 잠금 습관으로 알아보는 나의 성격",
+      "category": "생활"
+    },
+    {
+      "id": "bathroom-habit",
+      "title": "🚿 화장실 사용 습관 테스트",
+      "description": "화장실 사용 패턴, 정리 습관으로 알아보는 나의 성격",
+      "category": "생활"
+    }
+  ]
+}

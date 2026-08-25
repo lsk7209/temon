@@ -1,0 +1,700 @@
+{
+  "generatedAt": "2026-08-25T13:12:12.260Z",
+  "property": "sc-domain:temon.kr",
+  "range": {
+    "startDate": "2026-07-27",
+    "endDate": "2026-08-23",
+    "days": 28,
+    "lag": 2
+  },
+  "totals": {
+    "pages": 231,
+    "queries": 234,
+    "pageQueries": 312
+  },
+  "pageOpportunities": [
+    {
+      "clicks": 113,
+      "impressions": 3272,
+      "ctr": 0.034535452322738386,
+      "position": 8.426650366748166,
+      "page": "https://temon.kr/",
+      "ctrPercent": "3.45%",
+      "priority": "P1",
+      "opportunityScore": 17.88
+    },
+    {
+      "clicks": 0,
+      "impressions": 210,
+      "ctr": 0,
+      "position": 8.133333333333333,
+      "page": "https://temon.kr/tests/perfection-balance-1xQC",
+      "ctrPercent": "0.00%",
+      "priority": "P1",
+      "opportunityScore": 8.4
+    },
+    {
+      "clicks": 4,
+      "impressions": 261,
+      "ctr": 0.01532567049808429,
+      "position": 30.67049808429119,
+      "page": "https://temon.kr/tests",
+      "ctrPercent": "1.53%",
+      "priority": "P1",
+      "opportunityScore": 3.54
+    },
+    {
+      "clicks": 0,
+      "impressions": 77,
+      "ctr": 0,
+      "position": 8.428571428571429,
+      "page": "https://temon.kr/tests/daily-umbrella-check-wave4",
+      "ctrPercent": "0.00%",
+      "priority": "P2",
+      "opportunityScore": 3.08
+    },
+    {
+      "clicks": 2,
+      "impressions": 125,
+      "ctr": 0.016,
+      "position": 7.656,
+      "page": "https://temon.kr/tests/food-presentation",
+      "ctrPercent": "1.60%",
+      "priority": "P1",
+      "opportunityScore": 3
+    },
+    {
+      "clicks": 2,
+      "impressions": 114,
+      "ctr": 0.017543859649122806,
+      "position": 8.780701754385966,
+      "page": "https://temon.kr/tests/spending-style",
+      "ctrPercent": "1.75%",
+      "priority": "P1",
+      "opportunityScore": 2.56
+    },
+    {
+      "clicks": 2,
+      "impressions": 73,
+      "ctr": 0.0273972602739726,
+      "position": 9.506849315068493,
+      "page": "https://temon.kr/tests/love-texting-style",
+      "ctrPercent": "2.74%",
+      "priority": "P2",
+      "opportunityScore": 0.92
+    },
+    {
+      "clicks": 6,
+      "impressions": 170,
+      "ctr": 0.03529411764705882,
+      "position": 7.252941176470588,
+      "page": "https://temon.kr/tests/kpop-idol",
+      "ctrPercent": "3.53%",
+      "priority": "P1",
+      "opportunityScore": 0.8
+    },
+    {
+      "clicks": 19,
+      "impressions": 384,
+      "ctr": 0.049479166666666664,
+      "position": 7.0546875,
+      "page": "https://temon.kr/tests/pet-mbti",
+      "ctrPercent": "4.95%",
+      "priority": "P2",
+      "opportunityScore": 0
+    }
+  ],
+  "queryOpportunities": [
+    {
+      "clicks": 11,
+      "impressions": 413,
+      "ctr": 0.026634382566585957,
+      "position": 7.743341404358354,
+      "query": "테스트 모음",
+      "ctrPercent": "2.66%",
+      "opportunityScore": 5.52
+    },
+    {
+      "clicks": 8,
+      "impressions": 337,
+      "ctr": 0.02373887240356083,
+      "position": 8.27299703264095,
+      "query": "테스트 사이트",
+      "ctrPercent": "2.37%",
+      "opportunityScore": 5.48
+    },
+    {
+      "clicks": 0,
+      "impressions": 120,
+      "ctr": 0,
+      "position": 7.533333333333333,
+      "query": "완벽주의 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 4.8
+    },
+    {
+      "clicks": 3,
+      "impressions": 173,
+      "ctr": 0.017341040462427744,
+      "position": 7.7398843930635834,
+      "query": "심리테스트 사이트",
+      "ctrPercent": "1.73%",
+      "opportunityScore": 3.92
+    },
+    {
+      "clicks": 0,
+      "impressions": 74,
+      "ctr": 0,
+      "position": 7.648648648648648,
+      "query": "노래 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 2.96
+    },
+    {
+      "clicks": 0,
+      "impressions": 74,
+      "ctr": 0,
+      "position": 8.54054054054054,
+      "query": "우산 챙기기 추천",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 2.96
+    },
+    {
+      "clicks": 0,
+      "impressions": 58,
+      "ctr": 0,
+      "position": 7.206896551724138,
+      "query": "mbti 동물",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 2.32
+    },
+    {
+      "clicks": 0,
+      "impressions": 79,
+      "ctr": 0,
+      "position": 29.063291139240505,
+      "query": "테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.74
+    },
+    {
+      "clicks": 2,
+      "impressions": 93,
+      "ctr": 0.021505376344086023,
+      "position": 8.70967741935484,
+      "query": "mbti 테스트 모음",
+      "ctrPercent": "2.15%",
+      "opportunityScore": 1.72
+    },
+    {
+      "clicks": 0,
+      "impressions": 36,
+      "ctr": 0,
+      "position": 9.527777777777779,
+      "query": "mbti 테스트 한국어",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.44
+    },
+    {
+      "clicks": 0,
+      "impressions": 36,
+      "ctr": 0,
+      "position": 8.333333333333332,
+      "query": "아이돌 포지션",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.44
+    },
+    {
+      "clicks": 0,
+      "impressions": 33,
+      "ctr": 0,
+      "position": 9.666666666666666,
+      "query": "소비심리테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.32
+    },
+    {
+      "clicks": 1,
+      "impressions": 57,
+      "ctr": 0.017543859649122806,
+      "position": 8.298245614035087,
+      "query": "테스트모음",
+      "ctrPercent": "1.75%",
+      "opportunityScore": 1.28
+    },
+    {
+      "clicks": 1,
+      "impressions": 53,
+      "ctr": 0.018867924528301886,
+      "position": 6.811320754716981,
+      "query": "아이돌 테스트",
+      "ctrPercent": "1.89%",
+      "opportunityScore": 1.12
+    },
+    {
+      "clicks": 2,
+      "impressions": 75,
+      "ctr": 0.02666666666666667,
+      "position": 6.746666666666667,
+      "query": "재미있는 테스트 모음",
+      "ctrPercent": "2.67%",
+      "opportunityScore": 1
+    },
+    {
+      "clicks": 1,
+      "impressions": 47,
+      "ctr": 0.02127659574468085,
+      "position": 10.72340425531915,
+      "query": "음식 취향 테스트",
+      "ctrPercent": "2.13%",
+      "opportunityScore": 0.88
+    },
+    {
+      "clicks": 1,
+      "impressions": 45,
+      "ctr": 0.022222222222222223,
+      "position": 9.2,
+      "query": "플레이 성향 테스트",
+      "ctrPercent": "2.22%",
+      "opportunityScore": 0.8
+    },
+    {
+      "clicks": 1,
+      "impressions": 33,
+      "ctr": 0.030303030303030304,
+      "position": 6,
+      "query": "심리테스트 모음",
+      "ctrPercent": "3.03%",
+      "opportunityScore": 0.32
+    },
+    {
+      "clicks": 48,
+      "impressions": 1067,
+      "ctr": 0.04498594189315839,
+      "position": 6.501405810684161,
+      "query": "재밌는 테스트",
+      "ctrPercent": "4.50%",
+      "opportunityScore": 0
+    },
+    {
+      "clicks": 2,
+      "impressions": 44,
+      "ctr": 0.045454545454545456,
+      "position": 10.113636363636363,
+      "query": "mbti 빠른 검사 무료",
+      "ctrPercent": "4.55%",
+      "opportunityScore": 0
+    },
+    {
+      "clicks": 2,
+      "impressions": 41,
+      "ctr": 0.04878048780487805,
+      "position": 5.780487804878049,
+      "query": "성향 테스트 모음",
+      "ctrPercent": "4.88%",
+      "opportunityScore": 0
+    }
+  ],
+  "pageQueryOpportunities": [
+    {
+      "clicks": 11,
+      "impressions": 413,
+      "ctr": 0.026634382566585957,
+      "position": 7.743341404358354,
+      "page": "https://temon.kr/",
+      "query": "테스트 모음",
+      "ctrPercent": "2.66%",
+      "opportunityScore": 5.52
+    },
+    {
+      "clicks": 8,
+      "impressions": 332,
+      "ctr": 0.024096385542168676,
+      "position": 8.012048192771084,
+      "page": "https://temon.kr/",
+      "query": "테스트 사이트",
+      "ctrPercent": "2.41%",
+      "opportunityScore": 5.28
+    },
+    {
+      "clicks": 0,
+      "impressions": 120,
+      "ctr": 0,
+      "position": 7.533333333333333,
+      "page": "https://temon.kr/tests/perfection-balance-1xQC",
+      "query": "완벽주의 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 4.8
+    },
+    {
+      "clicks": 3,
+      "impressions": 172,
+      "ctr": 0.01744186046511628,
+      "position": 7.465116279069767,
+      "page": "https://temon.kr/",
+      "query": "심리테스트 사이트",
+      "ctrPercent": "1.74%",
+      "opportunityScore": 3.88
+    },
+    {
+      "clicks": 0,
+      "impressions": 74,
+      "ctr": 0,
+      "position": 8.54054054054054,
+      "page": "https://temon.kr/tests/daily-umbrella-check-wave4",
+      "query": "우산 챙기기 추천",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 2.96
+    },
+    {
+      "clicks": 0,
+      "impressions": 74,
+      "ctr": 0,
+      "position": 7.648648648648648,
+      "page": "https://temon.kr/tests/music-taste",
+      "query": "노래 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 2.96
+    },
+    {
+      "clicks": 1,
+      "impressions": 89,
+      "ctr": 0.011235955056179775,
+      "position": 8.53932584269663,
+      "page": "https://temon.kr/",
+      "query": "mbti 테스트 모음",
+      "ctrPercent": "1.12%",
+      "opportunityScore": 2.56
+    },
+    {
+      "clicks": 0,
+      "impressions": 58,
+      "ctr": 0,
+      "position": 7.206896551724138,
+      "page": "https://temon.kr/tests/pet-mbti",
+      "query": "mbti 동물",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 2.32
+    },
+    {
+      "clicks": 0,
+      "impressions": 40,
+      "ctr": 0,
+      "position": 7.8,
+      "page": "https://temon.kr/tests/food-presentation",
+      "query": "음식 취향 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.6
+    },
+    {
+      "clicks": 0,
+      "impressions": 36,
+      "ctr": 0,
+      "position": 9.527777777777779,
+      "page": "https://temon.kr/",
+      "query": "mbti 테스트 한국어",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.44
+    },
+    {
+      "clicks": 0,
+      "impressions": 36,
+      "ctr": 0,
+      "position": 8.333333333333332,
+      "page": "https://temon.kr/tests/kpop-idol",
+      "query": "아이돌 포지션",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.44
+    },
+    {
+      "clicks": 0,
+      "impressions": 62,
+      "ctr": 0,
+      "position": 24.274193548387096,
+      "page": "https://temon.kr/",
+      "query": "테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.36
+    },
+    {
+      "clicks": 0,
+      "impressions": 33,
+      "ctr": 0,
+      "position": 9.666666666666666,
+      "page": "https://temon.kr/tests/spending-style",
+      "query": "소비심리테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.32
+    },
+    {
+      "clicks": 1,
+      "impressions": 57,
+      "ctr": 0.017543859649122806,
+      "position": 8.298245614035087,
+      "page": "https://temon.kr/",
+      "query": "테스트모음",
+      "ctrPercent": "1.75%",
+      "opportunityScore": 1.28
+    },
+    {
+      "clicks": 1,
+      "impressions": 53,
+      "ctr": 0.018867924528301886,
+      "position": 6.811320754716981,
+      "page": "https://temon.kr/tests/kpop-idol",
+      "query": "아이돌 테스트",
+      "ctrPercent": "1.89%",
+      "opportunityScore": 1.12
+    },
+    {
+      "clicks": 0,
+      "impressions": 26,
+      "ctr": 0,
+      "position": 8.615384615384615,
+      "page": "https://temon.kr/tests/pet-mbti",
+      "query": "동물 mbti",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 1.04
+    },
+    {
+      "clicks": 2,
+      "impressions": 75,
+      "ctr": 0.02666666666666667,
+      "position": 6.746666666666667,
+      "page": "https://temon.kr/",
+      "query": "재미있는 테스트 모음",
+      "ctrPercent": "2.67%",
+      "opportunityScore": 1
+    },
+    {
+      "clicks": 0,
+      "impressions": 22,
+      "ctr": 0,
+      "position": 8.318181818181818,
+      "page": "https://temon.kr/",
+      "query": "테스트사이트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.88
+    },
+    {
+      "clicks": 0,
+      "impressions": 20,
+      "ctr": 0,
+      "position": 5.8,
+      "page": "https://temon.kr/tests/weekend-lazy",
+      "query": "게으름 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.8
+    },
+    {
+      "clicks": 0,
+      "impressions": 19,
+      "ctr": 0,
+      "position": 7.157894736842105,
+      "page": "https://temon.kr/tests/perfection-balance-1xQC",
+      "query": "완벽주의자 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.76
+    },
+    {
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 8.470588235294118,
+      "page": "https://temon.kr/tests/perfection-balance-1xQC",
+      "query": "게으른 완벽주의자 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.68
+    },
+    {
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 16.75,
+      "page": "https://temon.kr/",
+      "query": "mbti 테스트 무료",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.64
+    },
+    {
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 6.25,
+      "page": "https://temon.kr/",
+      "query": "재밌는 mbti",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.64
+    },
+    {
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 9.1875,
+      "page": "https://temon.kr/tests/ntrp-test",
+      "query": "ntrp 뜻",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.64
+    },
+    {
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 6.5,
+      "page": "https://temon.kr/tests/pet-mbti",
+      "query": "나 에게 맞는 반려동물 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.64
+    },
+    {
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 6.2,
+      "page": "https://temon.kr/",
+      "query": "심리 테스트 모음",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.6
+    },
+    {
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 7.6,
+      "page": "https://temon.kr/tests/music-taste",
+      "query": "음악 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.6
+    },
+    {
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 17.4,
+      "page": "https://temon.kr/tests/pet-mbti",
+      "query": "동물 성격 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.6
+    },
+    {
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 7.933333333333334,
+      "page": "https://temon.kr/tests/pet-mbti",
+      "query": "동물 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.6
+    },
+    {
+      "clicks": 1,
+      "impressions": 39,
+      "ctr": 0.02564102564102564,
+      "position": 9.35897435897436,
+      "page": "https://temon.kr/tests/music-taste",
+      "query": "플레이 성향 테스트",
+      "ctrPercent": "2.56%",
+      "opportunityScore": 0.56
+    },
+    {
+      "clicks": 0,
+      "impressions": 25,
+      "ctr": 0,
+      "position": 20.56,
+      "page": "https://temon.kr/",
+      "query": "태스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.55
+    },
+    {
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 15.846153846153847,
+      "page": "https://temon.kr/",
+      "query": "mbti 무료 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.52
+    },
+    {
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 6.923076923076923,
+      "page": "https://temon.kr/",
+      "query": "mbti 재밌는 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.52
+    },
+    {
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 15.461538461538462,
+      "page": "https://temon.kr/tests/food-mixing",
+      "query": "음식 취향 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.52
+    },
+    {
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 9.916666666666666,
+      "page": "https://temon.kr/",
+      "query": "mbti test 한국어",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.48
+    },
+    {
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 10,
+      "page": "https://temon.kr/tests/leisure-hobby-budget-wave4",
+      "query": "취미 추천 테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.44
+    },
+    {
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 11.5,
+      "page": "https://temon.kr/",
+      "query": "각종 테스트 사이트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.4
+    },
+    {
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 8,
+      "page": "https://temon.kr/",
+      "query": "무료 테스트 사이트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.4
+    },
+    {
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 48,
+      "page": "https://temon.kr/tests",
+      "query": "테스트",
+      "ctrPercent": "0.00%",
+      "opportunityScore": 0.4
+    },
+    {
+      "clicks": 1,
+      "impressions": 33,
+      "ctr": 0.030303030303030304,
+      "position": 6.212121212121212,
+      "page": "https://temon.kr/",
+      "query": "재미있는 테스트 사이트",
+      "ctrPercent": "3.03%",
+      "opportunityScore": 0.32
+    }
+  ]
+}
