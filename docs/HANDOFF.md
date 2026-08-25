@@ -43,6 +43,17 @@ surface: a manual display ad unit on quiz result pages, gated separately by
   sampled result page is currently pristine (CLS 0, perf 98) since the ad slot isn't live yet —
   **re-run this check once a real slot ID is set** to confirm the reserved `min-h-[250px]` wrapper
   keeps CLS low after the ad actually renders.
+- Extended the ad unit to the 212 legacy static result pages (`components/legacy-result-ad-slot.tsx`,
+  mounted from `app/tests/layout.tsx`). A `page_visits` DB query showed legacy result pages get ~94%
+  of result-page traffic (6,169 views) vs. ~6% (368) on the DB-driven route — reusing the existing
+  `ResultRouteAutoEnhancements` injection-point pattern instead of editing 212 files. Same env gate,
+  same "can't fully suppress Auto Ads from code" caveat applies.
+- Removed unused `hono` dependency (leftover from deleted Cloudflare Functions code, not imported
+  anywhere) and ran `npm audit fix` (no `--force`): 18 → 10 vulnerabilities, no breaking changes.
+  Remaining 10 all need major version bumps (next 14→16, drizzle-orm 0.29→0.45, drizzle-kit,
+  eslint-config-next) — left for a dedicated upgrade pass. Checked drizzle-orm's flagged SQL
+  injection advisory against this codebase's `sql` usage: everything binds values via tagged-template
+  params, no raw identifier interpolation, so it doesn't look exploitable here.
 
 ## Validation evidence
 
