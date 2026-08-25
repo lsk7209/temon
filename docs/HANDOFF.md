@@ -1,4 +1,4 @@
-# Current handoff — 2026-08-25
+# Current handoff — 2026-08-25 (updated after live rollback)
 
 ## User goal
 
@@ -6,80 +6,69 @@ Revenue improvement review for `temon.kr` after the mobile Better Ads review pas
 reactivation: fix low-hanging CTR/content issues, and cautiously extend monetization to the
 result-page traffic that previously had no ads at all.
 
-## Current state
+## Current state — ROLLED BACK, result-page ads are OFF again
 
-AdSense delivery remains gated by `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=true` in Vercel Production
-(unchanged from the 2026-08-19 handoff). This round adds one new, currently-inert monetization
-surface: a manual display ad unit on quiz result pages, gated separately by
-`NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID` (unset in production today, so it renders nothing).
+The result-page ad unit went live in production briefly (deployment `dpl_9uVa3zvHDEkneZdLnGGCTuKuyyXC`)
+with a real slot ID (`9293409342`), then was rolled back within minutes
+(deployment `dpl_5a7nJ5oyJcPadE7U5beuc3pkkgm4`, currently live) after live testing showed the
+account's Auto Ads produced far more than the intended "1 unit": **7 `<ins class="adsbygoogle">`
+elements on a single result page**, including one Auto Ads inserted *inside* the FAQ section
+(`class="google-auto-placed"`, splitting FAQ content), plus a full-screen interstitial
+(`#google_vignette` in the URL after a scroll interaction). This is exactly the ad pattern Better
+Ads Standards penalize, and it appeared right after the site's mobile review passed — too risky to
+leave live without the AdSense-console-side Auto Ads exclusion in place first.
+
+**Current live state**: `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID` is unset in Vercel Production again.
+Verified on live `temon.kr`: 0 `adsbygoogle` script tags and 0 `<ins>` elements on
+`/tests/ntrp-test/test/result`; homepage's normal ad loader (`#adsense-loader`) still present and
+unaffected. The code (`ResultAdUnit`, `LegacyResultAdSlot`) is unchanged and still ships safely
+inert without the env var — this was an env-var-only rollback, no code revert needed.
 
 ## Completed work
 
 - Synced local `main` with `origin/main` (was 25 commits behind, 2 diverged) before starting; no
   history was force-pushed, divergent local commits were superseded by equivalent upstream ones.
-- Shipped result-page engagement measurement (`ResultEngagementTracker`, CTA click tracking) that
-  was already in flight locally — merged onto the fresh base and pushed as `bf6d9c5`.
-- Fixed two low-CTR DB test titles/descriptions (`perfection-balance-1xQC`, `daily-umbrella-check-wave4`)
-  to better match their target GSC queries. Backup: `reports/low-ctr-title-backup-2026-08-25T*.json`.
-- Verified the 18 published-description defects flagged on 2026-06-02 were already repaired by a
-  prior session (`scripts/repair-published-descriptions.js` dry-run: `badBefore: 0`).
-- Added `components/redesign/result-ad-unit.tsx`: a single manual AdSense display unit rendered
-  inside `RedesignedResultPage` (used by every DB-driven result page,
-  `/tests/{testId}/test/result/{resultId}`), between the FAQ section and the footer CTAs.
-  - Gated by `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED` AND a new `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID`
-    env var — with the slot ID unset, the component renders nothing, so it ships safely inert.
-  - Does **not** attempt to disable Google Auto Ads on this page. An earlier version tried to push
-    `enable_page_level_ads: false`, but a real `adsbygoogle.js` test against the live client ID
-    (`ca-pub-3050601904412736`, which already has Auto Ads enabled at the account level) showed the
-    script self-initializes page-level ads on load and throws `Only one 'enable_page_level_ads'
-    allowed per page` when the app also pushes it. Full control over "exactly one ad on this page"
-    requires an AdSense-console-side Auto Ads URL exclusion for `/tests/*/test/result/*` — outside
-    what code can do. This was surfaced to and accepted by the user before shipping.
-  - Result pages intentionally carry `robots: { index: false }` (per-session `resultId` URLs, not a
-    quality signal), so this component does not gate on indexability the way `adsense-script.tsx` does.
-- Re-ran `npm run audit:content` (static-polish, static-descriptions, results, quiz-flow): all Pass,
-  0 defects — no regressions from this round's changes.
-- Refreshed Core Web Vitals via PageSpeed Insights (mobile): `reports/cwv-check-2026-08-25.md`. The
-  sampled result page is currently pristine (CLS 0, perf 98) since the ad slot isn't live yet —
-  **re-run this check once a real slot ID is set** to confirm the reserved `min-h-[250px]` wrapper
-  keeps CLS low after the ad actually renders.
-- Extended the ad unit to the 212 legacy static result pages (`components/legacy-result-ad-slot.tsx`,
-  mounted from `app/tests/layout.tsx`). A `page_visits` DB query showed legacy result pages get ~94%
-  of result-page traffic (6,169 views) vs. ~6% (368) on the DB-driven route — reusing the existing
-  `ResultRouteAutoEnhancements` injection-point pattern instead of editing 212 files. Same env gate,
-  same "can't fully suppress Auto Ads from code" caveat applies.
-- Removed unused `hono` dependency (leftover from deleted Cloudflare Functions code, not imported
-  anywhere) and ran `npm audit fix` (no `--force`): 18 → 10 vulnerabilities, no breaking changes.
-  Remaining 10 all need major version bumps (next 14→16, drizzle-orm 0.29→0.45, drizzle-kit,
-  eslint-config-next) — left for a dedicated upgrade pass. Checked drizzle-orm's flagged SQL
-  injection advisory against this codebase's `sql` usage: everything binds values via tagged-template
-  params, no raw identifier interpolation, so it doesn't look exploitable here.
+- Shipped result-page engagement measurement (`ResultEngagementTracker`, CTA click tracking).
+- Fixed two low-CTR DB test titles/descriptions (`perfection-balance-1xQC`, `daily-umbrella-check-wave4`).
+- Verified the 18 published-description defects flagged on 2026-06-02 were already repaired.
+- Added `components/redesign/result-ad-unit.tsx` (DB-driven result route) and
+  `components/legacy-result-ad-slot.tsx` (212 legacy static result routes, via `app/tests/layout.tsx`
+  — legacy pages get ~94% of result-page traffic per a `page_visits` DB query, vs ~6% DB-driven).
+- Removed unused `hono` dependency, ran `npm audit fix` (no `--force`): 18 → 10 vulnerabilities.
+- **Set `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID=9293409342` in Vercel Production, deployed, verified live
+  behavior was unacceptable (see above), then removed the env var and redeployed to roll back.**
 
 ## Validation evidence
 
 - `npm run build` passed (default env, no ad flags) after all changes.
-- `npm run build` + `next start` also verified with `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=true` and a
-  fake `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID` locally: browser check on a real DB result page found no
-  console errors, ad wrapper renders inline without breaking layout.
-- `node scripts/audit-result-monetization-measurement.mjs`: 5/5 PASS.
+- Local `next start` with a fake slot ID: clean single `<ins>`, no console errors, correct
+  path-based gating (renders on result pages only, not intro/question pages, no double-render).
+- **Live production test with the real slot ID exposed the Auto Ads density problem** — this is the
+  reason for the rollback; local testing with a fake/unapproved slot ID could not have caught it
+  because Auto Ads didn't have real inventory to place in that environment.
+- Post-rollback: confirmed live `temon.kr` result pages load zero AdSense script/ins elements again.
 
 ## Side effects and rollback
 
-- No production behavior changes until someone sets `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID` in Vercel.
-- To roll back after it's set: unset the env var (or set delivery flag to `false`) and redeploy.
+- Result pages currently have **no ads**, same as before this session (net revenue-neutral for now).
+- If re-attempting: the Auto Ads URL exclusion (see next step) must be configured in the AdSense
+  console **before** setting the slot ID again, not after — this time, verify with a real slot ID in
+  a low-traffic controlled window, not by relying on local/fake-slot-ID testing alone.
+- The ad unit **`9293409342`** itself is still created in the AdSense console (harmless to leave
+  unused) — it can be reused once the exclusion is in place.
 
 ## Single next step (requires account-side action, not code)
 
-1. In the AdSense console, create a new **Display ad** unit for `temon.kr` and copy its slot ID.
-2. Set `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID` in Vercel Production to that slot ID and redeploy.
-3. Optional but recommended for true "1 unit only" control: in AdSense console → Ads → Auto ads →
-   URL exclusions, add `temon.kr/tests/*/test/result/*` so Auto Ads doesn't also place ads there.
-4. After it's live, watch AdSense Policy Center for a few days (same caution as the earlier Better
-   Ads recovery) and re-run the CWV check on a sample result page.
+1. In the AdSense console → Ads → Auto ads → URL exclusions, add `temon.kr/tests/*/test/result/*`
+   (covers both legacy and DB-driven result paths) so Auto Ads stops placing extra ads/vignettes
+   there.
+2. Only after that's confirmed active, set `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID=9293409342` in Vercel
+   Production again and redeploy (Claude can do this step once told the exclusion is live).
+3. Re-verify live with a real browser check (not just build/local) before considering it done —
+   local testing with a placeholder slot ID cannot reproduce Auto Ads' real placement behavior.
+4. After it's confirmed clean, watch AdSense Policy Center for a few days and re-run the CWV check.
 
 ## Deliberately not run or sent
 
-- No AdSense console changes (ad unit creation, Auto Ads exclusions) — account access needed.
-- No further GSC page/query title rewrites beyond the two clearest mismatches — most other flagged
-  "0% CTR" items already had well-matched titles/descriptions on inspection, so the 0% reading is
-  most likely low-volume statistical noise (e.g. 0/36 impressions), not a fixable defect.
+- No AdSense console changes (Auto Ads URL exclusion) — account access needed, must happen first.
+- No further GSC page/query title rewrites beyond the two clearest mismatches.
