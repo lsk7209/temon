@@ -75,13 +75,18 @@ inert without the env var — this was an env-var-only rollback, no code revert 
 
 ## Addendum — 2026-08-26 dependency upgrade research (Codex, research-only)
 
-Ran two Codex-routed research reports (`omc ask codex`) in parallel, no code/package changes:
+Ran two Codex-routed research reports (`omc ask codex`, document-specialist role, parallel
+background processes — `omc-teams`/tmux isn't available on this Windows host) with no code or
+package changes:
 
 - `reports/nextjs-upgrade-research-2026-08-26.md` — Next.js 14.2.35 → 16.x. Recommends a two-step
   `14 → latest 15.x → pinned 16.x` path, not a direct jump. P0 items: async `params`/`searchParams`
   (9 candidate files), removed `NextRequest.ip` in `middleware.ts`, React 18 → 19. Est. 15–30 files,
-  2–4 engineering days, medium-high risk. Explicitly recommends **not** starting this now — do it in
-  its own window, never combined with the AdSense result-page re-enable.
+  2–4 engineering days, medium-high risk. Explicitly recommends **not** starting this now, and to
+  never combine it with the AdSense result-page re-enable so regressions can be attributed cleanly.
+  Local inventory backing the estimate: 9 sync dynamic-prop candidates, 10 `revalidate` files, 10
+  `next/script` files, 0 `next/image` imports, direct `request.ip` use in `middleware.ts`.
+  `npm view next version` was `16.3.3` on 2026-08-26 — re-check before any implementation.
 - `reports/drizzle-orm-upgrade-research-2026-08-26.md` — drizzle-orm 0.29.5 → 0.45.2 (the GHSA-fixed
   minimum, not 0.45.0/0.45.1). Static-code check found no `sql.identifier()` / dynamic `.as()` usage,
   so the SQL-injection advisory doesn't look exploitable in this codebase today. Small scope (schema
@@ -90,62 +95,7 @@ Ran two Codex-routed research reports (`omc ask codex`) in parallel, no code/pac
   Next.js upgrade and not blocked on it — could go first if either is picked up.
 
 Both reports end with an explicit "why not to start today" section; see the reports for full detail.
-No production code changed as part of this research pass.
-# Current handoff — 2026-08-26 Next.js upgrade research complete
-
-## User goal
-
-Produce a Korean, official-source-backed research report for upgrading temon.kr from
-`next@14.2.35` to Next.js 16.x. Research only; no code, dependency, deployment, environment, or
-live-system changes.
-
-## Exact current state
-
-- Report completed: `reports/nextjs-upgrade-research-2026-08-26.md`.
-- Recommended path: 14.2.35 -> a verified latest 15.x -> pinned 16.x; do not combine the upgrade
-  with Cache Components adoption or AdSense result-page reactivation.
-- Highest-impact confirmed hotspots: synchronous App Router request props, removed
-  `NextRequest.ip`, React 19, route-handler/fetch cache defaults, Turbopack default builds, and
-  `middleware.ts` to `proxy.ts` migration.
-- No implementation was performed.
-
-## Completed work
-
-- Reviewed current package/config/middleware/layout/AdSense/Drizzle patterns and bounded counts.
-- Reviewed current official Next.js 15/16 upgrade and related reference documentation.
-- Documented codemods, limits, estimated 15-30 directly changed files, medium-high risk, and defer reasons.
-
-## Changed files
-
-- `reports/nextjs-upgrade-research-2026-08-26.md` — requested report.
-- `.goal-harness/EVIDENCE.md` — research completion evidence only.
-- `docs/HANDOFF.md` — this recovery record.
-
-## Fresh validation evidence
-
-- Report exists and contains all 11 planned sections.
-- Local inventory: 9 synchronous dynamic-prop candidate files, 10 `revalidate` files, 10
-  `next/script` files, 0 `next/image` imports, and direct `request.ip` use in `middleware.ts`.
-- `npm view next version` returned `16.3.3` on 2026-08-26; re-check before implementation.
-
-## Side effects and rollback
-
-- Documentation-only changes; no package, application source, deployment, environment, or live-system mutation.
-
-## Blockers or risks
-
-- React 19 compatibility and actual error count require a future isolated branch and fresh build.
-- Vercel/CI Node runtime must be confirmed at implementation time.
-- Existing result-page AdSense rollback remains in force.
-
-## Single concrete next step
-
-When implementation is explicitly requested, create an isolated branch and establish the current
-14.2.35 build/route baseline before running any codemod or package update.
-
-## Deliberately not run or sent
-
-- No install, codemod, lint, typecheck, build, deploy, git push, Vercel mutation, AdSense change,
-  or database request.
-
----
+No production code, dependency, lockfile, environment, deployment, or AdSense setting changed as
+part of this research pass. Single next step if either upgrade is explicitly requested later: create
+an isolated branch, capture the current build/route baseline, then apply codemods/version bumps
+there — not directly on `main`.
