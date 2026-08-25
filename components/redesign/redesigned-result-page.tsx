@@ -6,11 +6,13 @@ import { ContentToc } from "@/components/content-toc";
 import { RelatedTestsSection } from "@/components/related-tests-section";
 import { ShareButtons } from "@/components/share-buttons";
 import { Button } from "@/components/ui/button";
+import { trackCTAClick } from "@/lib/analytics";
 import {
   type ResultViewModel,
   resultTocItems,
 } from "@/lib/result-redesign";
 import { ResultSummaryCards } from "./result-summary-cards";
+import { ResultEngagementTracker } from "./result-engagement-tracker";
 
 interface RedesignedResultPageProps {
   data: ResultViewModel;
@@ -19,6 +21,10 @@ interface RedesignedResultPageProps {
 export function RedesignedResultPage({ data }: RedesignedResultPageProps) {
   return (
     <article className="temon-result min-h-screen bg-[#f6f7f9] pb-16">
+      <ResultEngagementTracker
+        testId={data.testId}
+        resultType={data.resultCode}
+      />
       <div className="mx-auto w-full max-w-6xl px-4 py-5 sm:px-6 lg:px-8">
         <header className="mb-4 flex items-center justify-between rounded-lg border border-slate-200 bg-white/90 px-4 py-3 shadow-sm backdrop-blur">
           <Link href="/tests" className="font-bold text-slate-950">
@@ -154,13 +160,21 @@ export function RedesignedResultPage({ data }: RedesignedResultPageProps) {
 
             <section className="grid gap-3 sm:grid-cols-2">
               <Button asChild variant="outline" className="h-12 bg-white">
-                <Link href={data.testPath}>
+                <Link
+                  href={data.testPath}
+                  onClick={() => trackCTAClick("result_retake", "result_footer")}
+                >
                   <RefreshCw className="mr-2 h-4 w-4" />
                   다시 테스트하기
                 </Link>
               </Button>
               <Button asChild className="h-12 bg-slate-950 hover:bg-slate-800">
-                <Link href="/tests">다른 테스트 보기</Link>
+                <Link
+                  href="/tests"
+                  onClick={() => trackCTAClick("result_more_tests", "result_footer")}
+                >
+                  다른 테스트 보기
+                </Link>
               </Button>
             </section>
 

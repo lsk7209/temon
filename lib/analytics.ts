@@ -381,13 +381,13 @@ export function trackResultView(testId: string, resultType: string) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    runWhenGtagReady(() => {
       window.gtag("event", "result_view", {
         test_name: testId,
         result_type: resultType,
         event_category: "engagement",
       });
-    }
+    });
   } catch (error) {
     console.error("결과 조회 추적 오류:", error);
   }

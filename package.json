@@ -10,6 +10,7 @@
     "create-test": "ts-node scripts/create-test.ts",
     "audit:results": "node scripts/audit-result-pages.js",
     "audit:quiz-flow": "node scripts/audit-quiz-flow.js",
+    "audit:result-monetization": "node scripts/audit-result-monetization-measurement.mjs",
     "audit:static-descriptions": "node scripts/audit-static-test-descriptions.js",
     "audit:static-polish": "node scripts/polish-static-test-descriptions.js --check",
     "audit:content": "npm run audit:static-polish && npm run audit:static-descriptions && npm run audit:results && npm run audit:quiz-flow",

@@ -1,38 +1,41 @@
-# Current handoff — 2026-08-17
+# Current handoff — 2026-08-19
 
 ## User goal
 
-Recover `temon.kr` from the mobile Chrome / AdSense Better Ads Standards enforcement notice dated 2026-08-15.
+After the confirmed mobile Better Ads review pass, re-enable AdSense delivery for `temon.kr` and deploy it safely.
 
 ## Current state
 
-The remediation is deployed to production. The Coupang affiliate banner has been removed. The current main branch keeps the AdSense loader out of the root layout and blocks mobile delivery in the loader component until the Better Ads review passes.
+Production delivery is enabled through the Vercel Production environment value `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=true`. GitHub `main` commit `988acfa` is deployed as Vercel deployment `dpl_75zwWNaugWXj7cjHnjYVduZfbUg8` (`https://temon-vercel-8of54bpjb-limsubs-projects.vercel.app`) and is aliased to `https://temon.kr` and `https://www.temon.kr`.
 
 ## Completed work
 
-- Removed the Coupang affiliate banner component and its root-layout render path.
-- Retained the latest main-branch mobile AdSense pause instead of re-enabling delivery before Google review.
-- Recorded the evidence boundary and review blockers in `reports/2026-08-17-adsense-diagnose.json`.
+- Kept the existing explicit production gate in both global and blog AdSense loaders.
+- Restored the global loader render in `app/layout.tsx`; it only runs when the production flag is exactly `true` and the route is eligible and indexable.
+- Pushed `cc17a04` (`fix: gate AdSense reactivation after review`) and `988acfa` (`fix: restore gated AdSense loader`) to `main`.
+- Preserved the prior Coupang banner removal; no affiliate/sticky banner was restored.
 
 ## Validation evidence
 
-- `npm run build` passed on 2026-08-17.
-- Next.js compiled, type-checked, and generated 1,094 routes.
-- Static source scan confirmed no Coupang banner component, render path, or banner-management reference remains in `app/` or `components/`.
-- Live `https://temon.kr/ads.txt` returned HTTP 200 with `google.com, pub-3050601904412736, DIRECT, f08c47fec0942fa0`.
-- Production deployment `dpl_7jAL8ikGMEdJuzCis6L2THzobuVV` was `Ready` and aliased to `https://temon.kr` on 2026-08-17.
-- A fresh production homepage fetch returned HTTP 200 with no `banner-management` / `coupang-inline` reference and no `adsbygoogle.js` loader.
+- Local `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=true npm run build` completed successfully.
+- Vercel completed the production build for commit `988acfa` with status `Ready` and the `temon.kr` aliases attached.
+- Fresh 390×844 rendered browser check on `https://temon.kr/` found `#adsense-loader` present and loaded `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3050601904412736` plus Google managed ads code. Browser result: 0 errors; one non-blocking AdSense `data-nscript` warning.
+- The same rendered check found no `쿠팡` text. Public `https://temon.kr/ads.txt` returned HTTP 200 and the expected Google seller record.
+- User-provided console evidence for this decision: mobile Web Tools status `통과`; AdSense Policy Center states there is currently no policy violation stopping or limiting serving. Desktop Web Tools remains `검토되지 않음`, not failed.
 
 ## Side effects and rollback
 
-- After deployment, the Coupang affiliate banner is absent. Google Auto ads remain paused for mobile until the Google review passes and a follow-up, explicitly approved re-enable change is deployed.
-- No Google review request, AdSense-console change, or account action was performed.
+- Google Auto Ads can now load on eligible, indexable desktop and mobile routes. Ad creative fill remains Google/auction dependent and may not appear on every immediate page view.
+- Fast rollback: set Vercel Production `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=false` and redeploy, or roll back to the preceding no-root-loader deployment `dpl_9MKepCFhzfyrnt1MmRuYGMGkyy7R`.
 
 ## Blockers / risks
 
-- The supplied notices do not include the exact URL/creative findings from the Ad Experience Report, so those must be checked in the authenticated report before resubmission.
-- Chrome/AdSense approval is an external state and remains unverified.
+- The red AdSense `ads.txt` banner shown by the user was not tied to a named site in the screenshot. `temon.kr/ads.txt` itself is valid in the public check; investigate the banner target separately if it persists after selecting “지금 해결하기”.
 
 ## Single next step
 
-Open the mobile Ad Experience Report, map each shown URL/video to this deployed remediation, and submit the Google review request; do not re-enable AdSense until the report passes.
+Monitor AdSense reporting and the Policy Center for normal serving/fill over the next several hours; do not resubmit or cancel any review unless a new site-specific issue appears.
+
+## Deliberately not run or sent
+
+- No new Google review request, Policy Center appeal, account change, or cache purge was submitted.
