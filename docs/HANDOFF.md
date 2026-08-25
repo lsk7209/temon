@@ -1,41 +1,74 @@
-# Current handoff — 2026-08-19
+# Current handoff — 2026-08-25
 
 ## User goal
 
-After the confirmed mobile Better Ads review pass, re-enable AdSense delivery for `temon.kr` and deploy it safely.
+Revenue improvement review for `temon.kr` after the mobile Better Ads review pass and AdSense
+reactivation: fix low-hanging CTR/content issues, and cautiously extend monetization to the
+result-page traffic that previously had no ads at all.
 
 ## Current state
 
-Production delivery is enabled through the Vercel Production environment value `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=true`. GitHub `main` commit `988acfa` is deployed as Vercel deployment `dpl_75zwWNaugWXj7cjHnjYVduZfbUg8` (`https://temon-vercel-8of54bpjb-limsubs-projects.vercel.app`) and is aliased to `https://temon.kr` and `https://www.temon.kr`.
+AdSense delivery remains gated by `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=true` in Vercel Production
+(unchanged from the 2026-08-19 handoff). This round adds one new, currently-inert monetization
+surface: a manual display ad unit on quiz result pages, gated separately by
+`NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID` (unset in production today, so it renders nothing).
 
 ## Completed work
 
-- Kept the existing explicit production gate in both global and blog AdSense loaders.
-- Restored the global loader render in `app/layout.tsx`; it only runs when the production flag is exactly `true` and the route is eligible and indexable.
-- Pushed `cc17a04` (`fix: gate AdSense reactivation after review`) and `988acfa` (`fix: restore gated AdSense loader`) to `main`.
-- Preserved the prior Coupang banner removal; no affiliate/sticky banner was restored.
+- Synced local `main` with `origin/main` (was 25 commits behind, 2 diverged) before starting; no
+  history was force-pushed, divergent local commits were superseded by equivalent upstream ones.
+- Shipped result-page engagement measurement (`ResultEngagementTracker`, CTA click tracking) that
+  was already in flight locally — merged onto the fresh base and pushed as `bf6d9c5`.
+- Fixed two low-CTR DB test titles/descriptions (`perfection-balance-1xQC`, `daily-umbrella-check-wave4`)
+  to better match their target GSC queries. Backup: `reports/low-ctr-title-backup-2026-08-25T*.json`.
+- Verified the 18 published-description defects flagged on 2026-06-02 were already repaired by a
+  prior session (`scripts/repair-published-descriptions.js` dry-run: `badBefore: 0`).
+- Added `components/redesign/result-ad-unit.tsx`: a single manual AdSense display unit rendered
+  inside `RedesignedResultPage` (used by every DB-driven result page,
+  `/tests/{testId}/test/result/{resultId}`), between the FAQ section and the footer CTAs.
+  - Gated by `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED` AND a new `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID`
+    env var — with the slot ID unset, the component renders nothing, so it ships safely inert.
+  - Does **not** attempt to disable Google Auto Ads on this page. An earlier version tried to push
+    `enable_page_level_ads: false`, but a real `adsbygoogle.js` test against the live client ID
+    (`ca-pub-3050601904412736`, which already has Auto Ads enabled at the account level) showed the
+    script self-initializes page-level ads on load and throws `Only one 'enable_page_level_ads'
+    allowed per page` when the app also pushes it. Full control over "exactly one ad on this page"
+    requires an AdSense-console-side Auto Ads URL exclusion for `/tests/*/test/result/*` — outside
+    what code can do. This was surfaced to and accepted by the user before shipping.
+  - Result pages intentionally carry `robots: { index: false }` (per-session `resultId` URLs, not a
+    quality signal), so this component does not gate on indexability the way `adsense-script.tsx` does.
+- Re-ran `npm run audit:content` (static-polish, static-descriptions, results, quiz-flow): all Pass,
+  0 defects — no regressions from this round's changes.
+- Refreshed Core Web Vitals via PageSpeed Insights (mobile): `reports/cwv-check-2026-08-25.md`. The
+  sampled result page is currently pristine (CLS 0, perf 98) since the ad slot isn't live yet —
+  **re-run this check once a real slot ID is set** to confirm the reserved `min-h-[250px]` wrapper
+  keeps CLS low after the ad actually renders.
 
 ## Validation evidence
 
-- Local `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=true npm run build` completed successfully.
-- Vercel completed the production build for commit `988acfa` with status `Ready` and the `temon.kr` aliases attached.
-- Fresh 390×844 rendered browser check on `https://temon.kr/` found `#adsense-loader` present and loaded `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3050601904412736` plus Google managed ads code. Browser result: 0 errors; one non-blocking AdSense `data-nscript` warning.
-- The same rendered check found no `쿠팡` text. Public `https://temon.kr/ads.txt` returned HTTP 200 and the expected Google seller record.
-- User-provided console evidence for this decision: mobile Web Tools status `통과`; AdSense Policy Center states there is currently no policy violation stopping or limiting serving. Desktop Web Tools remains `검토되지 않음`, not failed.
+- `npm run build` passed (default env, no ad flags) after all changes.
+- `npm run build` + `next start` also verified with `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=true` and a
+  fake `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID` locally: browser check on a real DB result page found no
+  console errors, ad wrapper renders inline without breaking layout.
+- `node scripts/audit-result-monetization-measurement.mjs`: 5/5 PASS.
 
 ## Side effects and rollback
 
-- Google Auto Ads can now load on eligible, indexable desktop and mobile routes. Ad creative fill remains Google/auction dependent and may not appear on every immediate page view.
-- Fast rollback: set Vercel Production `NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED=false` and redeploy, or roll back to the preceding no-root-loader deployment `dpl_9MKepCFhzfyrnt1MmRuYGMGkyy7R`.
+- No production behavior changes until someone sets `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID` in Vercel.
+- To roll back after it's set: unset the env var (or set delivery flag to `false`) and redeploy.
 
-## Blockers / risks
+## Single next step (requires account-side action, not code)
 
-- The red AdSense `ads.txt` banner shown by the user was not tied to a named site in the screenshot. `temon.kr/ads.txt` itself is valid in the public check; investigate the banner target separately if it persists after selecting “지금 해결하기”.
-
-## Single next step
-
-Monitor AdSense reporting and the Policy Center for normal serving/fill over the next several hours; do not resubmit or cancel any review unless a new site-specific issue appears.
+1. In the AdSense console, create a new **Display ad** unit for `temon.kr` and copy its slot ID.
+2. Set `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID` in Vercel Production to that slot ID and redeploy.
+3. Optional but recommended for true "1 unit only" control: in AdSense console → Ads → Auto ads →
+   URL exclusions, add `temon.kr/tests/*/test/result/*` so Auto Ads doesn't also place ads there.
+4. After it's live, watch AdSense Policy Center for a few days (same caution as the earlier Better
+   Ads recovery) and re-run the CWV check on a sample result page.
 
 ## Deliberately not run or sent
 
-- No new Google review request, Policy Center appeal, account change, or cache purge was submitted.
+- No AdSense console changes (ad unit creation, Auto Ads exclusions) — account access needed.
+- No further GSC page/query title rewrites beyond the two clearest mismatches — most other flagged
+  "0% CTR" items already had well-matched titles/descriptions on inspection, so the 0% reading is
+  most likely low-volume statistical noise (e.g. 0/36 impressions), not a fixable defect.

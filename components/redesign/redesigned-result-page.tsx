@@ -7,12 +7,10 @@ import { RelatedTestsSection } from "@/components/related-tests-section";
 import { ShareButtons } from "@/components/share-buttons";
 import { Button } from "@/components/ui/button";
 import { trackCTAClick } from "@/lib/analytics";
-import {
-  type ResultViewModel,
-  resultTocItems,
-} from "@/lib/result-redesign";
+import { type ResultViewModel, resultTocItems } from "@/lib/result-redesign";
 import { ResultSummaryCards } from "./result-summary-cards";
 import { ResultEngagementTracker } from "./result-engagement-tracker";
+import { ResultAdUnit } from "./result-ad-unit";
 
 interface RedesignedResultPageProps {
   data: ResultViewModel;
@@ -67,9 +65,9 @@ export function RedesignedResultPage({ data }: RedesignedResultPageProps) {
               ))}
             </div>
             <p className="mt-5 flex gap-2 rounded-lg bg-amber-50 p-3 text-sm leading-6 text-amber-900">
-              <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />
-              이 결과는 현재 선택 패턴을 해석한 참고 자료이며, 고정된
-              성격이나 전문 진단을 의미하지 않습니다.
+              <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />이 결과는 현재
+              선택 패턴을 해석한 참고 자료이며, 고정된 성격이나 전문 진단을
+              의미하지 않습니다.
             </p>
           </div>
 
@@ -158,11 +156,15 @@ export function RedesignedResultPage({ data }: RedesignedResultPageProps) {
               </div>
             </section>
 
+            <ResultAdUnit />
+
             <section className="grid gap-3 sm:grid-cols-2">
               <Button asChild variant="outline" className="h-12 bg-white">
                 <Link
                   href={data.testPath}
-                  onClick={() => trackCTAClick("result_retake", "result_footer")}
+                  onClick={() =>
+                    trackCTAClick("result_retake", "result_footer")
+                  }
                 >
                   <RefreshCw className="mr-2 h-4 w-4" />
                   다시 테스트하기
@@ -171,7 +173,9 @@ export function RedesignedResultPage({ data }: RedesignedResultPageProps) {
               <Button asChild className="h-12 bg-slate-950 hover:bg-slate-800">
                 <Link
                   href="/tests"
-                  onClick={() => trackCTAClick("result_more_tests", "result_footer")}
+                  onClick={() =>
+                    trackCTAClick("result_more_tests", "result_footer")
+                  }
                 >
                   다른 테스트 보기
                 </Link>
