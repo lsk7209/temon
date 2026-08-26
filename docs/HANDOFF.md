@@ -57,20 +57,48 @@ inert without the env var — this was an env-var-only rollback, no code revert 
 - The ad unit **`9293409342`** itself is still created in the AdSense console (harmless to leave
   unused) — it can be reused once the exclusion is in place.
 
-## Single next step (requires account-side action, not code)
+## Second live attempt (2026-08-26) — Auto Ads URL exclusion does NOT work here, confirmed empirically
 
-1. In the AdSense console → Ads → Auto ads → URL exclusions, add `temon.kr/tests/*/test/result/*`
-   (covers both legacy and DB-driven result paths) so Auto Ads stops placing extra ads/vignettes
-   there.
-2. Only after that's confirmed active, set `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID=9293409342` in Vercel
-   Production again and redeploy (Claude can do this step once told the exclusion is live).
-3. Re-verify live with a real browser check (not just build/local) before considering it done —
-   local testing with a placeholder slot ID cannot reproduce Auto Ads' real placement behavior.
-4. After it's confirmed clean, watch AdSense Policy Center for a few days and re-run the CWV check.
+The user added an AdSense "페이지 제외" (page exclusion) rule: mode "이 섹션의 모든 페이지" (prefix
+match), URL `temon.kr/tests/*/test/result/*`. Before trusting it, checked Google's own documentation
+(`support.google.com/adsense/answer/9262311`): Auto ads page exclusion only has two modes — exact
+URL match, or prefix match on a literal path (official example: entering `example.com/sports`
+excludes `example.com/sports` and `example.com/sports/team`, i.e. no glob/wildcard character syntax
+is documented). Since temon's result URLs have the variable test slug **before** the literal
+`/test/result` suffix (`/tests/{slug}/test/result`), a left-anchored prefix rule structurally cannot
+express "any slug, then this suffix" — so the `*` characters in the exclusion were very likely just
+literal/ignored, not a working wildcard.
+
+Verified live: re-enabled `NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID=9293409342`, deployed
+(`dpl_Hxdn73iePQvkiwzYg4n73AiSgucT`), browser-checked `https://temon.kr/tests/ntrp-test/test/result`
+after scrolling to trigger lazy placements: **still 7 `<ins class="adsbygoogle">` elements**,
+identical to the first attempt (Auto Ads inside the FAQ section, multiple stray placements). The
+exclusion rule had no effect. Rolled back immediately (env var removed, redeployed
+`dpl_3PBRCowQCwbcWjhKM1yJGoGkqMSw`), confirmed 0 ad script/ins on the result page again.
+
+**Conclusion: the "manual result-page ad unit while excluding Auto Ads via console URL rule"
+approach is not achievable with the current URL structure.** Auto Ads' page exclusion tool cannot
+express a rule for a variable-slug-then-fixed-suffix path. Do not retry this exact approach a third
+time without one of the structural changes below.
+
+## Real remaining options for result-page monetization (none attempted yet)
+
+1. **Restructure result URLs under one fixed prefix** (e.g. `/results/{slug}` instead of
+   `/tests/{slug}/test/result`) so a single Auto Ads prefix exclusion (`temon.kr/results/`) actually
+   works. Real code/routing change, redirects needed for any indexed legacy links (low SEO risk since
+   these are noindex), meaningful effort — not attempted.
+2. **Exact-match exclusion per legacy test** (`이 페이지만`) for the ~212 static legacy result paths
+   only (they have deterministic URLs, unlike DB-driven results which get a unique `resultId` per
+   submission and can never be enumerated). Extremely tedious to enter manually one by one in the
+   AdSense console; DB-driven results still couldn't be covered this way.
+3. **Disable Auto Ads site-wide** and rebuild every current ad placement (home/tests/blog) as manual
+   units too. Large scope change, out of proportion to today's work.
+4. **Leave result pages without ads** (current state) — zero incremental risk, zero incremental
+   revenue from this surface. Recommended default until one of the above is deliberately scoped.
 
 ## Deliberately not run or sent
 
-- No AdSense console changes (Auto Ads URL exclusion) — account access needed, must happen first.
+- No further AdSense console changes attempted after the second rollback.
 - No further GSC page/query title rewrites beyond the two clearest mismatches.
 
 ## Addendum — 2026-08-26 dependency upgrade research (Codex, research-only)
