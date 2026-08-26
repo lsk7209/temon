@@ -54,6 +54,18 @@ const nextConfig = {
         destination: `/tests/${to}`,
         permanent: true,
       })),
+      // 결과 페이지 URL 재구조화: /tests/{x}/test/result... → /results/{x}...
+      // (Auto Ads URL 제외가 접두사 매칭만 지원해서 /results/ 하나로 통일)
+      {
+        source: '/tests/:x/test/result/:resultId',
+        destination: '/results/:x/:resultId',
+        permanent: true,
+      },
+      {
+        source: '/tests/:x/test/result',
+        destination: '/results/:x',
+        permanent: true,
+      },
     ]
   },
 

@@ -6,6 +6,7 @@ const { createClient } = require("@libsql/client");
 
 const ROOT = path.resolve(__dirname, "..");
 const TESTS_DIR = path.join(ROOT, "app", "tests");
+const RESULTS_DIR = path.join(ROOT, "app", "results");
 const REPORTS_DIR = path.join(ROOT, "reports");
 const REPORT_DATE = new Date().toISOString().slice(0, 10);
 const REPORT_BASENAME = `result-page-audit-${REPORT_DATE}`;
@@ -22,7 +23,8 @@ const CONTENT_THRESHOLDS = {
   minDetailBullets: 6,
 };
 
-const MOJIBAKE_PATTERN = /[\uFFFD\u3400-\u9FFF]|[\u00c2\u00c3\u00ea\u00eb\u00ec\u00ef\u00f0][\u0080-\u00ff]*/g;
+const MOJIBAKE_PATTERN =
+  /[\uFFFD\u3400-\u9FFF]|[\u00c2\u00c3\u00ea\u00eb\u00ec\u00ef\u00f0][\u0080-\u00ff]*/g;
 
 dotenv.config({
   path: path.join(ROOT, ".env.local"),
@@ -118,15 +120,13 @@ function hasPattern(source, pattern) {
 }
 
 function auditStaticResultPages() {
-  const testsLayoutPath = path.join(TESTS_DIR, "layout.tsx");
+  const resultsLayoutPath = path.join(RESULTS_DIR, "layout.tsx");
   const robotsPath = path.join(ROOT, "app", "robots.ts");
   const robotsSource = fs.existsSync(robotsPath) ? readText(robotsPath) : "";
-  const resultRoutesBlocked =
-    robotsSource.includes("/tests/*/test/result") &&
-    robotsSource.includes("/tests/*/test/result/*");
+  const resultRoutesBlocked = robotsSource.includes("/results/*");
   const hasGlobalResultEnhancer =
-    fs.existsSync(testsLayoutPath) &&
-    readText(testsLayoutPath).includes("ResultRouteAutoEnhancements");
+    fs.existsSync(resultsLayoutPath) &&
+    readText(resultsLayoutPath).includes("ResultRouteAutoEnhancements");
   const autoEnhancerSourcePath = path.join(
     ROOT,
     "components",
@@ -137,8 +137,8 @@ function auditStaticResultPages() {
     : "";
 
   return getQuizDirs().map((slug) => {
-    const resultPath = path.join(TESTS_DIR, slug, "test", "result", "page.tsx");
-    const resultLayoutPath = path.join(TESTS_DIR, slug, "test", "result", "layout.tsx");
+    const resultPath = path.join(RESULTS_DIR, slug, "page.tsx");
+    const resultLayoutPath = path.join(RESULTS_DIR, slug, "layout.tsx");
     const introPath = path.join(TESTS_DIR, slug, "page.tsx");
     const testPath = path.join(TESTS_DIR, slug, "test", "page.tsx");
     const issues = [];
@@ -163,12 +163,14 @@ function auditStaticResultPages() {
       !usesCommonResultPage;
     const cardCount = countMatches(source, /<Card\b/g);
     const paragraphCount = countMatches(source, /<p\b/g);
-    const enhancementSectionCount = usesEnhancement || usesGlobalEnhancement ? 4 : 0;
+    const enhancementSectionCount =
+      usesEnhancement || usesGlobalEnhancement ? 4 : 0;
     const commonSectionCount = usesCommonResultPage ? 8 : 0;
     const metrics = {
       sourceChars: source.length,
       cardCount,
-      effectiveCardCount: cardCount + enhancementSectionCount + commonSectionCount,
+      effectiveCardCount:
+        cardCount + enhancementSectionCount + commonSectionCount,
       paragraphCount,
       effectiveParagraphCount:
         paragraphCount +
@@ -190,22 +192,28 @@ function auditStaticResultPages() {
       usesEnhancement,
       usesGlobalEnhancement,
       importsResultData: /@\/lib\/data\/.*-results/.test(source),
-      hasShare: source.includes("ShareButtons") || usesCommonResultPage || usesGlobalEnhancement,
+      hasShare:
+        source.includes("ShareButtons") ||
+        usesCommonResultPage ||
+        usesGlobalEnhancement,
       hasToc:
         source.includes("ContentToc") ||
         usesEnhancement ||
         usesCommonResultPage ||
         usesGlobalEnhancement,
       hasFaqEffective:
-        /FAQ|ResultFaqSchema|createFAQSchema|faqItems|StaticResultEnhancements|getTopicResultFAQs/.test(source) ||
+        /FAQ|ResultFaqSchema|createFAQSchema|faqItems|StaticResultEnhancements|getTopicResultFAQs/.test(
+          source,
+        ) ||
         usesCommonResultPage ||
         usesGlobalEnhancement,
       hasActionGuideEffective:
-        /StaticResultEnhancements|getTopicResultUseCases|Action Guide|활용|가이드|실천|체크리스트|추천/.test(source) ||
+        /StaticResultEnhancements|getTopicResultUseCases|Action Guide|활용|가이드|실천|체크리스트|추천/.test(
+          source,
+        ) ||
         usesCommonResultPage ||
         usesGlobalEnhancement,
-      hasFaq:
-        /FAQ|ResultFaqSchema|createFAQSchema|faqItems|자주/.test(source),
+      hasFaq: /FAQ|ResultFaqSchema|createFAQSchema|faqItems|자주/.test(source),
       hasRelated:
         source.includes("RelatedTestsSection") ||
         usesEnhancement ||
@@ -215,11 +223,15 @@ function auditStaticResultPages() {
       hasMetadata:
         /export const metadata|generateMetadata/.test(source) ||
         (fs.existsSync(resultLayoutPath) &&
-          /export const metadata|generateMetadata/.test(readText(resultLayoutPath))),
+          /export const metadata|generateMetadata/.test(
+            readText(resultLayoutPath),
+          )),
       resultRoutesBlocked,
       hasConsoleError: /console\.error|console\.log/.test(source),
       hasEnglishSectionTitle:
-        /Where This Result Becomes Useful|Action Guide|More Routine Quizzes To Compare|>FAQ<|FAQ<\/|FAQ"/.test(source),
+        /Where This Result Becomes Useful|Action Guide|More Routine Quizzes To Compare|>FAQ<|FAQ<\/|FAQ"/.test(
+          source,
+        ),
     };
 
     if (!flags.hasIntroPage || !flags.hasTestPage) {
@@ -229,7 +241,9 @@ function auditStaticResultPages() {
     if (!flags.hasFaqEffective) issues.push("P1 result FAQ missing");
     if (metrics.h1Count < 1) issues.push("P1 result H1 missing");
     if (metrics.effectiveCardCount < STATIC_THRESHOLDS.minCards) {
-      issues.push(`P1 low section count: ${metrics.effectiveCardCount} effective cards`);
+      issues.push(
+        `P1 low section count: ${metrics.effectiveCardCount} effective cards`,
+      );
     }
     if (metrics.effectiveParagraphCount < STATIC_THRESHOLDS.minParagraphs) {
       issues.push(`P1 low paragraph count: ${metrics.effectiveParagraphCount}`);
@@ -262,7 +276,9 @@ function auditStaticResultPages() {
 }
 
 function summarizeResultRows(rows, expectedCount) {
-  const summaryLengths = rows.map((row) => String(row.summary || "").trim().length);
+  const summaryLengths = rows.map(
+    (row) => String(row.summary || "").trim().length,
+  );
   const thinRows = rows.filter((row) => {
     const summaryLength = String(row.summary || "").trim().length;
     return (
@@ -276,7 +292,9 @@ function summarizeResultRows(rows, expectedCount) {
   if (rows.length < expectedCount) {
     issues.push(`P0 result types missing: ${rows.length}/${expectedCount}`);
   }
-  if (summaryLengths.some((length) => length < CONTENT_THRESHOLDS.minShortSummary)) {
+  if (
+    summaryLengths.some((length) => length < CONTENT_THRESHOLDS.minShortSummary)
+  ) {
     issues.push("P1 very short result summary exists");
   }
   if (thinRows.length > 0) {
@@ -284,7 +302,10 @@ function summarizeResultRows(rows, expectedCount) {
   }
 
   const avgSummary = summaryLengths.length
-    ? Math.round(summaryLengths.reduce((sum, value) => sum + value, 0) / summaryLengths.length)
+    ? Math.round(
+        summaryLengths.reduce((sum, value) => sum + value, 0) /
+          summaryLengths.length,
+      )
     : 0;
 
   return {
@@ -359,8 +380,11 @@ async function auditDatabaseResults() {
         publishedTests: published.length,
         draftTests: draft.length,
         resultRows: resultRows.length,
-        publishedThinTests: published.filter((record) => record.severity !== "Pass").length,
-        draftThinTests: draft.filter((record) => record.severity !== "Pass").length,
+        publishedThinTests: published.filter(
+          (record) => record.severity !== "Pass",
+        ).length,
+        draftThinTests: draft.filter((record) => record.severity !== "Pass")
+          .length,
       },
       records,
     };
@@ -391,11 +415,15 @@ function auditWaveJsonFiles() {
           detailCount(result) < CONTENT_THRESHOLDS.minDetailBullets
         );
       });
-      const summaries = results.map((result) => String(result.summary || "").trim().length);
+      const summaries = results.map(
+        (result) => String(result.summary || "").trim().length,
+      );
       const issues = [];
 
       if (results.length < Number(item.resultTypeCount || 16)) {
-        issues.push(`P0 result types missing: ${results.length}/${item.resultTypeCount || 16}`);
+        issues.push(
+          `P0 result types missing: ${results.length}/${item.resultTypeCount || 16}`,
+        );
       }
       if (thinResults.length > 0) {
         issues.push(`P1 thin source results: ${thinResults.length}`);
@@ -409,7 +437,10 @@ function auditWaveJsonFiles() {
         score: scoreFromSeverity(severity),
         resultCount: results.length,
         avgSummary: summaries.length
-          ? Math.round(summaries.reduce((sum, value) => sum + value, 0) / summaries.length)
+          ? Math.round(
+              summaries.reduce((sum, value) => sum + value, 0) /
+                summaries.length,
+            )
           : 0,
         minSummary: summaries.length ? Math.min(...summaries) : 0,
         thinResultRows: thinResults.length,
@@ -429,7 +460,9 @@ function auditWaveJsonFiles() {
 function buildSummary(staticRecords, dbAudit, waveAudits) {
   const staticBySeverity = countBy(staticRecords, "severity");
   const dbRecords = dbAudit.records || [];
-  const dbPublished = dbRecords.filter((record) => record.status === "published");
+  const dbPublished = dbRecords.filter(
+    (record) => record.status === "published",
+  );
   const dbDraft = dbRecords.filter((record) => record.status === "draft");
   const waveRecords = waveAudits.flatMap((audit) =>
     audit.records.map((record) => ({ ...record, sourceFile: audit.file })),
@@ -440,7 +473,8 @@ function buildSummary(staticRecords, dbAudit, waveAudits) {
     static: {
       tests: staticRecords.length,
       bySeverity: staticBySeverity,
-      thinOrBroken: staticRecords.filter((record) => record.severity !== "Pass").length,
+      thinOrBroken: staticRecords.filter((record) => record.severity !== "Pass")
+        .length,
     },
     database: dbAudit.available
       ? {
@@ -452,7 +486,8 @@ function buildSummary(staticRecords, dbAudit, waveAudits) {
     waveJson: {
       files: waveAudits.length,
       items: waveRecords.length,
-      thinItems: waveRecords.filter((record) => record.severity !== "Pass").length,
+      thinItems: waveRecords.filter((record) => record.severity !== "Pass")
+        .length,
       byFile: waveAudits.map((audit) => ({
         file: audit.file,
         items: audit.items,
@@ -477,15 +512,7 @@ function escapeCsv(value) {
 
 function writeCsv(reportPath, staticRecords, dbAudit, waveAudits) {
   const rows = [
-    [
-      "source",
-      "slug",
-      "status",
-      "severity",
-      "score",
-      "summary",
-      "issues",
-    ],
+    ["source", "slug", "status", "severity", "score", "summary", "issues"],
   ];
 
   for (const record of staticRecords) {
@@ -536,11 +563,20 @@ function writeCsv(reportPath, staticRecords, dbAudit, waveAudits) {
 function worst(records, limit = 20) {
   return [...records]
     .filter((record) => record.severity !== "Pass")
-    .sort((a, b) => a.score - b.score || (b.thinResultRows || 0) - (a.thinResultRows || 0))
+    .sort(
+      (a, b) =>
+        a.score - b.score || (b.thinResultRows || 0) - (a.thinResultRows || 0),
+    )
     .slice(0, limit);
 }
 
-function writeMarkdown(reportPath, summary, staticRecords, dbAudit, waveAudits) {
+function writeMarkdown(
+  reportPath,
+  summary,
+  staticRecords,
+  dbAudit,
+  waveAudits,
+) {
   const staticWorst = worst(staticRecords, 20);
   const dbPublishedWorst = worst(
     (dbAudit.records || []).filter((record) => record.status === "published"),
@@ -584,7 +620,8 @@ function writeMarkdown(reportPath, summary, staticRecords, dbAudit, waveAudits) 
 function formatWorst(records, source) {
   if (records.length === 0) return ["- None"];
   return records.map((record) => {
-    const label = source === "wave" ? `${record.sourceFile}:${record.slug}` : record.slug;
+    const label =
+      source === "wave" ? `${record.sourceFile}:${record.slug}` : record.slug;
     return `- ${record.severity} ${label}: ${record.issues.join("; ")}`;
   });
 }

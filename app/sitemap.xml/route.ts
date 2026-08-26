@@ -15,7 +15,7 @@ import { isNoindexTest } from "@/lib/noindex-tests";
  * - Vercel serverless 런타임에서 `fs.readdir(app/tests)` 스캔은 신뢰할 수 없음
  *   (빌드 후 디렉토리 구조가 달라 try 블록이 throw → fallback 2 URL만 반환하던 버그 원인).
  * - 단일 소스: `ALL_TESTS` 배열만 사용. 정적 페이지는 getStaticRoutes에서 가져옴.
- * - test 실행/결과 페이지(`/tests/{id}/test`, `/tests/{id}/test/result`)는 sitemap에서 제외.
+ * - test 실행/결과 페이지(`/tests/{id}/test`, `/results/{id}`)는 sitemap에서 제외.
  *   인트로(`/tests/{id}`) 한 장만 색인되는 게 중복 회피 및 crawl budget 절감.
  *
  * Vercel ISR: 5분마다 재생성.

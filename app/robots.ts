@@ -11,7 +11,7 @@ import { getSiteUrl } from "@/lib/site-url";
  */
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = getSiteUrl();
-  const privateResultPaths = ["/tests/*/test/result", "/tests/*/test/result/*"];
+  const privateResultPaths = ["/results/*"];
 
   return {
     rules: [

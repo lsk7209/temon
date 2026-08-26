@@ -39,7 +39,8 @@ const AUTO_ENHANCEMENT_SKIP_SLUGS = new Set([
   "zombie-survival",
 ]);
 
-const MOJIBAKE_PATTERN = /[\uFFFD\u3400-\u9FFF]|[\u00c2\u00c3\u00ea\u00eb\u00ec\u00ef\u00f0][\u0080-\u00ff]*/g;
+const MOJIBAKE_PATTERN =
+  /[\uFFFD\u3400-\u9FFF]|[\u00c2\u00c3\u00ea\u00eb\u00ec\u00ef\u00f0][\u0080-\u00ff]*/g;
 
 dotenv.config({
   path: path.join(ROOT, ".env.local"),
@@ -166,7 +167,11 @@ function effectiveTestDescription(slug, meta) {
 
   const title = cleanLabel(meta?.title) || slug.replace(/-/g, " ");
   const category = cleanLabel(meta?.category) || "퀴즈";
-  const tags = (meta?.tags || []).map(cleanLabel).filter(Boolean).slice(0, 3).join(", ");
+  const tags = (meta?.tags || [])
+    .map(cleanLabel)
+    .filter(Boolean)
+    .slice(0, 3)
+    .join(", ");
   return `${title}는 ${category} 주제로 나의 선택 패턴과 취향을 알아보는 무료 퀴즈 테스트입니다. ${tags ? `${tags} 관련 질문을 통해 ` : ""}결과별 해석과 추천 테스트까지 함께 확인할 수 있습니다.`;
 }
 
@@ -184,7 +189,8 @@ function auditIntro(slug, testDir, meta) {
     sourceChars: source.length,
     h1Count: countMatches(source, /<h1\b/g),
     sectionCount: countMatches(source, /<section\b|<article\b|<Card\b/g),
-    linkToTest: source.includes(`/tests/${slug}/test`) || source.includes("/test"),
+    linkToTest:
+      source.includes(`/tests/${slug}/test`) || source.includes("/test"),
     metadata: /export const metadata|generateMetadata/.test(source),
     jsonLd: source.includes("JsonLd") || source.includes("generateQuizSchemas"),
     faq: /FAQ|faq|FAQSection|createFAQSchema|getTopicQuizFAQs/.test(source),
@@ -193,21 +199,33 @@ function auditIntro(slug, testDir, meta) {
   };
 
   if (!metrics.exists) addIssue(issues, "P0", "intro page file missing");
-  if (metrics.exists && metrics.h1Count < 1) addIssue(issues, "P1", "intro H1 missing");
-  if (metrics.exists && !metrics.linkToTest) addIssue(issues, "P1", "intro start CTA missing");
+  if (metrics.exists && metrics.h1Count < 1)
+    addIssue(issues, "P1", "intro H1 missing");
+  if (metrics.exists && !metrics.linkToTest)
+    addIssue(issues, "P1", "intro start CTA missing");
   if (meta && effectiveTestTitle(slug, meta).length < MIN.title) {
     addIssue(issues, "P2", "test title too short or missing in registry");
   }
   if (meta && effectiveTestDescription(slug, meta).length < MIN.description) {
     addIssue(issues, "P2", "test description too short or missing in registry");
   }
-  if (meta && arrayCount(meta.tags) < MIN.tags) addIssue(issues, "P3", "registry tags too sparse");
-  if (metrics.exists && !metrics.metadata) addIssue(issues, "P2", "intro metadata missing");
-  if (metrics.exists && !metrics.jsonLd) addIssue(issues, "P2", "intro JSON-LD missing");
-  if (metrics.exists && !metrics.faq) addIssue(issues, "P3", "intro FAQ signal missing");
-  if (metrics.mojibakeHits > 15) addIssue(issues, "P2", `intro mojibake suspected: ${metrics.mojibakeHits}`);
+  if (meta && arrayCount(meta.tags) < MIN.tags)
+    addIssue(issues, "P3", "registry tags too sparse");
+  if (metrics.exists && !metrics.metadata)
+    addIssue(issues, "P2", "intro metadata missing");
+  if (metrics.exists && !metrics.jsonLd)
+    addIssue(issues, "P2", "intro JSON-LD missing");
+  if (metrics.exists && !metrics.faq)
+    addIssue(issues, "P3", "intro FAQ signal missing");
+  if (metrics.mojibakeHits > 15)
+    addIssue(issues, "P2", `intro mojibake suspected: ${metrics.mojibakeHits}`);
 
-  return { score: scoreFor(issues), severity: overallSeverity(issues), metrics, issues };
+  return {
+    score: scoreFor(issues),
+    severity: overallSeverity(issues),
+    metrics,
+    issues,
+  };
 }
 
 function auditQuestion(slug, testDir) {
@@ -221,26 +239,50 @@ function auditQuestion(slug, testDir) {
     questionCount,
     progress: /Progress|progress|currentQuestion/.test(source),
     previous: /previous|Previous|이전|handlePrevious|이전 질문/.test(source),
-    submitOrResult: /resultPath|router\.push|saveResult|calculateResult/.test(source),
+    submitOrResult: /resultPath|router\.push|saveResult|calculateResult/.test(
+      source,
+    ),
     choices: countMatches(source, /choices:|choice1Text|options:|\btext:\s*"/g),
     mojibakeHits: countMatches(source, MOJIBAKE_PATTERN),
     consoleLogging: /console\.(log|error|warn)/.test(source),
   };
 
   if (!metrics.exists) addIssue(issues, "P0", "question page file missing");
-  if (metrics.exists && metrics.questionCount > 0 && metrics.questionCount < MIN.questions) {
+  if (
+    metrics.exists &&
+    metrics.questionCount > 0 &&
+    metrics.questionCount < MIN.questions
+  ) {
     addIssue(issues, "P1", `question count low: ${metrics.questionCount}`);
   }
-  if (metrics.exists && metrics.questionCount === 0 && !source.includes("questions")) {
+  if (
+    metrics.exists &&
+    metrics.questionCount === 0 &&
+    !source.includes("questions")
+  ) {
     addIssue(issues, "P1", "question data not detectable");
   }
-  if (metrics.exists && !metrics.progress) addIssue(issues, "P2", "question progress UI missing");
-  if (metrics.exists && !metrics.previous) addIssue(issues, "P3", "previous question control missing");
-  if (metrics.exists && !metrics.submitOrResult) addIssue(issues, "P1", "result navigation/save flow missing");
-  if (metrics.mojibakeHits > 15) addIssue(issues, "P2", `question mojibake suspected: ${metrics.mojibakeHits}`);
-  if (metrics.consoleLogging) addIssue(issues, "P3", "console logging remains in question page");
+  if (metrics.exists && !metrics.progress)
+    addIssue(issues, "P2", "question progress UI missing");
+  if (metrics.exists && !metrics.previous)
+    addIssue(issues, "P3", "previous question control missing");
+  if (metrics.exists && !metrics.submitOrResult)
+    addIssue(issues, "P1", "result navigation/save flow missing");
+  if (metrics.mojibakeHits > 15)
+    addIssue(
+      issues,
+      "P2",
+      `question mojibake suspected: ${metrics.mojibakeHits}`,
+    );
+  if (metrics.consoleLogging)
+    addIssue(issues, "P3", "console logging remains in question page");
 
-  return { score: scoreFor(issues), severity: overallSeverity(issues), metrics, issues };
+  return {
+    score: scoreFor(issues),
+    severity: overallSeverity(issues),
+    metrics,
+    issues,
+  };
 }
 
 function estimateQuestionCount(source) {
@@ -252,12 +294,16 @@ function estimateQuestionCount(source) {
     if (byQuestionKey > 0) return byQuestionKey;
   }
 
-  const constArray = source.match(/const\s+questions\s*[:\w\s<>,]*=\s*\[([\s\S]*?)\n\s*\]/);
+  const constArray = source.match(
+    /const\s+questions\s*[:\w\s<>,]*=\s*\[([\s\S]*?)\n\s*\]/,
+  );
   if (constArray) {
     const byQuestion = countMatches(constArray[1], /question\s*:/g);
     if (byQuestion > 0) return byQuestion;
   }
-  const importedData = source.match(/QUESTIONS|questions\s*,|questions={|ClientRunner/);
+  const importedData = source.match(
+    /QUESTIONS|questions\s*,|questions={|ClientRunner/,
+  );
   return importedData ? -1 : 0;
 }
 
@@ -269,16 +315,28 @@ function auditResult(slug, testDir) {
   const layoutSource = readText(layoutPath);
   const testsLayoutSource = readText(testsLayoutPath);
   const issues = [];
-  const usesCommon = source.includes("MbtiResultPage") || source.includes("RedesignedResultPage");
+  const usesCommon =
+    source.includes("MbtiResultPage") ||
+    source.includes("RedesignedResultPage");
   const usesGlobalAutoEnhancement =
     fs.existsSync(path.join(ROOT, "app", "tests", "layout.tsx")) &&
     !AUTO_ENHANCEMENT_SKIP_SLUGS.has(slug);
   const usesAutoEnhancement =
-    usesCommon || source.includes("StaticResultEnhancements") || usesGlobalAutoEnhancement;
-  const resultMapCount = countMatches(source, /description:\s*\[|summary:\s*"|mbti:\s*"|typeCode/g);
+    usesCommon ||
+    source.includes("StaticResultEnhancements") ||
+    usesGlobalAutoEnhancement;
+  const resultMapCount = countMatches(
+    source,
+    /description:\s*\[|summary:\s*"|mbti:\s*"|typeCode/g,
+  );
   const effectiveSections =
-    countMatches(source, /<section\b|<article\b|<Card\b/g) + (usesCommon ? 8 : 0) + (usesAutoEnhancement ? 4 : 0);
-  const effectiveParagraphs = countMatches(source, /<p\b/g) + (usesCommon ? 8 : 0) + (usesAutoEnhancement ? 5 : 0);
+    countMatches(source, /<section\b|<article\b|<Card\b/g) +
+    (usesCommon ? 8 : 0) +
+    (usesAutoEnhancement ? 4 : 0);
+  const effectiveParagraphs =
+    countMatches(source, /<p\b/g) +
+    (usesCommon ? 8 : 0) +
+    (usesAutoEnhancement ? 5 : 0);
   const metrics = {
     exists: fs.existsSync(filePath),
     sourceChars: source.length,
@@ -286,38 +344,89 @@ function auditResult(slug, testDir) {
     resultMapCount,
     effectiveSections,
     effectiveParagraphs,
-    metadata: /export const metadata|generateMetadata/.test(source + layoutSource + testsLayoutSource),
-    share: /ShareButtons|navigator\.share|copy|clipboard/.test(source) || usesCommon || usesGlobalAutoEnhancement,
-    faq: /FAQ|faq|ResultFaqSchema|createFAQSchema|getTopicResultFAQs/.test(source) || usesCommon || usesAutoEnhancement,
-    toc: /ContentToc|resultTocItems|data-content-toc/.test(source) || usesCommon || usesAutoEnhancement,
-    related: /RelatedTestsSection|related/.test(source) || usesCommon || usesAutoEnhancement,
-    actionGuide: /actionTips|recommend|pitfalls|useCases|StaticResultEnhancements|활용|가이드|추천/.test(source) || usesCommon || usesAutoEnhancement,
+    metadata: /export const metadata|generateMetadata/.test(
+      source + layoutSource + testsLayoutSource,
+    ),
+    share:
+      /ShareButtons|navigator\.share|copy|clipboard/.test(source) ||
+      usesCommon ||
+      usesGlobalAutoEnhancement,
+    faq:
+      /FAQ|faq|ResultFaqSchema|createFAQSchema|getTopicResultFAQs/.test(
+        source,
+      ) ||
+      usesCommon ||
+      usesAutoEnhancement,
+    toc:
+      /ContentToc|resultTocItems|data-content-toc/.test(source) ||
+      usesCommon ||
+      usesAutoEnhancement,
+    related:
+      /RelatedTestsSection|related/.test(source) ||
+      usesCommon ||
+      usesAutoEnhancement,
+    actionGuide:
+      /actionTips|recommend|pitfalls|useCases|StaticResultEnhancements|활용|가이드|추천/.test(
+        source,
+      ) ||
+      usesCommon ||
+      usesAutoEnhancement,
     adReserve: /AdReserve|ad-reserve|data-ad-reserve/.test(source),
-    englishTitle: /Where This Result|Action Guide|More .* Quizzes|>FAQ</.test(source),
+    englishTitle: /Where This Result|Action Guide|More .* Quizzes|>FAQ</.test(
+      source,
+    ),
     mojibakeHits: countMatches(source, MOJIBAKE_PATTERN),
     consoleLogging: /console\.(log|error|warn)/.test(source),
   };
 
   if (!metrics.exists) addIssue(issues, "P0", "result page file missing");
-  if (metrics.exists && metrics.h1Count < 1) addIssue(issues, "P1", "result H1 missing");
-  if (metrics.exists && !metrics.share) addIssue(issues, "P1", "result share UI missing");
-  if (metrics.exists && !metrics.faq) addIssue(issues, "P1", "result FAQ missing");
+  if (metrics.exists && metrics.h1Count < 1)
+    addIssue(issues, "P1", "result H1 missing");
+  if (metrics.exists && !metrics.share)
+    addIssue(issues, "P1", "result share UI missing");
+  if (metrics.exists && !metrics.faq)
+    addIssue(issues, "P1", "result FAQ missing");
   if (metrics.exists && metrics.effectiveSections < MIN.resultSections) {
-    addIssue(issues, "P1", `result visible sections low: ${metrics.effectiveSections}`);
+    addIssue(
+      issues,
+      "P1",
+      `result visible sections low: ${metrics.effectiveSections}`,
+    );
   }
   if (metrics.exists && metrics.effectiveParagraphs < 5) {
-    addIssue(issues, "P1", `result paragraphs low: ${metrics.effectiveParagraphs}`);
+    addIssue(
+      issues,
+      "P1",
+      `result paragraphs low: ${metrics.effectiveParagraphs}`,
+    );
   }
-  if (metrics.exists && !metrics.toc) addIssue(issues, "P2", "result table of contents missing");
-  if (metrics.exists && !metrics.related) addIssue(issues, "P2", "related tests missing");
-  if (metrics.exists && !metrics.actionGuide) addIssue(issues, "P2", "result action/use guide missing");
-  if (metrics.exists && !metrics.metadata) addIssue(issues, "P2", "result metadata missing");
-  if (metrics.adReserve) addIssue(issues, "P1", "manual ad reserve remains in result page");
-  if (metrics.englishTitle) addIssue(issues, "P2", "English section title remains");
-  if (metrics.mojibakeHits > 25) addIssue(issues, "P2", `result mojibake suspected: ${metrics.mojibakeHits}`);
-  if (metrics.consoleLogging) addIssue(issues, "P3", "console logging remains in result page");
+  if (metrics.exists && !metrics.toc)
+    addIssue(issues, "P2", "result table of contents missing");
+  if (metrics.exists && !metrics.related)
+    addIssue(issues, "P2", "related tests missing");
+  if (metrics.exists && !metrics.actionGuide)
+    addIssue(issues, "P2", "result action/use guide missing");
+  if (metrics.exists && !metrics.metadata)
+    addIssue(issues, "P2", "result metadata missing");
+  if (metrics.adReserve)
+    addIssue(issues, "P1", "manual ad reserve remains in result page");
+  if (metrics.englishTitle)
+    addIssue(issues, "P2", "English section title remains");
+  if (metrics.mojibakeHits > 25)
+    addIssue(
+      issues,
+      "P2",
+      `result mojibake suspected: ${metrics.mojibakeHits}`,
+    );
+  if (metrics.consoleLogging)
+    addIssue(issues, "P3", "console logging remains in result page");
 
-  return { score: scoreFor(issues), severity: overallSeverity(issues), metrics, issues };
+  return {
+    score: scoreFor(issues),
+    severity: overallSeverity(issues),
+    metrics,
+    issues,
+  };
 }
 
 async function fetchWithTimeout(url) {
@@ -348,7 +457,7 @@ async function auditRender(slug) {
   const urls = [
     { kind: "intro", url: `${BASE_URL}/tests/${slug}` },
     { kind: "question", url: `${BASE_URL}/tests/${slug}/test` },
-    { kind: "resultEntry", url: `${BASE_URL}/tests/${slug}/test/result?type=ENFP` },
+    { kind: "resultEntry", url: `${BASE_URL}/results/${slug}?type=ENFP` },
   ];
   const checks = [];
   const issues = [];
@@ -360,7 +469,9 @@ async function auditRender(slug) {
       const status = response.status;
       const h1Count = countMatches(text, /<h1\b/g);
       const adReserve = /ad-reserve|data-ad-reserve/.test(text);
-      const serverError = /Server Error|Application error|NEXT_NOT_FOUND/.test(text);
+      const serverError = /Server Error|Application error|NEXT_NOT_FOUND/.test(
+        text,
+      );
       checks.push({
         kind: item.kind,
         status,
@@ -370,13 +481,16 @@ async function auditRender(slug) {
         serverError,
       });
 
-      if (status >= 500 || serverError) addIssue(issues, "P0", `${item.kind} render server error`);
+      if (status >= 500 || serverError)
+        addIssue(issues, "P0", `${item.kind} render server error`);
       if (status === 404) addIssue(issues, "P0", `${item.kind} render 404`);
-      if (status >= 400 && status !== 404) addIssue(issues, "P1", `${item.kind} render status ${status}`);
+      if (status >= 400 && status !== 404)
+        addIssue(issues, "P1", `${item.kind} render status ${status}`);
       if (item.kind !== "question" && status < 400 && h1Count < 1) {
         addIssue(issues, "P1", `${item.kind} rendered H1 missing`);
       }
-      if (adReserve) addIssue(issues, "P1", `${item.kind} rendered manual ad reserve`);
+      if (adReserve)
+        addIssue(issues, "P1", `${item.kind} rendered manual ad reserve`);
     } catch (error) {
       checks.push({ kind: item.kind, error: error.message });
     }
@@ -454,10 +568,21 @@ async function auditDatabase() {
         addIssue(issues, "P0", "DB published test has no result types");
       }
       if (testQuestions.length > 0 && testQuestions.length < MIN.questions) {
-        addIssue(issues, "P1", `DB question count low: ${testQuestions.length}`);
+        addIssue(
+          issues,
+          "P1",
+          `DB question count low: ${testQuestions.length}`,
+        );
       }
-      if (testResults.length > 0 && testResults.length < Number(test.result_type_count || MIN.resultRows)) {
-        addIssue(issues, "P0", `DB result types missing: ${testResults.length}/${test.result_type_count || MIN.resultRows}`);
+      if (
+        testResults.length > 0 &&
+        testResults.length < Number(test.result_type_count || MIN.resultRows)
+      ) {
+        addIssue(
+          issues,
+          "P0",
+          `DB result types missing: ${testResults.length}/${test.result_type_count || MIN.resultRows}`,
+        );
       }
       if (thinResults.length > 0) {
         addIssue(issues, "P1", `DB thin result rows: ${thinResults.length}`);
@@ -560,13 +685,19 @@ function recommendFix(issues) {
   if (issues.some((issue) => issue.severity === "P0")) {
     return "라우트/질문/결과 타입 누락부터 복구";
   }
-  if (issues.some((issue) => issue.area === "result" && issue.severity === "P1")) {
+  if (
+    issues.some((issue) => issue.area === "result" && issue.severity === "P1")
+  ) {
     return "결과 페이지 섹션, FAQ, 공유, 설명 보강 우선";
   }
-  if (issues.some((issue) => issue.area === "question" && issue.severity === "P1")) {
+  if (
+    issues.some((issue) => issue.area === "question" && issue.severity === "P1")
+  ) {
     return "질문 수와 결과 이동 흐름 점검";
   }
-  if (issues.some((issue) => issue.area === "intro" && issue.severity === "P1")) {
+  if (
+    issues.some((issue) => issue.area === "intro" && issue.severity === "P1")
+  ) {
     return "인트로 H1/CTA/메타 구조 보강";
   }
   if (issues.length > 0) return "SEO/목차/관련 링크/문구 품질 보강";
@@ -575,7 +706,8 @@ function recommendFix(issues) {
 
 function buildSummary(staticRecords, dbAudit) {
   const dbOnly = (dbAudit.records || []).filter(
-    (record) => !staticRecords.some((staticRecord) => staticRecord.slug === record.slug),
+    (record) =>
+      !staticRecords.some((staticRecord) => staticRecord.slug === record.slug),
   );
   const allRecords = [...staticRecords, ...dbOnly];
 
@@ -637,7 +769,8 @@ function writeCsv(filePath, records) {
 
 function writeMarkdown(filePath, summary, staticRecords, dbAudit) {
   const dbOnly = (dbAudit.records || []).filter(
-    (record) => !staticRecords.some((staticRecord) => staticRecord.slug === record.slug),
+    (record) =>
+      !staticRecords.some((staticRecord) => staticRecord.slug === record.slug),
   );
   const allRecords = [...staticRecords, ...dbOnly];
   const lines = [
@@ -664,7 +797,9 @@ function writeMarkdown(filePath, summary, staticRecords, dbAudit) {
 function formatWorst(records) {
   if (records.length === 0) return ["- None"];
   return records.map((record) => {
-    const issues = formatIssues(record.issues || []).slice(0, 5).join("; ");
+    const issues = formatIssues(record.issues || [])
+      .slice(0, 5)
+      .join("; ");
     return `- ${record.severity} ${record.slug}: ${record.recommendedFix || "점검"} | ${issues}`;
   });
 }
@@ -674,7 +809,12 @@ async function main() {
   const dbAudit = await auditDatabase();
   const staticRecords = await auditStaticTests(dbAudit.bySlug || new Map());
   const dbOnlyRecords = (dbAudit.records || [])
-    .filter((record) => !staticRecords.some((staticRecord) => staticRecord.slug === record.slug))
+    .filter(
+      (record) =>
+        !staticRecords.some(
+          (staticRecord) => staticRecord.slug === record.slug,
+        ),
+    )
     .map((record) => ({
       ...record,
       source: "database-only",
@@ -682,7 +822,11 @@ async function main() {
     }));
   const allRecords = [...staticRecords, ...dbOnlyRecords];
   const summary = buildSummary(staticRecords, dbAudit);
-  const report = { summary, records: allRecords, database: dbAudit.available ? dbAudit.records : dbAudit };
+  const report = {
+    summary,
+    records: allRecords,
+    database: dbAudit.available ? dbAudit.records : dbAudit,
+  };
 
   const jsonPath = path.join(REPORTS_DIR, `${REPORT_BASENAME}.json`);
   const csvPath = path.join(REPORTS_DIR, `${REPORT_BASENAME}.csv`);

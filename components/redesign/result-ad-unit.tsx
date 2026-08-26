@@ -31,8 +31,11 @@ declare global {
  * 수동 유닛 1개만 추가한다 — Auto Ads가 이 페이지에도 추가로 배치될 수
  * 있다는 점을 감안해야 한다(다른 허용 경로와 동일한 수준의 노출 모델).
  * 결과 페이지에서 Auto Ads를 완전히 배제하려면 AdSense 콘솔의 Auto Ads
- * URL 제외 목록에 `/tests/*\/test/result/*`를 등록해야 한다(계정 설정,
- * 코드 밖의 작업).
+ * URL 제외 목록에 `temon.kr/results/`(접두사 일치)를 등록해야 한다(계정
+ * 설정, 코드 밖의 작업). 결과 URL이 /results/ 아래로 재구조화된 이후에는
+ * 이 접두사 하나로 모든 결과 페이지가 확실히 제외된다 — 이전 구조
+ * (/tests/{slug}/test/result)에서는 가변 슬러그가 접두사 뒤에 있어
+ * 접두사 일치만 지원하는 AdSense 제외 규칙으로 표현이 불가능했다.
  */
 export function ResultAdUnit() {
   useEffect(() => {

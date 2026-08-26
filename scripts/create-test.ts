@@ -1,42 +1,40 @@
 #!/usr/bin/env ts-node
 /**
  * 테스트 생성 스크립트
- * 
+ *
  * 사용법:
  * npm run create-test <test-id> <test-title>
- * 
+ *
  * 예시:
  * npm run create-test my-new-test "내 새로운 테스트"
  */
 
-import * as fs from "fs"
-import * as path from "path"
+import * as fs from "fs";
+import * as path from "path";
 
-const TEST_ID = process.argv[2]
-const TEST_TITLE = process.argv[3] || TEST_ID
+const TEST_ID = process.argv[2];
+const TEST_TITLE = process.argv[3] || TEST_ID;
 
 if (!TEST_ID) {
-  console.error("❌ 테스트 ID가 필요합니다.")
-  console.log("사용법: npm run create-test <test-id> <test-title>")
-  process.exit(1)
+  console.error("❌ 테스트 ID가 필요합니다.");
+  console.log("사용법: npm run create-test <test-id> <test-title>");
+  process.exit(1);
 }
 
-const BASE_DIR = path.join(process.cwd())
-const TESTS_DIR = path.join(BASE_DIR, "app", "tests", TEST_ID)
-const QUESTIONS_DIR = path.join(BASE_DIR, "lib", "tests", "questions")
+const BASE_DIR = path.join(process.cwd());
+const TESTS_DIR = path.join(BASE_DIR, "app", "tests", TEST_ID);
+const RESULTS_DIR = path.join(BASE_DIR, "app", "results", TEST_ID);
+const QUESTIONS_DIR = path.join(BASE_DIR, "lib", "tests", "questions");
 
 // 디렉토리 생성
-const directories = [
-  path.join(TESTS_DIR, "test", "result"),
-  QUESTIONS_DIR,
-]
+const directories = [path.join(TESTS_DIR, "test"), RESULTS_DIR, QUESTIONS_DIR];
 
 directories.forEach((dir) => {
   if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true })
-    console.log(`✅ 디렉토리 생성: ${dir}`)
+    fs.mkdirSync(dir, { recursive: true });
+    console.log(`✅ 디렉토리 생성: ${dir}`);
   }
-})
+});
 
 // 1. 인트로 페이지 생성
 const introPage = `"use client"
@@ -75,7 +73,7 @@ export default function ${TEST_ID.charAt(0).toUpperCase() + TEST_ID.slice(1).rep
     </div>
   )
 }
-`
+`;
 
 // 2. 질문 페이지 생성
 const questionPage = `"use client"
@@ -96,7 +94,7 @@ export default function ${TEST_ID.charAt(0).toUpperCase() + TEST_ID.slice(1).rep
 
   return <TestQuestionPage config={config} />
 }
-`
+`;
 
 // 3. 결과 페이지 생성
 const resultPage = `"use client"
@@ -150,7 +148,7 @@ export default function ${TEST_ID.charAt(0).toUpperCase() + TEST_ID.slice(1).rep
     </div>
   )
 }
-`
+`;
 
 // 4. 질문 JSON 파일 생성
 const questionJson = {
@@ -174,31 +172,40 @@ const questionJson = {
     },
   ],
   calculateResult: "mbti",
-  resultPath: `/tests/${TEST_ID}/test/result`,
+  resultPath: `/results/${TEST_ID}`,
   colorTheme: {
     bg: "from-violet-50 to-pink-50",
     border: "border-violet-200",
     button: "bg-violet-500 text-white border-violet-500",
     text: "text-violet-600",
   },
-}
+};
 
 // 파일 작성
 const files = [
   { path: path.join(TESTS_DIR, "page.tsx"), content: introPage },
   { path: path.join(TESTS_DIR, "test", "page.tsx"), content: questionPage },
-  { path: path.join(TESTS_DIR, "test", "result", "page.tsx"), content: resultPage },
-  { path: path.join(QUESTIONS_DIR, `${TEST_ID}.json`), content: JSON.stringify(questionJson, null, 2) },
-]
+  {
+    path: path.join(RESULTS_DIR, "page.tsx"),
+    content: resultPage,
+  },
+  {
+    path: path.join(QUESTIONS_DIR, `${TEST_ID}.json`),
+    content: JSON.stringify(questionJson, null, 2),
+  },
+];
 
 files.forEach(({ path: filePath, content }) => {
-  fs.writeFileSync(filePath, content, "utf-8")
-  console.log(`✅ 파일 생성: ${filePath}`)
-})
+  fs.writeFileSync(filePath, content, "utf-8");
+  console.log(`✅ 파일 생성: ${filePath}`);
+});
 
-console.log(`\n✨ 테스트 "${TEST_TITLE}" (${TEST_ID}) 생성 완료!`)
-console.log(`\n다음 단계:`)
-console.log(`1. lib/tests/questions/${TEST_ID}.json 파일을 편집하여 질문을 추가하세요`)
-console.log(`2. lib/tests-config.ts에 테스트 정보를 추가하세요`)
-console.log(`3. app/tests/${TEST_ID}/test/result/page.tsx를 편집하여 결과 페이지를 커스터마이징하세요`)
-
+console.log(`\n✨ 테스트 "${TEST_TITLE}" (${TEST_ID}) 생성 완료!`);
+console.log(`\n다음 단계:`);
+console.log(
+  `1. lib/tests/questions/${TEST_ID}.json 파일을 편집하여 질문을 추가하세요`,
+);
+console.log(`2. lib/tests-config.ts에 테스트 정보를 추가하세요`);
+console.log(
+  `3. app/results/${TEST_ID}/page.tsx를 편집하여 결과 페이지를 커스터마이징하세요`,
+);

@@ -20,7 +20,7 @@ export const AUTO_ENHANCEMENT_SKIP_SLUGS = [
 const SKIP_SLUGS = new Set<string>(AUTO_ENHANCEMENT_SKIP_SLUGS);
 
 function getResultSlug(pathname: string): string | null {
-  const match = pathname.match(/^\/tests\/([^/]+)\/test\/result\/?$/);
+  const match = pathname.match(/^\/results\/([^/]+)\/?$/);
   return match?.[1] ?? null;
 }
 

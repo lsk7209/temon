@@ -19,7 +19,8 @@ function inferTestIntent(testName: string, category = "성격"): string {
 
   if (/좀비|생존|아포칼립스/.test(source)) return "생존";
   if (/소비|구매|쇼핑|예산|지출/.test(source)) return "소비성향";
-  if (/크로노|수면|잠|아침형|저녁형|알람|기상/.test(source)) return "크로노타입";
+  if (/크로노|수면|잠|아침형|저녁형|알람|기상/.test(source))
+    return "크로노타입";
   if (/완벽|균형|밸런스/.test(source)) return "완벽주의";
   if (/MBTI|엠비티아이/i.test(source)) return "MBTI";
   if (/심리/.test(source)) return "심리";
@@ -439,7 +440,7 @@ export function generateTestPageMetadata(config: {
 }
 
 /**
- * Generate metadata for result pages (/test/result/page.tsx)
+ * Generate metadata for result pages (/results/{slug}/page.tsx)
  */
 export function generateResultPageMetadata(config: {
   quizId: string;
