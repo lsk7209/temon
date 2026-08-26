@@ -1,8 +1,5 @@
 import type { ReactNode } from "react";
-import { Suspense } from "react";
 import type { Metadata } from "next";
-import { ResultRouteAutoEnhancements } from "@/components/result-route-auto-enhancements";
-import { LegacyResultAdSlot } from "@/components/legacy-result-ad-slot";
 
 export const metadata: Metadata = {
   title: "무료 퀴즈 테스트 모음 | 테몬",
@@ -23,13 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function TestsLayout({ children }: { children: ReactNode }) {
-  return (
-    <>
-      {children}
-      <Suspense fallback={null}>
-        <ResultRouteAutoEnhancements />
-      </Suspense>
-      <LegacyResultAdSlot />
-    </>
-  );
+  return <>{children}</>;
 }

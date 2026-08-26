@@ -86,7 +86,7 @@ export default function ClientRunner({
         throw new Error("Missing result id from submit response");
       }
 
-      router.push(`/tests/${routeTestId}/test/result/${data.resultId}`);
+      router.push(`/results/${routeTestId}/${data.resultId}`);
     } catch (error) {
       console.error("Failed to submit dynamic quiz:", error);
       setIsSaving(false);
