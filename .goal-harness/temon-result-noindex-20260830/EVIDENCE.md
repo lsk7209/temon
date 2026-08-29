@@ -43,3 +43,23 @@ This proves the current production route-boundary defect before the implementati
   that the audit should require explicit `follow` and reject route-changing redirects.
 - The audit now requires `noindex` and `follow`, rejects `index` and `nofollow`, and requires the
   final origin/path to equal the requested result route. Main-agent local reruns passed.
+
+## GitHub and production verification
+
+- Implementation commit: `a2357d536438b9eebd5c58c073bf0beb54cc2917`.
+- GitHub Actions exact-SHA checks:
+  - SEO Safeguard run `33280188071`: success.
+  - Hosting Cost Guard run `33280188137`: success.
+- GitHub Vercel commit status: success, `Deployment has completed`, updated
+  `2026-08-29T23:09:08Z`.
+- External Cloudflare Pages check: failure. Repo scan found no Cloudflare/Wrangler files or active
+  references, and the site is Vercel-hosted; this is an unrelated external integration cleanup
+  item, not an implementation or production-deployment failure. No account setting was changed.
+- Post-deploy strict HTTP audit: PASS on `/results/ntrp-test`, `/results/music-taste`,
+  `/results/coffee-mbti`, and dynamic `/results/perfection-balance-1xQC`; all returned HTTP 200,
+  stayed on the requested route, and emitted only `noindex, follow` robots directives.
+- Post-deploy non-result controls: `/`, `/tests`, `/tests/ntrp-test`,
+  `/blog/m01-mbti-share`, and `/about` remained HTTP 200/indexable.
+- Playwright desktop/mobile verification: 4/4 PASS. Result and non-result pages had one H1,
+  no horizontal overflow, no page errors, and no same-origin console errors. Screenshots are stored
+  under `D:\web\multi-dashboard\output\claude-seo-fleet\temon-live\`.

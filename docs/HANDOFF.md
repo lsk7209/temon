@@ -1,4 +1,4 @@
-# Current handoff — 2026-08-30 (Temon result-route SEO repair, pre-push)
+# Current handoff — 2026-08-30 (Temon result-route SEO repair complete)
 
 ## User goal
 
@@ -10,8 +10,10 @@ using fresh public evidence and GitHub-first handling.
 - Work is isolated in `D:\web\seo-worktrees\temon-seo-20260830` from GitHub `main` commit
   `d9b0d4c695513a5dc2d1dc521d81b9bfa161fd8e`.
 - The original `D:\web\temon` checkout has unrelated user/runtime changes and was not modified.
-- Current production `/results/ntrp-test` and `/results/music-taste` are HTTP 200 but emit
-  `index, follow`; both fail the new strict audit as expected.
+- Implementation commit `a2357d536438b9eebd5c58c073bf0beb54cc2917` is on GitHub `main` and its
+  Git-connected Vercel deployment completed successfully.
+- Production result routes now emit strict `noindex, follow`; the pre-fix `index, follow` defect is
+  no longer present on the four live controls.
 - The scoped fix adds `noindex, follow` at the top-level `app/results/layout.tsx` boundary, covering
   static and dynamic result routes without changing content, URLs, AdSense, DB data, or other pages.
 
@@ -33,19 +35,28 @@ using fresh public evidence and GitHub-first handling.
   `noindex, follow`; five non-result controls remain HTTP 200 and indexable.
 - Independent verifier passed the inheritance model. Spark quota exhaustion triggered the single
   allowed Luna/max fallback; its audit-hardening findings were implemented and rerun.
+- Exact implementation-SHA SEO Safeguard and Hosting Cost Guard runs passed; GitHub's Vercel status
+  completed successfully.
+- Post-deploy strict HTTP audit passed on four result routes; five non-result controls remained
+  indexable. Playwright desktop/mobile verification passed 4/4 with no overflow, page errors, or
+  same-origin console errors.
 
 ## Side effects, rollback, blockers, and risks
 
-- Production, GitHub, Vercel, AdSense, GSC, and databases are unchanged at this checkpoint.
+- GitHub `main` and the Git-connected Vercel production deployment changed only through the scoped
+  commits. AdSense, GSC, databases, environment variables, and Vercel account state were untouched.
 - Rollback after push is one commit reverting the scoped metadata/audit files.
 - Existing `npm ci` audit baseline is 10 findings (4 moderate, 6 high); dependency work is out of
   scope and no package version changed.
 - No broad test-page content, canonical, sitemap, or noindex operation was attempted.
+- A non-required external `Cloudflare Pages` check failed. No Cloudflare/Wrangler repo artifact
+  exists; disconnecting the stale external integration requires a separate account/repository
+  settings action and was deliberately not attempted.
 
 ## Single concrete next step
 
-Stage only the scoped files, commit and push to `main`, verify exact-SHA GitHub checks, then rerun
-the strict audit against `https://temon.kr` after the Git-connected production deployment.
+Return to `D:\web\multi-dashboard`, record checkpoint 013 in the fleet harness/ledger, and select
+the next site from fresh dashboard evidence.
 
 ## Deliberately not run or sent
 
