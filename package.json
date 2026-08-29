@@ -9,6 +9,7 @@
     "start": "next start",
     "create-test": "ts-node scripts/create-test.ts",
     "audit:results": "node scripts/audit-result-pages.js",
+    "audit:result-indexability": "node scripts/audit-result-indexability.mjs",
     "audit:quiz-flow": "node scripts/audit-quiz-flow.js",
     "audit:result-monetization": "node scripts/audit-result-monetization-measurement.mjs",
     "audit:static-descriptions": "node scripts/audit-static-test-descriptions.js",

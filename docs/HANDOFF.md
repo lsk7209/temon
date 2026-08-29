@@ -1,4 +1,60 @@
-# Current handoff — 2026-08-25 (updated after live rollback)
+# Current handoff — 2026-08-30 (Temon result-route SEO repair, pre-push)
+
+## User goal
+
+Audit and safely optimize `temon.kr` as one checkpoint in the multi-dashboard fleet SEO program,
+using fresh public evidence and GitHub-first handling.
+
+## Exact current state
+
+- Work is isolated in `D:\web\seo-worktrees\temon-seo-20260830` from GitHub `main` commit
+  `d9b0d4c695513a5dc2d1dc521d81b9bfa161fd8e`.
+- The original `D:\web\temon` checkout has unrelated user/runtime changes and was not modified.
+- Current production `/results/ntrp-test` and `/results/music-taste` are HTTP 200 but emit
+  `index, follow`; both fail the new strict audit as expected.
+- The scoped fix adds `noindex, follow` at the top-level `app/results/layout.tsx` boundary, covering
+  static and dynamic result routes without changing content, URLs, AdSense, DB data, or other pages.
+
+## Completed work and changed files
+
+- `app/results/layout.tsx`: route-boundary robots metadata.
+- `scripts/audit-result-indexability.mjs`: reusable strict HTTP regression audit.
+- `package.json`: `audit:result-indexability` command.
+- `.goal-harness/temon-result-noindex-20260830/*`: scoped goal, plan, status, evidence, acceptance,
+  and risk record.
+- This handoff section.
+
+## Fresh validation evidence
+
+- `npm run lint`, `npx tsc --noEmit`, and `npm run build`: PASS.
+- Existing static result audit: 212/212 PASS; DB subsection unavailable in the credential-free
+  clone and not required by the metadata-only repair.
+- Local `next start`: 212/212 static results plus a dynamic entry control emit strict
+  `noindex, follow`; five non-result controls remain HTTP 200 and indexable.
+- Independent verifier passed the inheritance model. Spark quota exhaustion triggered the single
+  allowed Luna/max fallback; its audit-hardening findings were implemented and rerun.
+
+## Side effects, rollback, blockers, and risks
+
+- Production, GitHub, Vercel, AdSense, GSC, and databases are unchanged at this checkpoint.
+- Rollback after push is one commit reverting the scoped metadata/audit files.
+- Existing `npm ci` audit baseline is 10 findings (4 moderate, 6 high); dependency work is out of
+  scope and no package version changed.
+- No broad test-page content, canonical, sitemap, or noindex operation was attempted.
+
+## Single concrete next step
+
+Stage only the scoped files, commit and push to `main`, verify exact-SHA GitHub checks, then rerun
+the strict audit against `https://temon.kr` after the Git-connected production deployment.
+
+## Deliberately not run or sent
+
+- No Vercel CLI/API mutation, environment change, GSC submission, content publication, DB write,
+  AdSense change, or broad noindex/deletion operation.
+
+---
+
+# Previous handoff — 2026-08-25 (updated after live rollback)
 
 ## User goal
 
