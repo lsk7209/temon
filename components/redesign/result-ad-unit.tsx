@@ -9,7 +9,7 @@ const ADSENSE_CLIENT_ID =
   "ca-pub-3050601904412736";
 const ADSENSE_DELIVERY_ENABLED =
   process.env.NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED === "true";
-const RESULT_AD_SLOT_ID = process.env.NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID;
+const RESULT_AD_SLOT_ID = process.env.NEXT_PUBLIC_ADSENSE_RESULT_SLOT_ID?.trim();
 
 declare global {
   interface Window {

@@ -1,3 +1,12 @@
+# Current handoff — 2026-09-07 result ad slot normalization
+
+- Goal: approved-site revenue reliability repair; keep current placement and delivery settings.
+- Live preimage at /results/coffee-mbti?type=INTJ contained slot digits followed by LF. ResultAdUnit now trims its configured slot ID at the input boundary.
+- Changed: components/redesign/result-ad-unit.tsx; scripts/test-result-ad-slot.cjs; this handoff. No ad count, publisher, placement, account, DB or content changes.
+- Validation: original component failed whitespace-only case; fixed6 cases pass, including empty/missing/padded/valid/disabled. One unit and one push only when enabled. Existing result monetization5 checks pass. Lint and full Next production build/type validation pass (1103 generated pages).
+- Build has expected missing TURSO configuration warnings; DB freshness cannot be measured in this credential-free checkout. No DB/content generation is authorized by this repair. Independent Terra review: no blocker.
+- Side effects: local dependency restore/build only at this checkpoint; original E:/web/temon dirty checkout untouched. Rollback is reverting the upcoming bounded commit.
+- Next: push the three-file commit through Git, then verify exact deployment status and live normalized slot markup. No Vercel API/CLI mutation or ad request testing.
 # Current handoff — 2026-08-30 (Temon result-route SEO repair complete)
 
 ## User goal
