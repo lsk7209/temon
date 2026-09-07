@@ -19,10 +19,10 @@ export default function ResultsLayout({ children }: { children: ReactNode }) {
   return (
     <>
       {children}
+      <LegacyResultAdSlot />
       <Suspense fallback={null}>
         <ResultRouteAutoEnhancements />
       </Suspense>
-      <LegacyResultAdSlot />
     </>
   );
 }

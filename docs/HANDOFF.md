@@ -1,3 +1,10 @@
+# Current handoff — 2026-09-07 legacy result ad placement
+
+- Follow-up goal: make existing manual result slot reachable before appended auxiliary content while retaining original results and controls first. app/results/layout.tsx moves LegacyResultAdSlot ahead of ResultRouteAutoEnhancements; no ad count/account/DB/loader/gating change.
+- Tests: original fails new placement assertion; candidate actual component order +5 route gates PASS; existing6 slot/gate cases and5 measurement checks PASS; lint and full build/typecheck PASS1103pages. Build missingTurso warnings unchanged, no DB freshness claim.
+- Actual live DOM preview390/1280 keeps one manual unit,32px control gap,250px reserve, no overflow; moves mobile slot from~5335 to2979px before optional content. This is preview, not live deployment or revenue proof. External ad network blocked during geometry checks.
+- Independent review no change blocker; preexisting arbitrary single-segment result gate may show ads on invalid dynamic result entry; record separate follow-up. AutoAds can add units; one manual unit does not mean total ads1.
+- Changed: app/results/layout.tsx, scripts/test-result-ad-placement.cjs, this handoff. Original dirty site checkout untouched; current dedicated worktree main ancestor31e9583. Rollback revert upcoming commit. Next Git push and exact release/live verification; no Vercel mutation.
 # Current handoff — 2026-09-07 result ad slot normalization
 
 - Goal: approved-site revenue reliability repair; keep current placement and delivery settings.
