@@ -13,14 +13,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Users, MessageSquare, Sparkles } from "lucide-react"
 
+const quizTitle = "SNS 사용 습관 테스트"
 // Naver-optimized description (under 80 chars)
-const shortDescription = "phone social media로 알아보는 나의 성격 유형 테스트"
+const shortDescription = "SNS 사용 습관으로 알아보는 나의 디지털 소통 성향 테스트"
 // Full description for Google/AI
-const fullDescription = "phone social media로 알아보는 나의 성격! 12개의 질문으로 16가지 유형 중 당신은 어떤 유형일까요? 재미있는 phone social media를 지금 바로 무료로 시작해보세요."
+const fullDescription = "사진을 고르고 피드를 확인하며 게시물에 반응하는 습관을 12문항으로 살펴보세요. 나의 SNS 사용 스타일과 디지털 소통 성향을 16가지 유형으로 확인할 수 있습니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "phone-social-media",
-  title: "phone social media",
+  title: quizTitle,
   shortDescription,
   fullDescription,
   keywords: "SNS, 소셜미디어, SNS 습관, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
@@ -30,13 +31,13 @@ export const metadata: Metadata = generateQuizMetadata({
 })
 
 const faqs = [
-  ...getTopicQuizFAQs("phone social media"),
+  ...getTopicQuizFAQs(quizTitle),
 ]
 
 export default function PhoneSocialMediaIntro() {
   const schemas = generateQuizSchemas({
     quizId: "phone-social-media",
-    title: "phone social media",
+    title: quizTitle,
     shortDescription,
     fullDescription,
     keywords: "SNS, 소셜미디어, SNS 습관, 디지털 테스트, 성격 테스트, MBTI, 심리테스트, 무료 테스트",
@@ -95,7 +96,7 @@ export default function PhoneSocialMediaIntro() {
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4" />
-                <span>13,612명 참여</span>
+                <span>회원가입 없이 참여</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
@@ -241,11 +242,11 @@ export default function PhoneSocialMediaIntro() {
         <div className="mt-12">
           <AutoGscLandingBoost testId="phone-social-media" />
 
-          <AnswerEngineSection quizTitle="Phone Social Media Test" />
+          <AnswerEngineSection quizTitle={quizTitle} />
         </div>
 
         <div className="mt-12">
-          <LandingConversionSection quizTitle="Phone Social Media Test" />
+          <LandingConversionSection quizTitle={quizTitle} />
         </div>
 
         <div className="mt-12">
@@ -254,7 +255,7 @@ export default function PhoneSocialMediaIntro() {
 
         {/* FAQ Section for AI Bot Optimization */}
         <section className="mt-12 mb-8">
-          <FAQSection faqs={faqs} title="phone social media 자주 묻는 질문" />
+          <FAQSection faqs={faqs} title={`${quizTitle} 자주 묻는 질문`} />
         </section>
 </main>
     </div>

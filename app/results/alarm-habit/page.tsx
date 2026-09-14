@@ -229,8 +229,8 @@ function ResultContent() {
   const { resolvedType, loading } = useResolvedResultType(Object.keys(alarmCharacters), type, resultId)
   const mbtiType = (resolvedType as keyof typeof alarmCharacters) || "ENFP"
   const character = alarmCharacters[mbtiType]
-  const faqItems = getTopicResultFAQs("Alarm Habit Test", character.name)
-  const resultUseCases = getTopicResultUseCases("Alarm Habit Test", character.name)
+  const faqItems = getTopicResultFAQs("알람 습관 MBTI 테스트", character.name)
+  const resultUseCases = getTopicResultUseCases("알람 습관 MBTI 테스트", character.name)
 
   if (loading) {
     return <div>결과를 불러오는 중...</div>
@@ -271,7 +271,7 @@ ${shareUrl}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-950 dark:via-indigo-950 dark:to-purple-950">
-      <ResultFaqSchema quizTitle="Alarm Habit Test" resultName={character.name} />
+      <ResultFaqSchema quizTitle="알람 습관 MBTI 테스트" resultName={character.name} />
       {/* Main Result */}
       <main className="container max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Character Card */}

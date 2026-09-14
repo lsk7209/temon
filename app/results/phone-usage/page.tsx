@@ -59,12 +59,12 @@ function ResultContent() {
     )
   }
 
-  const faqItems = getTopicResultFAQs("Phone Usage Style Test", result.name)
-  const resultUseCases = getTopicResultUseCases("Phone Usage Style Test", result.name)
+  const faqItems = getTopicResultFAQs("스마트폰 사용 스타일 테스트", result.name)
+  const resultUseCases = getTopicResultUseCases("스마트폰 사용 스타일 테스트", result.name)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950">
-      <ResultFaqSchema quizTitle="Phone Usage Style Test" resultName={result.name} />
+      <ResultFaqSchema quizTitle="스마트폰 사용 스타일 테스트" resultName={result.name} />
       <div className="container max-w-4xl mx-auto px-4 py-8">
         {/* 헤더 */}
         <div className="text-center mb-8">
@@ -280,13 +280,12 @@ function ResultContent() {
           </CardHeader>
           <CardContent className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
             <p>
-              The fastest way to use this result is to change one screen, one notification rule, and one automation
-              setting. That keeps the result practical instead of turning it into a generic personality label.
+              이 결과를 가장 빠르게 활용하려면 화면 구성 하나, 알림 규칙 하나, 자동화 설정 하나를 바꿔 보세요.
+              막연한 성격 유형으로 끝내지 않고 실제 생활에 적용할 수 있습니다.
             </p>
             <p>
-              If your current phone setup feels noisy, slow, or exhausting, compare that pain point with the pattern this
-              page describes first. The biggest improvement usually comes from removing repeated friction, not adding more
-              features.
+              현재 스마트폰 설정이 산만하거나 느리고 피곤하게 느껴진다면 먼저 그 불편과 이 페이지가 설명하는
+              패턴을 비교해 보세요. 가장 큰 개선은 기능을 더하는 것보다 반복되는 불편을 줄일 때 생깁니다.
             </p>
           </CardContent>
         </Card>

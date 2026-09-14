@@ -170,7 +170,7 @@ export default function PetMBTIIntro() {
                   variant="secondary"
                   className="bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200"
                 >
-                  🐾 NEW 테스트
+                  🐾 반려동물 성향 테스트
                 </Badge>
 
                 <h1 className="text-4xl md:text-6xl font-bold leading-tight">
@@ -463,11 +463,11 @@ export default function PetMBTIIntro() {
             <div className="mt-12">
               <AutoGscLandingBoost testId="pet-mbti" />
 
-              <AnswerEngineSection quizTitle="Pet Mbti Test" />
+              <AnswerEngineSection quizTitle="반려동물 MBTI 테스트" />
             </div>
 
             <div className="mt-12">
-              <LandingConversionSection quizTitle="Pet Mbti Test" />
+              <LandingConversionSection quizTitle="반려동물 MBTI 테스트" />
             </div>
 
             <div className="mt-12">

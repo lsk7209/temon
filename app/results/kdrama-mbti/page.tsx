@@ -185,8 +185,8 @@ function ResultContent() {
   const resultId = searchParams.get("id")
   const { resolvedType, loading } = useResolvedResultType(Object.keys(results), type, resultId)
   const result = results[(resolvedType as keyof typeof results) || "chaebol"]
-  const faqItems = getTopicResultFAQs("K-Drama MBTI Test", result.title)
-  const resultUseCases = getTopicResultUseCases("K-Drama MBTI Test", result.title)
+  const faqItems = getTopicResultFAQs("K-드라마 클리셰 테스트", result.title)
+  const resultUseCases = getTopicResultUseCases("K-드라마 클리셰 테스트", result.title)
 
   if (loading) {
     return <div>결과를 불러오는 중...</div>
@@ -223,7 +223,7 @@ ${shareUrl}`
 
   return (
     <div className={`min-h-screen ${result.bgColor} py-12`}>
-      <ResultFaqSchema quizTitle="K-Drama MBTI Test" resultName={result.title} />
+      <ResultFaqSchema quizTitle="K-드라마 클리셰 테스트" resultName={result.title} />
       <div className="container mx-auto px-4 max-w-2xl">
         <Card className="p-8 md:p-12 shadow-xl border-2 border-pink-200 bg-white/90 backdrop-blur">
           <div className="text-center mb-8">
@@ -349,17 +349,16 @@ ${shareUrl}`
             </div>
 
             <div className="bg-gradient-to-r from-slate-50 to-zinc-50 p-6 rounded-lg border border-slate-200">
-              <h3 className="font-bold text-lg mb-3 text-gray-800">Interpretation Notes</h3>
+              <h3 className="font-bold text-lg mb-3 text-gray-800">해석 참고사항</h3>
               <div className="space-y-3 text-gray-700 leading-relaxed">
                 <p>
-                  {result.title} works best as a pattern explanation, not a one-line label. If your relationship choices,
-                  daily reactions, and drama preference all point in the same direction, this result is likely reflecting
-                  a stable tendency instead of a temporary mood.
+                  {result.title} 결과는 한 줄짜리 꼬리표가 아니라 패턴을 설명하는 도구로 볼 때 가장 유용합니다.
+                  관계에서의 선택, 일상 반응, 드라마 취향이 모두 같은 방향을 가리킨다면 일시적인 기분보다
+                  비교적 안정적인 성향이 반영된 결과일 가능성이 큽니다.
                 </p>
                 <p>
-                  The useful part is comparison. Check whether you consistently prioritize control, emotion, humor,
-                  loyalty, or romance in similar scenes. That is usually where this result becomes more actionable than a
-                  simple entertainment quiz outcome.
+                  핵심은 비교입니다. 비슷한 상황에서 통제, 감정, 유머, 의리, 로맨스 중 무엇을 꾸준히 먼저
+                  선택하는지 살펴보세요. 그 지점에서 이 결과는 단순한 재미용 테스트보다 실천 가능한 힌트가 됩니다.
                 </p>
               </div>
             </div>
@@ -368,13 +367,12 @@ ${shareUrl}`
               <h3 className="font-bold text-lg mb-3 text-gray-800">이 결과 활용하기</h3>
               <div className="space-y-3 text-gray-700 leading-relaxed">
                 <p>
-                  Use this result as a comparison tool. If the same role keeps repeating in your conversations, dating
-                  style, and group situations, the result is probably pointing to a stable social pattern rather than a
-                  random mood.
+                  이 결과를 비교 도구로 활용해 보세요. 대화, 연애 방식, 모임에서 같은 역할이 반복된다면
+                  우연한 기분보다 안정적인 사회적 패턴을 가리키는 결과일 가능성이 큽니다.
                 </p>
                 <p>
-                  The practical next step is choosing one strength to lean into and one habit to soften. That makes the
-                  result more useful than just sharing the headline.
+                  다음 단계로 더 살릴 강점 하나와 완화할 습관 하나를 골라 보세요. 결과 제목만 공유하는 것보다
+                  훨씬 실용적으로 활용할 수 있습니다.
                 </p>
               </div>
             </div>

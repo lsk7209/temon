@@ -214,8 +214,8 @@ function ResultContent() {
   const { resolvedType, loading } = useResolvedResultType(Object.keys(ramenCharacters), type, resultId)
   const mbtiType = (resolvedType as keyof typeof ramenCharacters) || "ENFP"
   const character = ramenCharacters[mbtiType]
-  const faqItems = getTopicResultFAQs("Ramen MBTI Test", character.name)
-  const resultUseCases = getTopicResultUseCases("Ramen MBTI Test", character.name)
+  const faqItems = getTopicResultFAQs("라면 테스트", character.name)
+  const resultUseCases = getTopicResultUseCases("라면 테스트", character.name)
 
   if (loading) {
     return <div>결과를 불러오는 중...</div>
@@ -256,7 +256,7 @@ ${shareUrl}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 dark:from-orange-950 dark:via-red-950 dark:to-yellow-950">
-      <ResultFaqSchema quizTitle="Ramen MBTI Test" resultName={character.name} />
+      <ResultFaqSchema quizTitle="라면 테스트" resultName={character.name} />
       {/* Main Result */}
       <main className="container max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Character Card */}

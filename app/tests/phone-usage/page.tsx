@@ -108,11 +108,11 @@ export default function PhoneUsageIntro() {
           <div className="mt-12 text-left">
             <AutoGscLandingBoost testId="phone-usage" />
 
-            <AnswerEngineSection quizTitle="Phone Usage Style Test" />
+            <AnswerEngineSection quizTitle="스마트폰 사용 스타일 테스트" />
           </div>
 
           <div className="mt-12 text-left">
-            <LandingConversionSection quizTitle="Phone Usage Style Test" />
+            <LandingConversionSection quizTitle="스마트폰 사용 스타일 테스트" />
           </div>
 
           <div className="mt-12 text-left">
@@ -153,11 +153,11 @@ export default function PhoneUsageIntro() {
         </div>
       
         <div className="mt-12">
-          <AnswerEngineSection quizTitle="Phone Usage Test" />
+          <AnswerEngineSection quizTitle="스마트폰 사용 스타일 테스트" />
         </div>
 
         <div className="mt-12">
-          <LandingConversionSection quizTitle="Phone Usage Test" />
+          <LandingConversionSection quizTitle="스마트폰 사용 스타일 테스트" />
         </div>
 
         <div className="mt-12">

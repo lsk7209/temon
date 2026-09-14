@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -44,7 +45,12 @@ interface DynamicTest {
 }
 
 interface TestsPageClientProps {
+  initialPage: number;
   dynamicTests?: DynamicTest[];
+}
+
+function paginationHref(page: number): string {
+  return page === 1 ? "/tests#tests-list" : `/tests?page=${page}#tests-list`;
 }
 
 function toTestCard(test: DynamicTest): Test {
@@ -73,8 +79,10 @@ function uniqueByHref(tests: Test[]): Test[] {
 }
 
 export default function TestsPageClient({
+  initialPage,
   dynamicTests = [],
 }: TestsPageClientProps) {
+  const router = useRouter();
   const allTests = uniqueByHref([
     ...dynamicTests.map(toTestCard),
     ...getAllTests(),
@@ -85,18 +93,40 @@ export default function TestsPageClient({
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
-  const [currentPage, setCurrentPage] = useState(1);
+  const initialTotalPages = Math.max(
+    1,
+    Math.ceil(allTests.length / TESTS_PER_PAGE),
+  );
+  const normalizedInitialPage = Math.min(initialPage, initialTotalPages);
+  const [currentPage, setCurrentPage] = useState(normalizedInitialPage);
+  const hasActiveFilters =
+    searchTerm.trim().length > 0 || selectedCategory !== ALL_CATEGORY;
+
+  useEffect(() => {
+    setCurrentPage(initialPage);
+  }, [initialPage]);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
     setCurrentPage(1);
+    if (initialPage !== 1) router.replace("/tests#tests-list", { scroll: false });
     if (term.trim()) trackSearch(term);
   };
 
   const handleCategoryFilter = (category: string) => {
     setSelectedCategory(category);
     setCurrentPage(1);
+    if (initialPage !== 1) router.replace("/tests#tests-list", { scroll: false });
     trackClick(`category_${category}`, window.location.pathname);
+  };
+
+  const keepActiveFilters = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    page: number,
+  ) => {
+    if (!hasActiveFilters) return;
+    event.preventDefault();
+    setCurrentPage(page);
   };
 
   const filteredTests = allTests.filter((test) => {
@@ -111,7 +141,8 @@ export default function TestsPageClient({
   });
 
   const totalPages = Math.max(1, Math.ceil(filteredTests.length / TESTS_PER_PAGE));
-  const startIndex = (currentPage - 1) * TESTS_PER_PAGE;
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const startIndex = (safeCurrentPage - 1) * TESTS_PER_PAGE;
   const paginatedTests = filteredTests.slice(
     startIndex,
     startIndex + TESTS_PER_PAGE,
@@ -120,7 +151,7 @@ export default function TestsPageClient({
     (page) =>
       page === 1 ||
       page === totalPages ||
-      Math.abs(page - currentPage) <= 1,
+      Math.abs(page - safeCurrentPage) <= 1,
   );
 
   return (
@@ -275,11 +306,25 @@ export default function TestsPageClient({
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
-                    disabled={currentPage === 1}
+                    asChild={safeCurrentPage > 1}
+                    disabled={safeCurrentPage === 1}
                   >
-                    <ChevronLeft className="h-4 w-4" />
-                    이전
+                    {safeCurrentPage > 1 ? (
+                      <Link
+                        href={paginationHref(safeCurrentPage - 1)}
+                        onClick={(event) =>
+                          keepActiveFilters(event, safeCurrentPage - 1)
+                        }
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                        이전
+                      </Link>
+                    ) : (
+                      <span>
+                        <ChevronLeft className="h-4 w-4" />
+                        이전
+                      </span>
+                    )}
                   </Button>
                   <div className="flex flex-wrap items-center justify-center gap-2">
                     {visiblePages.map((page, index) => {
@@ -291,16 +336,26 @@ export default function TestsPageClient({
                             <span className="px-1 text-sm text-gray-400">...</span>
                           )}
                           <Button
-                            variant={currentPage === page ? "default" : "outline"}
+                            variant={
+                              safeCurrentPage === page ? "default" : "outline"
+                            }
                             size="sm"
-                            onClick={() => setCurrentPage(page)}
+                            asChild
                             className={
-                              currentPage === page
+                              safeCurrentPage === page
                                 ? "bg-gradient-to-r from-violet-500 to-pink-500"
                                 : ""
                             }
                           >
-                            {page}
+                            <Link
+                              href={paginationHref(page)}
+                              onClick={(event) => keepActiveFilters(event, page)}
+                              aria-current={
+                                safeCurrentPage === page ? "page" : undefined
+                              }
+                            >
+                              {page}
+                            </Link>
                           </Button>
                         </div>
                       );
@@ -309,13 +364,25 @@ export default function TestsPageClient({
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() =>
-                      setCurrentPage((prev) => Math.min(totalPages, prev + 1))
-                    }
-                    disabled={currentPage === totalPages}
+                    asChild={safeCurrentPage < totalPages}
+                    disabled={safeCurrentPage === totalPages}
                   >
-                    다음
-                    <ChevronRight className="h-4 w-4" />
+                    {safeCurrentPage < totalPages ? (
+                      <Link
+                        href={paginationHref(safeCurrentPage + 1)}
+                        onClick={(event) =>
+                          keepActiveFilters(event, safeCurrentPage + 1)
+                        }
+                      >
+                        다음
+                        <ChevronRight className="h-4 w-4" />
+                      </Link>
+                    ) : (
+                      <span>
+                        다음
+                        <ChevronRight className="h-4 w-4" />
+                      </span>
+                    )}
                   </Button>
                 </div>
               )}

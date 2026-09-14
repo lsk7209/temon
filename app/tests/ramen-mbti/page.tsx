@@ -163,9 +163,9 @@ export default function RamenMBTI() {
               </div>
             </section>
 
-            <AnswerEngineSection quizTitle="Ramen MBTI" />
+            <AnswerEngineSection quizTitle="라면 테스트" />
 
-            <LandingConversionSection quizTitle="Ramen MBTI" />
+            <LandingConversionSection quizTitle="라면 테스트" />
 
             <RelatedTestsSection testId="ramen-mbti" />
 

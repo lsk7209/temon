@@ -179,6 +179,7 @@ const keywordLabels: Record<string, string> = {
   noodle: "면 요리",
   online: "온라인 주문",
   ott: "OTT",
+  pet: "반려동물",
   phone: "휴대폰",
   restaurant: "식당 선택",
   rice: "밥",
@@ -190,12 +191,14 @@ const keywordLabels: Record<string, string> = {
   soup: "국물 요리",
   spice: "매운맛",
   stew: "찌개",
+  study: "공부",
   subway: "대중교통",
   taste: "맛 취향",
   travel: "여행",
   water: "물 마시기",
   weekend: "주말 루틴",
   youtube: "유튜브",
+  mbti: "MBTI",
 };
 
 const toneByPrefix: Record<string, NonNullable<BoostData["tone"]>> = {

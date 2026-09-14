@@ -367,11 +367,11 @@ export default function StudyMBTIIntro() {
             <div className="mt-12">
               <AutoGscLandingBoost testId="study-mbti" />
 
-              <AnswerEngineSection quizTitle="Study Mbti Test" />
+              <AnswerEngineSection quizTitle="공부 MBTI 테스트" />
             </div>
 
             <div className="mt-12">
-              <LandingConversionSection quizTitle="Study Mbti Test" />
+              <LandingConversionSection quizTitle="공부 MBTI 테스트" />
             </div>
 
             <div className="mt-12">

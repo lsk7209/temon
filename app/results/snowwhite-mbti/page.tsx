@@ -107,8 +107,8 @@ function ResultContent() {
   const { resolvedType, loading } = useResolvedResultType(Object.keys(characters), type, resultId)
   const resultType = (resolvedType as keyof typeof characters) || "princess"
   const character = characters[resultType]
-  const faqItems = getTopicResultFAQs("Snow White MBTI Test", character.name)
-  const resultUseCases = getTopicResultUseCases("Snow White MBTI Test", character.name)
+  const faqItems = getTopicResultFAQs("백설공주 에겐테토 테스트", character.name)
+  const resultUseCases = getTopicResultUseCases("백설공주 에겐테토 테스트", character.name)
 
   if (loading) {
     return <div>결과를 불러오는 중...</div>
@@ -136,7 +136,7 @@ function ResultContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-violet-50 to-sky-50">
-      <ResultFaqSchema quizTitle="Snow White MBTI Test" resultName={character.name} />
+      <ResultFaqSchema quizTitle="백설공주 에겐테토 테스트" resultName={character.name} />
       <main className="container mx-auto max-w-4xl px-4 py-8">
         <Card className={`mb-8 border-0 bg-gradient-to-br ${character.bgColor} shadow-2xl`}>
           <CardContent className="p-8 text-center">

@@ -214,8 +214,8 @@ function ResultContent() {
   const { resolvedType, loading } = useResolvedResultType(Object.keys(studyCharacters), type, resultId)
   const mbtiType = (resolvedType as keyof typeof studyCharacters) || "ENFP"
   const character = studyCharacters[mbtiType]
-  const faqItems = getTopicResultFAQs("Study MBTI Test", character.name)
-  const resultUseCases = getTopicResultUseCases("Study MBTI Test", character.name)
+  const faqItems = getTopicResultFAQs("공부 MBTI 테스트", character.name)
+  const resultUseCases = getTopicResultUseCases("공부 MBTI 테스트", character.name)
 
   if (loading) {
     return <div>결과를 불러오는 중...</div>
@@ -241,7 +241,7 @@ function ResultContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950">
-      <ResultFaqSchema quizTitle="Study MBTI Test" resultName={character.name} />
+      <ResultFaqSchema quizTitle="공부 MBTI 테스트" resultName={character.name} />
       {/* Main Result */}
       <main className="container max-w-4xl mx-auto px-4 py-8">
         {/* Character Card */}

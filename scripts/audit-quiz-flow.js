@@ -6,7 +6,9 @@ const { createClient } = require("@libsql/client");
 
 const ROOT = path.resolve(__dirname, "..");
 const TESTS_DIR = path.join(ROOT, "app", "tests");
-const REPORTS_DIR = path.join(ROOT, "reports");
+const REPORTS_DIR = process.env.QUIZ_AUDIT_REPORT_DIR
+  ? path.resolve(process.env.QUIZ_AUDIT_REPORT_DIR)
+  : path.join(ROOT, "reports");
 const REPORT_DATE = new Date().toISOString().slice(0, 10);
 const REPORT_BASENAME = `quiz-flow-audit-${REPORT_DATE}`;
 const BASE_URL = (process.env.QUIZ_AUDIT_BASE_URL || "").replace(/\/$/, "");
@@ -195,6 +197,17 @@ function auditIntro(slug, testDir, meta) {
     jsonLd: source.includes("JsonLd") || source.includes("generateQuizSchemas"),
     faq: /FAQ|faq|FAQSection|createFAQSchema|getTopicQuizFAQs/.test(source),
     toc: /ContentToc|data-content-toc/.test(source),
+    advertisedQuestionCounts: Array.from(
+      new Set([
+        ...Array.from(source.matchAll(/questionCount:\s*(\d+)/g), (match) =>
+          Number(match[1]),
+        ),
+        ...Array.from(
+          source.matchAll(/(?<![\d,])(\d{1,3})\s*(?:문항|개\s*(?:의\s*)?(?:상황\s*)?질문|가지\s*질문)/g),
+          (match) => Number(match[1]),
+        ),
+      ]),
+    ).sort((a, b) => a - b),
     mojibakeHits: countMatches(source, MOJIBAKE_PATTERN),
   };
 
@@ -232,7 +245,7 @@ function auditQuestion(slug, testDir) {
   const filePath = path.join(testDir, "test", "page.tsx");
   const source = readText(filePath);
   const issues = [];
-  const questionCount = estimateQuestionCount(source);
+  const questionCount = estimateQuestionCount(source, filePath);
   const metrics = {
     exists: fs.existsSync(filePath),
     sourceChars: source.length,
@@ -285,12 +298,46 @@ function auditQuestion(slug, testDir) {
   };
 }
 
-function estimateQuestionCount(source) {
+function countQuestionEntries(source) {
+  return countMatches(source, /\n\s*(?:question|q)\s*:/g);
+}
+
+function importedQuestionCount(source, filePath) {
+  const mapped = source.match(
+    /const\s+questions[^=]*=\s*([A-Z][A-Z0-9_]*)\.map\s*\(/,
+  );
+  if (!mapped) return 0;
+
+  const importMatch = source.match(
+    new RegExp(
+      `import\\s*\\{[^}]*\\b${mapped[1]}\\b[^}]*\\}\\s*from\\s*["']@\\/([^"']+)["']`,
+    ),
+  );
+  if (!importMatch) return 0;
+
+  const basePath = path.join(ROOT, importMatch[1]);
+  const importedPath = [basePath, `${basePath}.ts`, `${basePath}.tsx`, `${basePath}.json`].find(
+    (candidate) => fs.existsSync(candidate),
+  );
+  if (!importedPath || path.resolve(importedPath) === path.resolve(filePath)) return 0;
+
+  const importedSource = readText(importedPath);
+  const exportStart = importedSource.search(
+    new RegExp(`export\\s+const\\s+${mapped[1]}\\b`),
+  );
+  if (exportStart < 0) return 0;
+  return countMatches(importedSource.slice(exportStart), /\n\s*id\s*:/g);
+}
+
+function estimateQuestionCount(source, filePath) {
+  const importedCount = importedQuestionCount(source, filePath);
+  if (importedCount > 0) return importedCount;
+
   const questionsStart = source.indexOf("const questions");
   const exportStart = source.indexOf("export default");
   if (questionsStart >= 0 && exportStart > questionsStart) {
     const questionBlock = source.slice(questionsStart, exportStart);
-    const byQuestionKey = countMatches(questionBlock, /\n\s*question\s*:/g);
+    const byQuestionKey = countQuestionEntries(questionBlock);
     if (byQuestionKey > 0) return byQuestionKey;
   }
 
@@ -298,7 +345,7 @@ function estimateQuestionCount(source) {
     /const\s+questions\s*[:\w\s<>,]*=\s*\[([\s\S]*?)\n\s*\]/,
   );
   if (constArray) {
-    const byQuestion = countMatches(constArray[1], /question\s*:/g);
+    const byQuestion = countQuestionEntries(constArray[1]);
     if (byQuestion > 0) return byQuestion;
   }
   const importedData = source.match(
@@ -308,18 +355,19 @@ function estimateQuestionCount(source) {
 }
 
 function auditResult(slug, testDir) {
-  const filePath = path.join(testDir, "test", "result", "page.tsx");
-  const layoutPath = path.join(testDir, "test", "result", "layout.tsx");
-  const testsLayoutPath = path.join(ROOT, "app", "tests", "layout.tsx");
+  const resultDir = path.join(ROOT, "app", "results", slug);
+  const filePath = path.join(resultDir, "page.tsx");
+  const layoutPath = path.join(resultDir, "layout.tsx");
+  const resultsLayoutPath = path.join(ROOT, "app", "results", "layout.tsx");
   const source = readText(filePath);
   const layoutSource = readText(layoutPath);
-  const testsLayoutSource = readText(testsLayoutPath);
+  const resultsLayoutSource = readText(resultsLayoutPath);
   const issues = [];
   const usesCommon =
     source.includes("MbtiResultPage") ||
     source.includes("RedesignedResultPage");
   const usesGlobalAutoEnhancement =
-    fs.existsSync(path.join(ROOT, "app", "tests", "layout.tsx")) &&
+    fs.existsSync(resultsLayoutPath) &&
     !AUTO_ENHANCEMENT_SKIP_SLUGS.has(slug);
   const usesAutoEnhancement =
     usesCommon ||
@@ -345,7 +393,7 @@ function auditResult(slug, testDir) {
     effectiveSections,
     effectiveParagraphs,
     metadata: /export const metadata|generateMetadata/.test(
-      source + layoutSource + testsLayoutSource,
+      source + layoutSource + resultsLayoutSource,
     ),
     share:
       /ShareButtons|navigator\.share|copy|clipboard/.test(source) ||
@@ -653,6 +701,19 @@ async function auditStaticTests(dbBySlug) {
     const testDir = path.join(TESTS_DIR, slug);
     const intro = auditIntro(slug, testDir, metaBySlug.get(slug));
     const question = auditQuestion(slug, testDir);
+    const advertisedCounts = intro.metrics.advertisedQuestionCounts;
+    if (
+      question.metrics.questionCount > 0 &&
+      advertisedCounts.some((count) => count !== question.metrics.questionCount)
+    ) {
+      addIssue(
+        intro.issues,
+        "P1",
+        `advertised question count mismatch: ${advertisedCounts.join(", ")} vs actual ${question.metrics.questionCount}`,
+      );
+      intro.severity = overallSeverity(intro.issues);
+      intro.score = scoreFor(intro.issues);
+    }
     const result = auditResult(slug, testDir);
     const render = await auditRender(slug);
     const db = dbBySlug.get(slug) || null;

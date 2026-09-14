@@ -25,7 +25,7 @@ const shortDescription =
   "백설공주 에겐테토 테스트로 감정파·효율파 성향을 4유형으로 확인하세요.";
 // Full description for Google/AI
 const fullDescription =
-  "백설공주 에겐테토 테스트로 감정파 에겐, 효율파 테토 성향을 동화 상황 질문으로 확인하세요. 10문항으로 4가지 밈 성향 유형을 무료로 제공합니다.";
+  "백설공주 에겐테토 테스트로 감정파 에겐, 효율파 테토 성향을 동화 상황 질문으로 확인하세요. 12문항으로 4가지 밈 성향 유형을 무료로 제공합니다.";
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "snowwhite-mbti",
@@ -35,7 +35,7 @@ export const metadata: Metadata = generateQuizMetadata({
   keywords:
     "백설공주, 에겐테토, 성격 테스트, MBTI, 병맛 테스트, 심리테스트, 무료 테스트",
   canonical: "/tests/snowwhite-mbti",
-  questionCount: 10,
+  questionCount: 12,
   duration: "PT2M",
 });
 
@@ -70,7 +70,7 @@ export default function SnowWhiteMBTI() {
     keywords:
       "백설공주, 에겐테토, 성격 테스트, MBTI, 병맛 테스트, 심리테스트, 무료 테스트",
     canonical: "/tests/snowwhite-mbti",
-    questionCount: 10,
+    questionCount: 12,
     duration: "PT2M",
     faqs,
   });
@@ -126,7 +126,7 @@ export default function SnowWhiteMBTI() {
                         <div className="font-semibold text-pink-600">
                           문항수
                         </div>
-                        <div>10문항</div>
+                        <div>12문항</div>
                       </div>
                     </div>
                   </div>
@@ -209,11 +209,11 @@ export default function SnowWhiteMBTI() {
             </div>
 
             <div className="mt-12">
-              <AnswerEngineSection quizTitle="Snowwhite Mbti Test" />
+              <AnswerEngineSection quizTitle="백설공주 에겐테토 테스트" />
             </div>
 
             <div className="mt-12">
-              <LandingConversionSection quizTitle="Snowwhite Mbti Test" />
+              <LandingConversionSection quizTitle="백설공주 에겐테토 테스트" />
             </div>
 
             <div className="mt-12">

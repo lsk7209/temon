@@ -3,10 +3,10 @@ import type { ReactNode } from "react"
 import { generateGenericResultMetadata } from "@/lib/quiz-seo-utils"
 
 export const metadata: Metadata = generateGenericResultMetadata({
-  quizTitle: "Snow White MBTI Test",
-  title: "Fairy Tale Character Result",
+  quizTitle: "백설공주 에겐테토 테스트",
+  title: "나와 닮은 동화 캐릭터",
   description:
-    "Check your Snow White style result with personality summary, daily-life traits, growth tips, and compatibility clues.",
+    "나와 닮은 백설공주 동화 캐릭터 유형을 확인하고, 성격 요약과 일상 특징, 성장 팁, 유형별 궁합을 살펴보세요.",
   canonical: "/results/snowwhite-mbti",
 })
 

@@ -37,7 +37,7 @@ export const metadata: Metadata = generateQuizMetadata({
   keywords:
     "K-드라마 클리셰 테스트, 드라마 테스트, 드라마 캐릭터 테스트, K드라마 MBTI, 클리셰 테스트, 무료 테스트",
   canonical: "/tests/kdrama-mbti",
-  questionCount: 10,
+  questionCount: 12,
   duration: "PT2M",
 });
 
@@ -70,7 +70,7 @@ export default function KDramaMBTIIntro() {
     keywords:
       "K-드라마 클리셰 테스트, 드라마 테스트, 드라마 캐릭터 테스트, K드라마 MBTI, 클리셰 테스트, 무료 테스트",
     canonical: "/tests/kdrama-mbti",
-    questionCount: 10,
+    questionCount: 12,
     duration: "PT2M",
     faqs,
   });
@@ -138,7 +138,7 @@ export default function KDramaMBTIIntro() {
                     <span>2분 소요</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span>10문항</span>
+                    <span>12문항</span>
                   </div>
                 </div>
 
@@ -324,11 +324,11 @@ export default function KDramaMBTIIntro() {
             </div>
 
             <div className="mt-12">
-              <AnswerEngineSection quizTitle="Kdrama Mbti Test" />
+              <AnswerEngineSection quizTitle="K-드라마 클리셰 테스트" />
             </div>
 
             <div className="mt-12">
-              <LandingConversionSection quizTitle="Kdrama Mbti Test" />
+              <LandingConversionSection quizTitle="K-드라마 클리셰 테스트" />
             </div>
 
             <div className="mt-12">

@@ -249,7 +249,7 @@ export function getTopicResultFAQs(
 ): Array<{ question: string; answer: string }> {
   const lowerTitle = quizTitle.toLowerCase();
 
-  if (lowerTitle.includes("drama")) {
+  if (lowerTitle.includes("drama") || lowerTitle.includes("드라마")) {
     return [
       {
         question: `${quizTitle}에서 ${resultName} 결과는 무슨 뜻인가요?`,
@@ -268,7 +268,11 @@ export function getTopicResultFAQs(
     ];
   }
 
-  if (lowerTitle.includes("idol") || lowerTitle.includes("k-pop")) {
+  if (
+    lowerTitle.includes("idol") ||
+    lowerTitle.includes("아이돌") ||
+    lowerTitle.includes("k-pop")
+  ) {
     return [
       {
         question: `${quizTitle}에서 ${resultName} 결과는 어떤 의미인가요?`,
@@ -287,7 +291,7 @@ export function getTopicResultFAQs(
     ];
   }
 
-  if (lowerTitle.includes("pet")) {
+  if (lowerTitle.includes("pet") || lowerTitle.includes("반려동물")) {
     return [
       {
         question: `${quizTitle}의 ${resultName} 결과는 어떻게 읽어야 하나요?`,
@@ -308,6 +312,7 @@ export function getTopicResultFAQs(
 
   if (
     lowerTitle.includes("ramen") ||
+    lowerTitle.includes("라면") ||
     lowerTitle.includes("spice") ||
     lowerTitle.includes("food")
   ) {
@@ -329,7 +334,7 @@ export function getTopicResultFAQs(
     ];
   }
 
-  if (lowerTitle.includes("study")) {
+  if (lowerTitle.includes("study") || lowerTitle.includes("공부")) {
     return [
       {
         question: `${quizTitle}에서 ${resultName} 결과는 어떤 학습 패턴인가요?`,
@@ -348,7 +353,14 @@ export function getTopicResultFAQs(
     ];
   }
 
-  if (lowerTitle.includes("alarm") || lowerTitle.includes("phone")) {
+  if (
+    lowerTitle.includes("alarm") ||
+    lowerTitle.includes("알람") ||
+    lowerTitle.includes("기상") ||
+    lowerTitle.includes("phone") ||
+    lowerTitle.includes("스마트폰") ||
+    lowerTitle.includes("휴대폰")
+  ) {
     return [
       {
         question: `${quizTitle}에서 ${resultName} 결과는 무슨 의미인가요?`,
@@ -391,7 +403,7 @@ export function getTopicResultUseCases(
 ): string[] {
   const lowerTitle = quizTitle.toLowerCase();
 
-  if (lowerTitle.includes("drama")) {
+  if (lowerTitle.includes("drama") || lowerTitle.includes("드라마")) {
     return [
       `${resultName} 결과는 갈등, 연애, 모임 장면에서 내가 실제로 반복하는 행동과 비교할 때 가장 유용합니다.`,
       "역할 기반 결과는 친구와 비교하며 이야기하기 쉬워 공유용 콘텐츠로도 잘 맞습니다.",
@@ -399,7 +411,11 @@ export function getTopicResultUseCases(
     ];
   }
 
-  if (lowerTitle.includes("idol") || lowerTitle.includes("k-pop")) {
+  if (
+    lowerTitle.includes("idol") ||
+    lowerTitle.includes("아이돌") ||
+    lowerTitle.includes("k-pop")
+  ) {
     return [
       `${resultName} 결과는 팀, 단체 채팅, 빠르게 움직이는 사회적 상황에서의 내 행동과 비교하면 더 선명해집니다.`,
       "이 결과는 특정 스타 판타지보다 내가 맡는 그룹 내 역할을 설명할 때 더 설득력 있습니다.",
@@ -407,7 +423,7 @@ export function getTopicResultUseCases(
     ];
   }
 
-  if (lowerTitle.includes("pet")) {
+  if (lowerTitle.includes("pet") || lowerTitle.includes("반려동물")) {
     return [
       `${resultName} 결과는 집에서의 리듬, 회복 방식, 사회적 에너지와 연결해 볼 때 가장 유용합니다.`,
       "동물 비유형 결과는 무거운 자기분석 없이 감정 패턴을 쉽게 알아차리게 해줍니다.",
@@ -417,6 +433,7 @@ export function getTopicResultUseCases(
 
   if (
     lowerTitle.includes("ramen") ||
+    lowerTitle.includes("라면") ||
     lowerTitle.includes("spice") ||
     lowerTitle.includes("food")
   ) {
@@ -427,7 +444,7 @@ export function getTopicResultUseCases(
     ];
   }
 
-  if (lowerTitle.includes("study")) {
+  if (lowerTitle.includes("study") || lowerTitle.includes("공부")) {
     return [
       `${resultName} 결과는 이번 주 공부 방식에서 바로 바꿀 수 있는 한 가지 행동으로 연결할 때 가장 유용합니다.`,
       "이상적인 계획보다 실제 시험 기간 행동과 비교하면 결과 해석이 더 정확해집니다.",
@@ -435,7 +452,14 @@ export function getTopicResultUseCases(
     ];
   }
 
-  if (lowerTitle.includes("alarm") || lowerTitle.includes("phone")) {
+  if (
+    lowerTitle.includes("alarm") ||
+    lowerTitle.includes("알람") ||
+    lowerTitle.includes("기상") ||
+    lowerTitle.includes("phone") ||
+    lowerTitle.includes("스마트폰") ||
+    lowerTitle.includes("휴대폰")
+  ) {
     return [
       `${resultName} 결과는 매일 반복하는 실제 루틴 하나에 대입해 볼 때 가장 의미가 큽니다.`,
       "습관형 결과는 루틴 전체를 갈아엎기보다 작은 행동 하나를 조정할 때 실용적입니다.",

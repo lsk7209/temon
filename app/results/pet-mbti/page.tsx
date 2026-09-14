@@ -306,8 +306,8 @@ function ResultContent() {
   const { resolvedType, loading } = useResolvedResultType(Object.keys(petCharacters), type, resultId)
   const mbtiType = (resolvedType as keyof typeof petCharacters) || "ENFP"
   const character = petCharacters[mbtiType]
-  const faqItems = getTopicResultFAQs("Pet MBTI Test", `${character.name} - ${character.pet}`)
-  const resultUseCases = getTopicResultUseCases("Pet MBTI Test", `${character.name} - ${character.pet}`)
+  const faqItems = getTopicResultFAQs("반려동물 MBTI 테스트", `${character.name} - ${character.pet}`)
+  const resultUseCases = getTopicResultUseCases("반려동물 MBTI 테스트", `${character.name} - ${character.pet}`)
 
   if (loading) {
     return <div>결과를 불러오는 중...</div>
@@ -348,7 +348,7 @@ ${shareUrl}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 dark:from-pink-950 dark:via-purple-950 dark:to-blue-950 relative overflow-hidden">
-      <ResultFaqSchema quizTitle="Pet MBTI Test" resultName={`${character.name} - ${character.pet}`} />
+      <ResultFaqSchema quizTitle="반려동물 MBTI 테스트" resultName={`${character.name} - ${character.pet}`} />
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div

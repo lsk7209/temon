@@ -25,7 +25,7 @@ export const metadata: Metadata = generateQuizMetadata({
   fullDescription,
   keywords: "알람 습관, 기상 패턴, 성격 테스트, MBTI, 알람 테스트, 심리테스트, 무료 테스트",
   canonical: "/tests/alarm-habit",
-  questionCount: 8,
+  questionCount: 12,
   duration: "PT1M",
 })
 
@@ -41,7 +41,7 @@ export default function AlarmHabitIntro() {
     fullDescription,
     keywords: "알람 습관, 기상 패턴, 성격 테스트, MBTI, 알람 테스트, 심리테스트, 무료 테스트",
     canonical: "/tests/alarm-habit",
-    questionCount: 8,
+    questionCount: 12,
     duration: "PT1M",
     faqs,
   })
@@ -105,7 +105,7 @@ export default function AlarmHabitIntro() {
                 <span>1분 소요</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span>8문항</span>
+                <span>12문항</span>
               </div>
             </div>
 
@@ -221,7 +221,7 @@ export default function AlarmHabitIntro() {
                       <span className="text-2xl">🎯</span>
                     </div>
                     <h3 className="font-semibold">정확한 분석</h3>
-                    <p className="text-sm text-muted-foreground">8가지 기상 습관으로 MBTI 4축을 정확하게 분석</p>
+                    <p className="text-sm text-muted-foreground">12가지 기상 습관으로 MBTI 4축을 분석</p>
                   </div>
 
                   <div className="text-center space-y-3">
@@ -274,11 +274,11 @@ export default function AlarmHabitIntro() {
         />
 
         <div className="mt-12">
-          <AnswerEngineSection quizTitle="Alarm Habit Test" />
+          <AnswerEngineSection quizTitle="알람 습관 MBTI 테스트" />
         </div>
 
         <div className="mt-12">
-          <LandingConversionSection quizTitle="Alarm Habit Test" />
+          <LandingConversionSection quizTitle="알람 습관 MBTI 테스트" />
         </div>
 
         <div className="mt-12">

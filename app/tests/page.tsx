@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { cache } from "react";
 import { desc, eq } from "drizzle-orm";
 import { ContentToc } from "@/components/content-toc";
 import { FAQSection } from "@/components/faq-section";
@@ -15,6 +16,7 @@ import { ALL_TESTS } from "@/lib/tests-config";
 import TestsPageClient from "./tests-page-client";
 
 const baseUrl = "https://temon.kr";
+const testsPerPage = 12;
 
 const tocItems = [
   { id: "tests-list", label: "전체 테스트" },
@@ -293,7 +295,7 @@ const quickStartTests = [
   },
 ];
 
-export const metadata: Metadata = {
+const listingMetadata: Metadata = {
   title: "성격 성향 테스트 모음 | 무료 심리·MBTI 테스트 바로가기 - 테몬",
   description: shortDescription,
   keywords:
@@ -339,57 +341,148 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function TestsPage() {
-  let dynamicTests: {
-    id: string;
-    title: string;
-    description: string | null;
-    slug: string;
-    category: string | null;
-  }[] = [];
+type TestsPageSearchParams = {
+  page?: string | string[];
+};
 
-  if (isDbAvailable()) {
-    try {
-      const db = getDb();
-      dynamicTests = await db
-        .select({
-          id: tests.id,
-          title: tests.title,
-          description: tests.description,
-          slug: tests.slug,
-          category: tests.category,
-        })
-        .from(tests)
-        .where(eq(tests.status, "published"))
-        .orderBy(desc(tests.publishedAt), desc(tests.createdAt))
-        .all();
-    } catch (error) {
-      console.error("Failed to fetch dynamic tests:", error);
+type DynamicTest = {
+  id: string;
+  title: string;
+  description: string | null;
+  slug: string;
+  category: string | null;
+};
+
+function parseRequestedPage(value: string | string[] | undefined): number {
+  const candidate = Array.isArray(value) ? value[0] : value;
+  if (!candidate || !/^\d+$/.test(candidate)) return 1;
+
+  const page = Number(candidate);
+  return Number.isSafeInteger(page) && page > 0 ? page : 1;
+}
+
+const loadDynamicTests = cache(async (): Promise<DynamicTest[]> => {
+  if (!isDbAvailable()) return [];
+
+  try {
+    const db = getDb();
+    return await db
+      .select({
+        id: tests.id,
+        title: tests.title,
+        description: tests.description,
+        slug: tests.slug,
+        category: tests.category,
+      })
+      .from(tests)
+      .where(eq(tests.status, "published"))
+      .orderBy(desc(tests.publishedAt), desc(tests.createdAt))
+      .all();
+  } catch (error) {
+    console.error("Failed to fetch dynamic tests:", error);
+    return [];
+  }
+});
+
+function getUniqueListingTests(dynamicTests: DynamicTest[]) {
+  const byHref = new Map<
+    string,
+    { title: string; description: string; href: string; id: string }
+  >();
+
+  for (const test of dynamicTests) {
+    const href = `/tests/${test.slug}`;
+    if (!byHref.has(href)) {
+      byHref.set(href, {
+        title: test.title,
+        description: test.description || "",
+        href,
+        id: test.id,
+      });
     }
   }
+
+  for (const test of ALL_TESTS) {
+    if (!byHref.has(test.href)) {
+      byHref.set(test.href, {
+        title: test.title,
+        description: test.description,
+        href: test.href,
+        id: test.id,
+      });
+    }
+  }
+
+  return Array.from(byHref.values());
+}
+
+function getLastPage(dynamicTests: DynamicTest[]): number {
+  return Math.max(
+    1,
+    Math.ceil(getUniqueListingTests(dynamicTests).length / testsPerPage),
+  );
+}
+
+function clampRequestedPage(
+  value: string | string[] | undefined,
+  dynamicTests: DynamicTest[],
+): number {
+  return Math.min(parseRequestedPage(value), getLastPage(dynamicTests));
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: TestsPageSearchParams;
+}): Promise<Metadata> {
+  const dynamicTests = await loadDynamicTests();
+  const page = clampRequestedPage(searchParams?.page, dynamicTests);
+  if (page === 1) return listingMetadata;
+
+  const pageTitle = `성격 성향 테스트 모음 ${page}페이지 | 테몬`;
+  const pageUrl = `/tests?page=${page}`;
+
+  return {
+    ...listingMetadata,
+    title: pageTitle,
+    alternates: { canonical: pageUrl },
+    openGraph: {
+      ...listingMetadata.openGraph,
+      title: pageTitle,
+      url: `${baseUrl}${pageUrl}`,
+    },
+    twitter: {
+      ...listingMetadata.twitter,
+      title: pageTitle,
+    },
+  };
+}
+
+export default async function TestsPage({
+  searchParams,
+}: {
+  searchParams?: TestsPageSearchParams;
+}) {
+  const dynamicTests = await loadDynamicTests();
+  const requestedPage = clampRequestedPage(searchParams?.page, dynamicTests);
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "홈", url: baseUrl },
     { name: "테스트 모음", url: `${baseUrl}/tests` },
   ]);
 
-  const allTestsForSchema = [
-    ...dynamicTests.map((test) => ({
-      title: test.title,
-      description: test.description || "",
-      href: `/tests/${test.slug}`,
-      id: test.id,
-    })),
-    ...ALL_TESTS,
-  ];
+  const allTestsForSchema = getUniqueListingTests(dynamicTests);
+  const schemaStartIndex = (requestedPage - 1) * testsPerPage;
 
   const itemListSchema = createItemListSchema(
-    allTestsForSchema.slice(0, 20).map((test) => ({
+    allTestsForSchema
+      .slice(schemaStartIndex, schemaStartIndex + testsPerPage)
+      .map((test) => ({
       name: test.title,
       description: test.description,
       url: `${baseUrl}${test.href}`,
       image: `${baseUrl}/api/og?title=${encodeURIComponent(test.title)}&desc=${encodeURIComponent(test.description)}`,
-    })),
+      })),
   );
   const faqSchema = createFAQSchema(listingFaqs);
 
@@ -465,6 +558,7 @@ export default async function TestsPage() {
       </section>
 
       <TestsPageClient
+        initialPage={requestedPage}
         dynamicTests={dynamicTests.map((test) => ({
           ...test,
           description: test.description || "",

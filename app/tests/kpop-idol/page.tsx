@@ -24,7 +24,7 @@ export const metadata: Metadata = generateQuizMetadata({
   fullDescription,
   keywords: "아이돌 포지션 테스트, 포지션 테스트, 아이돌 테스트, KPOP 테스트, K-팝 테스트, 케이팝 테스트, 성격 테스트, 무료 테스트",
   canonical: "/tests/kpop-idol",
-  questionCount: 8,
+  questionCount: 12,
   duration: "PT2M",
 })
 
@@ -73,7 +73,7 @@ export default function KpopIdolIntro() {
     fullDescription,
     keywords: "아이돌 포지션 테스트, 포지션 테스트, 아이돌 테스트, KPOP 테스트, K-팝 테스트, 케이팝 테스트, 성격 테스트, 무료 테스트",
     canonical: "/tests/kpop-idol",
-    questionCount: 8,
+    questionCount: 12,
     duration: "PT2M",
     faqs,
   })
@@ -137,7 +137,7 @@ export default function KpopIdolIntro() {
             </Button>
           </Link>
 
-          <p className="mt-6 text-sm text-gray-500">소요 시간: 약 2분 | 총 8문항</p>
+          <p className="mt-6 text-sm text-gray-500">소요 시간: 약 2분 | 총 12문항</p>
         </Card>
 
         <GscLandingBoost
@@ -153,11 +153,11 @@ export default function KpopIdolIntro() {
         />
       
         <div className="mt-12">
-          <AnswerEngineSection quizTitle="Kpop Idol Test" />
+          <AnswerEngineSection quizTitle="아이돌 포지션 테스트" />
         </div>
 
         <div className="mt-12">
-          <LandingConversionSection quizTitle="Kpop Idol Test" />
+          <LandingConversionSection quizTitle="아이돌 포지션 테스트" />
         </div>
 
         <div className="mt-12">

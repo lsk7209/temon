@@ -214,8 +214,8 @@ function ResultContent() {
   const resultId = searchParams.get("id")
   const { resolvedType, loading } = useResolvedResultType(Object.keys(results), type, resultId)
   const result = results[(resolvedType as keyof typeof results) || "leader"]
-  const faqItems = getTopicResultFAQs("K-Pop Idol Test", result.title)
-  const resultUseCases = getTopicResultUseCases("K-Pop Idol Test", result.title)
+  const faqItems = getTopicResultFAQs("아이돌 포지션 테스트", result.title)
+  const resultUseCases = getTopicResultUseCases("아이돌 포지션 테스트", result.title)
 
   if (loading) {
     return <div>결과를 불러오는 중...</div>
@@ -239,7 +239,7 @@ function ResultContent() {
 
   return (
     <div className={`min-h-screen ${result.bgColor} py-12`}>
-      <ResultFaqSchema quizTitle="K-Pop Idol Test" resultName={result.title} />
+      <ResultFaqSchema quizTitle="아이돌 포지션 테스트" resultName={result.title} />
       <div className="container mx-auto px-4 max-w-2xl">
         <Card className="p-8 md:p-12 shadow-xl border-2 border-purple-200 bg-white/90 backdrop-blur">
           <div className="text-center mb-8">
@@ -362,17 +362,16 @@ function ResultContent() {
             </div>
 
             <div className="bg-gradient-to-r from-slate-50 to-zinc-50 p-6 rounded-lg border border-slate-200">
-              <h3 className="font-bold text-lg mb-3 text-gray-800">Interpretation Notes</h3>
+              <h3 className="font-bold text-lg mb-3 text-gray-800">해석 참고사항</h3>
               <div className="space-y-3 text-gray-700 leading-relaxed">
                 <p>
-                  {result.title} is less about fantasy casting and more about how you naturally hold attention in group
-                  settings. Think about presentations, social gatherings, and collaborative work. If you take a similar
-                  role there, this result is probably capturing a real preference pattern.
+                  {result.title} 결과는 가상의 배역을 정하는 결과라기보다 단체 안에서 자연스럽게 주목을 이끄는
+                  방식을 보여줍니다. 발표, 모임, 협업 상황을 떠올려 보세요. 그곳에서도 비슷한 역할을 맡는다면
+                  실제 선호 패턴을 잘 포착한 결과일 가능성이 큽니다.
                 </p>
                 <p>
-                  The main separator from nearby types is where your energy goes first: spotlight, coordination, emotional
-                  delivery, or atmosphere control. That comparison makes the result much more useful than the headline
-                  alone.
+                  비슷한 유형과 구분되는 핵심은 에너지가 먼저 향하는 곳입니다. 주목, 조율, 감정 전달, 분위기
+                  관리 중 무엇을 우선하는지 비교하면 결과 제목만 볼 때보다 훨씬 유용하게 읽을 수 있습니다.
                 </p>
               </div>
             </div>
@@ -381,13 +380,13 @@ function ResultContent() {
               <h3 className="font-bold text-lg mb-3 text-gray-800">이 결과 활용하기</h3>
               <div className="space-y-3 text-gray-700 leading-relaxed">
                 <p>
-                  This result is most useful when you compare it with the role you naturally take in teams, friend
-                  groups, and public-facing situations. If that same pattern keeps showing up, the idol label is acting
-                  as a shortcut for a real social preference.
+                  팀, 친구 모임, 사람들 앞에 서는 상황에서 자연스럽게 맡는 역할과 비교할 때 이 결과가 가장
+                  유용합니다. 같은 패턴이 계속 나타난다면 아이돌 포지션 이름은 실제 사회적 선호를 이해하기
+                  쉬운 표현으로 요약한 것입니다.
                 </p>
                 <p>
-                  The main value is identifying where your energy goes first: spotlight, coordination, performance,
-                  emotional delivery, or atmosphere. That makes the page more actionable than the title alone.
+                  핵심 가치는 주목, 조율, 퍼포먼스, 감정 전달, 분위기 중 내 에너지가 먼저 향하는 곳을 찾는 데
+                  있습니다. 그러면 결과 제목만 확인하는 것보다 실제 행동에 적용하기 쉬워집니다.
                 </p>
               </div>
             </div>
