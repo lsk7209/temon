@@ -632,8 +632,8 @@ export default async function TestsPage({
               검색어별로 바로 고르는 재밌는 테스트
             </h2>
             <p className="mt-3 text-gray-700">
-              GSC에서 노출이 확인된 검색어를 기준으로 처음 방문한 사람이 바로
-              클릭하기 좋은 테스트 묶음을 정리했습니다.
+              사람들이 실제로 많이 찾는 검색어를 기준으로, 처음 오신 분도 바로
+              골라볼 수 있게 테스트를 묶어봤습니다.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
