@@ -10,6 +10,35 @@
 - 09-26: `components/share-buttons.tsx`의 클립보드 폴백(`document.execCommand("copy")`)이 반환값을 확인하지 않아 실패해도 "복사 완료"로 표시되고 `share_copy_success` 이벤트가 발행되던 버그 수정 — 반환값 확인 후 실패 시 catch로 넘겨 알림 표시.
 - 09-26: `lib/analytics.ts` `trackCTAClick()`의 `cta_click`/`cta_clicked` 중복 발행 제거, `components/landing-conversion-section.tsx` 등 운영자향 CRO 문구 노출 수정, 검색 손실 유력 후보(8/26 결과 페이지 URL 재구조화) 특정 — 상세는 이전 커밋 로그 참조.
 
+## ⚠️ 승인 필요 (미적용, 코드 미변경) — 관리자 대시보드 인증 충돌로 추정되는 기능 장애
+`/api/admin/*`(queue, tests, stats/detailed)는 각자 `verifyAdminToken()`(쿠키
+`admin_session` 우선, Authorization 헤더 폴백)으로 검증하는데, `middleware.ts`
+63~73행에 이것과 별개로 **헤더만 확인하는** 더 오래된 체크가 남아 있다:
+```
+if (request.nextUrl.pathname.startsWith('/api/admin/')) {
+  const authHeader = request.headers.get('authorization')
+  const adminToken = process.env.ADMIN_TOKEN
+  if (!adminToken || authHeader !== `Bearer ${adminToken}`) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+}
+```
+`app/(admin)/dashboard/dashboard-client.tsx`는 `localStorage.getItem('admin_token')`
+값을 Authorization 헤더로 보내는데, 로그인 흐름이 httpOnly 쿠키 방식으로 바뀌면서
+`setAdminToken()`이 no-op가 되어(`lib/admin-auth.ts` 58~70행) 이 값은 항상 비어
+있다. 즉 미들웨어가 요청을 라우트 핸들러에 도달하기도 전에 먼저 401로 막아버려서,
+**쿠키로 정상 로그인한 관리자도 대시보드의 admin API 호출이 전부 실패할 것으로
+보인다**(브라우저로 직접 재현은 못했음 — 코드 추적으로 확인).
+두 인증 체크(middleware.ts의 헤더 전용 체크 vs lib/admin-auth.ts의 쿠키+헤더 체크)가
+같은 커밋(279e36e, 05-27)에서 함께 들어왔는데 서로 어긋나 있다.
+
+가장 단순한 수정은 middleware.ts의 이 블록을 제거하고 각 라우트의 `verifyAdminToken()`에
+검증을 맡기는 것(중복 제거, 관리자 API는 각자 이미 401 처리를 하고 있어 보호 공백은
+생기지 않음)인데, **자동 모드 보안 분류기가 이 변경을 "Security Weaken"으로 차단**해서
+이번 세션에서는 코드에 적용하지 않고 되돌렸다. 실제로 이 미들웨어 체크를 없애도
+되는지, 아니면 반대로 dashboard-client.tsx가 쿠키 방식에 맞춰 Authorization 헤더
+전송 코드 자체를 없애야 하는지(둘 다 결국 같은 곳으로 수렴) 운영자 확인 후 진행 필요.
+
 ## TODO
 - [ ] 며칠 지켜보고 결과 페이지 광고 실채움률/수익 확인 (재개 직후라 일시적 unfilled 있었음).
 - [ ] (착수 시 별도 요청) Next.js 16 / drizzle-orm 0.45 업그레이드 — 리포트만 완료, 실행은 보류.
