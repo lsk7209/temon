@@ -15,7 +15,7 @@
 - [ ] (착수 시 별도 요청) Next.js 16 / drizzle-orm 0.45 업그레이드 — 리포트만 완료, 실행은 보류.
 - [ ] GSC URL 검사로 홈·`/tests/music-taste`·`/tests/pet-mbti`·`/tests/breakup-style`의 마지막 크롤링·색인 상태·Google 선택 canonical 확인 (8/26 재구조화가 실제 원인인지 검증).
 - [ ] `cta_clicked` 제거 후 GA4에서 실제 중복 해소 확인(1160/1160 → cta_click만 남는지).
-- [ ] 나머지 ~213개 테스트 랜딩 본문 전수 검색(운영 문구 재발 여부) — 이번엔 확인된 3건만 수정, 전수 스캔은 별도 스크립트 권장.
+- [x] 나머지 콘텐츠 전수 grep 스캔(운영/분석 용어 키워드 기준) 완료 — `components/answer-engine-section.tsx`의 "세션 이어가기" 문구 1건 추가 수정. `lib/ntrpResultConfig.ts`의 "KPI"는 테니스 실력 지표를 뜻하는 정상 콘텐츠로 확인(오탐), `lib/extended-content.ts`/`result-ad-unit.tsx`의 AdSense 언급은 코드 주석이라 렌더링되지 않음 확인. 키워드 기반 스캔이라 문맥 없이 놓친 표현이 남아있을 가능성은 있음.
 
 ## 결정사항
 - 결과 페이지 URL을 `/results/` 단일 접두사로 통일 → AdSense Auto Ads URL 제외를 접두사 매칭 하나로 확실히 적용 가능해짐(2026-08-26 확정, 라이브 검증 완료).
