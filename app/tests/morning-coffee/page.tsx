@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
-import { Clock, Coffee, Sparkles, Users } from "lucide-react"
+import { Clock, Coffee, Sparkles } from "lucide-react"
 
 const quizTitle = "아침 커피 마시는 방식 테스트"
 const shortDescription = "아침 커피 마시는 방식 테스트로 루틴형·즉흥형 커피 습관을 확인하세요."
@@ -118,7 +118,6 @@ export default function MorningCoffeeIntro() {
                 커피를 바로 마시는지, 식혀 마시는지, 정해진 방식으로 준비하는지 12문항으로 확인합니다.
               </p>
               <div className="flex items-center justify-center gap-6 text-sm text-slate-700 dark:text-slate-200">
-                <span className="flex items-center gap-2"><Users className="h-4 w-4" />8,735명 참여</span>
                 <span className="flex items-center gap-2"><Clock className="h-4 w-4" />3분 소요</span>
                 <span>12문항</span>
               </div>

@@ -11,7 +11,7 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Play, Sparkles } from "lucide-react"
+import { Clock, Play, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "저녁에 오락을 선택하는 방식으로 알아보는 나의 성격 유형. 저녁에 뭐 볼지 고민될 때, 드라마가 끝났을 때 등 구체적인 상황으로 분석합니다."
@@ -93,10 +93,6 @@ export default function EveningEntertainmentIntro() {
             </p>
 
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>9,473명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>

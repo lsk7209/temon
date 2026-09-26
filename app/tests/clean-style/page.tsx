@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
-import { Clock, Sparkles, SprayCan, Users } from "lucide-react"
+import { Clock, Sparkles, SprayCan } from "lucide-react"
 
 const quizTitle = "방청소 성격 테스트"
 const shortDescription = "방청소 성격 테스트로 정리형·즉흥형 청소 습관을 16유형으로 확인하세요."
@@ -114,7 +114,6 @@ export default function CleanStyleIntro() {
                 청소를 계획하는지, 보이는 것부터 치우는지, 물건을 버리는 기준까지 12문항으로 확인합니다.
               </p>
               <div className="flex items-center justify-center gap-6 text-sm text-slate-700 dark:text-slate-200">
-                <span className="flex items-center gap-2"><Users className="h-4 w-4" />5,986명 참여</span>
                 <span className="flex items-center gap-2"><Clock className="h-4 w-4" />3분 소요</span>
                 <span>12문항</span>
               </div>

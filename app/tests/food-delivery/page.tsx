@@ -11,7 +11,7 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, UtensilsCrossed, Sparkles } from "lucide-react"
+import { Clock, UtensilsCrossed, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "12문항으로 알아보는 나의 배달 습관! 즉흥형 vs 계획형, 도전자 vs 안정형 🍔 배달 앱을 켜는 순간, 당신의 성격이 드러납니다."
@@ -98,10 +98,6 @@ export default function FoodDeliveryIntro() {
 
             {/* Stats */}
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>11,167명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>

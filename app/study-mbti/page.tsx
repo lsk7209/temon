@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, BookOpen, Sparkles } from "lucide-react"
+import { Clock, BookOpen, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
@@ -107,10 +107,6 @@ export default function StudyMBTIIntro() {
 
             {/* Stats */}
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>18,547명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>5분 소요</span>

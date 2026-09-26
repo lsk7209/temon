@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
-import { AlarmClock, Clock, Sparkles, Users } from "lucide-react"
+import { AlarmClock, Clock, Sparkles } from "lucide-react"
 
 const quizTitle = "아침 알람 대하는 방식 테스트"
 const shortDescription = "아침 알람 테스트로 스누즈형·즉시기상형 기상 습관을 16유형으로 확인하세요."
@@ -114,7 +114,6 @@ export default function MorningAlarmIntro() {
                 첫 알람에 일어나는지, 스누즈를 누르는지, 여유 시간을 어떻게 잡는지 12문항으로 확인합니다.
               </p>
               <div className="flex items-center justify-center gap-6 text-sm text-slate-700 dark:text-slate-200">
-                <span className="flex items-center gap-2"><Users className="h-4 w-4" />5,966명 참여</span>
                 <span className="flex items-center gap-2"><Clock className="h-4 w-4" />3분 소요</span>
                 <span>12문항</span>
               </div>

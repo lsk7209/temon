@@ -11,7 +11,7 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { Clock, Users, Sparkles } from "lucide-react"
+import { Clock, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "알람 습관 MBTI 테스트로 알아보는 나의 성격! 스누즈파 vs 칼기상파, 당신은 어떤 타입일까요? 재미있는 알람 습관 테스트를 무료로 시..."
@@ -96,10 +96,6 @@ export default function AlarmHabitIntro() {
 
             {/* Stats */}
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>8,947명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>1분 소요</span>

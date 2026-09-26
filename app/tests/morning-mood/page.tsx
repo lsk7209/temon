@@ -11,7 +11,7 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
-import { Clock, Users, Heart, Sparkles } from "lucide-react"
+import { Clock, Heart, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "아침 기분 테스트로 감정 전환, 컨디션 관리, 하루 시작 방식을 확인하세요."
@@ -111,10 +111,6 @@ export default function MorningMoodIntro() {
             </p>
 
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>14,753명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>

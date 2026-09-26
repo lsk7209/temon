@@ -11,7 +11,7 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Timer } from "lucide-react"
+import { Clock, Timer } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "식사 시간대 테스트로 규칙형·즉흥형 식사 루틴과 생활 패턴을 확인하세요."
@@ -111,10 +111,6 @@ export default function FoodTimingIntro() {
             </p>
 
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>13,825명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>

@@ -11,7 +11,7 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Moon, Sparkles } from "lucide-react"
+import { Clock, Moon, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "12문항으로 퇴근 루틴을 분석해 16가지 성격 유형을 매칭. 운동·집콕·모임·자기계발까지, 당신의 퇴근 패턴은? 퇴근하고 집에 와서 하는 "
@@ -98,10 +98,6 @@ export default function EveningRoutineIntro() {
 
             {/* Stats */}
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>5,438명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>
