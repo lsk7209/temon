@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getDb } from '@/lib/db/client'
 import { pageVisits, testStarts, testResults } from '@/lib/db/schema'
 import { sql, and, gte, lte } from 'drizzle-orm'
+import { verifyAdminToken } from '@/lib/admin-auth'
 
 // export const runtime = 'edge' // Removed for stability with libsql
 export const dynamic = 'force-dynamic'
@@ -20,6 +21,14 @@ export async function OPTIONS() {
 
 export async function GET(request: NextRequest) {
     try {
+        const isAdmin = await verifyAdminToken()
+        if (!isAdmin) {
+            return NextResponse.json(
+                { error: 'Unauthorized' },
+                { status: 401, headers: getCorsHeaders() }
+            )
+        }
+
         const { searchParams } = new URL(request.url)
         const startDateParam = searchParams.get('startDate')
         const endDateParam = searchParams.get('endDate')
