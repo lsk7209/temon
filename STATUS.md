@@ -1,21 +1,23 @@
 # Status | 마지막: 2026-09-26
 
 ## 현재 작업
-9/26 종합 운영 진단(검색 하락·계측·콘텐츠 품질) 반영 착수. 이번 세션은 확정된 버그만 최소 수정. 검색 손실 원인은 유력 후보만 특정, 라이브 GSC 재확인은 아직 미완.
+9/26 종합 운영 진단(검색 하락·계측·콘텐츠 품질·개인정보) 반영 중. GSC/GA4 라이브 연결이 이 세션엔 없어 코드 레벨로 확인·수정 가능한 항목 위주로 진행. 검색 손실 원인은 유력 후보만 특정된 상태.
 
-## 최근 변경 (최근 5개만)
-- 09-26: `lib/analytics.ts` `trackCTAClick()`이 동일 클릭에 `cta_click`/`cta_clicked` 두 이벤트를 중복 발행하던 것을 확인(다른 코드에서 `cta_clicked` 참조 없음, 순수 중복) → `cta_clicked` 발행 제거.
-- 09-26: `components/landing-conversion-section.tsx`(전체 테스트 랜딩 공통 컴포넌트)와 `app/tests/page.tsx`, `lib/blog-posts.ts`에 "이탈률이 낮아져요", "완료율이 높아져요", "GSC에서 노출이 확인된 검색어" 등 운영자향 CRO/SEO 문구가 독자용 본문에 그대로 노출되고 있던 것을 발견 → 사용자 관점 문구로 교체.
-- 09-26: 검색 손실(GSC 클릭 -67.8%, 8/27~9/23) 원인 조사 — git log 대조 결과 감소 구간 시작 하루 전인 8/26에 결과 페이지 236개 URL 재구조화 + redirect/robots.ts/sitemap 동시 변경이 있었음을 확인. 홈·`/tests` 목록 자체는 코드 변경 이력 없음. **원인 확정 아님, 유력 후보로만 기록** — 라이브 URL 검사(GSC)·크롤링 통계 대조 필요.
-- 09-26: `/tests` 페이지네이션(9/13~14, `tests-pagination-20260913`)이 이전엔 `?page=2`가 서버에서 무시되어 1페이지와 본문이 동일했던 것을 이미 수정한 이력 확인 — 검색 손실 원인이 아니라 오히려 기존 결함의 선행 수정으로 판단.
-- 09-26: 대표 채점 엔진(`calculateMBTI`) 및 `useQuizLogic` 점검 — 순수 함수·결정적 동점 처리(E/S/T/J 우선)·연속 클릭 가드(`isProcessing`) 확인, 결함 없음.
+## 최근 변경 (최근 5개만, 09-26 작업은 STATUS.md 하단 "09-26 전체 변경" 참조)
+- 09-26: `/api/results`(POST, DB 기반 테스트의 실제 결과 저장 경로 — 라이브 트래픽에서 매 완료마다 호출됨)가 원본 IP를 해시 없이 그대로 `testResults.userIp`에 저장하던 것을 확인. 같은 계정의 `/api/analytics/track`은 이미 SHA-256+salt 해시 적용 중이었는데 이 경로만 빠져 있었음. 개인정보처리방침이 "테스트 결과에 개인 식별 정보 없음"이라 명시한 것과 실제 구현이 불일치했던 것 — `lib/hash-ip.ts` 공용 유틸로 추출해 두 경로 모두 적용.
+- 09-26: 근거 없는 "N명 참여" 참여수 표시를 236개 파일에서 전면 제거. DB 스키마에 참여자 수 집계 컬럼이 없고 전부 파일별 하드코딩 리터럴(예: "17,346명 참여", "25.8K")이었음을 확인 후 조치. `test_stats.total_completions`에 실제 완료 수 컬럼은 존재하므로, 추후 실제 집계로 재도입하는 것은 검토 가능.
+- 09-26: 리뷰 문서 5.2항이 지적한 phone-battery 테스트 문항(주제와 무관한 "관리하는 방식/이유/기준" 반복)을 확인·재작성. 태그 분포를 세어보니 12문항 중 6문항이 완전히 같은 축(T,J vs F,P)에 중복 배점되고 있었음 — coffee-mbti 패턴(축당 3문항, 문항당 태그 1개)으로 재설계. 같은 템플릿 패턴이 다른 자동 생성 테스트에도 남아있을 가능성 있음(전수 재작성은 별도 과제).
+- 09-26: `components/share-buttons.tsx`의 클립보드 폴백(`document.execCommand("copy")`)이 반환값을 확인하지 않아 실패해도 "복사 완료"로 표시되고 `share_copy_success` 이벤트가 발행되던 버그 수정 — 반환값 확인 후 실패 시 catch로 넘겨 알림 표시.
+- 09-26: `lib/analytics.ts` `trackCTAClick()`의 `cta_click`/`cta_clicked` 중복 발행 제거, `components/landing-conversion-section.tsx` 등 운영자향 CRO 문구 노출 수정, 검색 손실 유력 후보(8/26 결과 페이지 URL 재구조화) 특정 — 상세는 이전 커밋 로그 참조.
 
 ## TODO
 - [ ] 며칠 지켜보고 결과 페이지 광고 실채움률/수익 확인 (재개 직후라 일시적 unfilled 있었음).
 - [ ] (착수 시 별도 요청) Next.js 16 / drizzle-orm 0.45 업그레이드 — 리포트만 완료, 실행은 보류.
-- [ ] GSC URL 검사로 홈·`/tests/music-taste`·`/tests/pet-mbti`·`/tests/breakup-style`의 마지막 크롤링·색인 상태·Google 선택 canonical 확인 (8/26 재구조화가 실제 원인인지 검증).
+- [ ] GSC URL 검사로 홈·`/tests/music-taste`·`/tests/pet-mbti`·`/tests/breakup-style`의 마지막 크롤링·색인 상태·Google 선택 canonical 확인 (8/26 재구조화가 실제 원인인지 검증). 코드 레벨로는 이 4개 페이지의 noindex·canonical·홈페이지 내부링크(`getHomePageTests`, 8월 이후 미변경)·`lib/noindex-tests.ts` 목록(4개 페이지 모두 미포함)을 확인했고 이상 없음 — 남은 건 라이브 GSC 확인뿐.
 - [ ] `cta_clicked` 제거 후 GA4에서 실제 중복 해소 확인(1160/1160 → cta_click만 남는지).
-- [x] 나머지 콘텐츠 전수 grep 스캔(운영/분석 용어 키워드 기준) 완료 — `components/answer-engine-section.tsx`의 "세션 이어가기" 문구 1건 추가 수정. `lib/ntrpResultConfig.ts`의 "KPI"는 테니스 실력 지표를 뜻하는 정상 콘텐츠로 확인(오탐), `lib/extended-content.ts`/`result-ad-unit.tsx`의 AdSense 언급은 코드 주석이라 렌더링되지 않음 확인. 키워드 기반 스캔이라 문맥 없이 놓친 표현이 남아있을 가능성은 있음.
+- [ ] 과거에 이미 원본 IP로 저장된 `test_results.user_ip` 기존 행 처리(백필/삭제) 여부 결정 필요 — 이번 수정은 신규 저장분부터만 해시 적용됨.
+- [ ] phone-battery처럼 "관리하는 방식/이유/기준/강도/환경" 템플릿 패턴을 쓰는 다른 자동 생성 테스트가 더 있는지 전수 확인(문항 품질은 스크립트로 자동 판별하기 어려워 사람 검수 필요).
+- [x] 나머지 콘텐츠 전수 grep 스캔(운영/분석 용어 키워드 기준) 완료 — `components/answer-engine-section.tsx`의 "세션 이어가기" 문구 1건 추가 수정. `lib/ntrpResultConfig.ts`의 "KPI"는 테니스 실력 지표를 뜻하는 정상 콘텐츠로 확인(오탐), `lib/extended-content.ts`/`result-ad-unit.tsx`의 AdSense 언급은 코드 주석이라 렌더링되지 않음 확인.
 
 ## 결정사항
 - 결과 페이지 URL을 `/results/` 단일 접두사로 통일 → AdSense Auto Ads URL 제외를 접두사 매칭 하나로 확실히 적용 가능해짐(2026-08-26 확정, 라이브 검증 완료).

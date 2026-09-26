@@ -47,8 +47,11 @@ export function ShareButtons({
         textarea.style.opacity = "0";
         document.body.appendChild(textarea);
         textarea.select();
-        document.execCommand("copy");
+        const copySucceeded = document.execCommand("copy");
         document.body.removeChild(textarea);
+        if (!copySucceeded) {
+          throw new Error("execCommand copy failed");
+        }
       }
 
       setCopied(true);
