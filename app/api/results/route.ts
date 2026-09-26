@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
 import { saveTestResult, getTestResult } from "@/lib/db/queries/results";
+import { hashIp } from "@/lib/hash-ip";
 
 /**
  * CORS 헤더 설정
@@ -92,18 +93,18 @@ export async function POST(request: NextRequest) {
 
     // 클라이언트 정보 추출
     const userAgent = request.headers.get("user-agent") || undefined;
-    const ipAddress =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    const ipRaw =
+      request.headers.get("x-forwarded-for") ||
       request.headers.get("x-real-ip") ||
-      undefined;
+      "unknown";
 
-    // 결과 저장
+    // 결과 저장 (원본 IP는 저장하지 않고 해시된 식별자만 저장 — PIPA 최소수집)
     const resultId = await saveTestResult({
       testId,
       resultType,
       answers,
       userAgent,
-      userIp: ipAddress,
+      userIp: hashIp(ipRaw),
     });
 
     return NextResponse.json(
