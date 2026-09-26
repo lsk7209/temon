@@ -9,6 +9,7 @@ export const revalidate = 300 // ISR: 5분
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getTestStats, getStatsByDateRange } from '@/lib/db/queries/stats'
+import { verifyAdminToken } from '@/lib/admin-auth'
 
 /**
  * CORS 헤더 설정
@@ -45,6 +46,14 @@ export async function OPTIONS() {
  */
 export async function GET(request: NextRequest) {
   try {
+    const isAdmin = await verifyAdminToken()
+    if (!isAdmin) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401, headers: getCorsHeaders() }
+      )
+    }
+
     const { searchParams } = new URL(request.url)
     const testId = searchParams.get('testId')
     const date = searchParams.get('date') || new Date().toISOString().split('T')[0]
