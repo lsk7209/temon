@@ -60,17 +60,11 @@ export function middleware(request: NextRequest) {
   // 주의: www <-> non-www 리다이렉트는 Vercel 도메인 설정에서 처리
   // middleware에서 리다이렉트를 하면 Vercel 도메인 설정과 충돌하여 무한 루프 발생 가능
 
-  // Admin API 인증 체크 (미들웨어 레벨)
-  if (request.nextUrl.pathname.startsWith('/api/admin/')) {
-    const authHeader = request.headers.get('authorization')
-    const adminToken = process.env.ADMIN_TOKEN
-    if (!adminToken || authHeader !== `Bearer ${adminToken}`) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
-    }
-  }
+  // Admin API 인증은 각 라우트의 verifyAdminToken()(lib/admin-auth.ts)에서 처리한다.
+  // 그 함수는 httpOnly admin_session 쿠키를 우선 확인하고 Authorization 헤더로
+  // 폴백하는데, 여기 미들웨어에 있던 예전 체크는 헤더만 확인해서 쿠키로 로그인한
+  // 정상 관리자 요청까지 여기서 먼저 401로 막아버리고 있었다(라우트 핸들러까지
+  // 도달하지도 못함). 중복 체크를 제거하고 라우트 레벨 검증만 남긴다.
 
   // Rate Limit 체크 (API 엔드포인트만)
   if (request.nextUrl.pathname.startsWith('/api/')) {
