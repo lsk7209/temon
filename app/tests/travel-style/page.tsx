@@ -153,8 +153,8 @@ export default function TravelStyleIntro() {
 
                   <div className="space-y-4">
                     <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
-                      <p className="font-medium">✈️ 공항 도착 시간</p>
-                      <p className="text-sm text-muted-foreground mt-1">비행 2시간 전 도착 vs 딱 맞춰 가도 됨</p>
+                      <p className="font-medium">✈️ 공항에서 대기 시간이 남으면</p>
+                      <p className="text-sm text-muted-foreground mt-1">다른 사람들과 얘기하며 시간을 보낸다 vs 혼자 조용히 책이나 폰을 본다</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">🍽️ 여행지에서의 식사</p>
@@ -162,7 +162,7 @@ export default function TravelStyleIntro() {
                     </div>
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">📸 사진 찍을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">배경·구도 완벽하게 vs 순간 감성 우선</p>
+                      <p className="text-sm text-muted-foreground mt-1">여러 사람과 함께 찍는 걸 좋아한다 vs 혼자 찍거나 풍경 위주로 찍는다</p>
                     </div>
                   </div>
                 </div>
