@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Armchair, Clock, Sparkles, Users } from "lucide-react"
+import { Armchair, Clock, Sparkles } from "lucide-react"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { FAQSection } from "@/components/faq-section"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
@@ -110,7 +110,6 @@ export default function ChairSittingIntro() {
                 어떤 자리를 고르고, 어떤 자세로 앉고, 불편할 때 어떻게 반응하는지 12문항으로 확인합니다.
               </p>
               <div className="flex items-center justify-center gap-6 text-sm text-slate-700 dark:text-slate-200">
-                <span className="flex items-center gap-2"><Users className="h-4 w-4" />11,074명 참여</span>
                 <span className="flex items-center gap-2"><Clock className="h-4 w-4" />3분 소요</span>
                 <span>12문항</span>
               </div>

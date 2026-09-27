@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Clock, Salad, Sparkles, Users } from "lucide-react"
+import { Clock, Salad, Sparkles } from "lucide-react"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { FAQSection } from "@/components/faq-section"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
@@ -110,7 +110,6 @@ export default function SaladDressingIntro() {
                 드레싱 종류와 양, 맛과 건강 사이의 기준, 재료 조합 취향을 12문항으로 확인합니다.
               </p>
               <div className="flex items-center justify-center gap-6 text-sm text-slate-700 dark:text-slate-200">
-                <span className="flex items-center gap-2"><Users className="h-4 w-4" />15,950명 참여</span>
                 <span className="flex items-center gap-2"><Clock className="h-4 w-4" />3분 소요</span>
                 <span>12문항</span>
               </div>

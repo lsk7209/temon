@@ -11,12 +11,12 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Zap, Sparkles } from "lucide-react"
+import { Clock, Zap, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
-const shortDescription = "스마트폰 배터리를 관리하는 방식으로 알아보는 나의 성격 유형. 배터리가 20% 남았을 때, 배터리가 다 떨어졌을 때 등 구체적인 상황으로 ..."
+const shortDescription = "스마트폰 배터리를 관리하는 방식으로 알아보는 나의 성격 유형. 외출 전 배터리 확인, 배터리 잔량 체크 방식 등 구체적인 상황으로 ..."
 // Full description for Google/AI
-const fullDescription = "스마트폰 배터리를 관리하는 방식으로 알아보는 나의 성격 유형. 배터리가 20% 남았을 때, 배터리가 다 떨어졌을 때 등 구체적인 상황으로 분석합니다."
+const fullDescription = "스마트폰 배터리를 관리하는 방식으로 알아보는 나의 성격 유형. 외출 전 배터리 확인, 배터리 잔량 체크 방식 등 구체적인 상황으로 분석합니다."
 
 export const metadata: Metadata = generateQuizMetadata({
   quizId: "phone-battery",
@@ -89,14 +89,10 @@ export default function PhoneBatteryIntro() {
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              배터리가 20% 남았을 때, 배터리가 다 떨어졌을 때 등 구체적인 상황으로 16유형 분석. 12문항, 약 3분 소요.
+              외출 전 배터리 확인, 배터리 잔량 체크 방식 등 구체적인 상황으로 16유형 분석. 12문항, 약 3분 소요.
             </p>
 
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>11,743명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>
@@ -137,31 +133,31 @@ export default function PhoneBatteryIntro() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                   <div className="space-y-4">
                     <div className="p-4 bg-yellow-50 dark:bg-yellow-950 rounded-lg">
-                      <p className="font-medium">1. 배터리가 20% 남았을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">즉시 충전한다 vs 나중에 충전한다</p>
+                      <p className="font-medium">1. 외출 전 배터리 상태를 보면</p>
+                      <p className="text-sm text-muted-foreground mt-1">일단 100%까지 채우고 나간다 vs 남은 만큼만 들고 그냥 나간다</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-                      <p className="font-medium">2. 배터리가 다 떨어졌을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">계획대로 대처한다 vs 상황에 따라 대처한다</p>
+                      <p className="font-medium">2. 배터리 잔량을 확인할 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">정확한 숫자(%)로 확인한다 vs 아이콘 색으로 대충 감을 잡는다</p>
                     </div>
                     <div className="p-4 bg-yellow-50 dark:bg-yellow-950 rounded-lg">
-                      <p className="font-medium">3. 배터리를 관리하는 방식</p>
-                      <p className="text-sm text-muted-foreground mt-1">혼자 조용히 관리한다 vs 사람들과 함께 관리한다</p>
+                      <p className="font-medium">3. 배터리가 갑자기 빨리 닳을 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">설정에 들어가 원인 앱부터 찾는다 vs 일단 불안해지고 신경이 쓰인다</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-                      <p className="font-medium">4. 배터리를 충전하는 시간</p>
-                      <p className="text-sm text-muted-foreground mt-1">정해진 시간에 충전한다 vs 그때그때 충전한다</p>
+                      <p className="font-medium">4. 카페에서 배터리가 간당간당할 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">옆자리에 콘센트 같이 쓰자고 말한다 vs 조용히 혼자 콘센트 자리로 옮긴다</p>
                     </div>
                     <div className="p-4 bg-yellow-50 dark:bg-yellow-950 rounded-lg">
-                      <p className="font-medium">5. 배터리를 관리하는 이유</p>
-                      <p className="text-sm text-muted-foreground mt-1">목표와 효율을 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="font-medium">5. 충전하는 타이밍은</p>
+                      <p className="text-sm text-muted-foreground mt-1">자기 전 등 정해둔 시간에 한다 vs 생각날 때, 급할 때 한다</p>
                     </div>
                     <div className="p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-                      <p className="font-medium">6. 배터리를 선택하는 기준</p>
-                      <p className="text-sm text-muted-foreground mt-1">효율성과 목표를 위해 vs 기분과 컨디션을 위해</p>
+                      <p className="font-medium">6. 새 폰의 배터리 성능을 볼 때</p>
+                      <p className="text-sm text-muted-foreground mt-1">실사용 시간·스펙을 비교한다 vs 후기 느낌으로 판단한다</p>
                     </div>
                   </div>
                 </div>

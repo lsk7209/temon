@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { verifyAdminToken } from "@/lib/admin-auth";
 
 /**
  * 관리자 로그인 — 서버 측 비밀번호 검증 + httpOnly 쿠키 발급.
@@ -70,4 +71,13 @@ export async function DELETE() {
   const jar = await cookies();
   jar.delete(COOKIE_NAME);
   return NextResponse.json({ success: true });
+}
+
+/**
+ * 세션 확인용 — 새로고침 시 이미 로그인돼 있는지 클라이언트가 물어보는 용도.
+ * 토큰 값 자체는 절대 응답에 포함하지 않고 boolean만 반환한다.
+ */
+export async function GET() {
+  const isAdmin = await verifyAdminToken();
+  return NextResponse.json({ authenticated: isAdmin });
 }

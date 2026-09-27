@@ -11,7 +11,7 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, ShoppingBag, Sparkles } from "lucide-react"
+import { Clock, ShoppingBag, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "12문항으로 알아보는 나의 쇼핑 스타일! 계획형 vs 즉흥형, 실속형 vs 감성형 💳 쇼핑할 때마다 드러나는 진짜 나의 성격을 알아보세요."
@@ -96,10 +96,6 @@ export default function ShoppingStyleIntro() {
 
             {/* Stats */}
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>9,427명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>

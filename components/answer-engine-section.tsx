@@ -73,7 +73,7 @@ function getAnswerContent(quizTitle: string): AnswerContent {
       nextClicks: [
         "다른 음식 주제 테스트 이어보기",
         "결과를 실제 주문 습관과 비교해보기",
-        "관련 테스트로 세션 이어가기",
+        "관련 테스트도 이어서 풀어보기",
       ],
     };
   }

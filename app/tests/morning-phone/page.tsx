@@ -11,7 +11,7 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Smartphone, Sparkles } from "lucide-react"
+import { Clock, Smartphone, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "아침에 핸드폰을 체크하는 방식으로 알아보는 나의 성격 유형. 아침에 일어나서 첫 번째로 할 일, 읽지 않은 메시지가 많을 때 등 구체적인 ..."
@@ -93,10 +93,6 @@ export default function MorningPhoneIntro() {
             </p>
 
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>17,129명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>

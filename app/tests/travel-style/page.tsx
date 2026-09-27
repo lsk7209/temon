@@ -11,7 +11,7 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, Plane, Sparkles } from "lucide-react"
+import { Clock, Plane, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "12문항으로 알아보는 나의 여행 짐 스타일! 계획형부터 즉흥형까지 성격 분석. 짐 싸는 습관 속에 숨은 나의 성격을 알아보세요."
@@ -99,10 +99,6 @@ export default function TravelStyleIntro() {
             {/* Stats */}
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>9,823명 참여</span>
-              </div>
-              <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>
               </div>
@@ -157,8 +153,8 @@ export default function TravelStyleIntro() {
 
                   <div className="space-y-4">
                     <div className="p-4 bg-cyan-50 dark:bg-cyan-950 rounded-lg">
-                      <p className="font-medium">✈️ 공항 도착 시간</p>
-                      <p className="text-sm text-muted-foreground mt-1">비행 2시간 전 도착 vs 딱 맞춰 가도 됨</p>
+                      <p className="font-medium">✈️ 공항에서 대기 시간이 남으면</p>
+                      <p className="text-sm text-muted-foreground mt-1">다른 사람들과 얘기하며 시간을 보낸다 vs 혼자 조용히 책이나 폰을 본다</p>
                     </div>
                     <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
                       <p className="font-medium">🍽️ 여행지에서의 식사</p>
@@ -166,7 +162,7 @@ export default function TravelStyleIntro() {
                     </div>
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-950 rounded-lg">
                       <p className="font-medium">📸 사진 찍을 때</p>
-                      <p className="text-sm text-muted-foreground mt-1">배경·구도 완벽하게 vs 순간 감성 우선</p>
+                      <p className="text-sm text-muted-foreground mt-1">여러 사람과 함께 찍는 걸 좋아한다 vs 혼자 찍거나 풍경 위주로 찍는다</p>
                     </div>
                   </div>
                 </div>

@@ -612,7 +612,6 @@ function ResultContent() {
                     <div className="text-4xl mb-3">{test.emoji}</div>
                     <h3 className="font-bold mb-2">{test.title}</h3>
                     <p className="text-sm text-muted-foreground mb-3">{test.description}</p>
-                    <p className="text-xs text-muted-foreground mb-4">{test.participants}명 참여</p>
                     <Button size="sm" variant="outline" asChild>
                       <Link href={`/tests/${test.slug}`}>테스트 하기</Link>
                     </Button>

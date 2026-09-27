@@ -11,7 +11,7 @@ import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Users, UtensilsCrossed, Sparkles } from "lucide-react"
+import { Clock, UtensilsCrossed, Sparkles } from "lucide-react"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "도시락 구성, 포장, 정리 습관으로 16유형 성향을 분석합니다. 도시락 싸는 방식으로 알아보는 나의 성격. 12문항, 결과 공유 이미지 자..."
@@ -93,10 +93,6 @@ export default function LunchboxStyleIntro() {
             </p>
 
             <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>17,340명 참여</span>
-              </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4" />
                 <span>3분 소요</span>

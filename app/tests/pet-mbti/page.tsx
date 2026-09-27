@@ -188,10 +188,6 @@ export default function PetMBTIIntro() {
                 {/* Stats */}
                 <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
                   <div className="flex items-center space-x-2">
-                    <Users className="h-4 w-4" />
-                    <span>3,704명 참여</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
                     <Clock className="h-4 w-4" />
                     <span>2분 소요</span>
                   </div>

@@ -127,10 +127,6 @@ export default function StudyMBTIIntro() {
                 {/* Stats */}
                 <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
                   <div className="flex items-center space-x-2">
-                    <Users className="h-4 w-4" />
-                    <span>18,547명 참여</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
                     <Clock className="h-4 w-4" />
                     <span>5분 소요</span>
                   </div>

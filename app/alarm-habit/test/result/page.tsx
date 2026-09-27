@@ -411,7 +411,6 @@ ${shareUrl}`
                     <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">{test.emoji}</div>
                     <h3 className="font-bold mb-2 text-sm sm:text-base">{test.title}</h3>
                     <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">{test.description}</p>
-                    <p className="text-xs text-muted-foreground mb-3 sm:mb-4">{test.participants}명 참여</p>
                     <Button size="sm" variant="outline" asChild className="text-xs sm:text-sm bg-transparent">
                       <Link href={`/${test.slug}`}>테스트 하기</Link>
                     </Button>

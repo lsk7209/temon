@@ -404,11 +404,6 @@ export function trackCTAClick(ctaName: string, location: string) {
         page_location: location,
         event_category: "conversion",
       });
-      window.gtag("event", "cta_clicked", {
-        cta_name: ctaName,
-        page_location: location,
-        event_category: "conversion",
-      });
     });
   } catch (error) {
     console.error("CTA 클릭 추적 오류:", error);

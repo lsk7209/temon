@@ -142,10 +142,6 @@ export default function KdramaCharacterIntro() {
                 {/* Stats */}
                 <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
                   <div className="flex items-center space-x-2">
-                    <Users className="h-4 w-4" />
-                    <span>13,748명 참여</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
                     <Clock className="h-4 w-4" />
                     <span>3분 소요</span>
                   </div>
