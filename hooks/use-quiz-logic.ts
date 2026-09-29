@@ -39,12 +39,10 @@ export function useQuizLogic({
   const router = useRouter()
   const { saveResult, startAttempt, trackProgress, isSaving } = useTestResult({
     testId,
-    onSuccess: (resultId, resultType) => {
-      router.push(`${resultPath}?type=${resultType}&id=${resultId}`)
-    },
-    onError: (error, resultType) => {
-      console.error("결과 저장 실패:", error)
-      router.push(`${resultPath}?type=${encodeURIComponent(resultType)}&save=unconfirmed`)
+    // Static quiz: no DB parent row, so show the calculated type directly.
+    persist: false,
+    onComplete: (resultType) => {
+      router.push(`${resultPath}?type=${encodeURIComponent(resultType)}`)
     },
   })
 

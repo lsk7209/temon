@@ -5,11 +5,19 @@ import { trackResultSave, trackTestComplete, trackTestProgress, trackTestStart }
 
 interface UseTestResultOptions {
   testId: string
+  /**
+   * false for code-defined (static) quizzes: they have no parent row in the
+   * `tests` table, so a server save can only fail. The result is shown from
+   * the calculated type instead, without a request or a "save failed" notice.
+   */
+  persist?: boolean
   onSuccess?: (resultId: string, resultType: string) => void
   onError?: (error: Error, resultType: string) => void
+  /** Called instead of saving when persist is false. */
+  onComplete?: (resultType: string) => void
 }
 
-export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptions) {
+export function useTestResult({ testId, persist = true, onSuccess, onError, onComplete }: UseTestResultOptions) {
   const [isSaving, setIsSaving] = useState(false)
   const [error, setError] = useState<Error | null>(null)
   const attemptIdRef = useRef<string | null>(null)
@@ -40,6 +48,10 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
       completedRef.current = true
       trackTestComplete(testId, resultType)
     }
+    if (!persist) {
+      onComplete?.(resultType)
+      return null
+    }
     inFlightRef.current = true
     setIsSaving(true)
     setError(null)
@@ -62,7 +74,7 @@ export function useTestResult({ testId, onSuccess, onError }: UseTestResultOptio
     trackResultSave(testId, 'success')
     onSuccess?.(savedId, resultType)
     return savedId
-  }, [testId, onSuccess, onError])
+  }, [testId, persist, onSuccess, onError, onComplete])
 
   return { saveResult, startAttempt, trackProgress, isSaving, error }
 }

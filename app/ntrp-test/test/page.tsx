@@ -181,14 +181,11 @@ export default function NTRPTestPage() {
   const router = useRouter()
   const { saveResult, startAttempt, trackProgress } = useTestResult({
     testId: 'ntrp-test',
-    onSuccess: (resultId, resultType) => {
+    // Static quiz: no DB parent row, so show the calculated level directly.
+    persist: false,
+    onComplete: (resultType) => {
       const finalLevel = parseFloat(resultType)
-      router.push(`/ntrp-test/test/result?level=${finalLevel}&id=${resultId}`)
-    },
-    onError: (error, resultType) => {
-      console.error('결과 저장 실패:', error)
-      const finalLevel = parseFloat(resultType)
-      router.push(`/ntrp-test/test/result?level=${finalLevel}&save=unconfirmed`)
+      router.push(`/ntrp-test/test/result?level=${finalLevel}`)
     },
   })
 
