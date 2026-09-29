@@ -3,6 +3,7 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import { ShareButtons } from "@/components/share-buttons";
 import { StaticResultEnhancements } from "@/components/static-result-enhancements";
+import { RelatedBlogPosts } from "@/components/related-blog-posts";
 import { ALL_TESTS } from "@/lib/tests-config";
 
 export const AUTO_ENHANCEMENT_SKIP_SLUGS = [
@@ -61,6 +62,9 @@ export function ResultRouteAutoEnhancements() {
         showToc
         anchorMain
       />
+      <div className="mt-6">
+        <RelatedBlogPosts testId={slug} />
+      </div>
     </section>
   );
 }
