@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 /**
- * Vercel Edge Middleware
- * - 요청 로깅
- * - Rate Limiting (간단한 버전)
+ * Next.js Proxy (구 Middleware)
+ * - Rate Limiting (간단한 메모리 기반)
  * - 보안 헤더 추가
- * 
- * Vercel Edge Runtime에서 실행되므로 빠른 응답 시간 보장
+ *
+ * Next.js 16에서 `middleware` 파일 규약이 `proxy`로 변경되었고 Node.js 런타임에서
+ * 실행된다. 아래 rate limiter는 인스턴스별 메모리 기반이라 전역 제한을 보장하지
+ * 않는 기존 설계 그대로이며(프로덕션에서 엄격한 제한이 필요하면 KV/Redis 권장),
+ * 런타임 변경(Edge→Node)이 이 동작의 정확성을 바꾸지 않는다.
  */
 
 // 간단한 Rate Limiting (메모리 기반)
-// 프로덕션에서는 Vercel KV 또는 Redis 사용 권장
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
 const RATE_LIMIT = 1000 // 1분당 최대 요청 수
 const RATE_LIMIT_WINDOW = 60 * 1000 // 1분
@@ -52,25 +53,21 @@ function cleanupRateLimitMap() {
   }
 }
 
-export function middleware(request: NextRequest) {
-  // Vercel Edge Runtime에서 실행
+export function proxy(request: NextRequest) {
   // 관리자 대시보드 접근 제어는 클라이언트 사이드에서 처리
   // (dashboard-client.tsx에서 localStorage 확인 후 리다이렉트)
 
   // 주의: www <-> non-www 리다이렉트는 Vercel 도메인 설정에서 처리
-  // middleware에서 리다이렉트를 하면 Vercel 도메인 설정과 충돌하여 무한 루프 발생 가능
+  // (여기서 리다이렉트하면 Vercel 도메인 설정과 충돌해 무한 루프 가능)
 
   // Admin API 인증은 각 라우트의 verifyAdminToken()(lib/admin-auth.ts)에서 처리한다.
-  // 그 함수는 httpOnly admin_session 쿠키를 우선 확인하고 Authorization 헤더로
-  // 폴백하는데, 여기 미들웨어에 있던 예전 체크는 헤더만 확인해서 쿠키로 로그인한
-  // 정상 관리자 요청까지 여기서 먼저 401로 막아버리고 있었다(라우트 핸들러까지
-  // 도달하지도 못함). 중복 체크를 제거하고 라우트 레벨 검증만 남긴다.
+  // (httpOnly admin_session 쿠키 우선 + Authorization 헤더 폴백)
 
   // Rate Limit 체크 (API 엔드포인트만)
   if (request.nextUrl.pathname.startsWith('/api/')) {
     const key = getRateLimitKey(request)
 
-    // 주기적으로 오래된 레코드 정리 (Edge Runtime 최적화)
+    // 주기적으로 오래된 레코드 정리
     if (Math.random() < 0.1) {
       cleanupRateLimitMap()
     }
@@ -88,7 +85,7 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // 보안 헤더 추가 (Vercel에서 자동으로 일부 헤더 추가되지만 명시적으로 설정)
+  // 보안 헤더 추가
   const response = NextResponse.next()
 
   // XSS 방지
@@ -134,4 +131,3 @@ export const config = {
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }
-
