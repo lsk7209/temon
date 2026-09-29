@@ -9,9 +9,10 @@ export const dynamic = "force-dynamic";
 
 export async function POST(
   req: Request,
-  { params }: { params: { testId: string } },
+  { params }: { params: Promise<{ testId: string }> },
 ) {
   try {
+    const { testId } = await params;
     const { answers, attemptId } = (await req.json()) as {
       answers: Record<string, number>;
       attemptId?: unknown;
@@ -31,7 +32,7 @@ export async function POST(
       .from(tests)
       .where(
         and(
-          or(eq(tests.id, params.testId), eq(tests.slug, params.testId)),
+          or(eq(tests.id, testId), eq(tests.slug, testId)),
           eq(tests.status, "published"),
         ),
       )

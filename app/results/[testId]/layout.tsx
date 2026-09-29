@@ -9,9 +9,10 @@ import {
 export async function generateMetadata({
   params,
 }: {
-  params: { testId: string };
+  params: Promise<{ testId: string }>;
 }): Promise<Metadata> {
-  const test = await getPublishedTestSeoSource(params.testId);
+  const { testId } = await params;
+  const test = await getPublishedTestSeoSource(testId);
 
   if (!test) {
     return {
@@ -31,12 +32,12 @@ export async function generateMetadata({
   }
 
   return generateResultPageMetadata({
-    quizId: params.testId,
+    quizId: testId,
     quizTitle: testName,
     shortDescription,
     fullDescription,
     keywords: `${testName}, 성격 테스트, 결과, MBTI, 심리테스트`,
-    canonical: `/results/${params.testId}`,
+    canonical: `/results/${testId}`,
   });
 }
 
@@ -45,9 +46,10 @@ export default async function TestResultLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { testId: string };
+  params: Promise<{ testId: string }>;
 }) {
-  const test = await getPublishedTestSeoSource(params.testId);
+  const { testId } = await params;
+  const test = await getPublishedTestSeoSource(testId);
 
   if (!test) {
     notFound();

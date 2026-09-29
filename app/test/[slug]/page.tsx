@@ -21,8 +21,9 @@ const tests: Record<string, string> = {
   "snowwhite-mbti": "/tests/snowwhite-mbti",
 }
 
-export default function TestRedirect({ params }: { params: { slug: string } }) {
-  const testPath = tests[params.slug]
+export default async function TestRedirect({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const testPath = tests[slug]
 
   if (!testPath) {
     notFound()

@@ -39,8 +39,9 @@ async function getQuizData(slugOrId: string) {
     return { test, questions: questionsList }
 }
 
-export default async function QuizPage({ params }: { params: { testId: string } }) {
-    const data = await getQuizData(params.testId)
+export default async function QuizPage({ params }: { params: Promise<{ testId: string }> }) {
+    const { testId } = await params
+    const data = await getQuizData(testId)
 
     if (!data || data.questions.length === 0) {
         notFound()
@@ -64,7 +65,7 @@ export default async function QuizPage({ params }: { params: { testId: string } 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col">
             <div className="flex-1 flex flex-col justify-center">
-                <ClientRunner apiTestId={data.test.id} routeTestId={params.testId} questions={clientQuestions} />
+                <ClientRunner apiTestId={data.test.id} routeTestId={testId} questions={clientQuestions} />
             </div>
         </div>
     )

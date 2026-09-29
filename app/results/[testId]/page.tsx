@@ -4,8 +4,8 @@ import { AlertTriangle, Home, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Props {
-  params: { testId: string };
-  searchParams: { id?: string | string[]; type?: string | string[] };
+  params: Promise<{ testId: string }>;
+  searchParams: Promise<{ id?: string | string[]; type?: string | string[] }>;
 }
 
 const ALLOWED_TEST_ID = /^[a-z0-9-]+$/;
@@ -13,18 +13,20 @@ const ALLOWED_TEST_ID = /^[a-z0-9-]+$/;
 const toSingleParam = (value?: string | string[]) =>
   Array.isArray(value) ? value[0] : value;
 
-export default function DynamicResultEntryPage({
+export default async function DynamicResultEntryPage({
   params,
   searchParams,
 }: Props) {
-  const safeTestId = params.testId.trim().toLowerCase();
+  const { testId } = await params;
+  const resolvedSearchParams = await searchParams;
+  const safeTestId = testId.trim().toLowerCase();
 
   if (!ALLOWED_TEST_ID.test(safeTestId)) {
     notFound();
   }
 
-  const resultId = toSingleParam(searchParams.id)?.trim();
-  const resultType = toSingleParam(searchParams.type)?.trim();
+  const resultId = toSingleParam(resolvedSearchParams.id)?.trim();
+  const resultType = toSingleParam(resolvedSearchParams.type)?.trim();
 
   if (resultId) {
     const encodedId = encodeURIComponent(resultId);
