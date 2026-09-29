@@ -60,6 +60,19 @@ async function main() {
   assert.equal(saveCalls, 2)
   assert.equal(events.filter(([name]) => name === 'trackTestComplete').length, 1)
   assert.deepEqual(events.at(-1), ['trackResultSave', 'quiz', 'success'])
+
+  // Static quizzes (persist: false): complete once, no network save, no save event.
+  const completions = []
+  const staticHook = isolatedModule.exports.useTestResult({
+    testId: 'static-quiz', persist: false, onComplete: (type) => completions.push(type),
+  })
+  const callsBefore = saveCalls
+  staticHook.startAttempt()
+  assert.equal(await staticHook.saveResult('ENFP', { 0: 'answer' }), null)
+  assert.equal(saveCalls, callsBefore, 'no /api/results request')
+  assert.deepEqual(completions, ['ENFP'])
+  assert.equal(events.filter(([name, id]) => name === 'trackTestComplete' && id === 'static-quiz').length, 1)
+  assert.equal(events.some(([name, id]) => name === 'trackResultSave' && id === 'static-quiz'), false)
   console.log('result attempt: passed')
 }
 main().catch((error) => { console.error(error); process.exitCode = 1 })
