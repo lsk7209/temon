@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { applyAdPersonalizationPreference } from "@/lib/consent";
 
 const ADSENSE_CLIENT_ID =
   process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ||
@@ -37,6 +38,8 @@ export default function AdSenseScript() {
   const [isIndexablePage, setIsIndexablePage] = useState(false);
 
   useEffect(() => {
+    // Refused visitors get non-personalized ads; set before the loader mounts.
+    applyAdPersonalizationPreference();
     const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
     setIsIndexablePage(!robots?.content.toLowerCase().includes("noindex"));
   }, []);

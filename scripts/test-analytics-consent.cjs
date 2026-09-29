@@ -167,13 +167,13 @@ async function main() {
   // 8) Banner and footer control markup: labelled region, two real buttons, privacy link.
   const banner = renderToStaticMarkup(React.createElement(ui.ConsentBannerView, { onGrant() {}, onDeny() {} }))
   assert.match(banner, /role="region"/)
-  assert.match(banner, /aria-label="분석 도구 사용 동의"/)
+  assert.match(banner, /aria-label="분석 도구 및 맞춤형 광고 사용 동의"/)
   assert.equal((banner.match(/<button type="button"/g) || []).length, 2)
   assert.match(banner, />거부</)
   assert.match(banner, />허용</)
   assert.match(banner, /href="\/privacy"/)
-  assert.match(renderToStaticMarkup(React.createElement(ui.ConsentSettingsView, { allowed: true, onGrant() {}, onDeny() {} })), /분석 수집 거부하기/)
-  assert.match(renderToStaticMarkup(React.createElement(ui.ConsentSettingsView, { allowed: false, onGrant() {}, onDeny() {} })), /분석 수집 허용하기/)
+  assert.match(renderToStaticMarkup(React.createElement(ui.ConsentSettingsView, { allowed: true, onGrant() {}, onDeny() {} })), /분석·맞춤형 광고 거부하기/)
+  assert.match(renderToStaticMarkup(React.createElement(ui.ConsentSettingsView, { allowed: false, onGrant() {}, onDeny() {} })), /분석·맞춤형 광고 허용하기/)
 
   // 9) Revocation flips GA's kill switch and Clarity consent on loaded trackers.
   const clarityCalls = []
@@ -182,7 +182,7 @@ async function main() {
   componentWindow.clarity = (...args) => clarityCalls.push(args)
   ui.applyLoadedTrackerConsent('G-TEST', false)
   assert.equal(componentWindow['ga-disable-G-TEST'], true)
-  assert.equal(JSON.stringify(gtagConsent.at(-1)), JSON.stringify(['consent', 'update', { analytics_storage: 'denied' }]))
+  assert.equal(JSON.stringify(gtagConsent.at(-1)), JSON.stringify(['consent', 'update', { analytics_storage: 'denied', ad_personalization: 'denied', ad_user_data: 'denied' }]))
   assert.deepEqual(clarityCalls.at(-1), ['consent', false])
   ui.applyLoadedTrackerConsent('G-TEST', true)
   assert.equal(componentWindow['ga-disable-G-TEST'], false)
@@ -196,7 +196,27 @@ async function main() {
   assert.match(layout, /<AnalyticsConsentGate>/)
   assert.match(fs.readFileSync('components/web-vitals.tsx', 'utf8'), /isAnalyticsAllowed\(\)/)
 
-  console.log('analytics consent: passed (denied/opt-in zero requests, grant, withdrawal, blocked storage, SSR, UI)')
+  // 11) AdSense: refusal keeps ads but requests non-personalized ones; flag tracks changes.
+  const adsLegacy = createSession({})
+  adsLegacy.consent.applyAdPersonalizationPreference()
+  assert.equal(adsLegacy.window.adsbygoogle.requestNonPersonalizedAds, 0, 'default mode unanswered: personalized')
+  adsLegacy.consent.writeAnalyticsConsent('denied')
+  assert.equal(adsLegacy.window.adsbygoogle.requestNonPersonalizedAds, 1, 'refusal switches to NPA immediately')
+  adsLegacy.consent.writeAnalyticsConsent('granted')
+  assert.equal(adsLegacy.window.adsbygoogle.requestNonPersonalizedAds, 0)
+  const adsOptIn = createSession({ mode: 'opt-in' })
+  const loadedAds = { push() {} }
+  adsOptIn.window.adsbygoogle = loadedAds
+  adsOptIn.consent.applyAdPersonalizationPreference()
+  assert.equal(adsOptIn.window.adsbygoogle, loadedAds, 'keeps the already-loaded adsbygoogle object')
+  assert.equal(loadedAds.requestNonPersonalizedAds, 1, 'opt-in unanswered: NPA')
+  for (const file of ['components/adsense-script.tsx', 'components/adsense-reader-script.tsx', 'components/redesign/result-ad-unit.tsx']) {
+    assert.match(fs.readFileSync(file, 'utf8'), /applyAdPersonalizationPreference\(\)/, `${file} applies ad preference`)
+  }
+  const unit = fs.readFileSync('components/redesign/result-ad-unit.tsx', 'utf8')
+  assert.ok(unit.indexOf('applyAdPersonalizationPreference()') < unit.indexOf('.push({})'), 'preference precedes push')
+
+  console.log('analytics consent: passed (denied/opt-in zero requests, grant, withdrawal, blocked storage, SSR, UI, ad personalization)')
 }
 
 main().catch((error) => { console.error(error); process.exitCode = 1 })
