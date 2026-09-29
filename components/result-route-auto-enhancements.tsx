@@ -2,6 +2,7 @@
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { ShareButtons } from "@/components/share-buttons";
+import { ResultImageCard } from "@/components/result-image-card";
 import { StaticResultEnhancements } from "@/components/static-result-enhancements";
 import { RelatedBlogPosts } from "@/components/related-blog-posts";
 import { ALL_TESTS } from "@/lib/tests-config";
@@ -54,6 +55,13 @@ export function ResultRouteAutoEnhancements() {
           title={title}
           description="내 결과를 저장하고 친구와 비교해 보세요."
         />
+        <div className="mt-3">
+          <ResultImageCard
+            testId={slug}
+            quizTitle={title}
+            resultType={resultType}
+          />
+        </div>
       </div>
       <StaticResultEnhancements
         testId={slug}
