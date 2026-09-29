@@ -1,12 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { useTestResult } from "@/hooks/use-test-result"
-import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 
 export interface Question {
   id: number
@@ -43,16 +42,18 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<Record<number, string>>({})
   const [selectedChoice, setSelectedChoice] = useState<string>("")
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const processingRef = useRef(false)
   
   const router = useRouter()
-  const { saveResult } = useTestResult({
+  const { saveResult, startAttempt, trackProgress, isSaving } = useTestResult({
     testId,
     onSuccess: (resultId, resultType) => {
       router.push(`${resultPath}?type=${resultType}&id=${resultId}`)
     },
     onError: (error, resultType) => {
       console.error('결과 저장 실패:', error)
-      router.push(`${resultPath}?type=${resultType}`)
+      router.push(`${resultPath}?type=${encodeURIComponent(resultType)}&save=unconfirmed`)
     },
   })
 
@@ -60,22 +61,18 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
 
   // 테스트 시작 추적
   useEffect(() => {
-    trackTestStart(testId)
-  }, [testId])
-
-  // 진행률 추적
-  useEffect(() => {
-    if (currentQuestion > 0) {
-      trackTestProgress(testId, currentQuestion + 1, questions.length)
-    }
-  }, [currentQuestion, testId, questions.length])
+    if (questions.length) startAttempt()
+    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
+  }, [questions.length, startAttempt])
 
   const handleChoiceSelect = async (choiceId: string) => {
+    if (processingRef.current || isSaving) return
+    processingRef.current = true
     setSelectedChoice(choiceId)
     const currentQuestionIndex = currentQuestion
 
     // Auto-advance after a short delay to show selection
-    setTimeout(async () => {
+    timerRef.current = setTimeout(async () => {
       const question = questions[currentQuestionIndex]
       const selectedChoiceObj = question.choices.find(c => c.id === choiceId)
       // choiceId를 직접 저장하거나, type이 있으면 type 사용
@@ -83,10 +80,12 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
       
       const newAnswers = { ...answers, [currentQuestionIndex]: answerValue }
       setAnswers(newAnswers)
+      trackProgress(Object.keys(newAnswers).length, questions.length)
 
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestion(currentQuestionIndex + 1)
         setSelectedChoice("")
+        processingRef.current = false
       } else {
         // 모든 질문 완료 - 결과 계산 및 저장
         const result = calculateResult(newAnswers)
@@ -96,7 +95,8 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
   }
 
   const handlePrevious = () => {
-    if (currentQuestion > 0) {
+    if (currentQuestion > 0 && !processingRef.current && !isSaving) {
+      if (timerRef.current) clearTimeout(timerRef.current)
       setCurrentQuestion(currentQuestion - 1)
       const previousAnswer = answers[currentQuestion - 1]
       // Find the choice ID for the previous answer
@@ -150,7 +150,7 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
                       : "border-gray-300 hover:" + theme.border.replace("border-", "border-")
                   }`}
                   onClick={() => handleChoiceSelect(choice.id)}
-                  disabled={selectedChoice !== ""}
+                  disabled={processingRef.current || isSaving}
                 >
                   <div className="flex items-center space-x-3">
                     <div className="w-6 h-6 rounded-full border-2 border-current flex items-center justify-center">
@@ -166,6 +166,7 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
                 <Button
                   variant="outline"
                   onClick={handlePrevious}
+                  disabled={processingRef.current || isSaving}
                   className="w-full"
                 >
                   이전 질문

@@ -12,7 +12,12 @@ import {
 } from "@/components/json-ld";
 import { getDb, isDbAvailable } from "@/lib/db/client";
 import { tests } from "@/lib/db/schema";
-import { ALL_TESTS } from "@/lib/tests-config";
+import { CATEGORIES } from "@/lib/tests-config";
+import { getVisibleTests } from "@/lib/visible-tests";
+import {
+  filterListingItems, normalizeCategory, normalizeQuery, parseListingPage,
+  uniqueListingItems,
+} from "@/lib/tests-listing";
 import TestsPageClient from "./tests-page-client";
 
 const baseUrl = "https://temon.kr";
@@ -343,6 +348,8 @@ const listingMetadata: Metadata = {
 
 type TestsPageSearchParams = {
   page?: string | string[];
+  q?: string | string[];
+  category?: string | string[];
 };
 
 type DynamicTest = {
@@ -351,83 +358,63 @@ type DynamicTest = {
   description: string | null;
   slug: string;
   category: string | null;
+  publishedAt: Date | null;
+  questionCount: number;
+  avgMinutes: number;
 };
 
-function parseRequestedPage(value: string | string[] | undefined): number {
-  const candidate = Array.isArray(value) ? value[0] : value;
-  if (!candidate || !/^\d+$/.test(candidate)) return 1;
-
-  const page = Number(candidate);
-  return Number.isSafeInteger(page) && page > 0 ? page : 1;
-}
-
 const loadDynamicTests = cache(async (): Promise<DynamicTest[]> => {
-  if (!isDbAvailable()) return [];
+  if (!isDbAvailable()) {
+    // A local offline build can still render the static catalog. A deployed
+    // instance must not present an incomplete catalog as a successful page.
+    if (process.env.VERCEL) throw new Error("TEST_LIST_UNAVAILABLE");
+    return [];
+  }
 
   try {
     const db = getDb();
-    return await db
+    const rows = await db
       .select({
         id: tests.id,
         title: tests.title,
         description: tests.description,
         slug: tests.slug,
         category: tests.category,
+        publishedAt: tests.publishedAt,
+        questionCount: tests.questionCount,
+        avgMinutes: tests.avgMinutes,
       })
       .from(tests)
       .where(eq(tests.status, "published"))
       .orderBy(desc(tests.publishedAt), desc(tests.createdAt))
       .all();
+    const now = new Date();
+    return rows.filter((row) => !row.publishedAt || row.publishedAt <= now);
   } catch (error) {
     console.error("Failed to fetch dynamic tests:", error);
-    return [];
+    throw new Error("TEST_LIST_UNAVAILABLE");
   }
 });
 
 function getUniqueListingTests(dynamicTests: DynamicTest[]) {
-  const byHref = new Map<
-    string,
-    { title: string; description: string; href: string; id: string }
-  >();
-
-  for (const test of dynamicTests) {
-    const href = `/tests/${test.slug}`;
-    if (!byHref.has(href)) {
-      byHref.set(href, {
-        title: test.title,
-        description: test.description || "",
-        href,
-        id: test.id,
-      });
-    }
-  }
-
-  for (const test of ALL_TESTS) {
-    if (!byHref.has(test.href)) {
-      byHref.set(test.href, {
-        title: test.title,
-        description: test.description,
-        href: test.href,
-        id: test.id,
-      });
-    }
-  }
-
-  return Array.from(byHref.values());
+  return uniqueListingItems([
+    ...dynamicTests.map((test) => ({
+      id: test.id, title: test.title, description: test.description || "",
+      href: `/tests/${test.slug}`, category: test.category || "기타",
+      tags: [test.title],
+    })),
+    ...getVisibleTests(),
+  ]);
 }
 
-function getLastPage(dynamicTests: DynamicTest[]): number {
-  return Math.max(
-    1,
-    Math.ceil(getUniqueListingTests(dynamicTests).length / testsPerPage),
-  );
-}
-
-function clampRequestedPage(
-  value: string | string[] | undefined,
-  dynamicTests: DynamicTest[],
-): number {
-  return Math.min(parseRequestedPage(value), getLastPage(dynamicTests));
+function getListingState(dynamicTests: DynamicTest[], params?: TestsPageSearchParams) {
+  const categories = [...CATEGORIES, ...dynamicTests.map((test) => test.category || "기타")];
+  const query = normalizeQuery(params?.q);
+  const category = normalizeCategory(params?.category, categories);
+  const filtered = filterListingItems(getUniqueListingTests(dynamicTests), query, category);
+  const lastPage = Math.max(1, Math.ceil(filtered.length / testsPerPage));
+  const page = Math.min(parseListingPage(params?.page), lastPage);
+  return { query, category, filtered, page };
 }
 
 export async function generateMetadata({
@@ -436,7 +423,11 @@ export async function generateMetadata({
   searchParams?: TestsPageSearchParams;
 }): Promise<Metadata> {
   const dynamicTests = await loadDynamicTests();
-  const page = clampRequestedPage(searchParams?.page, dynamicTests);
+  const { page, query, category } = getListingState(dynamicTests, searchParams);
+  if (query || category !== "전체") {
+    return { ...listingMetadata, robots: { index: false, follow: true },
+      alternates: { canonical: "/tests" } };
+  }
   if (page === 1) return listingMetadata;
 
   const pageTitle = `성격 성향 테스트 모음 ${page}페이지 | 테몬`;
@@ -464,18 +455,17 @@ export default async function TestsPage({
   searchParams?: TestsPageSearchParams;
 }) {
   const dynamicTests = await loadDynamicTests();
-  const requestedPage = clampRequestedPage(searchParams?.page, dynamicTests);
+  const { page: requestedPage, query, category, filtered } = getListingState(dynamicTests, searchParams);
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "홈", url: baseUrl },
     { name: "테스트 모음", url: `${baseUrl}/tests` },
   ]);
 
-  const allTestsForSchema = getUniqueListingTests(dynamicTests);
   const schemaStartIndex = (requestedPage - 1) * testsPerPage;
 
   const itemListSchema = createItemListSchema(
-    allTestsForSchema
+    filtered
       .slice(schemaStartIndex, schemaStartIndex + testsPerPage)
       .map((test) => ({
       name: test.title,
@@ -559,10 +549,13 @@ export default async function TestsPage({
 
       <TestsPageClient
         initialPage={requestedPage}
+        initialQuery={query}
+        initialCategory={category}
         dynamicTests={dynamicTests.map((test) => ({
           ...test,
           description: test.description || "",
           category: test.category || "기타",
+          publishedAt: test.publishedAt?.toISOString() || null,
         }))}
       />
 

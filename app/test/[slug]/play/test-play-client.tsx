@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-import { trackTestStart } from "@/lib/analytics"
+import { trackTestStart, trackTestProgress, trackTestComplete } from "@/lib/analytics"
 
 // 테스트 데이터 (실제로는 API에서 가져올 수 있음)
 const testData: Record<string, any> = {
@@ -80,12 +80,17 @@ export default function TestPlayClient() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [isStarted, setIsStarted] = useState(false)
+  const attemptIdRef = useRef<string | null>(null)
+  const completedRef = useRef(false)
 
   const test = testData[slug]
 
   useEffect(() => {
     if (test && !isStarted) {
-      trackTestStart(slug)
+      if (!attemptIdRef.current) {
+        attemptIdRef.current = `attempt_${crypto.randomUUID()}`
+        trackTestStart(slug)
+      }
       setIsStarted(true)
     }
   }, [test, slug, isStarted])
@@ -106,14 +111,18 @@ export default function TestPlayClient() {
       ...prev,
       [currentQuestion]: type,
     }))
+    const answered = new Set([...Object.keys(answers), String(currentQuestion)]).size
+    if (attemptIdRef.current) trackTestProgress(slug, answered, test.questions.length, attemptIdRef.current)
   }
 
   const handleNext = () => {
     if (currentQuestion < test.questions.length - 1) {
       setCurrentQuestion((prev) => prev + 1)
-    } else {
+    } else if (!completedRef.current && Object.keys(answers).length === test.questions.length) {
       // 결과 계산 및 페이지 이동
       const result = calculateResult(answers)
+      completedRef.current = true
+      trackTestComplete(slug, result)
       router.push(`/${slug}/result?result=${result}`)
     }
   }
@@ -201,4 +210,3 @@ export default function TestPlayClient() {
     </div>
   )
 }
-

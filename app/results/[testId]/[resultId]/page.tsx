@@ -45,7 +45,7 @@ async function getResultData(slugOrId: string, resultId: string) {
   if (!test) return null;
 
   const result = await db
-    .select()
+    .select({ resultType: testResults.resultType })
     .from(testResults)
     .where(and(eq(testResults.id, resultId), eq(testResults.testId, test.id)))
     .get();

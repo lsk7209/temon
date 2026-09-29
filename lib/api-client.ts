@@ -10,6 +10,8 @@ export interface SaveTestResultRequest {
   testId: string;
   resultType: string;
   answers: Record<number, string>;
+  /** Same value on retry makes the server return the original result instead of a duplicate. */
+  attemptId?: string;
 }
 
 /**
@@ -18,6 +20,7 @@ export interface SaveTestResultRequest {
 export interface SaveTestResultResponse {
   id: string;
   success: boolean;
+  replayed?: boolean;
 }
 
 /**
@@ -27,10 +30,6 @@ export interface TestResultResponse {
   id: string;
   testId: string;
   resultType: string;
-  answers: Record<number, string>;
-  userAgent?: string;
-  ipAddress?: string;
-  createdAt: number;
 }
 
 /**
@@ -38,6 +37,7 @@ export interface TestResultResponse {
  */
 export interface ApiErrorResponse {
   error: string;
+  code?: string;
 }
 
 /**
@@ -46,9 +46,16 @@ export interface ApiErrorResponse {
 export async function saveTestResult(
   data: SaveTestResultRequest,
 ): Promise<SaveTestResultResponse> {
+  const controller = new AbortController();
+  let timedOut = false;
+  const timeout = setTimeout(() => {
+    timedOut = true;
+    controller.abort();
+  }, 10_000);
   try {
     const response = await fetch("/api/results", {
       method: "POST",
+      signal: controller.signal,
       headers: {
         "Content-Type": "application/json",
       },
@@ -62,10 +69,13 @@ export async function saveTestResult(
 
     return await response.json();
   } catch (error) {
+    if (timedOut) throw new Error("RESULT_SAVE_TIMEOUT");
     if (error instanceof Error) {
       throw error;
     }
     throw new Error("Failed to save test result");
+  } finally {
+    clearTimeout(timeout);
   }
 }
 

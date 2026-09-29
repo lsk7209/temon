@@ -1,10 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { useTestResult } from "@/hooks/use-test-result"
 
 const questions = [
@@ -177,8 +176,10 @@ const questions = [
 export default function NTRPTestPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [scores, setScores] = useState<number[]>([])
+  const processingRef = useRef(false)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const router = useRouter()
-  const { saveResult } = useTestResult({
+  const { saveResult, startAttempt, trackProgress } = useTestResult({
     testId: 'ntrp-test',
     onSuccess: (resultId, resultType) => {
       const finalLevel = parseFloat(resultType)
@@ -186,26 +187,30 @@ export default function NTRPTestPage() {
     },
     onError: (_error, resultType) => {
       const finalLevel = parseFloat(resultType)
-      router.push(`/tests/ntrp-test/test/result?level=${finalLevel}`)
+      router.push(`/tests/ntrp-test/test/result?level=${finalLevel}&save=unconfirmed`)
     },
   })
 
   // 테스트 시작 추적
   useEffect(() => {
-    trackTestStart('ntrp-test')
-  }, [])
+    startAttempt()
+    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
+  }, [startAttempt])
 
   const handleAnswer = async (level: number) => {
+    if (processingRef.current) return
+    processingRef.current = true
     const newScores = [...scores, level]
     const currentQuestionIndex = currentQuestion
     setScores(newScores)
 
-    trackTestProgress("ntrp-test", currentQuestionIndex + 1, questions.length)
+    trackProgress(newScores.length, questions.length)
 
     // Auto-advance after a short delay to show selection
-    setTimeout(async () => {
+    timerRef.current = setTimeout(async () => {
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestion(currentQuestionIndex + 1)
+        processingRef.current = false
       } else {
         // 결과 계산
         const averageScore = newScores.reduce((sum, score) => sum + score, 0) / newScores.length
@@ -223,6 +228,7 @@ export default function NTRPTestPage() {
   const progress = ((currentQuestion + 1) / questions.length) * 100
 
   const handlePrevious = () => {
+    if (processingRef.current) return
     setScores((previousScores) => previousScores.slice(0, -1))
     setCurrentQuestion((previousQuestion) => Math.max(0, previousQuestion - 1))
   }
@@ -251,6 +257,7 @@ export default function NTRPTestPage() {
                   variant="outline"
                   className="w-full p-6 text-left justify-start hover:bg-green-50 hover:border-green-300 bg-transparent"
                   onClick={() => handleAnswer(option.level)}
+                  disabled={processingRef.current}
                 >
                   <span className="text-base">{option.text}</span>
                 </Button>
@@ -262,6 +269,7 @@ export default function NTRPTestPage() {
                 variant="ghost"
                 className="mt-6 w-full text-green-700"
                 onClick={handlePrevious}
+                disabled={processingRef.current}
               >
                 이전 질문으로 돌아가기
               </Button>

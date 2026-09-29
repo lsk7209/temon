@@ -24,7 +24,7 @@ import {
 import { getNTRPLevel, mapScoreToLevelBand, mapLevelToBaseProfile } from "@/lib/ntrpMath"
 import { NTRPResultCard } from "@/components/ntrp-result-card"
 import { ShareButtons } from "@/components/share-buttons"
-import { trackTestComplete, trackShare } from "@/lib/analytics"
+import { trackShare } from "@/lib/analytics"
 import { Download, RotateCcw, Copy, CheckCircle2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
@@ -66,7 +66,6 @@ export default function NTRPTestResult() {
 
   useEffect(() => {
     setMounted(true)
-    trackTestComplete("ntrp-test", levelObj.level)
   }, [levelObj.level])
 
   // Export functions

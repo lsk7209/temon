@@ -4,7 +4,8 @@ import { useSearchParams, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { trackTestComplete, trackShare } from "@/lib/analytics"
+import { trackShare } from "@/lib/analytics"
+import { ResultSaveNotice } from "@/components/result-save-notice"
 
 const results = {
   "1.0": {
@@ -156,7 +157,6 @@ export default function NTRPTestResult() {
 
   useEffect(() => {
     setMounted(true)
-    trackTestComplete("ntrp-test", level)
   }, [level])
 
   const handleShare = async (platform: string) => {
@@ -189,6 +189,7 @@ export default function NTRPTestResult() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
+      <ResultSaveNotice />
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">

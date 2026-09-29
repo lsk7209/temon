@@ -37,6 +37,14 @@ export function getDb() {
   return db;
 }
 
+/** Raw libsql client for statements Drizzle cannot express (e.g. atomic batches). */
+export function getDbClient(): Client {
+  if (!client) {
+    throw new Error('Database not initialized. TURSO_DATABASE_URL is missing.');
+  }
+  return client;
+}
+
 // Export for backward compatibility (may be null during build)
 export { client, db };
 

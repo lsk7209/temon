@@ -1,4 +1,6 @@
 // Google Analytics 및 사용자 행동 추적을 위한 함수들
+// 모든 전송은 isAnalyticsAllowed()(lib/consent.ts)를 통과해야 한다.
+import { isAnalyticsAllowed } from "./consent";
 
 /**
  * Google Analytics 이벤트 파라미터 타입
@@ -29,7 +31,7 @@ interface GtagEventParams {
  * gtag 함수 타입
  */
 type GtagFunction = (
-  command: "config" | "event" | "js" | "set",
+  command: "config" | "event" | "js" | "set" | "consent",
   targetId: string | Date,
   params?: GtagEventParams | Record<string, unknown>,
 ) => void;
@@ -38,7 +40,7 @@ declare global {
   interface Window {
     gtag: GtagFunction;
     dataLayer: unknown[];
-    __temonPendingGtagEvents?: Array<() => void>;
+    __temonPendingGtagEvents?: Array<{ queuedAt: number; send: () => void }>;
     __temonLastPageView?: {
       path: string;
       trackedAt: number;
@@ -47,32 +49,54 @@ declare global {
   }
 }
 
+let gtagQueueTimer: ReturnType<typeof setInterval> | null = null;
+
+/** Direct gtag calls: only when consent allows and gtag has loaded. */
+function canSendGtag(): boolean {
+  return isAnalyticsAllowed() && typeof window.gtag === "function";
+}
+
+function flushGtagQueue() {
+  if (typeof window === "undefined") return;
+  const pending = window.__temonPendingGtagEvents || [];
+  // Events queued before a denial are dropped, never sent later.
+  const allowed = isAnalyticsAllowed();
+  window.__temonPendingGtagEvents = pending.filter((entry) => {
+    if (!allowed) return false;
+    if (Date.now() - entry.queuedAt > 30_000) return false;
+    if (typeof window.gtag !== "function") return true;
+    entry.send();
+    return false;
+  });
+  if (!window.__temonPendingGtagEvents.length && gtagQueueTimer) {
+    clearInterval(gtagQueueTimer);
+    gtagQueueTimer = null;
+  }
+}
+
 function runWhenGtagReady(callback: () => void) {
   if (typeof window === "undefined") return;
+  if (!isAnalyticsAllowed()) return;
 
   if (typeof window.gtag === "function") {
+    flushGtagQueue();
     callback();
     return;
   }
 
   window.__temonPendingGtagEvents = window.__temonPendingGtagEvents || [];
-  window.__temonPendingGtagEvents.push(callback);
-
-  window.setTimeout(() => {
-    const pendingEvents = window.__temonPendingGtagEvents || [];
-    window.__temonPendingGtagEvents = [];
-    pendingEvents.forEach((event) => {
-      if (typeof window.gtag === "function") event();
-    });
-  }, 1200);
+  if (window.__temonPendingGtagEvents.length >= 100) window.__temonPendingGtagEvents.shift();
+  window.__temonPendingGtagEvents.push({ queuedAt: Date.now(), send: callback });
+  if (!gtagQueueTimer) gtagQueueTimer = setInterval(flushGtagQueue, 250);
 }
 
 // 서버 트래킹 전송
 async function sendTrackingEvent(type: string, payload: Record<string, unknown>) {
   try {
     if (typeof window === "undefined") return;
+    if (!isAnalyticsAllowed()) return;
 
-    await fetch("/api/analytics/track", {
+    const response = await fetch("/api/analytics/track", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,6 +104,9 @@ async function sendTrackingEvent(type: string, payload: Record<string, unknown>)
       body: JSON.stringify({ type, payload }),
       keepalive: true, // 페이지 이동 시에도 전송 보장
     });
+    if (!response.ok && response.status !== 404) {
+      console.error("서버 트래킹 HTTP 오류:", response.status);
+    }
   } catch (error) {
     console.error("서버 트래킹 오류:", error);
   }
@@ -183,12 +210,12 @@ export function trackTestStart(testId: string) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    runWhenGtagReady(() => {
       window.gtag("event", "test_start", {
         test_name: testId,
         event_category: "engagement",
       });
-    }
+    });
     // 서버 트래킹
     sendTrackingEvent("test_start", { testId });
   } catch (error) {
@@ -202,32 +229,28 @@ const _progressMilestoneSent = new Set<string>();
 // 테스트 진행 추적 — 25/50/75/100% 마일스톤에서만 GA4 전송 (이벤트 한도 절감)
 export function trackTestProgress(
   testId: string,
-  currentQuestion: number,
+  answeredQuestions: number,
   totalQuestions: number,
+  attemptId?: string,
 ) {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined" || totalQuestions <= 0) return;
 
   try {
-    const progress = Math.round((currentQuestion / totalQuestions) * 100);
+    const progress = Math.floor((answeredQuestions / totalQuestions) * 100);
     const milestones = [25, 50, 75, 100];
-    // 현재 진행률이 지난 마일스톤 중 하나인지 확인
-    const hitMilestone = milestones.find(
-      (m) => progress >= m && progress < m + 100 / totalQuestions,
-    );
-
-    if (hitMilestone === undefined) return;
-
-    const cacheKey = `${testId}:${hitMilestone}`;
-    if (_progressMilestoneSent.has(cacheKey)) return;
-    _progressMilestoneSent.add(cacheKey);
-
-    if (window.gtag) {
-      window.gtag("event", "test_progress", {
-        test_name: testId,
-        progress_percent: hitMilestone,
-        current_question: currentQuestion,
-        total_questions: totalQuestions,
-        event_category: "engagement",
+    for (const milestone of milestones) {
+      if (progress < milestone) continue;
+      const cacheKey = `${attemptId || testId}:${milestone}`;
+      if (_progressMilestoneSent.has(cacheKey)) continue;
+      _progressMilestoneSent.add(cacheKey);
+      runWhenGtagReady(() => {
+        window.gtag("event", "test_progress", {
+          test_name: testId,
+          progress_percent: milestone,
+          current_question: answeredQuestions,
+          total_questions: totalQuestions,
+          event_category: "engagement",
+        });
       });
     }
 
@@ -241,16 +264,27 @@ export function trackTestComplete(testId: string, result?: string) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    runWhenGtagReady(() => {
       window.gtag("event", "test_complete", {
         test_name: testId,
         test_result: result,
         event_category: "conversion",
       });
-    }
+    });
   } catch (error) {
     console.error("테스트 완료 추적 오류:", error);
   }
+}
+
+export function trackResultSave(testId: string, outcome: "success" | "error") {
+  if (typeof window === "undefined") return;
+  runWhenGtagReady(() => {
+    window.gtag("event", `result_save_${outcome}`, {
+      test_name: testId,
+      event_category: "engagement",
+      ...(outcome === "error" ? { error_code: "save_failed" } : {}),
+    });
+  });
 }
 
 // 결과 공유 추적
@@ -258,7 +292,7 @@ export function trackShare(testId: string, platform: string) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    if (canSendGtag()) {
       window.gtag("event", "share", {
         method: platform,
         content_type: "test_result",
@@ -276,7 +310,7 @@ export function trackClick(elementName: string, location: string) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    if (canSendGtag()) {
       window.gtag("event", "click", {
         element_name: elementName,
         page_location: location,
@@ -293,7 +327,7 @@ export function trackSearch(searchTerm: string) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    if (canSendGtag()) {
       window.gtag("event", "search", {
         search_term: searchTerm,
         event_category: "engagement",
@@ -309,7 +343,7 @@ export function trackEngagement(action: string, value?: number) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    if (canSendGtag()) {
       window.gtag("event", "engagement", {
         engagement_action: action,
         value: value,
@@ -330,7 +364,7 @@ export function trackQuestionAnswer(
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    if (canSendGtag()) {
       window.gtag("event", "question_answer", {
         event_category: "engagement",
         event_label: `${testName}_q${questionNumber}`,
@@ -347,7 +381,7 @@ export function trackError(error: string, location: string) {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    if (canSendGtag()) {
       window.gtag("event", "error", {
         event_category: "system",
         event_label: `${location} - ${error}`,
@@ -364,7 +398,7 @@ export function trackAdminLogin() {
   if (typeof window === "undefined") return;
 
   try {
-    if (window.gtag) {
+    if (canSendGtag()) {
       window.gtag("event", "admin_login", {
         event_category: "admin",
         event_label: "login_success",
@@ -489,7 +523,7 @@ export function sendTestEvent() {
   if (typeof window === "undefined") return false;
 
   try {
-    if (window.gtag) {
+    if (canSendGtag()) {
       window.gtag("event", "admin_test", {
         event_category: "admin",
         event_label: "connection_test",

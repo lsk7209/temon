@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -23,11 +23,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { trackClick, trackSearch } from "@/lib/analytics";
-import {
-  CATEGORIES,
-  type Test,
-  getAllTests,
-} from "@/lib/tests-config";
+import { CATEGORIES, type Test } from "@/lib/tests-config";
+import { getVisibleTests } from "@/lib/visible-tests";
+import { filterListingItems, listingHref, uniqueListingItems } from "@/lib/tests-listing";
 import {
   formatParticipants,
   shouldShowParticipants,
@@ -42,18 +40,21 @@ interface DynamicTest {
   description: string;
   slug: string;
   category: string;
+  publishedAt: string | null;
+  questionCount: number;
+  avgMinutes: number;
 }
 
 interface TestsPageClientProps {
   initialPage: number;
+  initialQuery: string;
+  initialCategory: string;
   dynamicTests?: DynamicTest[];
 }
 
-function paginationHref(page: number): string {
-  return page === 1 ? "/tests#tests-list" : `/tests?page=${page}#tests-list`;
-}
-
 function toTestCard(test: DynamicTest): Test {
+  const age = test.publishedAt ? Date.now() - Date.parse(test.publishedAt) : NaN;
+  const isNew = age >= 0 && age <= 14 * 24 * 60 * 60 * 1000;
   return {
     id: test.id,
     title: test.title,
@@ -62,83 +63,76 @@ function toTestCard(test: DynamicTest): Test {
     href: `/tests/${test.slug}`,
     color: "from-violet-500 to-fuchsia-500",
     participants: "0",
-    rating: 5.0,
-    badge: "AI",
+    badge: isNew ? "NEW" : undefined,
     category: test.category || "기타",
-    tags: ["AI", "New", test.title],
-    new: true,
+    tags: [test.title],
+    new: isNew,
+    questionCount: test.questionCount,
+    avgMinutes: test.avgMinutes,
   };
-}
-
-function uniqueByHref(tests: Test[]): Test[] {
-  const byHref = new Map<string, Test>();
-  for (const test of tests) {
-    if (!byHref.has(test.href)) byHref.set(test.href, test);
-  }
-  return Array.from(byHref.values());
 }
 
 export default function TestsPageClient({
   initialPage,
+  initialQuery,
+  initialCategory,
   dynamicTests = [],
 }: TestsPageClientProps) {
   const router = useRouter();
-  const allTests = uniqueByHref([
+  const allTests = uniqueListingItems([
     ...dynamicTests.map(toTestCard),
-    ...getAllTests(),
+    // The static catalog stores editorial placeholder metrics and NEW/HOT flags.
+    // Do not present them as observed ratings, participant counts, or release dates.
+    ...getVisibleTests().map((test) => ({
+      ...test,
+      badge: undefined,
+      rating: undefined,
+      participants: "0",
+      new: false,
+    })),
   ]);
-  const categoryOptions = CATEGORIES.filter(
-    (category, index) => index > 0 && category,
-  );
+  const categoryOptions = [...new Set([...CATEGORIES.slice(1), ...dynamicTests.map((test) => test.category)])]
+    .filter(Boolean);
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
+  const [searchTerm, setSearchTerm] = useState(initialQuery);
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [isComposing, setIsComposing] = useState(false);
+  const committedQuery = useRef(initialQuery);
   const initialTotalPages = Math.max(
     1,
     Math.ceil(allTests.length / TESTS_PER_PAGE),
   );
   const normalizedInitialPage = Math.min(initialPage, initialTotalPages);
   const [currentPage, setCurrentPage] = useState(normalizedInitialPage);
-  const hasActiveFilters =
-    searchTerm.trim().length > 0 || selectedCategory !== ALL_CATEGORY;
-
   useEffect(() => {
     setCurrentPage(initialPage);
-  }, [initialPage]);
+    setSearchTerm(initialQuery);
+    setSelectedCategory(initialCategory);
+    committedQuery.current = initialQuery;
+  }, [initialPage, initialQuery, initialCategory]);
+
+  useEffect(() => {
+    if (isComposing || searchTerm.trim() === committedQuery.current) return;
+    const timer = window.setTimeout(() => {
+      committedQuery.current = searchTerm.trim();
+      router.replace(listingHref(searchTerm, selectedCategory, 1), { scroll: false });
+      if (searchTerm.trim()) trackSearch(searchTerm.trim());
+    }, 500);
+    return () => window.clearTimeout(timer);
+  }, [searchTerm, selectedCategory, isComposing, initialQuery, router]);
 
   const handleSearch = (term: string) => {
-    setSearchTerm(term);
+    setSearchTerm(term.slice(0, 100));
     setCurrentPage(1);
-    if (initialPage !== 1) router.replace("/tests#tests-list", { scroll: false });
-    if (term.trim()) trackSearch(term);
   };
 
   const handleCategoryFilter = (category: string) => {
     setSelectedCategory(category);
     setCurrentPage(1);
-    if (initialPage !== 1) router.replace("/tests#tests-list", { scroll: false });
+    router.push(listingHref(searchTerm, category, 1), { scroll: false });
     trackClick(`category_${category}`, window.location.pathname);
   };
-
-  const keepActiveFilters = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    page: number,
-  ) => {
-    if (!hasActiveFilters) return;
-    event.preventDefault();
-    setCurrentPage(page);
-  };
-
-  const filteredTests = allTests.filter((test) => {
-    const keyword = searchTerm.toLowerCase();
-    const matchesSearch =
-      test.title.toLowerCase().includes(keyword) ||
-      test.description.toLowerCase().includes(keyword) ||
-      test.tags.some((tag) => tag.toLowerCase().includes(keyword));
-    const matchesCategory =
-      selectedCategory === ALL_CATEGORY || test.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  const filteredTests = filterListingItems(allTests, searchTerm, selectedCategory);
 
   const totalPages = Math.max(1, Math.ceil(filteredTests.length / TESTS_PER_PAGE));
   const safeCurrentPage = Math.min(currentPage, totalPages);
@@ -164,9 +158,25 @@ export default function TestsPageClient({
                 <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                 <Input
                   type="text"
+                  aria-label="테스트 검색"
                   placeholder="관심 있는 테스트를 검색해보세요"
                   value={searchTerm}
                   onChange={(event) => handleSearch(event.target.value)}
+                  onCompositionStart={() => setIsComposing(true)}
+                  onCompositionEnd={(event) => {
+                    setIsComposing(false);
+                    handleSearch(event.currentTarget.value);
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" && !event.nativeEvent.isComposing && !isComposing) {
+                      event.preventDefault();
+                      if (committedQuery.current !== searchTerm.trim() && searchTerm.trim()) {
+                        trackSearch(searchTerm.trim());
+                      }
+                      committedQuery.current = searchTerm.trim();
+                      router.replace(listingHref(searchTerm, selectedCategory, 1), { scroll: false });
+                    }
+                  }}
                   className="h-12 rounded-full border-gray-200 bg-white/50 pl-12 text-lg backdrop-blur-sm transition-all hover:bg-white focus-visible:ring-violet-500"
                 />
               </div>
@@ -234,6 +244,7 @@ export default function TestsPageClient({
                 onClick={() => {
                   setSearchTerm("");
                   setSelectedCategory(ALL_CATEGORY);
+                  router.replace("/tests#tests-list", { scroll: false });
                 }}
               >
                 필터 초기화
@@ -266,6 +277,11 @@ export default function TestsPageClient({
                               </Badge>
                             )}
                           </div>
+                          {test.questionCount && test.avgMinutes && (
+                            <p className="mt-3 text-sm text-gray-600">
+                              {test.questionCount}문항 · 예상 {test.avgMinutes}분
+                            </p>
+                          )}
                           <CardTitle className="text-2xl font-bold transition-colors group-hover:text-violet-600">
                             {test.title}
                           </CardTitle>
@@ -275,10 +291,12 @@ export default function TestsPageClient({
                         </CardHeader>
                         <CardContent className="flex items-center justify-between border-t pt-4">
                           <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-1">
-                              <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                              <span className="font-semibold">{test.rating}</span>
-                            </div>
+                            {test.rating !== undefined && (
+                              <div className="flex items-center gap-1">
+                                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                                <span className="font-semibold">{test.rating}</span>
+                              </div>
+                            )}
                             {shouldShowParticipants(test.participants) && (
                               <div className="flex items-center gap-1 text-gray-600">
                                 <Users className="h-4 w-4" />
@@ -288,12 +306,9 @@ export default function TestsPageClient({
                               </div>
                             )}
                           </div>
-                          <Button
-                            size="sm"
-                            className="rounded-full bg-gradient-to-r from-violet-500 to-pink-500 text-white hover:from-violet-600 hover:to-pink-600"
-                          >
+                          <span className="rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-3 py-2 text-sm font-medium text-white">
                             시작하기
-                          </Button>
+                          </span>
                         </CardContent>
                       </Card>
                     </Link>
@@ -311,10 +326,7 @@ export default function TestsPageClient({
                   >
                     {safeCurrentPage > 1 ? (
                       <Link
-                        href={paginationHref(safeCurrentPage - 1)}
-                        onClick={(event) =>
-                          keepActiveFilters(event, safeCurrentPage - 1)
-                        }
+                        href={listingHref(searchTerm, selectedCategory, safeCurrentPage - 1)}
                       >
                         <ChevronLeft className="h-4 w-4" />
                         이전
@@ -348,8 +360,7 @@ export default function TestsPageClient({
                             }
                           >
                             <Link
-                              href={paginationHref(page)}
-                              onClick={(event) => keepActiveFilters(event, page)}
+                              href={listingHref(searchTerm, selectedCategory, page)}
                               aria-current={
                                 safeCurrentPage === page ? "page" : undefined
                               }
@@ -369,10 +380,7 @@ export default function TestsPageClient({
                   >
                     {safeCurrentPage < totalPages ? (
                       <Link
-                        href={paginationHref(safeCurrentPage + 1)}
-                        onClick={(event) =>
-                          keepActiveFilters(event, safeCurrentPage + 1)
-                        }
+                        href={listingHref(searchTerm, selectedCategory, safeCurrentPage + 1)}
                       >
                         다음
                         <ChevronRight className="h-4 w-4" />
