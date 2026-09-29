@@ -405,28 +405,24 @@ function ResultContent() {
                   title: "선물 고르는 스타일",
                   emoji: "💝",
                   description: "선물 선택으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "game-play-style",
                   title: "게임 플레이 스타일",
                   emoji: "🎮",
                   description: "게임 플레이로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "soup-vs-bibim",
                   title: "국물 vs 비빔 스타일",
                   emoji: "🍜",
                   description: "국물파 vs 비빔파로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "coffee-mbti",
                   title: "커피 MBTI",
                   emoji: "☕",
                   description: "커피 취향으로 알아보는 성격",
-                  participants: "12.5K",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

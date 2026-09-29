@@ -461,21 +461,18 @@ function ResultContent() {
                   title: "커피 MBTI",
                   emoji: "☕",
                   description: "커피 취향으로 알아보는 성격",
-                  participants: "12.5K",
                 },
                 {
                   slug: "ramen-mbti",
                   title: "라면 MBTI",
                   emoji: "🍜",
                   description: "라면 취향으로 알아보는 성격",
-                  participants: "10.2K",
                 },
                 {
                   slug: "kdrama-mbti",
                   title: "K-드라마 클리셰",
                   emoji: "🎬",
                   description: "드라마 속 당신은 어떤 캐릭터?",
-                  participants: "1.2K",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

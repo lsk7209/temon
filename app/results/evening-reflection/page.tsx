@@ -583,28 +583,24 @@ function ResultContent() {
                   title: "잠들기 전 준비",
                   emoji: "🌙",
                   description: "잠들기 전 준비로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "evening-cleaning",
                   title: "저녁 정리",
                   emoji: "🧹",
                   description: "저녁 정리 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "evening-snack",
                   title: "저녁 간식",
                   emoji: "🍪",
                   description: "저녁 간식 선택으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "evening-exercise",
                   title: "저녁 운동",
                   emoji: "💪",
                   description: "저녁 운동 습관으로 알아보는 성격",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

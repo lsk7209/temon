@@ -274,21 +274,18 @@ function ResultContent() {
                   title: "카톡 답장 스타일",
                   emoji: "💬",
                   description: "답장 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "sleep-chronotype",
                   title: "수면 크로노타입",
                   emoji: "😴",
                   description: "수면 패턴으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "shopping-style",
                   title: "소비 성향",
                   emoji: "🛍️",
                   description: "소비 습관으로 알아보는 성격",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

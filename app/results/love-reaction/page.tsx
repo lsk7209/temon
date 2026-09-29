@@ -312,28 +312,24 @@ function ResultContent() {
                   title: "카톡 답장 스타일",
                   description: "답장 습관으로 보는 소통 성향",
                   emoji: "💬",
-                  participants: "0",
                 },
                 {
                   slug: "evening-routine",
                   title: "퇴근 후 루틴",
                   description: "저녁 시간 습관으로 보는 성향",
                   emoji: "🌙",
-                  participants: "0",
                 },
                 {
                   slug: "shopping-style",
                   title: "쇼핑 스타일",
                   description: "쇼핑 습관으로 보는 성향",
                   emoji: "🛍️",
-                  participants: "0",
                 },
                 {
                   slug: "movie-theater-style",
                   title: "영화관 관람 스타일",
                   description: "영화관에서 드러나는 성향",
                   emoji: "🎬",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

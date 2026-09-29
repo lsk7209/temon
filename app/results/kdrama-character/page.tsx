@@ -274,35 +274,30 @@ function ResultContent() {
                   title: "영화관 관람 스타일",
                   description: "영화관에서 드러나는 성향",
                   emoji: "🎬",
-                  participants: "0",
                 },
                 {
                   slug: "music-taste",
                   title: "음악 취향 성격",
                   description: "음악 취향으로 보는 성향",
                   emoji: "🎧",
-                  participants: "0",
                 },
                 {
                   slug: "cafe-style",
                   title: "카페 스타일",
                   description: "카페 스타일로 보는 성향",
                   emoji: "☕",
-                  participants: "0",
                 },
                 {
                   slug: "alarm-habit",
                   title: "알람 습관",
                   description: "알람 습관으로 보는 성향",
                   emoji: "⏰",
-                  participants: "0",
                 },
                 {
                   slug: "shopping-style",
                   title: "쇼핑 스타일",
                   description: "쇼핑 스타일로 보는 성향",
                   emoji: "🛍️",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

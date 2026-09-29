@@ -583,28 +583,24 @@ function ResultContent() {
                   title: "메시지 답장 스타일",
                   emoji: "💬",
                   description: "메시지 답장 스타일로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "phone-social-media",
                   title: "SNS 사용 습관",
                   emoji: "📱",
                   description: "SNS 사용 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "phone-photo",
                   title: "사진 찍는 습관",
                   emoji: "📸",
                   description: "사진 찍는 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "phone-app-organization",
                   title: "앱 정리 방식",
                   emoji: "📱",
                   description: "앱 정리 방식으로 알아보는 성격",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

@@ -395,21 +395,18 @@ function ResultContent() {
                   title: "자취 밥상 스타일",
                   emoji: "🍳",
                   description: "자취 밥상 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "movie-theater-style",
                   title: "영화관 관람 스타일",
                   emoji: "🎬",
                   description: "영화관 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "coffee-mbti",
                   title: "커피 MBTI",
                   emoji: "☕",
                   description: "커피 취향으로 알아보는 성격",
-                  participants: "12.5K",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

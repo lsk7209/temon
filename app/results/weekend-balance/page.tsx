@@ -583,28 +583,24 @@ function ResultContent() {
                   title: "주말 충전",
                   emoji: "🌙",
                   description: "주말 충전 방식으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "weekend-travel",
                   title: "주말 여행",
                   emoji: "✈️",
                   description: "주말 여행 스타일로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "weekend-food",
                   title: "주말 음식",
                   emoji: "🍕",
                   description: "주말 음식 선택으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "weekend-shopping",
                   title: "주말 쇼핑",
                   emoji: "🛍️",
                   description: "주말 쇼핑 스타일로 알아보는 성격",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

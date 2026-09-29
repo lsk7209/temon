@@ -312,28 +312,24 @@ function ResultContent() {
                   title: "라면 취향",
                   description: "라면 취향으로 보는 성향",
                   emoji: "🍜",
-                  participants: "0",
                 },
                 {
                   slug: "dessert-style",
                   title: "디저트 취향",
                   description: "디저트 취향으로 보는 성향",
                   emoji: "🍰",
-                  participants: "0",
                 },
                 {
                   slug: "food-delivery",
                   title: "배달 음식 선택",
                   description: "배달 음식 선택으로 보는 성향",
                   emoji: "🍕",
-                  participants: "0",
                 },
                 {
                   slug: "cafe-style",
                   title: "카페 스타일",
                   description: "카페 스타일로 보는 성향",
                   emoji: "☕",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">
