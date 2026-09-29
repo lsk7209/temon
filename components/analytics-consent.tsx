@@ -19,6 +19,8 @@ export function applyLoadedTrackerConsent(gaId: string, allowed: boolean): void 
   if (typeof window.gtag === "function") {
     window.gtag("consent", "update", {
       analytics_storage: allowed ? "granted" : "denied",
+      ad_personalization: allowed ? "granted" : "denied",
+      ad_user_data: allowed ? "granted" : "denied",
     });
   }
   const clarity = globals.clarity as ClarityFunction | undefined;
@@ -91,13 +93,14 @@ export function ConsentBannerView({ onGrant, onDeny }: ConsentBannerViewProps) {
   return (
     <section
       role="region"
-      aria-label="분석 도구 사용 동의"
+      aria-label="분석 도구 및 맞춤형 광고 사용 동의"
       className="fixed inset-x-0 bottom-0 z-50 border-t bg-background/95 p-4 shadow-lg backdrop-blur"
     >
       <div className="container flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <p className="text-sm text-foreground">
-          서비스 개선을 위해 방문·테스트 진행 통계를 수집하는 분석 도구(Google Analytics 등)를
-          사용해도 될까요? 거부해도 모든 테스트를 그대로 이용할 수 있습니다.{" "}
+          서비스 개선을 위한 방문·테스트 통계 분석 도구(Google Analytics 등)와 맞춤형 광고를
+          사용해도 될까요? 거부해도 모든 테스트를 그대로 이용할 수 있고, 광고는 맞춤 설정 없이
+          표시됩니다.{" "}
           <Link href="/privacy" className="underline underline-offset-2">
             개인정보처리방침
           </Link>
@@ -139,13 +142,13 @@ interface ConsentSettingsViewProps {
 export function ConsentSettingsView({ allowed, onGrant, onDeny }: ConsentSettingsViewProps) {
   return (
     <span className="inline-flex flex-wrap items-center gap-2">
-      <span aria-live="polite">분석 수집: {allowed ? "허용됨" : "거부됨"}</span>
+      <span aria-live="polite">분석·맞춤형 광고: {allowed ? "허용됨" : "거부됨"}</span>
       <button
         type="button"
         onClick={allowed ? onDeny : onGrant}
         className="underline underline-offset-2 hover:text-foreground"
       >
-        {allowed ? "분석 수집 거부하기" : "분석 수집 허용하기"}
+        {allowed ? "분석·맞춤형 광고 거부하기" : "분석·맞춤형 광고 허용하기"}
       </button>
     </span>
   );

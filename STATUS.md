@@ -14,8 +14,9 @@
 - 09-26: `components/share-buttons.tsx` 클립보드 복사 실패 오집계 버그, `lib/analytics.ts` `cta_click`/`cta_clicked` 중복 발행, `/api/dashboard-stats` 인증 누락, 운영자향 CRO 문구 노출 등 — 상세는 이전 커밋 로그 참조.
 
 ## TODO
-- [ ] (승인 필요) `lib/db/migrations/0003_result_attempts.sql`을 Turso에 백업 후 적용 — 결과 저장 재시도 중복 방지 활성화. 미적용 상태에서도 코드는 기존 방식으로 저장됨(09-29 로컬 검증).
-- [ ] (결정 필요) 운영 `NEXT_PUBLIC_ANALYTICS_CONSENT_MODE=opt-in` 설정 여부와 개인정보처리방침 문구 정합성(법무 검토). 미설정 시 기존 측정 유지 + 푸터 거부만 제공. AdSense 동의는 이번 범위 밖.
+- [x] 09-29: `0003_result_attempts.sql` 운영 Turso 적용 완료(추가형, 기존 623행·스키마 변화 없음), PR #20 배포. 다음: 실제 저장 발생 후 `result_attempts` 증가와 `/api/results` FK 오류 부재 확인.
+- [x] 09-29 결정: 동의 모드는 기본(미설정) 유지 — 측정 유지 + 푸터에서 "분석·맞춤형 광고 거부". 거부 시 분석 전송 0건, AdSense는 비맞춤형 광고(`requestNonPersonalizedAds=1`)로 계속 노출. 개인정보처리방침 6항에 반영.
+- [ ] (AdSense 콘솔, 코드 밖) 개인정보 보호 및 메시지 → 유럽 규정 메시지(Google 인증 CMP) 켜기 — EEA·영국·스위스 방문자 맞춤형 광고 요건. 한국 트래픽에는 영향 없음.
 - [ ] 며칠 지켜보고 결과 페이지 광고 실채움률/수익 확인 (재개 직후라 일시적 unfilled 있었음).
 - [ ] (착수 시 별도 요청) Next.js 16 / drizzle-orm 0.45 업그레이드 — 리포트만 완료, 실행은 보류.
 - [ ] GSC URL 검사로 홈·`/tests/music-taste`·`/tests/pet-mbti`·`/tests/breakup-style`의 마지막 크롤링·색인 상태·Google 선택 canonical 확인 (8/26 재구조화가 실제 원인인지 검증). 코드 레벨로는 이 4개 페이지의 noindex·canonical·홈페이지 내부링크(`getHomePageTests`, 8월 이후 미변경)·`lib/noindex-tests.ts` 목록(4개 페이지 모두 미포함)을 확인했고 이상 없음 — 남은 건 라이브 GSC 확인뿐.

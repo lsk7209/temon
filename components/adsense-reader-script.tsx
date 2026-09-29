@@ -1,4 +1,8 @@
+"use client";
+
 import Script from "next/script";
+import { useEffect } from "react";
+import { applyAdPersonalizationPreference } from "@/lib/consent";
 
 const ADSENSE_CLIENT_ID =
   process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ||
@@ -8,6 +12,11 @@ const ADSENSE_DELIVERY_ENABLED =
   process.env.NEXT_PUBLIC_ADSENSE_DELIVERY_ENABLED === "true";
 
 export default function AdSenseReaderScript() {
+  // Runs in the same commit that injects the loader, before the script downloads.
+  useEffect(() => {
+    if (ADSENSE_DELIVERY_ENABLED) applyAdPersonalizationPreference();
+  }, []);
+
   if (!ADSENSE_DELIVERY_ENABLED || !ADSENSE_CLIENT_ID) return null;
 
   return (
