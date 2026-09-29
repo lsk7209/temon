@@ -61,9 +61,7 @@ export const questions = sqliteTable(
     choice2Text: text("choice_2_text").notNull(),
     choice2Tags: text("choice_2_tags").notNull(),
   },
-  (table) => ({
-    idxTestId: index("idx_questions_test_id").on(table.testId),
-  }),
+  (table) => [index("idx_questions_test_id").on(table.testId)],
 );
 
 // 결과 타입 데이터
@@ -83,10 +81,10 @@ export const resultTypes = sqliteTable(
     matchTypes: text("match_types"), // JSON array or comma-separated
     emoji: text("emoji"),
   },
-  (table) => ({
-    idxTestId: index("idx_result_types_test_id").on(table.testId),
-    idxTypeCode: index("idx_result_types_type_code").on(table.typeCode),
-  }),
+  (table) => [
+    index("idx_result_types_test_id").on(table.testId),
+    index("idx_result_types_type_code").on(table.typeCode),
+  ],
 );
 
 // 테스트 결과 저장
@@ -105,10 +103,10 @@ export const testResults = sqliteTable(
       .notNull()
       .default(sql`(unixepoch())`),
   },
-  (table) => ({
-    idxTestId: index("idx_test_results_test_id").on(table.testId),
-    idxCreatedAt: index("idx_test_results_created_at").on(table.createdAt),
-  }),
+  (table) => [
+    index("idx_test_results_test_id").on(table.testId),
+    index("idx_test_results_created_at").on(table.createdAt),
+  ],
 );
 
 // 결과 저장 멱등성 키 (attempt 당 1행). 재시도 시 같은 결과 ID를 돌려준다.

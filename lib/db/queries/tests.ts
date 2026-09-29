@@ -40,20 +40,20 @@ export async function getAllTests(db: Database, options?: {
   category?: string
   limit?: number
 }) {
-  let query = db.select().from(tests)
+  let query = db.select().from(tests).$dynamic()
 
   if (options?.status) {
-    query = query.where(eq(tests.status, options.status)) as any
+    query = query.where(eq(tests.status, options.status))
   }
 
   if (options?.category) {
-    query = query.where(eq(tests.category, options.category)) as any
+    query = query.where(eq(tests.category, options.category))
   }
 
-  query = query.orderBy(desc(tests.createdAt)) as any
+  query = query.orderBy(desc(tests.createdAt))
 
   if (options?.limit) {
-    query = query.limit(options.limit) as any
+    query = query.limit(options.limit)
   }
 
   return await query
