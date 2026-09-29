@@ -405,28 +405,24 @@ function ResultContent() {
                   title: "김밥 재료 선택",
                   emoji: "🍙",
                   description: "김밥 재료 선택으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "soup-vs-bibim",
                   title: "국물 vs 비빔 스타일",
                   emoji: "🍲",
                   description: "국물 vs 비빔 선택으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "cake-cutting",
                   title: "케이크 자르는 스타일",
                   emoji: "🍰",
                   description: "케이크 자르는 방식으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "coffee-mbti",
                   title: "커피 MBTI",
                   emoji: "☕",
                   description: "커피 취향으로 알아보는 성격",
-                  participants: "12.5K",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

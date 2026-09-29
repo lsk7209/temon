@@ -583,21 +583,18 @@ ${shareUrl}`
                   title: "라면 끓일 때 MBTI",
                   emoji: "🍜",
                   description: "라면 조리법으로 알아보는 성격",
-                  participants: "25.8K",
                 },
                 {
                   slug: "coffee-mbti",
                   title: "커피 취향 MBTI",
                   emoji: "☕",
                   description: "좋아하는 커피로 알아보는 성격",
-                  participants: "15.2K",
                 },
                 {
                   slug: "study-mbti",
                   title: "공부 스타일 MBTI",
                   emoji: "📚",
                   description: "학습 방법으로 보는 당신의 유형",
-                  participants: "18.5K",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

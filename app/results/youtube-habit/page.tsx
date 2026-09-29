@@ -349,28 +349,24 @@ function ResultContent() {
                   title: "스마트폰 사용 습관",
                   emoji: "📱",
                   description: "스마트폰 사용 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "music-style",
                   title: "음악 취향",
                   emoji: "🎵",
                   description: "음악 선택으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "movie-theater",
                   title: "영화관 관람 스타일",
                   emoji: "🎬",
                   description: "영화관 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "kakao-reply-style",
                   title: "카톡 답장 스타일",
                   emoji: "💬",
                   description: "카톡 답장 습관으로 알아보는 성격",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

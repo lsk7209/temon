@@ -583,28 +583,24 @@ function ResultContent() {
                   title: "아침 알람",
                   emoji: "⏰",
                   description: "아침 알람 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "coffee-mbti",
                   title: "커피 MBTI",
                   emoji: "☕",
                   description: "커피 취향으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "evening-routine",
                   title: "저녁 루틴",
                   emoji: "🌙",
                   description: "저녁 루틴으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "sleep-chronotype",
                   title: "수면 시간대",
                   emoji: "😴",
                   description: "수면 시간대로 알아보는 성격",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

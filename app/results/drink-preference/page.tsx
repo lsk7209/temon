@@ -405,28 +405,24 @@ function ResultContent() {
                   title: "아침식사 스타일",
                   emoji: "🥐",
                   description: "아침식사 선택으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "snack-time",
                   title: "간식 시간대",
                   emoji: "🍪",
                   description: "간식 선택으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "meal-prep",
                   title: "밀프렙 스타일",
                   emoji: "🍱",
                   description: "식사 준비로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "rice-eating",
                   title: "밥 먹는 스타일",
                   emoji: "🍚",
                   description: "밥 먹기로 알아보는 성격",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

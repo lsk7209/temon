@@ -583,28 +583,24 @@ function ResultContent() {
                   title: "저장공간 관리",
                   emoji: "💾",
                   description: "저장공간 관리로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "phone-battery",
                   title: "배터리 관리",
                   emoji: "🔋",
                   description: "배터리 관리로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "phone-notification",
                   title: "알림 대하는 방식",
                   emoji: "🔔",
                   description: "알림 대하는 방식으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "weekend-balance",
                   title: "주말 균형",
                   emoji: "⚖️",
                   description: "주말 균형잡기로 알아보는 성격",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">

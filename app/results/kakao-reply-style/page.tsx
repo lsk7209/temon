@@ -274,21 +274,18 @@ function ResultContent() {
                   title: "스마트폰 사용 스타일",
                   emoji: "📱",
                   description: "스마트폰 사용 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "clean-style",
                   title: "방 청소 스타일",
                   emoji: "🧹",
                   description: "청소 습관으로 알아보는 성격",
-                  participants: "0",
                 },
                 {
                   slug: "evening-routine",
                   title: "퇴근 후 루틴",
                   emoji: "🌙",
                   description: "저녁 루틴으로 알아보는 성격",
-                  participants: "0",
                 },
               ].map((test) => (
                 <Card key={test.slug} className="group hover:shadow-lg transition-all duration-300">
