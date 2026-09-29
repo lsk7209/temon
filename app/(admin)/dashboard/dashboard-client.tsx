@@ -5,6 +5,7 @@
  */
 
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -106,6 +107,7 @@ interface DashboardData {
 }
 
 export default function DashboardClient({ initialData }: { initialData: DashboardData | null }) {
+  const router = useRouter()
   const [data, setData] = useState<DashboardData | null>(initialData)
   const [loading, setLoading] = useState(true) // 초기 로딩 상태를 true로 설정
   const [dateRange, setDateRange] = useState<'today' | '7d' | '30d' | 'custom'>('today')
@@ -121,7 +123,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
 
       const token = localStorage.getItem('admin_token')
       if (!token) {
-        window.location.href = '/admin'
+        router.push('/admin')
         return
       }
       // Vercel/Next.js API route on the same domain.
@@ -167,7 +169,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
     } finally {
       setLoading(false)
     }
-  }, [startDate, endDate])
+  }, [startDate, endDate, router])
 
   // 초기 데이터 로드
   useEffect(() => {
@@ -188,7 +190,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
 
       const token = localStorage.getItem('admin_token')
       if (!token) {
-        window.location.href = '/admin'
+        router.push('/admin')
         setLoading(false)
         return
       }
@@ -300,7 +302,7 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
     }
 
     loadInitialData()
-  }, [])
+  }, [router])
 
   useEffect(() => {
     if (dateRange === 'custom' && startDate && endDate) {
