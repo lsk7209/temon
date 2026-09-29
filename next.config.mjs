@@ -9,8 +9,12 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'date-fns', '@radix-ui/react-icons'],
   },
 
-  // 이미지 최적화
+  // 이미지 최적화 비활성화: 이 앱은 next/image(<Image>)를 전혀 사용하지 않으므로
+  // /_next/image 최적화 엔드포인트가 불필요하다. unoptimized:true로 두면 해당
+  // 엔드포인트가 404를 반환해 sharp를 호출하지 않으므로, Image Optimizer 관련
+  // advisory(DoS·AVIF·캐시 exhaustion)의 공격 표면이 제거된다. 기능 영향 없음.
   images: {
+    unoptimized: true,
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 86400,
   },
