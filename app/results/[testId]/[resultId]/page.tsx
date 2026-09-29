@@ -22,8 +22,10 @@ import { getTopicResultFAQs } from "@/lib/quiz-topic-copy";
 export const dynamic = "force-dynamic";
 
 interface Props {
-  params: { testId: string; resultId: string };
+  params: Promise<{ testId: string; resultId: string }>;
 }
+
+type ResolvedParams = { testId: string; resultId: string };
 
 const BASE_URL = "https://temon.kr";
 
@@ -76,7 +78,7 @@ function buildFallbackTraits(resultName: string, quizTitle: string): string[] {
 
 function toViewModel(
   data: NonNullable<Awaited<ReturnType<typeof getResultData>>>,
-  params: Props["params"],
+  params: ResolvedParams,
 ): ResultViewModel {
   const { test, result, typeDetail } = data;
   const traits = normalizeTextList(typeDetail.traits);
@@ -123,7 +125,8 @@ function toViewModel(
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const data = await getResultData(params.testId, params.resultId);
+  const { testId, resultId } = await params;
+  const data = await getResultData(testId, resultId);
   if (!data) return {};
 
   const title = `${data.test.title} 결과 - ${data.typeDetail.label}`;
@@ -135,12 +138,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${title} | 테몬`,
     description,
     alternates: {
-      canonical: `/results/${params.testId}/${params.resultId}`,
+      canonical: `/results/${testId}/${resultId}`,
     },
     openGraph: {
       title,
       description,
-      url: `${BASE_URL}/results/${params.testId}/${params.resultId}`,
+      url: `${BASE_URL}/results/${testId}/${resultId}`,
       siteName: "테몬",
       locale: "ko_KR",
       images: [
@@ -165,15 +168,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ResultPage({ params }: Props) {
-  const data = await getResultData(params.testId, params.resultId);
+  const resolvedParams = await params;
+  const data = await getResultData(resolvedParams.testId, resolvedParams.resultId);
   if (!data) notFound();
 
-  const viewModel = toViewModel(data, params);
-  const resultUrl = `${BASE_URL}/results/${params.testId}/${params.resultId}`;
+  const viewModel = toViewModel(data, resolvedParams);
+  const resultUrl = `${BASE_URL}/results/${resolvedParams.testId}/${resolvedParams.resultId}`;
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "홈", url: BASE_URL },
     { name: "테스트", url: `${BASE_URL}/tests` },
-    { name: data.test.title, url: `${BASE_URL}/tests/${params.testId}` },
+    { name: data.test.title, url: `${BASE_URL}/tests/${resolvedParams.testId}` },
     { name: `${data.typeDetail.label} 결과`, url: resultUrl },
   ]);
   const articleSchema = {

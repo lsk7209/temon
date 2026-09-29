@@ -16,10 +16,10 @@ const RATE_LIMIT = 1000 // 1분당 최대 요청 수
 const RATE_LIMIT_WINDOW = 60 * 1000 // 1분
 
 function getRateLimitKey(request: NextRequest): string {
-  // IP 주소 기반 (Vercel에서는 x-forwarded-for 헤더 사용)
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] ||
+  // IP 주소 기반 (Vercel에서는 x-forwarded-for / x-real-ip 헤더 사용).
+  // NextRequest.ip는 Next.js 15에서 제거되어 헤더만 사용한다.
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
     request.headers.get('x-real-ip') ||
-    request.ip ||
     'unknown'
   return ip
 }

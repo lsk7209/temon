@@ -6,8 +6,9 @@ import {
   getPublishedTestSeoSource,
 } from "@/lib/test-seo-source"
 
-export async function generateMetadata({ params }: { params: { testId: string } }): Promise<Metadata> {
-  const test = await getPublishedTestSeoSource(params.testId)
+export async function generateMetadata({ params }: { params: Promise<{ testId: string }> }): Promise<Metadata> {
+  const { testId } = await params
+  const test = await getPublishedTestSeoSource(testId)
 
   if (!test) {
     return {
@@ -27,12 +28,12 @@ export async function generateMetadata({ params }: { params: { testId: string } 
   }
 
   return generateTestPageMetadata({
-    quizId: params.testId,
+    quizId: testId,
     quizTitle: testName,
     shortDescription,
     fullDescription,
     keywords: `${testName}, 성격 테스트, MBTI, 심리테스트, 무료 테스트`,
-    canonical: `/tests/${params.testId}/test`,
+    canonical: `/tests/${testId}/test`,
   })
 }
 
@@ -41,9 +42,10 @@ export default async function TestPageLayout({
   params,
 }: {
   children: React.ReactNode
-  params: { testId: string }
+  params: Promise<{ testId: string }>
 }) {
-  const test = await getPublishedTestSeoSource(params.testId)
+  const { testId } = await params
+  const test = await getPublishedTestSeoSource(testId)
 
   if (!test) {
     notFound()

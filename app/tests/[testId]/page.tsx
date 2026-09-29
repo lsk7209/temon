@@ -15,7 +15,7 @@ import { tests } from "@/lib/db/schema"
 import { and, eq, or } from "drizzle-orm"
 
 interface Props {
-  params: { testId: string }
+  params: Promise<{ testId: string }>
 }
 
 async function getTest(slugOrId: string) {
@@ -47,7 +47,8 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const test = await getTest(params.testId)
+  const { testId } = await params
+  const test = await getTest(testId)
 
   if (!test) {
     return {
@@ -81,13 +82,14 @@ export async function generateMetadata(
 }
 
 export default async function DynamicTestPage({ params }: Props) {
-  const test = await getTest(params.testId)
+  const { testId } = await params
+  const test = await getTest(testId)
 
   if (!test) {
     notFound()
   }
 
-  if (params.testId !== test.slug) {
+  if (testId !== test.slug) {
     redirect(`/tests/${test.slug}`)
   }
 

@@ -420,10 +420,11 @@ function getListingState(dynamicTests: DynamicTest[], params?: TestsPageSearchPa
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams?: TestsPageSearchParams;
+  searchParams?: Promise<TestsPageSearchParams>;
 }): Promise<Metadata> {
   const dynamicTests = await loadDynamicTests();
-  const { page, query, category } = getListingState(dynamicTests, searchParams);
+  const resolvedSearchParams = await searchParams;
+  const { page, query, category } = getListingState(dynamicTests, resolvedSearchParams);
   if (query || category !== "전체") {
     return { ...listingMetadata, robots: { index: false, follow: true },
       alternates: { canonical: "/tests" } };
@@ -452,10 +453,11 @@ export async function generateMetadata({
 export default async function TestsPage({
   searchParams,
 }: {
-  searchParams?: TestsPageSearchParams;
+  searchParams?: Promise<TestsPageSearchParams>;
 }) {
   const dynamicTests = await loadDynamicTests();
-  const { page: requestedPage, query, category, filtered } = getListingState(dynamicTests, searchParams);
+  const resolvedSearchParams = await searchParams;
+  const { page: requestedPage, query, category, filtered } = getListingState(dynamicTests, resolvedSearchParams);
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "홈", url: baseUrl },
