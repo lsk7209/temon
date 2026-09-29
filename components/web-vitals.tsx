@@ -8,6 +8,7 @@
  */
 
 import { useReportWebVitals } from "next/web-vitals";
+import { isAnalyticsAllowed } from "@/lib/consent";
 
 type Metric = {
   id: string;
@@ -22,7 +23,7 @@ type Metric = {
 export default function WebVitals() {
   useReportWebVitals((metric: Metric) => {
     if (typeof window === "undefined") return;
-    if (!window.gtag) return;
+    if (!window.gtag || !isAnalyticsAllowed()) return;
 
     // GA4는 정수 값만 권장. CLS는 ×1000, 그 외는 반올림.
     const value = Math.round(

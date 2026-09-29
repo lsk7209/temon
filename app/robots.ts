@@ -11,57 +11,65 @@ import { getSiteUrl } from "@/lib/site-url";
  */
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = getSiteUrl();
-  const privateResultPaths = ["/results/*"];
+  // Result pages carry noindex in app/results/layout.tsx and must be crawlable
+  // for search bots to read that directive. The image route is public only.
+  const publicImagePath = "/api/og";
 
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/admin", ...privateResultPaths],
+        allow: ["/", publicImagePath],
+        disallow: ["/api/", "/admin"],
         crawlDelay: 1,
       },
       {
         userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/api/", "/admin", ...privateResultPaths],
+        allow: ["/", publicImagePath],
+        disallow: ["/api/", "/admin"],
         crawlDelay: 0, // Google은 최대 속도 크롤링
       },
       {
         userAgent: "Googlebot-Image",
-        allow: "/",
+        allow: ["/", publicImagePath],
         disallow: ["/api/", "/admin"],
       },
       {
         userAgent: "Googlebot-Mobile",
-        allow: "/",
-        disallow: ["/api/", "/admin", ...privateResultPaths],
+        allow: ["/", publicImagePath],
+        disallow: ["/api/", "/admin"],
       },
       {
         userAgent: "Yeti",
-        allow: "/",
-        disallow: ["/api/", "/admin", ...privateResultPaths],
+        allow: ["/", publicImagePath],
+        disallow: ["/api/", "/admin"],
         crawlDelay: 1, // 네이버는 안정적 크롤링
       },
       {
         userAgent: "Yeti-Mobile",
-        allow: "/",
-        disallow: ["/api/", "/admin", ...privateResultPaths],
+        allow: ["/", publicImagePath],
+        disallow: ["/api/", "/admin"],
         crawlDelay: 1,
       },
       {
         userAgent: "Daumoa",
-        allow: "/",
-        disallow: ["/api/", "/admin", ...privateResultPaths],
+        allow: ["/", publicImagePath],
+        disallow: ["/api/", "/admin"],
         crawlDelay: 1,
       },
       // AI 검색 엔진 크롤러 명시 허용 (GEO 최적화)
-      { userAgent: "GPTBot", allow: "/" },
-      { userAgent: "OAI-SearchBot", allow: "/" },
-      { userAgent: "PerplexityBot", allow: "/" },
-      { userAgent: "ClaudeBot", allow: "/" },
-      { userAgent: "anthropic-ai", allow: "/" },
-      { userAgent: "Google-Extended", allow: "/" },
+      ...[
+        "GPTBot",
+        "OAI-SearchBot",
+        "PerplexityBot",
+        "ClaudeBot",
+        "anthropic-ai",
+        "Google-Extended",
+      ].map((userAgent) => ({
+        userAgent,
+        allow: ["/", publicImagePath],
+        disallow: ["/api/", "/admin"],
+      })),
       // 스팸 크롤러 차단
       { userAgent: "Bytespider", disallow: ["/"] },
       { userAgent: "AhrefsBot", disallow: ["/api/"] },

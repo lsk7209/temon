@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { getDb } from "@/lib/db/client";
-import { tests, questions, resultTypes, testResults } from "@/lib/db/schema";
+import { getDb, getDbClient } from "@/lib/db/client";
+import { tests, questions, resultTypes } from "@/lib/db/schema";
+import { ATTEMPT_ID_PATTERN, insertResultIdempotent } from "@/lib/db/queries/result-attempts";
 import { and, eq, or, sql } from "drizzle-orm";
 import { nanoid } from "nanoid";
 
@@ -11,9 +12,16 @@ export async function POST(
   { params }: { params: { testId: string } },
 ) {
   try {
-    const { answers } = (await req.json()) as {
+    const { answers, attemptId } = (await req.json()) as {
       answers: Record<string, number>;
+      attemptId?: unknown;
     };
+    if (attemptId !== undefined && (typeof attemptId !== "string" || !ATTEMPT_ID_PATTERN.test(attemptId))) {
+      return NextResponse.json(
+        { error: "INVALID_ATTEMPT_ID", code: "INVALID_ATTEMPT_ID" },
+        { status: 400 },
+      );
+    }
 
     const db = getDb();
 
@@ -103,18 +111,24 @@ export async function POST(
       );
     }
 
-    // 5. Save Result (Analytics)
-    const newResultId = nanoid();
-    await db.insert(testResults).values({
-      id: newResultId,
+    // 5. Save Result (Analytics). Same attemptId retry returns the original row.
+    const outcome = await insertResultIdempotent(getDbClient(), {
+      id: nanoid(),
       testId: resolvedTestId,
       resultType: mbti,
-      answers: JSON.stringify(answers),
+      answers,
       userIp: "anonymous",
       userAgent: req.headers.get("user-agent"),
-    });
+    }, attemptId);
 
-    return NextResponse.json({ resultId: newResultId });
+    if (outcome.kind === "conflict") {
+      return NextResponse.json(
+        { error: "ATTEMPT_CONFLICT", code: "ATTEMPT_CONFLICT" },
+        { status: 409 },
+      );
+    }
+
+    return NextResponse.json({ resultId: outcome.id, replayed: outcome.kind === "replayed" });
   } catch (error: unknown) {
     console.error("Submit Error:", error);
     return NextResponse.json(

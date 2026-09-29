@@ -5,7 +5,11 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import AnalyticsProvider from "@/components/analytics-provider";
-import Script from "next/script";
+import {
+  AnalyticsConsentGate,
+  AnalyticsScripts,
+  ConsentBanner,
+} from "@/components/analytics-consent";
 import { Suspense } from "react";
 import AdminHeadScripts from "@/components/admin-head-scripts";
 import AutoContentToc from "@/components/auto-content-toc";
@@ -138,33 +142,6 @@ export default function RootLayout({
         <JsonLd id="organization-schema" data={organizationSchema} />
         <JsonLd id="website-schema" data={websiteSchema} />
         <JsonLd id="speakable-webpage-schema" data={speakableWebPageSchema} />
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="lazyOnload"
-        />
-        <Script id="google-tag" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = window.gtag || function gtag(){window.dataLayer.push(arguments);}
-            window.gtag('js', new Date());
-            window.gtag('config', '${GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
-              page_location: window.location.href,
-              send_page_view: false
-            });
-          `}
-        </Script>
-        {process.env.NEXT_PUBLIC_CLARITY_ID && (
-          <Script id="microsoft-clarity" strategy="lazyOnload">
-            {`
-              (function(c,l,a,r,i,t,y){
-                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");
-            `}
-          </Script>
-        )}
         <meta name="naver-site-verification" content={NAVER_SITE_VERIFICATION} />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
@@ -202,9 +179,16 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <AnalyticsProvider />
         </Suspense>
-        {isVercel && <Analytics />}
-        {isVercel && <SpeedInsights />}
+        {/* 분석 도구는 동의 상태(lib/consent.ts)가 허용할 때만 로드된다. */}
+        <AnalyticsScripts gaId={GA_MEASUREMENT_ID} clarityId={process.env.NEXT_PUBLIC_CLARITY_ID} />
+        {isVercel && (
+          <AnalyticsConsentGate>
+            <Analytics />
+            <SpeedInsights />
+          </AnalyticsConsentGate>
+        )}
         <WebVitals />
+        <ConsentBanner />
       </body>
     </html>
   );

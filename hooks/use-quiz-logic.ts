@@ -6,7 +6,6 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { useTestResult } from "@/hooks/use-test-result"
-import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { convertAnswersToRecord } from "@/lib/utils/test-answers"
 import { calculateMBTI } from "@/lib/utils/mbti-calculator"
 
@@ -35,16 +34,17 @@ export function useQuizLogic({
   const [selectedChoice, setSelectedChoice] = useState<string>("")
   const [isProcessing, setIsProcessing] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const processingRef = useRef(false)
 
   const router = useRouter()
-  const { saveResult, isSaving } = useTestResult({
+  const { saveResult, startAttempt, trackProgress, isSaving } = useTestResult({
     testId,
     onSuccess: (resultId, resultType) => {
       router.push(`${resultPath}?type=${resultType}&id=${resultId}`)
     },
     onError: (error, resultType) => {
       console.error("결과 저장 실패:", error)
-      router.push(`${resultPath}?type=${resultType}`)
+      router.push(`${resultPath}?type=${encodeURIComponent(resultType)}&save=unconfirmed`)
     },
   })
 
@@ -55,15 +55,8 @@ export function useQuizLogic({
 
   // 테스트 시작 추적
   useEffect(() => {
-    trackTestStart(testId)
-  }, [testId])
-
-  // 진행률 추적
-  useEffect(() => {
-    if (currentQuestion > 0) {
-      trackTestProgress(testId, currentQuestion + 1, questions.length)
-    }
-  }, [currentQuestion, testId, questions.length])
+    if (questions.length > 0) startAttempt()
+  }, [questions.length, startAttempt])
 
   // cleanup timeout on unmount
   useEffect(() => {
@@ -71,14 +64,15 @@ export function useQuizLogic({
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current)
       }
-      setIsProcessing(false)
+      processingRef.current = false
     }
   }, [])
 
   const handleChoiceSelect = useCallback(
     async (tags: string[]) => {
-      if (isProcessing || isSaving) return
+      if (processingRef.current || isProcessing || isSaving) return
 
+      processingRef.current = true
       setIsProcessing(true)
       setSelectedChoice(tags.join(","))
       const currentQuestionIndex = currentQuestion
@@ -89,13 +83,15 @@ export function useQuizLogic({
       }
 
       timeoutRef.current = setTimeout(async () => {
-        const newAnswers = [...answers, tags]
+        const newAnswers = [...answers.slice(0, currentQuestionIndex), tags]
         setAnswers(newAnswers)
+        trackProgress(newAnswers.length, questions.length)
 
         if (currentQuestionIndex < questions.length - 1) {
           setCurrentQuestion(currentQuestionIndex + 1)
           setSelectedChoice("")
           setIsProcessing(false)
+          processingRef.current = false
         } else {
           const result = calculateResult(newAnswers)
           const answersRecord = convertAnswersToRecord(newAnswers)
@@ -103,16 +99,17 @@ export function useQuizLogic({
         }
       }, 500)
     },
-    [currentQuestion, answers, questions.length, saveResult, isProcessing, isSaving, calculateResult]
+    [currentQuestion, answers, questions.length, saveResult, trackProgress, isProcessing, isSaving, calculateResult]
   )
 
   const handlePrevious = useCallback(() => {
-    if (currentQuestion > 0) {
+    if (currentQuestion > 0 && !processingRef.current && !isSaving) {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
       setCurrentQuestion(currentQuestion - 1)
       setAnswers(answers.slice(0, -1))
       setSelectedChoice("")
     }
-  }, [currentQuestion, answers])
+  }, [currentQuestion, answers, isSaving])
 
   const currentQ = useMemo(() => questions[currentQuestion], [currentQuestion, questions])
 

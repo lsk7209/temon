@@ -1,10 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { trackTestStart, trackTestProgress } from "@/lib/analytics"
 import { useTestResult } from "@/hooks/use-test-result"
 
 const questions = [
@@ -177,9 +176,10 @@ const questions = [
 export default function NTRPTestPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [scores, setScores] = useState<number[]>([])
+  const processingRef = useRef(false)
   const [isStarted, setIsStarted] = useState(false)
   const router = useRouter()
-  const { saveResult } = useTestResult({
+  const { saveResult, startAttempt, trackProgress } = useTestResult({
     testId: 'ntrp-test',
     onSuccess: (resultId, resultType) => {
       const finalLevel = parseFloat(resultType)
@@ -188,24 +188,27 @@ export default function NTRPTestPage() {
     onError: (error, resultType) => {
       console.error('결과 저장 실패:', error)
       const finalLevel = parseFloat(resultType)
-      router.push(`/ntrp-test/test/result?level=${finalLevel}`)
+      router.push(`/ntrp-test/test/result?level=${finalLevel}&save=unconfirmed`)
     },
   })
 
   useEffect(() => {
     if (isStarted) {
-      trackTestStart("ntrp-test")
+      startAttempt()
     }
-  }, [isStarted])
+  }, [isStarted, startAttempt])
 
   const handleAnswer = async (level: number) => {
+    if (processingRef.current) return
+    processingRef.current = true
     const newScores = [...scores, level]
     setScores(newScores)
 
-    trackTestProgress("ntrp-test", currentQuestion + 1, questions.length)
+    trackProgress(newScores.length, questions.length)
 
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
+      processingRef.current = false
     } else {
       // 결과 계산
       const averageScore = newScores.reduce((sum, score) => sum + score, 0) / newScores.length
@@ -260,6 +263,7 @@ export default function NTRPTestPage() {
                   variant="outline"
                   className="w-full p-6 text-left justify-start hover:bg-green-50 hover:border-green-300 bg-transparent"
                   onClick={() => handleAnswer(option.level)}
+                  disabled={processingRef.current}
                 >
                   <span className="text-base">{option.text}</span>
                 </Button>

@@ -111,6 +111,19 @@ export const testResults = sqliteTable(
   }),
 );
 
+// 결과 저장 멱등성 키 (attempt 당 1행). 재시도 시 같은 결과 ID를 돌려준다.
+// migration: lib/db/migrations/0003_result_attempts.sql
+export const resultAttempts = sqliteTable("result_attempts", {
+  attemptId: text("attempt_id").primaryKey(),
+  payloadDigest: text("payload_digest").notNull(), // sha256(canonical testId/resultType/answers)
+  resultId: text("result_id")
+    .notNull()
+    .references(() => testResults.id, { onDelete: "cascade" }),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .notNull()
+    .default(sql`(unixepoch())`),
+});
+
 // 통계 집계 (크론으로 주기적 업데이트)
 export const testStats = sqliteTable("test_stats", {
   testId: text("test_id")

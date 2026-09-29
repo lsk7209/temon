@@ -161,49 +161,41 @@ export function getStaticRoutes(baseUrl: string): RouteInfo[] {
   return [
     {
       path: baseUrl,
-      lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
     },
     {
       path: `${baseUrl}/tests`,
-      lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
       path: `${baseUrl}/blog`,
-      lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.85,
     },
     {
       path: `${baseUrl}/about`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       path: `${baseUrl}/contact`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       path: `${baseUrl}/privacy`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,
     },
     {
       path: `${baseUrl}/terms`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,
     },
     {
       path: `${baseUrl}/disclaimer`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,
     },

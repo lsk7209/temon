@@ -7,8 +7,42 @@
 export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
-import { saveTestResult, getTestResult } from "@/lib/db/queries/results";
+import { saveTestResult, getPublicTestResult, ResultSaveError } from "@/lib/db/queries/results";
+import { ATTEMPT_ID_PATTERN } from "@/lib/db/queries/result-attempts";
 import { hashIp } from "@/lib/hash-ip";
+import { z } from "zod";
+
+const MAX_BODY_BYTES = 64 * 1024;
+class BodyTooLargeError extends Error {}
+
+async function readLimitedBody(request: NextRequest) {
+  if (!request.body) return "";
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > MAX_BODY_BYTES) throw new BodyTooLargeError();
+      chunks.push(value);
+    }
+  } finally {
+    reader.releaseLock();
+  }
+  return Buffer.concat(chunks).toString("utf8");
+}
+
+const resultInput = z.object({
+  testId: z.string().trim().min(1).max(100),
+  resultType: z.string().trim().min(1).max(100),
+  answers: z.record(z.string().max(512)).refine(
+    (answers) => Object.keys(answers).length > 0 && Object.keys(answers).length <= 100 &&
+      Object.keys(answers).every((key) => /^(0|[1-9]\d{0,5}|[A-Za-z0-9_-]{1,100})$/.test(key)),
+  ),
+  attemptId: z.string().regex(ATTEMPT_ID_PATTERN).optional(),
+}).strict();
 
 /**
  * CORS 헤더 설정
@@ -25,34 +59,8 @@ function getCorsHeaders() {
 /**
  * 입력 검증
  */
-function validateTestResult(body: unknown): {
-  testId: string;
-  resultType: string;
-  answers: Record<number, string>;
-} | null {
-  if (typeof body !== "object" || body === null) {
-    return null;
-  }
-
-  const { testId, resultType, answers } = body as Record<string, unknown>;
-
-  if (typeof testId !== "string" || testId.length === 0) {
-    return null;
-  }
-
-  if (typeof resultType !== "string" || resultType.length === 0) {
-    return null;
-  }
-
-  if (
-    typeof answers !== "object" ||
-    answers === null ||
-    Array.isArray(answers)
-  ) {
-    return null;
-  }
-
-  return { testId, resultType, answers: answers as Record<number, string> };
+function errorResponse(code: string, status: number) {
+  return NextResponse.json({ error: code, code }, { status, headers: getCorsHeaders() });
 }
 
 /**
@@ -70,26 +78,18 @@ export async function POST(request: NextRequest) {
     // 요청 본문 파싱 및 검증
     let body: unknown;
     try {
-      body = await request.json();
-    } catch {
-      return NextResponse.json(
-        { error: "Invalid JSON in request body" },
-        { status: 400, headers: getCorsHeaders() },
-      );
+      body = JSON.parse(await readLimitedBody(request));
+    } catch (error) {
+      if (error instanceof BodyTooLargeError) return errorResponse("BODY_TOO_LARGE", 413);
+      return errorResponse("INVALID_JSON", 400);
     }
 
-    const validated = validateTestResult(body);
-    if (!validated) {
-      return NextResponse.json(
-        {
-          error:
-            "Missing or invalid required fields: testId, resultType, answers",
-        },
-        { status: 400, headers: getCorsHeaders() },
-      );
+    const validated = resultInput.safeParse(body);
+    if (!validated.success) {
+      return errorResponse("INVALID_RESULT_INPUT", 400);
     }
 
-    const { testId, resultType, answers } = validated;
+    const { testId, resultType, answers, attemptId } = validated.data;
 
     // 클라이언트 정보 추출
     const userAgent = request.headers.get("user-agent") || undefined;
@@ -99,25 +99,27 @@ export async function POST(request: NextRequest) {
       "unknown";
 
     // 결과 저장 (원본 IP는 저장하지 않고 해시된 식별자만 저장 — PIPA 최소수집)
-    const resultId = await saveTestResult({
+    // 같은 attemptId 재시도는 기존 결과 ID를 200으로 돌려준다.
+    const saved = await saveTestResult({
       testId,
       resultType,
       answers,
+      attemptId,
       userAgent,
       userIp: hashIp(ipRaw),
     });
 
     return NextResponse.json(
-      { id: resultId, success: true },
-      { status: 201, headers: getCorsHeaders() },
+      { id: saved.id, success: true, replayed: saved.replayed },
+      { status: saved.replayed ? 200 : 201, headers: getCorsHeaders() },
     );
   } catch (error) {
+    if (error instanceof ResultSaveError) {
+      return errorResponse(error.code, error.status);
+    }
     console.error("Error saving test result:", error);
 
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500, headers: getCorsHeaders() },
-    );
+    return errorResponse("RESULT_SAVE_FAILED", 500);
   }
 }
 
@@ -145,7 +147,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const result = await getTestResult(id);
+    const result = await getPublicTestResult(id);
 
     if (!result) {
       return NextResponse.json(

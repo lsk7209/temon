@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Suspense } from "react";
 import { ResultRouteAutoEnhancements } from "@/components/result-route-auto-enhancements";
 import { LegacyResultAdSlot } from "@/components/legacy-result-ad-slot";
+import { ResultSaveNotice } from "@/components/result-save-notice";
 
 export const metadata: Metadata = {
   robots: {
@@ -18,6 +19,9 @@ export const metadata: Metadata = {
 export default function ResultsLayout({ children }: { children: ReactNode }) {
   return (
     <>
+      <Suspense fallback={null}>
+        <ResultSaveNotice />
+      </Suspense>
       {children}
       <LegacyResultAdSlot />
       <Suspense fallback={null}>

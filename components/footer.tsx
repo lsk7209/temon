@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ConsentSettings } from "@/components/analytics-consent";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -115,6 +116,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© {currentYear} 테몬 MBTI. All rights reserved.</p>
+          <ConsentSettings />
           <p className="text-xs">
             본 사이트의 테스트 결과는 재미를 위한 것이며, 전문적인 심리 진단이
             아닙니다.

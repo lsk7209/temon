@@ -20,7 +20,17 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Result and attempt contracts
+        run: |
+          node scripts/test-results-contract.cjs
+          node scripts/test-result-idempotency.cjs
+          node scripts/test-result-attempt.cjs
+          node scripts/test-attempt-analytics.cjs
+          node scripts/test-analytics-consent.cjs
+          node scripts/test-result-save-notice.cjs
+          node scripts/test-tests-pagination.cjs
 
       - name: Type check
         run: npx tsc --noEmit

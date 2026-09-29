@@ -27,7 +27,7 @@ const SITEMAP_CACHE_CONTROL =
 
 type RouteEntry = {
   url: string;
-  lastModified: Date;
+  lastModified?: Date;
   changeFrequency:
     | "always"
     | "hourly"
@@ -39,14 +39,20 @@ type RouteEntry = {
   priority: number;
 };
 
+function escapeXml(value: string): string {
+  return value.replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;",
+  })[character] || character);
+}
+
 function buildSitemapXml(routes: RouteEntry[]): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes
   .map(
     (r) => `  <url>
-    <loc>${r.url}</loc>
-    <lastmod>${r.lastModified.toISOString()}</lastmod>
+    <loc>${escapeXml(r.url)}</loc>
+    ${r.lastModified ? `<lastmod>${r.lastModified.toISOString()}</lastmod>` : ""}
     <changefreq>${r.changeFrequency}</changefreq>
     <priority>${r.priority}</priority>
   </url>`,
@@ -55,7 +61,7 @@ ${routes
 </urlset>`;
 }
 
-function toValidDate(value: unknown, fallback: Date): Date {
+function toValidDate(value: unknown): Date | undefined {
   if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
 
   if (typeof value === "number") {
@@ -69,16 +75,14 @@ function toValidDate(value: unknown, fallback: Date): Date {
     if (!Number.isNaN(date.getTime())) return date;
   }
 
-  return fallback;
+  return undefined;
 }
 
 async function getPublishedDbTestRoutes(
   baseUrl: string,
-  fallbackDate: Date,
 ): Promise<RouteEntry[]> {
-  if (!isDbAvailable()) return [];
+  if (!isDbAvailable()) throw new Error("SITEMAP_DB_UNAVAILABLE");
 
-  try {
     const db = getDb();
     const rows = await db
       .select({
@@ -92,20 +96,13 @@ async function getPublishedDbTestRoutes(
       .all();
 
     return rows
-      .filter((test) => test.slug && !isNoindexTest(test.slug))
+      .filter((test) => test.slug && !isNoindexTest(test.slug) && (!test.publishedAt || (toValidDate(test.publishedAt)?.getTime() ?? Infinity) <= Date.now()))
       .map((test) => ({
         url: `${baseUrl}/tests/${test.slug}`,
-        lastModified: toValidDate(
-          test.updatedAt || test.publishedAt || test.createdAt,
-          fallbackDate,
-        ),
+        lastModified: toValidDate(test.updatedAt || test.publishedAt || test.createdAt),
         changeFrequency: "weekly",
         priority: 0.8,
       }));
-  } catch (error) {
-    console.error("DB sitemap route generation error:", error);
-    return [];
-  }
 }
 
 export async function GET() {
@@ -116,14 +113,14 @@ export async function GET() {
     // 정적 라우트 (홈, /tests, /about, /contact, /privacy, /terms)
     const staticRoutes = getStaticRoutes(baseUrl).map<RouteEntry>((r) => ({
       url: r.path,
-      lastModified: r.lastModified || now,
+      lastModified: r.lastModified,
       changeFrequency: r.changeFrequency || "weekly",
       priority: r.priority ?? 0.5,
     }));
-    const dbTestRoutes = await getPublishedDbTestRoutes(baseUrl, now);
+    const dbTestRoutes = await getPublishedDbTestRoutes(baseUrl);
     const blogRoutes: RouteEntry[] = getAllBlogPosts().map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: toValidDate(post.updatedAt, now),
+      lastModified: toValidDate(post.updatedAt),
       changeFrequency: "monthly",
       priority: 0.75,
     }));
@@ -143,7 +140,6 @@ export async function GET() {
 
     const testRoutes: RouteEntry[] = testIds.map((id) => ({
       url: `${baseUrl}/tests/${id}`,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     }));
@@ -167,39 +163,12 @@ export async function GET() {
       },
     });
   } catch (error) {
-    // 극히 예외적 상황에만 진입. fallback도 정적 routes까지는 노출.
     console.error("Sitemap generation error:", error);
-    const fallback: RouteEntry[] = [
-      {
-        url: baseUrl,
-        lastModified: now,
-        changeFrequency: "daily",
-        priority: 1.0,
-      },
-      {
-        url: `${baseUrl}/tests`,
-        lastModified: now,
-        changeFrequency: "daily",
-        priority: 0.9,
-      },
-      {
-        url: `${baseUrl}/about`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.6,
-      },
-      {
-        url: `${baseUrl}/contact`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.5,
-      },
-    ];
-
-    return new NextResponse(buildSitemapXml(fallback), {
+    return new NextResponse("Sitemap temporarily unavailable", {
+      status: 503,
       headers: {
-        "Content-Type": "application/xml; charset=utf-8",
-        "Cache-Control": SITEMAP_CACHE_CONTROL,
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-store",
       },
     });
   }

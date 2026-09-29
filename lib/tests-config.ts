@@ -76,12 +76,14 @@ export interface Test {
   href: string;
   color: string;
   participants: string;
-  rating: number;
+  rating?: number;
   badge?: string;
   category: string;
   tags: string[];
   popular?: boolean;
   new?: boolean;
+  questionCount?: number;
+  avgMinutes?: number;
   /**
    * ISO 8601 날짜 문자열 (예: "2026-05-01T00:00:00Z").
    * 이 시점 이전 접속은 lib/visible-tests.ts 필터에서 제외되어
