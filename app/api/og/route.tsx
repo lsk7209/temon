@@ -1,7 +1,9 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
-export const runtime = "edge";
+// Next.js 16: Edge 런타임이 deprecated 되어 nodejs 런타임을 사용한다.
+// next/og의 ImageResponse는 nodejs 런타임에서도 동작한다.
+export const runtime = "nodejs";
 
 const DEFAULT_TITLE = "테몬 성향 테스트";
 const DEFAULT_DESCRIPTION = "나의 선택 기준과 생활 성향을 가볍게 확인해보세요";

@@ -5,7 +5,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
+    "lint": "eslint . --ext .ts,.tsx --max-warnings=0",
     "start": "next start",
     "create-test": "ts-node scripts/create-test.ts",
     "audit:results": "node scripts/audit-result-pages.js",
@@ -79,7 +79,7 @@
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "nanoid": "^5.1.6",
-    "next": "15.5.26",
+    "next": "16.3.7",
     "next-themes": "latest",
     "pdf-lib": "^1.17.1",
     "react": "19.3.0",
