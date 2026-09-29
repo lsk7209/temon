@@ -105,6 +105,23 @@ async function getPublishedDbTestRoutes(
       }));
 }
 
+/**
+ * DB 기반 테스트 라우트를 안전하게 가져온다.
+ * DB가 일시적으로 불가하거나 조회가 실패해도 sitemap 전체를 503으로 만들지 않고
+ * 빈 배열을 반환한다. 정적 페이지·정적 테스트(213개)·블로그 라우트는 DB에
+ * 의존하지 않으므로 계속 제공되어 크롤링 손실을 막는다.
+ */
+async function getPublishedDbTestRoutesSafe(
+  baseUrl: string,
+): Promise<RouteEntry[]> {
+  try {
+    return await getPublishedDbTestRoutes(baseUrl);
+  } catch (error) {
+    console.error("Sitemap DB routes unavailable, serving static-only:", error);
+    return [];
+  }
+}
+
 export async function GET() {
   const baseUrl = getSiteUrl();
   const now = new Date();
@@ -117,7 +134,7 @@ export async function GET() {
       changeFrequency: r.changeFrequency || "weekly",
       priority: r.priority ?? 0.5,
     }));
-    const dbTestRoutes = await getPublishedDbTestRoutes(baseUrl);
+    const dbTestRoutes = await getPublishedDbTestRoutesSafe(baseUrl);
     const blogRoutes: RouteEntry[] = getAllBlogPosts().map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: toValidDate(post.updatedAt),
