@@ -21,11 +21,12 @@ import {
   injuryRisks,
   commonMistakes,
 } from "@/lib/ntrpResultConfig"
-import { getNTRPLevel, mapScoreToLevelBand, mapLevelToBaseProfile } from "@/lib/ntrpMath"
+import { getNTRPLevelInfo, normalizeToBandKey, mapLevelToBaseProfile } from "@/lib/ntrpMath"
+import { parseNtrpResult, buildNtrpResultUrl, type NtrpLevel } from "@/lib/ntrp-result"
 import { NTRPResultCard } from "@/components/ntrp-result-card"
 import { ShareButtons } from "@/components/share-buttons"
-import { trackShare } from "@/lib/analytics"
-import { Download, RotateCcw, Copy, CheckCircle2 } from "lucide-react"
+import { trackShare, trackResultView } from "@/lib/analytics"
+import { Download, RotateCcw, Copy, CheckCircle2, AlertTriangle } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
 const NTRPRadarChart = dynamic(
@@ -44,16 +45,22 @@ export default function NTRPTestResult() {
   const [mounted, setMounted] = useState(false)
   const [copied, setCopied] = useState(false)
 
-  // Query params 읽기
-  const scoreParam = searchParams.get("level") || searchParams.get("score")
-  const score = scoreParam ? parseFloat(scoreParam) : 45 // Fallback to 45 for demo
+  // 질문 화면이 만드는 레벨 단위와 결과 화면의 해석을 항상 일치시키는 단일 계약.
+  // 실패 시 가짜 기본값(45점 등)을 만들지 않고 오류 상태로 안내한다 (F01/T01).
+  const parsed = useMemo(() => parseNtrpResult(searchParams), [searchParams])
   const q13Param = searchParams.get("q13")
   const resultId = searchParams.get("id") || undefined
 
-  // 레벨 및 페르소나 계산
-  const levelObj = useMemo(() => getNTRPLevel(score), [score])
-  const band = useMemo(() => mapScoreToLevelBand(score), [score])
-  const bandConfig = useMemo(() => levelBands.find((b) => b.level === band.level), [band.level])
+  const level: NtrpLevel | null = parsed.ok ? parsed.level : null
+  const levelObj = useMemo(() => (level ? getNTRPLevelInfo(level) : null), [level])
+  const bandKey = useMemo(() => (level ? normalizeToBandKey(level) : null), [level])
+  const bandConfig = useMemo(
+    () => (bandKey ? levelBands.find((b) => b.level === bandKey) : undefined),
+    [bandKey],
+  )
+  // 질문 화면은 q13(페르소나 키)을 보내지 않는다. 링크에 실려 온 값이 있을 때만
+  // "입력된 페르소나"로 표시하고, 없으면 추정값임을 밝힌다 (F04/T03).
+  const hasPersonaInput = Boolean(q13Param && personas[q13Param])
   const persona = useMemo(() => {
     if (q13Param && personas[q13Param]) {
       return { label: q13Param, ...personas[q13Param] }
@@ -61,12 +68,16 @@ export default function NTRPTestResult() {
     return { label: "올라운더", ...personas["올라운더"] }
   }, [q13Param])
 
-  // 레이더 차트 데이터
-  const radarData = useMemo(() => mapLevelToBaseProfile(band.level), [band.level])
+  // 레이더 차트 데이터 (참고용 템플릿, 응답별 개별 측정값 아님 — T03)
+  const radarData = useMemo(() => (bandKey ? mapLevelToBaseProfile(bandKey) : []), [bandKey])
 
   useEffect(() => {
-    setMounted(true)
-  }, [levelObj.level])
+    if (!mounted) setMounted(true)
+    if (parsed.ok) {
+      trackResultView("ntrp-test", parsed.level)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [parsed.ok])
 
   // Export functions
   const handleExportPNG = async () => {
@@ -84,7 +95,7 @@ export default function NTRPTestResult() {
       })
 
       const link = document.createElement("a")
-      link.download = `ntrp-result-${levelObj.level}-${dayjs().format("YYYYMMDD")}.png`
+      link.download = `ntrp-result-${level}-${dayjs().format("YYYYMMDD")}.png`
       link.href = dataUrl
       link.click()
 
@@ -122,22 +133,33 @@ export default function NTRPTestResult() {
       const page = pdfDoc.addPage([595, 842]) // A4 size
 
       const img = await pdfDoc.embedPng(dataUrl)
-      const imgDims = img.scale(0.5)
+      // 인쇄 가능 영역(여백 36/36/36/60) 안에 맞도록 비례 축소한다.
+      // 고정 0.5배는 화면 폭·캡처 크기에 따라 잘림/여백 낭비가 생길 수 있다 (F05/T04).
+      const marginX = 36
+      const marginTop = 36
+      const marginBottom = 60
+      const maxWidth = page.getWidth() - marginX * 2
+      const maxHeight = page.getHeight() - marginTop - marginBottom
+      const fitScale = Math.min(maxWidth / img.width, maxHeight / img.height, 1)
+      const imgDims = img.scale(fitScale)
       page.drawImage(img, {
         x: (page.getWidth() - imgDims.width) / 2,
-        y: page.getHeight() - imgDims.height - 50,
+        y: page.getHeight() - marginTop - imgDims.height,
         width: imgDims.width,
         height: imgDims.height,
       })
 
-      page.drawText(`테몬 MBTI - NTRP 테스트 결과`, {
+      // pdf-lib 표준 폰트(Helvetica)는 WinAnsi 범위만 지원해 한글 문자열을
+      // drawText에 넘기면 인코딩 오류로 예외가 발생한다 (F05/T04). 한글 제목·날짜는
+      // 이미 PNG로 캡처된 결과 카드 안에 표시되므로, 별도 텍스트는 ASCII만 사용한다.
+      page.drawText(`temon.kr - NTRP Test Result`, {
         x: 50,
         y: 30,
         size: 10,
         color: rgb(0.5, 0.5, 0.5),
       })
 
-      page.drawText(dayjs().format("YYYY년 MM월 DD일"), {
+      page.drawText(dayjs().format("YYYY-MM-DD"), {
         x: 450,
         y: 30,
         size: 10,
@@ -148,7 +170,7 @@ export default function NTRPTestResult() {
       const blob = new Blob([pdfBytes as BlobPart], { type: "application/pdf" })
       const url = URL.createObjectURL(blob)
       const link = document.createElement("a")
-      link.download = `ntrp-result-${levelObj.level}-${dayjs().format("YYYYMMDD")}.pdf`
+      link.download = `ntrp-result-${level}-${dayjs().format("YYYYMMDD")}.pdf`
       link.href = url
       link.click()
       URL.revokeObjectURL(url)
@@ -168,7 +190,8 @@ export default function NTRPTestResult() {
   }
 
   const handleCopyLink = async () => {
-    const url = `${window.location.origin}/results/ntrp-test?level=${score}${q13Param ? `&q13=${encodeURIComponent(q13Param)}` : ""}`
+    if (!level) return
+    const url = `${buildNtrpResultUrl(level, window.location.origin)}${q13Param ? `&q13=${encodeURIComponent(q13Param)}` : ""}`
     try {
       await navigator.clipboard.writeText(url)
       setCopied(true)
@@ -191,7 +214,7 @@ export default function NTRPTestResult() {
     trackShare("ntrp-test", platform)
   }
 
-  if (!mounted || !bandConfig) {
+  if (!mounted) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-50">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-600"></div>
@@ -199,14 +222,45 @@ export default function NTRPTestResult() {
     )
   }
 
+  // 유효하지 않은/충돌하는/누락된 결과 매개변수 — 가짜 결과(기본 45점 등)를
+  // 만들지 않고 다시 테스트하기를 안내한다 (F01/T01).
+  if (!parsed.ok || !level || !levelObj || !bandConfig) {
+    const message =
+      !parsed.ok && parsed.reason === "conflicting"
+        ? "결과 링크의 값이 서로 달라 해석할 수 없습니다."
+        : "결과를 확인할 수 없습니다. 링크가 올바르지 않거나 만료되었을 수 있습니다."
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-50 px-4">
+        <Card className="max-w-md w-full rounded-2xl shadow-xl">
+          <CardHeader className="text-center">
+            <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100">
+              <AlertTriangle className="h-6 w-6 text-orange-600" />
+            </div>
+            <CardTitle>결과를 표시할 수 없습니다</CardTitle>
+            <CardDescription>{message}</CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3">
+            <Button onClick={() => router.push("/tests/ntrp-test/test")} size="lg">
+              <RotateCcw className="h-4 w-4 mr-2" />
+              다시 테스트하기
+            </Button>
+            <Button onClick={() => router.push("/tests")} size="lg" variant="outline">
+              다른 테스트하기
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
   const themeColor = persona.theme || bandConfig.color
-  const levelDrills = drills[band.level] || []
-  const levelKpis = kpis[band.level] || []
-  const levelWeeklyPlan = weeklyPlan[band.level] || []
-  const levelDoubles = doubles[band.level]
-  const levelEquipment = equipment[band.level]
-  const levelInjuryRisks = injuryRisks[band.level] || []
-  const levelMistakes = commonMistakes[band.level] || []
+  const levelDrills = drills[bandKey!] || []
+  const levelKpis = kpis[bandKey!] || []
+  const levelWeeklyPlan = weeklyPlan[bandKey!] || []
+  const levelDoubles = doubles[bandKey!]
+  const levelEquipment = equipment[bandKey!]
+  const levelInjuryRisks = injuryRisks[bandKey!] || []
+  const levelMistakes = commonMistakes[bandKey!] || []
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 py-8">
@@ -225,8 +279,11 @@ export default function NTRPTestResult() {
           </h1>
           <p className="text-xl text-gray-600 mb-2">{bandConfig.title} - {levelObj.desc}</p>
           <Badge variant="outline" className="mt-2" style={{ borderColor: themeColor, color: themeColor }}>
-            {persona.slogan}
+            {hasPersonaInput ? persona.slogan : `${persona.slogan} (추정 유형)`}
           </Badge>
+          <p className="text-xs text-gray-400 mt-3 max-w-md mx-auto">
+            자기보고식 설문 기반 참고 결과입니다. 공식 USTA NTRP 등급이 아니며, 실제 코트에서의 평가와 다를 수 있습니다.
+          </p>
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 justify-center mt-6">
@@ -300,7 +357,7 @@ export default function NTRPTestResult() {
         <Card className="rounded-2xl shadow-xl mb-8">
           <CardHeader>
             <CardTitle>📊 플레이 레이더</CardTitle>
-            <CardDescription>당신의 테니스 능력 프로필</CardDescription>
+            <CardDescription>레벨별 참고 프로필 — 개별 능력 측정값이 아닙니다</CardDescription>
           </CardHeader>
           <CardContent>
             <NTRPRadarChart data={radarData} color={themeColor} />
@@ -529,8 +586,9 @@ export default function NTRPTestResult() {
             <ShareButtons
               testId="ntrp-test"
               testPath="/tests/ntrp-test/test"
-              resultType={levelObj.level}
+              resultType={level}
               resultId={resultId}
+              shareUrl={`${buildNtrpResultUrl(level, typeof window !== "undefined" ? window.location.origin : "")}${q13Param ? `&q13=${encodeURIComponent(q13Param)}` : ""}`}
               title={`NTRP ${levelObj.level} - ${bandConfig.title}`}
               description={persona.slogan}
             />

@@ -14,6 +14,7 @@ export const AUTO_ENHANCEMENT_SKIP_SLUGS = [
   "hotel-breakfast",
   "investment-style",
   "meeting-villain",
+  "ntrp-test",
   "spending-style",
   "spice-tolerance",
   "zombie-survival",

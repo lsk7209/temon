@@ -184,8 +184,10 @@ export default function NTRPTestPage() {
     // Static quiz: no DB parent row, so show the calculated level directly.
     persist: false,
     onComplete: (resultType) => {
-      const finalLevel = parseFloat(resultType)
-      router.push(`/tests/ntrp-test/test/result?level=${finalLevel}`)
+      // v2 계약: 질문 화면이 계산한 레벨을 그대로 결과 화면에 전달한다.
+      // 레거시 경로(/tests/ntrp-test/test/result)는 next.config.mjs 리다이렉트로
+      // /results/ntrp-test에 쿼리를 보존한 채 도달하므로 v=2를 붙여 명시적으로 표시한다.
+      router.push(`/tests/ntrp-test/test/result?v=2&level=${resultType}`)
     },
   })
 
@@ -246,6 +248,10 @@ export default function NTRPTestPage() {
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl p-8">
+            {/* 질문이 바뀔 때 스크린리더에 알린다 (T10) */}
+            <p className="sr-only" aria-live="polite">
+              질문 {currentQuestion + 1} / {questions.length}: {questions[currentQuestion].question}
+            </p>
             <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">{questions[currentQuestion].question}</h2>
 
             <div className="space-y-4">

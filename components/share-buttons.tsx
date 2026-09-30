@@ -13,6 +13,12 @@ interface ShareButtonsProps {
   resultId?: string;
   title: string;
   description: string;
+  /**
+   * 이미 검증된 결과 URL. 지정하면 이 값을 그대로 공유/복사에 사용하고
+   * `createShareLink()`(공통 MBTI 계약)로 재생성하지 않는다. NTRP처럼 결과
+   * 화면이 자체 parser/계약을 갖는 엔진에서 사용한다 (T02).
+   */
+  shareUrl?: string;
 }
 
 export function ShareButtons({
@@ -22,9 +28,10 @@ export function ShareButtons({
   resultId,
   title,
   description,
+  shareUrl: shareUrlProp,
 }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
-  const shareUrl = createShareLink(testPath, resultType, resultId);
+  const shareUrl = shareUrlProp ?? createShareLink(testPath, resultType, resultId);
   const hookText = `${title} ${description}`;
 
   const handleShare = async () => {
