@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { trackShare } from "@/lib/analytics"
 import { ResultSaveNotice } from "@/components/result-save-notice"
+import { buildNtrpResultUrl, type NtrpLevel } from "@/lib/ntrp-result"
 
 const results = {
   "1.0": {
@@ -161,7 +162,10 @@ export default function NTRPTestResult() {
 
   const handleShare = async (platform: string) => {
     const text = `나의 NTRP 테니스 레벨은 ${result.level} - ${result.title}! 당신도 테스트해보세요!`
-    const url = "https://temon.vercel.app/ntrp-test"
+    // 이전에는 존재하지 않는 프리뷰 도메인과 결과 값 없는 URL을 공유했다.
+    // 실제 결과를 보여주는 정규 경로(/results/ntrp-test, T01 계약)로 수정한다.
+    const origin = typeof window !== "undefined" ? window.location.origin : "https://temon.kr"
+    const url = buildNtrpResultUrl(result.level as NtrpLevel, origin)
 
     trackShare("ntrp-test", platform)
 
