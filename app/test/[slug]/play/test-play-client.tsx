@@ -172,6 +172,10 @@ export default function TestPlayClient() {
         {/* 질문 카드 */}
         <Card className="mb-8">
           <CardContent className="p-8">
+            {/* 질문이 바뀔 때 스크린리더에 알린다 (전사이트 aria-live 확대) */}
+            <p className="sr-only" aria-live="polite">
+              질문 {currentQuestion + 1} / {test.questions.length}: {question.question}
+            </p>
             <h2 className="text-xl font-bold mb-6 text-center">{question.question}</h2>
 
             <div className="space-y-3">

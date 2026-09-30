@@ -11,6 +11,20 @@ const GOOGLE_SEARCH_TIMEOUT_MS = 10_000;
 const LOCAL_SERVICE_ACCOUNT_PATH = "D:/env/gsc_credentials.json";
 const INDEXING_API_ENABLED = process.env.GSC_INDEXING_API_ENABLED === "true";
 
+/**
+ * Google Indexing API는 JobPosting 또는 VideoObject 안의 BroadcastEvent에
+ * 한정된 사용 범위다 (R10, https://developers.google.com/search/apis/indexing-api/v3/using-api).
+ * 이 사이트는 일반 퀴즈/블로그 콘텐츠만 발행하므로, 플래그가 true여도 이 함수가
+ * false를 반환하는 URL은 절대 Indexing API로 보내지 않는다. sitemap 제출(Search
+ * Console Sitemaps API)은 이 제한과 무관하며 항상 허용된다.
+ *
+ * 현재 이 사이트에는 JobPosting/BroadcastEvent 콘텐츠가 없으므로 항상 false를
+ * 반환한다. 그런 콘텐츠 타입을 실제로 추가하기 전까지는 화이트리스트를 넓히지 않는다.
+ */
+function isIndexingApiEligible(_url: string): boolean {
+  return false;
+}
+
 type GoogleServiceAccount = {
   client_email: string;
   private_key: string;
@@ -233,8 +247,22 @@ export async function submitGoogleSearchUpdates(
       return result;
     }
 
+    // 플래그가 true여도 콘텐츠 자격이 없는 URL(이 사이트의 일반 퀴즈/블로그 전부)은
+    // 요청 자체를 만들지 않고 차단한다 (F15/R10).
+    const eligibleUrls = normalizedUrls.filter((url) => isIndexingApiEligible(url));
+    const ineligibleCount = normalizedUrls.length - eligibleUrls.length;
+    if (ineligibleCount > 0) {
+      result.indexingSkipped += ineligibleCount;
+      result.errors.push(
+        `${ineligibleCount} URL(s) skipped: not eligible for the Indexing API (JobPosting/BroadcastEvent only, R10)`,
+      );
+    }
+    if (eligibleUrls.length === 0) {
+      return result;
+    }
+
     const settled = await Promise.allSettled(
-      normalizedUrls.map((url) => submitIndexingUrl(accessToken, url)),
+      eligibleUrls.map((url) => submitIndexingUrl(accessToken, url)),
     );
 
     for (const item of settled) {

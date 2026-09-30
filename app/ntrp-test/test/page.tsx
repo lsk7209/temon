@@ -251,6 +251,10 @@ export default function NTRPTestPage() {
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl p-8">
+            {/* 질문이 바뀔 때 스크린리더에 알린다 (전사이트 aria-live 확대) */}
+            <p className="sr-only" aria-live="polite">
+              질문 {currentQuestion + 1} / {questions.length}: {questions[currentQuestion].question}
+            </p>
             <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">{questions[currentQuestion].question}</h2>
 
             <div className="space-y-4">

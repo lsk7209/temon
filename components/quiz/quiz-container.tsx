@@ -51,6 +51,10 @@ export const QuizContainer = memo(function QuizContainer({
       />
 
       <main className="mx-auto max-w-3xl px-4 py-6 sm:py-10">
+        {/* 질문이 바뀔 때 스크린리더에 알린다 (전사이트 aria-live 확대) */}
+        <p className="sr-only" aria-live="polite">
+          질문 {currentQuestion + 1} / {questionsLength}: {currentQ.q}
+        </p>
         {errorMessage && (
           <div role="alert" className="mb-4 rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950">
             {errorMessage}

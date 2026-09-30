@@ -133,6 +133,10 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
 
           <Card className={`p-8 md:p-12 shadow-xl border-2 ${theme.border} bg-white/90 backdrop-blur`}>
             <CardHeader>
+              {/* 질문이 바뀔 때 스크린리더에 알린다 (전사이트 aria-live 확대) */}
+              <p className="sr-only" aria-live="polite">
+                질문 {currentQuestion + 1} / {questions.length}: {questionText}
+              </p>
               <CardTitle className="text-xl md:text-2xl text-center">
                 {questionText}
               </CardTitle>
