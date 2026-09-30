@@ -79,7 +79,7 @@ export default function ClientRunner({
     if (savingRef.current || submittedRef.current) return;
     if (!completedRef.current) {
       completedRef.current = true;
-      trackTestComplete(routeTestId);
+      trackTestComplete(routeTestId, undefined, attemptIdRef.current ?? undefined);
     }
     savingRef.current = true;
     setIsSaving(true);
@@ -110,12 +110,13 @@ export default function ClientRunner({
         throw new Error("Missing result id from submit response");
       }
 
-      trackResultSave(routeTestId, "success");
+      trackResultSave(routeTestId, "success", { attemptId: attemptIdRef.current ?? undefined });
       submittedRef.current = true;
       savedResultId = data.resultId;
     } catch (error) {
       console.error("Failed to submit dynamic quiz:", error);
-      trackResultSave(routeTestId, "error");
+      const errorCode = error instanceof Error && error.name === "TimeoutError" ? "timeout" : "network";
+      trackResultSave(routeTestId, "error", { attemptId: attemptIdRef.current ?? undefined, errorCode });
       setErrorMessage("답변은 이 화면에 남아 있지만 결과 계산과 서버 저장을 확인하지 못했습니다. 이전 질문에서 답변을 확인할 수 있습니다. 마지막 답을 다시 선택하면 같은 시도로 재전송됩니다.");
     } finally {
       savingRef.current = false;

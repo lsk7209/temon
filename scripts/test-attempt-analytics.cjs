@@ -45,7 +45,8 @@ assert.equal(events.filter((event) => event.name === 'test_progress').length, 5)
 analytics.trackTestComplete('quiz', 'type')
 analytics.trackResultSave('quiz', 'error')
 assert.deepEqual(events.slice(-2).map((event) => event.name), ['test_complete', 'result_save_error'])
-assert.equal(events.at(-1).params.error_code, 'save_failed')
+// T05: error_code는 허용 목록으로 정규화된다. 코드 미지정 시 server_error로 fallback.
+assert.equal(events.at(-1).params.error_code, 'server_error')
 window.gtag = undefined
 for (let index = 0; index < 105; index++) analytics.trackTestStart(`quiz-${index}`)
 assert.equal(window.__temonPendingGtagEvents.length, 100)

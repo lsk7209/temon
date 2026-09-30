@@ -46,7 +46,7 @@ export function useTestResult({ testId, persist = true, onSuccess, onError, onCo
     // Calculation is complete before the save request; a failed save cannot undo it.
     if (!completedRef.current) {
       completedRef.current = true
-      trackTestComplete(testId, resultType)
+      trackTestComplete(testId, resultType, attemptIdRef.current)
     }
     if (!persist) {
       onComplete?.(resultType)
@@ -63,7 +63,8 @@ export function useTestResult({ testId, persist = true, onSuccess, onError, onCo
     } catch (cause) {
       const saveError = cause instanceof Error ? cause : new Error('Failed to save test result')
       setError(saveError)
-      trackResultSave(testId, 'error')
+      const errorCode = saveError.message === 'RESULT_SAVE_TIMEOUT' ? 'timeout' : 'network'
+      trackResultSave(testId, 'error', { attemptId: attemptIdRef.current ?? undefined, errorCode })
       onError?.(saveError, resultType)
       return null
     } finally {
@@ -71,7 +72,7 @@ export function useTestResult({ testId, persist = true, onSuccess, onError, onCo
       setIsSaving(false)
     }
     savedResultRef.current = savedId
-    trackResultSave(testId, 'success')
+    trackResultSave(testId, 'success', { attemptId: attemptIdRef.current ?? undefined })
     onSuccess?.(savedId, resultType)
     return savedId
   }, [testId, persist, onSuccess, onError, onComplete])

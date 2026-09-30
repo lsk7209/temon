@@ -22,7 +22,7 @@ import {
   Trophy,
   Zap,
 } from "lucide-react"
-import { getAdvancedStats, checkGAConnection, sendTestEvent } from "@/lib/analytics"
+import { checkGAConnection, sendTestEvent } from "@/lib/analytics"
 
 interface TestStat {
   started: number
@@ -37,10 +37,13 @@ interface DashboardStats {
   testStats: Record<string, TestStat>
 }
 
+type LoadState = "loading" | "live" | "empty" | "unavailable"
+
 export default function AnalyticsDashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [lastUpdated, setLastUpdated] = useState<Date>(new Date())
+  const [loadState, setLoadState] = useState<LoadState>("loading")
+  const [unavailableReason, setUnavailableReason] = useState<string | null>(null)
+  const [lastSuccessAt, setLastSuccessAt] = useState<Date | null>(null)
   const [gaConnected, setGaConnected] = useState(false)
 
   const testIcons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -52,28 +55,40 @@ export default function AnalyticsDashboard() {
     "NTRP 테스트": Trophy,
   }
 
+  // API 실패 시 임의 숫자를 만들어 "실시간 통계"로 표시하지 않는다 (F09).
+  // 조회 실패와 데이터 없음을 구분하고, 401/403은 권한 안내로 분리한다.
   const loadStats = async () => {
-    setIsLoading(true)
+    setLoadState((previous) => (previous === "live" ? previous : "loading"))
     try {
-      // 실제 API에서 데이터 로딩
-      const response = await fetch('/api/dashboard')
-      if (response.ok) {
-        const data = await response.json() as DashboardStats
-        setStats(data)
-      } else {
-        // API 실패 시 fallback 데이터
-        const fallbackStats = getAdvancedStats()
-        setStats(fallbackStats)
+      const response = await fetch("/api/dashboard")
+      if (response.status === 401 || response.status === 403) {
+        setUnavailableReason("관리자 권한이 필요합니다.")
+        setLoadState("unavailable")
+        return
       }
-      setLastUpdated(new Date())
-      setGaConnected(checkGAConnection())
+      if (!response.ok) {
+        setUnavailableReason(`통계 조회에 실패했습니다 (HTTP ${response.status}).`)
+        setLoadState("unavailable")
+        return
+      }
+      const data = (await response.json()) as DashboardStats & { success?: boolean; error?: string }
+      if (data.success === false) {
+        setUnavailableReason(data.error || "통계 조회에 실패했습니다.")
+        setLoadState("unavailable")
+        return
+      }
+      setStats(data)
+      setLastSuccessAt(new Date())
+      setUnavailableReason(null)
+      const hasAnyData =
+        data.totalVisits > 0 || data.totalTestsStarted > 0 || data.totalTestsCompleted > 0
+      setLoadState(hasAnyData ? "live" : "empty")
     } catch (error) {
       console.error("통계 로딩 실패:", error)
-      // 에러 시 fallback 데이터
-      const fallbackStats = getAdvancedStats()
-      setStats(fallbackStats)
+      setUnavailableReason("네트워크 오류로 통계를 불러오지 못했습니다.")
+      setLoadState("unavailable")
     } finally {
-      setIsLoading(false)
+      setGaConnected(checkGAConnection())
     }
   }
 
@@ -98,7 +113,7 @@ export default function AnalyticsDashboard() {
     return () => clearInterval(interval)
   }, [])
 
-  if (isLoading && !stats) {
+  if (loadState === "loading" && !stats) {
     return (
       <div className="space-y-6">
         <div className="flex items-center justify-between">
@@ -130,6 +145,30 @@ export default function AnalyticsDashboard() {
     )
   }
 
+  // 조회 실패: 데이터가 없다는 뜻이 아니라 확인할 수 없다는 뜻이므로 명확히 구분한다.
+  if (loadState === "unavailable" && !stats) {
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">📊 실시간 통계</h1>
+            <p className="text-muted-foreground mt-1">테몬 MBTI 플랫폼 분석 대시보드</p>
+          </div>
+          <Button onClick={handleRefresh} variant="outline" size="sm" className="gap-2 bg-transparent">
+            <RefreshCw className="h-4 w-4" />
+            다시 시도
+          </Button>
+        </div>
+        <Card>
+          <CardContent className="pt-6">
+            <p className="text-sm font-medium text-destructive">통계를 불러올 수 없습니다</p>
+            <p className="text-sm text-muted-foreground mt-1">{unavailableReason}</p>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
   if (!stats) return null
 
   const completionRate =
@@ -142,43 +181,58 @@ export default function AnalyticsDashboard() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight">📊 실시간 통계</h1>
           <p className="text-muted-foreground mt-1">
-            테몬 MBTI 플랫폼 분석 대시보드 | 마지막 업데이트: {lastUpdated.toLocaleTimeString("ko-KR")}
+            테몬 MBTI 플랫폼 분석 대시보드
+            {lastSuccessAt && ` | 마지막 조회 성공: ${lastSuccessAt.toLocaleTimeString("ko-KR")}`}
           </p>
         </div>
         <div className="flex items-center space-x-2">
           <Badge variant={gaConnected ? "default" : "destructive"}>
-            {gaConnected ? "✅ GA 연결됨" : "❌ GA 연결 안됨"}
+            {gaConnected ? "✅ GA 스크립트 준비됨" : "❌ GA 스크립트 없음"}
           </Badge>
           <Button onClick={handleTestGA} variant="outline" size="sm" className="gap-2 bg-transparent">
             <Zap className="h-4 w-4" />🧪 GA 테스트
           </Button>
           <Button
             onClick={handleRefresh}
-            disabled={isLoading}
+            disabled={loadState === "loading"}
             variant="outline"
             size="sm"
             className="gap-2 bg-transparent"
           >
-            <RefreshCw className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`} />
+            <RefreshCw className={`h-4 w-4 ${loadState === "loading" ? "animate-spin" : ""}`} />
             새로고침
           </Button>
         </div>
       </div>
 
-      {/* GA 연결 상태 */}
+      {loadState === "unavailable" && (
+        <Card className="border-destructive/50">
+          <CardContent className="pt-6">
+            <p className="text-sm font-medium text-destructive">최근 조회에 실패했습니다</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              {unavailableReason} 아래 수치는 이전 조회값입니다
+              {lastSuccessAt ? ` (${lastSuccessAt.toLocaleTimeString("ko-KR")} 기준)` : ""}.
+            </p>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* GA 스크립트 로딩 상태 — 실제 데이터 수집 완료를 뜻하지 않는다 */}
       <Card>
         <CardContent className="pt-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className={`w-3 h-3 rounded-full ${gaConnected ? "bg-green-500" : "bg-red-500"}`} />
-              <span className="font-medium">Google Analytics 연결 상태</span>
+              <span className="font-medium">Google Analytics 스크립트 상태</span>
             </div>
             <Badge variant={gaConnected ? "default" : "destructive"}>
-              {gaConnected ? "✅ 연결됨" : "❌ 연결 안됨"}
+              {gaConnected ? "✅ 로드됨" : "❌ 로드 안됨"}
             </Badge>
           </div>
           {gaConnected && (
-            <p className="text-sm text-muted-foreground mt-2">추적 ID: G-L167CCPS8E | 실시간 데이터 수집 중</p>
+            <p className="text-sm text-muted-foreground mt-2">
+              추적 ID: G-L167CCPS8E | window.gtag 함수가 로드되어 있습니다 (실시간 수집 완료를 보장하지 않음)
+            </p>
           )}
         </CardContent>
       </Card>
@@ -187,7 +241,7 @@ export default function AnalyticsDashboard() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">총 방문자</CardTitle>
+            <CardTitle className="text-sm font-medium">총 방문</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -274,21 +328,19 @@ export default function AnalyticsDashboard() {
         </CardContent>
       </Card>
 
-      {/* 실시간 활동 */}
+      {/* 마지막 조회 정보 — "실시간 수집 중" 같은 확인되지 않은 문구를 쓰지 않는다 */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            실시간 활동
+            조회 정보
           </CardTitle>
-          <CardDescription>최근 업데이트: {new Date().toLocaleTimeString()}</CardDescription>
+          <CardDescription>
+            {lastSuccessAt ? `마지막 조회 성공: ${lastSuccessAt.toLocaleString("ko-KR")}` : "조회 기록 없음"}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span>실시간 데이터 수집 중...</span>
-            </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <AlarmClock className="h-3 w-3" />
               <span>마지막 방문: {new Date(stats.lastVisit).toLocaleString()}</span>

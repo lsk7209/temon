@@ -260,7 +260,9 @@ export function trackTestProgress(
 }
 
 // 테스트 완료 추적
-export function trackTestComplete(testId: string, result?: string) {
+// attemptId(선택)를 넘기면 동일 시도의 시작→완료→저장을 이어볼 수 있다 (F07).
+// 기존 호출부(attemptId 생략)는 그대로 동작한다.
+export function trackTestComplete(testId: string, result?: string, attemptId?: string) {
   if (typeof window === "undefined") return;
 
   try {
@@ -269,6 +271,7 @@ export function trackTestComplete(testId: string, result?: string) {
         test_name: testId,
         test_result: result,
         event_category: "conversion",
+        ...(attemptId ? { attempt_id: attemptId } : {}),
       });
     });
   } catch (error) {
@@ -276,13 +279,39 @@ export function trackTestComplete(testId: string, result?: string) {
   }
 }
 
-export function trackResultSave(testId: string, outcome: "success" | "error") {
+/** 서버 오류를 GA4/DB 원본 메시지 그대로 전송하지 않도록 제한하는 허용 목록 (F08). */
+export const RESULT_SAVE_ERROR_CODES = [
+  "invalid_input",
+  "not_found",
+  "conflict",
+  "invalid_answers",
+  "unsupported_engine",
+  "rate_limited",
+  "timeout",
+  "network",
+  "server_error",
+] as const;
+export type ResultSaveErrorCode = (typeof RESULT_SAVE_ERROR_CODES)[number];
+
+function normalizeErrorCode(code: string | undefined): ResultSaveErrorCode {
+  if (code && (RESULT_SAVE_ERROR_CODES as readonly string[]).includes(code)) {
+    return code as ResultSaveErrorCode;
+  }
+  return "server_error";
+}
+
+export function trackResultSave(
+  testId: string,
+  outcome: "success" | "error",
+  options?: { attemptId?: string; errorCode?: string },
+) {
   if (typeof window === "undefined") return;
   runWhenGtagReady(() => {
     window.gtag("event", `result_save_${outcome}`, {
       test_name: testId,
       event_category: "engagement",
-      ...(outcome === "error" ? { error_code: "save_failed" } : {}),
+      ...(options?.attemptId ? { attempt_id: options.attemptId } : {}),
+      ...(outcome === "error" ? { error_code: normalizeErrorCode(options?.errorCode) } : {}),
     });
   });
 }
@@ -442,43 +471,6 @@ export function trackCTAClick(ctaName: string, location: string) {
   } catch (error) {
     console.error("CTA 클릭 추적 오류:", error);
   }
-}
-
-/** @deprecated 시뮬레이션 데이터 - 실제 데이터로 교체 필요 */
-export function getAdvancedStats() {
-  console.warn("[MOCK DATA] This function returns simulated data");
-  return {
-    totalVisits: Math.floor(Math.random() * 5000) + 15000,
-    totalTestsStarted: Math.floor(Math.random() * 3000) + 8000,
-    totalTestsCompleted: Math.floor(Math.random() * 2500) + 6500,
-    lastVisit: Date.now() - Math.floor(Math.random() * 3600000),
-    testStats: {
-      "커피 MBTI": {
-        started: Math.floor(Math.random() * 500) + 1000,
-        completed: Math.floor(Math.random() * 400) + 800,
-      },
-      "라면 MBTI": {
-        started: Math.floor(Math.random() * 600) + 1200,
-        completed: Math.floor(Math.random() * 500) + 950,
-      },
-      "반려동물 MBTI": {
-        started: Math.floor(Math.random() * 400) + 800,
-        completed: Math.floor(Math.random() * 300) + 600,
-      },
-      "공부 MBTI": {
-        started: Math.floor(Math.random() * 350) + 700,
-        completed: Math.floor(Math.random() * 280) + 550,
-      },
-      "알람 습관": {
-        started: Math.floor(Math.random() * 300) + 600,
-        completed: Math.floor(Math.random() * 240) + 480,
-      },
-      "NTRP 테스트": {
-        started: Math.floor(Math.random() * 250) + 500,
-        completed: Math.floor(Math.random() * 200) + 400,
-      },
-    },
-  };
 }
 
 // Google Analytics 연결 확인

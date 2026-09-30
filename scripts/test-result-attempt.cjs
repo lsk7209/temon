@@ -46,7 +46,11 @@ async function main() {
   assert.equal(saveCalls, 1)
   assert.equal(events.filter(([name]) => name === 'trackTestStart').length, 1)
   assert.equal(events.filter(([name]) => name === 'trackTestComplete').length, 1)
-  assert.deepEqual(events.at(-1), ['trackResultSave', 'quiz', 'error'])
+  {
+    const [name, testId, outcome, options] = events.at(-1)
+    assert.deepEqual([name, testId, outcome], ['trackResultSave', 'quiz', 'error'])
+    assert.deepEqual(JSON.parse(JSON.stringify(options)), { attemptId: 'attempt_one', errorCode: 'network' })
+  }
   assert.equal(events.some(([name]) => /Abandon/.test(name)), false)
   failSave = false
   const pending = hook.saveResult('type', { 0: 'answer' })
@@ -59,7 +63,11 @@ async function main() {
   assert.equal(await hook.saveResult('type', { 0: 'answer' }), 'saved')
   assert.equal(saveCalls, 2)
   assert.equal(events.filter(([name]) => name === 'trackTestComplete').length, 1)
-  assert.deepEqual(events.at(-1), ['trackResultSave', 'quiz', 'success'])
+  {
+    const [name, testId, outcome, options] = events.at(-1)
+    assert.deepEqual([name, testId, outcome], ['trackResultSave', 'quiz', 'success'])
+    assert.deepEqual(JSON.parse(JSON.stringify(options)), { attemptId: 'attempt_one' })
+  }
 
   // Static quizzes (persist: false): complete once, no network save, no save event.
   const completions = []

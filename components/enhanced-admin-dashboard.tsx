@@ -49,7 +49,6 @@ import {
 import Link from "next/link";
 import { toast } from "sonner";
 import {
-  getAdvancedStats,
   checkGAConnection,
   sendTestEvent,
 } from "@/lib/analytics";
@@ -209,46 +208,18 @@ export default function EnhancedAdminDashboard() {
     "NTRP 테스트": Trophy,
   };
 
-  const loadMockDetailedStats = useCallback(() => {
-    // 모의 데이터 (실제로는 API에서 가져옴)
-    setDeviceStats([
-      { device: "Desktop", count: 4500, percentage: 65 },
-      { device: "Mobile", count: 2200, percentage: 32 },
-      { device: "Tablet", count: 250, percentage: 3 },
-    ]);
-    setBrowserStats([
-      { browser: "Chrome", version: "120+", count: 4200, percentage: 61 },
-      { browser: "Safari", version: "17+", count: 1800, percentage: 26 },
-      { browser: "Edge", version: "120+", count: 650, percentage: 9 },
-      { browser: "Firefox", version: "121+", count: 300, percentage: 4 },
-    ]);
-    setKeywordStats([
-      { keyword: "mbti 테스트", count: 1200, percentage: 17 },
-      { keyword: "커피 mbti", count: 850, percentage: 12 },
-      { keyword: "성격 테스트", count: 720, percentage: 10 },
-      { keyword: "라면 mbti", count: 580, percentage: 8 },
-      { keyword: "무료 mbti", count: 450, percentage: 7 },
-    ]);
-    setOsStats([
-      { os: "Windows", count: 3800, percentage: 55 },
-      { os: "iOS", count: 1800, percentage: 26 },
-      { os: "Android", count: 900, percentage: 13 },
-      { os: "macOS", count: 450, percentage: 6 },
-    ]);
-    setSearchEngineStats([
-      { engine: "Google", count: 2400, percentage: 34 },
-      { engine: "Naver", count: 1500, percentage: 21 },
-      { engine: "Daum", count: 220, percentage: 3 },
-      { engine: "Direct", count: 1800, percentage: 26 },
-    ]);
-    setSearchLandingPages([
-      { path: "/tests", count: 820, percentage: 12 },
-      { path: "/tests/kdrama-mbti", count: 510, percentage: 7 },
-      { path: "/tests/kpop-idol", count: 430, percentage: 6 },
-      { path: "/tests/pet-mbti", count: 360, percentage: 5 },
-      { path: "/tests/ramen-mbti", count: 310, percentage: 4 },
-    ]);
+  // API 실패 시 하드코딩된 표본 수치를 화면에 채우지 않는다 (F09). 실패 시
+  // 각 상세 통계는 빈 배열로 유지되고, 화면은 "데이터 없음"으로 표시한다.
+  const clearDetailedStats = useCallback(() => {
+    setDeviceStats([]);
+    setBrowserStats([]);
+    setKeywordStats([]);
+    setOsStats([]);
+    setSearchEngineStats([]);
+    setSearchLandingPages([]);
   }, []);
+
+  const [detailedStatsUnavailable, setDetailedStatsUnavailable] = useState(false);
 
   const loadDetailedStats = useCallback(async () => {
     try {
@@ -268,31 +239,39 @@ export default function EnhancedAdminDashboard() {
         setOsStats(data.os || []);
         setSearchEngineStats(data.searchEngines || []);
         setSearchLandingPages(data.searchLandingPages || []);
+        setDetailedStatsUnavailable(false);
       } else {
-        loadMockDetailedStats();
+        clearDetailedStats();
+        setDetailedStatsUnavailable(true);
       }
     } catch (error) {
       console.error("상세 통계 로딩 실패:", error);
-      loadMockDetailedStats();
+      clearDetailedStats();
+      setDetailedStatsUnavailable(true);
     }
-  }, [loadMockDetailedStats]);
+  }, [clearDetailedStats]);
+
+  const [statsUnavailableReason, setStatsUnavailableReason] = useState<string | null>(null);
 
   const loadStats = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await fetch("/api/dashboard");
-      if (response.ok) {
+      if (response.status === 401 || response.status === 403) {
+        setStatsUnavailableReason("관리자 권한이 필요합니다.");
+      } else if (response.ok) {
         const data = (await response.json()) as DashboardStats;
         setStats(data);
+        setStatsUnavailableReason(null);
         loadDetailedStats();
       } else {
-        // Fallback or error handling
-        console.error("Dashboard API returned error");
+        setStatsUnavailableReason(`통계 조회에 실패했습니다 (HTTP ${response.status}).`);
       }
       setLastUpdated(new Date());
       setGaConnected(checkGAConnection());
     } catch (error) {
       console.error("통계 로딩 실패:", error);
+      setStatsUnavailableReason("네트워크 오류로 통계를 불러오지 못했습니다.");
     } finally {
       setIsLoading(false);
     }
@@ -417,6 +396,7 @@ export default function EnhancedAdminDashboard() {
     return (
       <div className="p-8 text-center text-red-500">
         <p>통계 데이터를 불러오는데 실패했습니다.</p>
+        {statsUnavailableReason && <p className="text-sm mt-1">{statsUnavailableReason}</p>}
         <Button onClick={loadStats} variant="outline" className="mt-4">
           다시 시도
         </Button>
@@ -466,6 +446,13 @@ export default function EnhancedAdminDashboard() {
           </Button>
         </div>
       </div>
+
+      {detailedStatsUnavailable && (
+        <div className="rounded-lg border border-destructive/50 bg-destructive/5 p-4 text-sm text-destructive">
+          기기·브라우저·키워드·검색 랜딩 상세 통계를 불러오지 못했습니다. 아래 표가 비어 있는 것은
+          실제로 방문이 없다는 뜻이 아니라 조회에 실패했다는 뜻입니다. 새로고침을 눌러 다시 시도하세요.
+        </div>
+      )}
 
       {/* 탭 메뉴 */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
