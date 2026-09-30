@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  Star,
   Clock3,
   ShieldCheck,
   Sparkles,
@@ -16,6 +15,7 @@ import {
   shouldShowParticipants,
   formatParticipants,
 } from "@/lib/format-participants";
+import { getHomeFAQs } from "@/lib/quiz-seo-utils";
 import type { LucideIcon } from "lucide-react";
 import { getHomePageTests, ALL_TESTS } from "@/lib/tests-config";
 
@@ -94,33 +94,13 @@ const quickLinks = [
   },
 ];
 
-const faqs = [
-  {
-    q: "테몬 MBTI 테스트 모음은 무료인가요?",
-    a: "네. 가입이나 결제 없이 무료로 이용할 수 있습니다.",
-  },
-  {
-    q: "테몬은 어떤 테스트 사이트인가요?",
-    a: "MBTI 테스트 모음, 성격 테스트 모음, 취향 테스트를 주제별로 제공하는 무료 테스트 사이트입니다.",
-  },
-  {
-    q: "테스트 결과는 공식 진단인가요?",
-    a: "아닙니다. 테몬의 결과는 오락과 자기 이해를 위한 성향 분석 콘텐츠입니다.",
-  },
-  {
-    q: "어떤 테스트부터 하면 좋나요?",
-    a: "처음이라면 인기 테스트를, 관심사가 뚜렷하다면 카테고리별 테스트를 추천합니다.",
-  },
-  {
-    q: "결과를 공유할 수 있나요?",
-    a: "네. 결과 페이지는 친구와 비교하고 공유하기 좋게 구성되어 있습니다.",
-  },
-];
-
 export default function HomeClient() {
   const displayTests = getHomePageTests();
   const newTests = ALL_TESTS.filter((test) => test.new).slice(0, 8);
   const hasMoreTests = ALL_TESTS.length > 9;
+  // 화면 FAQ와 app/page.tsx의 JSON-LD FAQPage가 항상 같은 문항을 쓰도록
+  // 단일 소스(lib/quiz-seo-utils.ts)에서만 가져온다 (F12).
+  const faqs = getHomeFAQs();
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-950">
@@ -259,10 +239,6 @@ export default function HomeClient() {
                       </CardHeader>
                       <CardFooter className="flex items-center justify-between border-t pt-4">
                         <div className="flex items-center gap-3 text-sm text-slate-600">
-                          <div className="flex items-center gap-1">
-                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                            <span className="font-semibold">{test.rating}</span>
-                          </div>
                           {shouldShowParticipants(test.participants) && (
                             <div className="flex items-center gap-1">
                               <Users className="w-4 h-4" />
@@ -289,10 +265,10 @@ export default function HomeClient() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 text-center">
             <h2 className="text-3xl font-black text-slate-950">
-              인기 성격 테스트
+              추천 성격 테스트
             </h2>
             <p className="mt-2 text-slate-600">
-              많이 찾는 테스트를 먼저 모았습니다.
+              편집자가 고른 테스트를 먼저 모았습니다.
             </p>
           </div>
 
@@ -324,22 +300,18 @@ export default function HomeClient() {
                     </CardHeader>
                     <CardFooter className="flex items-center justify-between pt-4 border-t">
                       <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          <span className="font-semibold">{test.rating}</span>
-                        </div>
                         {shouldShowParticipants(test.participants) && (
                           <div className="text-sm text-slate-600">
                             {formatParticipants(test.participants)}
                           </div>
                         )}
                       </div>
-                      <Button
-                        size="sm"
-                        className="rounded-full"
+                      <span
+                        className="inline-flex h-9 items-center rounded-full bg-slate-950 px-4 text-sm font-semibold text-white"
+                        aria-hidden="true"
                       >
                         시작하기
-                      </Button>
+                      </span>
                     </CardFooter>
                   </Card>
                 </Link>
@@ -394,13 +366,13 @@ export default function HomeClient() {
           <div className="space-y-4">
             {faqs.map((faq) => (
               <details
-                key={faq.q}
+                key={faq.question}
                 className="rounded-lg border border-slate-200 bg-white p-5"
               >
                 <summary className="cursor-pointer text-lg font-bold text-slate-950">
-                  {faq.q}
+                  {faq.question}
                 </summary>
-                <p className="mt-3 leading-7 text-slate-600">{faq.a}</p>
+                <p className="mt-3 leading-7 text-slate-600">{faq.answer}</p>
               </details>
             ))}
           </div>

@@ -277,6 +277,41 @@ export function getListingFAQs(): Array<{ question: string; answer: string }> {
   ];
 }
 
+/**
+ * 홈페이지 FAQ 단일 소스. 화면(FAQSection/details)과 JSON-LD FAQPage 구조화
+ * 데이터가 서로 다른 문항 집합을 쓰면 Google structured data 정책(R06,
+ * "표시 콘텐츠와 구조화 데이터 일치")을 위반한다. app/page.tsx(JSON-LD)와
+ * app/home-client.tsx(화면)가 반드시 이 함수 하나만 사용한다.
+ */
+export function getHomeFAQs(): Array<{ question: string; answer: string }> {
+  return [
+    {
+      question: "테몬 MBTI 테스트 모음은 무료인가요?",
+      answer: "네. 가입이나 결제 없이 무료로 이용할 수 있습니다.",
+    },
+    {
+      question: "테몬은 어떤 테스트 사이트인가요?",
+      answer:
+        "MBTI 테스트 모음, 성격 테스트 모음, 취향 테스트를 주제별로 제공하는 무료 테스트 사이트입니다.",
+    },
+    {
+      question: "처음 방문했다면 어떤 테스트를 고르면 좋나요?",
+      answer:
+        "처음이라면 전체 테스트 목록에서 음식, 연애, 생활, 아이돌처럼 관심 있는 주제를 먼저 고르는 것을 추천합니다.",
+    },
+    {
+      question: "테스트 결과는 정확한 진단인가요?",
+      answer:
+        "아닙니다. 테몬의 결과는 오락과 자기 이해를 위한 성향 분석 콘텐츠이며 전문적인 심리·의료 진단이 아닙니다.",
+    },
+    {
+      question: "결과를 공유할 수 있나요?",
+      answer:
+        "네. 결과 페이지는 친구와 비교하고 공유하기 좋게 구성되어 있습니다.",
+    },
+  ];
+}
+
 export function getDefaultResultFAQs(
   quizTitle: string,
   resultName: string,
