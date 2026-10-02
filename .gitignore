@@ -45,9 +45,15 @@ wrangler.toml.local
 # local agent/runtime artifacts
 .omx/
 .omc/
-.bkit/snapshots/
+.bkit/
+.goal-harness/
+.kiro/
+.playwright-cli/
 
-# local database and operational backups
+# local database and operational backups/reports
 local.db
-reports/*backup*.json
-reports/*backup*.ts
+reports/*.csv
+reports/*.json
+reports/*.md
+reports/*.ts
+

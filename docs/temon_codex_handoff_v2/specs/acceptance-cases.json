@@ -1,0 +1,884 @@
+{
+  "schema_version": "1.0",
+  "project": "temon.kr",
+  "scope": "application tests to implement in the actual repository; all NOT_RUN initially",
+  "cases": [
+    {
+      "id": "AC001",
+      "task_ids": [
+        "T001"
+      ],
+      "title": "프로젝트·Git·권한 확인",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "작업 root·remote·AGENTS·diff·권한을 기록하고 temon 여부 확인",
+      "then": "다른 프로젝트·사용자 변경을 건드리지 않으며 비밀 값을 로그에 남기지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC002",
+      "task_ids": [
+        "T002"
+      ],
+      "title": "아키텍처·데이터 계보 지도",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "라우트·콘텐츠 저장·채점·캐시·DB 쓰기·배치·배포 구조 파악",
+      "then": "기술 스택과 원천을 실제 파일 근거로 설명하고 미확인은 분리한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC003",
+      "task_ids": [
+        "T003"
+      ],
+      "title": "기존 기능·테스트 기준선",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "실제 명령으로 기존 빌드·테스트와 대표 엔진 결과 fixture 확보",
+      "then": "기존 실패·새 실패·실행 불가가 구분되고 결과 보존 기준이 있다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC004",
+      "task_ids": [
+        "T004"
+      ],
+      "title": "URL·HTTP·SEO 기준선",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "대표 라우트의 상태·canonical·robots·sitemap과 실제 href 수집",
+      "then": "검색 색인 수와 공개 URL 수를 혼동하지 않고 HTTP 미확인 항목을 기록한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC005",
+      "task_ids": [
+        "T005"
+      ],
+      "title": "광고·SDK·개인정보 기준선",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "광고 식별자·SDK·CMP·로그·동의·대상 연령·통계 원천 확인",
+      "then": "계정 상태를 추측하지 않고 원문 개인정보·토큰·키를 출력하지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC006",
+      "task_ids": [
+        "T006"
+      ],
+      "title": "관찰 이슈 재현·분류",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "EV01–EV10의 현재 상태와 수정 필요 여부를 코드로 확인",
+      "then": "공개 관찰·가설·재현 실패·수정 제안이 구분된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC007",
+      "task_ids": [
+        "T007"
+      ],
+      "title": "표시 모델 정합성",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "카드·상세·metadata의 문항·결과 수를 활성 정의에서 파생",
+      "then": "fixture 질문 수 변경 시 모든 노출면이 일치하고 추정 시간은 구분된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC008",
+      "task_ids": [
+        "T008"
+      ],
+      "title": "제작 잔재 탐지·템플릿 개선",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "내부 문구 탐지와 원인 템플릿 수정, 영향 보고",
+      "then": "정상 설명 문맥의 동일 단어는 보존하고 확인된 제작 잔재를 제거한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC009",
+      "task_ids": [
+        "T009"
+      ],
+      "title": "메타데이터 fallback·언어 오류",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "title·H1·FAQ·OG의 내부명 노출과 주제 불일치 해결",
+      "then": "공개 제목에 내부명이 없어지고 다른 페이지의 설명이 섞이지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC010",
+      "task_ids": [
+        "T010"
+      ],
+      "title": "참여수·평점 진위와 표시 단위",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "seed/fallback/집계 경로 확인 후 출처 없는 기본값 정리",
+      "then": "실제 반복값은 보존하고 없는 수치는 숨기며 횟수와 인원을 구분한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC011",
+      "task_ids": [
+        "T011"
+      ],
+      "title": "사이트 집계·캐시 일관성",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "공개 건수 정의와 cache invalidation의 공통 원천 정리",
+      "then": "목록·소개·llms·AI index가 같은 정의를 쓰고 lastmod를 허위 갱신하지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC012",
+      "task_ids": [
+        "T012"
+      ],
+      "title": "과장·민감·편집 정보 검토",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "정확도·진단·작성자·검수·권리 표현의 근거 확인 및 수정안",
+      "then": "실재하지 않는 검수자/전문성/성공률을 만들지 않고 민감 의미 변경은 승인 대기한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC013",
+      "task_ids": [
+        "T013"
+      ],
+      "title": "대량 콘텐츠 변경 dry-run",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "대상 수·diff·불변조건·rollback 있는 변경 도구 준비",
+      "then": "반복 실행 시 중복 변경이 없고 운영 쓰기 없이 변경 보고서가 생성된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC014",
+      "task_ids": [
+        "T014"
+      ],
+      "title": "페이지네이션·필터 URL",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "href·서버 목록·상태 복구·비정상 파라미터 정책 구현",
+      "then": "2페이지 직접 열기·새로고침·뒤로가기가 동작하고 페이지별 canonical이 맞는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC015",
+      "task_ids": [
+        "T015"
+      ],
+      "title": "충돌 없는 카테고리 허브",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "기존 slug와 충돌 검사 후 허브·태그 매핑을 로컬 구현",
+      "then": "기존 테스트 URL을 가리지 않고 빈 허브를 검색용으로 대량 게시하지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC016",
+      "task_ids": [
+        "T016"
+      ],
+      "title": "색인·canonical·개인 URL 정책",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "route matrix를 실제 경로에 연결하고 민감 변경은 보류",
+      "then": "낮은 성과만으로 noindex하지 않으며 개인 URL 접근 보호와 색인 규칙을 분리한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC017",
+      "task_ids": [
+        "T017"
+      ],
+      "title": "sitemap·robots 일치",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "사이트맵 포함 조건·lastmod·robots 접근 충돌 검증",
+      "then": "대표 색인 URL만 포함하고 noindex 확인이 필요한 URL을 robots로 막지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC018",
+      "task_ids": [
+        "T018"
+      ],
+      "title": "구조화 데이터 사실성",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "실제 내용과 schema의 일치·중복·가짜 평점 검사",
+      "then": "JSON-LD 파싱과 화면 일치가 확인되고 리치결과 보장을 주장하지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC019",
+      "task_ids": [
+        "T019"
+      ],
+      "title": "채점·결과 도달성 회귀",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "동점·invalid·누락·결과 미도달·결정성 테스트 구현",
+      "then": "동일 버전/답변 결과가 재현되고 분포 균등화를 위한 임의 보정이 없다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC020",
+      "task_ids": [
+        "T020"
+      ],
+      "title": "버전 고정·구결과 호환",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "활성 attempt 버전·legacy adapter·불변 결과 정의",
+      "then": "진행 중 업데이트와 과거 공유 링크에서도 이전 결과 의미가 보존된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC021",
+      "task_ids": [
+        "T021"
+      ],
+      "title": "질문 진행 상태 안정성",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "뒤로가기·답변 변경·연속 클릭·복귀·실패 처리",
+      "then": "중복 클릭이 질문 건너뛰기/중복 완료를 만들지 않고 저장소 장애에도 완료된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC022",
+      "task_ids": [
+        "T022"
+      ],
+      "title": "결과 설명·점수 정직성",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "주제 고유 결과와 계산 가능한 해석을 로컬 개선",
+      "then": "점수를 확률/진단 신뢰도로 오인시키지 않고 채점 의미 변경은 분리한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC023",
+      "task_ids": [
+        "T023"
+      ],
+      "title": "모바일·접근성",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "키보드·focus·진행률·확대·작은 화면·reduced motion 검증",
+      "then": "키보드 전 과정 완료와 핵심 화면 겹침 없음이 실제 브라우저에서 확인된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC024",
+      "task_ids": [
+        "T024"
+      ],
+      "title": "공유·OG 실패 대응",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "Web Share·clipboard·이미지 fallback·입력 제한 구현",
+      "then": "취소/미지원/실패가 정상 처리되고 원문 답변이나 토큰이 이미지에 노출되지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC025",
+      "task_ids": [
+        "T025"
+      ],
+      "title": "404·redirect 검증",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "상태 코드·대체 대상·체인·루프 회귀 테스트",
+      "then": "없는 페이지가 정상 홈 200이 되지 않고 무관한 301 통합이 없다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC026",
+      "task_ids": [
+        "T026"
+      ],
+      "title": "캐시·번들·성능 분리",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "실측 기반 JS/폰트/이미지/SDK/캐시 조정",
+      "then": "광고·분석 SDK 차단 중 테스트 완료가 가능하고 측정 없는 INP를 PASS로 하지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC027",
+      "task_ids": [
+        "T027"
+      ],
+      "title": "게시 게이트·provenance",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "hard error와 editorial review 분리·신규 게시 검사·출처 추적",
+      "then": "트래픽 없는 콘텐츠를 성과 0으로 차단하지 않고 invalid scoring은 게시 차단한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC028",
+      "task_ids": [
+        "T028"
+      ],
+      "title": "이벤트 allowlist·민감 전송 차단",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "공통 analytics adapter·동의·schema·redaction",
+      "then": "원문 답변/검색어/개인 결과/토큰이 외부 분석으로 전송되지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC029",
+      "task_ids": [
+        "T029"
+      ],
+      "title": "퍼널·중복 방지·분모",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "attempt별 중복 제거·PV 중복 확인·null 분모·공유 구분",
+      "then": "재렌더/재시도에 완료 1회이며 share API 처리와 수신 방문이 구분된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC030",
+      "task_ids": [
+        "T030"
+      ],
+      "title": "동의·Clarity·정책 정합성",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "대상 연령·SDK 전송·마스킹·보관·철회·CMP 대조",
+      "then": "동의 거부 시 핵심 기능 동작 및 수집 정책이 일치하고 부적합 대상 SDK 확대가 없다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC031",
+      "task_ids": [
+        "T031"
+      ],
+      "title": "광고 상태·ads.txt·수익 guardrail",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "슬롯 상태/no-fill/CLS/ID·ads.txt·광고 오인 클릭 검증",
+      "then": "광고 ID 보존·no-fill 레이아웃 확인·광고 클릭 없는 테스트 증거가 있다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC032",
+      "task_ids": [
+        "T032"
+      ],
+      "title": "관리·공유·입력 보안",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "서버 인가·입력 검증·개인 cache·token·rate limit 확인",
+      "then": "다른 개인 결과와 관리자 자원에 무권한 접근이 없고 임의 원격 fetch가 차단된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC033",
+      "task_ids": [
+        "T033"
+      ],
+      "title": "오류·비용·job 관측",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "구조화 error code·배치 실패·비용 상한·재시도 제한",
+      "then": "비밀 없는 로그와 제한된 재시도·예산 차단·false alarm 처리 기준이 있다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC034",
+      "task_ids": [
+        "T034"
+      ],
+      "title": "CI·SEO 회귀 체계",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "대표 URL·콘텐츠·채점·이벤트·링크 검사를 기존 CI에 통합",
+      "then": "새 오류가 실제로 검사를 실패시키며 기존 실패는 별도 기준선으로 남긴다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC035",
+      "task_ids": [
+        "T035"
+      ],
+      "title": "마이그레이션·복구 검증",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "로컬 복제 fixture에서 partial failure·재실행·역변환 검증",
+      "then": "운영 쓰기 없이 복구 rehearsal과 앱/DB/캐시 호환 결과가 있다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC036",
+      "task_ids": [
+        "T036"
+      ],
+      "title": "릴리스 패키지·최종 보고",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "실제 변경·테스트·승인 대기·모니터링·rollback 정리",
+      "then": "미실행은 NOT_RUN이며 운영 미적용 기능을 배포 완료라고 하지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC037",
+      "task_ids": [
+        "T037"
+      ],
+      "title": "수요·성과 분리 리포트",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "Demand evidence·Prequality·Performance를 분리 표시",
+      "then": "표본/출처/결측이 보이고 점수가 자동 삭제/색인 변경으로 이어지지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC038",
+      "task_ids": [
+        "T038"
+      ],
+      "title": "의미중복·검색어 중첩 검토 큐",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "우선 로컬 유사도와 데이터 있는 검색어의 후보 분류",
+      "then": "유사도 또는 query 중첩만으로 통합하지 않고 외부 임베딩 호출은 기본 꺼짐이다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC039",
+      "task_ids": [
+        "T039"
+      ],
+      "title": "관련 추천·컬렉션",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "주제 관련성·유효 URL·다양성·후속 시작 측정",
+      "then": "비공개/깨진/자기 페이지를 제외하고 없는 인기 통계를 생성하지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC040",
+      "task_ids": [
+        "T040"
+      ],
+      "title": "최근 기록·찜 최소 기능",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "기기 저장·만료·삭제·실패 fallback",
+      "then": "추가 서버 수집 없이 동작하며 공용 기기 기록 삭제와 저장 거부가 처리된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC041",
+      "task_ids": [
+        "T041"
+      ],
+      "title": "친구 비교 비활성 최소 구현",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "최소 데이터·만료/철회·버전 일치·private cache·비교",
+      "then": "개인정보 수집 확대 승인 전 비활성이고 다른 버전은 직접 비교되지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC042",
+      "task_ids": [
+        "T042"
+      ],
+      "title": "운영 대시보드·개선 큐",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "해당 작업의 기준선과 실제 저장소/fixture가 준비되어 있다.",
+      "when": "읽기 전용 운영 화면과 승인 분리된 변경안 큐",
+      "then": "미연동은 미연동으로 보이며 대량 변경 권한이 자동 평가에 위임되지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC043",
+      "task_ids": [
+        "T016",
+        "T017"
+      ],
+      "title": "noindex와 robots 충돌",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "색인 제외할 공개 테스트용 fixture",
+      "when": "HTTP 헤더·robots·HTML meta를 함께 확인",
+      "then": "noindex를 읽을 수 있고 인증이 필요한 사생활 데이터는 별도 접근 통제를 가진다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC044",
+      "task_ids": [
+        "T024",
+        "T029"
+      ],
+      "title": "Web Share 취소·처리·수신 분리",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "share API가 resolve/reject/AbortError를 반환하는 각각의 fixture",
+      "when": "공유 버튼 및 링크 복사 동작",
+      "then": "취소를 성공으로 기록하지 않고 resolve를 수신·열람 완료로 집계하지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC045",
+      "task_ids": [
+        "T024",
+        "T032",
+        "T041"
+      ],
+      "title": "개인 결과 URL·캐시·로그 노출",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "서로 다른 개인 결과/만료된 공유 fixture",
+      "when": "OG·로그·referrer·CDN cache·분석 payload를 확인",
+      "then": "원문 답변·토큰이 의도치 않게 노출되지 않고 캐시가 사용자 간 섞이지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC046",
+      "task_ids": [
+        "T028",
+        "T030",
+        "T031"
+      ],
+      "title": "동의 거부·SDK 차단에서도 완료",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "consent denied 및 SDK 요청 차단 상태",
+      "when": "테스트 시작부터 결과 표시까지 진행",
+      "then": "핵심 기능이 동작하고 적용된 동의 정책에 맞게 전송이 차단·제한된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC047",
+      "task_ids": [
+        "T028",
+        "T032"
+      ],
+      "title": "민감 payload 유출 방지",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "이메일·전화·토큰·민감 답변을 포함한 거부 fixture",
+      "when": "analytics adapter와 error logger에 입력",
+      "then": "allowlist 밖 데이터가 버려지고 허용된 제한 코드만 기록된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC048",
+      "task_ids": [
+        "T029",
+        "T037"
+      ],
+      "title": "0분모·결측·작은 표본",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "0시작·미연동·1회 시작 사례",
+      "when": "퍼널과 품질 화면 계산",
+      "then": "null/insufficient_data가 표시되고 자동 승자·품질 0·noindex가 생성되지 않는다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC049",
+      "task_ids": [
+        "T013",
+        "T035"
+      ],
+      "title": "마이그레이션 부분 실패·재실행",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "로컬 복제 fixture 및 중간 실패 주입",
+      "when": "dry-run→apply→재실행→복구",
+      "then": "중복 수정과 데이터 손실이 없고 dry-run은 쓰지 않으며 복구 호환이 확인된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC050",
+      "task_ids": [
+        "T020",
+        "T041"
+      ],
+      "title": "비교 결과 버전 불일치",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "동일 테스트의 다른 scoringVersion 두 결과",
+      "when": "친구 비교 요청",
+      "then": "수치를 그대로 합성하지 않고 버전 불일치 안내·재참여 흐름을 제공한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC051",
+      "task_ids": [
+        "T014"
+      ],
+      "title": "페이지 파라미터 경계",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "page=1/0/-1/abc/범위밖/중복값 fixture",
+      "when": "직접 GET·새로고침·history back",
+      "then": "일관된 정규화/오류 정책, 자기 canonical, 크롤 가능한 유효 페이지 링크가 유지된다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC052",
+      "task_ids": [
+        "T024",
+        "T032"
+      ],
+      "title": "OG 임의 fetch·HTML 입력 방어",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "미허용 URL·과도한 문자열·태그 주입 입력",
+      "when": "OG/콘텐츠 렌더 API 호출",
+      "then": "외부 임의 요청·태그 실행을 하지 않고 허용된 test/result/version만 렌더한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC053",
+      "task_ids": [
+        "T012",
+        "T027"
+      ],
+      "title": "작성자·검수·정확성 주장",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "실제 검수되지 않은 AI 초안",
+      "when": "publish quality check와 화면 렌더",
+      "then": "전문가 검수/진단 정확성을 허위 표시하지 않고 검토 상태를 사실대로 남긴다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC054",
+      "task_ids": [
+        "T019",
+        "T022"
+      ],
+      "title": "결과분포 균등화 금지",
+      "environment": "local_or_preview_no_live_ads",
+      "given": "자연스럽게 한 결과가 많은 유효 fixture와 실제 채점 버그 fixture",
+      "when": "분포 리포트 및 진단 실행",
+      "then": "편향만으로 가중치를 자동 수정하지 않으며 실제 로직 결함과 통계 신호를 구분한다",
+      "evidence_required": [
+        "test command or manual procedure",
+        "actual result and environment"
+      ],
+      "status": "not_run"
+    }
+  ]
+}

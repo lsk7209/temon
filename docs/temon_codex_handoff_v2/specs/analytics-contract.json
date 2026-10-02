@@ -1,0 +1,262 @@
+{
+  "schema_version": "1.0",
+  "purpose": "temon interaction measurement proposal; adapt after current SDK/consent audit",
+  "applies_to": "new or modified collection; do not replace existing production consent or tracking settings without approval",
+  "default_collection_enabled": false,
+  "external_raw_answers_allowed": false,
+  "external_raw_search_terms_allowed": false,
+  "sensitive_result_tracking_enabled": false,
+  "raw_query_logging_enabled": false,
+  "metrics_unknown_value": null,
+  "common_allowed_parameters": [
+    "test_id",
+    "test_version",
+    "entry_surface",
+    "category_group",
+    "ui_variant"
+  ],
+  "forbidden_parameters": [
+    "answer_text",
+    "selected_answer",
+    "answers",
+    "raw_question",
+    "raw_search_term",
+    "email",
+    "phone",
+    "real_name",
+    "share_token",
+    "personal_result",
+    "result_probability",
+    "ip_address",
+    "auth_token"
+  ],
+  "events": [
+    {
+      "name": "test_detail_view",
+      "meaning": "적격 테스트 소개 화면이 실제 표시됨",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "test_start",
+      "meaning": "새 유효 attempt의 첫 시작",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "test_complete",
+      "meaning": "유효 완료가 최초 성립",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "result_view",
+      "meaning": "결과가 실제 화면에 표시됨",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "related_test_click",
+      "meaning": "관련 테스트 링크 클릭",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant",
+        "target_test_id",
+        "position"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "next_test_start",
+      "meaning": "결과를 본 뒤 다른 테스트를 실제 시작",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant",
+        "target_test_id"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "share_intent",
+      "meaning": "사용자가 공유 버튼을 누름",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant",
+        "share_method"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "share_api_resolved",
+      "meaning": "플랫폼 share API가 resolve; 수신/열람 증거 아님",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant",
+        "share_method"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "share_cancel",
+      "meaning": "공유 취소",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant",
+        "share_method"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "share_error",
+      "meaning": "제한된 오류 코드의 공유 실패",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant",
+        "share_method",
+        "error_code"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "copy_link_success",
+      "meaning": "clipboard 쓰기가 확인됨; 수신 성공 아님",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant",
+        "share_method"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    },
+    {
+      "name": "favorite_toggle",
+      "meaning": "찜 UI 변경",
+      "allowed_parameters": [
+        "test_id",
+        "test_version",
+        "entry_surface",
+        "category_group",
+        "ui_variant",
+        "favorite_state"
+      ],
+      "enabled_by_default": false,
+      "requires_applicable_consent": true,
+      "dedupe": "local event key; do not register attempt_id/event_id as external high-cardinality dimensions",
+      "sensitive_test_ids_excluded": true
+    }
+  ],
+  "optional_first_party_aggregates": {
+    "enabled_by_default": false,
+    "requires_privacy_review": true,
+    "types": [
+      "question_choice_counts",
+      "question_latency_buckets",
+      "result_distribution"
+    ],
+    "no_cross_site_fingerprinting": true,
+    "retention_policy": "must be explicitly determined and documented before enabling; no indefinite default"
+  },
+  "metric_contracts": {
+    "completion_rate": {
+      "numerator": "unique completed attempts",
+      "denominator": "started attempts in the same observed scope",
+      "zero_denominator": null
+    },
+    "share_intent_rate": {
+      "numerator": "result sessions with share intent",
+      "denominator": "observed result sessions",
+      "zero_denominator": null
+    },
+    "next_test_rate": {
+      "numerator": "result sessions with a subsequent different test start",
+      "denominator": "observed result sessions",
+      "zero_denominator": null
+    }
+  },
+  "event_transport_must_not_block_core_test": true,
+  "page_view_policy": "real navigation semantics only; no per-question synthetic pageviews for revenue; prevent auto+manual double count",
+  "source_ids": [
+    "S09",
+    "S11",
+    "S14",
+    "S15",
+    "S16"
+  ]
+}

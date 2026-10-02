@@ -1,0 +1,25 @@
+{
+  "scope": "Transport-only attempt from this environment. Connection failure is not evidence that the site is down or a file is absent.",
+  "attempts": [
+    {
+      "url": "https://temon.kr/robots.txt",
+      "status": "unverified_network_error",
+      "error_class": "ConnectionError"
+    },
+    {
+      "url": "https://temon.kr/sitemap.xml",
+      "status": "unverified_network_error",
+      "error_class": "ConnectionError"
+    },
+    {
+      "url": "https://temon.kr/ads.txt",
+      "status": "unverified_network_error",
+      "error_class": "ConnectionError"
+    },
+    {
+      "url": "https://temon.kr/about",
+      "status": "unverified_network_error",
+      "error_class": "ConnectionError"
+    }
+  ]
+}

@@ -1,0 +1,1252 @@
+{
+  "schema_version": "1.0",
+  "project": "temon.kr",
+  "prepared_on": "2026-09-13",
+  "scope": "implementation backlog; not completed work",
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "프로젝트·Git·권한 확인",
+      "milestone": "M0",
+      "priority": "P0",
+      "risk": "R0",
+      "required": true,
+      "status": "pending",
+      "depends_on": [],
+      "spec": "02_MASTER_SPEC.md",
+      "implementation": [
+        "작업 root·remote·AGENTS·diff·권한을 기록하고 temon 여부 확인",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC001"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T002",
+      "title": "아키텍처·데이터 계보 지도",
+      "milestone": "M0",
+      "priority": "P0",
+      "risk": "R0",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T001"
+      ],
+      "spec": "docs/04_IMPLEMENTATION_PLAN.md",
+      "implementation": [
+        "라우트·콘텐츠 저장·채점·캐시·DB 쓰기·배치·배포 구조 파악",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC002"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T003",
+      "title": "기존 기능·테스트 기준선",
+      "milestone": "M0",
+      "priority": "P0",
+      "risk": "R0",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T002"
+      ],
+      "spec": "docs/08_QA_RELEASE_ACCEPTANCE.md",
+      "implementation": [
+        "실제 명령으로 기존 빌드·테스트와 대표 엔진 결과 fixture 확보",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC003"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T004",
+      "title": "URL·HTTP·SEO 기준선",
+      "milestone": "M0",
+      "priority": "P1",
+      "risk": "R0",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T002"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "대표 라우트의 상태·canonical·robots·sitemap과 실제 href 수집",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC004"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T005",
+      "title": "광고·SDK·개인정보 기준선",
+      "milestone": "M0",
+      "priority": "P0",
+      "risk": "R0",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T002"
+      ],
+      "spec": "docs/07_ANALYTICS_PRIVACY_ADS_SPEC.md",
+      "implementation": [
+        "광고 식별자·SDK·CMP·로그·동의·대상 연령·통계 원천 확인",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC005"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T006",
+      "title": "관찰 이슈 재현·분류",
+      "milestone": "M0",
+      "priority": "P1",
+      "risk": "R0",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T003",
+        "T004",
+        "T005"
+      ],
+      "spec": "docs/03_EVIDENCE_AND_CORRECTIONS.md",
+      "implementation": [
+        "EV01–EV10의 현재 상태와 수정 필요 여부를 코드로 확인",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC006"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T007",
+      "title": "표시 모델 정합성",
+      "milestone": "M1",
+      "priority": "P0",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T006"
+      ],
+      "spec": "docs/06_TEST_ENGINE_UX_SPEC.md",
+      "implementation": [
+        "카드·상세·metadata의 문항·결과 수를 활성 정의에서 파생",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC007"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T008",
+      "title": "제작 잔재 탐지·템플릿 개선",
+      "milestone": "M1",
+      "priority": "P0",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T006"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "내부 문구 탐지와 원인 템플릿 수정, 영향 보고",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC008"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T009",
+      "title": "메타데이터 fallback·언어 오류",
+      "milestone": "M1",
+      "priority": "P0",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T007"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "title·H1·FAQ·OG의 내부명 노출과 주제 불일치 해결",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC009"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T010",
+      "title": "참여수·평점 진위와 표시 단위",
+      "milestone": "M1",
+      "priority": "P0",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T005",
+        "T006"
+      ],
+      "spec": "docs/07_ANALYTICS_PRIVACY_ADS_SPEC.md",
+      "implementation": [
+        "seed/fallback/집계 경로 확인 후 출처 없는 기본값 정리",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC010"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T011",
+      "title": "사이트 집계·캐시 일관성",
+      "milestone": "M1",
+      "priority": "P1",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T007",
+        "T010"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "공개 건수 정의와 cache invalidation의 공통 원천 정리",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC011"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T012",
+      "title": "과장·민감·편집 정보 검토",
+      "milestone": "M1",
+      "priority": "P1",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T006"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "정확도·진단·작성자·검수·권리 표현의 근거 확인 및 수정안",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC012",
+        "AC053"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T013",
+      "title": "대량 콘텐츠 변경 dry-run",
+      "milestone": "M1",
+      "priority": "P0",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T008",
+        "T009",
+        "T010",
+        "T011",
+        "T012"
+      ],
+      "spec": "docs/08_QA_RELEASE_ACCEPTANCE.md",
+      "implementation": [
+        "대상 수·diff·불변조건·rollback 있는 변경 도구 준비",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC013",
+        "AC049"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T014",
+      "title": "페이지네이션·필터 URL",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T004",
+        "T007"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "href·서버 목록·상태 복구·비정상 파라미터 정책 구현",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC014",
+        "AC051"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T015",
+      "title": "충돌 없는 카테고리 허브",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T014"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "기존 slug와 충돌 검사 후 허브·태그 매핑을 로컬 구현",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC015"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T016",
+      "title": "색인·canonical·개인 URL 정책",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T004",
+        "T014"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "route matrix를 실제 경로에 연결하고 민감 변경은 보류",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC016",
+        "AC043"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T017",
+      "title": "sitemap·robots 일치",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T011",
+        "T016"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "사이트맵 포함 조건·lastmod·robots 접근 충돌 검증",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC017",
+        "AC043"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T018",
+      "title": "구조화 데이터 사실성",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T009",
+        "T010"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "실제 내용과 schema의 일치·중복·가짜 평점 검사",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC018"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T019",
+      "title": "채점·결과 도달성 회귀",
+      "milestone": "M2",
+      "priority": "P0",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T003"
+      ],
+      "spec": "docs/06_TEST_ENGINE_UX_SPEC.md",
+      "implementation": [
+        "동점·invalid·누락·결과 미도달·결정성 테스트 구현",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC019",
+        "AC054"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T020",
+      "title": "버전 고정·구결과 호환",
+      "milestone": "M2",
+      "priority": "P0",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T019"
+      ],
+      "spec": "docs/06_TEST_ENGINE_UX_SPEC.md",
+      "implementation": [
+        "활성 attempt 버전·legacy adapter·불변 결과 정의",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC020",
+        "AC050"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T021",
+      "title": "질문 진행 상태 안정성",
+      "milestone": "M2",
+      "priority": "P0",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T019",
+        "T020"
+      ],
+      "spec": "docs/06_TEST_ENGINE_UX_SPEC.md",
+      "implementation": [
+        "뒤로가기·답변 변경·연속 클릭·복귀·실패 처리",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC021"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T022",
+      "title": "결과 설명·점수 정직성",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T012",
+        "T020"
+      ],
+      "spec": "docs/06_TEST_ENGINE_UX_SPEC.md",
+      "implementation": [
+        "주제 고유 결과와 계산 가능한 해석을 로컬 개선",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC022",
+        "AC054"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T023",
+      "title": "모바일·접근성",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T021"
+      ],
+      "spec": "docs/06_TEST_ENGINE_UX_SPEC.md",
+      "implementation": [
+        "키보드·focus·진행률·확대·작은 화면·reduced motion 검증",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC023"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T024",
+      "title": "공유·OG 실패 대응",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T009",
+        "T021"
+      ],
+      "spec": "docs/06_TEST_ENGINE_UX_SPEC.md",
+      "implementation": [
+        "Web Share·clipboard·이미지 fallback·입력 제한 구현",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC024",
+        "AC044",
+        "AC045",
+        "AC052"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T025",
+      "title": "404·redirect 검증",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T016"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "상태 코드·대체 대상·체인·루프 회귀 테스트",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC025"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T026",
+      "title": "캐시·번들·성능 분리",
+      "milestone": "M2",
+      "priority": "P1",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T021",
+        "T023",
+        "T024"
+      ],
+      "spec": "docs/06_TEST_ENGINE_UX_SPEC.md",
+      "implementation": [
+        "실측 기반 JS/폰트/이미지/SDK/캐시 조정",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC026"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T027",
+      "title": "게시 게이트·provenance",
+      "milestone": "M3",
+      "priority": "P0",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T013",
+        "T019"
+      ],
+      "spec": "docs/05_SEO_CONTENT_SPEC.md",
+      "implementation": [
+        "hard error와 editorial review 분리·신규 게시 검사·출처 추적",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC027",
+        "AC053"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T028",
+      "title": "이벤트 allowlist·민감 전송 차단",
+      "milestone": "M3",
+      "priority": "P0",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T005",
+        "T021"
+      ],
+      "spec": "docs/07_ANALYTICS_PRIVACY_ADS_SPEC.md",
+      "implementation": [
+        "공통 analytics adapter·동의·schema·redaction",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC028",
+        "AC046",
+        "AC047"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T029",
+      "title": "퍼널·중복 방지·분모",
+      "milestone": "M3",
+      "priority": "P1",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T028"
+      ],
+      "spec": "docs/07_ANALYTICS_PRIVACY_ADS_SPEC.md",
+      "implementation": [
+        "attempt별 중복 제거·PV 중복 확인·null 분모·공유 구분",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC029",
+        "AC044",
+        "AC048"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T030",
+      "title": "동의·Clarity·정책 정합성",
+      "milestone": "M3",
+      "priority": "P0",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T005",
+        "T028"
+      ],
+      "spec": "docs/07_ANALYTICS_PRIVACY_ADS_SPEC.md",
+      "implementation": [
+        "대상 연령·SDK 전송·마스킹·보관·철회·CMP 대조",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC030",
+        "AC046"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T031",
+      "title": "광고 상태·ads.txt·수익 guardrail",
+      "milestone": "M3",
+      "priority": "P0",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T005",
+        "T026",
+        "T030"
+      ],
+      "spec": "docs/07_ANALYTICS_PRIVACY_ADS_SPEC.md",
+      "implementation": [
+        "슬롯 상태/no-fill/CLS/ID·ads.txt·광고 오인 클릭 검증",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC031",
+        "AC046"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T032",
+      "title": "관리·공유·입력 보안",
+      "milestone": "M3",
+      "priority": "P0",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T020",
+        "T024",
+        "T028"
+      ],
+      "spec": "docs/08_QA_RELEASE_ACCEPTANCE.md",
+      "implementation": [
+        "서버 인가·입력 검증·개인 cache·token·rate limit 확인",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC032",
+        "AC045",
+        "AC047",
+        "AC052"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T033",
+      "title": "오류·비용·job 관측",
+      "milestone": "M3",
+      "priority": "P1",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T027",
+        "T029"
+      ],
+      "spec": "docs/07_ANALYTICS_PRIVACY_ADS_SPEC.md",
+      "implementation": [
+        "구조화 error code·배치 실패·비용 상한·재시도 제한",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC033"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T034",
+      "title": "CI·SEO 회귀 체계",
+      "milestone": "M3",
+      "priority": "P0",
+      "risk": "R1",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T017",
+        "T018",
+        "T019",
+        "T023",
+        "T025",
+        "T028"
+      ],
+      "spec": "docs/08_QA_RELEASE_ACCEPTANCE.md",
+      "implementation": [
+        "대표 URL·콘텐츠·채점·이벤트·링크 검사를 기존 CI에 통합",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC034"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T035",
+      "title": "마이그레이션·복구 검증",
+      "milestone": "M3",
+      "priority": "P0",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T013",
+        "T020",
+        "T032"
+      ],
+      "spec": "docs/08_QA_RELEASE_ACCEPTANCE.md",
+      "implementation": [
+        "로컬 복제 fixture에서 partial failure·재실행·역변환 검증",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC035",
+        "AC049"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T036",
+      "title": "릴리스 패키지·최종 보고",
+      "milestone": "M3",
+      "priority": "P0",
+      "risk": "R2",
+      "required": true,
+      "status": "pending",
+      "depends_on": [
+        "T031",
+        "T033",
+        "T034",
+        "T035"
+      ],
+      "spec": "docs/08_QA_RELEASE_ACCEPTANCE.md",
+      "implementation": [
+        "실제 변경·테스트·승인 대기·모니터링·rollback 정리",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC036"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T037",
+      "title": "수요·성과 분리 리포트",
+      "milestone": "M4",
+      "priority": "P2",
+      "risk": "R1",
+      "required": false,
+      "status": "pending",
+      "depends_on": [
+        "T027",
+        "T029",
+        "T036"
+      ],
+      "spec": "docs/10_OPTIONAL_GROWTH_SPEC.md",
+      "implementation": [
+        "Demand evidence·Prequality·Performance를 분리 표시",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC037",
+        "AC048"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T038",
+      "title": "의미중복·검색어 중첩 검토 큐",
+      "milestone": "M4",
+      "priority": "P2",
+      "risk": "R2",
+      "required": false,
+      "status": "pending",
+      "depends_on": [
+        "T027",
+        "T036"
+      ],
+      "spec": "docs/10_OPTIONAL_GROWTH_SPEC.md",
+      "implementation": [
+        "우선 로컬 유사도와 데이터 있는 검색어의 후보 분류",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC038"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T039",
+      "title": "관련 추천·컬렉션",
+      "milestone": "M4",
+      "priority": "P2",
+      "risk": "R1",
+      "required": false,
+      "status": "pending",
+      "depends_on": [
+        "T029",
+        "T036"
+      ],
+      "spec": "docs/10_OPTIONAL_GROWTH_SPEC.md",
+      "implementation": [
+        "주제 관련성·유효 URL·다양성·후속 시작 측정",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC039"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T040",
+      "title": "최근 기록·찜 최소 기능",
+      "milestone": "M4",
+      "priority": "P2",
+      "risk": "R1",
+      "required": false,
+      "status": "pending",
+      "depends_on": [
+        "T030",
+        "T036"
+      ],
+      "spec": "docs/10_OPTIONAL_GROWTH_SPEC.md",
+      "implementation": [
+        "기기 저장·만료·삭제·실패 fallback",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC040"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": false,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T041",
+      "title": "친구 비교 비활성 최소 구현",
+      "milestone": "M4",
+      "priority": "P2",
+      "risk": "R2",
+      "required": false,
+      "status": "pending",
+      "depends_on": [
+        "T024",
+        "T030",
+        "T032",
+        "T036"
+      ],
+      "spec": "docs/10_OPTIONAL_GROWTH_SPEC.md",
+      "implementation": [
+        "최소 데이터·만료/철회·버전 일치·private cache·비교",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC041",
+        "AC045",
+        "AC050"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    },
+    {
+      "id": "T042",
+      "title": "운영 대시보드·개선 큐",
+      "milestone": "M4",
+      "priority": "P2",
+      "risk": "R2",
+      "required": false,
+      "status": "pending",
+      "depends_on": [
+        "T037",
+        "T038",
+        "T039"
+      ],
+      "spec": "docs/10_OPTIONAL_GROWTH_SPEC.md",
+      "implementation": [
+        "읽기 전용 운영 화면과 승인 분리된 변경안 큐",
+        "재현 증거와 변경 diff를 남기고 해당 인수 테스트를 실제 환경에서 구현·실행한다."
+      ],
+      "required_evidence": [
+        "실제 소스 위치 또는 재현 기록",
+        "변경 전후 차이와 테스트 명령/결과"
+      ],
+      "acceptance_ids": [
+        "AC042"
+      ],
+      "production_effects_require_approval": true,
+      "sensitive_changes_prepare_only": true,
+      "deployment_status": "not_deployed",
+      "approval_status": "not_requested"
+    }
+  ]
+}

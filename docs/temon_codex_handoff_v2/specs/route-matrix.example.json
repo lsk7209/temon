@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "project": "temon.kr",
+  "scope": "example policy; discover actual route names; not a migration authorization",
+  "all_production_index_changes_require_approval": true,
+  "routes": [
+    {
+      "kind": "home",
+      "pattern": "/",
+      "status": "existing_observed",
+      "indexable": "preserve_and_verify",
+      "canonical": "self",
+      "sitemap": "include_if_canonical_indexable"
+    },
+    {
+      "kind": "tests_index",
+      "pattern": "/tests",
+      "status": "existing_observed",
+      "indexable": "preserve_and_verify",
+      "canonical": "self",
+      "sitemap": "include_if_canonical_indexable"
+    },
+    {
+      "kind": "pagination",
+      "pattern": "/tests?page={n}",
+      "status": "proposed_verify_router",
+      "indexable": "decide_by_route_policy",
+      "canonical": "self_not_page_one",
+      "sitemap": "optional_important_pages",
+      "crawlable_href": true
+    },
+    {
+      "kind": "test_intro",
+      "pattern": "/tests/{existing_slug}",
+      "status": "existing_pattern_verify",
+      "indexable": "preserve_and_verify",
+      "canonical": "self",
+      "sitemap": "include_if_canonical_indexable"
+    },
+    {
+      "kind": "category_hub",
+      "pattern": "/topics/{slug}",
+      "status": "proposal_not_final_route",
+      "indexable": "editorial_review_first",
+      "canonical": "self",
+      "sitemap": "only_published_valuable_hubs",
+      "must_check_slug_collision": true
+    },
+    {
+      "kind": "search_filter",
+      "pattern": "existing_query_route_to_discover",
+      "status": "unverified",
+      "indexable": "per_intent_review",
+      "canonical": "only_equivalent_content",
+      "sitemap": "exclude_arbitrary_parameters"
+    },
+    {
+      "kind": "question_flow",
+      "pattern": "discover_existing_route",
+      "status": "unverified",
+      "indexable": "preserve_and_review",
+      "canonical": "route_specific",
+      "sitemap": "do_not_add_every_question"
+    },
+    {
+      "kind": "personal_share",
+      "pattern": "discover_existing_or_new_share_route",
+      "status": "unverified",
+      "indexable": false,
+      "canonical": "do_not_use_as_privacy_control",
+      "sitemap": "exclude",
+      "robots_disallow": false,
+      "noindex": true,
+      "access_control": "minimal_data_and_explicit_share_or_auth",
+      "cache": "private_or_no_store",
+      "token_logging_allowed": false
+    },
+    {
+      "kind": "static_result_article",
+      "pattern": "optional_static_result_route",
+      "status": "optional_unimplemented",
+      "indexable": "editorial_review_only",
+      "canonical": "self_if_unique",
+      "sitemap": "not_until_published_and_approved"
+    },
+    {
+      "kind": "blog",
+      "pattern": "/blog/{existing_slug}",
+      "status": "existing_pattern_verify",
+      "indexable": "preserve_and_verify",
+      "canonical": "self",
+      "sitemap": "include_if_canonical_indexable"
+    },
+    {
+      "kind": "not_found",
+      "pattern": "a_confirmed_nonexistent_path",
+      "status": "to_test_in_fixture",
+      "http_status": 404,
+      "indexable": false,
+      "sitemap": "exclude"
+    },
+    {
+      "kind": "redirect",
+      "pattern": "approved_old_url",
+      "status": "approval_required",
+      "http_status": 301,
+      "target": "substantially_equivalent_200_url_only",
+      "sitemap": "exclude_source",
+      "prevent_chain_and_loop": true
+    }
+  ],
+  "source_ids": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S08"
+  ]
+}

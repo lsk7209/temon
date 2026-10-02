@@ -1,0 +1,210 @@
+[
+  {
+    "id": "S01",
+    "title": "Google Search Central — Pagination",
+    "url": "https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading",
+    "checked_on": "2026-09-13",
+    "used_for": "페이지네이션의 href·고유 URL·canonical 판단",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S02",
+    "title": "Google Search Central — Block indexing",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+    "checked_on": "2026-09-13",
+    "used_for": "noindex를 읽기 위한 크롤링 접근 조건",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S03",
+    "title": "Google Search Central — Canonical URLs",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+    "checked_on": "2026-09-13",
+    "used_for": "중복·매우 유사한 URL의 대표 신호",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S04",
+    "title": "Google Search Central — URL changes",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+    "checked_on": "2026-09-13",
+    "used_for": "URL 이전·적절한 대체 경로·리디렉션",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S05",
+    "title": "Google Search Central — Generative AI optimization",
+    "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+    "checked_on": "2026-09-13",
+    "used_for": "Google 검색에서 특수 AI 안내 파일을 필수로 취급하지 않음",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S06",
+    "title": "Google Search Central — Spam policies",
+    "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+    "checked_on": "2026-09-13",
+    "used_for": "대량 생성 콘텐츠의 목적·가치 관련 정책",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S07",
+    "title": "Google Search Central — Structured data policies",
+    "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+    "checked_on": "2026-09-13",
+    "used_for": "표시 내용과 구조화 데이터 일치·오도 금지",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S08",
+    "title": "Google Search Central — Build a sitemap",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+    "checked_on": "2026-09-13",
+    "used_for": "사이트맵 포함 URL과 갱신 시각 관리",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S09",
+    "title": "Google Analytics — Avoid sending PII",
+    "url": "https://support.google.com/analytics/answer/6366371?hl=en",
+    "checked_on": "2026-09-13",
+    "used_for": "분석으로 개인정보를 전송하지 않기 위한 점검",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S10",
+    "title": "Google AdSense — Ad placement policies",
+    "url": "https://support.google.com/adsense/answer/1346295?hl=en",
+    "checked_on": "2026-09-13",
+    "used_for": "광고 배치·오인 클릭·사용자 인터랙션 주변 광고",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S11",
+    "title": "MDN — Navigator.share()",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share",
+    "checked_on": "2026-09-13",
+    "used_for": "Web Share 결과의 플랫폼별 의미와 오류/취소 처리",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S12",
+    "title": "W3C — WCAG 2.2",
+    "url": "https://www.w3.org/TR/WCAG22/",
+    "checked_on": "2026-09-13",
+    "used_for": "키보드·focus·이해 가능한 입력과 접근성",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S13",
+    "title": "Google Search Central — Core Web Vitals",
+    "url": "https://developers.google.com/search/docs/appearance/core-web-vitals",
+    "checked_on": "2026-09-13",
+    "used_for": "LCP·INP·CLS의 평가 기준",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S14",
+    "title": "Microsoft Learn — Clarity masking",
+    "url": "https://learn.microsoft.com/ko-kr/clarity/setup-and-installation/clarity-masking",
+    "checked_on": "2026-09-13",
+    "used_for": "마스킹 범위와 소급 적용 한계",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S15",
+    "title": "Microsoft Learn — Clarity setup",
+    "url": "https://learn.microsoft.com/ko-kr/clarity/setup-and-installation/clarity-setup",
+    "checked_on": "2026-09-13",
+    "used_for": "18세 미만 대상 사이트/앱 관련 설치 안내",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S16",
+    "title": "Google AdSense — CMP requirements",
+    "url": "https://support.google.com/adsense/answer/13554020?hl=en",
+    "checked_on": "2026-09-13",
+    "used_for": "EEA·영국·스위스 광고의 CMP 요구사항",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S17",
+    "title": "OpenAI — AGENTS.md",
+    "url": "https://developers.openai.com/codex/guides/agents-md/",
+    "checked_on": "2026-09-13",
+    "used_for": "기존 저장소 지침 탐색과 적용 범위; 열람 시 공식 ChatGPT Learn 문서로 이동",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "S18",
+    "title": "Google AdSense — Ads.txt guide",
+    "url": "https://support.google.com/adsense/answer/12171612?hl=en",
+    "checked_on": "2026-09-13",
+    "used_for": "ads.txt와 publisher ID 확인",
+    "source_type": "official_documentation"
+  },
+  {
+    "id": "W01",
+    "title": "temon 홈",
+    "url": "https://temon.kr/",
+    "checked_on": "2026-09-13",
+    "used_for": "테스트 카드 문항수·평점 등의 공개 표시",
+    "source_type": "public_site_observation"
+  },
+  {
+    "id": "W02",
+    "title": "temon 전체 테스트",
+    "url": "https://temon.kr/tests",
+    "checked_on": "2026-09-13",
+    "used_for": "879 표시·목록·카테고리·페이지네이션 추출",
+    "source_type": "public_site_observation"
+  },
+  {
+    "id": "W03",
+    "title": "temon SNS 사용 습관",
+    "url": "https://temon.kr/tests/phone-social-media",
+    "checked_on": "2026-09-13",
+    "used_for": "영문 제목·공개 소개 유형·제작 문구",
+    "source_type": "public_site_observation"
+  },
+  {
+    "id": "W04",
+    "title": "temon 검색 습관",
+    "url": "https://temon.kr/tests/phone-search",
+    "checked_on": "2026-09-13",
+    "used_for": "공개 소개 유형·표시 참여수·제작 문구",
+    "source_type": "public_site_observation"
+  },
+  {
+    "id": "W05",
+    "title": "temon 알람 습관",
+    "url": "https://temon.kr/tests/alarm-habit",
+    "checked_on": "2026-09-13",
+    "used_for": "8문항·1분 안내와 표현",
+    "source_type": "public_site_observation"
+  },
+  {
+    "id": "W06",
+    "title": "temon llms.txt",
+    "url": "https://temon.kr/llms.txt",
+    "checked_on": "2026-09-13",
+    "used_for": "868개·25개라는 공개 기재",
+    "source_type": "public_site_observation"
+  },
+  {
+    "id": "W07",
+    "title": "temon 개인정보처리방침",
+    "url": "https://temon.kr/privacy",
+    "checked_on": "2026-09-13",
+    "used_for": "공개된 수집·보관·분석 관련 설명",
+    "source_type": "public_site_observation"
+  },
+  {
+    "id": "W08",
+    "title": "temon 소개",
+    "url": "https://temon.kr/about",
+    "checked_on": "2026-09-13",
+    "used_for": "소개 페이지 공개 존재; 세부 통계는 코드에서 재확인",
+    "source_type": "public_site_observation"
+  }
+]

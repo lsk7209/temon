@@ -1,0 +1,107 @@
+{
+  "checked_on": "2026-09-13",
+  "method": "Public web text extraction; no repository or authenticated data access",
+  "observations": [
+    {
+      "id": "EV01",
+      "status": "observed_public_text",
+      "source_ids": [
+        "W02"
+      ],
+      "observed": "전체 테스트 수를 879개로 표시",
+      "inference_limit": "표시값이며 DB 실건수 또는 Google 색인 수는 미확인",
+      "next_check": "공개 상태 필터·집계 함수·캐시·DB 원천 확인"
+    },
+    {
+      "id": "EV02",
+      "status": "observed_public_text",
+      "source_ids": [
+        "W06"
+      ],
+      "observed": "llms.txt는 테스트 868개·블로그 25개로 기재",
+      "inference_limit": "최신 DB 수나 실제 블로그 수를 의미한다고 확정하지 않음",
+      "next_check": "목록과 동일 집계 정의인지 확인"
+    },
+    {
+      "id": "EV03",
+      "status": "observed_public_text",
+      "source_ids": [
+        "W01",
+        "W05"
+      ],
+      "observed": "홈의 알람 테스트 설명은 12문항, 상세는 8문항·1분",
+      "inference_limit": "실제 활성 엔진의 문항 수는 미확인",
+      "next_check": "TestDefinition에서 카드·상세·메타데이터 공통 산출"
+    },
+    {
+      "id": "EV04",
+      "status": "observed_public_text",
+      "source_ids": [
+        "W03"
+      ],
+      "observed": "제목에 내부 영문명이 있고 본문에 사용자용으로 부적절한 운영 성과 설명이 있음",
+      "inference_limit": "원인은 공통 템플릿 또는 콘텐츠 fallback일 수 있으나 코드 미확인",
+      "next_check": "해당 페이지와 같은 템플릿 전체 영향 분석"
+    },
+    {
+      "id": "EV05",
+      "status": "observed_public_text",
+      "source_ids": [
+        "W03",
+        "W04"
+      ],
+      "observed": "두 페이지 소개 유형명 일부가 동일",
+      "inference_limit": "전체 결과 본문·질문·채점 동일을 입증하지 않음",
+      "next_check": "독창성 검토 및 엔진 fixture 비교"
+    },
+    {
+      "id": "EV06",
+      "status": "observed_public_text",
+      "source_ids": [
+        "W02"
+      ],
+      "observed": "카테고리·페이지 번호가 웹 추출에서 버튼으로 나타남",
+      "inference_limit": "raw HTML href와 실제 새 페이지 요청은 미확인",
+      "next_check": "직접 URL·새로고침·서버 HTML·hydrated DOM 검사"
+    },
+    {
+      "id": "EV07",
+      "status": "observed_public_text",
+      "source_ids": [
+        "W01",
+        "W02",
+        "W03",
+        "W04"
+      ],
+      "observed": "반복 평점 표시 및 참여수 표시가 있음",
+      "inference_limit": "반복 숫자는 가짜라는 증거가 아님",
+      "next_check": "seed·fallback·실제 집계·평가 표본 데이터 계보 확인"
+    },
+    {
+      "id": "EV08",
+      "status": "observed_public_text",
+      "source_ids": [
+        "W07"
+      ],
+      "observed": "방침에 익명 결과·통계 보관·광고/분석 목적이 기재됨",
+      "inference_limit": "실제 수집 방식·법적 적합성은 미확인",
+      "next_check": "network·SDK·데이터 저장·보관·동의·대상 연령 맵핑"
+    },
+    {
+      "id": "EV09",
+      "status": "unverified",
+      "source_ids": [],
+      "observed": "robots.txt, sitemap.xml, ads.txt의 HTTP 내용 확인 실패",
+      "inference_limit": "현재 환경의 접근 실패이지 404·부재·서비스 장애 증거가 아님",
+      "next_check": "저장소와 승인된 환경에서 원본 응답 재확인"
+    },
+    {
+      "id": "EV10",
+      "status": "historical_claim_unverified",
+      "source_ids": [],
+      "observed": "이전 대화의 1,234 기본값, m01–m09 품질, 복수 H1, 잘못된 추천 등",
+      "inference_limit": "과거 주장 전체를 이번 검증 완료로 승격하지 않음",
+      "next_check": "현재 URL·코드로 재현되는 것만 수정"
+    }
+  ]
+}

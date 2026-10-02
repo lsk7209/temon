@@ -1,0 +1,139 @@
+{
+  "package": "temon_codex_handoff_v2",
+  "version": "2.0",
+  "prepared_on": "2026-09-13",
+  "scope": "handoff artifact integrity; not application certification",
+  "checksum_note": "Detects changes to bundle files, not a digital authenticity signature. This manifest excludes itself.",
+  "files": [
+    {
+      "path": "00_README.md",
+      "bytes": 3473,
+      "sha256": "423bead11ee245389ef32eaa65e4f65c730f7eda4b16430d88d70e92271ec524"
+    },
+    {
+      "path": "01_START_PROMPT.md",
+      "bytes": 3182,
+      "sha256": "39cdb48d6e987fdd0102bad20c86d4ef995f16cc4bb77e2eb8bfe185a2720d7a"
+    },
+    {
+      "path": "02_MASTER_SPEC.md",
+      "bytes": 5920,
+      "sha256": "0737c6f6b638048a71880d85260f6a900aa7e99b6f8ecb034cab3c6df40b7694"
+    },
+    {
+      "path": "ALL_IN_ONE.md",
+      "bytes": 158847,
+      "sha256": "6c6446a80153f8c756b092eaa3e606d7351cb83b0159eeba22ccd9632a3ef926"
+    },
+    {
+      "path": "PACKAGE_VALIDATION.md",
+      "bytes": 1591,
+      "sha256": "4191eb8a4c7ba33e6214001ecb628241dd122a4bc7f8863b90ba3145becd00de"
+    },
+    {
+      "path": "docs/03_EVIDENCE_AND_CORRECTIONS.md",
+      "bytes": 5661,
+      "sha256": "8524d4fcb234169056c57ead3df3b118274529a836cde9ffc787264189db9393"
+    },
+    {
+      "path": "docs/04_IMPLEMENTATION_PLAN.md",
+      "bytes": 4799,
+      "sha256": "a6047e90eaf3d4592af977824c2f8cda2d954e3fa7b1e25d45bcff667fae6e16"
+    },
+    {
+      "path": "docs/05_SEO_CONTENT_SPEC.md",
+      "bytes": 8668,
+      "sha256": "434b655a0d0aacd83074c381dc80e3b231f5dae1a1e4489fb7d5173f057dd711"
+    },
+    {
+      "path": "docs/06_TEST_ENGINE_UX_SPEC.md",
+      "bytes": 6759,
+      "sha256": "76fdf3c7b5ecf185e83b64e35e3797fc3d64f0b244da0d06b089504ff07cc4b1"
+    },
+    {
+      "path": "docs/07_ANALYTICS_PRIVACY_ADS_SPEC.md",
+      "bytes": 7968,
+      "sha256": "536446c1f4642f71771692b6c7b12f6fe5c532834a84c28b7f9f686a94d6b2b1"
+    },
+    {
+      "path": "docs/08_QA_RELEASE_ACCEPTANCE.md",
+      "bytes": 5521,
+      "sha256": "3b6c3e4fd419ea740d1ce742b08e73d7aac5e56702b428b279b18077fddddac9"
+    },
+    {
+      "path": "docs/09_SOURCES.md",
+      "bytes": 6071,
+      "sha256": "c95f69afd2e2ce176be6f3fe2ba2b3b531f2fcf851bbcba6055c3aa11756e677"
+    },
+    {
+      "path": "docs/10_OPTIONAL_GROWTH_SPEC.md",
+      "bytes": 4020,
+      "sha256": "aa00bac83b36e351cef4c52c63522bfbe33d0ef2a5e670d42ea28e8838908975"
+    },
+    {
+      "path": "evidence/http_probe.json",
+      "bytes": 714,
+      "sha256": "fc3817794fe8f04105d206d07eca5f5dbce262ce470e19364d76ebfe627c4d81"
+    },
+    {
+      "path": "evidence/observations.json",
+      "bytes": 3967,
+      "sha256": "3a9fe4cf69f3715cca89177b6489fb5a8c6267caadd8de4e0010e4558c09969b"
+    },
+    {
+      "path": "evidence/sources.json",
+      "bytes": 7656,
+      "sha256": "600c587a69e43600727d3380ca04dbd9b09caeab0e778ffed6b4425073219028"
+    },
+    {
+      "path": "specs/acceptance-cases.json",
+      "bytes": 33625,
+      "sha256": "a8570c5aea8d0dda54f01d1a348326252fea93cf747890077b4c814d1ac678ad"
+    },
+    {
+      "path": "specs/analytics-contract.json",
+      "bytes": 8245,
+      "sha256": "14233c7727893e0f7e758eba3f76324213d3d80c003bf12070aa54be24b93a51"
+    },
+    {
+      "path": "specs/approval-policy.json",
+      "bytes": 1782,
+      "sha256": "1f1da3aa1987882885bd46f3423861ccce344531845f06eec012933b3ea1e8c5"
+    },
+    {
+      "path": "specs/backlog.json",
+      "bytes": 39719,
+      "sha256": "b1f02724e8cc5da637bd80971c497dbd8004b686feb733c2cf3cacd2f5e26f7b"
+    },
+    {
+      "path": "specs/route-matrix.example.json",
+      "bytes": 3468,
+      "sha256": "34dbe1971446c125848103b98524a9b4423b7b1b2ba4fd248061fff8d2a79d51"
+    },
+    {
+      "path": "templates/CHANGE_PLAN.md",
+      "bytes": 1005,
+      "sha256": "bf925ab0bb0e657fa5b2d3d9d6a0b82b26811dda7bc3499eb0be0f6eac598dd4"
+    },
+    {
+      "path": "templates/FINAL_REPORT.md",
+      "bytes": 1475,
+      "sha256": "07529748be48dcc168a5dbc42ca39ea806c9c39529d259947f4a41bd1efd32e8"
+    },
+    {
+      "path": "templates/PROGRESS.md",
+      "bytes": 850,
+      "sha256": "6486aad2d1933e6c3216bd6287fde10a82e179235e23151dcc9dafa949113be9"
+    },
+    {
+      "path": "tools/test_validate_package.py",
+      "bytes": 3791,
+      "sha256": "61536a41bfe9d05efccdc4fbf6480c11deedbec627f96ec44e6cac9373ac21a9"
+    },
+    {
+      "path": "tools/validate_package.py",
+      "bytes": 11186,
+      "sha256": "31394236cb982374f07b685ee397835e4f69d6f8baf23d8885d1a835d0a0b0e9"
+    }
+  ]
+}

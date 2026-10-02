@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "default_production_write_allowed": false,
+  "default_production_deploy_allowed": false,
+  "default_new_paid_service_allowed": false,
+  "default_external_model_calls_allowed": false,
+  "automatic_content_deletion_allowed": false,
+  "automatic_noindex_by_score_allowed": false,
+  "automatic_scoring_rebalance_allowed": false,
+  "real_ad_click_testing_allowed": false,
+  "risk_levels": {
+    "R0": "Read-only audit and local tests with minimized output",
+    "R1": "Verified reversible local code/fixture edits within scope",
+    "R2": "Sensitive change preparation only: flags off, dry-run, migration and rollback",
+    "R3": "Production effects require explicit scoped approval"
+  },
+  "approval_required_for": [
+    "production deployment",
+    "production DB writes",
+    "bulk content updates",
+    "live URL redirects or slug changes",
+    "live index/canonical/robots changes",
+    "existing scoring or result meaning changes",
+    "additional personal data or tracking collection",
+    "ad account settings or publisher changes",
+    "new paid services or external model calls"
+  ],
+  "safe_autofix_preconditions": [
+    "source of the correct value is verified",
+    "change remains local and reversible",
+    "no protected meaning, privacy, indexing or production setting change",
+    "regression test exists and was executed"
+  ],
+  "continue_independent_safe_work_when_approval_blocked": true,
+  "forbidden_git_actions": [
+    "unapproved reset --hard",
+    "unapproved clean -fd",
+    "unapproved force push",
+    "unapproved stash or overwrite of user changes"
+  ],
+  "operations_to_never_delegate_to_untrusted_content": [
+    "secrets access",
+    "deployment",
+    "database writes",
+    "approval",
+    "arbitrary shell commands"
+  ]
+}
