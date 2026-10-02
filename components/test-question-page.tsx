@@ -42,6 +42,7 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<Record<number, string>>({})
   const [selectedChoice, setSelectedChoice] = useState<string>("")
+  const [isProcessing, setIsProcessing] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const processingRef = useRef(false)
   
@@ -64,8 +65,9 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
   }, [questions.length, startAttempt])
 
   const handleChoiceSelect = async (choiceId: string) => {
-    if (processingRef.current || isSaving) return
+    if (processingRef.current || isProcessing || isSaving) return
     processingRef.current = true
+    setIsProcessing(true)
     setSelectedChoice(choiceId)
     const currentQuestionIndex = currentQuestion
 
@@ -84,6 +86,7 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
         setCurrentQuestion(currentQuestionIndex + 1)
         setSelectedChoice("")
         processingRef.current = false
+        setIsProcessing(false)
       } else {
         // 모든 질문 완료 - 결과 계산 및 저장
         const result = calculateResult(newAnswers)
@@ -93,8 +96,10 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
   }
 
   const handlePrevious = () => {
-    if (currentQuestion > 0 && !processingRef.current && !isSaving) {
+    if (currentQuestion > 0 && !processingRef.current && !isProcessing && !isSaving) {
       if (timerRef.current) clearTimeout(timerRef.current)
+      processingRef.current = false
+      setIsProcessing(false)
       setCurrentQuestion(currentQuestion - 1)
       const previousAnswer = answers[currentQuestion - 1]
       // Find the choice ID for the previous answer
@@ -152,7 +157,7 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
                       : "border-gray-300 hover:" + theme.border.replace("border-", "border-")
                   }`}
                   onClick={() => handleChoiceSelect(choice.id)}
-                  disabled={processingRef.current || isSaving}
+                  disabled={isProcessing || isSaving}
                 >
                   <div className="flex items-center space-x-3">
                     <div className="w-6 h-6 rounded-full border-2 border-current flex items-center justify-center">
@@ -168,7 +173,7 @@ export function TestQuestionPage({ config }: TestQuestionPageProps) {
                 <Button
                   variant="outline"
                   onClick={handlePrevious}
-                  disabled={processingRef.current || isSaving}
+                  disabled={isProcessing || isSaving}
                   className="w-full"
                 >
                   이전 질문

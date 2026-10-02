@@ -176,6 +176,7 @@ const questions = [
 export default function NTRPTestPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [scores, setScores] = useState<number[]>([])
+  const [isProcessing, setIsProcessing] = useState(false)
   const processingRef = useRef(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const router = useRouter()
@@ -198,8 +199,9 @@ export default function NTRPTestPage() {
   }, [startAttempt])
 
   const handleAnswer = async (level: number) => {
-    if (processingRef.current) return
+    if (processingRef.current || isProcessing) return
     processingRef.current = true
+    setIsProcessing(true)
     const newScores = [...scores, level]
     const currentQuestionIndex = currentQuestion
     setScores(newScores)
@@ -211,6 +213,7 @@ export default function NTRPTestPage() {
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestion(currentQuestionIndex + 1)
         processingRef.current = false
+        setIsProcessing(false)
       } else {
         // 결과 계산
         const averageScore = newScores.reduce((sum, score) => sum + score, 0) / newScores.length
@@ -228,7 +231,7 @@ export default function NTRPTestPage() {
   const progress = ((currentQuestion + 1) / questions.length) * 100
 
   const handlePrevious = () => {
-    if (processingRef.current) return
+    if (processingRef.current || isProcessing) return
     setScores((previousScores) => previousScores.slice(0, -1))
     setCurrentQuestion((previousQuestion) => Math.max(0, previousQuestion - 1))
   }
@@ -261,7 +264,7 @@ export default function NTRPTestPage() {
                   variant="outline"
                   className="w-full p-6 text-left justify-start hover:bg-green-50 hover:border-green-300 bg-transparent"
                   onClick={() => handleAnswer(option.level)}
-                  disabled={processingRef.current}
+                  disabled={isProcessing}
                 >
                   <span className="text-base">{option.text}</span>
                 </Button>
@@ -273,7 +276,7 @@ export default function NTRPTestPage() {
                 variant="ghost"
                 className="mt-6 w-full text-green-700"
                 onClick={handlePrevious}
-                disabled={processingRef.current}
+                disabled={isProcessing}
               >
                 이전 질문으로 돌아가기
               </Button>

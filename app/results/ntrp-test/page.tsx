@@ -42,7 +42,8 @@ export default function NTRPTestResult() {
   const router = useRouter()
   const { toast } = useToast()
   const cardRef = useRef<HTMLDivElement>(null)
-  const [mounted, setMounted] = useState(false)
+  // mounted is always true on the client — derive directly without setState.
+  const mounted = typeof window !== "undefined"
   const [copied, setCopied] = useState(false)
 
   // 질문 화면이 만드는 레벨 단위와 결과 화면의 해석을 항상 일치시키는 단일 계약.
@@ -72,7 +73,6 @@ export default function NTRPTestResult() {
   const radarData = useMemo(() => (bandKey ? mapLevelToBaseProfile(bandKey) : []), [bandKey])
 
   useEffect(() => {
-    if (!mounted) setMounted(true)
     if (parsed.ok) {
       trackResultView("ntrp-test", parsed.level)
     }
@@ -84,9 +84,9 @@ export default function NTRPTestResult() {
     if (!cardRef.current) return
 
     try {
-      const [{ toPng }, { default: dayjs }] = await Promise.all([
+      const [{ toPng }, { format }] = await Promise.all([
         import("html-to-image"),
-        import("dayjs"),
+        import("date-fns"),
       ])
       const dataUrl = await toPng(cardRef.current, {
         quality: 1.0,
@@ -95,7 +95,7 @@ export default function NTRPTestResult() {
       })
 
       const link = document.createElement("a")
-      link.download = `ntrp-result-${level}-${dayjs().format("YYYYMMDD")}.png`
+      link.download = `ntrp-result-${level}-${format(new Date(), "yyyyMMdd")}.png`
       link.href = dataUrl
       link.click()
 
@@ -117,11 +117,11 @@ export default function NTRPTestResult() {
     if (!cardRef.current) return
 
     try {
-      const [{ toPng }, { PDFDocument, rgb }, { default: dayjs }] =
+      const [{ toPng }, { PDFDocument, rgb }, { format }] =
         await Promise.all([
           import("html-to-image"),
           import("pdf-lib"),
-          import("dayjs"),
+          import("date-fns"),
         ])
       const dataUrl = await toPng(cardRef.current, {
         quality: 1.0,
@@ -159,7 +159,7 @@ export default function NTRPTestResult() {
         color: rgb(0.5, 0.5, 0.5),
       })
 
-      page.drawText(dayjs().format("YYYY-MM-DD"), {
+      page.drawText(format(new Date(), "yyyy-MM-dd"), {
         x: 450,
         y: 30,
         size: 10,
@@ -170,7 +170,7 @@ export default function NTRPTestResult() {
       const blob = new Blob([pdfBytes as BlobPart], { type: "application/pdf" })
       const url = URL.createObjectURL(blob)
       const link = document.createElement("a")
-      link.download = `ntrp-result-${level}-${dayjs().format("YYYYMMDD")}.pdf`
+      link.download = `ntrp-result-${level}-${format(new Date(), "yyyyMMdd")}.pdf`
       link.href = url
       link.click()
       URL.revokeObjectURL(url)
