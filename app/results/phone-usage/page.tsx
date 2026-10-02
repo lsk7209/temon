@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { RotateCcw } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useState } from "react"
+import { Suspense } from "react"
 import { ShareButtons } from "@/components/share-buttons"
 import { PHONE_USAGE_RESULTS } from "@/lib/data/phone-usage-results"
 import type { ResultType } from "@/lib/data/phone-usage-results"
@@ -25,15 +25,8 @@ function ResultContent() {
   const resultId = searchParams.get("id")
   const { resolvedType, loading } = useResolvedResultType(Object.keys(PHONE_USAGE_RESULTS), type, resultId)
 
-  const [result, setResult] = useState<ResultType | null>(null)
+  const result = (resolvedType && PHONE_USAGE_RESULTS[resolvedType]) ? PHONE_USAGE_RESULTS[resolvedType] : null
 
-  useEffect(() => {
-    if (resolvedType && PHONE_USAGE_RESULTS[resolvedType]) {
-      setResult(PHONE_USAGE_RESULTS[resolvedType])
-    } else {
-      setResult(null)
-    }
-  }, [resolvedType])
 
   if (loading) {
     return (

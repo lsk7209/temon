@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { applyAdPersonalizationPreference } from "@/lib/consent";
 
 const ADSENSE_CLIENT_ID =
@@ -35,13 +35,15 @@ function isAdSenseEligiblePath(pathname: string | null) {
 
 export default function AdSenseScript() {
   const pathname = usePathname();
-  const [isIndexablePage, setIsIndexablePage] = useState(false);
+
+  // Read the robots meta tag client-side only — avoids setState inside an effect.
+  const isIndexablePage = typeof window !== "undefined"
+    ? !document.querySelector<HTMLMetaElement>('meta[name="robots"]')?.content.toLowerCase().includes("noindex")
+    : false;
 
   useEffect(() => {
     // Refused visitors get non-personalized ads; set before the loader mounts.
     applyAdPersonalizationPreference();
-    const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
-    setIsIndexablePage(!robots?.content.toLowerCase().includes("noindex"));
   }, []);
 
   // Delivery is explicitly opt-in so a deployment cannot accidentally restore

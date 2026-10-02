@@ -106,12 +106,13 @@ export default function AnalyticsDashboard() {
   }
 
   useEffect(() => {
-    loadStats()
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void loadStats();
 
     // 30초마다 자동 업데이트
-    const interval = setInterval(loadStats, 30000)
-    return () => clearInterval(interval)
-  }, [])
+    const interval = setInterval(() => { void loadStats(); }, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   if (loadState === "loading" && !stats) {
     return (

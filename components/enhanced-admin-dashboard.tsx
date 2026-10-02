@@ -380,10 +380,11 @@ export default function EnhancedAdminDashboard() {
   };
 
   useEffect(() => {
-    loadStats();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void loadStats();
     loadScripts();
-    if (activeTab === "queue") fetchQueue();
-    const interval = setInterval(loadStats, 30000);
+    if (activeTab === "queue") void fetchQueue();
+    const interval = setInterval(() => { void loadStats(); }, 30000);
     return () => clearInterval(interval);
   }, [loadStats, activeTab]);
 

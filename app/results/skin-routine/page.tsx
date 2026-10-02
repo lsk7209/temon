@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { RotateCcw } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useState } from "react"
+import { Suspense } from "react"
 import { ShareButtons } from "@/components/share-buttons"
 import { SKIN_ROUTINE_RESULTS } from "@/lib/data/skin-routine-results"
 import type { ResultType } from "@/lib/data/skin-routine-results"
@@ -20,18 +20,9 @@ function ResultContent() {
   const type = searchParams.get("type") || ""
   const resultId = searchParams.get("id")
 
-  const [result, setResult] = useState<ResultType | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    if (type && SKIN_ROUTINE_RESULTS[type]) {
-      setResult(SKIN_ROUTINE_RESULTS[type])
-      setLoading(false)
-    } else {
-      // 기본값 또는 에러 처리
-      setLoading(false)
-    }
-  }, [type])
+  // Derive directly from URL params — no useEffect needed.
+  const result = (type && SKIN_ROUTINE_RESULTS[type]) ? SKIN_ROUTINE_RESULTS[type] : null
+  const loading = false
 
   if (loading) {
     return (

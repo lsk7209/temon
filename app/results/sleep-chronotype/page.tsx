@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { RotateCcw } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useState } from "react"
+import { Suspense } from "react"
 import { ShareButtons } from "@/components/share-buttons"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { ResultFaqSchema } from "@/components/quiz/result-faq-schema"
@@ -23,17 +23,9 @@ function ResultContent() {
   const type = searchParams.get("type") || ""
   const resultId = searchParams.get("id")
 
-  const [result, setResult] = useState<ResultType | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    if (type && SLEEP_CHRONOTYPE_RESULTS[type]) {
-      setResult(SLEEP_CHRONOTYPE_RESULTS[type])
-      setLoading(false)
-    } else {
-      setLoading(false)
-    }
-  }, [type])
+  // Derive directly from URL params — no useEffect needed.
+  const result = (type && SLEEP_CHRONOTYPE_RESULTS[type]) ? SLEEP_CHRONOTYPE_RESULTS[type] : null
+  const loading = false
 
   if (loading) {
     return (

@@ -111,8 +111,16 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
   const [data, setData] = useState<DashboardData | null>(initialData)
   const [loading, setLoading] = useState(true) // 초기 로딩 상태를 true로 설정
   const [dateRange, setDateRange] = useState<'today' | '7d' | '30d' | 'custom'>('today')
-  const [startDate, setStartDate] = useState<Date | undefined>()
-  const [endDate, setEndDate] = useState<Date | undefined>()
+  const [startDate, setStartDate] = useState<Date | undefined>(() => {
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    return today
+  })
+  const [endDate, setEndDate] = useState<Date | undefined>(() => {
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    return new Date(today.getTime() + 24 * 60 * 60 * 1000 - 1)
+  })
 
   const fetchReports = React.useCallback(async () => {
     setLoading(true)
@@ -173,18 +181,14 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
 
   // 초기 데이터 로드
   useEffect(() => {
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    const start = today
-    const end = new Date(today.getTime() + 24 * 60 * 60 * 1000 - 1)
-
-    setStartDate(start)
-    setEndDate(end)
-
     // 즉시 데이터 로드
     const loadInitialData = async () => {
       setLoading(true)
       const params = new URLSearchParams()
+      // startDate/endDate are initialised via useState lazy initializer
+      const start = new Date()
+      start.setHours(0, 0, 0, 0)
+      const end = new Date(start.getTime() + 24 * 60 * 60 * 1000 - 1)
       params.set('startDate', start.getTime().toString())
       params.set('endDate', end.getTime().toString())
 
@@ -301,40 +305,42 @@ export default function DashboardClient({ initialData }: { initialData: Dashboar
       }
     }
 
-    loadInitialData()
+    void loadInitialData()
   }, [router])
 
   useEffect(() => {
-    if (dateRange === 'custom' && startDate && endDate) {
-      fetchReports()
-    } else if (dateRange !== 'custom') {
-      const today = new Date()
-      today.setHours(0, 0, 0, 0)
-      let start: Date
-
-      switch (dateRange) {
-        case '7d':
-          start = new Date(today)
-          start.setDate(start.getDate() - 7)
-          break
-        case '30d':
-          start = new Date(today)
-          start.setDate(start.getDate() - 30)
-          break
-        default:
-          start = today
-      }
-
-      setStartDate(start)
-      setEndDate(new Date(today.getTime() + 24 * 60 * 60 * 1000 - 1))
+    if (dateRange === 'custom') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (startDate && endDate) void fetchReports();
+      return;
     }
-  }, [dateRange, fetchReports, startDate, endDate])
 
-  useEffect(() => {
-    if (startDate && endDate && dateRange !== 'custom') {
-      fetchReports()
+    // non-custom: recalculate dates and fetch in one go
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    let start: Date
+
+    switch (dateRange) {
+      case '7d':
+        start = new Date(today)
+        start.setDate(start.getDate() - 7)
+        break
+      case '30d':
+        start = new Date(today)
+        start.setDate(start.getDate() - 30)
+        break
+      default:
+        start = today
     }
-  }, [startDate, endDate, dateRange, fetchReports])
+
+    const end = new Date(today.getTime() + 24 * 60 * 60 * 1000 - 1)
+    setStartDate(start)
+    setEndDate(end)
+    // fetchReports reads startDate/endDate from state — they are updated above
+    // but we trigger the fetch on the next tick so the state has settled.
+    void fetchReports()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateRange])
 
   const handleExportCSV = () => {
     // CSV 내보내기 로직

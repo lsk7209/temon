@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { RotateCcw } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useState } from "react"
+import { Suspense } from "react"
 import { ShareButtons } from "@/components/share-buttons"
 import { StaticResultEnhancements } from "@/components/static-result-enhancements"
 import { SPENDING_STYLE_RESULTS } from "@/lib/data/spending-style-results"
@@ -21,17 +21,9 @@ function ResultContent() {
   const type = searchParams.get("type") || ""
   const resultId = searchParams.get("id")
 
-  const [result, setResult] = useState<ResultType | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    if (type && SPENDING_STYLE_RESULTS[type]) {
-      setResult(SPENDING_STYLE_RESULTS[type])
-      setLoading(false)
-    } else {
-      setLoading(false)
-    }
-  }, [type])
+  // Derive directly from URL params — no useEffect needed.
+  const result = (type && SPENDING_STYLE_RESULTS[type]) ? SPENDING_STYLE_RESULTS[type] : null
+  const loading = false
 
   if (loading) {
     return (

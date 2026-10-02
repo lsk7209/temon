@@ -41,7 +41,8 @@ export default function TestsList() {
   };
 
   useEffect(() => {
-    fetchTests();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void fetchTests();
   }, []);
 
   const handleDelete = async (id: string) => {

@@ -79,21 +79,21 @@ export default function TestPlayClient() {
 
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
-  const [isStarted, setIsStarted] = useState(false)
+  const isStartedRef = useRef(false)
   const attemptIdRef = useRef<string | null>(null)
   const completedRef = useRef(false)
 
   const test = testData[slug]
 
   useEffect(() => {
-    if (test && !isStarted) {
+    if (test && !isStartedRef.current) {
+      isStartedRef.current = true
       if (!attemptIdRef.current) {
         attemptIdRef.current = `attempt_${crypto.randomUUID()}`
         trackTestStart(slug)
       }
-      setIsStarted(true)
     }
-  }, [test, slug, isStarted])
+  }, [test, slug])
 
   if (!test) {
     return (

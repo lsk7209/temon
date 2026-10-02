@@ -59,8 +59,9 @@ export default function QueuePage() {
   };
 
   useEffect(() => {
-    fetchQueue();
-    const interval = setInterval(fetchQueue, 10000);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void fetchQueue();
+    const interval = setInterval(() => { void fetchQueue(); }, 10000);
     return () => clearInterval(interval);
   }, []);
 

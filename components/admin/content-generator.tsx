@@ -58,8 +58,9 @@ export default function ContentGenerator() {
   };
 
   useEffect(() => {
-    fetchQueue();
-    const interval = setInterval(fetchQueue, 5000);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void fetchQueue();
+    const interval = setInterval(() => { void fetchQueue(); }, 5000);
     return () => clearInterval(interval);
   }, []);
 

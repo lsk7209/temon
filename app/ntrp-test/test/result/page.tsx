@@ -151,14 +151,13 @@ const results = {
 export default function NTRPTestResult() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const [mounted, setMounted] = useState(false)
+  // mounted is always true on the client — derive directly without setState.
+  const mounted = typeof window !== "undefined"
 
   const level = searchParams.get("level") || "2.0"
   const result = results[level as keyof typeof results] || results["2.0"]
 
-  useEffect(() => {
-    setMounted(true)
-  }, [level])
+
 
   const handleShare = async (platform: string) => {
     const text = `나의 NTRP 테니스 레벨은 ${result.level} - ${result.title}! 당신도 테스트해보세요!`

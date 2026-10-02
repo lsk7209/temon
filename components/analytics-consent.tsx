@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import { useAnalyticsConsent } from "@/hooks/use-analytics-consent";
@@ -58,11 +58,11 @@ interface AnalyticsScriptsProps {
 /** Loads GA and Clarity only after consent allows it; never on the server render. */
 export function AnalyticsScripts({ gaId, clarityId }: AnalyticsScriptsProps) {
   const { ready, allowed } = useAnalyticsConsent();
-  const [loaded, setLoaded] = useState(false);
+  // Derive loaded from consent state — avoids synchronous setState inside an effect.
+  const loaded = ready && allowed;
 
   useEffect(() => {
     if (!ready) return;
-    if (allowed) setLoaded(true);
     applyLoadedTrackerConsent(gaId, allowed);
   }, [ready, allowed, gaId]);
 

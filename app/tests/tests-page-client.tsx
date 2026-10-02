@@ -104,7 +104,10 @@ export default function TestsPageClient({
   );
   const normalizedInitialPage = Math.min(initialPage, initialTotalPages);
   const [currentPage, setCurrentPage] = useState(normalizedInitialPage);
+  // Sync URL search-params → local state when the server component passes new props.
+  // This is intentional: the parent re-renders with fresh props whenever the URL changes.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentPage(initialPage);
     setSearchTerm(initialQuery);
     setSelectedCategory(initialCategory);

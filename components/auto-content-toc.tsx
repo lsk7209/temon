@@ -21,31 +21,31 @@ export default function AutoContentToc() {
   const [items, setItems] = useState<AutoTocItem[]>([]);
 
   useEffect(() => {
-    if (!shouldShowToc(pathname)) {
-      setItems([]);
-      return;
+    let nextItems: AutoTocItem[] = [];
+
+    if (shouldShowToc(pathname)) {
+      const hasManualToc = document.querySelector('[data-content-toc="manual"]');
+      if (!hasManualToc) {
+        const headings = Array.from(
+          document.querySelectorAll<HTMLElement>(
+            "main h2:not([data-toc-skip])",
+          ),
+        )
+          .filter((heading) => heading.textContent?.trim())
+          .slice(0, MAX_TOC_ITEMS);
+
+        const mapped = headings.map((heading, index) => {
+          const label = heading.textContent?.trim() || `섹션 ${index + 1}`;
+          return { index, label };
+        });
+
+        nextItems = mapped.length >= 2 ? mapped : [];
+      }
     }
 
-    const hasManualToc = document.querySelector('[data-content-toc="manual"]');
-    if (hasManualToc) {
-      setItems([]);
-      return;
-    }
-
-    const headings = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        "main h2:not([data-toc-skip])",
-      ),
-    )
-      .filter((heading) => heading.textContent?.trim())
-      .slice(0, MAX_TOC_ITEMS);
-
-    const nextItems = headings.map((heading, index) => {
-      const label = heading.textContent?.trim() || `섹션 ${index + 1}`;
-      return { index, label };
-    });
-
-    setItems(nextItems.length >= 2 ? nextItems : []);
+    // Single synchronous setState after DOM query — not a cascading render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setItems(nextItems);
   }, [pathname]);
 
   if (items.length === 0) return null;
