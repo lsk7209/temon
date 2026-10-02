@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "test": "node scripts/run-all-tests.cjs",
+    "test": "vitest run && node scripts/run-all-tests.cjs",
+    "test:unit": "vitest run",
     "start": "next start",
     "create-test": "ts-node scripts/create-test.ts",
     "audit:results": "node scripts/audit-result-pages.js",
@@ -117,6 +118,7 @@
     "eslint-config-next": "16.3.7",
     "postcss": "^8.5",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^5.0.3"
   }
 }
