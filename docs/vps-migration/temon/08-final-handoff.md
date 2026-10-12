@@ -1,14 +1,32 @@
-# Temon OVH migration — production cutover in progress
+# Temon OVH migration — final handoff
 
-Status: CUTOVER_IN_PROGRESS (user approved full production migration on 2026-10-12).
-Original/Vercel/GitHub baseline: 1b924c2ef8ba77f8ac4d759446b3dfd34b0f47c5. Original E:/web/temon preserved. Migration isolated branch migration/ovh-staging-20261012; main release commit is pending final review.
+Status: PRODUCTION_ON_OVH / CUTOVER_COMPLETE.
+Verified 2026-10-12 08:08 UTC / 17:08 KST after the requested one-hour check also passed at06:48 UTC.
 
-VPS /opt/temon-production, dedicated Compose, initial image temon-ovh:production-20261012-v1 is healthy through trusted existing Caddy HTTPS. DNS UI saved A51.79.206.71/www CNAMEtemon.kr; TCP authoritative nameservers show new IP, public resolvers still show old IP at this checkpoint. Valid manual TLS protects early arrivals; Caddy managed certificate warmup underway.
+## Production
 
-Vercel Cron disabledAt1791780854343 and Git automatic deployments disabled, GOOGLE_API_KEY removed. VPS Gemini generation false, no Gemini keys or scheduler. Publisher timer installed but not yet activated. Dedicated health and daily read-only backup timers active and actual runs PASS. New runtime main image and final global DNS/cron/rollback checks remain.
+https://temon.kr serves OVH51.79.206.71. All4 authoritative DNS servers return the new apex A and www CNAMEtemon.kr. Trusted HTTPS200, www308 and both Caddy managed certificates PASS. Persisted Caddy configuration now uses automatic TLS; only Temon manual TLS directives removed, all preceding other-site blocks byte-identical, no shared ingress restart. Manual certificate and renewal configuration retained in protected recovery for rollback.
 
-Security review repairs: initial publisher claim checks original quality metadata and schedule; missing/invalid secret or owner fails before DB; strict runner rejects malformed200; safe failure diagnostics. No DB migrations or synthetic writes to production. Existing659 results and36 attempts preserved; 9-table snapshot restored integrity/foreign-key/count checks PASS. Other production sites200, no container restarts by this migration; existing shared ingress received only Temon routes/network declaration.
+Deployed application source:18c397c098e8f3499af66764889aaa4dee67e386, image temon-ovh:production-18c397c098e8f349. Original Vercel/source baseline1b924c2ef8ba77f8ac4d759446b3dfd34b0f47c5 preserved at E:/web/temon. Documentation-only final commit may follow this application revision; report actual deployed revision independently.
 
-Remaining checks: final reviewed main commit/image deployment, llms1008 runtime parity, managed TLS completion, public DNS propagation, publisher ownership/job proof, automatic deployment and final handoff. Costs UNMEASURED; npm audit8 build-chain findings remain, packages absent in actual standalone runtime. Coolify integration not used because existing instance API disabled; dedicated Compose/systemd fallback is documented. Daily offsite backup upload and external failure notifications remain operational follow-ups.
+Dedicated /opt/temon-production Compose application, nonroot, no host application ports, CPU1.5/RAM1536MiB, private runtime env and revision-specific cache. Container healthy, restart0, OOMfalse. Other sites TodayPharm/LocalGEO HTTP200; no other application container restart by this migration.
 
-See 01–07 for full source/env, backup, architecture, test and rollback records. This file is the single migration progress record; no completion claim until actual DNS and production checks finish.
+## Automation and data
+
+Vercel Cron disabledAt1791780854343, automatic Git deployments disabled, Gemini production env removed; latest API verification PASS. VPS generation disabled, no Gemini key or generation timer. VPS hourly publisher06/07/08UTC returned HTTP200 success with idle:true, no due publication. Owner/secret gates and queue/CAS regression tests protect duplicate side effects. Existing Vercel deployment retained for rollback; project not deleted or paused.
+
+Auto-deploy polling, bounded health recovery, daily read-only Turso backup timers active. Actual auto-deploy PASS. Resource protection previously deferred a build below8GiB available, then retried successfully without affecting serving image. All9-table snapshots restored to isolated SQLite with integrity/foreign-key/count checks PASS:659 results,36 attempts,1221 tests at backup. No production migration replay or synthetic result writes. Production DB remains existing Turso.
+
+## Validation
+
+51 unit assertions and22 regression assertions PASS; npm ci/lint/typecheck/build and hosting-cost audit verified earlier. Linux Next16.3.8 production builds PASS, fresh read-only old/new comparison home/tests/results/metadata/robots/ads/sitemaps/llms1008 entries PASS. Isolated staging result save/read/idempotency, admin cookies, PNG/PDF export, cache persistence and rollback PASS. No Gemini API calls or live advertising clicks/impressions in tests. Requested one-hour check and final live recheck all listed checks PASS.
+
+## Remaining operational follow-ups
+
+Actual Vercel7/30-day project cost and savings remain UNMEASURED. Daily offsite backup upload and external failure notification delivery not configured; initial snapshot is also protected on PC.24-hour/load testing not performed. npm audit retains8 build-chain findings; implicated packages absent from the running standalone image, no major dependency upgrade performed. Coolify API disabled; isolated Compose/systemd fallback used instead of changing shared management settings. Original generated quality/content policies preserved; no redesign or URL changes.
+
+## Recovery
+
+First stop VPS publisher and inspect in-flight markers before restoring Vercel publisher ownership; keep Gemini generation disabled. Restore old DNS A216.150.1.1 and www a276fe699a3cdd47.vercel-dns-017.com when needed; Vercel deployment retained. Restore Temon previous image/env/cache with its dedicated compose service only. Never overwrite current production Turso with an old snapshot; restore into a new isolated DB and reconcile legitimate user writes. See06-deployment-runbook.md and04-cron-cutover.md.
+
+Changed code/config: Dockerfile/.dockerignore/Next standalone, fail-closed cron ownership and publisher CAS, protected health/IP/admin/staging controls, env inventory, isolated compose and systemd deploy/publish/health/backup operations, mock/isolated tests, read-only comparison and all8 migration documents. Full committed changes are visible in the migration commits96f3d244/f89e7e1a/18c397c0. All8 records are under docs/vps-migration/temon.
