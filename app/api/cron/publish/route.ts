@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { authorizeCron } from "@/lib/cron-auth";
 import { asc, and, desc, eq, lte } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { tests } from "@/lib/db/schema";
@@ -10,10 +11,9 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 const MIN_PUBLISH_QUALITY_SCORE = 90;
 const SEARCH_SUBMISSION_VERSION = "1.0";
-const DEFAULT_SEARCH_RETRY_BATCH_SIZE = 10;
-const MAX_SEARCH_RETRY_BATCH_SIZE = 50;
 const DEFAULT_SEARCH_RETRY_SCAN_LIMIT = 50;
 const MAX_SEARCH_RETRY_SCAN_LIMIT = 100;
+let publishRunning = false;
 
 function parseMetadata(value: unknown) {
   if (!value) return {};
@@ -71,18 +71,6 @@ function getSitemapUrl(baseUrl: string) {
   return (process.env.GSC_SITEMAP_URL || `${baseUrl}/sitemap.xml`).trim();
 }
 
-function getSearchRetryBatchSize() {
-  const configured = Number.parseInt(
-    process.env.SEARCH_SUBMISSION_RETRY_BATCH_SIZE || "",
-    10,
-  );
-  const batchSize = Number.isFinite(configured)
-    ? configured
-    : DEFAULT_SEARCH_RETRY_BATCH_SIZE;
-
-  return Math.min(Math.max(batchSize, 1), MAX_SEARCH_RETRY_BATCH_SIZE);
-}
-
 function getSearchRetryScanLimit() {
   const configured = Number.parseInt(
     process.env.SEARCH_SUBMISSION_RETRY_SCAN_LIMIT || "",
@@ -110,10 +98,16 @@ function buildSearchSubmissionMetadata(
   indexNow: Awaited<ReturnType<typeof submitUrlsToIndexNow>>,
   googleSearch: Awaited<ReturnType<typeof submitGoogleSearchUpdates>>,
 ) {
+  const completed =
+    indexNow.success &&
+    googleSearch.configured &&
+    googleSearch.sitemapSubmitted &&
+    googleSearch.errors.length === 0;
   return {
     version: SEARCH_SUBMISSION_VERSION,
-    status: "completed",
+    status: completed ? "completed" : "failed",
     submittedAt: new Date().toISOString(),
+    ...(completed ? {} : { failedAt: new Date().toISOString() }),
     publishedUrls,
     indexNow: {
       success: indexNow.success,
@@ -146,11 +140,11 @@ function buildSearchSubmissionMetadata(
   };
 }
 
-function buildPendingSearchSubmissionMetadata(publishedUrls: string[], baseUrl: string) {
+function buildSubmittingSearchSubmissionMetadata(publishedUrls: string[], baseUrl: string) {
   return {
     version: SEARCH_SUBMISSION_VERSION,
-    status: "pending",
-    queuedAt: new Date().toISOString(),
+    status: "submitting",
+    startedAt: new Date().toISOString(),
     publishedUrls,
     indexNow: {
       success: false,
@@ -169,32 +163,29 @@ function buildPendingSearchSubmissionMetadata(publishedUrls: string[], baseUrl: 
   };
 }
 
-function buildFailedSearchSubmissionMetadata(
-  publishedUrls: string[],
-  baseUrl: string,
-  error: unknown,
-) {
-  const pending = buildPendingSearchSubmissionMetadata(publishedUrls, baseUrl);
-  return {
-    ...pending,
-    status: "failed",
-    failedAt: new Date().toISOString(),
-    googleSearch: {
-      ...pending.googleSearch,
-      errors: [error instanceof Error ? error.message : String(error)],
-    },
-  };
-}
-
-function shouldRetrySearchSubmission(metadata: Record<string, unknown>) {
+function needsSearchSubmissionReview(metadata: Record<string, unknown>) {
   const searchSubmission = metadata.searchSubmission;
   if (!searchSubmission || typeof searchSubmission !== "object") return true;
 
   const status = (searchSubmission as { status?: unknown }).status;
-  return status === "pending" || status === "failed";
+  return status !== "completed";
 }
 
-async function retryPendingSearchSubmissions(
+function canRetryWithoutDuplicate(metadata: Record<string, unknown>) {
+  const submission = metadata.searchSubmission as Record<string, unknown> | undefined;
+  if (submission?.status !== "failed") return false;
+  const indexNow = submission.indexNow as Record<string, unknown> | undefined;
+  const google = submission.googleSearch as Record<string, unknown> | undefined;
+  // Only retry when neither provider could have received a successful submission.
+  // Network errors and partially accepted batches have an unknown outcome.
+  return indexNow?.success === false && indexNow.submitted === 0 &&
+    Array.isArray(indexNow.endpoints) && indexNow.endpoints.every(
+      (endpoint: { status?: number; ok?: boolean }) => endpoint.ok === false &&
+        typeof endpoint.status === "number",
+    ) && google?.configured === false;
+}
+
+async function inspectSearchSubmissions(
   db: ReturnType<typeof getDb>,
   baseUrl: string,
 ) {
@@ -205,124 +196,63 @@ async function retryPendingSearchSubmissions(
     .orderBy(desc(tests.updatedAt))
     .limit(getSearchRetryScanLimit());
 
-  const retryableTests = publishedTests.filter((test) =>
-    shouldRetrySearchSubmission(parseMetadata(test.metadata)),
+  const reviewRequired = publishedTests.filter((test) =>
+    needsSearchSubmissionReview(parseMetadata(test.metadata)),
   );
-  const retryBatchSize = getSearchRetryBatchSize();
-  const retryTargets = retryableTests.slice(0, retryBatchSize);
-  const retryItems = retryTargets.map((retryTarget) => {
-    const publishedUrls = buildPublishedUrls(baseUrl, retryTarget.slug, false);
-    return {
-      test: retryTarget,
-      existingMetadata: parseMetadata(retryTarget.metadata),
-      publishedUrls,
-    };
-  });
-
-  for (const retryItem of retryItems) {
-    await db
-      .update(tests)
-      .set({
-        metadata: {
-          ...retryItem.existingMetadata,
-          searchSubmission: buildPendingSearchSubmissionMetadata(
-            retryItem.publishedUrls,
-            baseUrl,
-          ),
-        },
-        updatedAt: new Date(),
-      })
-      .where(eq(tests.id, retryItem.test.id));
-  }
-
-  let indexNow: Awaited<ReturnType<typeof submitUrlsToIndexNow>> | null = null;
-  let googleSearch: Awaited<ReturnType<typeof submitGoogleSearchUpdates>> | null = null;
-  const submittedUrls = retryItems.flatMap((retryItem) => retryItem.publishedUrls);
   const retried = [];
+  for (const test of publishedTests) {
+    const existingMetadata = parseMetadata(test.metadata);
+    if (!canRetryWithoutDuplicate(existingMetadata)) continue;
+    const publishedUrls = buildPublishedUrls(baseUrl, test.slug, false);
+    const claimed = buildSubmittingSearchSubmissionMetadata(publishedUrls, baseUrl);
+    const claimedMetadata = { ...existingMetadata, searchSubmission: claimed };
+    const claim = await db.update(tests).set({
+      metadata: claimedMetadata,
+      updatedAt: new Date(),
+    }).where(and(eq(tests.id, test.id), eq(tests.metadata, test.metadata)));
+    if (claim.rowsAffected !== 1) continue;
 
-  try {
-    if (submittedUrls.length > 0) {
-      [indexNow, googleSearch] = await Promise.all([
-        submitUrlsToIndexNow(submittedUrls),
-        submitGoogleSearchUpdates(submittedUrls),
+    try {
+      const [indexNow, googleSearch] = await Promise.all([
+        submitUrlsToIndexNow(publishedUrls),
+        submitGoogleSearchUpdates(publishedUrls),
       ]);
-    }
-
-    for (const retryItem of retryItems) {
-      if (!indexNow || !googleSearch) continue;
-
       const searchSubmission = buildSearchSubmissionMetadata(
-        retryItem.publishedUrls,
-        baseUrl,
-        {
-          ...indexNow,
-          submitted: retryItem.publishedUrls.length,
-        },
-        googleSearch,
+        publishedUrls, baseUrl, indexNow, googleSearch,
       );
-
-      await db
-        .update(tests)
-        .set({
-          metadata: {
-            ...retryItem.existingMetadata,
-            searchSubmission,
-          },
-          updatedAt: new Date(),
-        })
-        .where(eq(tests.id, retryItem.test.id));
-
-      retried.push({
-        id: retryItem.test.id,
-        slug: retryItem.test.slug,
-        searchSubmission,
-      });
-    }
-  } catch (error) {
-    console.error("Search submission retry batch failed:", error);
-
-    for (const retryItem of retryItems) {
-      const searchSubmission = buildFailedSearchSubmissionMetadata(
-        retryItem.publishedUrls,
-        baseUrl,
-        error,
-      );
-
-      await db
-        .update(tests)
-        .set({
-          metadata: {
-            ...retryItem.existingMetadata,
-            searchSubmission,
-          },
-          updatedAt: new Date(),
-        })
-        .where(eq(tests.id, retryItem.test.id));
-
-      retried.push({
-        id: retryItem.test.id,
-        slug: retryItem.test.slug,
-        searchSubmission,
-      });
+      await db.update(tests).set({
+        metadata: { ...existingMetadata, searchSubmission },
+        updatedAt: new Date(),
+      }).where(and(eq(tests.id, test.id), eq(tests.metadata, claimedMetadata)));
+      retried.push({ id: test.id, slug: test.slug, searchSubmission });
+    } catch (error) {
+      // An exception may follow external success. Leave the durable claim for review.
+      console.error("Search submission retry outcome uncertain:", error);
     }
   }
 
   return {
     scanned: publishedTests.length,
-    retryable: retryableTests.length,
-    batchSize: retryBatchSize,
-    submittedUrls: submittedUrls.length,
-    indexNow,
-    googleSearch,
+    reviewRequired: reviewRequired.map((test) => ({ id: test.id, slug: test.slug })),
     retried,
+    truncated: publishedTests.length === getSearchRetryScanLimit(),
   };
 }
 
 export async function GET(request: Request) {
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!authorizeCron(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+  if (process.env.TEMON_CRON_ENABLED === "false") {
+    return NextResponse.json({ error: "Publishing disabled" }, { status: 503 });
+  }
+  if (process.env.TEMON_CRON_OWNER !== "vps" || process.env.TEMON_CRON_INSTANCE !== "vps") {
+    return NextResponse.json({ error: "Publisher is not owned by this instance" }, { status: 503 });
+  }
+  if (publishRunning) {
+    return NextResponse.json({ error: "Publishing already in progress" }, { status: 409 });
+  }
+  publishRunning = true;
 
   try {
     const db = getDb();
@@ -336,10 +266,11 @@ export async function GET(request: Request) {
       .orderBy(asc(tests.publishedAt), asc(tests.createdAt));
 
     if (dueDrafts.length === 0) {
-      const retriedSearchSubmissions = await retryPendingSearchSubmissions(db, baseUrl);
+      const searchSubmissions = await inspectSearchSubmissions(db, baseUrl);
       return NextResponse.json({
+        success: true,
         message: "No due draft tests available",
-        retriedSearchSubmissions,
+        searchSubmissions,
       });
     }
 
@@ -365,7 +296,7 @@ export async function GET(request: Request) {
 
     const publishedUrls = buildPublishedUrls(baseUrl, draftTest.slug, true);
     const existingMetadata = parseMetadata(draftTest.metadata);
-    const pendingSearchSubmission = buildPendingSearchSubmissionMetadata(
+    const pendingSearchSubmission = buildSubmittingSearchSubmissionMetadata(
       publishedUrls,
       baseUrl,
     );
@@ -380,11 +311,17 @@ export async function GET(request: Request) {
         },
         updatedAt: now,
       })
-      .where(and(eq(tests.id, draftTest.id), eq(tests.status, "draft")));
+      .where(and(
+        eq(tests.id, draftTest.id),
+        eq(tests.status, "draft"),
+        eq(tests.metadata, draftTest.metadata),
+        eq(tests.publishedAt, draftTest.publishedAt!),
+      ));
 
     if (result.rowsAffected === 0) {
       return NextResponse.json({
-        message: "Test already published by another job",
+        success: true,
+        message: "Draft changed before publication",
       });
     }
 
@@ -404,12 +341,7 @@ export async function GET(request: Request) {
         googleSearch,
       );
     } catch (error) {
-      console.error("Search submission failed after publish:", error);
-      searchSubmission = buildFailedSearchSubmissionMetadata(
-        publishedUrls,
-        baseUrl,
-        error,
-      );
+      console.error("Search submission outcome uncertain after publish:", error);
     }
 
     try {
@@ -422,7 +354,10 @@ export async function GET(request: Request) {
           },
           updatedAt: new Date(),
         })
-        .where(eq(tests.id, draftTest.id));
+        .where(and(eq(tests.id, draftTest.id), eq(tests.metadata, {
+          ...existingMetadata,
+          searchSubmission: pendingSearchSubmission,
+        })));
     } catch (error) {
       console.error("Failed to persist search submission metadata:", error);
     }
@@ -447,5 +382,7 @@ export async function GET(request: Request) {
       { success: false, error: "Failed to publish test" },
       { status: 500 },
     );
+  } finally {
+    publishRunning = false;
   }
 }

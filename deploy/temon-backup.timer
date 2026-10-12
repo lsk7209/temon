@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Temon Turso snapshot (UTC)
+
+[Timer]
+OnCalendar=*-*-* 02:30:00 UTC
+AccuracySec=1min
+Persistent=false
+Unit=temon-backup.service
+
+[Install]
+WantedBy=timers.target

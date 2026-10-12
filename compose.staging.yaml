@@ -1,0 +1,41 @@
+services:
+  web:
+    image: temon-ovh:staging-release-20261012
+    restart: unless-stopped
+    init: true
+    env_file:
+      - path: .env.staging
+        required: false
+    expose:
+      - "3000"
+    environment:
+      TEMON_STAGING: "true"
+      TEMON_CRON_ENABLED: "false"
+      TEMON_GENERATION_ENABLED: "false"
+      TURSO_DATABASE_URL: file:/app/data/staging.db
+      NEXT_PUBLIC_APP_URL: https://temon.kr
+      APP_REVISION: 1b924c2ef8ba77f8ac4d759446b3dfd34b0f47c5-migration
+    volumes:
+      - temon-staging-data:/app/data
+      - temon-staging-cache:/app/.next/cache
+    mem_limit: 768m
+    cpus: 1.0
+    pids_limit: 128
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    logging:
+      driver: json-file
+      options: {max-size: 5m, max-file: "2"}
+    networks: [isolated]
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+volumes:
+  temon-staging-data:
+  temon-staging-cache:
+networks:
+  isolated:
+    internal: true

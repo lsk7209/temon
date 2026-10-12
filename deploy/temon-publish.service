@@ -1,0 +1,16 @@
+[Unit]
+Description=Temon production publisher
+Requires=docker.service
+After=docker.service
+ConditionPathExists=/var/run/docker.sock
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/temon-production
+StandardInput=file:/opt/temon-production/scripts/run-vps-publish.mjs
+ExecStart=/usr/bin/flock -n /run/temon-publish.lock /usr/bin/docker exec -i temon-production-web-1 node --input-type=module -
+TimeoutStartSec=75s
+NoNewPrivileges=true
+PrivateTmp=true
+

@@ -49,6 +49,7 @@ export function writeAnalyticsConsent(value: "granted" | "denied"): void {
 
 /** True only when analytics requests may be sent for this visitor right now. */
 export function isAnalyticsAllowed(): boolean {
+  if (process.env.NEXT_PUBLIC_TEMON_STAGING === "true") return false;
   if (typeof window === "undefined") return false;
   const consent = readAnalyticsConsent();
   if (consent === "granted") return true;

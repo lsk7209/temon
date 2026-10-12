@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { requestIp } from '@/lib/request-ip'
 
 /**
  * Next.js Proxy (구 Middleware)
@@ -15,14 +16,12 @@ import { NextRequest, NextResponse } from 'next/server'
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
 const RATE_LIMIT = 1000 // 1분당 최대 요청 수
 const RATE_LIMIT_WINDOW = 60 * 1000 // 1분
+const loginAttempts = new Map<string, { count: number; resetTime: number }>()
 
 function getRateLimitKey(request: NextRequest): string {
   // IP 주소 기반 (Vercel에서는 x-forwarded-for / x-real-ip 헤더 사용).
   // NextRequest.ip는 Next.js 15에서 제거되어 헤더만 사용한다.
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    request.headers.get('x-real-ip') ||
-    'unknown'
-  return ip
+  return requestIp(request.headers)
 }
 
 function checkRateLimit(key: string): boolean {
@@ -66,10 +65,22 @@ export function proxy(request: NextRequest) {
   // Rate Limit 체크 (API 엔드포인트만)
   if (request.nextUrl.pathname.startsWith('/api/')) {
     const key = getRateLimitKey(request)
+    if (request.nextUrl.pathname === '/api/admin/login' && request.method === 'POST') {
+      const now = Date.now()
+      for (const [ip, entry] of loginAttempts) if (entry.resetTime <= now) loginAttempts.delete(ip)
+      const entry = loginAttempts.get(key)
+      if ((entry && entry.count >= 10) || (!entry && loginAttempts.size >= 10000)) {
+        return NextResponse.json({ error: 'Too many login attempts' }, { status: 429, headers: { 'Retry-After': '900' } })
+      }
+      loginAttempts.set(key, { count: (entry?.count || 0) + 1, resetTime: entry?.resetTime || now + 900000 })
+    }
 
     // 주기적으로 오래된 레코드 정리
-    if (Math.random() < 0.1) {
+    if (rateLimitMap.size >= 10000 || Math.random() < 0.1) {
       cleanupRateLimitMap()
+    }
+    if (rateLimitMap.size >= 10000 && !rateLimitMap.has(key)) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429, headers: { 'Retry-After': '60' } })
     }
 
     if (!checkRateLimit(key)) {
@@ -87,6 +98,11 @@ export function proxy(request: NextRequest) {
 
   // 보안 헤더 추가
   const response = NextResponse.next()
+  if (process.env.TEMON_STAGING === 'true') {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive')
+    response.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; frame-src 'none';")
+    return response
+  }
 
   // XSS 방지
   response.headers.set('X-Content-Type-Options', 'nosniff')
@@ -111,7 +127,6 @@ export function proxy(request: NextRequest) {
   // 개발 환경에서만 요청 로깅
   if (process.env.NODE_ENV === 'development') {
     console.log(`[${request.method}] ${request.nextUrl.pathname}`, {
-      ip: getRateLimitKey(request),
       userAgent: request.headers.get('user-agent'),
     })
   }

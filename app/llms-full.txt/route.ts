@@ -7,6 +7,7 @@ import {
 import { getAllBlogPosts } from "@/lib/blog-posts";
 
 export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const tests = await getAiIndexTests();

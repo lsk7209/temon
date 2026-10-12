@@ -4,6 +4,9 @@ import * as schema from './schema';
 
 const url = process.env.TURSO_DATABASE_URL;
 const authToken = process.env.TURSO_AUTH_TOKEN;
+if (process.env.TEMON_STAGING === 'true' && (!url?.startsWith('file:') || authToken)) {
+  throw new Error('Staging requires an isolated local database without a remote token.');
+}
 const globalForDbWarning = globalThis as typeof globalThis & {
   __temonDbWarningShown?: boolean;
 };

@@ -1,0 +1,15 @@
+temon.kr {
+    tls /certs/temon/fullchain.pem /certs/temon/privkey.pem
+    encode gzip
+    reverse_proxy temon-web:3000 {
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up -X-Vercel-Forwarded-For
+    }
+}
+
+www.temon.kr {
+    tls /certs/temon/fullchain.pem /certs/temon/privkey.pem
+    redir https://temon.kr{uri} 308
+}

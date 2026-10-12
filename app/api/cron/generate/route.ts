@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { authorizeCron } from "@/lib/cron-auth";
 import { getDb } from "@/lib/db/client";
 import { testQueue, tests, questions, resultTypes } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
@@ -89,9 +90,11 @@ function parseScheduledAt(value: unknown): Date | null {
 }
 
 export async function GET(request: Request) {
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!authorizeCron(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  if (process.env.TEMON_CRON_ENABLED === "false" || process.env.TEMON_GENERATION_ENABLED === "false") {
+    return NextResponse.json({ error: "Generation disabled" }, { status: 503 });
   }
 
   const genAI = getGoogleAiClient();

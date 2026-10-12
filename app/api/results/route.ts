@@ -10,6 +10,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { saveTestResult, getPublicTestResult, ResultSaveError } from "@/lib/db/queries/results";
 import { ATTEMPT_ID_PATTERN } from "@/lib/db/queries/result-attempts";
 import { hashIp } from "@/lib/hash-ip";
+import { requestIp } from "@/lib/request-ip";
 import { z } from "zod";
 
 const MAX_BODY_BYTES = 64 * 1024;
@@ -93,10 +94,7 @@ export async function POST(request: NextRequest) {
 
     // 클라이언트 정보 추출
     const userAgent = request.headers.get("user-agent") || undefined;
-    const ipRaw =
-      request.headers.get("x-forwarded-for") ||
-      request.headers.get("x-real-ip") ||
-      "unknown";
+    const ipRaw = requestIp(request.headers);
 
     // 결과 저장 (원본 IP는 저장하지 않고 해시된 식별자만 저장 — PIPA 최소수집)
     // 같은 attemptId 재시도는 기존 결과 ID를 200으로 돌려준다.

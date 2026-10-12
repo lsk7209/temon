@@ -1,0 +1,15 @@
+[Unit]
+Description=Poll public main for reviewed Temon production release
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+ConditionPathExists=/opt/temon-production/auto-deploy-enabled
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/temon-production
+ExecStart=/usr/bin/python3 /opt/temon-production/scripts/deploy-vps-production.py
+TimeoutStartSec=40min
+NoNewPrivileges=true
+PrivateTmp=true

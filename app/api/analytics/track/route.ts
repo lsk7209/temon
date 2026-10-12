@@ -3,6 +3,7 @@ import { getDb } from "@/lib/db/client";
 import { pageVisits, testStarts } from "@/lib/db/schema";
 import { z } from "zod";
 import { hashIp } from "@/lib/hash-ip";
+import { requestIp } from "@/lib/request-ip";
 
 const trackSchema = z.object({
   type: z.enum(["page_view", "test_start"]),
@@ -61,7 +62,7 @@ export async function POST(request: NextRequest) {
     }
 
     const userAgent = request.headers.get("user-agent") || "";
-    const ipRaw = request.headers.get("x-forwarded-for") || "unknown";
+    const ipRaw = requestIp(request.headers);
     const ip = hashIp(ipRaw); // 해시된 식별자만 DB에 저장 (PIPA 최소수집)
     const { browser, os, device } = parseUserAgent(userAgent);
 

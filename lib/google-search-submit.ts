@@ -87,9 +87,9 @@ function getServiceAccount(): GoogleServiceAccount | null {
     process.env.GOOGLE_APPLICATION_CREDENTIALS ||
     process.env.GOOGLE_SERVICE_ACCOUNT_PATH ||
     LOCAL_SERVICE_ACCOUNT_PATH;
-  if (!credentialPath || !existsSync(credentialPath)) return null;
+  if (!credentialPath || !existsSync(/* turbopackIgnore: true */ credentialPath)) return null;
 
-  return parseServiceAccount(readFileSync(credentialPath, "utf8"));
+  return parseServiceAccount(readFileSync(/* turbopackIgnore: true */ credentialPath, "utf8"));
 }
 
 function createJwt(serviceAccount: GoogleServiceAccount) {

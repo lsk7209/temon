@@ -66,7 +66,7 @@ export function AnalyticsScripts({ gaId, clarityId }: AnalyticsScriptsProps) {
     applyLoadedTrackerConsent(gaId, allowed);
   }, [ready, allowed, gaId]);
 
-  if (!loaded) return null;
+  if (!loaded || process.env.NEXT_PUBLIC_TEMON_STAGING === "true") return null;
   return (
     <>
       <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="lazyOnload" />

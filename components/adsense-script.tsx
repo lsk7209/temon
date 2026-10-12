@@ -49,6 +49,7 @@ export default function AdSenseScript() {
   // Delivery is explicitly opt-in so a deployment cannot accidentally restore
   // ads before the Better Ads review and policy checks are complete.
   if (
+    process.env.NEXT_PUBLIC_TEMON_STAGING === "true" ||
     !ADSENSE_DELIVERY_ENABLED ||
     !ADSENSE_CLIENT_ID ||
     !isIndexablePage ||

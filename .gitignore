@@ -29,6 +29,10 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+.env.*
+!.env.example
+.migration-evidence/
+recovery/
 
 # vercel
 .vercel
@@ -57,3 +61,5 @@ reports/*.json
 reports/*.md
 reports/*.ts
 
+__pycache__/
+*.pyc
