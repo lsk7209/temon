@@ -13,7 +13,7 @@ try {
  const paths=['/','/tests/coffee-mbti','/tests?page=2','/tests?category=food',`/tests/${sample.rows[0].slug}`];
  const extract=html=>({title:html.match(/<title>(.*?)<\/title>/s)?.[1],canonical:html.match(/<link rel="canonical" href="([^"]+)"/)?.[1],robots:[...html.matchAll(/<meta name="robots" content="([^"]+)"/g)].map(m=>m[1]),jsonld:[...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>m[1])});
  for(const path of paths){const old=get(path,'216.150.1.1'),vps=get(path,'51.79.206.71');check(path+' metadata',JSON.stringify(extract(old))===JSON.stringify(extract(vps)));}
- const normalize=text=>text.replaceAll('\r\n','\n').replace(/<lastmod>[^<]+<\/lastmod>/g,'<lastmod>runtime</lastmod>');
+ const normalize=text=>text.replaceAll('\r\n','\n').replace(/<lastmod>[^<]+<\/lastmod>/g,'<lastmod>runtime</lastmod>').replace(/- 생성 시각: [^\n]+/g,'- 생성 시각: runtime');
  for(const path of ['/robots.txt','/ads.txt','/sitemap.xml','/sitemap-index.xml','/llms.txt','/llms-full.txt']){check(path+' content',normalize(get(path,'216.150.1.1'))===normalize(get(path,'51.79.206.71')));}
  if(saved.rows.length){const path=`/api/results?id=${saved.rows[0].id}`;check('existing saved result GET',get(path,'216.150.1.1')===get(path,'51.79.206.71'));const page=`/results/${saved.rows[0].slug}?id=${saved.rows[0].id}`;const old=extract(get(page,'216.150.1.1')),vps=extract(get(page,'51.79.206.71'));check('saved result noindex canonical',JSON.stringify(old)===JSON.stringify(vps)&&vps.robots.some(x=>x.includes('noindex')));}
  const home=get('/','51.79.206.71');check('GA4 retained',home.includes('G-L167CCPS8E'));

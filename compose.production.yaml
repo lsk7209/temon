@@ -34,6 +34,7 @@ services:
       start_period: 30s
 volumes:
   runtime-cache:
+    external: true
     name: temon-production-cache-${CACHE_REVISION:?Set revision-specific cache}
 networks:
   runtime:
