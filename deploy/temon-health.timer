@@ -2,7 +2,7 @@
 Description=Record Temon health every five minutes
 
 [Timer]
-OnCalendar=*:0/5
+OnCalendar=*:2/5
 AccuracySec=1min
 Persistent=false
 Unit=temon-health.service
