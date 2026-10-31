@@ -11,6 +11,7 @@ import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { Card } from "@/components/ui/card"
 import { Sparkles } from "lucide-react"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
+import { TestExpandedIntro } from "@/components/test-expanded-intro"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "아이돌 포지션 테스트로 리더, 보컬, 댄서, 비주얼, 막내 유형을 확인하세요."
@@ -140,6 +141,7 @@ export default function KpopIdolIntro() {
           <p className="mt-6 text-sm text-gray-500">소요 시간: 약 2분 | 총 12문항</p>
         </Card>
 
+        <TestExpandedIntro testId="kpop-idol" title="아이돌 포지션 테스트" />
         <GscLandingBoost
           title="아이돌 포지션 테스트, 무엇을 보나요?"
           summary="아이돌 포지션 테스트는 무대 위 실력보다 팀 안에서 어떤 역할을 맡기 쉬운지 알고 싶은 검색 의도에 맞춘 무료 성격 테스트입니다. 리더십, 표현력, 분위기 전환, 팬 소통 반응을 가볍게 비교합니다."

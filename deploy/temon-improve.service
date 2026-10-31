@@ -1,0 +1,14 @@
+[Unit]
+Description=Temon production 6-hour content improver
+Requires=docker.service
+After=docker.service
+ConditionPathExists=/var/run/docker.sock
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/temon-production
+ExecStart=/usr/bin/flock -n /run/temon-improve.lock /usr/bin/docker exec -i temon-production-web-1 node scripts/improve-content-daemon.mjs
+TimeoutStartSec=120s
+NoNewPrivileges=true
+PrivateTmp=true

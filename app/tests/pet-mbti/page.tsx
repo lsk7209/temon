@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/json-ld";
 import { FAQSection } from "@/components/faq-section";
 import { AnswerEngineSection } from "@/components/answer-engine-section";
 import { AutoGscLandingBoost } from "@/components/gsc-auto-landing-boost";
+import { TestExpandedIntro } from "@/components/test-expanded-intro";
 import { LandingConversionSection } from "@/components/landing-conversion-section";
 import { RelatedTestsSection } from "@/components/related-tests-section";
 import {
@@ -457,6 +458,7 @@ export default function PetMBTIIntro() {
             </div>
 
             <div className="mt-12">
+              <TestExpandedIntro testId="pet-mbti" title="반려동물 MBTI 테스트" />
               <AutoGscLandingBoost testId="pet-mbti" />
 
               <AnswerEngineSection quizTitle="반려동물 MBTI 테스트" />

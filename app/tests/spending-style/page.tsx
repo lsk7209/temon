@@ -9,6 +9,7 @@ import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
+import { TestExpandedIntro } from "@/components/test-expanded-intro"
 
 // Naver-optimized description (under 80 chars)
 const shortDescription = "소비성향 테스트로 충동구매, 할인 반응, 예산 습관을 16유형으로 확인하세요."
@@ -122,6 +123,7 @@ export default function SpendingStyleIntro() {
             <p>💡 정확한 결과를 위해 솔직하게 답변해주세요!</p>
           </div>
 
+          <TestExpandedIntro testId="spending-style" title="소비성향 테스트" />
           <GscLandingBoost
             title="소비성향 테스트, 이런 분에게 맞습니다"
             summary="소비성향 테스트는 내가 돈을 쓰기 전 어떤 기준으로 판단하는지 확인하려는 검색 의도에 맞춰 구성했습니다. 충동구매를 줄이고 싶거나, 구독·포인트·할인에 끌리는 패턴을 알고 싶을 때 먼저 풀어보기 좋습니다."

@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/json-ld"
 import { FAQSection } from "@/components/faq-section"
 import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
+import { TestExpandedIntro } from "@/components/test-expanded-intro"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
@@ -269,6 +270,7 @@ export default function MusicTasteIntro() {
           </Card>
         </div>
 
+        <TestExpandedIntro testId="music-taste" title="음악 취향 테스트" />
         <GscLandingBoost
           title="음악 취향 테스트로 보는 노래 선택 성향"
           summary="이 페이지는 음악 취향 테스트, 노래 취향 테스트, 플레이리스트 성격 분석을 찾는 사용자를 위한 무료 테스트입니다. 좋아하는 노래를 고르는 이유와 듣는 상황을 바탕으로 음악 성향을 짧게 확인할 수 있습니다."

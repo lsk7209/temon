@@ -14,6 +14,8 @@
  *   - 과장·확정 문구 금지 ("반드시", "100%", "정확한" 등)
  */
 
+import dynamicExtendedContent from "@/data/extended-content.json";
+
 export interface ExtendedContent {
   /** 도입 문단: 왜 이 테스트가 흥미로운가, 누가 주로 하는가 */
   intro: string;
@@ -301,9 +303,14 @@ export const EXTENDED_CONTENT: Record<string, ExtendedContent> = {
 export function getExtendedContent(
   testId: string,
 ): ExtendedContent | undefined {
+  const dynamicMap = dynamicExtendedContent as Record<string, ExtendedContent>;
+  if (dynamicMap && dynamicMap[testId]) {
+    return dynamicMap[testId];
+  }
   return EXTENDED_CONTENT[testId];
 }
 
 export function hasExtendedContent(testId: string): boolean {
-  return testId in EXTENDED_CONTENT;
+  const dynamicMap = dynamicExtendedContent as Record<string, ExtendedContent>;
+  return (dynamicMap && testId in dynamicMap) || testId in EXTENDED_CONTENT;
 }
