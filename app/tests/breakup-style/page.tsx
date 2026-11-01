@@ -7,6 +7,7 @@ import { AnswerEngineSection } from "@/components/answer-engine-section"
 import { LandingConversionSection } from "@/components/landing-conversion-section"
 import { RelatedTestsSection } from "@/components/related-tests-section"
 import { GscLandingBoost } from "@/components/gsc-landing-boost"
+import { TestExpandedIntro } from "@/components/test-expanded-intro"
 import { generateQuizMetadata, generateQuizSchemas } from "@/lib/quiz-seo-utils"
 import { getTopicQuizFAQs } from "@/lib/quiz-topic-copy"
 
@@ -122,6 +123,7 @@ export default function BreakupStyleIntro() {
 
           <div className="max-w-2xl mx-auto">
             <div className="mt-12">
+              <TestExpandedIntro testId="breakup-style" title="이별 후유증 유형 테스트" />
               <GscLandingBoost
                 title="이별 후유증 유형 테스트로 보는 마음 정리 패턴"
                 summary="이별 후유증 유형 테스트는 이별 뒤 감정 정리, 미련, 회복 속도, 연락하고 싶은 마음을 알고 싶은 검색 의도에 맞춘 무료 성향 테스트입니다. 12문항으로 현재 반응을 16가지 이별 극복 스타일로 나누어 보여줍니다."
